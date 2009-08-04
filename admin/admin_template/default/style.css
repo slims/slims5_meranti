@@ -1,0 +1,579 @@
+/* GENERAL FONT DEFINITION */
+body {
+    font-family: tahoma, verdana, sans, 'Dejavu Sans';
+    font-size: 11px;
+    line-height: 170%;
+    color: #003380;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #003380;
+}
+
+#main {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+}
+
+#header {
+    width: 100%;
+    height: 80px;
+    background: #FFFFFF url(media/header.jpg) no-repeat bottom right;
+}
+
+#mainMenu {
+    width: 100%;
+    height: 28px;
+    background: url(media/bar_fill_menu.png) repeat-x bottom left;
+    font-weight: bold;
+    padding-top: 7px;
+}
+
+#menuList {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+#menuList li {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+#menuList a.menu,a.menu:hover,a.menuCurrent {
+    padding: 11px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+#menuList a.menu:hover,a.menuCurrent {
+    background: url(media/tri.png) no-repeat bottom center;
+}
+
+#sidepan {
+    width: 210px;
+    background: #CCCCCC;
+}
+
+#mainContent {
+    padding: 0.3em;
+}
+
+#footer {
+    color: #FFFFFF;
+    text-align: center;
+    clear: both;
+    height: 31px;
+    background: url(media/bar_fill_menu.png) repeat-x bottom left;
+    margin: 0;
+    padding-top: 9px;
+}
+
+#footer * {
+    color: #FFFFFF;
+}
+
+#dataList {
+    width: 100%;
+    font-weight: bold;
+    border: 1px solid #999999;
+    background: #CCCCCC url(media/gradien_short.jpg) repeat-x bottom left;
+    margin-bottom: 5px;
+}
+
+#dataList {
+    background: #CCCCCC;
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+#dataListPrinted {
+    width: 100%;
+    background-color: #000000;
+}
+
+#headerImage {
+    margin-top: 3px;
+    float: left;
+    width: 75px;
+    height: 75px;
+    background: url(media/logo.png) no-repeat top left;
+    margin-left: 10px;
+}
+
+#libraryName {
+    float: left;
+    padding-top: 17px;
+    font-size: 21px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+#librarySubName {
+    margin-top: 7px;
+    font-size: 80%;
+}
+
+/* Classes definition */
+.loader {
+    height: 29px;
+    padding-top: 11px;
+    padding-left: 10px;
+    background: #CCCCCC;
+}
+
+.objectDragger, .objectDragger:hover {
+    height: 10px;
+    background: #999999 url(media/drag_button.png) no-repeat top center;
+    border: 1px solid #666666;
+    border-top-width: 0;
+}
+
+.objectDragger:hover {
+    background: #CCCCCC no-repeat top center;
+    cursor: move;
+}
+
+.subMenuHeader {
+    font-weight: bold;
+    font-size: 14px;
+    color: #FFFFFF;
+    background: url(media/section_bar_fill.png) no-repeat top left;
+    padding-top: 9px;
+    padding-left: 37px;
+    height: 31px;
+}
+
+.heading {
+    font-weight: bold;
+    font-size: 14px;
+    border: 0 dotted #003380;
+    border-bottom-width: 1px;
+}
+
+/* link for the currently selected module */
+.curModuleLink {
+    background-image: url(media/bar_fill.png);
+    color: #FFFFFF;
+}
+
+/* tabular data */
+.dataListHeader {
+    font-weight: bold;
+    background: #FFFFFF url(media/bar_fill.png) top left repeat-x;
+    color: #FFFFFF;
+}
+
+.dataListHeader a {
+    color: #FFFFFF;
+}
+
+.dataListHeader a:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+/* printed tabular data styles */
+.alterCellPrinted, .alterCellPrinted2 {
+    color: #000000;
+    background: #CCCCCC;
+}
+
+.alterCellPrinted2 {
+    background: #FFFFFF;
+}
+
+.dataListHeaderPrinted {
+    background: #000000;
+    color: #FFFFFF;
+}
+
+.dataListHeaderPrinted * {
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.printPageInfo {
+    font-size: 120%;
+    padding: 5px;
+    color: #000000;
+    background-color: #999999;
+}
+
+/* general box element class */
+.marginTop {
+    margin-top: 5px;
+}
+
+.menuBox {
+    font-weight: bold;
+    border: 1px solid #999999;
+    background: #CCCCCC url(media/gradien_short.jpg) repeat-x bottom left;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+.menuBoxInner {
+    padding: 3px;
+    padding-left: 59px;
+    background: url(media/modules/biblio.png) no-repeat -15px 5px;
+}
+
+.infoBox {
+    margin: 3px;
+    border: 1px #999999 solid;
+    padding: 5px;
+    padding-left: 70px;
+    min-height: 50px;
+    background: url(media/infobox_img.png) no-repeat -5px -5px;
+}
+
+.errorBox {
+    margin: 3px;
+    border: 1px #550000 dotted;
+    padding: 5px;
+    padding-left: 70px;
+    min-height: 50px;
+    color: #550000;
+    background: url(media/error.png) no-repeat -5px -5px;
+}
+
+.border {
+    border: 1px solid #999999;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.makeHidden {
+    display: none;
+}
+
+.makeVisible {
+    display: block;
+}
+
+iframe {
+    border: 1px solid #999999;
+}
+
+.alterCell, .alterCell2 {
+    background-color: #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.alterCell2 {
+    background-color: #FFFFFF;
+}
+
+/* module submenu hyperlink specific */
+.subMenuItem, .subMenuItem:hover, .curModuleLink, .subMenuItem2, .subMenuItem2:hover {
+    display: block;
+    padding: 5px;
+    padding-left: 20px;
+    margin: 0;
+    margin-top: 3px;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 97%;
+    text-decoration: none;
+    background-image: url(media/submenu_img.png);
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
+.subMenuItem:hover, .curModuleLink, .subMenuItem2:hover {
+    background-image: url(media/submenu_img_hover.png);
+    background-position: left;
+    background-repeat: no-repeat;
+    color: #666666;
+}
+
+/* form element specific */
+.button {
+    font-size: 100%;
+    border: 1px solid #003380;
+    color: #003380;
+    background-image: url(media/gradien_short.jpg);
+    background-position: bottom left;
+}
+
+select option {
+    font-weight: normal;
+}
+
+input,textarea,select {
+    border: 1px solid #727272;
+    font-size: 100%;
+}
+
+input:hover,textarea:hover,select:hover {
+    border: 1px solid #f18e00;
+}
+
+.editFormLink {
+    padding: 1px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 1px solid #000000;
+    text-decoration: none;
+    background-color: #CCCCCC;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* tab button class */
+.tab, .tabSelected {
+    display: inline;
+    border: 1px solid #999999;
+    border-bottom-width: 0px;
+    font-size: 97%;
+    font-weight: bold;
+    background: #CCCCCC url(media/gradien_short.jpg) bottom;
+    height: 30px;
+    margin-right: 1px;
+}
+
+.tab:hover, .tabSelected {
+    border: 1px solid #FF0000;
+    border-bottom-width: 0px;
+    color: #FF0000;
+}
+
+/* Ajax input */
+.ajaxInputField {
+    width: 250px;
+}
+
+/* div table */
+.divRow {
+    clear: both;
+    padding-top: 10px;
+}
+
+.divRowLabel {
+    float: left;
+    width: 20%;
+}
+
+.divRowContent {
+    float: left;
+    width: 75%;
+}
+
+/* icons */
+.icon {
+    text-decoration: none;
+    border: 0;
+    display:block;
+    width: 75px;
+    height: 75px;
+    background-repeat: no-repeat;
+}
+
+.backupIcon {
+    background-image: url(media/modules/backup.png);
+}
+
+.barcodeIcon {
+    background-image: url(media/modules/barcode.png);
+}
+
+.biblioIcon {
+    background-image: url(media/modules/biblio.png);
+}
+
+.calendarIcon {
+    background-image: url(media/modules/calendar.png);
+}
+
+.circulationIcon {
+    background-image: url(media/modules/circ.png);
+}
+
+.exportIcon {
+    background-image: url(media/modules/export.png);
+}
+
+.importIcon {
+    background-image: url(media/modules/import.png);
+}
+
+.itemIcon {
+    background-image: url(media/modules/item.png);
+}
+
+.itemOutIcon {
+    background-image: url(media/modules/item_out.png);
+}
+
+.loanRulesIcon {
+    background-image: url(media/modules/loan_rules.png);
+}
+
+.masterFileIcon {
+    background-image: url(media/modules/masterfile.png);
+}
+
+.memberIcon {
+    background-image: url(media/modules/membership.png);
+}
+
+.memberTypeIcon {
+    background-image: url(media/modules/member_type.png);
+}
+
+.moduleIcon {
+    background-image: url(media/modules/module.png);
+}
+
+.overdueIcon {
+    background-image: url(media/modules/overdue.png);
+}
+
+.quickReturnIcon {
+    background-image: url(media/modules/quick_return.png);
+}
+
+.reportIcon {
+    background-image: url(media/modules/report.png);
+}
+
+.stockTakeIcon {
+    background-image: url(media/modules/sstake.png);
+}
+
+.statisticIcon {
+    background-image: url(media/modules/statistic.png);
+}
+
+.syslogIcon {
+    background-image: url(media/modules/syslog.png);
+}
+
+.systemIcon {
+    background-image: url(media/modules/system.png);
+}
+
+.userIcon {
+    background-image: url(media/modules/user.png);
+}
+
+.userGroupIcon {
+    background-image: url(media/modules/user_group.png);
+}
+
+.serialIcon {
+    background-image: url(media/modules/serial_control.png);
+}
+
+.printIcon {
+    background-image: url(media/printer.png);
+}
+
+.errorIcon {
+    background-image: url(media/error.png);
+}
+
+.homeFlagIcon {
+    background-image: url(media/home.png);
+}
+
+.lockFlagIcon {
+    background-image: url(media/lock.png);
+}
+
+.trashLink, .extendLink, .noExtendLink, .returnLink {
+    text-decoration: none;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url(media/trash.png) no-repeat top center;
+}
+
+.extendLink {
+    background-image: url(media/extend.png);
+}
+
+.noExtendLink {
+    background-image: url(media/no_extend.png);
+}
+
+.returnLink {
+    background-image: url(media/return.png);
+}
+
+.loadingImage {
+    font-weight: bold;
+    padding-left: 53px;
+    background: #ffea01 url(media/loader.gif) no-repeat top left;
+}
+
+/* serial control module */
+.addSubscription {
+    text-decoration: none;
+    display: block;
+    float: right;
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background: url(media/extend.png) no-repeat top left;
+}
+
+.viewSubscription {
+    text-decoration: none;
+    display: block;
+    float: right;
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background: url(media/view.png) no-repeat top left;
+}
+
+.editLink {
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    height: 20px;
+    background: url(media/edit.png) top left no-repeat;
+    float: left;
+}
+
+.dateField {
+    border: 1px solid #666666;
+    width: 150px;
+    float: left;
+    padding: 2px;
+    background: #FFFFFF;
+}
+
+.dateInput {
+    border: 0;
+    width: 110px;
+    float: left;
+    background: #FFFFFF;
+}
+
+.dateInput:hover {
+    border: 0;
+}
+
+.calendarLink {
+    display: block;
+    text-decoration: none;
+    width: 20px;
+    height: 20px;
+    background: url(media/cal.png) top left no-repeat;
+    float: right;
+}
