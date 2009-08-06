@@ -31,6 +31,7 @@ if ($stk_query->num_rows) {
     $menu[] = array(lang_mod_stocktake_lost, MODULES_WEB_ROOT_DIR.'stock_take/lost_item_list.php', lang_mod_stocktake_lost_titletag);
     $menu[] = array(lang_mod_stocktake_log, MODULES_WEB_ROOT_DIR.'stock_take/st_log.php', lang_mod_stocktake_log_titletag);
     $menu[] = array(lang_mod_stocktake_resync, MODULES_WEB_ROOT_DIR.'stock_take/resync.php', lang_mod_stocktake_resync_titletag);
+    $menu[] = array('Upload List', MODULES_WEB_ROOT_DIR.'stock_take/st_upload.php', 'Upload List in text file');
 } else {
     $menu[] = array(lang_mod_stocktake_init, MODULES_WEB_ROOT_DIR.'stock_take/init.php', lang_mod_stocktake_init_titletag);
 }

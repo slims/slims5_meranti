@@ -217,7 +217,7 @@ PLS     Plesseys
 $sysconf['barcode_encoding'] = '128B';
 
 /* AUTHORITY TYPE */
-$sysconf['authority_type']['p'] = 'Person';
+$sysconf['authority_type']['p'] = 'Personal Name';
 $sysconf['authority_type']['o'] = 'Organizational Body';
 $sysconf['authority_type']['c'] = 'Conference';
 

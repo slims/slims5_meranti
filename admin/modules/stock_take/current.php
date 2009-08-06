@@ -38,6 +38,11 @@ if (!($can_read AND $can_write)) {
     die('<div class="errorBox">'.lang_sys_common_no_privilage.'</div>');
 }
 
+// show only current user stock take item flag
+if (isset($_GET['listShow']) && $_GET['listShow'] == '1') {
+    $show_only_current = 1;
+}
+
 // check if there is any active stock take proccess
 $stk_query = $dbs->query('SELECT * FROM stock_take WHERE is_active=1');
 if ($stk_query->num_rows < 1) {
@@ -55,15 +60,18 @@ if ($stk_query->num_rows < 1) {
         if ($view != 'm') {
           echo 'STOCK TAKE PROCCESS - Insert Item Code/Barcode with keyboard or barcode scanner<hr />
               <form name="stockTakeForm" action="'.MODULES_WEB_ROOT_DIR.'stock_take/stock_take_action.php" target="stockTakeAction" method="post" style="display: inline;">
-              <div style="width: 90px; float: left;">Item Code : </div><input type="text" id="itemCode" name="itemCode" size="30" /> <input type="submit" value="Change Status" class="button" />
-              <iframe name="stockTakeAction" style="width: 0; height: 0; visibility: hidden;"></iframe>
+              <div><div style="width: 90px; float: left;">Item Code :</div><input type="text" id="itemCode" name="itemCode" size="30" /> <input type="submit" value="Change Status" class="button" /></div>
+              <div style="margin-top: 3px;"><div style="width: 90px; float: left;">List :</div>
+              <input type="radio" id="listShow" name="listShow" value="1" onclick="setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'stock_take/current.php?listShow=1\', \'get\')" '.( isset($show_only_current)?'checked="checked"':'' ).' /> Current User Only
+              <input type="radio" id="listShow2" name="listShow" value="0" onclick="setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'stock_take/current.php?listShow=0\', \'get\')" '.( isset($show_only_current)?'':'checked="checked"' ).' /> All User
+              <iframe name="stockTakeAction" style="width: 0; height: 0; visibility: hidden;"></iframe></div>
               </form>';
         } else {
           echo 'Current Missing/Lost Items<hr />';
         }
         ?>
-        <form name="search" id="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" style="margin-top: 5px;" method="get">
-        <div style="width: 90px; float: left;"><?php echo lang_sys_common_form_search_field; ?> : </div><input type="text" name="keywords" size="30" /> <input type="hidden" name="view" value="<?php echo $view; ?>" /> <input type="submit" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>stock_take/current.php?' + $('search').serialize(), 'post')" value="<?php echo lang_sys_common_form_search; ?>" class="button" />
+        <form name="search" id="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" method="get" style="display: inline;">
+        <div style="margin-top: 3px;"><div style="width: 90px; float: left;"><?php echo lang_sys_common_form_search_field; ?> : </div><input type="text" name="keywords" size="30" /> <input type="hidden" name="view" value="<?php echo $view; ?>" /> <input type="submit" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>stock_take/current.php?' + $('search').serialize(), 'post')" value="<?php echo lang_sys_common_form_search; ?>" class="button" /></div>
         </form>
     </div>
     </fieldset>
@@ -86,6 +94,7 @@ if ($stk_query->num_rows < 1) {
         'IF(sti.status=\'e\', \'Exists\', IF(sti.status=\'l\', \'On Loan\', \'Missing\')) AS \'Status\'');
     $datagrid->setSQLorder("last_update DESC");
 
+    $criteria = 'item_id <> 0 ';
     // is there any search
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
         $keyword = $dbs->escape_string(trim($_GET['keywords']));
@@ -98,13 +107,19 @@ if ($stk_query->num_rows < 1) {
             // remove the last AND
             $concat_sql = substr_replace($concat_sql, '', -3);
             $concat_sql .= ') ';
-            $datagrid->setSQLCriteria($concat_sql." AND status='".$view."'");
+            $criteria .= ' AND '.$concat_sql." AND status='".$view."'";
         } else {
-            $datagrid->setSQLCriteria("(title LIKE '%$keyword%' OR item_code LIKE '%$keyword%') AND status='".$view."'");
+            $criteria .= " AND (title LIKE '%$keyword%' OR item_code LIKE '%$keyword%') AND status='".$view."'";
         }
     } else {
-        $datagrid->setSQLCriteria("status='".$view."'");
+        $criteria .= " AND status='".$view."'";
     }
+    if (isset($show_only_current)) {
+        $criteria .= ' AND checked_by=\''.$_SESSION['realname'].'\'';
+    }
+
+    // set criteria
+    $datagrid->setSQLCriteria($criteria);
 
     // set table and table header attributes
     $datagrid->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
