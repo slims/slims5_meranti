@@ -34,9 +34,19 @@ require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/datagrid/simbio_dbgrid.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/simbio_dbop.inc.php';
 
+// privileges checking
+$can_read = utility::havePrivilege('circulation', 'r');
+$can_write = utility::havePrivilege('circulation', 'w');
+
+if (!$can_read) {
+    die();
+}
+
 // page title
 $page_title = 'Member Loan List';
 
+// start the output buffering
+ob_start();
 /* RECORD OPERATION */
 if (isset($_POST['saveData'])) {
     $debet = preg_replace('@[.,\-a-z ]@i', '', $_POST['debet']);
@@ -48,7 +58,7 @@ if (isset($_POST['saveData'])) {
         utility::jsAlert(''.lang_mod_circ_common_fines_alert_02.'');
     } else {
         $data['member_id'] = $_SESSION['memberID'];
-        $data['fines_date'] = $_POST['finesYear'].'-'.$_POST['finesMonth'].'-'.$_POST['finesDate'];
+        $data['fines_date'] = trim($dbs->escape_string(strip_tags($_POST['finesDate'])));
         $data['description'] = trim($dbs->escape_string(strip_tags($_POST['finesDesc'])));
         $data['debet'] = $debet;
         $data['credit'] = $credit;
@@ -64,27 +74,47 @@ if (isset($_POST['saveData'])) {
             $update = $sql_op->update('fines', $data, 'fines_id='.$updateRecordID);
             if ($update) {
                 utility::jsAlert(lang_mod_circ_fines_alert_updated);
-                echo '<script type="text/javascript">self.location.href = \'fines_list.php\';</script>';
             } else { utility::jsAlert(lang_mod_circ_fines_alert_not_updated."\nDEBUG : ".$sql_op->error); }
-            exit();
         } else {
             /* INSERT RECORD MODE */
             // insert the data
             $insert = $sql_op->insert('fines', $data);
             if ($insert) {
                 utility::jsAlert(lang_mod_circ_fines_alert_new_added);
-                echo '<script type="text/javascript">self.location.href = \'fines_list.php\';</script>';
             } else { utility::jsAlert(lang_mod_circ_fines_alert_fail_to_save."\n".$sql_op->error); }
-            exit();
         }
     }
-    exit();
+} else if ($_SESSION['uid'] == 1 && isset($_POST['itemID']) && !empty($_POST['itemID']) && isset($_POST['itemAction'])) {
+    // only admin can delete
+    if (!($can_read AND $can_write)) {
+        die();
+    }
+    /* DATA DELETION PROCESS */
+    $sql_op = new simbio_dbop($dbs);
+    $failed_array = array();
+    $error_num = 0;
+    if (!is_array($_POST['itemID'])) {
+        // make an array
+        $_POST['itemID'] = array((integer)$_POST['itemID']);
+    }
+    // loop array
+    foreach ($_POST['itemID'] as $itemID) {
+        $itemID = (integer)$itemID;
+        if (!$sql_op->delete('fines', 'fines_id='.$itemID)) {
+            $error_num++;
+        }
+    }
+
+    // error alerting
+    if ($error_num == 0) {
+        utility::jsAlert('Fines data succesfully deleted!');
+    } else {
+        utility::jsAlert('Fines data FAILED to delete!');
+    }
 }
 /* RECORD OPERATION END */
 
-// start the output buffering
-ob_start();
-/* search form */
+/* header */
 ?>
 <div style="padding: 5px; background-color: #CCCCCC;">
     <a href="fines_list.php?action=detail" class="headerText2" style="color: #FF0000;"><?php echo lang_mod_circ_tblheader_add_new_fines; ?></a> &nbsp;
@@ -114,6 +144,10 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         $form->edit_mode = true;
         // record ID for delete process
         $form->record_id = $itemID;
+        // delete button only showed for admin user
+        if ($_SESSION['uid'] != 1) {
+            $form->delete_button = false;
+        }
         // form record title
         $form->record_title = 'Fines Detail';
         // submit button attribute
@@ -122,7 +156,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 
     /* Form Element(s) */
     // fines dates
-    $form->addDateField('finesDate', 'finesMonth', 'finesYear', lang_mod_circ_fines_field_date, $rec_d['fines_date']);
+    $form->addDateField('finesDate', lang_mod_circ_fines_field_date, $rec_d['fines_date']);
     // fines description
     $form->addTextField('text', 'finesDesc', lang_mod_circ_fines_field_description.'*', $rec_d['description'], 'style="width: 60%;"');
     // fines debet
@@ -172,7 +206,10 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $datagrid->chbox_form_URL = $_SERVER['PHP_SELF'];
     // special properties
     $datagrid->using_AJAX = false;
-    $datagrid->chbox_property = false;
+    // checkbox delete only showed for admin user
+    if ($_SESSION['uid'] != 1) {
+        $datagrid->chbox_property = false;
+    }
     $datagrid->column_width = array(0 => '73%');
 
     // put the result into variables
@@ -188,6 +225,8 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 
 // get the buffered content
 $content = ob_get_clean();
+// js include
+$js = '<script type="text/javascript" src="'.JS_WEB_ROOT_DIR.'calendar.js"></script>';
 // include the page template
 require SENAYAN_BASE_DIR.'/admin/'.$sysconf['admin_template']['dir'].'/notemplate_page_tpl.php';
 ?>
