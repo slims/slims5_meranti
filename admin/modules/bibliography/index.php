@@ -103,14 +103,13 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         $data['opac_hide'] = ($_POST['opacHide'] == '0')?'literal{0}':'1';
         $data['promoted'] = ($_POST['promote'] == '0')?'literal{0}':'1';
         // labels
-        $labels = '';
+        $arr_label = array();
         foreach ($_POST['labels'] as $label) {
             if (trim($label) != '') {
-                $labels .= $label.' ';
+                $arr_label[] = array($label, isset($_POST['label_urls'][$label])?$_POST['label_urls'][$label]:null );
             }
         }
-        $labels = trim($labels);
-        $data['labels'] = ($labels != '')?$labels:'literal{NULL}';
+        $data['labels'] = $arr_label?serialize($arr_label):'literal{NULL}';
         $data['frequency_id'] = ($_POST['frequencyID'] == '0')?'literal{0}':(integer)$_POST['frequencyID'];
         $data['spec_detail_info'] = trim($dbs->escape_string(strip_tags($_POST['specDetailInfo'])));
         $data['input_date'] = date('Y-m-d H:i:s');
@@ -434,13 +433,24 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $promote_options[] = array('1', 'Promote');
     $form->addRadio('promote', lang_mod_biblio_field_promote, $promote_options, $rec_d['promoted']?'1':'0');
     // biblio labels
-        // get label data from database
-        $label_q = $dbs->query("SELECT * FROM mst_label");
-        $label_options = array();
-        while ($label_d = $label_q->fetch_assoc()) {
-            $label_options[] = array($label_d['label_name'], '<img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$label_d['label_image'].'" title="'.$label_d['label_desc'].'" />');
+        $arr_labels = !empty($rec_d['labels'])?unserialize($rec_d['labels']):array();
+        if ($arr_labels) {
+            foreach ($arr_labels as $label) { $arr_labels[$label[0]] = $label[1]; }
         }
-    $form->addCheckBox('labels', 'Label', $label_options, explode(' ', $rec_d['labels']));
+        $str_input = '';
+        // get label data from database
+        $label_q = $dbs->query("SELECT * FROM mst_label LIMIT 20");
+        while ($label_d = $label_q->fetch_assoc()) {
+            $checked = isset($arr_labels[$label_d['label_name']])?' checked':'';
+            $url = isset($arr_labels[$label_d['label_name']])?$arr_labels[$label_d['label_name']]:'';
+            $str_input .= '<div '
+                .'style="background: url('.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$label_d['label_image'].') left center no-repeat; padding-left: 30px; height: 45px;"> '
+                .'<input type="checkbox" name="labels[]" value="'.$label_d['label_name'].'"'.$checked.' /> '.$label_d['label_desc']
+                .'<div>URL : <input type="text" title="Enter a website link/URL to make this label clickable" '
+                .'name="label_urls['.$label_d['label_name'].']" size="50" maxlength="300" value="'.$url.'" /></div></div>';
+        }
+    $form->addAnything('Label', $str_input);
+    // $form->addCheckBox('labels', 'Label', $label_options, explode(' ', $rec_d['labels']));
 
     // edit mode messagge
     if ($form->edit_mode) {

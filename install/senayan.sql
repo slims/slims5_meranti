@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `biblio` (
   `file_att` varchar(255) collate utf8_unicode_ci default NULL,
   `opac_hide` smallint(1) default '0',
   `promoted` smallint(1) default '0',
-  `labels` varchar(200) collate utf8_unicode_ci default NULL,
+  `labels` text collate utf8_unicode_ci NULL,
   `frequency_id` int(11) NOT NULL default '0',
   `spec_detail_info` text collate utf8_unicode_ci,
   `input_date` datetime default NULL,

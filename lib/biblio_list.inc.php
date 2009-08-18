@@ -304,15 +304,19 @@ class biblio_list
             $_biblio_d['title'] = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" title="'.(defined('lang_opac_rec_detail')?lang_opac_rec_detail:'View Record Detail').'">'.$_biblio_d['title'].'</a>';
             // label
             if ($this->show_labels AND !empty($_biblio_d['labels'])) {
-                $arr_labels = explode(' ', $_biblio_d['labels']);
+                $arr_labels = @unserialize($_biblio_d['labels']);
                 foreach ($arr_labels as $label) {
-                    if (!isset($this->label_cache[$label]['name'])) {
+                    if (!isset($this->label_cache[$label[0]]['name'])) {
                         $_label_q = $this->obj_db->query('SELECT label_name, label_desc, label_image FROM mst_label AS lb
-                            WHERE lb.label_name=\''.$label.'\'');
+                            WHERE lb.label_name=\''.$label[0].'\'');
                         $_label_d = $_label_q->fetch_row();
-                        $this->label_cache[$label] = array('name' => $_label_d[0], 'desc' => $_label_d[1], 'image' => $_label_d[2]);
+                        $this->label_cache[$label[0]] = array('name' => $_label_d[0], 'desc' => $_label_d[1], 'image' => $_label_d[2]);
                     }
-                    $_biblio_d['title'] .= ' <img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label]['image'].'" title="'.$this->label_cache[$label]['desc'].'" align="middle" class="labels" />';
+                    if (isset($label[1]) && $label[1]) {
+                        $_biblio_d['title'] .= ' <a href="'.$label[1].'" target="_blank"><img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" border="0" /></a>';
+                    } else {
+                        $_biblio_d['title'] .= ' <img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" />';
+                    }
                 }
             }
             // button
