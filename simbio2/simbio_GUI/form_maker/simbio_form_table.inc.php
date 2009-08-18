@@ -35,6 +35,7 @@ class simbio_form_table extends simbio_form_maker
     public $record_title = 'RECORD';
     // back button
     public $back_button = true;
+    public $delete_button = true;
 
     /**
      * Class Constructor
@@ -105,7 +106,7 @@ class simbio_form_table extends simbio_form_maker
         if ($this->edit_mode) {
             $_edit_link .= '<a href="#" onclick="enableForm(\''.$this->form_name.'\'); enableForm(\'deleteForm\');" style="font-weight: bold;" class="editFormLink">EDIT</a>';
             // delete button exists if the record_id exists
-            if ($this->record_id) {
+            if ($this->record_id && $this->delete_button) {
                 $_delete_button = '<input type="button" value="'.$_del_value.'" class="button" onclick="confSubmit(\'deleteForm\', \'Are you sure to delete '.addslashes($this->record_title).'?\nOnce Deleted it cant be restored again\')" style="color: red; font-weight: bold;" />';
             }
             // back button
