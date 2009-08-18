@@ -176,15 +176,15 @@ class utility
     {
         $_is_mobile_browser = '0';
 
-        if(preg_match('/(up.browser|up.link|mmp|symbian|smartphone|midp|wap|phone)/i', strtolower($_SERVER['HTTP_USER_AGENT']))) {
+        if(preg_match('/(up.browser|up.link|mmp|symbian|smartphone|midp|wap|phone)/i', strtolower(@$_SERVER['HTTP_USER_AGENT']))) {
             $_is_mobile_browser++;
         }
 
-        if((strpos(strtolower($_SERVER['HTTP_ACCEPT']),'application/vnd.wap.xhtml+xml')>0) or ((isset($_SERVER['HTTP_X_WAP_PROFILE']) or isset($_SERVER['HTTP_PROFILE'])))) {
+        if((strpos(strtolower(@$_SERVER['HTTP_ACCEPT']),'application/vnd.wap.xhtml+xml')>0) or ((isset($_SERVER['HTTP_X_WAP_PROFILE']) or isset($_SERVER['HTTP_PROFILE'])))) {
             $_is_mobile_browser++;
         }
 
-        $_mobile_ua = strtolower(substr($_SERVER['HTTP_USER_AGENT'],0,4));
+        $_mobile_ua = strtolower(substr(@$_SERVER['HTTP_USER_AGENT'],0,4));
         $_mobile_agents = array(
             'w3c ','acs-','alav','alca','amoi','audi','avan','benq','bird','blac',
             'blaz','brew','cell','cldc','cmd-','dang','doco','eric','hipt','inno',
@@ -204,19 +204,19 @@ class utility
             $_is_mobile_browser++;
         }
 
-        if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),' ppc;')>0) {
+        if (strpos(strtolower(@$_SERVER['HTTP_USER_AGENT']),' ppc;')>0) {
             $_is_mobile_browser++;
         }
 
-        if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),'windows ce')>0) {
+        if (strpos(strtolower(@$_SERVER['HTTP_USER_AGENT']),'windows ce')>0) {
             $_is_mobile_browser++;
         }
 
-        if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),'windows')>0) {
+        if (strpos(strtolower(@$_SERVER['HTTP_USER_AGENT']),'windows')>0) {
             $_is_mobile_browser=0;
         }
 
-        if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),'iemobile')>0) {
+        if (strpos(strtolower(@$_SERVER['HTTP_USER_AGENT']),'iemobile')>0) {
             $_is_mobile_browser++;
         }
 
