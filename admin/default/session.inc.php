@@ -29,13 +29,13 @@ if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
 // always use session cookies
 @ini_set('session.use_cookies', true);
 // but not all user allow cookies
-@ini_set('session.use_only_cookies', false);
-@ini_set('session.use_trans_sid', true);
+// @ini_set('session.use_only_cookies', false);
+// @ini_set('session.use_trans_sid', true);
 // delete session/cookies when browser is closed
 @ini_set('session.cookie_lifetime', 0);
 // warn but dont work with bug
-@ini_set('session.bug_compat_42', false);
-@ini_set('session.bug_compat_warn', true);
+// @ini_set('session.bug_compat_42', false);
+// @ini_set('session.bug_compat_warn', true);
 // use more secure session ids
 @ini_set('session.hash_function', 1);
 // some pages (e.g. stylesheet) may be cached on clients, but not in shared proxy servers
