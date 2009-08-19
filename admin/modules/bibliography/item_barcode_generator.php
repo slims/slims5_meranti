@@ -223,7 +223,7 @@ $datagrid = new simbio_datagrid();
 $datagrid->setSQLColumn('item.item_code',
     'item.item_code AS \'Item Code\'',
     'biblio.title AS \'Title\'');
-$datagrid->setSQLorder("i.last_update DESC");
+$datagrid->setSQLorder('item.last_update DESC');
 // is there any search
 if (isset($_GET['keywords']) AND $_GET['keywords']) {
     $keywords = $dbs->escape_string(trim($_GET['keywords']));
