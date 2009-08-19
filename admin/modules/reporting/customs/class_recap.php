@@ -226,7 +226,7 @@ if (!$reportView) {
         $output .= '<td class="'.$row_class.'"><strong style="font-size: 1.5em;">'.$byitem_d[0].'</strong></td>';
 
         $output .= '</tr>';
-        /* DECIMAL CLASSES AND NON DECIMAL NUMBER ITEM STATUS END */
+        /* 2X NUMBER CLASSES END */
     }
     $output .= '</table>';
 

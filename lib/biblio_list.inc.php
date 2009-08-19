@@ -163,6 +163,26 @@ class biblio_list
                             $_sql_criteria .= " item.coll_type_id NOT IN ($_subquery)";
                         } else { $_sql_criteria .= " item.coll_type_id IN ($_subquery)"; }
                         break;
+                    case 'itemcode' :
+                        if ($_b == '-') {
+                            $_sql_criteria .= " item.item_code != '$_q'";
+                        } else { $_sql_criteria .= " item.item_code LIKE '$_q%'"; }
+                        break;
+                    case 'callnumber' :
+                        if ($_b == '-') {
+                            $_sql_criteria .= ' AND biblio.call_number NOT LIKE \''.$_q.'%\'';
+                        } else { $_sql_criteria .= ' biblio.call_number LIKE \''.$_q.'%\''; }
+                        break;
+                    case 'itemcallnumber' :
+                        if ($_b == '-') {
+                            $_sql_criteria .= ' AND item.call_number NOT LIKE \''.$_q.'%\'';
+                        } else { $_sql_criteria .= ' item.call_number LIKE \''.$_q.'%\''; }
+                        break;
+                    case 'class' :
+                        if ($_b == '-') {
+                            $_sql_criteria .= ' AND biblio.classification NOT LIKE \''.$_q.'%\'';
+                        } else { $_sql_criteria .= ' biblio.classification LIKE \''.$_q.'%\''; }
+                        break;
                     case 'isbn' :
                         if ($_b == '-') {
                             $_sql_criteria .= ' AND biblio.isbn_issn!=\''.$_q.'\'';

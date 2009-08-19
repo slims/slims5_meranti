@@ -339,53 +339,78 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // print out the form object
     echo $form->printOut();
 } else {
+    require SIMBIO_BASE_DIR.'simbio_UTILS/simbio_tokenizecql.inc.php';
+    require LIB_DIR.'biblio_list.inc.php';
+    $title_field_idx = 1;
+    // callback function to show title and authors in datagrid
+    function showTitleAuthors($obj_db, $array_data)
+    {
+        global $title_field_idx;
+        // biblio author detail
+        $_biblio_q = $obj_db->query('SELECT b.title, a.author_name FROM biblio AS b
+            LEFT JOIN biblio_author AS ba ON b.biblio_id=ba.biblio_id
+            LEFT JOIN mst_author AS a ON ba.author_id=a.author_id
+            WHERE b.biblio_id='.$array_data[$title_field_idx]);
+        echo $obj_db->error;
+        $_authors = '';
+        while ($_biblio_d = $_biblio_q->fetch_row()) {
+            $_title = $_biblio_d[0];
+            $_authors .= $_biblio_d[1].' - ';
+        }
+        $_authors = substr_replace($_authors, '', -3);
+        $_output = '<div style="float: left;"><b>'.$_title.'</b><br /><i>'.$_authors.'</i></div>';
+        return $_output;
+    }
+
     /* ITEM LIST */
     // table spec
-    $table_spec = 'item AS i
-        LEFT JOIN biblio AS b ON i.biblio_id=b.biblio_id
-        LEFT JOIN mst_location AS loc ON i.location_id=loc.location_id
-        LEFT JOIN mst_coll_type AS ct ON i.coll_type_id=ct.coll_type_id';
+    $table_spec = 'item
+        LEFT JOIN biblio ON item.biblio_id=biblio.biblio_id
+        LEFT JOIN mst_location AS loc ON item.location_id=loc.location_id
+        LEFT JOIN mst_coll_type AS ct ON item.coll_type_id=ct.coll_type_id';
 
     // create datagrid
     $datagrid = new simbio_datagrid();
     if ($can_write) {
-        $datagrid->setSQLColumn('i.item_id',
-            'i.item_code AS \'Code\'',
-            'b.title AS \'Title\'',
+        $datagrid->setSQLColumn('item.item_id',
+            'item.item_code AS \'Code\'',
+            'item.biblio_id AS \'Title\'',
             'ct.coll_type_name AS \'Type\'',
             'loc.location_name AS \'Location\'',
-            'b.classification AS \'Class\'',
-            'i.last_update AS \'Last Update\'');
+            'biblio.classification AS \'Class\'',
+            'item.last_update AS \'Last Update\'');
+        $datagrid->modifyColumnContent(2, 'callback{showTitleAuthors}');
+        $title_field_idx = 2;
     } else {
-        $datagrid->setSQLColumn('i.item_code AS \'Item Code\'',
-            'b.title AS \'Title\'',
+        $datagrid->setSQLColumn('item.item_code AS \'Item Code\'',
+            'item.biblio_id AS \'Title\'',
             'ct.coll_type_name AS \'Type\'',
             'loc.location_name AS \'Location\'',
-            'b.classification AS \'Classification\'',
-            'i.last_update AS \'Last Update\'');
+            'biblio.classification AS \'Classification\'',
+            'item.last_update AS \'Last Update\'');
+        $datagrid->modifyColumnContent(1, 'callback{showTitleAuthors}');
     }
+    $datagrid->setSQLorder('item.last_update DESC');
 
-    $datagrid->setSQLorder("i.last_update DESC");
-
-    $criteria = 'item_id IS NOT NULL';
     // is there any search
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
-        $keyword = $dbs->escape_string(trim($_GET['keywords']));
-        $words = explode(' ', $keyword);
-        if (count($words) > 1) {
-            $concat_sql = ' (';
-            foreach ($words as $word) {
-                $concat_sql .= " (b.title LIKE '%$word%' OR i.item_code LIKE '%$word%') AND";
+        $keywords = $dbs->escape_string(trim($_GET['keywords']));
+        $searchable_fields = array('title', 'author', 'subject', 'itemcode');
+        $search_str = '';
+        // if no qualifier in fields
+        if (!preg_match('@[a-z]+\s*=\s*@i', $keywords)) {
+            foreach ($searchable_fields as $search_field) {
+                $search_str .= $search_field.'='.$keywords.' OR ';
             }
-            // remove the last AND
-            $concat_sql = substr_replace($concat_sql, '', -3);
-            $concat_sql .= ') ';
-            $criteria = $concat_sql;
         } else {
-            $criteria = "b.title LIKE '%$keyword%' OR i.item_code LIKE '%$keyword%'";
+            $search_str = $keywords;
         }
+        $biblio_list = new biblio_list($dbs);
+        $criteria = $biblio_list->setSQLcriteria($search_str);
     }
-    $datagrid->setSQLCriteria($criteria);
+    if (isset($criteria)) {
+        $datagrid->setSQLcriteria('('.$criteria['sql_criteria'].')');
+    }
 
     // set table and table header attributes
     $datagrid->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
@@ -397,7 +422,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, ($can_read AND $can_write));
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
         $msg = str_replace('{result->num_rows}', $datagrid->num_rows, lang_sys_common_search_result_info);
-        echo '<div class="infoBox">'.$msg.' : '.$_GET['keywords'].'</div>';
+        echo '<div class="infoBox">'.$msg.' : '.$_GET['keywords'].'<div>Query took : <b>'.$datagrid->query_time.'</b> second(s) to complete</div></div>';
     }
 
     echo $datagrid_result;

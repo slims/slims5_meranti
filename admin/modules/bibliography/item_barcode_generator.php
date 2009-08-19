@@ -214,31 +214,34 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 <?php
 /* search form end */
 /* ITEM LIST */
+require SIMBIO_BASE_DIR.'simbio_UTILS/simbio_tokenizecql.inc.php';
+require LIB_DIR.'biblio_list.inc.php';
 // table spec
-$table_spec = 'item AS i
-    LEFT JOIN biblio AS b ON i.biblio_id=b.biblio_id';
+$table_spec = 'item LEFT JOIN biblio ON item.biblio_id=biblio.biblio_id';
 // create datagrid
 $datagrid = new simbio_datagrid();
-$datagrid->setSQLColumn('i.item_code',
-    'i.item_code AS \'Item Code\'',
-    'b.title AS \'Title\'');
+$datagrid->setSQLColumn('item.item_code',
+    'item.item_code AS \'Item Code\'',
+    'biblio.title AS \'Title\'');
 $datagrid->setSQLorder("i.last_update DESC");
 // is there any search
 if (isset($_GET['keywords']) AND $_GET['keywords']) {
-    $keyword = $dbs->escape_string(trim($_GET['keywords']));
-    $words = explode(' ', $keyword);
-    if (count($words) > 1) {
-        $concat_sql = ' (';
-        foreach ($words as $word) {
-            $concat_sql .= " (b.title LIKE '%$word%' OR i.item_code LIKE '%$word%'";
+    $keywords = $dbs->escape_string(trim($_GET['keywords']));
+    $searchable_fields = array('title', 'author', 'subject', 'itemcode');
+    $search_str = '';
+    // if no qualifier in fields
+    if (!preg_match('@[a-z]+\s*=\s*@i', $keywords)) {
+        foreach ($searchable_fields as $search_field) {
+            $search_str .= $search_field.'='.$keywords.' OR ';
         }
-        // remove the last AND
-        $concat_sql = substr_replace($concat_sql, '', -3);
-        $concat_sql .= ') ';
-        $datagrid->setSQLCriteria($concat_sql);
     } else {
-        $datagrid->setSQLCriteria("b.title LIKE '%$keyword%' OR i.item_code LIKE '%$keyword%' OR b.classification LIKE '%$keyword%'");
+        $search_str = $keywords;
     }
+    $biblio_list = new biblio_list($dbs);
+    $criteria = $biblio_list->setSQLcriteria($search_str);
+}
+if (isset($criteria)) {
+    $datagrid->setSQLcriteria('('.$criteria['sql_criteria'].')');
 }
 // set table and table header attributes
 $datagrid->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
@@ -255,7 +258,7 @@ $datagrid->chbox_form_URL = $_SERVER['PHP_SELF'];
 $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, $can_read);
 if (isset($_GET['keywords']) AND $_GET['keywords']) {
     $msg = str_replace('{result->num_rows}', $datagrid->num_rows, lang_sys_common_search_result_info);
-    echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
+    echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"<div>Query took : <b>'.$datagrid->query_time.'</b> second(s) to complete</div></div>';
 }
 echo $datagrid_result;
 /* main content end */

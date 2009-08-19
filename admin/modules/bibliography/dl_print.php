@@ -189,32 +189,35 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 <?php
 /* search form end */
 /* BIBLIOGRAPHY LIST */
+require SIMBIO_BASE_DIR.'simbio_UTILS/simbio_tokenizecql.inc.php';
+require LIB_DIR.'biblio_list.inc.php';
 // table spec
-$table_spec = 'biblio AS b LEFT JOIN item AS i ON b.biblio_id=i.biblio_id';
+$table_spec = 'biblio LEFT JOIN item ON biblio.biblio_id=item.biblio_id';
 // create datagrid
 $datagrid = new simbio_datagrid();
 if ($can_read) {
-    $datagrid->setSQLColumn('i.item_id',
-        'b.title AS \'Title\'',
-        'IF(i.call_number!=\'\', i.call_number, b.call_number) AS `Call Number`');
+    $datagrid->setSQLColumn('item.item_id', 'biblio.title AS `Title`',
+        'IF(item.call_number!=\'\', item.call_number, biblio.call_number) AS `Call Number`');
 }
-$datagrid->setSQLorder('i.last_update DESC');
+$datagrid->setSQLorder('item.last_update DESC');
 // is there any search
 if (isset($_GET['keywords']) AND $_GET['keywords']) {
-    $keyword = $dbs->escape_string(trim($_GET['keywords']));
-    $words = explode(' ', $keyword);
-    if (count($words) > 1) {
-        $concat_sql = ' (';
-        foreach ($words as $word) {
-            $concat_sql .= " (b.title LIKE '%$word%' OR b.isbn_issn LIKE '%$word%') AND";
+    $keywords = $dbs->escape_string(trim($_GET['keywords']));
+    $searchable_fields = array('title', 'author', 'class', 'callnumber', 'itemcode');
+    $search_str = '';
+    // if no qualifier in fields
+    if (!preg_match('@[a-z]+\s*=\s*@i', $keywords)) {
+        foreach ($searchable_fields as $search_field) {
+            $search_str .= $search_field.'='.$keywords.' OR ';
         }
-        // remove the last AND
-        $concat_sql = substr_replace($concat_sql, '', -3);
-        $concat_sql .= ') ';
-        $datagrid->setSQLCriteria($concat_sql);
     } else {
-        $datagrid->setSQLCriteria("b.title LIKE '%$keyword%' OR b.isbn_issn LIKE '%$keyword%'");
+        $search_str = $keywords;
     }
+    $biblio_list = new biblio_list($dbs);
+    $criteria = $biblio_list->setSQLcriteria($search_str);
+}
+if (isset($criteria)) {
+    $datagrid->setSQLcriteria('('.$criteria['sql_criteria'].')');
 }
 // set table and table header attributes
 $datagrid->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
@@ -231,7 +234,7 @@ $datagrid->column_width = array(0 => '75%', 1 => '20%');
 $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, $can_read);
 if (isset($_GET['keywords']) AND $_GET['keywords']) {
     $msg = str_replace('{result->num_rows}', $datagrid->num_rows, lang_sys_common_search_result_info);
-    echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
+    echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"<div>Query took : <b>'.$datagrid->query_time.'</b> second(s) to complete</div></div>';
 }
 echo $datagrid_result;
 /* main content end */

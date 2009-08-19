@@ -485,7 +485,6 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
             LEFT JOIN biblio_author AS ba ON b.biblio_id=ba.biblio_id
             LEFT JOIN mst_author AS a ON ba.author_id=a.author_id
             WHERE b.biblio_id='.$array_data[0]);
-        echo $obj_db->error;
         $_authors = '';
         while ($_biblio_d = $_biblio_q->fetch_row()) {
             $_title = $_biblio_d[0];

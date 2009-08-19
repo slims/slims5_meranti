@@ -77,6 +77,7 @@ if (!$reportView) {
             <div class="divRowContent">
             <?php
             $gmd_q = $dbs->query('SELECT gmd_id, gmd_name FROM mst_gmd');
+            $gmd_options[] = array('0', 'All');
             while ($gmd_d = $gmd_q->fetch_row()) {
                 $gmd_options[] = array($gmd_d[0], $gmd_d[1]);
             }
