@@ -395,7 +395,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $criteria = 'm.member_id IS NOT NULL ';
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
        $keywords = $dbs->escape_string($_GET['keywords']);
-       $criteria .= " AND m.member_name LIKE '%$keywords%' OR m.member_id LIKE '%$keywords%' ";
+       $criteria .= " AND (m.member_name LIKE '%$keywords%' OR m.member_id LIKE '%$keywords%') ";
     }
     if (isset($_GET['expire'])) {
         $criteria .= " AND TO_DAYS('".date('Y-m-d')."')>TO_DAYS(m.expire_date)";
