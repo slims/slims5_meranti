@@ -210,25 +210,22 @@ if (!$reportView) {
             $class_num++;
         }
 
-        /* NON DECIMAL NUMBER CLASSES */
-        $cls_q = $dbs->query("SELECT DISTINCT classification FROM stock_take_item WHERE TRIM(classification) NOT REGEXP '^[0123456789]'");
-        while ($cls_d = $cls_q->fetch_row()) {
-            $row_class = ($row_class == 'alterCellPrinted')?'alterCellPrinted2':'alterCellPrinted';
-            $output .= '<tr><td class="'.$row_class.'"><strong style="font-size: 1.5em;">'.$cls_d[0].'</strong> classes</td>';
-            // count by title
-            $bytitle_q = $dbs->query("SELECT COUNT(biblio_id) FROM biblio WHERE TRIM(classification) LIKE '".trim($cls_d[0])."%'");
-            $bytitle_d = $bytitle_q->fetch_row();
-            $output .= '<td class="'.$row_class.'"><strong style="font-size: 1.5em;">'.$bytitle_d[0].'</strong></td>';
+        /* 2X NUMBER CLASSES */
+        $row_class = ($row_class == 'alterCellPrinted')?'alterCellPrinted2':'alterCellPrinted';
+        $output .= '<tr><td class="'.$row_class.'"><strong style="font-size: 1.5em;">2X</strong> classes</td>';
+        // count by title
+        $bytitle_q = $dbs->query("SELECT COUNT(biblio_id) FROM biblio WHERE TRIM(classification) LIKE '2X%'");
+        $bytitle_d = $bytitle_q->fetch_row();
+        $output .= '<td class="'.$row_class.'"><strong style="font-size: 1.5em;">'.$bytitle_d[0].'</strong></td>';
 
-            // count by item
-            $byitem_q = $dbs->query("SELECT COUNT(item_id) FROM item AS i INNER JOIN biblio AS b
-                ON i.biblio_id=b.biblio_id
-                WHERE TRIM(b.classification) LIKE '".trim($cls_d[0])."%'");
-            $byitem_d = $byitem_q->fetch_row();
-            $output .= '<td class="'.$row_class.'"><strong style="font-size: 1.5em;">'.$byitem_d[0].'</strong></td>';
+        // count by item
+        $byitem_q = $dbs->query("SELECT COUNT(item_id) FROM item AS i INNER JOIN biblio AS b
+            ON i.biblio_id=b.biblio_id
+            WHERE TRIM(b.classification) LIKE '2X%'");
+        $byitem_d = $byitem_q->fetch_row();
+        $output .= '<td class="'.$row_class.'"><strong style="font-size: 1.5em;">'.$byitem_d[0].'</strong></td>';
 
-            $output .= '</tr>';
-        }
+        $output .= '</tr>';
         /* DECIMAL CLASSES AND NON DECIMAL NUMBER ITEM STATUS END */
     }
     $output .= '</table>';

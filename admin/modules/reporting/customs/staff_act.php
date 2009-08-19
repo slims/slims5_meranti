@@ -101,11 +101,11 @@ if (!$reportView) {
     $reportgrid->setSQLCriteria($criteria);
 
     $start_date = '2000-01-01';
-    if (isset($_GET['startYear'])) {
+    if (isset($_GET['startDate'])) {
         $start_date = $_GET['startDate'];
     }
     $until_date = date('Y-m-d');
-    if (isset($_GET['untilYear'])) {
+    if (isset($_GET['untilDate'])) {
         $until_date = $_GET['untilDate'];
     }
     // callbacks

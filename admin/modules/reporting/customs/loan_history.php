@@ -163,7 +163,7 @@ if (!$reportView) {
         $criteria .= ' AND i.item_code=\''.$item_code.'\'';
     }
     // loan date
-    if (isset($_GET['startYear']) AND isset($_GET['startMonth']) AND isset($_GET['startDate'])) {
+    if (isset($_GET['startDate']) AND isset($_GET['untilDate'])) {
         $criteria .= ' AND (TO_DAYS(l.loan_date) BETWEEN TO_DAYS(\''.$_GET['startDate'].'\') AND
             TO_DAYS(\''.$_GET['untilDate'].'\'))';
     }

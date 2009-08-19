@@ -156,7 +156,7 @@ if (!$reportView) {
         $criteria .= ' AND m.member_address LIKE \'%'.$address.'%\'';
     }
     // register date
-    if (isset($_GET['startYear']) AND isset($_GET['startMonth']) AND isset($_GET['startDate'])) {
+    if (isset($_GET['startDate']) AND isset($_GET['untilDate'])) {
         $criteria .= ' AND (TO_DAYS(m.register_date) BETWEEN TO_DAYS(\''.$_GET['startDate'].'\') AND
             TO_DAYS(\''.$_GET['untilDate'].'\'))';
     }

@@ -182,9 +182,9 @@ if (!$reportView) {
         $coll_type_IDs = substr_replace($coll_type_IDs, '', -1);
         $criteria .= " AND i.coll_type_id IN($coll_type_IDs)";
     }
-    if (isset($_GET['status']) AND !empty($_GET['status'])) {
-        $status = (integer)$_GET['status'];
-        $criteria .= ' AND i.item_status_id='.$status;
+    if (isset($_GET['status']) AND $_GET['status']!='0') {
+        $status = $dbs->escape_string(trim($_GET['status']));
+        $criteria .= ' AND i.item_status_id=\''.$status.'\'';
     }
     if (isset($_GET['class']) AND !empty($_GET['class'])) {
         $class = $dbs->escape_string($_GET['class']);

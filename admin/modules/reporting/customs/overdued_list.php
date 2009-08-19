@@ -129,7 +129,7 @@ if (!$reportView) {
         }
     }
     // loan date
-    if (isset($_GET['startYear']) AND isset($_GET['startMonth']) AND isset($_GET['startDate'])) {
+    if (isset($_GET['startDate']) AND isset($_GET['untilDate'])) {
         $date_criteria = ' AND (TO_DAYS(l.loan_date) BETWEEN TO_DAYS(\''.$_GET['startDate'].'\') AND
             TO_DAYS(\''.$_GET['untilDate'].'\'))';
         $overdue_criteria .= $date_criteria;
