@@ -7,6 +7,7 @@ Arie Nugraha (dicarve@yahoo.com)
 
 SENAYAN 3 Stable 11
 =====================================================================
+- Bug fixed and optimized on OPAC's search engine.
 - Bugs fixed on custom reports in date filter.
 - Bug fixed for AJAX error in Item Barcode Generator.
 - Bug fixed for mobile browser detection utility
