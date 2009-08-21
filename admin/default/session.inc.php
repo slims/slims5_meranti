@@ -32,7 +32,7 @@ if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
 // @ini_set('session.use_only_cookies', false);
 // @ini_set('session.use_trans_sid', true);
 // delete session/cookies when browser is closed
-@ini_set('session.cookie_lifetime', 0);
+// @ini_set('session.cookie_lifetime', 0);
 // warn but dont work with bug
 // @ini_set('session.bug_compat_42', false);
 // @ini_set('session.bug_compat_warn', true);

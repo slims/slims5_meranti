@@ -1,2 +1,13 @@
+SENAYAN 3 Stable Branch
 Changes Log
 
+Developers :
+Hendro Wicaksono (hendrowicaksono@yahoo.com)
+Arie Nugraha (dicarve@yahoo.com)
+
+SENAYAN 3 Stable 11
+=====================================================================
+- Bugs fixed on custom reports in date filter.
+- Bug fixed for AJAX error in Item Barcode Generator.
+- Bug fixed for mobile browser detection utility
+- New Feature : Label on Bibliographic records can have URL
