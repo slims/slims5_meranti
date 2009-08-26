@@ -167,7 +167,7 @@ if (isset($_POST['confirmFinish'])) {
 
     /* Form Element(s) */
     // purge lost item
-    $purge_options[] = array('1', 'Yes');
+    $purge_options[] = array('1', lang_mod_stocktake_field_opt_yes);
     $form->addCheckBox('purge', lang_mod_stocktake_purge_lost, $purge_options);
     // hidden item
     $form->addHidden('confirmFinish', 'true');

@@ -125,7 +125,7 @@ if (isset($_POST['save']) AND (isset($_POST['authorID']) OR trim($_POST['search_
 <div style="padding: 5px; background: #CCCCCC;">
 <form name="mainForm" action="pop_author.php?biblioID=<?php echo $biblioID; ?>" method="post">
 <div>
-    <strong>Add Author</strong>
+    <strong><?php echo lang_mod_biblio_author_form_title; ?> </strong>
     <hr />
     <form name="searchAuthor" method="post" style="display: inline;">
     <?php

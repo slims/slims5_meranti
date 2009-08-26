@@ -325,22 +325,24 @@ class biblio_list
             // label
             if ($this->show_labels AND !empty($_biblio_d['labels'])) {
                 $arr_labels = @unserialize($_biblio_d['labels']);
-                foreach ($arr_labels as $label) {
-                    if (!isset($this->label_cache[$label[0]]['name'])) {
-                        $_label_q = $this->obj_db->query('SELECT label_name, label_desc, label_image FROM mst_label AS lb
-                            WHERE lb.label_name=\''.$label[0].'\'');
-                        $_label_d = $_label_q->fetch_row();
-                        $this->label_cache[$label[0]] = array('name' => $_label_d[0], 'desc' => $_label_d[1], 'image' => $_label_d[2]);
-                    }
-                    if (isset($label[1]) && $label[1]) {
-                        $_biblio_d['title'] .= ' <a href="'.$label[1].'" target="_blank"><img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" border="0" /></a>';
-                    } else {
-                        $_biblio_d['title'] .= ' <img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" />';
-                    }
-                }
+                if ($arr_labels !== false) {
+	                foreach ($arr_labels as $label) {
+	                    if (!isset($this->label_cache[$label[0]]['name'])) {
+	                        $_label_q = $this->obj_db->query('SELECT label_name, label_desc, label_image FROM mst_label AS lb
+	                            WHERE lb.label_name=\''.$label[0].'\'');
+	                        $_label_d = $_label_q->fetch_row();
+	                        $this->label_cache[$label[0]] = array('name' => $_label_d[0], 'desc' => $_label_d[1], 'image' => $_label_d[2]);
+	                    }
+	                    if (isset($label[1]) && $label[1]) {
+	                        $_biblio_d['title'] .= ' <a href="'.$label[1].'" target="_blank"><img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" border="0" /></a>';
+	                    } else {
+	                        $_biblio_d['title'] .= ' <img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" />';
+	                    }
+	                }
+								}
             }
             // button
-            $_biblio_d['detail_button'] = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" class="detailLink" title="'.(defined('lang_opac_rec_detail')?lang_opac_rec_detail:'View Record Detail').'">Record Detail</a>';
+            $_biblio_d['detail_button'] = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" class="detailLink" title="'.(defined('lang_opac_rec_detail')?lang_opac_rec_detail:'View Record Detail').'">'.lang_opac_rec_detail.'</a>';
             if ($this->xml_detail) {
                 $_biblio_d['xml_button'] = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&inXML=true&id='.$_biblio_d['biblio_id'].'" class="xmlDetailLink" title="View Detail in XML Format" target="_blank">XML Detail</a>';
             } else {

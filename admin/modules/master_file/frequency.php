@@ -170,10 +170,10 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // frequency time increment
     $form->addTextField('text', 'timeIncrement', lang_mod_masterfile_frequency_form_field_frequency_time_increment.'*', $rec_d['time_increment'], 'style="width: 10%;"');
     // frequency time unit
-    $unit_options[] = array('day', 'Day');
-    $unit_options[] = array('week', 'Week');
-    $unit_options[] = array('month', 'Month');
-    $unit_options[] = array('year', 'Year');
+    $unit_options[] = array('day', lang_sys_common_day);
+    $unit_options[] = array('week', lang_sys_common_week);
+    $unit_options[] = array('month', lang_sys_common_month);
+    $unit_options[] = array('year', lang_sys_common_year);
     $form->addSelectList('timeUnit', lang_mod_masterfile_frequency_form_field_frequency_unit, $unit_options, $rec_d['time_unit']);
 
     // edit mode messagge

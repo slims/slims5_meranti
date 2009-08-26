@@ -62,11 +62,11 @@ if (($ajaxsec_user == $sysconf['ajaxsec_user']) AND ($ajaxsec_passwd == $sysconf
                 $_rules = @unserialize($copy_d['rules']);
                 if ($loan_stat_q->num_rows > 0) {
                     $loan_stat_d = $loan_stat_q->fetch_row();
-                    echo '<strong width="50%" style="color: red;">Currently On Loan (Due on '.date($sysconf['date_format'], strtotime($loan_stat_d[0])).')</strong>';
+                    echo '<strong width="50%" style="color: red;">'.lang_opac_rec_detail_status_onloan.date($sysconf['date_format'], strtotime($loan_stat_d[0])).')</strong>';
                 } else if (is_array($_rules) AND in_array(NO_LOAN_TRANSACTION, $_rules)) {
-                    echo '<strong width="50%" style="color: red;">Unavailable</strong>';
+                    echo '<strong width="50%" style="color: red;">'.lang_opac_rec_detail_status_unavailable.'</strong>';
                 } else {
-                    echo '<strong width="50%" style="color: navy;">Available</strong>';
+                    echo '<strong width="50%" style="color: navy;">'.lang_opac_rec_detail_status_available.'</strong>';
                 }
                 $loan_stat_q->free_result();
                 echo '</td>';

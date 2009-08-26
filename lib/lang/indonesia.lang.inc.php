@@ -1047,4 +1047,207 @@ define('lang_mod_serial_alert_updated', 'Data Berlangganan berhasil diperbarui')
 define('lang_mod_serial_alert_not_updated', 'Data Berlangganan GAGAL diperbarui. Harap hubungi Administrator sistem');
 define('lang_mod_serial_alert_not_exists', 'Error! Data Berlangganan tidak ditemukan!');
 define('lang_mod_serial_common_info', 'Anda akan Mengubah data Berlangganan  : ');
+
+
+##### Added 2009-08 #####
+# datagrid form
+define('lang_sys_common_tblheader_delete', 'DELETE');
+define('lang_sys_common_tblheader_edit', 'EDIT');
+define('lang_sys_common_tblheader_add', 'Add');
+define('lang_sys_common_tblheader_hover_sort', 'Order list by');
+define('lang_sys_common_tblheader_hover_sort_asc', 'ascendingly');
+define('lang_sys_common_tblheader_hover_sort_desc', 'descendingly');
+define('lang_sys_common_tblheader_print_header_part1', 'record(s) found. Currently displaying page');
+define('lang_sys_common_tblheader_print_header_part2', 'record each page');
+/* BIBLIOGRAPHIC MODULE */
+# submenu
+define('lang_mod_biblio_tools_common_print_msg1', 'Maximum');
+define('lang_mod_biblio_tools_common_print_msg2', 'records can be printed at once. Currently there is');
+define('lang_mod_biblio_tools_common_print_msg3', 'in queue waiting to be printed.');
+define('lang_mod_biblio_tools_card_generator_print_select', 'Print Selected Data');
+define('lang_mod_biblio_tools_card_generator_print_clear', 'Clear Print Queue');
+#item
+define('lang_mod_biblio_item_common_status_description', 'Loan Status');
+define('lang_mod_biblio_item_common_status_onloan', 'On Loan');
+define('lang_mod_biblio_item_common_status_returned', 'Returned');
+define('lang_mod_biblio_item_common_status_missing', 'Missing');
+define('lang_mod_biblio_item_common_status_exists', 'Exists');
+# bibliography form fields
+define('lang_mod_biblio_field_copies', 'Copies');
+define('lang_mod_biblio_field_copies_none', 'None');
+define('lang_mod_biblio_field_update', 'Last Update');
+define('lang_mod_biblio_field_opt_all', 'All Fields');
+define('lang_mod_biblio_field_opt_title', 'Title/Series Title');
+define('lang_mod_biblio_field_opt_subject', 'Topics');
+define('lang_mod_biblio_field_opt_author', 'Authors');
+define('lang_mod_biblio_field_opt_isbn', 'ISBN/ISSN');
+define('lang_mod_biblio_field_opt_publisher', 'Publisher');
+define('lang_mod_biblio_field_opt_none', 'NONE');
+define('lang_mod_biblio_field_frequency_explain', 'Use this for Serial publication');
+define('lang_mod_biblio_link_attachment_add', 'Add Attachment');
+define('lang_mod_biblio_field_opt_show', 'Show');
+define('lang_mod_biblio_field_opt_hide', 'Hide');
+define('lang_mod_biblio_field_opt_promotefalse', 'Don\'t Promote');
+define('lang_mod_biblio_field_opt_promotetrue', 'Promote');
+define('lang_mod_biblio_author_form_title', 'Add Author');
+# pop-ups - attachment
+define('lang_mod_biblio_attach_alert_typesize', 'Upload FAILED! Forbidden file type or file size too big!');
+define('lang_mod_biblio_attach_alert_update_ok', 'File Attachment data updated!');
+define('lang_mod_biblio_attach_alert_update_fail', 'File Attachment data FAILED to update!');
+define('lang_mod_biblio_attach_alert_added_ok', 'File Attachment uploaded succesfully!');
+define('lang_mod_biblio_attach_alert_added_fail', 'File Attachment data FAILED to save!');
+define('lang_mod_biblio_attach_alert_removed', 'Attachment removed!');
+define('lang_mod_biblio_attach_form_button_upload', 'Upload Now');
+define('lang_mod_biblio_attach_form_field_title', 'Title');
+define('lang_mod_biblio_attach_form_field_filedir', 'Repo. Directory');
+define('lang_mod_biblio_attach_form_field_browse', 'File To Attach');
+define('lang_mod_biblio_attach_form_field_url', 'URL');
+define('lang_mod_biblio_attach_form_field_description', 'Description');
+define('lang_mod_biblio_attach_form_field_access', 'Access');
+define('lang_mod_biblio_attach_form_opt_public', 'Public');
+define('lang_mod_biblio_attach_form_opt_private', 'Private');
+# item form fields
+define('lang_mod_biblio_item_field_opt_available', 'Available');
+define('lang_mod_biblio_item_field_opt_buy', 'Buy');
+define('lang_mod_biblio_item_field_opt_grant', 'Prize/Grant');
+define('lang_mod_biblio_item_field_opt_none', 'None');
+# Simbio table
+define('lang_simbio_nodata', 'No Data');
+# z3950
+define('lang_mod_biblio_tools_z3950_connection', '* Please make sure you have working Internet connection.');
+# circulation
+define('lang_mod_circ_tblheader_callno', 'Call Number');
+/* MEMBERSHIP MODULE */
+define('lang_mod_membership_field_opt_autoset', 'Auto Set');
+define('lang_mod_membership_field_opt_yes', 'Yes');
+define('lang_mod_membership_extend_button', 'Extend Selected Member(s)');
+define('lang_mod_membership_extend_alert_confirm', 'Are you sure to EXTEND membership for selected members?');
+define('lang_mod_membership_extend_success', 'members extended!');
+/* COMMON */
+define('lang_sys_common_query_msg1', 'Query took');
+define('lang_sys_common_query_msg2', 'second(s) to complete');
+define('lang_sys_common_day', 'Day');
+define('lang_sys_common_week', 'Week');
+define('lang_sys_common_all', 'All');
+define('lang_sys_common_month_short_01', 'Jan');
+define('lang_sys_common_month_short_02', 'Feb');
+define('lang_sys_common_month_short_03', 'Mar');
+define('lang_sys_common_month_short_04', 'Apr');
+define('lang_sys_common_month_short_05', 'May');
+define('lang_sys_common_month_short_06', 'Jun');
+define('lang_sys_common_month_short_07', 'Jul');
+define('lang_sys_common_month_short_08', 'Aug');
+define('lang_sys_common_month_short_09', 'Sep');
+define('lang_sys_common_month_short_10', 'Oct');
+define('lang_sys_common_month_short_11', 'Nov');
+define('lang_sys_common_month_short_12', 'Dec');
+/* REPORTING MODULE (especially "Other Reports"; and reports in other modules) */
+# common
+define('lang_mod_reporting_form_generic_header', 'Report Filter');
+define('lang_mod_reporting_form_button_filter_apply', 'Apply Filter');
+define('lang_mod_reporting_form_button_filter_options_show', 'Show More Filter Options');
+define('lang_mod_reporting_form_button_filter_options_hide', 'Hide Filter Options');
+define('lang_mod_reporting_form_button_print', 'Print Current Page');
+# submenu (other)
+define('lang_mod_report_other', 'Other Reports');
+define('lang_mod_report_other_recapitulation', 'Custom Recapitulations');
+define('lang_mod_report_other_recapitulation_titletag', 'Title and Collection recapitulation based on classification and others');
+define('lang_mod_report_other_titles', 'Title List');
+define('lang_mod_report_other_titles_titletag', 'List of bibliographic titles');
+define('lang_mod_report_other_itemtitles', 'Items Title List');
+define('lang_mod_report_other_itemtitles_titletag', 'List of collection/items');
+define('lang_mod_report_other_itemusage', 'Items Usage Statistics');
+define('lang_mod_report_other_itemusage_titletag', 'List of Collection/items usage statistic');
+define('lang_mod_report_other_loansclass', 'Loans by Classification');
+define('lang_mod_report_other_loansclass_titletag', 'Loan statistic by classification');
+define('lang_mod_report_other_memberlist', 'Member List');
+define('lang_mod_report_other_memberlist_titletag', 'List of library member/patron');
+define('lang_mod_report_other_loanmember', 'Loan List by Member');
+define('lang_mod_report_other_loanmember_titletag', 'List of loan by each member');
+define('lang_mod_report_other_staffactivity', 'Staff Activity');
+define('lang_mod_report_other_staffactivity_titletag', 'Staff activity log recapitulation');
+# Report - common
+define('lang_mod_report_common_form_titisbn', 'Title/ISBN');
+define('lang_mod_report_common_form_recspage', 'Record each page');
+define('lang_mod_report_common_form_recspage_help', 'Set between 20 and 200');
+define('lang_mod_report_common_form_select_help', 'Press Ctrl and click to select multiple entries');
+# Report - Recapitulation
+define('lang_mod_report_recapitulation_form_recapby', 'Recap By');
+define('lang_mod_report_recapitulation_print_header', 'Title and Collection Recap by');
+# Report - Titles
+define('lang_mod_report_recapitulation_form_author', 'Author');
+# Report - Loans by Classification
+define('lang_mod_report_loansclass_form_opt_class0', '0 Classes');
+define('lang_mod_report_loansclass_form_opt_class1', '1 Classes');
+define('lang_mod_report_loansclass_form_opt_class2', '2 Classes');
+define('lang_mod_report_loansclass_form_opt_class2x', '2X Classes (Islamic Related)');
+define('lang_mod_report_loansclass_form_opt_class3', '3 Classes');
+define('lang_mod_report_loansclass_form_opt_class4', '4 Classes');
+define('lang_mod_report_loansclass_form_opt_class5', '5 Classes');
+define('lang_mod_report_loansclass_form_opt_class6', '6 Classes');
+define('lang_mod_report_loansclass_form_opt_class7', '7 Classes');
+define('lang_mod_report_loansclass_form_opt_class8', '8 Classes');
+define('lang_mod_report_loansclass_form_opt_class9', '9 Classes');
+define('lang_mod_report_loansclass_form_opt_classx', 'NON Decimal Classes');
+# Report - Member List
+define('lang_mod_report_memberlist_form_regfrom', 'Register Date From');
+define('lang_mod_report_memberlist_form_regto', 'Register Date Until');
+# Report - Loan List by Member (and lang_mod_circ_transaction_history)
+define('lang_mod_report_loanmember_form_loanfrom', 'Loan Date From');
+define('lang_mod_report_loanmember_form_loanto', 'Loan Date Until');
+# Report - Overdued List
+define('lang_mod_report_overdues_table_overdue', 'Overdue');
+define('lang_mod_report_overdues_table_overdue_days', 'day(s)');
+# Report - Staff Activity
+define('lang_mod_report_staffactivity_form_activityfrom', 'Activity Date From');
+define('lang_mod_report_staffactivity_form_activityto', 'Activity Date Until');
+define('lang_mod_report_staffactivity_tblheader_bibliography', 'Bibliography Data Entry');
+define('lang_mod_report_staffactivity_tblheader_items', 'Item Data Entry');
+define('lang_mod_report_staffactivity_tblheader_members', 'Member Data Entry');
+define('lang_mod_report_staffactivity_tblheader_circulation', 'Circulation');
+# Report - Reservation
+define('lang_mod_report_reservation_form_reservefrom', 'Reserve Date From');
+define('lang_mod_report_reservation_form_reserveto', 'Reserve Date Until');
+/* STOCK TAKE MODULE */
+# submenu
+define('lang_mod_stocktake_upload', 'Upload List');
+define('lang_mod_stocktake_upload_titletag', 'Upload List in text file');
+# common
+define('lang_mod_stocktake_tblheader_lost', 'Lost Items');
+define('lang_mod_stocktake_tblheader_exists', 'Exists Items');
+define('lang_mod_stocktake_tblheader_loan', 'On Loan Items');
+define('lang_mod_stocktake_tblfield_classes', ' classes');
+define('lang_mod_stocktake_participants_checked', 'items already checked');
+define('lang_mod_stocktake_field_opt_yes', 'Yes');
+define('lang_mod_stocktake_tblfield_none', 'None');
+define('lang_mod_stocktake_resync_info', 'Re-synchronize will only update current stock take\'s item data. It wont update
+    any new bibliographic or item data that were inserted in the middle of stock take proccess');
+define('lang_mod_stocktake_resync_button', 'Resynchronize Now');
+# Current
+define('lang_mod_stocktake_current_welcome', 'STOCK TAKE PROCCESS - Insert Item Code/Barcode with keyboard or barcode scanner');
+define('lang_mod_stocktake_current_welcome_alt', 'Current Missing/Lost Items');
+define('lang_mod_stocktake_current_form_list', 'List');
+define('lang_mod_stocktake_current_form_opt_user_cur', 'Current User Only');
+define('lang_mod_stocktake_current_form_opt_user_all', 'All User');
+define('lang_mod_stocktake_current_form_button_change', 'Change Status');
+# Upload
+define('lang_mod_stocktake_upload_welcome', 'STOCK TAKE UPLOAD - Upload a plain text file (.txt) containing list of Item Code to stock take. Each Item Code separated by line.');
+define('lang_mod_stocktake_upload_form_file', ' File');
+define('lang_mod_stocktake_upload_form_button_upload', ' Upload File');
+define('lang_mod_stocktake_upload_alert_success', 'Succesfully upload stock take file ');
+define('lang_mod_stocktake_upload_alert_success_info', ' item codes scanned!');
+/* SERIAL CONTROL MODULE */
+# subcription menu 
+define('lang_mod_serial_subscription_header', 'Serial Title');
+define('lang_mod_serial_subscription_close', 'CLOSE');
+define('lang_mod_serial_subscription_kardex', 'View/Edit Kardex Detail');
+define('lang_mod_serial_subscription_kardex_msg', 'Kardex Detail for subscription');
+/* OPAC */
+define('lang_opac_form_opt_gmd', 'All GMD/Media');
+define('lang_opac_form_opt_collection', 'All Collections');
+define('lang_opac_form_opt_location', 'All Locations');
+define('lang_opac_rec_detail_attachment_none', 'No Attachment');
+define('lang_opac_rec_detail_status_onloan', 'Currently On Loan (Due on ');
+define('lang_opac_rec_detail_status_unavailable', 'Unavailable');
+define('lang_opac_rec_detail_status_available', 'Available');
 ?>

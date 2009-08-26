@@ -56,8 +56,8 @@ class simbio_datagrid extends simbio_table
     public $sort_column = array();
     public $sql_group_by = '';
     public $select_flag = '';
-    public $chbox_property = array('itemID', 'DELETE');
-    public $edit_property = array('itemID', 'EDIT');
+    public $chbox_property = array('itemID', lang_sys_common_tblheader_delete);
+    public $edit_property = array('itemID', lang_sys_common_tblheader_edit);
     public $chbox_action_button = false;
     public $chbox_confirm_msg = false;
     public $current_page = 1;
@@ -118,7 +118,7 @@ class simbio_datagrid extends simbio_table
         // change the record sorting if there fld var in URL
         $_dir = 'ASC';
         $_next_dir = 'DESC';
-        $_sort_dir_info = 'ascendingly';
+        $_sort_dir_info = lang_sys_common_tblheader_hover_sort_asc;
         if (isset($_GET['fld']) AND !empty($_GET['fld'])) {
             $this->sql_order = 'ORDER BY `'.urldecode($_GET['fld']).'` ';
         }
@@ -128,7 +128,7 @@ class simbio_datagrid extends simbio_table
                 $_next_dir = 'ASC';
             } else {
                 $_next_dir = 'DESC';
-                $_sort_dir_info = 'descendingly';
+                $_sort_dir_info = lang_sys_common_tblheader_hover_sort_desc;
             }
             // append sort direction
             $this->sql_order .= $_dir;
@@ -198,9 +198,9 @@ class simbio_datagrid extends simbio_table
                 $_order_by = 'fld='.urlencode($this->sort_column[$_fld->name]).'&dir='.$_next_dir;
                 if ($this->using_AJAX) {
                     $this->grid_result_fields[] = '<a onmouseover="window.status = \'\'; return true;" '
-                        .'href="javascript: setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_url_query_str.$_order_by.'\', \'get\');" title="order list by '.$_fld->name.' '.$_sort_dir_info.'">'.$_fld->name.'</a>';
+                        .'href="javascript: setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_url_query_str.$_order_by.'\', \'get\');" title="'.lang_sys_common_tblheader_hover_sort.' '.$_fld->name.' '.$_sort_dir_info.'">'.$_fld->name.'</a>';
                 } else {
-                    $this->grid_result_fields[] = '<a href="'.$_SERVER['PHP_SELF'].'?'.$_url_query_str.$_order_by.'" title="order list by '.$_fld->name.' '.$_sort_dir_info.'">'.$_fld->name.'</a>';
+                    $this->grid_result_fields[] = '<a href="'.$_SERVER['PHP_SELF'].'?'.$_url_query_str.$_order_by.'" title="'.lang_sys_common_tblheader_hover_sort.' '.$_fld->name.' '.$_sort_dir_info.'">'.$_fld->name.'</a>';
                 }
             } else {
                 $this->grid_result_fields[] = $_fld->name;

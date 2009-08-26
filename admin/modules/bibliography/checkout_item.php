@@ -58,11 +58,11 @@ $table_spec = 'loan AS l
 
 // create datagrid
 $datagrid = new simbio_datagrid();
-$datagrid->setSQLColumn("i.item_code AS 'Item Code'",
-    'm.member_id AS \'Member ID\'',
-    "b.title AS 'Title'",
-    "l.loan_date AS 'Loan Date'",
-    "l.due_date AS 'Due Date'");
+$datagrid->setSQLColumn("i.item_code AS '".lang_mod_circ_tblheader_item_code."'",
+    "m.member_id AS '".lang_mod_circ_field_member_id."'",
+    "b.title AS '".lang_mod_circ_tblheader_title."'",
+    "l.loan_date AS '".lang_mod_circ_tblheader_loan_date."'",
+    "l.due_date AS '".lang_mod_circ_tblheader_due_date."'");
 $datagrid->setSQLorder("l.loan_date DESC");
 
 // change the record order

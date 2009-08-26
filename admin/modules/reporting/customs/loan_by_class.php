@@ -50,36 +50,36 @@ if (!$reportView) {
 ?>
     <!-- filter -->
     <fieldset style="margin-bottom: 3px;">
-    <legend style="font-weight: bold">LOAN REPORT BY CLASSIFICATION - Report Filter</legend>
+    <legend style="font-weight: bold"><?php echo strtoupper(lang_mod_report_other_loansclass); ?> - <?php echo lang_mod_reporting_form_generic_header; ?></legend>
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
         <div class="divRow">
-            <div class="divRowLabel">Class :</div>
+            <div class="divRowLabel"><?php echo lang_mod_biblio_field_class; ?>:</div>
             <div class="divRowContent">
             <?php
-            $class_options[] = array('0', '0 Classes');
-            $class_options[] = array('1', '1 Classes');
-            $class_options[] = array('2', '2 Classes');
-            $class_options[] = array('2X', '2X Classes (Islamic Related)');
-            $class_options[] = array('3', '3 Classes');
-            $class_options[] = array('4', '4 Classes');
-            $class_options[] = array('5', '5 Classes');
-            $class_options[] = array('6', '6 Classes');
-            $class_options[] = array('7', '7 Classes');
-            $class_options[] = array('8', '8 Classes');
-            $class_options[] = array('9', '9 Classes');
-            $class_options[] = array('NONDECIMAL', 'NON Decimal Classes');
+            $class_options[] = array('0', lang_mod_report_loansclass_form_opt_class0);
+            $class_options[] = array('1', lang_mod_report_loansclass_form_opt_class1);
+            $class_options[] = array('2', lang_mod_report_loansclass_form_opt_class2);
+            $class_options[] = array('2X', lang_mod_report_loansclass_form_opt_class2x);
+            $class_options[] = array('3', lang_mod_report_loansclass_form_opt_class3);
+            $class_options[] = array('4', lang_mod_report_loansclass_form_opt_class4);
+            $class_options[] = array('5', lang_mod_report_loansclass_form_opt_class5);
+            $class_options[] = array('6', lang_mod_report_loansclass_form_opt_class6);
+            $class_options[] = array('7', lang_mod_report_loansclass_form_opt_class7);
+            $class_options[] = array('8', lang_mod_report_loansclass_form_opt_class8);
+            $class_options[] = array('9', lang_mod_report_loansclass_form_opt_class9);
+            $class_options[] = array('NONDECIMAL', lang_mod_report_loansclass_form_opt_classx);
             echo simbio_form_element::selectList('class', $class_options);
             ?>
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel">Collection Type</div>
+            <div class="divRowLabel"><?php echo lang_mod_masterfile_colltype_form_field_colltype; ?></div>
             <div class="divRowContent">
             <?php
             $coll_type_q = $dbs->query('SELECT coll_type_id, coll_type_name FROM mst_coll_type');
             $coll_type_options = array();
-            $coll_type_options[] = array('0', 'All');
+            $coll_type_options[] = array('0', lang_sys_common_all);
             while ($coll_type_d = $coll_type_q->fetch_row()) {
                 $coll_type_options[] = array($coll_type_d[0], $coll_type_d[1]);
             }
@@ -88,7 +88,7 @@ if (!$reportView) {
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel">Year</div>
+            <div class="divRowLabel"><?php echo lang_sys_common_year; ?></div>
             <div class="divRowContent">
             <?php
             $current_year = date('Y');
@@ -102,32 +102,32 @@ if (!$reportView) {
         </div>
     </div>
     <div style="padding-top: 10px; clear: both;">
-    <input type="submit" name="applyFilter" value="Apply Filter" />
+    <input type="submit" name="applyFilter" value="<?php echo lang_mod_reporting_form_button_filter_apply; ?>" />
     <input type="hidden" name="reportView" value="true" />
     </div>
     </form>
     </fieldset>
     <!-- filter end -->
     <div class="dataListHeader" style="height: 35px;">
-    <input type="button" value="Print Current Page" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;" onclick="javascript: reportView.print();" />
+    <input type="button" value="<?php echo lang_mod_reporting_form_button_print; ?>" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;" onclick="javascript: reportView.print();" />
     &nbsp;<span id="pagingBox">&nbsp;</span></div>
     <iframe name="reportView" src="<?php echo $_SERVER['PHP_SELF'].'?reportView=true'; ?>" frameborder="0" style="width: 100%; height: 500px;"></iframe>
 <?php
 } else {
     ob_start();
     // months array
-    $months['01'] = 'Jan';
-    $months['02'] = 'Feb';
-    $months['03'] = 'Mar';
-    $months['04'] = 'Apr';
-    $months['05'] = 'May';
-    $months['06'] = 'Jun';
-    $months['07'] = 'Jul';
-    $months['08'] = 'Aug';
-    $months['09'] = 'Sep';
-    $months['10'] = 'Oct';
-    $months['11'] = 'Nov';
-    $months['12'] = 'Dec';
+    $months['01'] = lang_sys_common_month_short_01;
+    $months['02'] = lang_sys_common_month_short_02;
+    $months['03'] = lang_sys_common_month_short_03;
+    $months['04'] = lang_sys_common_month_short_04;
+    $months['05'] = lang_sys_common_month_short_05;
+    $months['06'] = lang_sys_common_month_short_06;
+    $months['07'] = lang_sys_common_month_short_07;
+    $months['08'] = lang_sys_common_month_short_08;
+    $months['09'] = lang_sys_common_month_short_09;
+    $months['10'] = lang_sys_common_month_short_10;
+    $months['11'] = lang_sys_common_month_short_11;
+    $months['12'] = lang_sys_common_month_short_12;
 
     // table start
     $row_class = 'alterCellPrinted';
@@ -135,7 +135,7 @@ if (!$reportView) {
 
     // header
     $output .= '<tr>';
-    $output .= '<td class="dataListHeaderPrinted">Class</td>';
+    $output .= '<td class="dataListHeaderPrinted">'.lang_mod_biblio_field_class.'</td>';
     foreach ($months as $month) {
         $output .= '<td class="dataListHeaderPrinted">'.$month.'</td>';
     }

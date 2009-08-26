@@ -80,7 +80,7 @@ if (isset($_POST['stUpload']) && isset($_FILES['stFile'])) {
         fclose($stfile);
         // message
         echo '<script type="text/javascript">'."\n";
-        echo 'parent.$(\'stUploadMsg\').update(\'Succesfully upload stock take file '.$upload->new_filename.', <b>'.$i.'</b> item codes scanned!\');'."\n";
+        echo 'parent.$(\'stUploadMsg\').update(\''lang_mod_stocktake_upload_alert_success.$upload->new_filename.', <b>'.$i.'</b>'.lang_mod_stocktake_upload_alert_success_info.'\');'."\n";
         echo 'parent.$(\'stUploadMsg\').setStyle( {display: \'block\'} );'."\n";
         echo '</script>';
     } else {
@@ -98,10 +98,10 @@ if (isset($_POST['stUpload']) && isset($_FILES['stFile'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner stockTakeIcon">
-    STOCK TAKE UPLOAD - Upload a plain text file (.txt) containing list of Item Code to stock take. Each Item Code separated by line.<hr />
+    <?php echo lang_mod_stocktake_upload_welcome; ?><hr />
     <form name="uploadForm" method="post" enctype="multipart/form-data" action="<?php echo MODULES_WEB_ROOT_DIR.'stock_take/st_upload.php'; ?>" target="uploadAction" style="display: inline;">
-    File : <input type="file" name="stFile" id="stFile" /> Maximum <?php echo $sysconf['max_upload']; ?> KB
-    <div style="margin: 3px;"><input type="submit" name="stUpload" id="stUpload" value="Upload File" class="button" />
+    <?php echo lang_mod_stocktake_upload_form_file; ?>: <input type="file" name="stFile" id="stFile" /> Maximum <?php echo $sysconf['max_upload']; ?> KB
+    <div style="margin: 3px;"><input type="submit" name="stUpload" id="stUpload" value="<?php echo lang_mod_stocktake_upload_form_button_upload; ?>" class="button" />
     <iframe name="uploadAction" style="width: 0; height: 0; visibility: hidden;"></iframe>
     </div>
     </form>

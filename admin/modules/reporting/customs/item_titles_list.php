@@ -51,34 +51,34 @@ if (!$reportView) {
 ?>
     <!-- filter -->
     <fieldset style="margin-bottom: 3px;">
-    <legend style="font-weight: bold">ITEM/TITLE LIST - Report Filter</legend>
+    <legend style="font-weight: bold"><?php echo strtoupper(lang_mod_report_other_itemtitles); ?> - <?php echo lang_mod_reporting_form_generic_header; ?></legend>
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
         <div class="divRow">
-            <div class="divRowLabel">Title/ISBN</div>
+            <div class="divRowLabel"><?php echo lang_mod_report_common_form_titisbn; ?></div>
             <div class="divRowContent">
             <?php echo simbio_form_element::textField('text', 'title', '', 'style="width: 50%"'); ?>
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel">Item Code</div>
+            <div class="divRowLabel"><?php echo lang_mod_biblio_item_field_itemcode; ?></div>
             <div class="divRowContent">
             <?php echo simbio_form_element::textField('text', 'itemCode', '', 'style="width: 50%"'); ?>
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel">Classification</div>
+            <div class="divRowLabel"><?php echo lang_mod_biblio_field_class; ?></div>
             <div class="divRowContent">
             <?php echo simbio_form_element::textField('text', 'class', '', 'style="width: 50%"'); ?>
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel">Collection Type</div>
+            <div class="divRowLabel"><?php echo lang_mod_masterfile_colltype_form_field_colltype; ?></div>
             <div class="divRowContent">
             <?php
             $coll_type_q = $dbs->query('SELECT coll_type_id, coll_type_name FROM mst_coll_type');
             $coll_type_options = array();
-            $coll_type_options[] = array('0', 'All');
+            $coll_type_options[] = array('0', lang_sys_common_all);
             while ($coll_type_d = $coll_type_q->fetch_row()) {
                 $coll_type_options[] = array($coll_type_d[0], $coll_type_d[1]);
             }
@@ -87,12 +87,12 @@ if (!$reportView) {
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel">Status</div>
+            <div class="divRowLabel"><?php echo lang_mod_biblio_item_field_item_status; ?></div>
             <div class="divRowContent">
             <?php
             $status_q = $dbs->query('SELECT item_status_id, item_status_name FROM mst_item_status');
             $status_options = array();
-            $status_options[] = array('0', 'All');
+            $status_options[] = array('0', lang_sys_common_all);
             while ($status_d = $status_q->fetch_row()) {
                 $status_options[] = array($status_d[0], $status_d[1]);
             }
@@ -101,12 +101,12 @@ if (!$reportView) {
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel">Location</div>
+            <div class="divRowLabel"><?php echo lang_mod_biblio_item_field_location; ?></div>
             <div class="divRowContent">
             <?php
             $loc_q = $dbs->query('SELECT location_id, location_name FROM mst_location');
             $loc_options = array();
-            $loc_options[] = array('0', 'All');
+            $loc_options[] = array('0', lang_sys_common_all);
             while ($loc_d = $loc_q->fetch_row()) {
                 $loc_options[] = array($loc_d[0], $loc_d[1]);
             }
@@ -115,13 +115,13 @@ if (!$reportView) {
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel">Record each page</div>
-            <div class="divRowContent"><input type="text" name="recsEachPage" size="3" maxlength="3" value="<?php echo $num_recs_show; ?>" /> Set between 20 and 200</div>
+            <div class="divRowLabel"><?php echo lang_mod_report_common_form_recspage; ?></div>
+            <div class="divRowContent"><input type="text" name="recsEachPage" size="3" maxlength="3" value="<?php echo $num_recs_show; ?>" /> <?php echo lang_mod_report_common_form_recspage_help; ?></div>
         </div>
     </div>
     <div style="padding-top: 10px; clear: both;">
-    <input type="submit" name="applyFilter" value="Apply Filter" />
-    <input type="button" name="moreFilter" value="Show More Filter Options" onclick="showHideTableRows('filterForm', 1, this, 'Show More Filter Options', 'Hide Filter Options')" />
+    <input type="submit" name="applyFilter" value="<?php echo lang_mod_reporting_form_button_filter_apply; ?>" />
+    <input type="button" name="moreFilter" value="<?php echo lang_mod_reporting_form_button_filter_options_show; ?>" onclick="showHideTableRows('filterForm', 1, this, '<?php echo lang_mod_reporting_form_button_filter_options_show; ?>', '<?php echo lang_mod_reporting_form_button_filter_options_hide; ?>')" />
     <input type="hidden" name="reportView" value="true" />
     </div>
     </form>
@@ -129,7 +129,7 @@ if (!$reportView) {
     <script type="text/javascript">hideRows('filterForm', 1);</script>
     <!-- filter end -->
     <div class="dataListHeader" style="height: 35px;">
-    <input type="button" value="Print Current Page" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;"
+    <input type="button" value="<?php echo lang_mod_reporting_form_button_print; ?>" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;"
     onclick="javascript: reportView.print();" />
     &nbsp;<span id="pagingBox">&nbsp;</span></div>
     <iframe name="reportView" src="<?php echo $_SERVER['PHP_SELF'].'?reportView=true'; ?>" frameborder="0" style="width: 100%; height: 500px;"></iframe>
@@ -144,11 +144,11 @@ if (!$reportView) {
 
     // create datagrid
     $reportgrid = new report_datagrid();
-    $reportgrid->setSQLColumn('i.item_code AS \'Item Code\'',
-        'b.title AS \'Title\'',
-        'ct.coll_type_name AS \'Collection Type\'',
-        's.item_status_name AS \'Status\'',
-        'b.call_number AS \'Call Number\'', 'i.biblio_id');
+    $reportgrid->setSQLColumn('i.item_code AS \''.lang_mod_biblio_item_field_itemcode.'\'',
+        'b.title AS \''.lang_mod_biblio_field_title.'\'',
+        'ct.coll_type_name AS \''.lang_mod_masterfile_colltype_form_field_colltype.'\'',
+        's.item_status_name AS \''.lang_mod_biblio_item_field_item_status.'\'',
+        'b.call_number AS \''.lang_mod_biblio_field_call_number.'\'', 'i.biblio_id');
     $reportgrid->setSQLorder('b.title ASC');
 
     // is there any search

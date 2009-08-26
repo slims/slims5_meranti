@@ -51,7 +51,7 @@ if (!$can_read) {
     <hr />
     <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo lang_sys_common_form_search; ?> :
     <input type="text" name="keywords" id="keywords" size="30" />
-    <select name="field"><option value="0">All Field</option><option value="title">Title</option><option value="topic">Topics</option><option value="author_name">Authors</option><option value="isbn_issn">ISBN</option></select>
+    <select name="field"><option value="0"><?php echo lang_sys_common_all; ?></option><option value="title"><?php echo lang_mod_biblio_field_title; ?></option><option value="topic"><?php echo lang_mod_biblio_field_topic; ?></option><option value="author_name"><?php echo lang_mod_biblio_field_authors; ?></option><option value="isbn_issn"><?php echo lang_mod_biblio_field_isbn; ?></option></select>
     <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>serial_control/index.php?' + $('search').serialize(), 'post')" value="<?php echo lang_sys_common_form_search; ?>" class="button" />
     </form>
 </div>
@@ -72,11 +72,11 @@ function subscriptionDetail($obj_db, $array_data)
     global $can_read, $can_write, $count;
     $_output = '<div style="float: left;"><strong style="font-size: 120%;"><a href="#" title="Edit Bibliographic Data" onclick="openWin(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_biblio.php?action=detail&inPopUp=true&itemID='.$array_data[0].'&itemCollID=0\', \'popSerialBiblio\', 600, 400, true)">'.$array_data[1].'</a></strong> ('.$array_data[2].')</div>';
     if ($can_read AND $can_write) {
-        $_output .= ' <a href="#" class="addSubscription" onclick="javascript: $(\'subscriptionListCont'.$count.'\').show(); setIframeContent(\'subscriptionList'.$count.'\', \''.MODULES_WEB_ROOT_DIR.'serial_control/subscription.php?biblioID='.$array_data[0].'&action=detail\');" title="Add New Subscription">&nbsp;</a> ';
+        $_output .= ' <a href="#" class="addSubscription" onclick="javascript: $(\'subscriptionListCont'.$count.'\').show(); setIframeContent(\'subscriptionList'.$count.'\', \''.MODULES_WEB_ROOT_DIR.'serial_control/subscription.php?biblioID='.$array_data[0].'&action=detail\');" title="'.lang_mod_serial_subscription_add.'">&nbsp;</a> ';
     }
-    $_output .= ' <a href="#" class="viewSubscription" onclick="$(\'subscriptionListCont'.$count.'\').show(); setIframeContent(\'subscriptionList'.$count.'\', \''.MODULES_WEB_ROOT_DIR.'serial_control/subscription.php?biblioID='.$array_data[0].'\');" title="View Subscription List">&nbsp;</a> ';
+    $_output .= ' <a href="#" class="viewSubscription" onclick="$(\'subscriptionListCont'.$count.'\').show(); setIframeContent(\'subscriptionList'.$count.'\', \''.MODULES_WEB_ROOT_DIR.'serial_control/subscription.php?biblioID='.$array_data[0].'\');" title="'.lang_mod_serial_subscription_list.'">&nbsp;</a> ';
     $_output .= '<div id="subscriptionListCont'.$count.'" style="clear: both; display: none;">';
-    $_output .= '<div><a href="#" style="font-weight: bold; color: red;" title="Close Box" onclick="$(\'subscriptionListCont'.$count.'\').hide()">CLOSE</a></div>';
+    $_output .= '<div><a href="#" style="font-weight: bold; color: red;" title="Close Box" onclick="$(\'subscriptionListCont'.$count.'\').hide()">'.lang_mod_serial_subscription_close.'</a></div>';
     $_output .= '<iframe id="subscriptionList'.$count.'" src="'.MODULES_WEB_ROOT_DIR.'serial_control/subscription.php?biblioID='.$array_data[0].'" style="width: 100%; height: 270px;"></iframe>';
     $_output .= '</div>';
     $count++;
@@ -84,7 +84,7 @@ function subscriptionDetail($obj_db, $array_data)
 }
 // create datagrid
 $datagrid = new simbio_datagrid();
-$datagrid->setSQLColumn('b.biblio_id', 'b.title AS \'Serial Title\'',
+$datagrid->setSQLColumn('b.biblio_id', 'b.title AS \''.lang_mod_serial_subscription_header.'\'',
     'fr.frequency AS \'Frequency\'');
 $datagrid->invisible_fields = array(0, 2);
 $datagrid->modifyColumnContent(1, 'callback{subscriptionDetail}');

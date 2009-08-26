@@ -50,23 +50,23 @@ if (!$reportView) {
 ?>
     <!-- filter -->
     <fieldset style="margin-bottom: 3px;">
-    <legend style="font-weight: bold">ITEM USAGE STATISTIC - Report Filter</legend>
+    <legend style="font-weight: bold"><?php echo strtoupper(lang_mod_report_other_itemusage); ?> - <?php echo lang_mod_reporting_form_generic_header; ?></legend>
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
         <div class="divRow">
-            <div class="divRowLabel">Title/ISBN</div>
+            <div class="divRowLabel"><?php echo lang_mod_report_common_form_titisbn; ?></div>
             <div class="divRowContent">
             <?php echo simbio_form_element::textField('text', 'title', '', 'style="width: 50%"'); ?>
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel">Item Code</div>
+            <div class="divRowLabel"><?php echo lang_mod_biblio_item_field_itemcode; ?></div>
             <div class="divRowContent">
             <?php echo simbio_form_element::textField('text', 'itemCode', '', 'style="width: 50%"'); ?>
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel">Year</div>
+            <div class="divRowLabel"><?php echo lang_sys_common_year; ?></div>
             <div class="divRowContent">
             <?php
             $current_year = date('Y');
@@ -80,14 +80,14 @@ if (!$reportView) {
         </div>
     </div>
     <div style="padding-top: 10px; clear: both;">
-    <input type="submit" name="applyFilter" value="Apply Filter" />
+    <input type="submit" name="applyFilter" value="<?php echo lang_mod_reporting_form_button_filter_apply; ?>" />
     <input type="hidden" name="reportView" value="true" />
     </div>
     </form>
     </fieldset>
     <!-- filter end -->
     <div class="dataListHeader" style="height: 35px;">
-    <input type="button" value="Print Current Page" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;"
+    <input type="button" value="<?php echo lang_mod_reporting_form_button_print; ?>" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;"
     onclick="javascript: reportView.print();" />
     &nbsp;<span id="pagingBox">&nbsp;</span></div>
     <iframe name="reportView" src="<?php echo $_SERVER['PHP_SELF'].'?reportView=true'; ?>" frameborder="0" style="width: 100%; height: 500px;"></iframe>
@@ -100,20 +100,20 @@ if (!$reportView) {
 
     // create datagrid
     $reportgrid = new report_datagrid();
-    $reportgrid->setSQLColumn('i.item_code AS \'Item Code\'',
-        'b.title AS \'Title\'',
-        '\'01\' AS \'Jan\'',
-        '\'02\' AS \'Feb\'',
-        '\'03\' AS \'Mar\'',
-        '\'04\' AS \'Apr\'',
-        '\'05\' AS \'May\'',
-        '\'06\' AS \'Jun\'',
-        '\'07\' AS \'Jul\'',
-        '\'08\' AS \'Aug\'',
-        '\'09\' AS \'Sep\'',
-        '\'10\' AS \'Oct\'',
-        '\'11\' AS \'Nov\'',
-        '\'12\' AS \'Dec\''
+    $reportgrid->setSQLColumn('i.item_code AS \''.lang_mod_biblio_item_field_itemcode.'\'',
+        'b.title AS \''.lang_mod_biblio_field_title.'\'',
+        '\'01\' AS \''.lang_sys_common_month_short_01.'\'',
+        '\'02\' AS \''.lang_sys_common_month_short_02.'\'',
+        '\'03\' AS \''.lang_sys_common_month_short_03.'\'',
+        '\'04\' AS \''.lang_sys_common_month_short_04.'\'',
+        '\'05\' AS \''.lang_sys_common_month_short_05.'\'',
+        '\'06\' AS \''.lang_sys_common_month_short_06.'\'',
+        '\'07\' AS \''.lang_sys_common_month_short_07.'\'',
+        '\'08\' AS \''.lang_sys_common_month_short_08.'\'',
+        '\'09\' AS \''.lang_sys_common_month_short_09.'\'',
+        '\'10\' AS \''.lang_sys_common_month_short_10.'\'',
+        '\'11\' AS \''.lang_sys_common_month_short_11.'\'',
+        '\'12\' AS \''.lang_sys_common_month_short_12.'\''
         );
     $reportgrid->setSQLorder('b.title ASC');
 
@@ -170,7 +170,7 @@ if (!$reportView) {
     $reportgrid->modifyColumnContent(13, 'callback{showUsage}');
 
     // no sort column
-    $reportgrid->disableSort('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec');
+    $reportgrid->disableSort(lang_sys_common_month_short_01, lang_sys_common_month_short_02, lang_sys_common_month_short_03, lang_sys_common_month_short_04, lang_sys_common_month_short_05, lang_sys_common_month_short_06, lang_sys_common_month_short_07, lang_sys_common_month_short_08, lang_sys_common_month_short_09, lang_sys_common_month_short_10, lang_sys_common_month_short_11, lang_sys_common_month_short_12);
 
     // set table and table header attributes
     $reportgrid->table_attr = 'align="center" id="dataListPrinted" cellpadding="3" cellspacing="1"';

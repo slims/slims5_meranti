@@ -162,7 +162,7 @@ if (isset($_GET['page']) AND $_GET['page'] > 1) {
     $page = 1;
 }
 // query time
-$info .= '<div>Query took : <b>'.$biblio_list->query_time.'</b> second(s) to complete</div>';
+$info .= '<div>'.lang_sys_common_query_msg1.' <b>'.$biblio_list->query_time.'</b> '.lang_sys_common_query_msg2.'</div>';
 if (isset($biblio_list) AND $sysconf['enable_xml_result']) {
     $info .= '<div><a href="index.php?resultXML=true&'.$_SERVER['QUERY_STRING'].'" class="xmlResultLink" target="_blank" title="View Result in XML Format" style="clear: both;">XML Result</a></div>';
 }

@@ -202,7 +202,7 @@ if ($can_write AND ( isset($_POST['detail']) OR (isset($_GET['action']) AND $_GE
     {
         $_output = '';
         $_output .= '<div style="font-weight: bold; font-size: 110%;">'.$array_data[1].'</div>';
-        $_output .= '<div style="font-weight: bold; font-size: 90%;"><a href="'.MODULES_WEB_ROOT_DIR.'serial_control/kardex.php?serialID='.$array_data[0].'" title="View/Edit Kardex Detail">View/Edit Kardex Detail</a></div>';
+        $_output .= '<div style="font-weight: bold; font-size: 90%;"><a href="'.MODULES_WEB_ROOT_DIR.'serial_control/kardex.php?serialID='.$array_data[0].'" title="'.lang_mod_serial_subscription_kardex.'">'.lang_mod_serial_subscription_kardex.'</a></div>';
         return $_output;
     }
 

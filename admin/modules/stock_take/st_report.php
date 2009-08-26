@@ -70,11 +70,11 @@ if ($stk_query->num_rows < 1) {
     // stock take item lost
     $report_row[lang_mod_stocktake_lost_total] = intval($stk_data['total_item_lost']);
     if ($report_row[lang_mod_stocktake_lost_total] < 1) {
-        $report_row[lang_mod_stocktake_lost_total] = 'None';
+        $report_row[lang_mod_stocktake_lost_total] = lang_mod_stocktake_tblfield_none;
     }
     // stock take item on loan
     if (empty($stk_data['total_item_loan'])) {
-        $report_row[lang_mod_stocktake_loan_total] = 'None';
+        $report_row[lang_mod_stocktake_loan_total] = lang_mod_stocktake_tblfield_none;
     } else {
         $report_row[lang_mod_stocktake_loan_total] = $stk_data['total_item_loan'];
     }
@@ -89,7 +89,7 @@ if ($stk_query->num_rows < 1) {
         $st_other_users_q = $dbs->query('SELECT DISTINCT checked_by, COUNT(item_id) AS num_count FROM stock_take_item GROUP BY checked_by ORDER BY `num_count` DESC');
         while ($st_other_users_d = $st_other_users_q->fetch_row()) {
             if ($st_other_users_d[0] != $stk_data['stock_take_users']) {
-                $report_row[lang_mod_stocktake_participants] .= '<li>'.$st_other_users_d[0].' ('.$st_other_users_d[1].' items already checked)</li>';
+                $report_row[lang_mod_stocktake_participants] .= '<li>'.$st_other_users_d[0].' ('.$st_other_users_d[1].' '.lang_mod_stocktake_participants_checked.')</li>';
             }
         }
         // destroy query object
@@ -118,13 +118,13 @@ if ($stk_query->num_rows < 1) {
     $row_class = 'alterCell';
     $arr_status = array('m', 'e', 'l');
     $class_count_str = '<table align="center" class="border" style="width: 100%; margin-top: 5px;" cellpadding="3" cellspacing="0">';
-    $class_count_str .= '<tr><td class="dataListHeader">Classification</td>
-        <td class="dataListHeader">Lost Items</td>
-        <td class="dataListHeader">Exists Items</td>
-        <td class="dataListHeader">On Loan Items</td></tr>';
+    $class_count_str .= '<tr><td class="dataListHeader">'.lang_mod_biblio_field_class.'</td>
+        <td class="dataListHeader">'.lang_mod_stocktake_tblheader_lost.'</td>
+        <td class="dataListHeader">'.lang_mod_stocktake_tblheader_exists.'</td>
+        <td class="dataListHeader">'.lang_mod_stocktake_tblheader_loan.'</td></tr>';
     while ($class_num < 10) {
         $row_class = ($class_num%2 == 0)?'alterCell':'alterCell2';
-        $class_count_str .= '<tr><td class="'.$row_class.'"><strong>'.$class_num.'</strong> classes</td>';
+        $class_count_str .= '<tr><td class="'.$row_class.'"><strong>'.$class_num.'</strong>'.lang_mod_stocktake_tblfield_classes.'</td>';
         foreach ($arr_status as $status) {
             $cls_q = $dbs->query("SELECT COUNT(item_code) FROM stock_take_item WHERE TRIM(classification) LIKE '$class_num%' AND status='$status'");
             $cls_d = $cls_q->fetch_row();
@@ -156,10 +156,10 @@ if ($stk_query->num_rows < 1) {
 
     /* COLLECTION TYPE ITEM STATUS */
     $coll_type_count_str = '<table align="center" class="border" style="width: 100%; margin-top: 5px;" cellpadding="3" cellspacing="0">';
-    $coll_type_count_str .= '<tr><td class="dataListHeader">Collection Type</td>
-        <td class="dataListHeader">Lost Items</td>
-        <td class="dataListHeader">Exists Items</td>
-        <td class="dataListHeader">On Loan Items</td></tr>';
+    $coll_type_count_str .= '<tr><td class="dataListHeader">'.lang_mod_masterfile_colltype_form_field_colltype.'</td>
+        <td class="dataListHeader">'.lang_mod_stocktake_tblheader_lost.'</td>
+        <td class="dataListHeader">'.lang_mod_stocktake_tblheader_exists.'</td>
+        <td class="dataListHeader">'.lang_mod_stocktake_tblheader_loan.'</td></tr>';
     $ct_q = $dbs->query("SELECT DISTINCT coll_type_name FROM stock_take_item");
     $row = 1;
     while ($ct_d = $ct_q->fetch_row()) {

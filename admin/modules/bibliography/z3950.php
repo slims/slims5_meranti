@@ -332,10 +332,10 @@ if (isset($_GET['keywords']) AND $can_read) {
     <hr />
     <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo lang_sys_common_form_search; ?> :
     <input type="text" name="keywords" id="keywords" size="30" />
-    <select name="field"><option value="isbn">ISBN/ISSN</option><option value="ti">Title/Series Title</option><option value="au">Authors</option></select>
+    <select name="field"><option value="isbn"><?php echo lang_mod_biblio_field_opt_isbn; ?></option><option value="ti"><?php echo lang_mod_biblio_field_opt_title; ?></option><option value="au"><?php echo lang_mod_biblio_field_opt_author; ?></option></select>
     <input type="button" id="doSearch" onclick="setContent('searchResult', '<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/z3950.php?' + $('search').serialize(), 'get')" value="<?php echo lang_sys_common_form_search; ?>" class="button" />
     </form>
-    <div>* Please make sure you have working Internet connection.</div>
+    <div><?php echo lang_mod_biblio_tools_z3950_connection; ?></div>
 </div>
 </fieldset>
 <script type="text/javascript">

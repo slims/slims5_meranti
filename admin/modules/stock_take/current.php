@@ -58,16 +58,16 @@ if ($stk_query->num_rows < 1) {
     <div class="menuBoxInner stockTakeIcon">
         <?php
         if ($view != 'm') {
-          echo 'STOCK TAKE PROCCESS - Insert Item Code/Barcode with keyboard or barcode scanner<hr />
+          echo lang_mod_stocktake_current_welcome.'<hr />
               <form name="stockTakeForm" action="'.MODULES_WEB_ROOT_DIR.'stock_take/stock_take_action.php" target="stockTakeAction" method="post" style="display: inline;">
-              <div><div style="width: 90px; float: left;">Item Code :</div><input type="text" id="itemCode" name="itemCode" size="30" /> <input type="submit" value="Change Status" class="button" /></div>
-              <div style="margin-top: 3px;"><div style="width: 90px; float: left;">List :</div>
-              <input type="radio" id="listShow" name="listShow" value="1" onclick="setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'stock_take/current.php?listShow=1\', \'get\')" '.( isset($show_only_current)?'checked="checked"':'' ).' /> Current User Only
-              <input type="radio" id="listShow2" name="listShow" value="0" onclick="setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'stock_take/current.php?listShow=0\', \'get\')" '.( isset($show_only_current)?'':'checked="checked"' ).' /> All User
+              <div><div style="width: 140px; float: left;">'.lang_mod_biblio_item_field_itemcode.':</div><input type="text" id="itemCode" name="itemCode" size="30" /> <input type="submit" value="'.lang_mod_stocktake_current_form_button_change.'" class="button" /></div>
+              <div style="margin-top: 3px;"><div style="width: 140px; float: left;">'.lang_mod_stocktake_current_form_list.':</div>
+              <input type="radio" id="listShow" name="listShow" value="1" onclick="setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'stock_take/current.php?listShow=1\', \'get\')" '.( isset($show_only_current)?'checked="checked"':'' ).' /> '.lang_mod_stocktake_current_form_opt_user_cur.'
+              <input type="radio" id="listShow2" name="listShow" value="0" onclick="setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'stock_take/current.php?listShow=0\', \'get\')" '.( isset($show_only_current)?'':'checked="checked"' ).' /> '.lang_mod_stocktake_current_form_opt_user_all.'
               <iframe name="stockTakeAction" style="width: 0; height: 0; visibility: hidden;"></iframe></div>
               </form>';
         } else {
-          echo 'Current Missing/Lost Items<hr />';
+          echo lang_mod_stocktake_current_welcome_alt.'<hr />';
         }
         ?>
         <form name="search" id="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" method="get" style="display: inline;">
@@ -87,11 +87,11 @@ if ($stk_query->num_rows < 1) {
 
     // create datagrid
     $datagrid = new simbio_datagrid();
-    $datagrid->setSQLColumn('item_code AS \'Item Code\'',
-        'title AS \'Title\'',
-        'coll_type_name AS \'Type\'',
-        'classification AS \'Class\'',
-        'IF(sti.status=\'e\', \'Exists\', IF(sti.status=\'l\', \'On Loan\', \'Missing\')) AS \'Status\'');
+    $datagrid->setSQLColumn('item_code AS \''.lang_mod_biblio_item_field_itemcode.'\'',
+        'title AS \''.lang_mod_biblio_field_title.'\'',
+        'coll_type_name AS \''.lang_mod_masterfile_colltype_form_field_colltype.'\'',
+        'classification AS \''.lang_mod_biblio_field_class.'\'',
+        'IF(sti.status=\'e\', \''.lang_mod_biblio_item_common_status_exists.'\', IF(sti.status=\'l\', \''.lang_mod_biblio_item_common_status_onloan.'\', \''.lang_mod_biblio_item_common_status_missing.'\')) AS \'Status\'');
     $datagrid->setSQLorder("last_update DESC");
 
     $criteria = 'item_id <> 0 ';

@@ -202,11 +202,11 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     </form>
     <div style="margin-top: 3px;">
     <?php
-    echo 'Maximum <font style="color: #FF0000">'.$max_print.'</font> barcodes can be printed at once. Currently there is ';
+    echo lang_mod_biblio_tools_common_print_msg1.' <font style="color: #FF0000">'.$max_print.'</font> '.lang_mod_biblio_tools_common_print_msg2.' ';
     if (isset($_SESSION['barcodes'])) {
         echo '<font id="queueCount" style="color: #FF0000">'.count($_SESSION['barcodes']).'</font>';
     } else { echo '<font id="queueCount" style="color: #FF0000">0</font>'; }
-    echo ' in queue waiting to be printed.';
+    echo ' '.lang_mod_biblio_tools_common_print_msg3;
     ?>
     </div>
 </div>
@@ -221,8 +221,8 @@ $table_spec = 'item LEFT JOIN biblio ON item.biblio_id=biblio.biblio_id';
 // create datagrid
 $datagrid = new simbio_datagrid();
 $datagrid->setSQLColumn('item.item_code',
-    'item.item_code AS \'Item Code\'',
-    'biblio.title AS \'Title\'');
+    'item.item_code AS \''.lang_mod_circ_tblheader_item_code.'\'',
+    'biblio.title AS \''.lang_mod_circ_tblheader_title.'\'');
 $datagrid->setSQLorder('item.last_update DESC');
 // is there any search
 if (isset($_GET['keywords']) AND $_GET['keywords']) {
@@ -248,7 +248,7 @@ $datagrid->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacin
 $datagrid->table_header_attr = 'class="dataListHeader" style="font-weight: bold;"';
 // edit and checkbox property
 $datagrid->edit_property = false;
-$datagrid->chbox_property = array('itemID', 'Add');
+$datagrid->chbox_property = array('itemID', lang_sys_common_tblheader_add);
 $datagrid->chbox_action_button = lang_mod_biblio_common_form_print_queue;
 $datagrid->chbox_confirm_msg = lang_mod_biblio_common_print_queue_confirm;
 $datagrid->column_width = array('10%', '85%');
@@ -258,7 +258,7 @@ $datagrid->chbox_form_URL = $_SERVER['PHP_SELF'];
 $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, $can_read);
 if (isset($_GET['keywords']) AND $_GET['keywords']) {
     $msg = str_replace('{result->num_rows}', $datagrid->num_rows, lang_sys_common_search_result_info);
-    echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"<div>Query took : <b>'.$datagrid->query_time.'</b> second(s) to complete</div></div>';
+    echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"<div>'.lang_sys_common_query_msg1.' <b>'.$datagrid->query_time.'</b> '.lang_sys_common_query_msg2.'</div></div>';
 }
 echo $datagrid_result;
 /* main content end */

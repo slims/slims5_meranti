@@ -50,25 +50,25 @@ if (!$reportView) {
 ?>
     <!-- filter -->
     <fieldset style="margin-bottom: 3px;">
-    <legend style="font-weight: bold">STAFF ACTIVITY REPORT - Report Filter</legend>
+    <legend style="font-weight: bold"><?php echo strtoupper(lang_mod_report_other_staffactivity); ?> - <?php echo lang_mod_reporting_form_generic_header; ?></legend>
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
         <div class="divRow">
-            <div class="divRowLabel">Activity Date From</div>
+            <div class="divRowLabel"><?php echo lang_mod_report_staffactivity_form_activityfrom; ?></div>
             <div class="divRowContent">
             <?php echo simbio_form_element::dateField('startDate', '2000-01-01'); ?>
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel">Activity Date Until</div>
+            <div class="divRowLabel"><?php echo lang_mod_report_staffactivity_form_activityto; ?></div>
             <div class="divRowContent">
             <?php echo simbio_form_element::dateField('untilDate', date('Y-m-d')); ?>
             </div>
         </div>
     </div>
     <div style="padding-top: 10px; clear: both;">
-    <input type="submit" name="applyFilter" value="Apply Filter" />
-    <input type="button" name="moreFilter" value="Show More Filter Options" onclick="showHideTableRows('filterForm', 1, this, 'Show More Filter Options', 'Hide Filter Options')" />
+    <input type="submit" name="applyFilter" value="<?php echo lang_mod_reporting_form_button_filter_apply; ?>" />
+    <input type="button" name="moreFilter" value="<?php echo lang_mod_reporting_form_button_filter_options_show; ?>" onclick="showHideTableRows('filterForm', 1, this, '<?php echo lang_mod_reporting_form_button_filter_options_show; ?>', '<?php echo lang_mod_reporting_form_button_filter_options_hide; ?>')" />
     <input type="hidden" name="reportView" value="true" />
     </div>
     </form>
@@ -76,7 +76,7 @@ if (!$reportView) {
     <script type="text/javascript">hideRows('filterForm', 2);</script>
     <!-- filter end -->
     <div class="dataListHeader" style="height: 35px;">
-    <input type="button" value="Print Current Page" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;"
+    <input type="button" value="<?php echo lang_mod_reporting_form_button_print; ?>" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;"
     onclick="javascript: reportView.print();" />
     &nbsp;<span id="pagingBox">&nbsp;</span></div>
     <iframe name="reportView" src="<?php echo $_SERVER['PHP_SELF'].'?reportView=true'; ?>" frameborder="0" style="width: 100%; height: 500px;"></iframe>
@@ -88,12 +88,12 @@ if (!$reportView) {
 
     // create datagrid
     $reportgrid = new report_datagrid();
-    $reportgrid->setSQLColumn('u.realname AS \'User Name\'',
-        'u.username AS \'Login Name\'',
-        'u.user_id AS \'Bibliography Data Entry\'',
-        'u.user_id AS \'Item Data Entry\'',
-        'u.user_id AS \'Member Data Entry\'',
-        'u.user_id AS \'Circulation\'');
+    $reportgrid->setSQLColumn('u.realname AS \''.lang_sys_user_field_realname.'\'',
+        'u.username AS \''.lang_sys_user_field_login_username.'\'',
+        'u.user_id AS \''.lang_mod_report_staffactivity_tblheader_bibliography.'\'',
+        'u.user_id AS \''.lang_mod_report_staffactivity_tblheader_items.'\'',
+        'u.user_id AS \''.lang_mod_report_staffactivity_tblheader_members.'\'',
+        'u.user_id AS \''.lang_mod_report_staffactivity_tblheader_circulation.'\'');
     $reportgrid->setSQLorder('realname ASC');
 
     // is there any search

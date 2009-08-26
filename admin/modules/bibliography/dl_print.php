@@ -177,11 +177,11 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     </form>
     <div style="margin-top: 3px;">
         <?php
-        echo 'Maximum <font style="color: #FF0000">'.$max_print.'</font> data/labels can be printed at once. Currently there is ';
+        echo lang_mod_biblio_tools_common_print_msg1.' <font style="color: #FF0000">'.$max_print.'</font> '.lang_mod_biblio_tools_common_print_msg2.' ';
         if (isset($_SESSION['labels'])) {
             echo '<font id="queueCount" style="color: #FF0000">'.count($_SESSION['labels']).'</font>';
         } else { echo '<font id="queueCount" style="color: #FF0000">0</font>'; }
-        echo ' in queue waiting to be printed.';
+        echo ' '.lang_mod_biblio_tools_common_print_msg3;
         ?>
     </div>
 </div>
@@ -196,8 +196,8 @@ $table_spec = 'biblio LEFT JOIN item ON biblio.biblio_id=item.biblio_id';
 // create datagrid
 $datagrid = new simbio_datagrid();
 if ($can_read) {
-    $datagrid->setSQLColumn('item.item_id', 'biblio.title AS `Title`',
-        'IF(item.call_number!=\'\', item.call_number, biblio.call_number) AS `Call Number`');
+    $datagrid->setSQLColumn('item.item_id', 'biblio.title AS `'.lang_mod_circ_tblheader_title.'`',
+        'IF(item.call_number!=\'\', item.call_number, biblio.call_number) AS `'.lang_mod_circ_tblheader_callno.'`');
 }
 $datagrid->setSQLorder('item.last_update DESC');
 // is there any search
@@ -224,7 +224,7 @@ $datagrid->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacin
 $datagrid->table_header_attr = 'class="dataListHeader" style="font-weight: bold;"';
 // edit and checkbox property
 $datagrid->edit_property = false;
-$datagrid->chbox_property = array('itemID', 'Add');
+$datagrid->chbox_property = array('itemID', lang_sys_common_tblheader_add);
 $datagrid->chbox_action_button = lang_mod_biblio_common_form_print_queue;
 $datagrid->chbox_confirm_msg = lang_mod_biblio_common_print_queue_confirm;
 // set delete proccess URL
@@ -234,7 +234,7 @@ $datagrid->column_width = array(0 => '75%', 1 => '20%');
 $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, $can_read);
 if (isset($_GET['keywords']) AND $_GET['keywords']) {
     $msg = str_replace('{result->num_rows}', $datagrid->num_rows, lang_sys_common_search_result_info);
-    echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"<div>Query took : <b>'.$datagrid->query_time.'</b> second(s) to complete</div></div>';
+    echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"<div>'.lang_sys_common_query_msg1.' <b>'.$datagrid->query_time.'</b> '.lang_sys_common_query_msg2.'</div></div>';
 }
 echo $datagrid_result;
 /* main content end */

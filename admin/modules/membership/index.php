@@ -307,7 +307,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     if ($form->edit_mode) {
         $form->addDateField('expDate', lang_mod_membership_field_expiry_date, $rec_d['expire_date']);
     } else {
-        $chbox_array[] = array('1', 'Auto Set');
+        $chbox_array[] = array('1', lang_mod_membership_field_opt_autoset);
         $str_input = '<div>'.simbio_form_element::checkBox('extend', $chbox_array, '1').'</div>';
         $str_input .= '<div>'.simbio_form_element::dateField('expDate', $rec_d['expire_date']).'</div>';
         $form->addAnything(lang_mod_membership_field_expiry_date.'*', $str_input);
@@ -341,7 +341,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // member notes
     $form->addTextField('textarea', 'memberNotes', lang_mod_membership_field_notes, $rec_d['member_notes'], 'rows="2" style="width: 100%;"');
     // member is_pending
-    $form->addCheckBox('isPending', lang_mod_membership_field_pending, array( array('1', 'Yes') ), $rec_d['is_pending']);
+    $form->addCheckBox('isPending', lang_mod_membership_field_pending, array( array('1', lang_mod_membership_field_opt_yes) ), $rec_d['is_pending']);
     // member photo
     if ($rec_d['member_image']) {
         $str_input = '<a href="'.SENAYAN_WEB_ROOT_DIR.'images/persons/'.$rec_d['member_image'].'" target="_blank"><strong>'.$rec_d['member_image'].'</strong></a><br />';
@@ -416,9 +416,9 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         echo '<div class="infoBox">';
         if (isset($_GET['expire'])) {
             echo '<b style="color: #FF0000;">'.lang_mod_membership_common_expired_member_list.'</b><hr size="1" />';
-            echo '<div><input type="button" value="Extend Selected Member(s)" onclick="javascript: if (confirm(\'Are you sure to EXTEND membership for selected members?\')) { setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'membership/index.php?expire=1\', \'post\', $H($(\'memberList\').serialize(true)).update({ batchExtend: \'true\' }) ); }" class="button" /></div>';
+            echo '<div><input type="button" value="'.lang_mod_membership_extend_button.'" onclick="javascript: if (confirm(\''.lang_mod_membership_extend_alert_confirm.'\')) { setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'membership/index.php?expire=1\', \'post\', $H($(\'memberList\').serialize(true)).update({ batchExtend: \'true\' }) ); }" class="button" /></div>';
             if (isset($_GET['numExtended']) AND $_GET['numExtended'] > 0) {
-                echo '<div><strong>'.$_GET['numExtended'].'</strong> members extended!</div>';
+                echo '<div><strong>'.$_GET['numExtended'].'</strong> '.lang_mod_membership_extend_success.'</div>';
             }
         }
         if (isset($_GET['keywords']) AND $_GET['keywords']) {

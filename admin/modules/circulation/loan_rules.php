@@ -173,12 +173,12 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         while ($ctype_data = $ctype_query->fetch_row()) {
             $ctype_options[] = array($ctype_data[0], $ctype_data[1]);
         }
-        $ctype_options[] = array('0', 'ALL TYPES');
+        $ctype_options[] = array('0', lang_sys_common_all);
     $form->addSelectList('collTypeID', lang_mod_circ_loan_rules_field_collection_type, $ctype_options, $rec_d['coll_type_id'], 'style="width: 50%;"');
     // gmd
         // get gmd data related to this record from database
         $gmd_query = $dbs->query('SELECT gmd_id, gmd_name FROM mst_gmd');
-        $gmd_options[] = array(0, 'ALL GMD');
+        $gmd_options[] = array(0, lang_sys_common_all);
         while ($gmd_data = $gmd_query->fetch_row()) {
             $gmd_options[] = array($gmd_data[0], $gmd_data[1]);
         }

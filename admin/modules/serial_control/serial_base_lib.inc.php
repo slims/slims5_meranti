@@ -193,7 +193,7 @@ class serial
         $_button_grp = '<div style="padding: 3px; background: #999999;"><input type="submit" class="button" name="saveKardexes" value="'.lang_sys_common_form_save.'" /></div>';
 
         // header
-        echo '<div style="padding: 5px; background: #CCCCCC;">Kardex Detail for subscription <strong>'.$this->serial_period.'</strong></div>';
+        echo '<div style="padding: 5px; background: #CCCCCC;">'.lang_mod_serial_subscription_kardex_msg.' <strong>'.$this->serial_period.'</strong></div>';
         if ($_can_read AND $_can_write) {
             echo '<form method="post" name="kardexListForm" id="kardexListForm" action="'.$_SERVER['PHP_SELF'].'">';
             echo $_button_grp;

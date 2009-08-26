@@ -24,7 +24,7 @@ $menu[] = array('Header', lang_mod_report);
 $menu[] = array(lang_mod_report_stat, MODULES_WEB_ROOT_DIR.'reporting/index.php', lang_mod_report_stat_titletag);
 $menu[] = array(lang_mod_report_loan, MODULES_WEB_ROOT_DIR.'reporting/loan_report.php', lang_mod_report_loan_titletag);
 $menu[] = array(lang_mod_report_member, MODULES_WEB_ROOT_DIR.'reporting/member_report.php', lang_mod_report_member_titletag);
-$menu[] = array('Header', 'Other Reports');
+$menu[] = array('Header', lang_mod_report_other);
 // other/custom report menu
 require MODULES_BASE_DIR.'reporting/customs/customs_report_list.inc.php';
 ?>

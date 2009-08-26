@@ -51,11 +51,11 @@ if (!$reportView) {
 ?>
     <!-- filter -->
     <fieldset style="margin-bottom: 3px;">
-    <legend style="font-weight: bold">LOAN LIST BY MEMBER - Report Filter</legend>
+    <legend style="font-weight: bold"><?php echo strtoupper(lang_mod_report_other_loanmember); ?> - <?php echo lang_mod_reporting_form_generic_header; ?></legend>
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
         <div class="divRow">
-            <div class="divRowLabel">Member ID/Member Name</div>
+            <div class="divRowLabel"><?php echo lang_mod_membership_field_member_id.'/'.lang_mod_membership_field_name; ?></div>
             <div class="divRowContent">
             <?php
             echo simbio_form_element::textField('text', 'id_name', '', 'style="width: 50%"');
@@ -63,7 +63,7 @@ if (!$reportView) {
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel">Loan Date From</div>
+            <div class="divRowLabel"><?php echo lang_mod_report_loanmember_form_loanfrom; ?></div>
             <div class="divRowContent">
             <?php
             echo simbio_form_element::dateField('startDate', '2000-01-01');
@@ -71,7 +71,7 @@ if (!$reportView) {
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel">Loan Date Until</div>
+            <div class="divRowLabel"><?php echo lang_mod_report_loanmember_form_loanto; ?></div>
             <div class="divRowContent">
             <?php
             echo simbio_form_element::dateField('untilDate', date('Y-m-d'));
@@ -79,13 +79,13 @@ if (!$reportView) {
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel">Record each page</div>
-            <div class="divRowContent"><input type="text" name="recsEachPage" size="3" maxlength="3" value="<?php echo $num_recs_show; ?>" /> Set between 5 and 200</div>
+            <div class="divRowLabel"><?php echo lang_mod_report_common_form_recspage; ?></div>
+            <div class="divRowContent"><input type="text" name="recsEachPage" size="3" maxlength="3" value="<?php echo $num_recs_show; ?>" /> <?php echo lang_mod_report_common_form_recspage_help; ?></div>
         </div>
     </div>
     <div style="padding-top: 10px; clear: both;">
-    <input type="submit" name="applyFilter" value="Apply Filter" />
-    <input type="button" name="moreFilter" value="Show More Filter Options" onclick="showHideTableRows('filterForm', 1, this, 'Show More Filter Options', 'Hide Filter Options')" />
+    <input type="submit" name="applyFilter" value="<?php echo lang_mod_reporting_form_button_filter_apply; ?>" />
+    <input type="button" name="moreFilter" value="<?php echo lang_mod_reporting_form_button_filter_options_show; ?>" onclick="showHideTableRows('filterForm', 1, this, '<?php echo lang_mod_reporting_form_button_filter_options_show; ?>', '<?php echo lang_mod_reporting_form_button_filter_options_hide; ?>')" />
     <input type="hidden" name="reportView" value="true" />
     </div>
     </form>
@@ -93,7 +93,7 @@ if (!$reportView) {
     <script type="text/javascript">hideRows('filterForm', 1);</script>
     <!-- filter end -->
     <div class="dataListHeader" style="height: 35px;">
-    <input type="button" value="Print Current Page" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;"
+    <input type="button" value="<?php echo lang_mod_reporting_form_button_print; ?>" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;"
     onclick="javascript: reportView.print();" />
     &nbsp;<span id="pagingBox">&nbsp;</span></div>
     <iframe name="reportView" src="<?php echo $_SERVER['PHP_SELF'].'?reportView=true'; ?>" frameborder="0" style="width: 100%; height: 500px;"></iframe>
@@ -105,7 +105,7 @@ if (!$reportView) {
 
     // create datagrid
     $reportgrid = new report_datagrid();
-    $reportgrid->setSQLColumn('m.member_id AS \'Member ID\'');
+    $reportgrid->setSQLColumn('m.member_id AS \''.lang_mod_membership_field_member_id.'\'');
     $reportgrid->setSQLorder('l.due_date DESC');
     $reportgrid->sql_group_by = 'm.member_id';
 
@@ -162,13 +162,13 @@ if (!$reportView) {
                 LEFT JOIN biblio AS b ON i.biblio_id=b.biblio_id
             WHERE (l.is_lent=1 AND l.is_return=0) AND l.member_id=\''.$array_data[0].'\''.( !empty($date_criteria)?$date_criteria:'' ));
         $_buffer = '<div style="font-weight: bold; color: black; font-size: 10pt; margin-bottom: 3px;">'.$member_name.' ('.$array_data[0].')</div>';
-        $_buffer .= '<div style="font-size: 10pt; margin-bottom: 3px;">E-mail : <a href="mailto:'.$member_d[1].'">'.$member_d[1].'</a> - Phone : '.$member_d[2].'</div>';
+        $_buffer .= '<div style="font-size: 10pt; margin-bottom: 3px;">'.lang_mod_membership_field_email.': <a href="mailto:'.$member_d[1].'">'.$member_d[1].'</a> - '.lang_mod_membership_field_phone_number.': '.$member_d[2].'</div>';
         $_buffer .= '<table width="100%" cellspacing="0">';
         while ($ovd_title_d = $ovd_title_q->fetch_assoc()) {
             $_buffer .= '<tr>';
             $_buffer .= '<td valign="top" width="10%">'.$ovd_title_d['item_code'].'</td>';
             $_buffer .= '<td valign="top" width="60%">'.$ovd_title_d['title'].'</td>';
-            $_buffer .= '<td width="30%">Loan Date : '.$ovd_title_d['loan_date'].' &nbsp; Due Date : '.$ovd_title_d['due_date'].'</td>';
+            $_buffer .= '<td width="30%">'.lang_mod_circ_tblheader_loan_date.': '.$ovd_title_d['loan_date'].' &nbsp; '.lang_mod_circ_tblheader_due_date.': '.$ovd_title_d['due_date'].'</td>';
             $_buffer .= '</tr>';
         }
         $_buffer .= '</table>';

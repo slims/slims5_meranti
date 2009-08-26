@@ -298,7 +298,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // item status
         // get item status data from database
         $item_status_q = $dbs->query("SELECT item_status_id, item_status_name FROM mst_item_status");
-        $item_status_options[] = array('0', 'Available');
+        $item_status_options[] = array('0', lang_mod_biblio_item_field_opt_available);
         while ($item_status_d = $item_status_q->fetch_row()) {
             $item_status_options[] = array($item_status_d[0], $item_status_d[1]);
         }
@@ -312,15 +312,15 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // item supplier
         // get item status data from database
         $supplier_q = $dbs->query("SELECT supplier_id, supplier_name FROM mst_supplier");
-        $supplier_options[] = array('0', 'None');
+        $supplier_options[] = array('0', lang_mod_biblio_item_field_opt_none);
         while ($supplier_d = $supplier_q->fetch_row()) {
             $supplier_options[] = array($supplier_d[0], $supplier_d[1]);
         }
     $form->addSelectList('supplierID', lang_mod_biblio_item_field_supplier, $supplier_options, $rec_d['supplier_id']);
     // item source
-        $source_options[] = array('1', 'Buy');
-        $source_options[] = array('2', 'Prize/Grant');
-    $form->addRadio('source', 'Item Source', $source_options, !empty($rec_d['source'])?$rec_d['source']:'1');
+        $source_options[] = array('1', lang_mod_biblio_item_field_opt_buy);
+        $source_options[] = array('2', lang_mod_biblio_item_field_opt_grant);
+    $form->addRadio('source', lang_mod_biblio_item_field_item_source, $source_options, !empty($rec_d['source'])?$rec_d['source']:'1');
     // item invoice
     $form->addTextField('text', 'invoice', lang_mod_biblio_item_field_invoice, $rec_d['invoice'], 'style="width: 100%;"');
     // invoice date
@@ -373,12 +373,12 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $datagrid = new simbio_datagrid();
     if ($can_write) {
         $datagrid->setSQLColumn('item.item_id',
-            'item.item_code AS \'Code\'',
-            'item.biblio_id AS \'Title\'',
-            'ct.coll_type_name AS \'Type\'',
-            'loc.location_name AS \'Location\'',
-            'biblio.classification AS \'Class\'',
-            'item.last_update AS \'Last Update\'');
+            'item.item_code AS \''.lang_mod_biblio_item_field_itemcode.'*\'',
+            'item.biblio_id AS \''.lang_mod_biblio_item_field_title.'\'',
+            'ct.coll_type_name AS \''.lang_mod_biblio_item_field_ctype.'\'',
+            'loc.location_name AS \''.lang_mod_biblio_item_field_location.'\'',
+            'biblio.classification AS \''.lang_mod_biblio_field_class.'\'',
+            'item.last_update AS \''.lang_mod_biblio_item_common_last_update.'\'');
         $datagrid->modifyColumnContent(2, 'callback{showTitleAuthors}');
         $title_field_idx = 2;
     } else {
@@ -422,7 +422,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, ($can_read AND $can_write));
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
         $msg = str_replace('{result->num_rows}', $datagrid->num_rows, lang_sys_common_search_result_info);
-        echo '<div class="infoBox">'.$msg.' : '.$_GET['keywords'].'<div>Query took : <b>'.$datagrid->query_time.'</b> second(s) to complete</div></div>';
+        echo '<div class="infoBox">'.$msg.' : '.$_GET['keywords'].'<div>'.lang_sys_common_query_msg1.' <b>'.$datagrid->query_time.'</b> '.lang_sys_common_query_msg2.'</div></div>';
     }
 
     echo $datagrid_result;

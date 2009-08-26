@@ -268,7 +268,7 @@ if (!$in_pop_up) {
     <hr />
     <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo lang_sys_common_form_search; ?> :
     <input type="text" name="keywords" id="keywords" size="30" />
-    <select name="field"><option value="0">All Field</option><option value="title">Title/Series Title</option><option value="subject">Topics</option><option value="author">Authors</option><option value="isbn">ISBN/ISSN</option><option value="publisher">Publisher</option></select>
+    <select name="field"><option value="0"><?php echo lang_mod_biblio_field_opt_all; ?></option><option value="title"><?php echo lang_mod_biblio_field_opt_title; ?> </option><option value="subject"><?php echo lang_mod_biblio_field_opt_subject; ?></option><option value="author"><?php echo lang_mod_biblio_field_opt_author; ?></option><option value="isbn"><?php echo lang_mod_biblio_field_opt_isbn; ?></option><option value="publisher"><?php echo lang_mod_biblio_field_opt_publisher; ?></option></select>
     <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php?' + $('search').serialize(), 'post')" value="<?php echo lang_sys_common_form_search; ?>" class="button" />
     </form>
 </div>
@@ -351,13 +351,13 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // biblio publish frequencies
         // get frequency data related to this record from database
         $freq_q = $dbs->query('SELECT frequency_id, frequency FROM mst_frequency');
-        $freq_options[] = array('0', 'NONE');
+        $freq_options[] = array('0', lang_mod_biblio_field_opt_none);
         while ($freq_d = $freq_q->fetch_row()) {
             $freq_options[] = array($freq_d[0], $freq_d[1]);
         }
         $str_input = simbio_form_element::selectList('frequencyID', $freq_options, $rec_d['frequency_id']);
         $str_input .= '&nbsp;';
-        $str_input .= ' Use this for Serial publication';
+        $str_input .= ' '.lang_mod_biblio_field_frequency_explain;
     $form->addAnything(lang_mod_masterfile_frequency, $str_input);
     // biblio ISBN/ISSN
     $form->addTextField('text', 'isbn_issn', lang_mod_biblio_field_isbn, $rec_d['isbn_issn'], 'style="width: 40%;"');
@@ -421,16 +421,16 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         $form->addAnything(lang_mod_biblio_field_image, $str_input);
     }
     // biblio file attachment
-    $str_input = '<div class="'.$visibility.'"><a href="javascript: openWin(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_attach.php?biblioID='.$rec_d['biblio_id'].'\', \'popAttach\', 600, 200, true)">Add Attachment</a></div>';
+    $str_input = '<div class="'.$visibility.'"><a href="javascript: openWin(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_attach.php?biblioID='.$rec_d['biblio_id'].'\', \'popAttach\', 600, 200, true)">'.lang_mod_biblio_link_attachment_add.'</a></div>';
     $str_input .= '<iframe name="attachIframe" id="attachIframe" class="borderAll" style="width: 100%; height: 70px;" src="'.MODULES_WEB_ROOT_DIR.'bibliography/iframe_attach.php?biblioID='.$rec_d['biblio_id'].'"></iframe>';
     $form->addAnything(lang_mod_biblio_field_attachment, $str_input);
     // biblio hide from opac
-    $hide_options[] = array('0', 'Show');
-    $hide_options[] = array('1', 'Hide');
+    $hide_options[] = array('0', lang_mod_biblio_field_opt_show);
+    $hide_options[] = array('1', lang_mod_biblio_field_opt_hide);
     $form->addRadio('opacHide', lang_mod_biblio_field_hide_opac, $hide_options, $rec_d['opac_hide']?'1':'0');
     // biblio promote to front page
-    $promote_options[] = array('0', 'Don\'t Promote');
-    $promote_options[] = array('1', 'Promote');
+    $promote_options[] = array('0', lang_mod_biblio_field_opt_promotefalse);
+    $promote_options[] = array('1', lang_mod_biblio_field_opt_promotetrue);
     $form->addRadio('promote', lang_mod_biblio_field_promote, $promote_options, $rec_d['promoted']?'1':'0');
     // biblio labels
         $arr_labels = !empty($rec_d['labels'])?unserialize($rec_d['labels']):array();
@@ -511,14 +511,14 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         $datagrid->setSQLColumn('biblio.biblio_id', 'biblio.biblio_id AS bid',
             'biblio.title AS \''.lang_mod_biblio_field_title.'\'',
             'biblio.isbn_issn AS \''.lang_mod_biblio_field_isbn.'\'',
-            'IF(COUNT(item.item_id)>0, COUNT(item.item_id), \'<strong style="color: #FF0000;">None</strong>\') AS \'Copies\'',
-            'biblio.last_update AS \'Last Update\'');
+            'IF(COUNT(item.item_id)>0, COUNT(item.item_id), \'<strong style="color: #FF0000;">'.lang_mod_biblio_field_copies_none.'</strong>\') AS \''.lang_mod_biblio_field_copies.'\'',
+            'biblio.last_update AS \''.lang_mod_biblio_field_update.'\'');
         $datagrid->modifyColumnContent(2, 'callback{showTitleAuthors}');
     } else {
         $datagrid->setSQLColumn('biblio.biblio_id AS bid', 'biblio.title AS \''.lang_mod_biblio_field_title.'\'',
             'biblio.isbn_issn AS \''.lang_mod_biblio_field_isbn.'\'',
-            'IF(COUNT(item.item_id)>0, COUNT(item.item_id), \'<strong style="color: #FF0000;">None</strong>\') AS \'Copies\'',
-            'biblio.last_update AS \'Last Update\'');
+            'IF(COUNT(item.item_id)>0, COUNT(item.item_id), \'<strong style="color: #FF0000;">'.lang_mod_biblio_field_copies_none.'</strong>\') AS \''.lang_mod_biblio_field_copies.'\'',
+            'biblio.last_update AS \''.lang_mod_biblio_field_update.'\'');
         // modify column value
         $datagrid->modifyColumnContent(1, 'callback{showTitleAuthors}');
     }
@@ -564,7 +564,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, ($can_read AND $can_write));
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
         $msg = str_replace('{result->num_rows}', $datagrid->num_rows, lang_sys_common_search_result_info);
-        echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"<div>Query took : <b>'.$datagrid->query_time.'</b> second(s) to complete</div></div>';
+        echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"<div>'.lang_sys_common_query_msg1.' <b>'.$datagrid->query_time.'</b> '.lang_sys_common_query_msg2.'</div></div>';
     }
 
     echo $datagrid_result;
