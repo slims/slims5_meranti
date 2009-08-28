@@ -4,9 +4,20 @@ Changes Log
 Developers :
 Hendro Wicaksono (hendrowicaksono@yahoo.com)
 Arie Nugraha (dicarve@yahoo.com)
+Wardiyono (wynerst@gmail.com)
+
+Documentation :
+Purwoko (purgeologi@yahoo.com)
+
+Contributors :
+Tobias Zeumer (tzeumer@verweisungsform.de)
+
+THANKS TO OUR USERS AND COMMUNITIES, YOU ARE DEVELOPERS TO!
 
 SENAYAN 3 Stable 11
 =====================================================================
+- Fixed : many untranslated string, thanks to Tobias Zeumer
+- Added : German translations from Tobias Zeumer
 - Bug fixed and optimized on OPAC's search engine.
 - Bugs fixed on custom reports in date filter.
 - Bug fixed for AJAX error in Item Barcode Generator.
