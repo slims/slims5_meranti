@@ -1,8 +1,10 @@
 <?php
-/*Arie Nugraha - 2008
-Hendro Wicaksono - 2008
-Wardiyono - 2008 */
-/* ENGLISH language */
+/*
+ * Arie Nugraha - 2009
+ * Hendro Wicaksono - 2008
+ * Wardiyono - 2008
+ * Tobias Zeumer - 2009
+ENGLISH language */
 
 /* COMMON */
 define('lang_sys_common_data_not_exists', 'ERROR! Data doesnt exists');
@@ -1237,7 +1239,7 @@ define('lang_mod_stocktake_upload_form_button_upload', ' Upload File');
 define('lang_mod_stocktake_upload_alert_success', 'Succesfully upload stock take file ');
 define('lang_mod_stocktake_upload_alert_success_info', ' item codes scanned!');
 /* SERIAL CONTROL MODULE */
-# subcription menu 
+# subcription menu
 define('lang_mod_serial_subscription_header', 'Serial Title');
 define('lang_mod_serial_subscription_close', 'CLOSE');
 define('lang_mod_serial_subscription_kardex', 'View/Edit Kardex Detail');
