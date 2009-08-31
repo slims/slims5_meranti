@@ -38,7 +38,7 @@ $can_read = utility::havePrivilege('system', 'r');
 $can_write = utility::havePrivilege('system', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'.lang_sys_common_no_privilege.'</div>');
+    die('<div class="errorBox">'._('You don\'t have enough privileges to view this section').'</div>');
 }
 
 /* RECORD OPERATION */
@@ -46,7 +46,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
     $groupName = trim(strip_tags($_POST['groupName']));
     // check form validity
     if (empty($groupName)) {
-        utility::jsAlert(lang_sys_conf_group_alert_noempty);
+        utility::jsAlert(_('Group name can\'t be empty')); //mfc
     } else {
         $data['group_name'] = $dbs->escape_string($groupName);
         $data['input_date'] = date('Y-m-d');
@@ -81,9 +81,9 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 }
                 // write log
                 utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'system', $_SESSION['realname'].' update group data ('.$groupName.')');
-                utility::jsAlert(lang_sys_conf_group_alert_update_ok);
+                utility::jsAlert(_('Group Data Successfully Updated'));
                 echo '<script type="text/javascript">parent.setContent(\'mainContent\', parent.getPreviousAJAXurl(), \'post\');</script>';
-            } else { utility::jsAlert(lang_sys_conf_group_alert_update_fail."\nDEBUG : ".$sql_op->error); }
+            } else { utility::jsAlert(_('Group Data FAILED to Updated. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
         } else {
             /* INSERT RECORD MODE */
@@ -109,9 +109,9 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 
                 // write log
                 utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'system', $_SESSION['realname'].' add new group ('.$groupName.')');
-                utility::jsAlert(lang_sys_conf_group_alert_save_ok);
+                utility::jsAlert(_('New Group Data Successfully Saved'));
                 echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'\', \'post\');</script>';
-            } else { utility::jsAlert(lang_sys_conf_group_alert_save_fail."\n".$sql_op->error); }
+            } else { utility::jsAlert(_('Group Data FAILED to Save. Please Contact System Administrator')."\n".$sql_op->error); }
             exit();
         }
     }
@@ -147,10 +147,10 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 
     // error alerting
     if ($error_num == 0) {
-        utility::jsAlert(lang_sys_conf_group_common_alert_delete_success);
+        utility::jsAlert(_('All Data Successfully Deleted'));
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
     } else {
-        utility::jsAlert(lang_sys_conf_group_common_alert_delete_fail);
+        utility::jsAlert(_('Some or All Data NOT deleted successfully!\nPlease contact system administrator'));
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
     }
     exit();
@@ -161,12 +161,12 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner userGroupIcon">
-    <?php echo strtoupper(lang_sys_group); ?> - <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/user_group.php?action=detail', 'get');" class="headerText2"><?php echo lang_sys_group_new_add; ?></a>
-    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/user_group.php', 'get');" class="headerText2"><?php echo lang_sys_group_list; ?></a>
+    <?php echo strtoupper(_('User Group')); ?> - <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/user_group.php?action=detail', 'get');" class="headerText2"><?php echo _('Add New Group'); ?></a>
+    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/user_group.php', 'get');" class="headerText2"><?php echo _('Group List'); ?></a>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo lang_sys_common_form_search_field; ?> :
+    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo _('Search'); ?> :
     <input type="text" name="keywords" size="30" />
-    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/user_group.php?' + $('search').serialize(), 'post')" value="<?php echo lang_sys_common_form_search; ?>" class="button" />
+    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/user_group.php?' + $('search').serialize(), 'post')" value="<?php echo _('Search'); ?>" class="button" />
     </form>
 </div>
 </fieldset>
@@ -175,7 +175,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 /* main content */
 if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'detail')) {
     if (!($can_read AND $can_write)) {
-        die('<div class="errorBox">'.lang_sys_common_no_privilege.'</div>');
+        die('<div class="errorBox">'._('You don\'t have enough privileges to view this section').'</div>');
     }
     /* RECORD FORM */
     $itemID = (integer)isset($_POST['itemID'])?$_POST['itemID']:0;
@@ -184,7 +184,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 
     // create new instance
     $form = new simbio_form_table_AJAX('mainForm', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'], 'post');
-    $form->submit_button_attr = 'name="saveData" value="'.lang_sys_common_form_save_change.'" class="button"';
+    $form->submit_button_attr = 'name="saveData" value="'._('Save').'" class="button"';
 
     // form table attributes
     $form->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
@@ -199,12 +199,12 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         // form record title
         $form->record_title = $rec_d['group_name'];
         // submit button attribute
-        $form->submit_button_attr = 'name="saveData" value="'.lang_sys_common_form_update.'" class="button"';
+        $form->submit_button_attr = 'name="saveData" value="'._('Update').'" class="button"';
     }
 
     /* Form Element(s) */
     // group
-    $form->addTextField('text', 'groupName', lang_sys_conf_group_field_name.'*', $rec_d['group_name'], 'style="width: 60%;"');
+    $form->addTextField('text', 'groupName', _('Group Name').'*', $rec_d['group_name'], 'style="width: 60%;"');
     // privileges
         // get group access data
         $priv_data = array();
@@ -215,12 +215,12 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         }
     $priv_table = '';
     include 'module_priv_form.inc.php';
-    $form->addAnything(lang_sys_conf_group_field_privileges, $priv_table);
+    $form->addAnything(_('Privileges'), $priv_table);
 
     // edit mode messagge
     if ($form->edit_mode) {
         // print out the object
-        echo '<div class="infoBox">'.lang_sys_conf_group_common_edit_info.' : <b>'.$rec_d['group_name'].'</b>  <br />'.lang_sys_conf_group_common_last_update.$rec_d['last_update'].'</div>';
+        echo '<div class="infoBox">'._('You are going to edit Group data').' : <b>'.$rec_d['group_name'].'</b>  <br />'._('Last Update').$rec_d['last_update'].'</div>'; //mfc
     }
     echo $form->printOut();
 } else {
@@ -232,11 +232,11 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $datagrid = new simbio_datagrid();
     if ($can_read AND $can_write) {
         $datagrid->setSQLColumn('ug.group_id',
-            'ug.group_name AS \''.lang_sys_conf_group_field_name.'\'',
-            'ug.last_update AS \''.lang_sys_conf_user_common_last_update.'\'');
+            'ug.group_name AS \''._('Group Name').'\'',
+            'ug.last_update AS \''._('Last Update').'\'');
     } else {
-        $datagrid->setSQLColumn('ug.group_name AS \''.lang_sys_conf_group_field_name.'\'',
-            'ug.last_update AS \''.lang_sys_conf_user_common_last_update.'\'');
+        $datagrid->setSQLColumn('ug.group_name AS \''._('Group Name').'\'',
+            'ug.last_update AS \''._('Last Update').'\'');
     }
     $datagrid->setSQLorder('group_name ASC');
 
@@ -258,7 +258,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // put the result into variables
     $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, ($can_read AND $can_write));
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
-        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, lang_sys_common_search_result_info);
+        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, _('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
         echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
     }
 

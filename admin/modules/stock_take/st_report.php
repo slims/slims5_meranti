@@ -36,14 +36,14 @@ $can_read = utility::havePrivilege('stock_take', 'r');
 $can_write = utility::havePrivilege('stock_take', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'.lang_sys_common_no_privilage.'</div>');
+    die('<div class="errorBox">'._('You don\'t have enough privileges to access this area!').'</div>');
 }
 
 ob_start();
 // check if there is any active stock take proccess
 $stk_query = $dbs->query("SELECT * FROM stock_take WHERE is_active=1");
 if ($stk_query->num_rows < 1) {
-    echo '<div class="errorBox">'.lang_mod_stocktake_report_not_initialize.'</div>';
+    echo '<div class="errorBox">'._('NO stock taking proccess initialized yet!').'</div>';
 } else {
     // get stock take data
     $stk_data = $stk_query->fetch_assoc();
@@ -52,10 +52,10 @@ if ($stk_query->num_rows < 1) {
 ?>
     <fieldset class="menuBox">
         <div class="menuBoxInner reportIcon">
-        <?php echo strtoupper(lang_mod_stocktake_report_page_title); ?>
+        <?php echo strtoupper(_('CURRENT STOCK TAKE REPORT')); ?>
         <hr />
         <form name="printForm" action="<?php echo $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']; ?>" target="submitPrint" id="printForm" method="get" style="display: inline;">
-        <input type="hidden" name="print" value="true" /><input type="submit" value="<?php echo lang_sys_common_form_report; ?>" class="button" />
+        <input type="hidden" name="print" value="true" /><input type="submit" value="<?php echo _('Download Report'); ?>" class="button" />
         </form>
         <iframe name="submitPrint" style="visibility: hidden; width: 0; height: 0;"></iframe>
         </div>
@@ -65,40 +65,40 @@ if ($stk_query->num_rows < 1) {
     $table = new simbio_table();
     $table->table_attr = 'align="center" id="dataList" cellpadding="3" cellspacing="0"';
     // make an array for report table row
-    $report_row[lang_mod_stocktake_init_field_name] = $stk_data['stock_take_name'];
-    $report_row[lang_mod_stocktake_total] = $stk_data['total_item_stock_taked'];
+    $report_row[_('Stock Take Name')] = $stk_data['stock_take_name'];
+    $report_row[_('Total Item Stock Taked')] = $stk_data['total_item_stock_taked'];
     // stock take item lost
-    $report_row[lang_mod_stocktake_lost_total] = intval($stk_data['total_item_lost']);
-    if ($report_row[lang_mod_stocktake_lost_total] < 1) {
-        $report_row[lang_mod_stocktake_lost_total] = lang_mod_stocktake_tblfield_none;
+    $report_row[_('Total Item Lost')] = intval($stk_data['total_item_lost']);
+    if ($report_row[_('Total Item Lost')] < 1) {
+        $report_row[_('Total Item Lost')] = _('None');
     }
     // stock take item on loan
     if (empty($stk_data['total_item_loan'])) {
-        $report_row[lang_mod_stocktake_loan_total] = lang_mod_stocktake_tblfield_none;
+        $report_row[_('Total Item On Loan')] = _('None');
     } else {
-        $report_row[lang_mod_stocktake_loan_total] = $stk_data['total_item_loan'];
+        $report_row[_('Total Item On Loan')] = $stk_data['total_item_loan'];
     }
     // stock take total checked item
     $checked_count = $stk_data['total_item_stock_taked']-$stk_data['total_item_lost'];
     $checked_procent = floor(($checked_count/$stk_data['total_item_stock_taked'])*100);
     $progress_bar = '<div style="height: 15px; border: 1px solid #999999; background-color: red;"><div style="height: 15px; width: '.$checked_procent.'%; background-color: #3161ff;">&nbsp;</div></div>';
-    $report_row[lang_mod_stocktake_total_checked] = $checked_count.' ('.$checked_procent.'%) '.$progress_bar;
+    $report_row[_('Total Checked/Scanned Items')] = $checked_count.' ('.$checked_procent.'%) '.$progress_bar;
     // stock take participants data
-    $report_row[lang_mod_stocktake_participants] = '<ul>';
+    $report_row[_('Stock Take Participants')] = '<ul>';
         // get other stock take users
         $st_other_users_q = $dbs->query('SELECT DISTINCT checked_by, COUNT(item_id) AS num_count FROM stock_take_item GROUP BY checked_by ORDER BY `num_count` DESC');
         while ($st_other_users_d = $st_other_users_q->fetch_row()) {
             if ($st_other_users_d[0] != $stk_data['stock_take_users']) {
-                $report_row[lang_mod_stocktake_participants] .= '<li>'.$st_other_users_d[0].' ('.$st_other_users_d[1].' '.lang_mod_stocktake_participants_checked.')</li>';
+                $report_row[_('Stock Take Participants')] .= '<li>'.$st_other_users_d[0].' ('.$st_other_users_d[1].' '._('items already checked').')</li>'; //mfc
             }
         }
         // destroy query object
         unset($st_other_users_q);
-    $report_row[lang_mod_stocktake_participants] .= '</ul>';
+    $report_row[_('Stock Take Participants')] .= '</ul>';
     // stock take start date
-    $report_row[lang_mod_stocktake_init_field_start_date] = nl2br($stk_data['start_date']);
+    $report_row[_('Start Date')] = nl2br($stk_data['start_date']);
     // stock take end date
-    $report_row[lang_mod_stocktake_init_field_end_date] = nl2br($stk_data['end_date']);
+    $report_row[_('End Date')] = nl2br($stk_data['end_date']);
 
     // initial row count
     $row = 1;
@@ -118,13 +118,13 @@ if ($stk_query->num_rows < 1) {
     $row_class = 'alterCell';
     $arr_status = array('m', 'e', 'l');
     $class_count_str = '<table align="center" class="border" style="width: 100%; margin-top: 5px;" cellpadding="3" cellspacing="0">';
-    $class_count_str .= '<tr><td class="dataListHeader">'.lang_mod_biblio_field_class.'</td>
-        <td class="dataListHeader">'.lang_mod_stocktake_tblheader_lost.'</td>
-        <td class="dataListHeader">'.lang_mod_stocktake_tblheader_exists.'</td>
-        <td class="dataListHeader">'.lang_mod_stocktake_tblheader_loan.'</td></tr>';
+    $class_count_str .= '<tr><td class="dataListHeader">'._('Classification').'</td>
+        <td class="dataListHeader">'._('Lost Items').'</td>
+        <td class="dataListHeader">'._('Existing Items').'</td>
+        <td class="dataListHeader">'._('On Loan Items').'</td></tr>';
     while ($class_num < 10) {
         $row_class = ($class_num%2 == 0)?'alterCell':'alterCell2';
-        $class_count_str .= '<tr><td class="'.$row_class.'"><strong>'.$class_num.'</strong>'.lang_mod_stocktake_tblfield_classes.'</td>';
+        $class_count_str .= '<tr><td class="'.$row_class.'"><strong>'.$class_num.'</strong>'._(' classes').'</td>'; //mfc
         foreach ($arr_status as $status) {
             $cls_q = $dbs->query("SELECT COUNT(item_code) FROM stock_take_item WHERE TRIM(classification) LIKE '$class_num%' AND status='$status'");
             $cls_d = $cls_q->fetch_row();
@@ -156,10 +156,10 @@ if ($stk_query->num_rows < 1) {
 
     /* COLLECTION TYPE ITEM STATUS */
     $coll_type_count_str = '<table align="center" class="border" style="width: 100%; margin-top: 5px;" cellpadding="3" cellspacing="0">';
-    $coll_type_count_str .= '<tr><td class="dataListHeader">'.lang_mod_masterfile_colltype_form_field_colltype.'</td>
-        <td class="dataListHeader">'.lang_mod_stocktake_tblheader_lost.'</td>
-        <td class="dataListHeader">'.lang_mod_stocktake_tblheader_exists.'</td>
-        <td class="dataListHeader">'.lang_mod_stocktake_tblheader_loan.'</td></tr>';
+    $coll_type_count_str .= '<tr><td class="dataListHeader">'._('Collection Type').'</td>
+        <td class="dataListHeader">'._('Lost Items').'</td>
+        <td class="dataListHeader">'._('Existing Items').'</td>
+        <td class="dataListHeader">'._('On Loan Items').'</td></tr>';
     $ct_q = $dbs->query("SELECT DISTINCT coll_type_name FROM stock_take_item");
     $row = 1;
     while ($ct_d = $ct_q->fetch_row()) {

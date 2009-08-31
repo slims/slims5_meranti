@@ -22,7 +22,7 @@
 
 /* Location list */
 ob_start();
-echo '<option value="0">'.lang_opac_form_opt_location.'</option>';
+echo '<option value="0">'._('All Locations').'</option>';
 $loc_q = $dbs->query('SELECT location_name FROM mst_location LIMIT 50');
 while ($loc_d = $loc_q->fetch_row()) {
     echo '<option value="'.$loc_d[0].'">'.$loc_d[0].'</option>';
@@ -31,7 +31,7 @@ $location_list = ob_get_clean();
 
 /* Collection type List */
 ob_start();
-echo '<option value="0">'.lang_opac_form_opt_collection.'</option>';
+echo '<option value="0">'._('All Collections').'</option>';
 $colltype_q = $dbs->query('SELECT coll_type_name FROM mst_coll_type LIMIT 50');
 while ($colltype_d = $colltype_q->fetch_row()) {
     echo '<option value="'.$colltype_d[0].'">'.$colltype_d[0].'</option>';
@@ -40,7 +40,7 @@ $colltype_list = ob_get_clean();
 
 /* GMD List */
 ob_start();
-echo '<option value="0">'.lang_opac_form_opt_gmd.'</option>';
+echo '<option value="0">'._('All GMD/Media').'</option>';
 $gmd_q = $dbs->query('SELECT gmd_name FROM mst_gmd LIMIT 50');
 while ($gmd_d = $gmd_q->fetch_row()) {
     echo '<option value="'.$gmd_d[0].'">'.$gmd_d[0].'</option>';

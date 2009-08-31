@@ -38,7 +38,7 @@ $can_read = utility::havePrivilege('system', 'r');
 $can_write = utility::havePrivilege('system', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'.lang_sys_common_no_privilege.'</div>');
+    die('<div class="errorBox">'._('You don\'t have enough privileges to view this section').'</div>');
 }
 
 // log data save action
@@ -65,15 +65,15 @@ if (isset($_POST['clearLogs']) AND $can_write AND $_SESSION['uid'] == 1) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner syslogIcon">
-    <?php echo strtoupper(lang_sys_syslog);?> -
+    <?php echo strtoupper(_('System Log'));?> -
     <?php if ($_SESSION['uid'] == 1) { ?>
     <a href="#" onclick="confSubmit('clearLogsForm', 'Are you SURE to completely clear system log data? This action cannot be undo!')" class="headerText2" style="color: red;">CLEAR LOGS</a>
     &nbsp; <a href="#" onclick="confSubmit('saveLogsForm', 'Save Logs record to file?')" class="headerText2">SAVE LOGS TO FILE</a>
     <?php } ?>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo lang_sys_common_form_search_field; ?> :
+    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo _('Search'); ?> :
     <input type="text" name="keywords" size="30" />
-    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/sys_log.php?' + $('search').serialize(), 'get')" value="<?php echo lang_sys_common_form_search; ?>" class="button" />
+    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/sys_log.php?' + $('search').serialize(), 'get')" value="<?php echo _('Search'); ?>" class="button" />
     </form>
     <!-- LOG CLEARANCE FORM -->
     <?php if ($_SESSION['uid'] == 1) { ?>
@@ -92,9 +92,9 @@ $table_spec = 'system_log AS sl';
 // create datagrid
 $datagrid = new simbio_datagrid();
 $datagrid->setSQLColumn(
-    'sl.log_date AS \''.lang_sys_conf_log_field_time.'\'',
-    'sl.log_location AS \''.lang_sys_conf_log_field_location.'\'',
-    'sl.log_msg AS \''.lang_sys_conf_log_field_message.'\'');
+    'sl.log_date AS \''._('Time').'\'',
+    'sl.log_location AS \''._('Location').'\'',
+    'sl.log_msg AS \''._('Message').'\'');
 $datagrid->setSQLorder('sl.log_date DESC');
 
 // is there any search
@@ -127,7 +127,7 @@ $datagrid->disableSort('Message');
 // put the result into variables
 $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 50, false);
 if (isset($_GET['keywords']) AND $_GET['keywords']) {
-    $msg = str_replace('{result->num_rows}', $datagrid->num_rows, lang_sys_common_search_result_info);
+    $msg = str_replace('{result->num_rows}', $datagrid->num_rows, _('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
     echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
 }
 

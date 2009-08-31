@@ -34,17 +34,17 @@ $can_read = utility::havePrivilege('bibliography', 'r');
 $can_write = utility::havePrivilege('bibliography', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'.lang_sys_common_unauthorized.'</div>');
+    die('<div class="errorBox">'._('You are not authorized to view this section').'</div>');
 }
 /* search form */
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner itemOutIcon">
-    <?php echo lang_mod_biblio_item_checkout; ?>
+    <?php echo _('Checkout Items'); ?>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo lang_sys_common_form_search_field; ?> :
+    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo _('Search'); ?> :
     <input type="text" name="keywords" size="30" />
-    <input type="button" id="doSearch" onclick="javascript: setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/checkout_item.php?' + $('search').serialize(), 'post');" value="<?php echo lang_sys_common_form_search; ?>" class="button" />
+    <input type="button" id="doSearch" onclick="javascript: setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/checkout_item.php?' + $('search').serialize(), 'post');" value="<?php echo _('Search'); ?>" class="button" />
     </form>
 </div>
 </fieldset>
@@ -58,11 +58,11 @@ $table_spec = 'loan AS l
 
 // create datagrid
 $datagrid = new simbio_datagrid();
-$datagrid->setSQLColumn("i.item_code AS '".lang_mod_circ_tblheader_item_code."'",
-    "m.member_id AS '".lang_mod_circ_field_member_id."'",
-    "b.title AS '".lang_mod_circ_tblheader_title."'",
-    "l.loan_date AS '".lang_mod_circ_tblheader_loan_date."'",
-    "l.due_date AS '".lang_mod_circ_tblheader_due_date."'");
+$datagrid->setSQLColumn("i.item_code AS '"._('Item Code')."'",
+    "m.member_id AS '"._('Member ID')."'",
+    "b.title AS '"._('Title')."'",
+    "l.loan_date AS '"._('Loan Date')."'",
+    "l.due_date AS '"._('Due Date')."'");
 $datagrid->setSQLorder("l.loan_date DESC");
 
 // change the record order
@@ -103,7 +103,7 @@ $datagrid->column_width = array(0 => '12%', 1 => '12%', 2 => '50%');
 $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, false);
 if (isset($_GET['keywords']) AND $_GET['keywords']) {
     echo '<div class="infoBox">';
-    $msg = str_replace('{result->num_rows}', $datagrid->num_rows, lang_sys_common_search_result_info);
+    $msg = str_replace('{result->num_rows}', $datagrid->num_rows, _('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
     echo $msg.' : "'.$_GET['keywords'].'"</div>';
 }
 

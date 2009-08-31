@@ -32,17 +32,17 @@ $can_read = utility::havePrivilege('system', 'r');
 $can_write = utility::havePrivilege('system', 'w');
 
 if (!($can_read AND $can_write)) {
-    die('<div class="errorBox">'.lang_sys_common_no_privilege.'</div>');
+    die('<div class="errorBox">'._('You don\'t have enough privileges to view this section').'</div>');
 }
 /* search form */
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner backupIcon">
-    <?php echo strtoupper(lang_sys_backup); ?> - <a onMouseOver="return noStatus()" href="javascript: setContent('backupStat', '<?php echo MODULES_WEB_ROOT_DIR; ?>/system/backup_proc.php', 'post', 'start=true');" class="headerText2"><?php echo lang_sys_backup_new_add; ?></a>
+    <?php echo strtoupper(_('Database Backup')); ?> - <a onMouseOver="return noStatus()" href="javascript: setContent('backupStat', '<?php echo MODULES_WEB_ROOT_DIR; ?>/system/backup_proc.php', 'post', 'start=true');" class="headerText2"><?php echo _('Start New Backup'); ?></a>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo lang_sys_common_form_search_field; ?> :
+    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo _('Search'); ?> :
     <input type="text" name="keywords" size="30" />
-    <input type="button" id="doSearch" onClick="setContent('backupStat', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/backup_proc.php?' + $('search').serialize(), 'post')" value="<?php echo lang_sys_common_form_search; ?>" class="button" />
+    <input type="button" id="doSearch" onClick="setContent('backupStat', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/backup_proc.php?' + $('search').serialize(), 'post')" value="<?php echo _('Search'); ?>" class="button" />
     </form>
 </div>
 </fieldset>

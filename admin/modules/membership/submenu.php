@@ -20,12 +20,12 @@
 
 /* Membership module submenu items */
 
-$menu[] = array('Header', lang_mod_membership);
-$menu[] = array(lang_mod_membership_view_member_list, MODULES_WEB_ROOT_DIR.'membership/index.php', lang_mod_membership_view_member_list_titletag);
-$menu[] = array(lang_mod_membership_add_new_member, MODULES_WEB_ROOT_DIR.'membership/index.php?action=detail', lang_mod_membership_add_new_member_titletag);
-$menu[] = array(lang_mod_membership_member_type, MODULES_WEB_ROOT_DIR.'membership/member_type.php', lang_mod_membership_member_type_titletag);
-$menu[] = array('Header', lang_sys_common_tools);
-$menu[] = array(lang_mod_membership_card_generator, MODULES_WEB_ROOT_DIR.'membership/member_card_generator.php', lang_mod_membership_card_generator_titletag);
-$menu[] = array(lang_mod_membership_import_data, MODULES_WEB_ROOT_DIR.'membership/import.php', lang_mod_membership_import_data_titletag);
-$menu[] = array(lang_mod_membership_export_data, MODULES_WEB_ROOT_DIR.'membership/export.php', lang_mod_membership_export_data_titletag);
+$menu[] = array('Header', _('Membership'));
+$menu[] = array(_('View Member List'), MODULES_WEB_ROOT_DIR.'membership/index.php', _('View Library Member List'));
+$menu[] = array(_('Add New Member'), MODULES_WEB_ROOT_DIR.'membership/index.php?action=detail', _('Add New Library Member Data'));
+$menu[] = array(_('Member Type'), MODULES_WEB_ROOT_DIR.'membership/member_type.php', _('View and modify member type'));
+$menu[] = array('Header', _('Tools'));
+$menu[] = array(_('Member Card Printing'), MODULES_WEB_ROOT_DIR.'membership/member_card_generator.php', _('Print Member Card'));
+$menu[] = array(_('Import Data'), MODULES_WEB_ROOT_DIR.'membership/import.php', _('Import Members Data From CSV File'));
+$menu[] = array(_('Export Data'), MODULES_WEB_ROOT_DIR.'membership/export.php', _('Export Members Data To CSV File'));
 ?>

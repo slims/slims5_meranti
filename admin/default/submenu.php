@@ -18,18 +18,18 @@
  *
  */
 
-$menu[] = array('Header', lang_mod_default_home_panel);
-$menu[] = array(lang_mod_default_home_user_profile, MODULES_WEB_ROOT_DIR.'system/app_user.php?changecurrent=true&action=detail', lang_mod_default_home_user_profile_titletag);
+$menu[] = array('Header', _('Panel'));
+$menu[] = array(_('Change User Profiles'), MODULES_WEB_ROOT_DIR.'system/app_user.php?changecurrent=true&action=detail', _('Change Current User Profiles and Password'));
 if (utility::havePrivilege('bibliography', 'r') AND utility::havePrivilege('bibliography', 'w')) {
-    $menu[] = array(lang_mod_biblio_add, MODULES_WEB_ROOT_DIR.'bibliography/index.php?action=detail', lang_mod_biblio_add_titletag);
+    $menu[] = array(_('Add New Bibliography'), MODULES_WEB_ROOT_DIR.'bibliography/index.php?action=detail', _('Add New Bibliographic Data/Catalog'));
 }
 if (utility::havePrivilege('circulation', 'r') AND utility::havePrivilege('circulation', 'w')) {
-    $menu[] = array(lang_mod_circ_start, MODULES_WEB_ROOT_DIR.'circulation/index.php?action=start', lang_mod_circ_start_titletag);
+    $menu[] = array(_('Start Transaction'), MODULES_WEB_ROOT_DIR.'circulation/index.php?action=start', _('Start Circulation Transaction Proccess'));
 }
 if (utility::havePrivilege('circulation', 'r') AND utility::havePrivilege('circulation', 'w')) {
-    $menu[] = array(lang_mod_circ_quick_return, MODULES_WEB_ROOT_DIR.'circulation/quick_return.php', lang_mod_circ_quick_return_titletag);
+    $menu[] = array(_('Quick Return'), MODULES_WEB_ROOT_DIR.'circulation/quick_return.php', _('Quick Return Collection'));
 }
 if (utility::havePrivilege('membership', 'r') AND utility::havePrivilege('membership', 'w')) {
-    $menu[] = array(lang_mod_membership_add_new_member, MODULES_WEB_ROOT_DIR.'membership/index.php?action=new', lang_mod_membership_add_new_member_titletag);
+    $menu[] = array(_('Add New Member'), MODULES_WEB_ROOT_DIR.'membership/index.php?action=new', _('Add New Library Member Data'));
 }
 ?>

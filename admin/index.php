@@ -57,7 +57,7 @@ $sub_menu = $module->generateSubMenu(($current_module AND $can_read)?$current_mo
 // start the output buffering for main content
 ob_start();
 // info
-$info = lang_sys_common_welcome.' <strong>'.$_SESSION['realname'].'</strong>';
+$info = _('Welcome To The Library Automation System, you are currently logged in as').' <strong>'.$_SESSION['realname'].'</strong>'; //mfc
 // set some javascript vars
 echo '<script type="text/javascript">';
 echo 'lastStr = \''.addslashes($info).'\';';

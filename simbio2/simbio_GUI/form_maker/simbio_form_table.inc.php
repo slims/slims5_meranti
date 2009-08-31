@@ -91,16 +91,8 @@ class simbio_form_table extends simbio_form_maker
         $_edit_link = '';
         $_delete_button = '';
         $_back_button = '';
-        if (defined('lang_sys_common_form_delete')) {
-            $_del_value = lang_sys_common_form_delete;
-        } else {
-            $_del_value = 'Delete Record';
-        }
-        if (defined('lang_sys_common_form_cancel')) {
-            $_cancel_value = lang_sys_common_form_cancel;
-        } else {
-            $_cancel_value = 'Cancel';
-        }
+				$_del_value = _('Delete Record');
+        $_cancel_value = _('Cancel');
 
         // check if we are on edit form mode
         if ($this->edit_mode) {

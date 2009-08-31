@@ -43,7 +43,7 @@ ob_start();
 <script type="text/javascript">
 function confirmProcess(intReserveID, strTitle)
 {
-    var confirmBox = confirm('<?php echo lang_mod_circ_loan_reserve_confirm_delete; ?>' + "\n" + strTitle);
+    var confirmBox = confirm('<?php echo _('Are you sure to remove reservation for'); ?>' + "\n" + strTitle); //mfc
     if (confirmBox) {
         // fill the hidden form value
         document.reserveHiddenForm.reserveID.value = intReserveID;
@@ -57,14 +57,14 @@ function confirmProcess(intReserveID, strTitle)
 <!--item loan form-->
 <div style="padding: 5px; background-color: #CCCCCC;">
     <form name="reserveForm" id="search" action="circulation_action.php" method="post" style="display: inline;">
-        <?php echo lang_mod_circ_reserve_field_search_collection; ?> :<br />
+        <?php echo _('Search Collection'); ?> :<br />
         <?php
         // AJAX expression
         $ajax_exp = "ajaxFillSelect('item_AJAX_lookup_handler.php', 'item', 'i.item_code:title', 'reserveItemID', $('bib_search_str').getValue())";
         $biblio_options[] = array('0', 'Title');
         echo simbio_form_element::textField('text', 'bib_search_str', '', 'style="width: 10%;" onkeyup="'.$ajax_exp.'"');
         echo simbio_form_element::selectList('reserveItemID', $biblio_options, '', 'class="marginTop" style="width: 70%;"');
-        echo simbio_form_element::textField('submit', 'addReserve', lang_mod_circ_reserve_button_add_reserve);
+        echo simbio_form_element::textField('submit', 'addReserve', _('Add Reserve'));
         ?>
     </form>
 </div>
@@ -84,7 +84,7 @@ if (isset($_SESSION['memberID'])) {
     $reserve_list->table_header_attr = 'class="dataListHeader" style="font-weight: bold;"';
     $reserve_list->highlight_row = true;
     // table header
-    $headers = array(lang_mod_circ_tblheader_remove, lang_mod_circ_tblheader_title, lang_mod_circ_tblheader_item_code, lang_mod_circ_tblheader_reserve_date);
+    $headers = array(_('Remove'), _('Title'), _('Item Code'), _('Reserve Date'));
     $reserve_list->setHeader($headers);
     // row number init
     $row = 1;
@@ -98,11 +98,11 @@ if (isset($_SESSION['memberID'])) {
         $avail_q = $dbs->query("SELECT COUNT(loan_id) FROM loan WHERE item_code='".$reserve_list_d['item_code']."' AND is_lent=1 AND is_return=0");
         $avail_d = $avail_q->fetch_row();
         if ($avail_d[0] < 1) {
-            $reserve_list_d['title'] .= ' - <strong>'.lang_mod_circ_loan_reserve_status.'</strong>';
+            $reserve_list_d['title'] .= ' - <strong>'.strtoupper(_('Available')).'</strong>';
         }
         // check if reservation are already expired
         if ( (strtotime(date('Y-m-d'))-strtotime($reserve_list_d['reserve_date']))/(3600*24) > $sysconf['reserve_expire_periode'] ) {
-            $reserve_list_d['title'] .= ' - <strong style="color: red;">'.lang_mod_circ_loan_reserve_expired.'</strong>';
+            $reserve_list_d['title'] .= ' - <strong style="color: red;">'._('ALREADY EXPIRED').'</strong>';
         }
         // row colums array
         $fields = array(

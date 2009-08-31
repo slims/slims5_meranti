@@ -35,7 +35,7 @@ $can_read = utility::havePrivilege('serial_control', 'r');
 $can_write = utility::havePrivilege('serial_control', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'.lang_sys_common_unauthorized.'</div>');
+    die('<div class="errorBox">'._('You are not authorized to view this section').'</div>');
 }
 
 // page title
@@ -55,13 +55,13 @@ $serial = new serial($dbs, $serialID);
 if (isset($_POST['saveKardexes'])) {
     // save kardexes
     $serial->saveKardexes();
-    utility::jsAlert(lang_mod_serial_alert_02);
+    utility::jsAlert(_('Kardex data updated!'));
 } else if (isset($_POST['remove'])) {
     // remove kardex
     $removeID = (integer)$_POST['remove'];
     $removed = $serial->deleteKardex($removeID);
     if ($removed) {
-        utility::jsAlert(lang_mod_serial_alert_03);
+        utility::jsAlert(_('Kardex data deleted!'));
     }
 }
 // view kardexes list

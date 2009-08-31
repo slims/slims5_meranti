@@ -33,7 +33,7 @@ $can_read = utility::havePrivilege('bibliography', 'r');
 $can_write = utility::havePrivilege('bibliography', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'.lang_sys_common_unauthorized.'</div>');
+    die('<div class="errorBox">'._('You are not authorized to view this section').'</div>');
 }
 
 if (!extension_loaded('yaz')) {
@@ -330,12 +330,12 @@ if (isset($_GET['keywords']) AND $can_read) {
 <div class="menuBoxInner biblioIcon">
     Z3950
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo lang_sys_common_form_search; ?> :
+    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo _('Search'); ?> :
     <input type="text" name="keywords" id="keywords" size="30" />
-    <select name="field"><option value="isbn"><?php echo lang_mod_biblio_field_opt_isbn; ?></option><option value="ti"><?php echo lang_mod_biblio_field_opt_title; ?></option><option value="au"><?php echo lang_mod_biblio_field_opt_author; ?></option></select>
-    <input type="button" id="doSearch" onclick="setContent('searchResult', '<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/z3950.php?' + $('search').serialize(), 'get')" value="<?php echo lang_sys_common_form_search; ?>" class="button" />
+    <select name="field"><option value="isbn"><?php echo _('ISBN/ISSN'); ?></option><option value="ti"><?php echo _('Title/Series Title'); ?></option><option value="au"><?php echo _('Authors'); ?></option></select>
+    <input type="button" id="doSearch" onclick="setContent('searchResult', '<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/z3950.php?' + $('search').serialize(), 'get')" value="<?php echo _('Search'); ?>" class="button" />
     </form>
-    <div><?php echo lang_mod_biblio_tools_z3950_connection; ?></div>
+    <div><?php echo _('* Please make sure you have a working Internet connection.'); ?></div>
 </div>
 </fieldset>
 <script type="text/javascript">

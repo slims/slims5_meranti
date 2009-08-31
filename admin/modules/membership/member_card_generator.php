@@ -45,7 +45,7 @@ $max_print = 10;
 if (isset($_GET['action']) AND $_GET['action'] == 'clear') {
     // update print queue count object
     echo '<script type="text/javascript">parent.$(\'queueCount\').update(\'0\');</script>';
-    utility::jsAlert(lang_mod_biblio_common_print_cleared);
+    utility::jsAlert(_('Print queue cleared!'));
     unset($_SESSION['card']);
     exit();
 }
@@ -88,12 +88,12 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
     }
     echo '</script>';
     if (isset($limit_reach)) {
-        $msg = str_replace('{max_print}', $max_print, lang_mod_biblio_alert_print_no_add_queue);
+        $msg = str_replace('{max_print}', $max_print, _('Selected items NOT ADDED to print queue. Only {max_print} can be printed at once')); //mfc
         utility::jsAlert($msg);
     } else {
         // update print queue count object
         echo '<script type="text/javascript">parent.$(\'queueCount\').update(\''.$print_count.'\');</script>';
-        utility::jsAlert(lang_mod_biblio_alert_print_add_ok);
+        utility::jsAlert(_('Selected items added to print queue'));
     }
     exit();
 }
@@ -102,11 +102,11 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
 if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     // check if label session array is available
     if (!isset($_SESSION['card'])) {
-        utility::jsAlert(lang_mod_biblio_common_print_no_data);
+        utility::jsAlert(_('There is no data to print!'));
         die();
     }
     if (count($_SESSION['card']) < 1) {
-        utility::jsAlert(lang_mod_biblio_common_print_no_data);
+        utility::jsAlert(_('There is no data to print!'));
         die();
     }
     // concat all ID together
@@ -162,9 +162,9 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
             $html_str .= '<img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/persons/'.$card['member_image'].'" border="0" />';
             $html_str .= '</div>';
             $html_str .= '<div id="bio">';
-            $html_str .= '<div>'.( $card_include_field_label?lang_mod_membership_field_member_id.' : ':'' ).'<strong>'.$card['member_id'].'</strong></div>';
-            $html_str .= '<div>'.( $card_include_field_label?lang_mod_membership_field_name.' : ':'' ).'<strong>'.$card['member_name'].'</strong></div>';
-            $html_str .= '<div>'.( $card_include_field_label?lang_mod_membership_field_membership_type.' : ':'' ).'<strong>'.$card['member_type_name'].'</strong></div>';
+            $html_str .= '<div>'.( $card_include_field_label?_('Member ID').' : ':'' ).'<strong>'.$card['member_id'].'</strong></div>';
+            $html_str .= '<div>'.( $card_include_field_label?_('Member Name').' : ':'' ).'<strong>'.$card['member_name'].'</strong></div>';
+            $html_str .= '<div>'.( $card_include_field_label?_('Membership Type').' : ':'' ).'<strong>'.$card['member_type_name'].'</strong></div>';
             $html_str .= '<div style="text-align: center;"><img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/barcodes/'.str_replace(array(' '), '_', $card['member_id']).'.png" style="width: '.$card_barcode_scale.'%; margin-top: 10px;" border="0" /></div>';
             $html_str .= '</div>';
             $html_str .= '</div>';
@@ -191,20 +191,20 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner printIcon">
-    <?php echo strtoupper(lang_mod_membership_card_generator); ?> - <a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_card_generator.php?action=print" class="headerText2"><?php echo lang_mod_biblio_tools_card_generator_print_select; ?></a>
-    &nbsp;<a onmouseover="return noStatus()" target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_card_generator.php?action=clear" class="headerText2" style="color: #FF0000;"><?php echo lang_mod_biblio_tools_card_generator_print_clear; ?></a>
+    <?php echo strtoupper(_('Member Card Printing')); ?> - <a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_card_generator.php?action=print" class="headerText2"><?php echo _('Print Member Cards for Selected Data'); ?></a>
+    &nbsp;<a onmouseover="return noStatus()" target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_card_generator.php?action=clear" class="headerText2" style="color: #FF0000;"><?php echo _('Clear Print Queue'); ?></a>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo lang_sys_common_form_search_field; ?>:
+    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo _('Search'); ?>:
     <input type="text" name="keywords" size="30" />
-    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_card_generator.php?' + $('search').serialize(), 'post')" value="<?php echo lang_sys_common_form_search; ?>" class="button" />
+    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_card_generator.php?' + $('search').serialize(), 'post')" value="<?php echo _('Search'); ?>" class="button" />
     </form>
     <div style="margin-top: 3px;">
     <?php
-    echo lang_mod_biblio_tools_common_print_msg1.' <font style="color: #FF0000">'.$max_print.'</font> '.lang_mod_biblio_tools_common_print_msg2.' ';
+    echo _('Maximum').' <font style="color: #FF0000">'.$max_print.'</font> '._('records can be printed at once. Currently there is').' '; //mfc
     if (isset($_SESSION['card'])) {
         echo '<font id="queueCount" style="color: #FF0000">'.count($_SESSION['card']).'</font>';
     } else { echo '<font id="queueCount" style="color: #FF0000">0</font>'; }
-    echo ' '.lang_mod_biblio_tools_common_print_msg3;
+    echo ' '._('in queue waiting to be printed.'); //mfc
     ?>
     </div>
 </div>
@@ -218,9 +218,9 @@ $table_spec = 'member AS m
 // create datagrid
 $datagrid = new simbio_datagrid();
 $datagrid->setSQLColumn('m.member_id',
-    'm.member_id AS \''.lang_mod_membership_field_member_id.'\'',
-    'm.member_name AS \''.lang_mod_membership_field_name.'\'',
-    'mt.member_type_name AS \''.lang_mod_membership_field_membership_type.'\'');
+    'm.member_id AS \''._('Member ID').'\'',
+    'm.member_name AS \''._('Member Name').'\'',
+    'mt.member_type_name AS \''._('Membership Type').'\'');
 $datagrid->setSQLorder('m.last_update DESC');
 // is there any search
 if (isset($_GET['keywords']) AND $_GET['keywords']) {
@@ -244,16 +244,16 @@ $datagrid->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacin
 $datagrid->table_header_attr = 'class="dataListHeader" style="font-weight: bold;"';
 // edit and checkbox property
 $datagrid->edit_property = false;
-$datagrid->chbox_property = array('itemID', lang_sys_common_tblheader_add);
-$datagrid->chbox_action_button = lang_mod_biblio_common_form_print_queue;
-$datagrid->chbox_confirm_msg = lang_mod_biblio_common_print_queue_confirm;
+$datagrid->chbox_property = array('itemID', _('Add'));
+$datagrid->chbox_action_button = _('Add To Print Queue');
+$datagrid->chbox_confirm_msg = _('Add to print queue?');
 $datagrid->column_width = array('10%', '70%', '15%');
 // set checkbox action URL
 $datagrid->chbox_form_URL = $_SERVER['PHP_SELF'];
 // put the result into variables
 $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, $can_read);
 if (isset($_GET['keywords']) AND $_GET['keywords']) {
-    echo '<div class="infoBox">'.lang_mod_membership_common_found_text_1.' '.$datagrid->num_rows.' '.lang_mod_membership_common_found_text_2.': "'.$_GET['keywords'].'"</div>';
+    echo '<div class="infoBox">'._('Found').' '.$datagrid->num_rows.' '._('from your search with keyword').': "'.$_GET['keywords'].'"</div>'; //mfc
 }
 echo $datagrid_result;
 /* main content end */

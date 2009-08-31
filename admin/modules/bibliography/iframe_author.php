@@ -62,7 +62,7 @@ if (isset($_GET['removesess'])) {
     $idx = $_GET['removesess'];
     unset($_SESSION['biblioAuthor'][$idx]);
     echo '<script type="text/javascript">';
-    echo 'alert(\''.lang_mod_biblio_alert_field_author_session_removed.'\');';
+    echo 'alert(\''._('Author succesfully removed!').'\');';
     echo 'location.href = \'iframe_author.php\';';
     echo '</script>';
 }
@@ -73,7 +73,7 @@ if (isset($_POST['remove'])) {
     $sql_op = new simbio_dbop($dbs);
     $sql_op->delete('biblio_author', 'author_id='.$id.' AND biblio_id='.$bid);
     echo '<script type="text/javascript">';
-    echo 'alert(\''.lang_mod_biblio_alert_field_author_removed.'\');';
+    echo 'alert(\''._('Author removed!').'\');';
     echo 'location.href = \'iframe_author.php?biblioID='.$bid.'\';';
     echo '</script>';
 }
