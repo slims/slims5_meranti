@@ -161,6 +161,10 @@ $sysconf['session_timeout'] = 7200;
 /* default application language */
 $sysconf['default_lang'] = 'english';
 
+/* Force UTF-8 for MySQL connection and HTTP header */
+header("Content-type: text/html; charset=UTF-8");
+$dbs->query("SET NAMES 'utf8'");
+
 /* GUI Template config */
 $sysconf['template']['dir'] = 'template';
 $sysconf['template']['theme'] = 'default';
