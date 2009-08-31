@@ -80,7 +80,7 @@ if (isset($_POST['stUpload']) && isset($_FILES['stFile'])) {
         fclose($stfile);
         // message
         echo '<script type="text/javascript">'."\n";
-        echo 'parent.$(\'stUploadMsg\').update(\''_('Succesfully upload stock take file').$upload->new_filename.', <b>'.$i.'</b>'._(' item codes scanned!').'\');'."\n"; //mfc
+        echo 'parent.$(\'stUploadMsg\').update(\''._('Succesfully upload stock take file').$upload->new_filename.', <b>'.$i.'</b>'._(' item codes scanned!').'\');'."\n"; //mfc
         echo 'parent.$(\'stUploadMsg\').setStyle( {display: \'block\'} );'."\n";
         echo '</script>';
     } else {

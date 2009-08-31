@@ -112,7 +112,7 @@ if (isset($_POST['saveData'])) {
 
     // error alerting
     if ($error_num == 0) {
-        utility::jsAlert('_('All Data Successfully Deleted')');
+        utility::jsAlert(_('All Data Successfully Deleted'));
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
     } else {
         utility::jsAlert(_('Some or All Data NOT deleted successfully!\nPlease contact system administrator'));

@@ -56,8 +56,8 @@ class simbio_datagrid extends simbio_table
     public $sort_column = array();
     public $sql_group_by = '';
     public $select_flag = '';
-    public $chbox_property = array('itemID', _('DELETE'));
-    public $edit_property = array('itemID', _('EDIT'));
+    public $chbox_property;
+    public $edit_property;
     public $chbox_action_button = false;
     public $chbox_confirm_msg = false;
     public $current_page = 1;
@@ -77,6 +77,11 @@ class simbio_datagrid extends simbio_table
      */
     public function createDataGrid($obj_db, $str_db_table = '', $int_num2show = 30, $bool_editable = false)
     {
+        // Default checkbox properties
+        if (!isset($this->chbox_property)) $this->chbox_property = array('itemID', _('DELETE'));
+        if (!isset($this->edit_property)) $this->edit_property = array('itemID', _('EDIT'));
+        	
+        
         // check database connection
         if (!$obj_db OR $obj_db->error) {
             $_error = '<div style="padding: 5px; margin: 3px; border: 1px dotted #FF0000; color: #FF0000;">';
