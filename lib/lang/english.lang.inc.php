@@ -1,11 +1,14 @@
 <?php
-/*Arie Nugraha - 2008
-Hendro Wicaksono - 2008
-Wardiyono - 2008 */
-/* ENGLISH language */
+/*
+ * Arie Nugraha - 2009
+ * Hendro Wicaksono - 2008
+ * Wardiyono - 2008
+ * Tobias Zeumer - 2009
+ENGLISH language */
+
 
 /* COMMON */
-define('lang_sys_common_data_not_exists', 'ERROR! Data doesnt exists');
+//- define('lang_sys_common_data_not_exists', 'ERROR! Data doesnt exists');
 define('lang_sys_common_unauthorized', 'You are not authorized to view this section');
 define('lang_sys_common_no_privilege', 'You dont have enough privileges to view this section');
 define('lang_sys_common_timeout', 'Your Login Session has already timeout!');
@@ -16,7 +19,7 @@ define('lang_sys_common_gd_freetype_not_loaded', '<strong>Freetype</strong> supp
 define('lang_sys_common_imagedir_unwritable', '<strong>Images</strong> directory and directories under it is not writable. Make sure it is writable by changing its permission or you wont be able to upload any images and create barcodes');
 define('lang_sys_common_uploaddir_unwritable', '<strong>File upload</strong> directory is not writable. Make sure it is writable (and all directories under it) by changing its permission or you wont be able to upload any file, create report files and create database backups.');
 define('lang_sys_common_repodir_unwritable', '<strong>Repository</strong> directory is not writable. Make sure it is writable (and all directories under it) by changing its permission or you wont be able to upload any bibliographic attachments.');
-define('lang_sys_common_dompdfdir_unwritable', '<strong>{dompdf_libdir}</strong> directory is not writable. Make sure it is writable (and all directories under it) by changing its permission or application wont be able to generate pdf files.');
+//- define('lang_sys_common_dompdfdir_unwritable', '<strong>{dompdf_libdir}</strong> directory is not writable. Make sure it is writable (and all directories under it) by changing its permission or application wont be able to generate pdf files.');
 define('lang_sys_common_mysqldump_not_found', 'The PATH for <strong>mysqldump</strong> program is not right! Please check configuration file or you wont be able to do any database backups.');
 define('lang_sys_common_tools', 'Tools');
 define('lang_sys_common_confirm_delete_selected', 'Are You Sure Want to DELETE Selected Data?');
@@ -81,9 +84,9 @@ define('lang_sys_common_form_report','Download Report');
 # datagrid form
 define('lang_sys_common_form_checkbox_all', 'Check All');
 define('lang_sys_common_form_uncheckbox_all', 'Uncheck All');
-define('lang_sys_common_form_delete_selected', 'Delete Selected Data');
-define('lang_sys_common_form_confirm_delete', 'Are you sure want to delete selected data?');
-define('lang_sys_common_edit_titletag', 'Click for detail or edit this Record');
+//- define('lang_sys_common_form_delete_selected', 'Delete Selected Data');
+//- define('lang_sys_common_form_confirm_delete', 'Are you sure want to delete selected data?');
+//- define('lang_sys_common_edit_titletag', 'Click for detail or edit this Record');
 # display search data
 define('lang_sys_common_search_result_info', 'Found <strong>{result->num_rows}</strong> from your keywords');
 define('lang_sys_common_paging_first', 'First Page');
@@ -93,7 +96,7 @@ define('lang_sys_common_paging_next', 'Next');
 # application user form
 define('lang_sys_user_field_login_username', 'Login Username');
 define('lang_sys_user_field_realname', 'Real Name');
-define('lang_sys_user_field_password', 'Password');
+//- define('lang_sys_user_field_password', 'Password');
 define('lang_sys_user_field_password_confirm', 'Confirm Password');
 # content form
 define('lang_sys_content_field_title', 'Content Title');
@@ -136,12 +139,12 @@ define('lang_sys_conf_module_alert_save_ok', 'New Module Data Successfully Save'
 define('lang_sys_conf_module_alert_save_fail', 'Module Data FAILED to Save. Please Contact System Administrator');
 define('lang_sys_conf_module_alert_update_ok', 'Module Data Successfully Updated');
 define('lang_sys_conf_module_alert_update_fail', 'Module Data FAILED to Updated. Please Contact System Administrator');
-define('lang_sys_conf_module_alert_not_exist', 'Error! Module data doesnt exists!');
+//- define('lang_sys_conf_module_alert_not_exist', 'Error! Module data doesnt exists!');
 define('lang_sys_conf_module_common_edit_info', 'You are going to edit data');
 define('lang_sys_conf_module_common_alert_delete_success', 'All Data Successfully Deleted');
 define('lang_sys_conf_module_common_alert_delete_fail', 'Some or All Data NOT deleted successfully!\nPlease contact system administrator');
-define('lang_sys_conf_module_common_alert_delete_group_ok', 'Group Successfully Deleted');
-define('lang_sys_conf_module_common_alert_delete_group_fail', 'Group failed to delete');
+//- define('lang_sys_conf_module_common_alert_delete_group_ok', 'Group Successfully Deleted');
+//- define('lang_sys_conf_module_common_alert_delete_group_fail', 'Group failed to delete');
 define('lang_sys_conf_module_field_name', 'Module Name');
 define('lang_sys_conf_module_field_path', 'Module Path');
 define('lang_sys_conf_module_field_description', 'Module Description');
@@ -149,25 +152,25 @@ define('lang_sys_conf_module_field_description', 'Module Description');
 /* User Configuration */
 define('lang_sys_conf_user_alert_noempty', 'User Name or Real Name cant be empty');
 define('lang_sys_conf_user_alert_forbid', 'Login username or Real Name is probihited!');
-define('lang_sys_conf_user_alert_nopassword', 'You cannot supply a blank password!');
+//- define('lang_sys_conf_user_alert_nopassword', 'You cannot supply a blank password!');
 define('lang_sys_conf_user_alert_nomatch', 'Password confirmation not match. See if your Caps Lock key is on!');
 define('lang_sys_conf_user_alert_save_ok', 'New User Data Successfully Save');
 define('lang_sys_conf_user_alert_save_fail', 'User Data FAILED to Save. Please Contact System Administrator');
 define('lang_sys_conf_user_alert_update_ok', 'User Data Successfully Updated');
 define('lang_sys_conf_user_alert_update_fail', 'User Data FAILED to Updated. Please Contact System Administrator');
-define('lang_sys_conf_user_alert_not_exist', 'Error! User data doesnt exists!');
+//- define('lang_sys_conf_user_alert_not_exist', 'Error! User data doesnt exists!');
 define('lang_sys_conf_user_common_edit_info', 'You are going to edit user profile');
 define('lang_sys_conf_user_common_last_update', 'Last Update ');
 define('lang_sys_conf_user_common_info_1', 'Leave Password field blank if you dont want to change password');
 define('lang_sys_conf_user_common_alert_delete_success', 'All Data Successfully Deleted');
 define('lang_sys_conf_user_common_alert_delete_fail', 'Some or All Data NOT deleted successfully!\nPlease contact system administrator');
-define('lang_sys_conf_user_common_alert_delete_record_ok', 'User Successfully Deleted');
-define('lang_sys_conf_user_common_alert_delete_record_fail', 'User failed to delete');
+//- define('lang_sys_conf_user_common_alert_delete_record_ok', 'User Successfully Deleted');
+//- define('lang_sys_conf_user_common_alert_delete_record_fail', 'User failed to delete');
 define('lang_sys_conf_user_field_login_name', 'Login Username');
 define('lang_sys_conf_user_field_real', 'Real Name');
 define('lang_sys_conf_user_field_group', 'Group(s)');
-define('lang_sys_conf_user_field_password_1', 'Password');
-define('lang_sys_conf_user_field_password_2', 'Confirm Password');
+//- define('lang_sys_conf_user_field_password_1', 'Password');
+//- define('lang_sys_conf_user_field_password_2', 'Confirm Password');
 define('lang_sys_conf_user_field_password_3', 'New Password');
 define('lang_sys_conf_user_field_password_4', 'Confirm New Password');
 define('lang_sys_conf_user_field_last_login', 'Last Login');
@@ -178,13 +181,13 @@ define('lang_sys_conf_group_alert_save_ok', 'New Group Data Successfully Save');
 define('lang_sys_conf_group_alert_save_fail', 'Group Data FAILED to Save. Please Contact System Administrator');
 define('lang_sys_conf_group_alert_update_ok', 'Group Data Successfully Updated');
 define('lang_sys_conf_group_alert_update_fail', 'Group Data FAILED to Updated. Please Contact System Administrator');
-define('lang_sys_conf_group_alert_not_exist', 'Error! Group data doesnt exists!');
+//- define('lang_sys_conf_group_alert_not_exist', 'Error! Group data doesnt exists!');
 define('lang_sys_conf_group_common_edit_info', 'You are going to edit Group data');
 define('lang_sys_conf_group_common_last_update', 'Last Update ');
 define('lang_sys_conf_group_common_alert_delete_success', 'All Data Successfully Deleted');
 define('lang_sys_conf_group_common_alert_delete_fail', 'Some or All Data NOT deleted successfully!\nPlease contact system administrator');
-define('lang_sys_conf_group_common_alert_delete_record_ok', 'Group Successfully Deleted');
-define('lang_sys_conf_group_common_alert_delete_record_fail', 'Group failed to delete');
+//- define('lang_sys_conf_group_common_alert_delete_record_ok', 'Group Successfully Deleted');
+//- define('lang_sys_conf_group_common_alert_delete_record_fail', 'Group failed to delete');
 define('lang_sys_conf_group_field_name', 'Group Name');
 define('lang_sys_conf_group_field_privileges', 'Privileges');
 define('lang_sys_conf_group_privileges_modul_name', 'Module Name');
@@ -195,18 +198,18 @@ define('lang_sys_conf_group_privileges_modul_write', 'Write');
 define('lang_sys_holiday_set_day', 'Set holiday');
 define('lang_sys_holiday_add_day', 'Add Special holiday');
 define('lang_sys_holiday_list', 'Special holiday');
-define('lang_sys_conf_holiday_alert_noempty', 'Holiday description cant be empty');
+//- define('lang_sys_conf_holiday_alert_noempty', 'Holiday description cant be empty');
 define('lang_sys_conf_holiday_alert_save_ok', 'New Holiday Successfully Save');
 define('lang_sys_conf_holiday_alert_save_fail', 'Holiday FAILED to Save. Please Contact System Administrator');
 define('lang_sys_conf_holiday_alert_update_ok', 'Holiday Data Successfully updated');
 define('lang_sys_conf_holiday_alert_update_fail', 'Holiday FAILED to update. Please Contact System Administrator');
-define('lang_sys_conf_holiday_alert_not_exist', 'Error! Holiday  data doesnt exists!');
+//- define('lang_sys_conf_holiday_alert_not_exist', 'Error! Holiday  data doesnt exists!');
 define('lang_sys_conf_holiday_alert_set_ok', 'Holiday settings saved');
 define('lang_sys_conf_holiday_common_edit_info', 'You are going to edit holiday data');
 define('lang_sys_conf_holiday_common_alert_delete_success', 'All Data Successfully Deleted');
 define('lang_sys_conf_holiday_common_alert_delete_fail', 'Some or All Data NOT deleted successfully!\nPlease contact system administrator');
-define('lang_sys_conf_holiday_common_alert_delete_record_ok', 'Holiday Successfully Deleted');
-define('lang_sys_conf_holiday_common_alert_delete_record_fail', 'Holiday failed to delete');
+//- define('lang_sys_conf_holiday_common_alert_delete_record_ok', 'Holiday Successfully Deleted');
+//- define('lang_sys_conf_holiday_common_alert_delete_record_fail', 'Holiday failed to delete');
 define('lang_sys_conf_holiday_form_save', 'Save Settings');
 define('lang_sys_conf_holiday_field_date_day', 'Holiday Date Start');
 define('lang_sys_conf_holiday_field_date_day_end', 'Holiday Date End');
@@ -235,7 +238,7 @@ define('lang_sys_conf_log_field_location', 'Location');
 define('lang_sys_conf_log_field_message', 'Message');
 
 /* OPAC */
-define('lang_opac_search_result', 'Search Result');
+//- define('lang_opac_search_result', 'Search Result');
 define('lang_opac_info', 'Web Online Public Access Catalog - Use Search facility to find document quickly');
 define('lang_opac_rec_detail', 'Record Detail');
 define('lang_opac_page_info', 'You currently on page <strong>{page}</strong> of <strong>{total_pages}</strong> page(s)');
@@ -259,7 +262,7 @@ define('lang_mod_biblio_item_list', 'Item List');
 define('lang_mod_biblio_item_list_titletag', 'Show List of Library Items');
 define('lang_mod_biblio_item_checkout', 'Checkout Items');
 define('lang_mod_biblio_item_checkout_titletag', 'Show List of Checkout Items');
-define('lang_mod_biblio_tools', 'Tools');
+//- define('lang_mod_biblio_tools', 'Tools');
 define('lang_mod_biblio_tools_z3950', 'Z3950 Service');
 define('lang_mod_biblio_tools_z3950_titletag', 'Grab Bibliographic Data from Z3950 Web Services');
 define('lang_mod_biblio_tools_label_print', 'Labels Printing');
@@ -278,7 +281,7 @@ define('lang_mod_biblio_tools_import_titletag', 'Import Data to Bibliographic Da
 define('lang_mod_biblio_field_title', 'Title');
 define('lang_mod_biblio_field_edition', 'Edition');
 define('lang_mod_biblio_field_specific_detail', 'Specific Detail Info');
-define('lang_mod_biblio_field_items', 'Item(s) Data');
+//- define('lang_mod_biblio_field_items', 'Item(s) Data');
 define('lang_mod_biblio_field_no_item', 'There is no item/copy for this title yet');
 define('lang_mod_biblio_link_item_add', 'Add New Items');
 define('lang_mod_biblio_field_authors', 'Author(s)');
@@ -288,10 +291,10 @@ define('lang_mod_biblio_field_gmd', 'GMD');
 define('lang_mod_biblio_field_isbn', 'ISBN/ISSN');
 define('lang_mod_biblio_field_class', 'Classification');
 define('lang_mod_biblio_field_publisher', 'Publisher');
-define('lang_mod_biblio_field_no_publisher', 'Publisher Not Set Yet');
+//- define('lang_mod_biblio_field_no_publisher', 'Publisher Not Set Yet');
 define('lang_mod_biblio_field_publish_year', 'Publish Year');
 define('lang_mod_biblio_field_publish_place', 'Publish Place');
-define('lang_mod_biblio_field_no_publish_place', 'No Place data yet');
+//- define('lang_mod_biblio_field_no_publish_place', 'No Place data yet');
 define('lang_mod_biblio_field_collation', 'Collation');
 define('lang_mod_biblio_field_series', 'Series Title');
 define('lang_mod_biblio_field_call_number', 'Call Number');
@@ -301,9 +304,9 @@ define('lang_mod_biblio_link_topic_search', 'Click to view others document with 
 define('lang_mod_biblio_field_lang', 'Language');
 define('lang_mod_biblio_field_notes', 'Abstract/Notes');
 define('lang_mod_biblio_field_image', 'Image');
-define('lang_mod_biblio_field_image_nothing', 'No Image Available');
+//- define('lang_mod_biblio_field_image_nothing', 'No Image Available');
 define('lang_mod_biblio_field_attachment', 'File Attachment');
-define('lang_mod_biblio_field_attachment_nothing', 'No File Attachment');
+//- define('lang_mod_biblio_field_attachment_nothing', 'No File Attachment');
 define('lang_mod_biblio_field_availability', 'Availability');
 define('lang_mod_biblio_field_hide_opac', 'Hide in OPAC');
 define('lang_mod_biblio_field_promote', 'Promote To Homepage');
@@ -320,18 +323,18 @@ define('lang_mod_biblio_alert_failed_to_update', 'Bibliography Data FAILED to Up
 define('lang_mod_biblio_alert_new_added', 'New Bibliography Data Successfully Save');
 define('lang_mod_biblio_alert_updated_ok', 'Bibliography Data Successfully Updated');
 define('lang_mod_biblio_alert_image_uploaded', 'Image Uploaded Successfully');
-define('lang_mod_biblio_alert_image_not_uploaded', 'Image FAILED to upload');
-define('lang_mod_biblio_alert_attach_uploaded', 'File Attachment Uploaded Successfully');
-define('lang_mod_biblio_alert_attach_not_uploaded', 'File Attachment FAILED to upload');
-define('lang_mod_biblio_common_not_exists','ERROR! Selected data doesnt exists');
+//- define('lang_mod_biblio_alert_image_not_uploaded', 'Image FAILED to upload');
+//- define('lang_mod_biblio_alert_attach_uploaded', 'File Attachment Uploaded Successfully');
+//- define('lang_mod_biblio_alert_attach_not_uploaded', 'File Attachment FAILED to upload');
+//- define('lang_mod_biblio_common_not_exists','ERROR! Selected data doesnt exists');
 define('lang_mod_biblio_common_edit_message', 'You are going to edit biblio data');
 define('lang_mod_biblio_common_last_update', 'Last Updated ');
 define('lang_mod_biblio_alert_list_not_deleted', 'Below data can not be deleted : ');
 define('lang_mod_biblio_alert_data_selected_deleted', 'All Data Successfully Deleted');
 define('lang_mod_biblio_alert_data_selected_not_deleted', 'Some or All Data NOT deleted successfully!\nPlease contact system administrator');
-define('lang_mod_biblio_alert_data_have_item', 'This title can not be deleted because still have {biblio_item} copies. Delete Items data first');
-define('lang_mod_biblio_alert_data_deleted', 'Record Successfully Deleted');
-define('lang_mod_biblio_alert_data_not_deleted', 'Record failed to delete');
+//- define('lang_mod_biblio_alert_data_have_item', 'This title can not be deleted because still have {biblio_item} copies. Delete Items data first');
+//- define('lang_mod_biblio_alert_data_deleted', 'Record Successfully Deleted');
+//- define('lang_mod_biblio_alert_data_not_deleted', 'Record failed to delete');
 # item form fields
 define('lang_mod_biblio_item_field_title', 'Title');
 define('lang_mod_biblio_item_field_itemcode', 'Item Code');
@@ -349,28 +352,28 @@ define('lang_mod_biblio_item_field_invoice', 'Invoice');
 define('lang_mod_biblio_item_field_invoice_date', 'Invoice Date');
 define('lang_mod_biblio_item_field_price', 'Price');
 #item
-define('lang_mod_biblio_item_common_opac_status_1', 'We have {copy} items/copies for this title and ALL copies all currently on loan');
-define('lang_mod_biblio_item_common_opac_status_2', 'We have {copy} items/copies for this title');
-define('lang_mod_biblio_item_common_opac_status_3', 'is available');
-define('lang_mod_biblio_item_common_opac_status_4', 'currently on loan');
+//- define('lang_mod_biblio_item_common_opac_status_1', 'We have {copy} items/copies for this title and ALL copies all currently on loan');
+//- define('lang_mod_biblio_item_common_opac_status_2', 'We have {copy} items/copies for this title');
+//- define('lang_mod_biblio_item_common_opac_status_3', 'is available');
+//- define('lang_mod_biblio_item_common_opac_status_4', 'currently on loan');
 define('lang_mod_biblio_item_common_location_status_1', 'copies at');
-define('lang_mod_biblio_item_alert_collection_title', 'Collection title must be set!');
+//- define('lang_mod_biblio_item_alert_collection_title', 'Collection title must be set!');
 define('lang_mod_biblio_item_alert_item_code', 'Item Code cant be empty!');
 define('lang_mod_biblio_item_alert_new_saved', 'New Item Data Successfully Save');
 define('lang_mod_biblio_item_alert_updated','Item Data Successfully Updated');
 define('lang_mod_biblio_item_alert_not_saved', 'Item Data FAILED to Save. Please Contact System Administrator');
 define('lang_mod_biblio_item_alert_delete_fail_on_loan', 'Item data can not be deleted because still on hold by members');
-define('lang_mod_biblio_item_alert_delete_item_data_success', 'All Data Successfully Deleted');
-define('lang_mod_biblio_item_alert_delete_item_data_failed', 'Some or All Data NOT deleted successfully!\nPlease contact system administrator');
+//- define('lang_mod_biblio_item_alert_delete_item_data_success', 'All Data Successfully Deleted');
+//- define('lang_mod_biblio_item_alert_delete_item_data_failed', 'Some or All Data NOT deleted successfully!\nPlease contact system administrator');
 define('lang_mod_biblio_item_common_edit_message', 'You are going to edit Item data');
 define('lang_mod_biblio_item_common_last_update', 'Last Updated');
-define('lang_mod_biblio_item_common_delete_success', 'Item Data Successfully Deleted');
-define('lang_mod_biblio_item_common_delete_failed', 'Item Data failed to delete');
+//- define('lang_mod_biblio_item_common_delete_success', 'Item Data Successfully Deleted');
+//- define('lang_mod_biblio_item_common_delete_failed', 'Item Data failed to delete');
 define('lang_mod_biblio_item_alert_remove_success', 'Item succesfully removed!');
 define('lang_mod_biblio_item_alert_remove_failed', 'Item FAILED to removed!');
 # file attached
-define('lang_mod_biblio_file_delete_success', 'File {file_d[0]} deleted');
-define('lang_mod_biblio_file_delete_fail', 'File {file_d[0]} FAIL to delete');
+//- define('lang_mod_biblio_file_delete_success', 'File {file_d[0]} deleted');
+//- define('lang_mod_biblio_file_delete_fail', 'File {file_d[0]} FAIL to delete');
 # export
 define('lang_mod_biblio_export_header', 'EXPORT TOOL');
 define('lang_mod_biblio_export_header_text', 'Export bibliographics data to CSV file');
@@ -406,7 +409,7 @@ define('lang_mod_biblio_author_form_name', 'Author name');
 define('lang_mod_biblio_author_form_search', 'Type to search or add new');
 define('lang_mod_biblio_author_insert_to_biblio', 'Insert To Bibliography');
 #topic
-define('lang_mod_biblio_topic_update_ok', 'Subject succesfully updated!');
+//- define('lang_mod_biblio_topic_update_ok', 'Subject succesfully updated!');
 define('lang_mod_biblio_topic_added_ok', 'Subject added!');
 define('lang_mod_biblio_topic_added_fail', 'Subject FAILED to Add. Please Contact System Administrator');
 define('lang_mod_biblio_topic_form_title', 'Add Subject');
@@ -498,21 +501,21 @@ define('lang_mod_circ_loan_button_loan', 'Loan');
 define('lang_mod_circ_reserve_field_search_collection', 'Search Collection');
 define('lang_mod_circ_reserve_button_add_reserve', 'Add Reserve');
 define('lang_mod_circ_return_titletext_return', 'Return this item');
-define('lang_mod_circ_return_alttext_return', 'Return');
+//- define('lang_mod_circ_return_alttext_return', 'Return');
 define('lang_mod_circ_return_no_return_history_data', 'Not Return Yet');
 define('lang_mod_circ_extend_alttext_no_extend', 'No Extend');
 define('lang_mod_circ_extend_titletext_extend', 'Extend loan for this item');
-define('lang_mod_circ_extend_alttext_extend', 'Extend');
+//- define('lang_mod_circ_extend_alttext_extend', 'Extend');
 define('lang_mod_circ_extend_renewal_flag', 'Extended');
 define('lang_mod_circ_extend_noextend_confirmation', 'Item CANT BE Extended! This Item is being reserved by other member');
 # fines
 define('lang_mod_circ_fines_alert_new_added', 'New Fines Data Successfully Save');
 define('lang_mod_circ_fines_alert_fail_to_save', 'Fines Data FAILED to Save. Please Contact System Administrator');
-define('lang_mod_circ_fines_alert_required_data', 'Fines Description and Debet value cant be empty');
-define('lang_mod_circ_fines_alert_balance_data', 'Value of Credit can not be higher that Debet Value');
+//- define('lang_mod_circ_fines_alert_required_data', 'Fines Description and Debet value cant be empty');
+//- define('lang_mod_circ_fines_alert_balance_data', 'Value of Credit can not be higher that Debet Value');
 define('lang_mod_circ_fines_alert_updated', 'Fines Data Successfully Updated');
 define('lang_mod_circ_fines_alert_not_updated', 'Fines Data FAILED to Updated. Please Contact System Administrator');
-define('lang_mod_circ_fines_alert_not_exists', 'Error! Fines data does not exists!');
+//- define('lang_mod_circ_fines_alert_not_exists', 'Error! Fines data does not exists!');
 define('lang_mod_circ_fines_common_info', 'You are going to edit fines data : ');
 # form
 define('lang_mod_circ_fines_field_date', 'Fines Date');
@@ -533,15 +536,15 @@ define('lang_mod_circ_loan_rules_field_fines', 'Fines Each Day');
 # common loan rules
 define('lang_mod_circ_loan_rules_alert_updated_ok', 'Loan Rules Successfully Updated');
 define('lang_mod_circ_loan_rules_alert_updated_fail', 'Loan Rules FAILED to Updated. Please Contact System Administrator');
-define('lang_mod_circ_loan_rules_alert_not_exist', 'Error! Loan Rules data doesnt exists!');
+//- define('lang_mod_circ_loan_rules_alert_not_exist', 'Error! Loan Rules data doesnt exists!');
 define('lang_mod_circ_loan_rules_common_edit_info', 'You are going to edit loan rules : ');
 define('lang_mod_circ_loan_rules_common_last_update', 'Last update ');
 define('lang_mod_circ_loan_rules_alert_all_deleted', 'All Data Successfully Deleted');
 define('lang_mod_circ_loan_rules_alert_not_all_deleted', 'Some or All Data NOT deleted successfully!\nPlease contact system administrator');
-define('lang_mod_circ_loan_rules_alert_deleted', 'Loan Rules Successfully Deleted');
-define('lang_mod_circ_loan_rules_alert_not_deleted', 'Loan Rules FAIL To Delete');
+//- define('lang_mod_circ_loan_rules_alert_deleted', 'Loan Rules Successfully Deleted');
+//- define('lang_mod_circ_loan_rules_alert_not_deleted', 'Loan Rules FAIL To Delete');
 # overdue loan
-define('lang_mod_circ_loan_overdue_tblheader', 'Memeber(s) Having Overdue');
+//- define('lang_mod_circ_loan_overdue_tblheader', 'Memeber(s) Having Overdue');
 # quick return
 define('lang_mod_circ_loan_quick_return_disable', 'Quick Return is disabled');
 define('lang_mod_circ_loan_quick_return_form_item_id', 'Item ID');
@@ -564,7 +567,7 @@ define('lang_mod_membership_member_type_new_add', 'Add New Member Type');
 define('lang_mod_membership_member_type_list', 'Member Type List');
 define('lang_mod_membership_member_list', 'Member List');
 define('lang_mod_membership_view_expired_member', 'View Expired Member');
-define('lang_mod_membership_tools', 'Tools');
+//- define('lang_mod_membership_tools', 'Tools');
 define('lang_mod_membership_import_data', 'Import Data');
 define('lang_mod_membership_import_data_titletag', 'Import Members Data From CSV File');
 define('lang_mod_membership_import_data_description', 'Import for members data from CSV file');
@@ -581,7 +584,7 @@ define('lang_mod_membership_common_member_data_saved', 'New Member Data Successf
 define('lang_mod_membership_common_image_upload_success', 'Image Uploaded Successfully');
 define('lang_mod_membership_common_image_upload_error', 'Image FAILED to upload');
 define('lang_mod_membership_common_error_fail_to_save_member_data', 'Member Data FAILED to Save/Update. Please Contact System Administrator');
-define('lang_mod_membership_common_error_member_data_not_exist', 'ERROR! Selected data doesnt exists');
+//- define('lang_mod_membership_common_error_member_data_not_exist', 'ERROR! Selected data doesnt exists');
 define('lang_mod_membership_common_error_membership_expired', 'Membership Already Expired');
 define('lang_mod_membership_common_member_data_updated', 'Member Data Successfully Updated');
 define('lang_mod_membership_button_save', 'Save');
@@ -589,11 +592,11 @@ define('lang_mod_membership_common_maximum', 'Maximum');
 define('lang_mod_membership_common_edit_message', 'You are going to edit member data');
 define('lang_mod_membership_common_last_update', 'Last Updated');
 define('lang_mod_membership_common_alert_no_delete_member_data', 'Below member data cant be deleted because still have unreturned item(s)');
-define('lang_mod_membership_common_alert_no_delete_member_data_1', 'Member data');
-define('lang_mod_membership_common_alert_no_delete_member_data_2', 'cant be deleted because still have');
-define('lang_mod_membership_common_alert_no_delete_member_data_3', 'unreturned items');
-define('lang_mod_membership_common_member_data_deleted_success', 'Member Data Successfully Deleted');
-define('lang_mod_membership_common_member_data_deleted_failed', 'Member Data failed to delete');
+//- define('lang_mod_membership_common_alert_no_delete_member_data_1', 'Member data');
+//- define('lang_mod_membership_common_alert_no_delete_member_data_2', 'cant be deleted because still have');
+//- define('lang_mod_membership_common_alert_no_delete_member_data_3', 'unreturned items');
+//- define('lang_mod_membership_common_member_data_deleted_success', 'Member Data Successfully Deleted');
+//- define('lang_mod_membership_common_member_data_deleted_failed', 'Member Data failed to delete');
 define('lang_mod_membership_common_expired_member_list', 'Expired Member List');
 define('lang_mod_membership_common_found_text_1', 'Found');
 define('lang_mod_membership_common_found_text_2', 'from your search with keyword');
@@ -624,7 +627,7 @@ define('lang_mod_membership_field_expiry_date', 'Expiry Date');
 define('lang_mod_membership_field_pending', 'Pending Membership');
 # member type form
 define('lang_mod_member_type_alert_name_noempty', 'Member Type Name cant be empty');
-define('lang_mod_member_type_alert_data_not_exist', 'ERROR! Member Type data doesnt exists');
+//- define('lang_mod_member_type_alert_data_not_exist', 'ERROR! Member Type data doesnt exists');
 define('lang_mod_member_type_common_edit_message', 'You are going to edit member data');
 define('lang_mod_member_type_common_last_update', 'Last Updated');
 define('lang_mod_member_type_common_member_type_saved', 'New Member Type Successfully Save');
@@ -697,7 +700,7 @@ define('lang_mod_masterfile_place_list', 'Place List');
 define('lang_mod_masterfile_itemstatus', 'Item Status');
 define('lang_mod_masterfile_itemstatus_titletag', 'Item Status');
 define('lang_mod_masterfile_itemstatus_new_add', 'Add new Item Status');
-define('lang_mod_masterfile_itemstatus_list', 'Item Status List');
+//- define('lang_mod_masterfile_itemstatus_list', 'Item Status List');
 define('lang_mod_masterfile_colltype', 'Collection Type');
 define('lang_mod_masterfile_colltype_titletag', 'Collection Type');
 define('lang_mod_masterfile_colltype_new_add', 'Add new Collection Type');
@@ -721,12 +724,12 @@ define('lang_mod_masterfile_author_alert_new_add_ok', 'New Author Data Successfu
 define('lang_mod_masterfile_author_alert_add_fail', 'Author Data FAILED to Save. Please Contact System Administrator');
 define('lang_mod_masterfile_author_alert_update_ok', 'Author Data Successfully Updated');
 define('lang_mod_masterfile_author_alert_update_fail', 'Author Data FAILED to Updated. Please Contact System Administrator');
-define('lang_mod_masterfile_author_alert_not_exists', 'ERROR! Selected data doesnt exists');
+//- define('lang_mod_masterfile_author_alert_not_exists', 'ERROR! Selected data doesnt exists');
 define('lang_mod_masterfile_author_common_edit_info', 'You are going to edit author data : ');
 define('lang_mod_masterfile_author_common_last_update', 'Last update ');
 define('lang_mod_masterfile_author_alert_all_delete_ok', 'All Data Successfully Deleted');
 define('lang_mod_masterfile_author_alert_all_delete_fail', 'Some or All Data NOT deleted successfully!\nPlease contact system administrator');
-define('lang_mod_masterfile_author_alert_delete_ok', 'Record failed to delete');
+//- define('lang_mod_masterfile_author_alert_delete_ok', 'Record failed to delete');
 # form
 define('lang_mod_masterfile_author_form_field_name', 'Author Name');
 define('lang_mod_masterfile_author_form_field_authority', 'Authority Type');
@@ -743,9 +746,9 @@ define('lang_mod_masterfile_colltype_common_last_update', 'Last update ');
 define('lang_mod_masterfile_colltype_alert_not_delete', 'Below data cant be deleted : \n');
 define('lang_mod_masterfile_colltype_alert_all_delete_ok', 'All Data Successfully Deleted');
 define('lang_mod_masterfile_colltype_alert_all_delete_fail', 'Some or All Data NOT deleted successfully!\nPlease contact system administrator');
-define('lang_mod_masterfile_colltype_alert_has_item', 'Collection Type ({item_name}) still used by {number_items} item(s)');
-define('lang_mod_masterfile_colltype_alert_inuse', 'This Collection Type cant be deleted because still used by {item_d} items. Delete Items data first');
-define('lang_mod_masterfile_colltype_alert_delete_fail', 'Record failed to delete');
+//- define('lang_mod_masterfile_colltype_alert_has_item', 'Collection Type ({item_name}) still used by {number_items} item(s)');
+//- define('lang_mod_masterfile_colltype_alert_inuse', 'This Collection Type cant be deleted because still used by {item_d} items. Delete Items data first');
+//- define('lang_mod_masterfile_colltype_alert_delete_fail', 'Record failed to delete');
 # form
 define('lang_mod_masterfile_colltype_form_field_colltype', 'Collection Type');
 # language master file
@@ -755,12 +758,12 @@ define('lang_mod_masterfile_lang_alert_new_add_ok', 'New Language Data Successfu
 define('lang_mod_masterfile_lang_alert_add_fail', 'Language Data FAILED to Save. Please Contact System Administrator');
 define('lang_mod_masterfile_lang_alert_update_ok', 'Language Data Successfully Updated');
 define('lang_mod_masterfile_lang_alert_update_fail', 'Language Data FAILED to Updated. Please Contact System Administrator');
-define('lang_mod_masterfile_lang_alert_not_exists', 'ERROR! Selected data doesnt exists');
+//- define('lang_mod_masterfile_lang_alert_not_exists', 'ERROR! Selected data doesnt exists');
 define('lang_mod_masterfile_lang_common_edit_info', 'You are going to edit language data : ');
 define('lang_mod_masterfile_lang_common_last_update', 'Last update ');
 define('lang_mod_masterfile_lang_alert_all_delete_ok', 'All Data Successfully Deleted');
 define('lang_mod_masterfile_lang_alert_all_delete_fail', 'Some or All Data NOT deleted successfully!\nPlease contact system administrator');
-define('lang_mod_masterfile_lang_alert_delete_ok', 'Record failed to delete');
+//- define('lang_mod_masterfile_lang_alert_delete_ok', 'Record failed to delete');
 # form
 define('lang_mod_masterfile_lang_form_field_lang_code', 'Language Code');
 define('lang_mod_masterfile_lang_form_field_name', 'Language');
@@ -771,17 +774,17 @@ define('lang_mod_masterfile_gmd_alert_new_add_ok', 'New GMD Data Successfully Sa
 define('lang_mod_masterfile_gmd_alert_add_fail', 'GMD Data FAILED to Save. Please Contact System Administrator');
 define('lang_mod_masterfile_gmd_alert_update_ok', 'GMD Data Successfully Updated');
 define('lang_mod_masterfile_gmd_alert_update_fail', 'GMD Data FAILED to Updated. Please Contact System Administrator');
-define('lang_mod_masterfile_gmd_alert_not_exists', 'ERROR! Selected data doesnt exists');
+//- define('lang_mod_masterfile_gmd_alert_not_exists', 'ERROR! Selected data doesnt exists');
 define('lang_mod_masterfile_gmd_common_edit_info', 'You are going to edit gmd data');
 define('lang_mod_masterfile_gmd_common_last_update', 'Last update ');
 define('lang_mod_masterfile_gmd_alert_all_delete_ok', 'All Data Successfully Deleted');
 define('lang_mod_masterfile_gmd_alert_all_delete_fail', 'Some or All Data NOT deleted successfully!\nPlease contact system administrator');
-define('lang_mod_masterfile_gmd_alert_delete_ok', 'GMD Successfully Deleted');
-define('lang_mod_masterfile_gmd_alert_delete_fail', 'Record failed to delete');
+//- define('lang_mod_masterfile_gmd_alert_delete_ok', 'GMD Successfully Deleted');
+//- define('lang_mod_masterfile_gmd_alert_delete_fail', 'Record failed to delete');
 # form
 define('lang_mod_masterfile_gmd_form_field_gmd_code', 'GMD Code');
 define('lang_mod_masterfile_gmd_form_field_gmd_name', 'GMD Name');
-define('lang_mod_masterfile_gmd_form_field_gmd_icon', 'GMD icon');
+//- define('lang_mod_masterfile_gmd_form_field_gmd_icon', 'GMD icon');
 # Item status master file
 # common
 define('lang_mod_masterfile_itemstatus_alert_name_noempty', 'Item Status ID and Name cant be empty');
@@ -789,12 +792,12 @@ define('lang_mod_masterfile_itemstatus_alert_new_add_ok', 'New Item Status Data 
 define('lang_mod_masterfile_itemstatus_alert_add_fail', 'Item Status Data FAILED to Save. Please Contact System Administrator');
 define('lang_mod_masterfile_itemstatus_alert_update_ok', 'Item Status Data Successfully Updated');
 define('lang_mod_masterfile_itemstatus_alert_update_fail', 'Item Status Data FAILED to Updated. Please Contact System Administrator');
-define('lang_mod_masterfile_itemstatus_alert_not_exists', 'ERROR! Selected data doesnt exists');
+//- define('lang_mod_masterfile_itemstatus_alert_not_exists', 'ERROR! Selected data doesnt exists');
 define('lang_mod_masterfile_itemstatus_common_edit_info', 'You are going to edit Item Status data');
 define('lang_mod_masterfile_itemstatus_common_last_update', 'Last update ');
 define('lang_mod_masterfile_itemstatus_alert_all_delete_ok', 'All Data Successfully Deleted');
 define('lang_mod_masterfile_itemstatus_alert_all_delete_fail', 'Some or All Data NOT deleted successfully!\nPlease contact system administrator');
-define('lang_mod_masterfile_itemstatus_alert_delete_fail', 'Record failed to delete');
+//- define('lang_mod_masterfile_itemstatus_alert_delete_fail', 'Record failed to delete');
 # form
 define('lang_mod_masterfile_itemstatus_form_field_code', 'Item Status Code');
 define('lang_mod_masterfile_itemstatus_form_field_name', 'Item Status Name');
@@ -806,15 +809,15 @@ define('lang_mod_masterfile_location_alert_new_add_ok', 'New Location Data Succe
 define('lang_mod_masterfile_location_alert_add_fail', 'Location Data FAILED to Save. Please Contact System Administrator');
 define('lang_mod_masterfile_location_alert_update_ok', 'Location Data Successfully Updated');
 define('lang_mod_masterfile_location_alert_update_fail', 'Location Data FAILED to Updated. Please Contact System Administrator');
-define('lang_mod_masterfile_location_alert_not_exists', 'ERROR! Selected data doesnt exists');
+//- define('lang_mod_masterfile_location_alert_not_exists', 'ERROR! Selected data doesnt exists');
 define('lang_mod_masterfile_location_common_edit_info', 'You are going to edit location data : ');
 define('lang_mod_masterfile_location_common_last_update', 'Last update ');
 define('lang_mod_masterfile_location_alert_not_delete', 'Below data cant be deleted : \n');
 define('lang_mod_masterfile_location_alert_all_delete_ok', 'All Data Successfully Deleted');
 define('lang_mod_masterfile_location_alert_all_delete_fail', 'Some or All Data NOT deleted successfully!\nPlease contact system administrator');
 define('lang_mod_masterfile_location_alert_has_item', 'Location ({item_name}) still used by {number_items} item(s)');
-define('lang_mod_masterfile_location_alert_inuse', 'This Location cant be deleted because still used by {item_d} items. Delete Items data first');
-define('lang_mod_masterfile_location_alert_delete_fail', 'Record failed to delete');
+//- define('lang_mod_masterfile_location_alert_inuse', 'This Location cant be deleted because still used by {item_d} items. Delete Items data first');
+//- define('lang_mod_masterfile_location_alert_delete_fail', 'Record failed to delete');
 # form
 define('lang_mod_masterfile_location_form_field_code', 'Location Code');
 define('lang_mod_masterfile_location_form_field_name', 'Location Name');
@@ -825,13 +828,13 @@ define('lang_mod_masterfile_place_alert_new_add_ok', 'New Place Data Successfull
 define('lang_mod_masterfile_place_alert_add_fail', 'Place Data FAILED to Save. Please Contact System Administrator');
 define('lang_mod_masterfile_place_alert_update_ok', 'Place Data Successfully Updated');
 define('lang_mod_masterfile_place_alert_update_fail', 'Place Data FAILED to Updated. Please Contact System Administrator');
-define('lang_mod_masterfile_place_alert_not_exists', 'ERROR! Selected data doesnt exists');
+//- define('lang_mod_masterfile_place_alert_not_exists', 'ERROR! Selected data doesnt exists');
 define('lang_mod_masterfile_place_common_edit_info', 'You are going to edit place data');
 define('lang_mod_masterfile_place_common_last_update', 'Last update ');
-define('lang_mod_masterfile_place_alert_not_delete', 'Below data cant be deleted : \n');
+//- define('lang_mod_masterfile_place_alert_not_delete', 'Below data cant be deleted : \n');
 define('lang_mod_masterfile_place_alert_all_delete_ok', 'All Data Successfully Deleted');
 define('lang_mod_masterfile_place_alert_all_delete_fail', 'Some or All Data NOT deleted successfully!\nPlease contact system administrator');
-define('lang_mod_masterfile_place_alert_delete_fail', 'Record failed to delete');
+//- define('lang_mod_masterfile_place_alert_delete_fail', 'Record failed to delete');
 # form
 define('lang_mod_masterfile_place_form_field_name', 'Place Name');
 # publisher master file
@@ -841,13 +844,13 @@ define('lang_mod_masterfile_publisher_alert_new_add_ok', 'New Publisher Data Suc
 define('lang_mod_masterfile_publisher_alert_add_fail', 'Publisher Data FAILED to Save. Please Contact System Administrator');
 define('lang_mod_masterfile_publisher_alert_update_ok', 'Publisher Data Successfully Updated');
 define('lang_mod_masterfile_publisher_alert_update_fail', 'PUBLISHER Data FAILED to Updated. Please Contact System Administrator');
-define('lang_mod_masterfile_publisher_alert_not_exists', 'ERROR! Selected data doesnt exists');
+//- define('lang_mod_masterfile_publisher_alert_not_exists', 'ERROR! Selected data doesnt exists');
 define('lang_mod_masterfile_publisher_common_edit_info', 'You are going to edit publisher data');
 define('lang_mod_masterfile_publisher_common_last_update', 'Last update ');
-define('lang_mod_masterfile_publisher_alert_not_delete', 'Below data cant be deleted : \n');
+//- define('lang_mod_masterfile_publisher_alert_not_delete', 'Below data cant be deleted : \n');
 define('lang_mod_masterfile_publisher_alert_all_delete_ok', 'All Data Successfully Deleted');
 define('lang_mod_masterfile_publisher_alert_all_delete_fail', 'Some or All Data NOT deleted successfully!\nPlease contact system administrator');
-define('lang_mod_masterfile_publisher_alert_delete_fail', 'Record failed to delete');
+//- define('lang_mod_masterfile_publisher_alert_delete_fail', 'Record failed to delete');
 # form
 define('lang_mod_masterfile_publisher_form_field_name', 'Publisher Name');
 # supplier master file
@@ -857,13 +860,13 @@ define('lang_mod_masterfile_supplier_alert_new_add_ok', 'New Supplier Data Succe
 define('lang_mod_masterfile_supplier_alert_add_fail', 'Supplier Data FAILED to Save. Please Contact System Administrator');
 define('lang_mod_masterfile_supplier_alert_update_ok', 'Supplier Data Successfully Updated');
 define('lang_mod_masterfile_supplier_alert_update_fail', 'Supplier Data FAILED to Updated. Please Contact System Administrator');
-define('lang_mod_masterfile_supplier_alert_not_exists', 'ERROR! Selected data doesnt exists');
+//- define('lang_mod_masterfile_supplier_alert_not_exists', 'ERROR! Selected data doesnt exists');
 define('lang_mod_masterfile_supplier_common_edit_info', 'You are going to edit Supplier data');
 define('lang_mod_masterfile_supplier_common_last_update', 'Last update ');
 #define('lang_mod_masterfile_supplier_alert_not_delete', 'Below data cant be deleted : \n');
 define('lang_mod_masterfile_supplier_alert_all_delete_ok', 'All Data Successfully Deleted');
 define('lang_mod_masterfile_supplier_alert_all_delete_fail', 'Some or All Data NOT deleted successfully!\nPlease contact system administrator');
-define('lang_mod_masterfile_supplier_alert_delete_fail', 'Record failed to delete');
+//- define('lang_mod_masterfile_supplier_alert_delete_fail', 'Record failed to delete');
 # form
 define('lang_mod_masterfile_supplier_form_field_name', 'Supplier Name');
 define('lang_mod_masterfile_supplier_form_field_address', 'Address');
@@ -878,12 +881,12 @@ define('lang_mod_masterfile_topic_alert_new_add_ok', 'New Subject Data Successfu
 define('lang_mod_masterfile_topic_alert_add_fail', 'Subject Data FAILED to Save. Please Contact System Administrator');
 define('lang_mod_masterfile_topic_alert_update_ok', 'Subject Data Successfully Updated');
 define('lang_mod_masterfile_topic_alert_update_fail', 'Subject Data FAILED to Updated. Please Contact System Administrator');
-define('lang_mod_masterfile_topic_alert_not_exists', 'ERROR! Selected data doesnt exists');
+//- define('lang_mod_masterfile_topic_alert_not_exists', 'ERROR! Selected data doesnt exists');
 define('lang_mod_masterfile_topic_common_edit_info', 'You are going to edit Subject data');
 define('lang_mod_masterfile_topic_common_last_update', 'Last update ');
 define('lang_mod_masterfile_topic_alert_all_delete_ok', 'All Data Successfully Deleted');
 define('lang_mod_masterfile_topic_alert_all_delete_fail', 'Some or All Data NOT deleted successfully!\nPlease contact system administrator');
-define('lang_mod_masterfile_topic_alert_delete_fail', 'Record failed to delete');
+//- define('lang_mod_masterfile_topic_alert_delete_fail', 'Record failed to delete');
 # form
 define('lang_mod_masterfile_topic_form_field_name', 'Subject');
 # label master file
@@ -892,30 +895,30 @@ define('lang_mod_masterfile_label_alert_new_add_ok', 'New Label Data Successfull
 define('lang_mod_masterfile_label_alert_add_fail', 'Label Data FAILED to Save. Please Contact System Administrator');
 define('lang_mod_masterfile_label_alert_update_ok', 'Label Data Successfully Updated');
 define('lang_mod_masterfile_label_alert_update_fail', 'Label Data FAILED to Updated. Please Contact System Administrator');
-define('lang_mod_masterfile_label_alert_not_exists', 'ERROR! Selected data doesnt exists');
+//- define('lang_mod_masterfile_label_alert_not_exists', 'ERROR! Selected data doesnt exists');
 define('lang_mod_masterfile_label_common_edit_info', 'You are going to edit Label data');
 define('lang_mod_masterfile_label_common_last_update', 'Last update ');
 define('lang_mod_masterfile_label_alert_all_delete_ok', 'All Data Successfully Deleted');
 define('lang_mod_masterfile_label_alert_all_delete_fail', 'Some or All Data NOT deleted successfully!\nPlease contact system administrator');
-define('lang_mod_masterfile_label_alert_delete_fail', 'Record failed to delete');
+//- define('lang_mod_masterfile_label_alert_delete_fail', 'Record failed to delete');
 # form
 define('lang_mod_masterfile_label_form_field_label_name', 'Label Name');
 define('lang_mod_masterfile_label_form_field_label_desc', 'Label Description');
-define('lang_mod_masterfile_label_form_field_label_image', 'Label Image');
+//- define('lang_mod_masterfile_label_form_field_label_image', 'Label Image');
 # frequency
 define('lang_mod_masterfile_frequency_alert_new_add_ok', 'New Frequency Data Successfully Save');
 define('lang_mod_masterfile_frequency_alert_add_fail', 'Frequency Data FAILED to Save. Please Contact System Administrator');
 define('lang_mod_masterfile_frequency_alert_update_ok', 'Frequency Data Successfully Updated');
 define('lang_mod_masterfile_frequency_alert_update_fail', 'Frequency Data FAILED to Updated. Please Contact System Administrator');
-define('lang_mod_masterfile_frequency_alert_not_exists', 'ERROR! Selected data doesnt exists');
+//- define('lang_mod_masterfile_frequency_alert_not_exists', 'ERROR! Selected data doesnt exists');
 define('lang_mod_masterfile_frequency_common_edit_info', 'You are going to edit Frequency data');
 define('lang_mod_masterfile_frequency_common_last_update', 'Last update ');
 define('lang_mod_masterfile_frequency_alert_all_delete_ok', 'All Data Successfully Deleted');
 define('lang_mod_masterfile_frequency_alert_all_delete_fail', 'Some or All Data NOT deleted successfully!\nPlease contact system administrator');
-define('lang_mod_masterfile_frequency_alert_delete_fail', 'Record failed to delete');
+//- define('lang_mod_masterfile_frequency_alert_delete_fail', 'Record failed to delete');
 # form
 define('lang_mod_masterfile_frequency_form_field_frequency_name', 'Frequency');
-define('lang_mod_masterfile_frequency_form_field_frequency_lang', 'Language');
+//- define('lang_mod_masterfile_frequency_form_field_frequency_lang', 'Language');
 define('lang_mod_masterfile_frequency_form_field_frequency_time_increment', 'Time Increment');
 define('lang_mod_masterfile_frequency_form_field_frequency_unit', 'Time Unit');
 
@@ -1018,14 +1021,14 @@ define('lang_mod_report_member_field_expired', 'Total Expired Member');
 define('lang_mod_serial', 'Serial Control');
 define('lang_mod_serial_subscription', 'Subscription');
 define('lang_mod_serial_subscription_titletag', 'Manage Subscription');
-define('lang_mod_serial_kardex', 'Kardex');
-define('lang_mod_serial_kardex_titletag', 'Manage Kardex');
+//- define('lang_mod_serial_kardex', 'Kardex');
+//- define('lang_mod_serial_kardex_titletag', 'Manage Kardex');
 # subcription menu
 define('lang_mod_serial_subscription_add', 'Add New Subscription');
 define('lang_mod_serial_subscription_list', 'View Subscriptions');
 # kardex menu
-define('lang_mod_serial_kardex_add', 'Add New Kardex');
-define('lang_mod_serial_kardex_view', 'View Kardex');
+//- define('lang_mod_serial_kardex_add', 'Add New Kardex');
+//- define('lang_mod_serial_kardex_view', 'View Kardex');
 # fields
 define('lang_mod_serial_field_date_start', 'Subscription Start');
 define('lang_mod_serial_field_exemplar', 'Total Exemplar Expected');
@@ -1045,7 +1048,7 @@ define('lang_mod_serial_alert_new_added', 'New Subscription Data Successfully Sa
 define('lang_mod_serial_alert_fail_to_save', 'Subscription Data FAILED to Save. Please Contact System Administrator');
 define('lang_mod_serial_alert_updated', 'Subscription Data Successfully Updated');
 define('lang_mod_serial_alert_not_updated', 'Subscription Data FAILED to Updated. Please Contact System Administrator');
-define('lang_mod_serial_alert_not_exists', 'Error! Subscription data does not exists!');
+//- define('lang_mod_serial_alert_not_exists', 'Error! Subscription data does not exists!');
 define('lang_mod_serial_common_info', 'You are going to edit Subscription data : ');
 
 
@@ -1237,7 +1240,7 @@ define('lang_mod_stocktake_upload_form_button_upload', ' Upload File');
 define('lang_mod_stocktake_upload_alert_success', 'Succesfully upload stock take file ');
 define('lang_mod_stocktake_upload_alert_success_info', ' item codes scanned!');
 /* SERIAL CONTROL MODULE */
-# subcription menu 
+# subcription menu
 define('lang_mod_serial_subscription_header', 'Serial Title');
 define('lang_mod_serial_subscription_close', 'CLOSE');
 define('lang_mod_serial_subscription_kardex', 'View/Edit Kardex Detail');

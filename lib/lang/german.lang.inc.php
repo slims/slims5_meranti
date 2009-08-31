@@ -14,7 +14,7 @@ Notes:      - Some translations are "hidden" in the sysconfig.inc.php file.
 
 
 /* COMMON */
-define('lang_sys_common_data_not_exists', 'FEHLER! Daten sind nicht vorhanden');
+//- define('lang_sys_common_data_not_exists', 'FEHLER! Daten sind nicht vorhanden');
 define('lang_sys_common_unauthorized', 'Sie sind nicht authorisiert diesen Bereich einzusehen');
 define('lang_sys_common_no_privilege', 'Sie verfügen nicht über ausreichende Rechte um diesen Bereich einzusehen');
 define('lang_sys_common_timeout', 'Die Sitzungsdauer ihrer Anmeldung ist inzwischen abgelaufen!');
@@ -25,7 +25,7 @@ define('lang_sys_common_gd_freetype_not_loaded', '<strong>Freetype</strong>-Unte
 define('lang_sys_common_imagedir_unwritable', '<strong>Images</strong>-Verzeichnis und darunter liegende Verzeichnisse sind nicht beschreibbar. Bitte gestatten Sie den Schreibzugriff indem Sie die entsprechende Berechtigung setzen. Andernfalls ist es Ihnen nicht möglich Bilder hochzuladen und Barcodes zu erstellen');
 define('lang_sys_common_uploaddir_unwritable', '<strong>File upload</strong>-Verzeichnis ist nicht beschreibbar. Bitte gestatten Sie den Schreibzugriff (eingeschlossen der darunter liegenden Verzeichnisse) indem Sie die entsprechende Berechtigung setzen. Andernfalls ist es Ihnen nicht möglich Dateien hochzuladen, sowie Berichtsdateien und Datenbanksicherungen zu erstellen.');
 define('lang_sys_common_repodir_unwritable', '<strong>Repository</strong>-Verzeichnis ist nicht beschreibbar. Bitte gestatten Sie den Schreibzugriff (eingeschlossen der darunter liegenden Verzeichnisse) indem Sie die entsprechende Berechtigung setzen. Andernfalls ist es Ihnen nicht möglich zu Titelaufnahmen Anhänge hinzuzufügen.'); //? (bibliographic attachments)
-define('lang_sys_common_dompdfdir_unwritable', '<strong>{dompdf_libdir}</strong>-Verzeichnis ist nicht beschreibbar. Bitte gestatten Sie den Schreibzugriff (eingeschlossen der darunter liegenden Verzeichnisse) indem Sie die entsprechende Berechtigung setzen, da die Anwendung andernfalls keine PDF-Dateien erstellen kann.');
+//- define('lang_sys_common_dompdfdir_unwritable', '<strong>{dompdf_libdir}</strong>-Verzeichnis ist nicht beschreibbar. Bitte gestatten Sie den Schreibzugriff (eingeschlossen der darunter liegenden Verzeichnisse) indem Sie die entsprechende Berechtigung setzen, da die Anwendung andernfalls keine PDF-Dateien erstellen kann.');
 define('lang_sys_common_mysqldump_not_found', 'Die Pfadangabe für die <strong>mysqldump</strong>-Anwendung ist inkorrekt! Bitte prüfen Sie die Konfigurationsdatei, da Sie andernfalls keine Datenbanksicherungen durchführen können.');
 define('lang_sys_common_tools', 'Werkzeuge');
 define('lang_sys_common_confirm_delete_selected', 'Wollen Sie die ausgewählten Daten wirklich LÖSCHEN?');
@@ -90,9 +90,9 @@ define('lang_sys_common_form_report','Bericht herunterladen');
 # datagrid form
 define('lang_sys_common_form_checkbox_all', 'Alle anwählen');
 define('lang_sys_common_form_uncheckbox_all', 'Alle abwählen');
-define('lang_sys_common_form_delete_selected', 'Ausgewählte Daten löschen');
-define('lang_sys_common_form_confirm_delete', 'Wollen Sie die ausgewählten Daten wirklich löschen?');
-define('lang_sys_common_edit_titletag', 'Click for detail or edit this Record'); //? //-
+//- define('lang_sys_common_form_delete_selected', 'Ausgewählte Daten löschen');
+//- define('lang_sys_common_form_confirm_delete', 'Wollen Sie die ausgewählten Daten wirklich löschen?');
+//- define('lang_sys_common_edit_titletag', 'Click for detail or edit this Record'); //? //-
 # display search data
 define('lang_sys_common_search_result_info', '<strong>{result->num_rows}</strong> Ergebnisse gefunden für die Suchbegriffe');
 define('lang_sys_common_paging_first', 'Erste Seite');
@@ -102,7 +102,7 @@ define('lang_sys_common_paging_next', 'Nächste');
 # application user form
 define('lang_sys_user_field_login_username', 'Anmeldename');
 define('lang_sys_user_field_realname', 'Name');
-define('lang_sys_user_field_password', 'Passwort');
+//- define('lang_sys_user_field_password', 'Passwort');
 define('lang_sys_user_field_password_confirm', 'Passwort bestätigen');
 # content form
 define('lang_sys_content_field_title', 'Titel der Seite');
@@ -145,12 +145,12 @@ define('lang_sys_conf_module_alert_save_ok', 'Daten des neuen Moduls erfolgreich
 define('lang_sys_conf_module_alert_save_fail', 'Speicherung der Moduldaten FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
 define('lang_sys_conf_module_alert_update_ok', 'Moduldaten erfolgreich aktualisiert');
 define('lang_sys_conf_module_alert_update_fail', 'Aktualisierung der Moduldaten FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
-define('lang_sys_conf_module_alert_not_exist', 'Fehler! Moduldaten sind nicht vorhanden!');
+//- define('lang_sys_conf_module_alert_not_exist', 'Fehler! Moduldaten sind nicht vorhanden!');
 define('lang_sys_conf_module_common_edit_info', 'Sie sind im Begriff die Angaben für folgendes Modul zu bearbeiten');
 define('lang_sys_conf_module_common_alert_delete_success', 'Alle Daten erfolgreich gelöscht');
 define('lang_sys_conf_module_common_alert_delete_fail', 'Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\nBitte kontaktieren Sie den Systemadministrator');
-define('lang_sys_conf_module_common_alert_delete_group_ok', 'Benutzergruppe erfolgreich gelöscht');
-define('lang_sys_conf_module_common_alert_delete_group_fail', 'Löschung der Benutzergruppe fehlgeschlagen');
+//- define('lang_sys_conf_module_common_alert_delete_group_ok', 'Benutzergruppe erfolgreich gelöscht');
+//- define('lang_sys_conf_module_common_alert_delete_group_fail', 'Löschung der Benutzergruppe fehlgeschlagen');
 define('lang_sys_conf_module_field_name', 'Modulname');
 define('lang_sys_conf_module_field_path', 'Modulpfad');
 define('lang_sys_conf_module_field_description', 'Modulbeschreibung');
@@ -158,25 +158,25 @@ define('lang_sys_conf_module_field_description', 'Modulbeschreibung');
 /* User Configuration */
 define('lang_sys_conf_user_alert_noempty', 'Anmeldename und Name müssen angegeben sein');
 define('lang_sys_conf_user_alert_forbid', 'Anmeldename oder Name nicht zulässig!');
-define('lang_sys_conf_user_alert_nopassword', 'Es muss ein Passwort angegeben werden!');
+//- define('lang_sys_conf_user_alert_nopassword', 'Es muss ein Passwort angegeben werden!');
 define('lang_sys_conf_user_alert_nomatch', 'Passwort stimmt nicht mit Passwortbestätigung überein. Prüfen Sie, ob versehentlich die Shift-Lock-Taste aktiviert wurde!');
 define('lang_sys_conf_user_alert_save_ok', 'Neue Benutzerdaten erfolgreich gespeichert');
 define('lang_sys_conf_user_alert_save_fail', 'Speicherung der Benutzerdaten FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
 define('lang_sys_conf_user_alert_update_ok', 'Benutzerdaten erfolgreich aktualisiert');
 define('lang_sys_conf_user_alert_update_fail', 'Aktualisierung der Benutzerdaten FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
-define('lang_sys_conf_user_alert_not_exist', 'Fehler! Benutzerdaten sind nicht vorhanden!');
+//- define('lang_sys_conf_user_alert_not_exist', 'Fehler! Benutzerdaten sind nicht vorhanden!');
 define('lang_sys_conf_user_common_edit_info', 'Sie sind im Begriff die Angaben für folgendes Benutzerprofil zu bearbeiten');
 define('lang_sys_conf_user_common_last_update', 'Letzte Aktualisierung ');
 define('lang_sys_conf_user_common_info_1', 'Füllen Sie das Passwortfeld nicht aus, wenn Sie das Passwort nicht ändern wollen');
 define('lang_sys_conf_user_common_alert_delete_success', 'Alle Daten erfolgreich gelöscht');
 define('lang_sys_conf_user_common_alert_delete_fail', 'Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\nBitte kontaktieren Sie den Systemadministrator');
-define('lang_sys_conf_user_common_alert_delete_record_ok', 'Benutzer erfolgreich gelöscht');
-define('lang_sys_conf_user_common_alert_delete_record_fail', 'Löschung des Benutzers fehlgeschlagen');
+//- define('lang_sys_conf_user_common_alert_delete_record_ok', 'Benutzer erfolgreich gelöscht');
+//- define('lang_sys_conf_user_common_alert_delete_record_fail', 'Löschung des Benutzers fehlgeschlagen');
 define('lang_sys_conf_user_field_login_name', 'Anmeldename');
 define('lang_sys_conf_user_field_real', 'Name');
 define('lang_sys_conf_user_field_group', 'Benutzergruppe(n)');
-define('lang_sys_conf_user_field_password_1', 'Passwort');
-define('lang_sys_conf_user_field_password_2', 'Passwort bestätigen');
+//- define('lang_sys_conf_user_field_password_1', 'Passwort');
+//- define('lang_sys_conf_user_field_password_2', 'Passwort bestätigen');
 define('lang_sys_conf_user_field_password_3', 'Neues Passwort');
 define('lang_sys_conf_user_field_password_4', 'Neues Passwort bestätigen');
 define('lang_sys_conf_user_field_last_login', 'Letzte Anmeldung');
@@ -187,13 +187,13 @@ define('lang_sys_conf_group_alert_save_ok', 'Neue Benutzergruppendaten erfolgrei
 define('lang_sys_conf_group_alert_save_fail', 'Speicherung der Benutzergruppendaten FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
 define('lang_sys_conf_group_alert_update_ok', 'Benutzergruppendaten erfolgreich aktualisiert');
 define('lang_sys_conf_group_alert_update_fail', 'Aktualisierung der Benutzergruppendaten FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
-define('lang_sys_conf_group_alert_not_exist', 'Fehler! Group data sind nicht vorhanden!');
+//- define('lang_sys_conf_group_alert_not_exist', 'Fehler! Group data sind nicht vorhanden!');
 define('lang_sys_conf_group_common_edit_info', 'Sie sind im Begriff die Angaben für folgende Benutzergruppe zu bearbeiten');
 define('lang_sys_conf_group_common_last_update', 'Letzte Aktualisierung ');
 define('lang_sys_conf_group_common_alert_delete_success', 'Alle Daten erfolgreich gelöscht');
 define('lang_sys_conf_group_common_alert_delete_fail', 'Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\nBitte kontaktieren Sie den Systemadministrator');
-define('lang_sys_conf_group_common_alert_delete_record_ok', 'Benutzergruppe erfolgreich gelöscht');
-define('lang_sys_conf_group_common_alert_delete_record_fail', 'Löschung der Benutzergruppe fehlgeschlagen');
+//- define('lang_sys_conf_group_common_alert_delete_record_ok', 'Benutzergruppe erfolgreich gelöscht');
+//- define('lang_sys_conf_group_common_alert_delete_record_fail', 'Löschung der Benutzergruppe fehlgeschlagen');
 define('lang_sys_conf_group_field_name', 'Benutzergruppenname');
 define('lang_sys_conf_group_field_privileges', 'Rechte');
 define('lang_sys_conf_group_privileges_modul_name', 'Modulname');
@@ -204,18 +204,18 @@ define('lang_sys_conf_group_privileges_modul_write', 'Schreiben');
 define('lang_sys_holiday_set_day', 'Wochenruhetage festlegen');
 define('lang_sys_holiday_add_day', 'Neuer Ruhezeitraum (Ferien, Feiertage)');
 define('lang_sys_holiday_list', 'Ruhezeiträume ansehen');
-define('lang_sys_conf_holiday_alert_noempty', 'Beschreibung des Ruhezeitraums muss angegeben sein');
+//- define('lang_sys_conf_holiday_alert_noempty', 'Beschreibung des Ruhezeitraums muss angegeben sein');
 define('lang_sys_conf_holiday_alert_save_ok', 'Neuer Ruhezeitraum erfolgreich gespeichert');
 define('lang_sys_conf_holiday_alert_save_fail', 'Speicherung  des Ruhezeitraums FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
 define('lang_sys_conf_holiday_alert_update_ok', 'Ruhetag erfolgreich aktualisiert');
 define('lang_sys_conf_holiday_alert_update_fail', 'Aktualisierung des Ruhetags FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
-define('lang_sys_conf_holiday_alert_not_exist', 'Fehler! Ruhetag ist nicht vorhanden!');
+//- define('lang_sys_conf_holiday_alert_not_exist', 'Fehler! Ruhetag ist nicht vorhanden!');
 define('lang_sys_conf_holiday_alert_set_ok', 'Wochenruhetage gespeichert');
 define('lang_sys_conf_holiday_common_edit_info', 'Sie sind im Begriff die Angaben für folgenden Ruhezeitraum (Tag davon) zu bearbeiten');
 define('lang_sys_conf_holiday_common_alert_delete_success', 'Alle Daten erfolgreich gelöscht');
 define('lang_sys_conf_holiday_common_alert_delete_fail', 'Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\nBitte kontaktieren Sie den Systemadministrator');
-define('lang_sys_conf_holiday_common_alert_delete_record_ok', 'Ruhezeitraum erfolgreich gelöscht'); //-
-define('lang_sys_conf_holiday_common_alert_delete_record_fail', 'Löschung des Ruhezeitraums fehlgeschlagen'); //-
+//- define('lang_sys_conf_holiday_common_alert_delete_record_ok', 'Ruhezeitraum erfolgreich gelöscht'); //-
+//- define('lang_sys_conf_holiday_common_alert_delete_record_fail', 'Löschung des Ruhezeitraums fehlgeschlagen'); //-
 define('lang_sys_conf_holiday_form_save', 'Einstellungen speichern');
 define('lang_sys_conf_holiday_field_date_day', 'Beginn des Ruhezeitraums');
 define('lang_sys_conf_holiday_field_date_day_end', 'Ende des Ruhezeitraums');
@@ -244,7 +244,7 @@ define('lang_sys_conf_log_field_location', 'Stelle');
 define('lang_sys_conf_log_field_message', 'Nachricht');
 
 /* OPAC */
-define('lang_opac_search_result', 'Suchergebnis');
+//- define('lang_opac_search_result', 'Suchergebnis');
 define('lang_opac_info', 'Bibliothekskatalog Online - Nutzen Sie die verschiedenen Suchmöglichkeiten um schnell das Gesuchte zu finden'); //? OAPC - a word patrons fear :D
 define('lang_opac_rec_detail', 'Details zum Titel'); //? (Record Details); Translation more user friendly?
 define('lang_opac_page_info', 'Sie befinden sich auf Seite <strong>{page}</strong> von <strong>{total_pages}</strong> Seiten(n)');
@@ -268,7 +268,7 @@ define('lang_mod_biblio_item_list', 'Exemplare ansehen');
 define('lang_mod_biblio_item_list_titletag', 'Übersicht der Bibliotheksexemplare');
 define('lang_mod_biblio_item_checkout', 'Entliehene Exemplare');
 define('lang_mod_biblio_item_checkout_titletag', 'Übersicht der derzeit entliehenen Exemplare');
-define('lang_mod_biblio_tools', 'Werkzeuge');
+//- define('lang_mod_biblio_tools', 'Werkzeuge');
 define('lang_mod_biblio_tools_z3950', 'Z39.50 Service');
 define('lang_mod_biblio_tools_z3950_titletag', 'Bibliographische Daten von einem Z39.50-Services beziehen');
 define('lang_mod_biblio_tools_label_print', 'Etikette drucken (Aufnahmen)');
@@ -287,7 +287,7 @@ define('lang_mod_biblio_tools_import_titletag', 'Titelaufnahmen aus Datei import
 define('lang_mod_biblio_field_title', 'Titel');
 define('lang_mod_biblio_field_edition', 'Ausgabe');
 define('lang_mod_biblio_field_specific_detail', 'Anmerkung'); //? (Specific Detail Info)
-define('lang_mod_biblio_field_items', 'Exemplardatensatz/-sätze');
+//- define('lang_mod_biblio_field_items', 'Exemplardatensatz/-sätze');
 define('lang_mod_biblio_field_no_item', 'Für diesen Titel ist noch kein Exemplar eingetragen');
 define('lang_mod_biblio_link_item_add', 'Neues Exemplar hinzufügen');
 define('lang_mod_biblio_field_authors', 'Autor(en)');
@@ -297,10 +297,10 @@ define('lang_mod_biblio_field_gmd', 'Ressourcenart');
 define('lang_mod_biblio_field_isbn', 'ISBN/ISSN');
 define('lang_mod_biblio_field_class', 'Klassifikation'); //? Hmm
 define('lang_mod_biblio_field_publisher', 'Verlag');
-define('lang_mod_biblio_field_no_publisher', 'Kein Verlag angegeben bisher');
+//- define('lang_mod_biblio_field_no_publisher', 'Kein Verlag angegeben bisher');
 define('lang_mod_biblio_field_publish_year', 'Erscheinungsjahr');
 define('lang_mod_biblio_field_publish_place', 'Erscheinungsort');
-define('lang_mod_biblio_field_no_publish_place', 'Kein Erscheinungsort angegeben bisher');
+//- define('lang_mod_biblio_field_no_publish_place', 'Kein Erscheinungsort angegeben bisher');
 define('lang_mod_biblio_field_collation', 'Umfang'); //? (Collation)
 define('lang_mod_biblio_field_series', 'Reihentitel'); //? Series Title
 define('lang_mod_biblio_field_call_number', 'Signatur');
@@ -310,9 +310,9 @@ define('lang_mod_biblio_link_topic_search', 'Klicken um weitere Titel mit diesem
 define('lang_mod_biblio_field_lang', 'Sprache');
 define('lang_mod_biblio_field_notes', 'Abstract/Inhalt');
 define('lang_mod_biblio_field_image', 'Bild');
-define('lang_mod_biblio_field_image_nothing', 'Kein Bild vorhanden');
+//- define('lang_mod_biblio_field_image_nothing', 'Kein Bild vorhanden');
 define('lang_mod_biblio_field_attachment', 'Dateianhang');
-define('lang_mod_biblio_field_attachment_nothing', 'Kein Dateianhang vorhanden');
+//- define('lang_mod_biblio_field_attachment_nothing', 'Kein Dateianhang vorhanden');
 define('lang_mod_biblio_field_availability', 'Verfügbarkeit');
 define('lang_mod_biblio_field_hide_opac', 'Anzeige im OPAC');
 define('lang_mod_biblio_field_promote', 'Auf der Startseite anzeigen'); //? promote...
@@ -329,18 +329,18 @@ define('lang_mod_biblio_alert_failed_to_update', 'Aktualisierung der Titelaufnah
 define('lang_mod_biblio_alert_new_added', 'Neue Titelaufnahme erfolgreich gespeichert');
 define('lang_mod_biblio_alert_updated_ok', 'Titelaufnahme erfolgreich aktualisiert');
 define('lang_mod_biblio_alert_image_uploaded', 'Bild erfolgreich hochgeladen');
-define('lang_mod_biblio_alert_image_not_uploaded', 'Hochladen des Bildes FEHLGESCHLAGEN');
-define('lang_mod_biblio_alert_attach_uploaded', 'Dateianhang erfolgreich hochgeladen');
-define('lang_mod_biblio_alert_attach_not_uploaded', 'Hochladen des Dateianhangs FEHLGESCHLAGEN');
-define('lang_mod_biblio_common_not_exists','FEHLER! Ausgewählte Daten sind nicht vorhanden');
+//- define('lang_mod_biblio_alert_image_not_uploaded', 'Hochladen des Bildes FEHLGESCHLAGEN');
+//- define('lang_mod_biblio_alert_attach_uploaded', 'Dateianhang erfolgreich hochgeladen');
+//- define('lang_mod_biblio_alert_attach_not_uploaded', 'Hochladen des Dateianhangs FEHLGESCHLAGEN');
+//- define('lang_mod_biblio_common_not_exists','FEHLER! Ausgewählte Daten sind nicht vorhanden');
 define('lang_mod_biblio_common_edit_message', 'Sie sind im Begriff die Angaben für folgende Titelaufnahme zu bearbeiten');
 define('lang_mod_biblio_common_last_update', 'Letzte Aktualisierung ');
 define('lang_mod_biblio_alert_list_not_deleted', 'Folgende Daten können nicht gelöscht werden: ');
 define('lang_mod_biblio_alert_data_selected_deleted', 'Alle Daten erfolgreich gelöscht');
 define('lang_mod_biblio_alert_data_selected_not_deleted', 'Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\nBitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_biblio_alert_data_have_item', 'Diese Titelaufnahme kann nicht gelöscht werden, da noch {biblio_item} Exemplare mit ihr verknüpft sind. Bitte löschen Sie diese Exemplare zunächst.');
-define('lang_mod_biblio_alert_data_deleted', 'Titelaufnahme erfolgreich gelöscht');
-define('lang_mod_biblio_alert_data_not_deleted', 'Löschung der Titelaufnahme fehlgeschlagen');
+//- define('lang_mod_biblio_alert_data_have_item', 'Diese Titelaufnahme kann nicht gelöscht werden, da noch {biblio_item} Exemplare mit ihr verknüpft sind. Bitte löschen Sie diese Exemplare zunächst.');
+//- define('lang_mod_biblio_alert_data_deleted', 'Titelaufnahme erfolgreich gelöscht');
+//- define('lang_mod_biblio_alert_data_not_deleted', 'Löschung der Titelaufnahme fehlgeschlagen');
 # item form fields
 define('lang_mod_biblio_item_field_title', 'Titel');
 define('lang_mod_biblio_item_field_itemcode', 'Barcode/Exemplar');
@@ -358,28 +358,28 @@ define('lang_mod_biblio_item_field_invoice', 'Rechnung');
 define('lang_mod_biblio_item_field_invoice_date', 'Rechnungsdatum');
 define('lang_mod_biblio_item_field_price', 'Preis');
 #item
-define('lang_mod_biblio_item_common_opac_status_1', 'Wir besitzen {copy} Exemplare dieses Titels und ALLE sind derzeit ausgeliehen');
-define('lang_mod_biblio_item_common_opac_status_2', 'Wir besitzen {copy} Exemplare dieses Titels');
-define('lang_mod_biblio_item_common_opac_status_3', 'ist verfügbar');
-define('lang_mod_biblio_item_common_opac_status_4', 'derzeit ausgeliehen');
+//- define('lang_mod_biblio_item_common_opac_status_1', 'Wir besitzen {copy} Exemplare dieses Titels und ALLE sind derzeit ausgeliehen');
+//- define('lang_mod_biblio_item_common_opac_status_2', 'Wir besitzen {copy} Exemplare dieses Titels');
+//- define('lang_mod_biblio_item_common_opac_status_3', 'ist verfügbar');
+//- define('lang_mod_biblio_item_common_opac_status_4', 'derzeit ausgeliehen');
 define('lang_mod_biblio_item_common_location_status_1', 'Exemplare in'); //? at - how does it continue?
-define('lang_mod_biblio_item_alert_collection_title', 'Titel der Sammlung muss angegeben sein!');
+//- define('lang_mod_biblio_item_alert_collection_title', 'Titel der Sammlung muss angegeben sein!');
 define('lang_mod_biblio_item_alert_item_code', 'Barcode/Exemplar muss angegeben sein!');
 define('lang_mod_biblio_item_alert_new_saved', 'Neues Exemplar erfolgreich gespeichert');
 define('lang_mod_biblio_item_alert_updated','Exemplar erfolgreich aktualisiert');
 define('lang_mod_biblio_item_alert_not_saved', 'Speicherung des Exemplars FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
 define('lang_mod_biblio_item_alert_delete_fail_on_loan', 'Exemplars kann nicht gelöscht werden, da es noch ausgeliehen ist');
-define('lang_mod_biblio_item_alert_delete_item_data_success', 'Alle Daten erfolgreich gelöscht');
-define('lang_mod_biblio_item_alert_delete_item_data_failed', 'Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\nBitte kontaktieren Sie den Systemadministrator');
+//- define('lang_mod_biblio_item_alert_delete_item_data_success', 'Alle Daten erfolgreich gelöscht');
+//- define('lang_mod_biblio_item_alert_delete_item_data_failed', 'Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\nBitte kontaktieren Sie den Systemadministrator');
 define('lang_mod_biblio_item_common_edit_message', 'Sie sind im Begriff die Angaben für folgendes Exemplar zu bearbeiten');
 define('lang_mod_biblio_item_common_last_update', 'Letzte Aktualisierung');
-define('lang_mod_biblio_item_common_delete_success', 'Exemplar erfolgreich gelöscht');
-define('lang_mod_biblio_item_common_delete_failed', 'Löschung des Exemplars fehlgeschlagen');
+//- define('lang_mod_biblio_item_common_delete_success', 'Exemplar erfolgreich gelöscht');
+//- define('lang_mod_biblio_item_common_delete_failed', 'Löschung des Exemplars fehlgeschlagen');
 define('lang_mod_biblio_item_alert_remove_success', 'Exemplar erfolgreich entfernt!');
 define('lang_mod_biblio_item_alert_remove_failed', 'Entfernung des Exemplars FEHLGESCHLAGEN!');
 # file attached
-define('lang_mod_biblio_file_delete_success', 'Datei {file_d[0]} gelöscht');
-define('lang_mod_biblio_file_delete_fail', 'Löschung der Datei {file_d[0]} FEHLGESCHLAGEN');
+//- define('lang_mod_biblio_file_delete_success', 'Datei {file_d[0]} gelöscht');
+//- define('lang_mod_biblio_file_delete_fail', 'Löschung der Datei {file_d[0]} FEHLGESCHLAGEN');
 # export
 define('lang_mod_biblio_export_header', 'EXPORT-WERKZEUG');
 define('lang_mod_biblio_export_header_text', 'Titelaufnahmen in Datei exportieren (CSV-Format)');
@@ -415,7 +415,7 @@ define('lang_mod_biblio_author_form_name', 'Name des Autors');
 define('lang_mod_biblio_author_form_search', 'Tippen Sie einen Namen ein um nach vorhandenen Autoren zu suchen oder einen neuen hinzufügen');
 define('lang_mod_biblio_author_insert_to_biblio', 'In Titelaufnahme einfügen');
 #topic
-define('lang_mod_biblio_topic_update_ok', 'Schlagwort erfolgreich aktualisiert!');
+//- define('lang_mod_biblio_topic_update_ok', 'Schlagwort erfolgreich aktualisiert!');
 define('lang_mod_biblio_topic_added_ok', 'Schlagwort hinzugefügt!');
 define('lang_mod_biblio_topic_added_fail', 'Hinzufügen des Schlagwortes FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
 define('lang_mod_biblio_topic_form_title', 'Schlagwörter hinzufügen');
@@ -507,21 +507,21 @@ define('lang_mod_circ_loan_button_loan', 'Ausleihen');
 define('lang_mod_circ_reserve_field_search_collection', 'Bestand durchsuchen');
 define('lang_mod_circ_reserve_button_add_reserve', 'Vormerkung hinzufügen');
 define('lang_mod_circ_return_titletext_return', 'Exemplar zurückbuchen');
-define('lang_mod_circ_return_alttext_return', 'Zurückbuchen');
+//- define('lang_mod_circ_return_alttext_return', 'Zurückbuchen');
 define('lang_mod_circ_return_no_return_history_data', 'Noch nicht zurückgegeben');
 define('lang_mod_circ_extend_alttext_no_extend', 'Keine Verlängerung');
 define('lang_mod_circ_extend_titletext_extend', 'Leihfrist für dieses Exemplar verlängern');
-define('lang_mod_circ_extend_alttext_extend', 'Verlängern');
+//- define('lang_mod_circ_extend_alttext_extend', 'Verlängern');
 define('lang_mod_circ_extend_renewal_flag', 'Verlängert');
 define('lang_mod_circ_extend_noextend_confirmation', 'Leihfrist des Exemplars kann NICHT verlängert werdenItem! Exemplar ist durch ein anderes Mitglied vorgemerkt');
 # fines
 define('lang_mod_circ_fines_alert_new_added', 'Neuer Gebühreneintrag erfolgreich gespeichert');
 define('lang_mod_circ_fines_alert_fail_to_save', 'Speicherung des Gebühreneintrags FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_circ_fines_alert_required_data', 'Gebührenbeschreibung und Gebührenforderung müssen angegeben sein');
-define('lang_mod_circ_fines_alert_balance_data', 'Das Guthaben kann nicht größer als die Gebührenforderung sein');
+//- define('lang_mod_circ_fines_alert_required_data', 'Gebührenbeschreibung und Gebührenforderung müssen angegeben sein');
+//- define('lang_mod_circ_fines_alert_balance_data', 'Das Guthaben kann nicht größer als die Gebührenforderung sein');
 define('lang_mod_circ_fines_alert_updated', 'Gebühreneintrag erfolgreich aktualisiert');
 define('lang_mod_circ_fines_alert_not_updated', 'Aktualisierung des Gebühreneintrags FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_circ_fines_alert_not_exists', 'Fehler! Gebühreneintrag ist nicht vorhanden!');
+//- define('lang_mod_circ_fines_alert_not_exists', 'Fehler! Gebühreneintrag ist nicht vorhanden!');
 define('lang_mod_circ_fines_common_info', 'Sie sind im Begriff die Angaben für folgenden Gebühreneintrag zu bearbeiten: ');
 # form
 define('lang_mod_circ_fines_field_date', 'Gebührendatum');
@@ -542,15 +542,15 @@ define('lang_mod_circ_loan_rules_field_fines', 'Gebühren pro Tag');
 # common loan rules
 define('lang_mod_circ_loan_rules_alert_updated_ok', 'Ausleihregeln erfolgreich aktualisiert');
 define('lang_mod_circ_loan_rules_alert_updated_fail', 'Aktualisierung der Ausleihregeln FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_circ_loan_rules_alert_not_exist', 'Fehler! Ausleihregel sind nicht vorhanden!');
+//- define('lang_mod_circ_loan_rules_alert_not_exist', 'Fehler! Ausleihregel sind nicht vorhanden!');
 define('lang_mod_circ_loan_rules_common_edit_info', 'Sie sind im Begriff die Angaben für folgende Ausleihregel zu bearbeiten: ');
 define('lang_mod_circ_loan_rules_common_last_update', 'Letzte Aktualisierung ');
 define('lang_mod_circ_loan_rules_alert_all_deleted', 'Alle Daten erfolgreich gelöscht');
 define('lang_mod_circ_loan_rules_alert_not_all_deleted', 'Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\nBitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_circ_loan_rules_alert_deleted', 'Ausleihregeln erfolgreich gelöscht');
-define('lang_mod_circ_loan_rules_alert_not_deleted', 'Löschung der Ausleihregeln FEHLGESCHLAGEN');
+//- define('lang_mod_circ_loan_rules_alert_deleted', 'Ausleihregeln erfolgreich gelöscht');
+//- define('lang_mod_circ_loan_rules_alert_not_deleted', 'Löschung der Ausleihregeln FEHLGESCHLAGEN');
 # overdue loan
-define('lang_mod_circ_loan_overdue_tblheader', 'Mitglied(er) mit Mahngebühren');
+//- define('lang_mod_circ_loan_overdue_tblheader', 'Mitglied(er) mit Mahngebühren');
 # quick return
 define('lang_mod_circ_loan_quick_return_disable', 'Schnellrücknahme ist deaktiviert');
 define('lang_mod_circ_loan_quick_return_form_item_id', 'Barcode/Exemplar');
@@ -573,7 +573,7 @@ define('lang_mod_membership_member_type_new_add', 'Neuer Mitgliedstyp');
 define('lang_mod_membership_member_type_list', 'Mitgliedstypen ansehen');
 define('lang_mod_membership_member_list', 'Mitgliederliste');
 define('lang_mod_membership_view_expired_member', 'Abgelaufene Mitgliedschaften anzeigen');
-define('lang_mod_membership_tools', 'Werkzeuge');
+//- define('lang_mod_membership_tools', 'Werkzeuge');
 define('lang_mod_membership_import_data', 'Daten importieren');
 define('lang_mod_membership_import_data_titletag', 'Mitgliederdaten aus Datei importieren (CSV-Format)');
 define('lang_mod_membership_import_data_description', 'Mitgliederdaten aus Datei importieren (CSV-Format)');
@@ -590,7 +590,7 @@ define('lang_mod_membership_common_member_data_saved', 'Neue Mitgliedsdaten erfo
 define('lang_mod_membership_common_image_upload_success', 'Bild erfolgreich hochgeladen');
 define('lang_mod_membership_common_image_upload_error', 'Hochladen des Bildes FEHLGESCHLAGEN');
 define('lang_mod_membership_common_error_fail_to_save_member_data', 'Speicherung/Aktualisierung der Mitgliedsdaten FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_membership_common_error_member_data_not_exist', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
+//- define('lang_mod_membership_common_error_member_data_not_exist', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
 define('lang_mod_membership_common_error_membership_expired', 'Mitgliedschaft bereits abgelaufen');
 define('lang_mod_membership_common_member_data_updated', 'Mitgliedsdaten erfolgreich aktualisiert');
 define('lang_mod_membership_button_save', 'Speichern');
@@ -598,11 +598,11 @@ define('lang_mod_membership_common_maximum', 'Maximum');
 define('lang_mod_membership_common_edit_message', 'Sie sind im Begriff die Angaben für folgendes Mitglied zu bearbeiten');
 define('lang_mod_membership_common_last_update', 'Letzte Aktualisierung');
 define('lang_mod_membership_common_alert_no_delete_member_data', 'Folgende Mitgliederdaten können nicht geklöscht werden, da noch Entleihungen gebucht sind');
-define('lang_mod_membership_common_alert_no_delete_member_data_1', 'Mitgliederdaten');
-define('lang_mod_membership_common_alert_no_delete_member_data_2', 'können nicht geklöscht werden,');
-define('lang_mod_membership_common_alert_no_delete_member_data_3', 'da noch Entleihungen gebucht sind');
-define('lang_mod_membership_common_member_data_deleted_success', 'Mitgliederdaten erfolgreich gelöscht');
-define('lang_mod_membership_common_member_data_deleted_failed', 'Löschung des Mitglieds fehlgeschlagen');
+//- define('lang_mod_membership_common_alert_no_delete_member_data_1', 'Mitgliederdaten');
+//- define('lang_mod_membership_common_alert_no_delete_member_data_2', 'können nicht geklöscht werden,');
+//- define('lang_mod_membership_common_alert_no_delete_member_data_3', 'da noch Entleihungen gebucht sind');
+//- define('lang_mod_membership_common_member_data_deleted_success', 'Mitgliederdaten erfolgreich gelöscht');
+//- define('lang_mod_membership_common_member_data_deleted_failed', 'Löschung des Mitglieds fehlgeschlagen');
 define('lang_mod_membership_common_expired_member_list', 'Liste abgelaufener Mitgliedschaften');
 define('lang_mod_membership_common_found_text_1', 'Es wurde');
 define('lang_mod_membership_common_found_text_2', 'Mitglied(er) gefunden mit dem Suchbegriff');
@@ -633,7 +633,7 @@ define('lang_mod_membership_field_expiry_date', 'Ablaufdatum');
 define('lang_mod_membership_field_pending', 'Ruhende Mitgliedschaft');
 # member type form
 define('lang_mod_member_type_alert_name_noempty', 'Bezeichnung des Mitgliedstyps muss angegeben sein');
-define('lang_mod_member_type_alert_data_not_exist', 'FEHLER! Mitgliedstypsdaten sind nicht vorhanden');
+//- define('lang_mod_member_type_alert_data_not_exist', 'FEHLER! Mitgliedstypsdaten sind nicht vorhanden');
 define('lang_mod_member_type_common_edit_message', 'Sie sind im Begriff die Angaben für folgenden Mitgliedstyp zu bearbeiten');
 define('lang_mod_member_type_common_last_update', 'Letzte Aktualisierung');
 define('lang_mod_member_type_common_member_type_saved', 'Neuer Mitgliedstyp erfolgreich gespeichert');
@@ -706,7 +706,7 @@ define('lang_mod_masterfile_place_list', 'Erscheinungsorte ansehen');
 define('lang_mod_masterfile_itemstatus', 'Exemplarstatus');
 define('lang_mod_masterfile_itemstatus_titletag', 'Exemplarstatus');
 define('lang_mod_masterfile_itemstatus_new_add', 'Neuer Exemplarstatus');
-define('lang_mod_masterfile_itemstatus_list', 'Exemplarstatus ansehen'); //! item_status.php wrong (lang_mod_masterfile_itemstatus)
+//- define('lang_mod_masterfile_itemstatus_list', 'Exemplarstatus ansehen'); //! item_status.php wrong (lang_mod_masterfile_itemstatus)
 define('lang_mod_masterfile_colltype', 'Sammlungstyp');
 define('lang_mod_masterfile_colltype_titletag', 'Sammlungstyp (Thema, Genre)');
 define('lang_mod_masterfile_colltype_new_add', 'Neuer Sammlungstyp');
@@ -730,12 +730,12 @@ define('lang_mod_masterfile_author_alert_new_add_ok', 'Neuer Autor erfolgreich g
 define('lang_mod_masterfile_author_alert_add_fail', 'Speicherung der Autorendaten FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
 define('lang_mod_masterfile_author_alert_update_ok', 'Autorendaten erfolgreich aktualisiert');
 define('lang_mod_masterfile_author_alert_update_fail', 'Aktualisierung der Autorendaten FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_author_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
+//- define('lang_mod_masterfile_author_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
 define('lang_mod_masterfile_author_common_edit_info', 'Sie sind im Begriff die Angaben für folgenden Autor zu bearbeiten: ');
 define('lang_mod_masterfile_author_common_last_update', 'Letzte Aktualisierung ');
 define('lang_mod_masterfile_author_alert_all_delete_ok', 'Alle Daten erfolgreich gelöscht');
 define('lang_mod_masterfile_author_alert_all_delete_fail', 'Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\nBitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_author_alert_delete_ok', 'Löschung des Autors fehlgeschlagen');
+//- define('lang_mod_masterfile_author_alert_delete_ok', 'Löschung des Autors fehlgeschlagen');
 # form
 define('lang_mod_masterfile_author_form_field_name', 'Name des Autors');
 define('lang_mod_masterfile_author_form_field_authority', 'Normdatentyp');
@@ -752,9 +752,9 @@ define('lang_mod_masterfile_colltype_common_last_update', 'Letzte Aktualisierung
 define('lang_mod_masterfile_colltype_alert_not_delete', 'Folgende Daten können nicht gelöscht werden: \n');
 define('lang_mod_masterfile_colltype_alert_all_delete_ok', 'Alle Daten erfolgreich gelöscht');
 define('lang_mod_masterfile_colltype_alert_all_delete_fail', 'Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\nBitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_colltype_alert_has_item', 'Der Sammlungstyp ({item_name}) ist noch für {number_items} Exemplar(e) eingetragen');
-define('lang_mod_masterfile_colltype_alert_inuse', 'Dieser Sammlungstyp kann nicht gelöscht werden, da er noch für {item_d} Exemplar(e) eingetragen ist. Bitte löschen Sie die Exemplare (bzw. diese Angabe dort) zunächst');
-define('lang_mod_masterfile_colltype_alert_delete_fail', 'Löschung des Sammlungstyps fehlgeschlagen');
+//- define('lang_mod_masterfile_colltype_alert_has_item', 'Der Sammlungstyp ({item_name}) ist noch für {number_items} Exemplar(e) eingetragen');
+//- define('lang_mod_masterfile_colltype_alert_inuse', 'Dieser Sammlungstyp kann nicht gelöscht werden, da er noch für {item_d} Exemplar(e) eingetragen ist. Bitte löschen Sie die Exemplare (bzw. diese Angabe dort) zunächst');
+//- define('lang_mod_masterfile_colltype_alert_delete_fail', 'Löschung des Sammlungstyps fehlgeschlagen');
 # form
 define('lang_mod_masterfile_colltype_form_field_colltype', 'Sammlungstyp');
 # language master file
@@ -764,12 +764,12 @@ define('lang_mod_masterfile_lang_alert_new_add_ok', 'Neue Sprache erfolgreich ge
 define('lang_mod_masterfile_lang_alert_add_fail', 'Speicherung der Sprache FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
 define('lang_mod_masterfile_lang_alert_update_ok', 'Sprachangaben erfolgreich aktualisiert');
 define('lang_mod_masterfile_lang_alert_update_fail', 'Aktualisierung der Sprachangaben FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_lang_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
+//- define('lang_mod_masterfile_lang_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
 define('lang_mod_masterfile_lang_common_edit_info', 'Sie sind im Begriff die Angaben für folgende Sprache zu bearbeiten: ');
 define('lang_mod_masterfile_lang_common_last_update', 'Letzte Aktualisierung ');
 define('lang_mod_masterfile_lang_alert_all_delete_ok', 'Alle Daten erfolgreich gelöscht');
 define('lang_mod_masterfile_lang_alert_all_delete_fail', 'Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\nBitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_lang_alert_delete_ok', 'Löschung der Sprache fehlgeschlagen');
+//- define('lang_mod_masterfile_lang_alert_delete_ok', 'Löschung der Sprache fehlgeschlagen');
 # form
 define('lang_mod_masterfile_lang_form_field_lang_code', 'Sprache Codekürzel');
 define('lang_mod_masterfile_lang_form_field_name', 'Sprache');
@@ -780,17 +780,17 @@ define('lang_mod_masterfile_gmd_alert_new_add_ok', 'Neue Ressourcenart erfolgrei
 define('lang_mod_masterfile_gmd_alert_add_fail', 'Speicherung der Ressourcenart FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
 define('lang_mod_masterfile_gmd_alert_update_ok', 'Ressourcenart erfolgreich aktualisiert');
 define('lang_mod_masterfile_gmd_alert_update_fail', 'Aktualisierung der Ressourcenart FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_gmd_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
+//- define('lang_mod_masterfile_gmd_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
 define('lang_mod_masterfile_gmd_common_edit_info', 'Sie sind im Begriff die Angaben für folgende Ressourcenart zu bearbeiten');
 define('lang_mod_masterfile_gmd_common_last_update', 'Letzte Aktualisierung ');
 define('lang_mod_masterfile_gmd_alert_all_delete_ok', 'Alle Daten erfolgreich gelöscht');
 define('lang_mod_masterfile_gmd_alert_all_delete_fail', 'Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\nBitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_gmd_alert_delete_ok', 'Ressourcenart erfolgreich gelöscht');
-define('lang_mod_masterfile_gmd_alert_delete_fail', 'Löschung der Ressourcenart fehlgeschlagen');
+//- define('lang_mod_masterfile_gmd_alert_delete_ok', 'Ressourcenart erfolgreich gelöscht');
+//- define('lang_mod_masterfile_gmd_alert_delete_fail', 'Löschung der Ressourcenart fehlgeschlagen');
 # form
 define('lang_mod_masterfile_gmd_form_field_gmd_code', 'Ressourcenart Codekürzel');
 define('lang_mod_masterfile_gmd_form_field_gmd_name', 'Name der Ressourcenart');
-define('lang_mod_masterfile_gmd_form_field_gmd_icon', 'Ressourcenart Icon');
+//- define('lang_mod_masterfile_gmd_form_field_gmd_icon', 'Ressourcenart Icon');
 # Item status master file
 # common
 define('lang_mod_masterfile_itemstatus_alert_name_noempty', 'Codekürzel und Bezeichnung des Exemplarstatus müssen angegeben sein');
@@ -798,12 +798,12 @@ define('lang_mod_masterfile_itemstatus_alert_new_add_ok', 'Neuer Exemplarstatus 
 define('lang_mod_masterfile_itemstatus_alert_add_fail', 'Speicherung des Exemplarstatus FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
 define('lang_mod_masterfile_itemstatus_alert_update_ok', 'Exemplarstatus erfolgreich aktualisiert');
 define('lang_mod_masterfile_itemstatus_alert_update_fail', 'Aktualisierung des Exemplarstatus FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_itemstatus_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
+//- define('lang_mod_masterfile_itemstatus_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
 define('lang_mod_masterfile_itemstatus_common_edit_info', 'Sie sind im Begriff die Angaben für folgenden Exemplarstatus zu bearbeiten');
 define('lang_mod_masterfile_itemstatus_common_last_update', 'Letzte Aktualisierung');
 define('lang_mod_masterfile_itemstatus_alert_all_delete_ok', 'Alle Daten erfolgreich gelöscht');
 define('lang_mod_masterfile_itemstatus_alert_all_delete_fail', 'Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\nBitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_itemstatus_alert_delete_fail', 'Löschung des Exemplarstatus fehlgeschlagen');
+//- define('lang_mod_masterfile_itemstatus_alert_delete_fail', 'Löschung des Exemplarstatus fehlgeschlagen');
 # form
 define('lang_mod_masterfile_itemstatus_form_field_code', 'Exemplarstatus Codekürzel');
 define('lang_mod_masterfile_itemstatus_form_field_name', 'Bezeichnung des Exemplarstatus');
@@ -815,15 +815,15 @@ define('lang_mod_masterfile_location_alert_new_add_ok', 'Neuer Standort erfolgre
 define('lang_mod_masterfile_location_alert_add_fail', 'Speicherung des Standorts FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
 define('lang_mod_masterfile_location_alert_update_ok', 'Standortangaben erfolgreich aktualisiert');
 define('lang_mod_masterfile_location_alert_update_fail', 'Aktualisierung des Standorts FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_location_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
+//- define('lang_mod_masterfile_location_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
 define('lang_mod_masterfile_location_common_edit_info', 'Sie sind im Begriff die Angaben für folgenden Standort zu bearbeiten: ');
 define('lang_mod_masterfile_location_common_last_update', 'Letzte Aktualisierung ');
 define('lang_mod_masterfile_location_alert_not_delete', 'Folgende Standortdaten können nicht gelöscht werden: \n');
 define('lang_mod_masterfile_location_alert_all_delete_ok', 'Alle Daten erfolgreich gelöscht');
 define('lang_mod_masterfile_location_alert_all_delete_fail', 'Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\nBitte kontaktieren Sie den Systemadministrator');
 define('lang_mod_masterfile_location_alert_has_item', 'Der Standort ({item_name}) ist noch für {number_items} Exemplar(e) eingetragen');
-define('lang_mod_masterfile_location_alert_inuse', 'Dieser Standort kann nicht gelöscht werden, da er noch für {item_d} Exemplar(e) eingetragen ist. Bitte löschen Sie die Exemplare (bzw. diese Angabe dort) zunächst');
-define('lang_mod_masterfile_location_alert_delete_fail', 'Löschung des Standorts fehlgeschlagen');
+//- define('lang_mod_masterfile_location_alert_inuse', 'Dieser Standort kann nicht gelöscht werden, da er noch für {item_d} Exemplar(e) eingetragen ist. Bitte löschen Sie die Exemplare (bzw. diese Angabe dort) zunächst');
+//- define('lang_mod_masterfile_location_alert_delete_fail', 'Löschung des Standorts fehlgeschlagen');
 # form
 define('lang_mod_masterfile_location_form_field_code', 'Standort Codekürzel');
 define('lang_mod_masterfile_location_form_field_name', 'Name des Standorts');
@@ -834,13 +834,13 @@ define('lang_mod_masterfile_place_alert_new_add_ok', 'Neuer Erscheinungsort erfo
 define('lang_mod_masterfile_place_alert_add_fail', 'Speicherung des Erscheinungsorts FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
 define('lang_mod_masterfile_place_alert_update_ok', 'Erscheinungsort erfolgreich aktualisiert');
 define('lang_mod_masterfile_place_alert_update_fail', 'Aktualisierung des Erscheinungsorts FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_place_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
+//- define('lang_mod_masterfile_place_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
 define('lang_mod_masterfile_place_common_edit_info', 'Sie sind im Begriff die Angaben für folgenden Erscheinungsort zu bearbeiten');
 define('lang_mod_masterfile_place_common_last_update', 'Letzte Aktualisierung ');
-define('lang_mod_masterfile_place_alert_not_delete', 'Folgende Erscheinungsorte können nicht gelöscht werden: \n');
+//- define('lang_mod_masterfile_place_alert_not_delete', 'Folgende Erscheinungsorte können nicht gelöscht werden: \n');
 define('lang_mod_masterfile_place_alert_all_delete_ok', 'Alle Daten erfolgreich gelöscht');
 define('lang_mod_masterfile_place_alert_all_delete_fail', 'Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\nBitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_place_alert_delete_fail', 'Löschung des Erscheinungsorts fehlgeschlagen');
+//- define('lang_mod_masterfile_place_alert_delete_fail', 'Löschung des Erscheinungsorts fehlgeschlagen');
 # form
 define('lang_mod_masterfile_place_form_field_name', 'Erscheinungsort Name');
 # publisher master file
@@ -850,13 +850,13 @@ define('lang_mod_masterfile_publisher_alert_new_add_ok', 'Neuer Verlag erfolgrei
 define('lang_mod_masterfile_publisher_alert_add_fail', 'Speicherung des Verlags FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
 define('lang_mod_masterfile_publisher_alert_update_ok', 'Verlag erfolgreich aktualisiert');
 define('lang_mod_masterfile_publisher_alert_update_fail', 'Aktualisierung des Verlags FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_publisher_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
+//- define('lang_mod_masterfile_publisher_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
 define('lang_mod_masterfile_publisher_common_edit_info', 'Sie sind im Begriff die Angaben für folgendem Verlag zu bearbeiten');
 define('lang_mod_masterfile_publisher_common_last_update', 'Letzte Aktualisierung ');
-define('lang_mod_masterfile_publisher_alert_not_delete', 'Folgender Verlag können nicht gelöscht werden: \n');
+//- define('lang_mod_masterfile_publisher_alert_not_delete', 'Folgender Verlag können nicht gelöscht werden: \n');
 define('lang_mod_masterfile_publisher_alert_all_delete_ok', 'Alle Daten erfolgreich gelöscht');
 define('lang_mod_masterfile_publisher_alert_all_delete_fail', 'Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\nBitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_publisher_alert_delete_fail', 'Löschung des Verlags fehlgeschlagen');
+//- define('lang_mod_masterfile_publisher_alert_delete_fail', 'Löschung des Verlags fehlgeschlagen');
 # form
 define('lang_mod_masterfile_publisher_form_field_name', 'Name des Verlags');
 # supplier master file
@@ -866,13 +866,13 @@ define('lang_mod_masterfile_supplier_alert_new_add_ok', 'Neuer Zulieferer erfolg
 define('lang_mod_masterfile_supplier_alert_add_fail', 'Speicherung des Zulieferers FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
 define('lang_mod_masterfile_supplier_alert_update_ok', 'Zulieferer erfolgreich aktualisiert');
 define('lang_mod_masterfile_supplier_alert_update_fail', 'Aktualisierung des Zulieferers FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_supplier_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
+//- define('lang_mod_masterfile_supplier_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
 define('lang_mod_masterfile_supplier_common_edit_info', 'Sie sind im Begriff die Angaben für folgenden Zulieferer zu bearbeiten');
 define('lang_mod_masterfile_supplier_common_last_update', 'Letzte Aktualisierung ');
 #define('lang_mod_masterfile_supplier_alert_not_delete', 'Folgende Zulieferer können nicht gelöscht werden: \n'); //? why is it outcommented?
 define('lang_mod_masterfile_supplier_alert_all_delete_ok', 'Alle Daten erfolgreich gelöscht');
 define('lang_mod_masterfile_supplier_alert_all_delete_fail', 'Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\nBitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_supplier_alert_delete_fail', 'Löschung des Zulieferers fehlgeschlagen');
+//- define('lang_mod_masterfile_supplier_alert_delete_fail', 'Löschung des Zulieferers fehlgeschlagen');
 # form
 define('lang_mod_masterfile_supplier_form_field_name', 'Name des Zulieferers');
 define('lang_mod_masterfile_supplier_form_field_address', 'Adresse');
@@ -887,12 +887,12 @@ define('lang_mod_masterfile_topic_alert_new_add_ok', 'Neues Schlagwort erfolgrei
 define('lang_mod_masterfile_topic_alert_add_fail', 'Speicherung des Schlagworts FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
 define('lang_mod_masterfile_topic_alert_update_ok', 'Schlagwort erfolgreich aktualisiert');
 define('lang_mod_masterfile_topic_alert_update_fail', 'Aktualisierung des Schlagworts FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_topic_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
+//- define('lang_mod_masterfile_topic_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
 define('lang_mod_masterfile_topic_common_edit_info', 'Sie sind im Begriff die Angaben für folgendes Schlagwort zu bearbeiten');
 define('lang_mod_masterfile_topic_common_last_update', 'Letzte Aktualisierung ');
 define('lang_mod_masterfile_topic_alert_all_delete_ok', 'Alle Daten erfolgreich gelöscht');
 define('lang_mod_masterfile_topic_alert_all_delete_fail', 'Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\nBitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_topic_alert_delete_fail', 'Löschung des Schlagworts fehlgeschlagen');
+//- define('lang_mod_masterfile_topic_alert_delete_fail', 'Löschung des Schlagworts fehlgeschlagen');
 # form
 define('lang_mod_masterfile_topic_form_field_name', 'Schlagwort');
 # label master file
@@ -901,30 +901,30 @@ define('lang_mod_masterfile_label_alert_new_add_ok', 'Neue Kennzeichnung erfolgr
 define('lang_mod_masterfile_label_alert_add_fail', 'Speicherung der Kennzeichnung FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
 define('lang_mod_masterfile_label_alert_update_ok', 'Kennzeichnung erfolgreich aktualisiert');
 define('lang_mod_masterfile_label_alert_update_fail', 'Aktualisierung der Kennzeichnung FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_label_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
+//- define('lang_mod_masterfile_label_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
 define('lang_mod_masterfile_label_common_edit_info', 'Sie sind im Begriff die Angaben für folgende Kennzeichnung zu bearbeiten');
 define('lang_mod_masterfile_label_common_last_update', 'Letzte Aktualisierung ');
 define('lang_mod_masterfile_label_alert_all_delete_ok', 'Alle Daten erfolgreich gelöscht');
 define('lang_mod_masterfile_label_alert_all_delete_fail', 'Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\nBitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_label_alert_delete_fail', 'Löschung der Kennzeichnung fehlgeschlagen');
+//- define('lang_mod_masterfile_label_alert_delete_fail', 'Löschung der Kennzeichnung fehlgeschlagen');
 # form
 define('lang_mod_masterfile_label_form_field_label_name', 'Bezeichnung der Kennzeichnung');
 define('lang_mod_masterfile_label_form_field_label_desc', 'Beschreibung der Kennzeichnung');
-define('lang_mod_masterfile_label_form_field_label_image', 'Kennzeichnung Bild');
+//- define('lang_mod_masterfile_label_form_field_label_image', 'Kennzeichnung Bild');
 # frequency
 define('lang_mod_masterfile_frequency_alert_new_add_ok', 'Neue Erscheinungshäufigkeit erfolgreich gespeichert');
 define('lang_mod_masterfile_frequency_alert_add_fail', 'Speicherung der Erscheinungshäufigkeit FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
 define('lang_mod_masterfile_frequency_alert_update_ok', 'Erscheinungshäufigkeit erfolgreich aktualisiert');
 define('lang_mod_masterfile_frequency_alert_update_fail', 'Aktualisierung der Erscheinungshäufigkeit FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_frequency_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
+//- define('lang_mod_masterfile_frequency_alert_not_exists', 'FEHLER! Ausgewählte Daten sind nicht vorhanden');
 define('lang_mod_masterfile_frequency_common_edit_info', 'Sie sind im Begriff die Angaben für folgende Erscheinungshäufigkeit zu bearbeiten');
 define('lang_mod_masterfile_frequency_common_last_update', 'Letzte Aktualisierung ');
 define('lang_mod_masterfile_frequency_alert_all_delete_ok', 'Alle Daten erfolgreich gelöscht');
 define('lang_mod_masterfile_frequency_alert_all_delete_fail', 'Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\nBitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_masterfile_frequency_alert_delete_fail', 'Löschung der Erscheinungshäufigkeit fehlgeschlagen');
+//- define('lang_mod_masterfile_frequency_alert_delete_fail', 'Löschung der Erscheinungshäufigkeit fehlgeschlagen');
 # form
 define('lang_mod_masterfile_frequency_form_field_frequency_name', 'Erscheinungshäufigkeit');
-define('lang_mod_masterfile_frequency_form_field_frequency_lang', 'Sprache');
+//- define('lang_mod_masterfile_frequency_form_field_frequency_lang', 'Sprache');
 define('lang_mod_masterfile_frequency_form_field_frequency_time_increment', 'Zeitintervall');
 define('lang_mod_masterfile_frequency_form_field_frequency_unit', 'Zeiteinheit');
 
@@ -1027,14 +1027,14 @@ define('lang_mod_report_member_field_expired', 'Abgelaufene Mitgliedschaften abs
 define('lang_mod_serial', 'Periodikaverwaltung');
 define('lang_mod_serial_subscription', 'Abonnements');
 define('lang_mod_serial_subscription_titletag', 'Abonnements verwalten');
-define('lang_mod_serial_kardex', 'Kardex');
-define('lang_mod_serial_kardex_titletag', 'Kardex verwalten');
+//- define('lang_mod_serial_kardex', 'Kardex');
+//- define('lang_mod_serial_kardex_titletag', 'Kardex verwalten');
 # subcription menu
 define('lang_mod_serial_subscription_add', 'Neues Abonnement hinzufügen');
 define('lang_mod_serial_subscription_list', 'Abonnements ansehen');
 # kardex menu
-define('lang_mod_serial_kardex_add', 'Neuen Kardex hinzufügen');
-define('lang_mod_serial_kardex_view', 'Kardex ansehen');
+//- define('lang_mod_serial_kardex_add', 'Neuen Kardex hinzufügen');
+//- define('lang_mod_serial_kardex_view', 'Kardex ansehen');
 # fields
 define('lang_mod_serial_field_date_start', 'Abonniert seit');
 define('lang_mod_serial_field_exemplar', 'Insgesamt erwartete Exemplare');
@@ -1054,7 +1054,7 @@ define('lang_mod_serial_alert_new_added', 'Neues Abonnement erfolgreich gespeich
 define('lang_mod_serial_alert_fail_to_save', 'Speicherung des Abonnement FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
 define('lang_mod_serial_alert_updated', 'Abonnement erfolgreich aktualisiert');
 define('lang_mod_serial_alert_not_updated', 'Aktualisierung des Abonnement FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator');
-define('lang_mod_serial_alert_not_exists', 'Fehler! Das Abonnement ist nicht vorhanden!');
+//- define('lang_mod_serial_alert_not_exists', 'Fehler! Das Abonnement ist nicht vorhanden!');
 define('lang_mod_serial_common_info', 'Sie sind im Begriff die Angaben für folgendes Abonnement zu bearbeiten: ');
 
 
