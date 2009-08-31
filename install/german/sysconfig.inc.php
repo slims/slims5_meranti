@@ -50,7 +50,7 @@ if ((bool) ini_get('safe_mode')) {
 }
 
 // senayan version
-define('SENAYAN_VERSION', 'Senayan3-stable10-patch1');
+define('SENAYAN_VERSION', 'Senayan3-stable11');
 
 // senayan session cookie name
 define('SENAYAN_SESSION_COOKIES_NAME', 'SenayanAdmin');
@@ -145,7 +145,7 @@ if (extension_loaded('mysqli')) {
     /* MYSQLI */
     $dbs = @new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME, DB_PORT);
     if (mysqli_connect_error()) {
-        die('<div style="border: 1px dotted #FF0000; color: #FF0000; padding: 5px;">Datenbankverbindung fehlgeschlagen. Bitte prüfen Sie ihre Konfiguration</div>');
+        die('<div style="border: 1px dotted #FF0000; color: #FF0000; padding: 5px;">Datenbankverbindung fehlgeschlagen. Bitte prÃ¼fen Sie ihre Konfiguration</div>');
     }
 } else {
     /* MYSQL */
@@ -160,6 +160,10 @@ $sysconf['session_timeout'] = 7200;
 
 /* default application language */
 $sysconf['default_lang'] = 'german';
+
+/* Force UTF-8 for MySQL connection and HTTP header */
+header("Content-type: text/html; charset=UTF-8");
+$dbs->query("SET NAMES 'utf8'");
 
 /* GUI Template config */
 $sysconf['template']['dir'] = 'template';
@@ -218,7 +222,7 @@ $sysconf['barcode_encoding'] = '128B';
 
 /* AUTHORITY TYPE */
 $sysconf['authority_type']['p'] = 'Person';
-$sysconf['authority_type']['o'] = 'Körperschaft';
+$sysconf['authority_type']['o'] = 'KÃ¶rperschaft';
 $sysconf['authority_type']['c'] = 'Konferenz';
 
 /* SUBJECT/AUTHORITY TYPE */
@@ -233,7 +237,7 @@ $sysconf['subject_type']['oc'] = 'Beruf';
 $sysconf['authority_level'][1] = 'Autor';
 $sysconf['authority_level'][2] = 'Weiterer Autor';
 $sysconf['authority_level'][3] = 'Herausgeber';
-$sysconf['authority_level'][4] = 'Übersetzer';
+$sysconf['authority_level'][4] = 'Ãœbersetzer';
 $sysconf['authority_level'][5] = 'Regisseur';
 $sysconf['authority_level'][6] = 'Produzent';
 $sysconf['authority_level'][7] = 'Komponist';
@@ -259,9 +263,9 @@ $sysconf['allowed_images'] = array('.jpeg', '.jpg', '.gif', '.png', '.JPEG', '.J
 // allowed file attachment to upload
 $sysconf['allowed_file_att'] = array('.pdf', '.rtf', '.txt',
     '.odt', '.odp', '.ods', '.doc', '.xls', '.ppt',
-    '.avi', '.mpeg', '.mp4', '.flv', '.mvk', '.wmv',
+    '.avi', '.mpeg', '.mp4', '.flv', '.mvk',
     '.jpg', '.jpeg', '.png', '.gif',
-    '.ogg', '.mp3', '.wma', '.csv');
+    '.ogg', '.mp3');
 
 /* FILE ATTACHMENT MIMETYPES */
 $sysconf['mimetype']['js'] = 'application/javascript';
@@ -330,12 +334,17 @@ if (stripos($_SERVER['PHP_SELF'], '/admin') === false) {
         $sysconf['default_lang'] = trim($_COOKIE['select_lang']);
     }
 }
-// load language file
-if (file_exists(LANGUAGES_BASE_DIR.$sysconf['default_lang'].'.lang.inc.php')) {
-    include LANGUAGES_BASE_DIR.$sysconf['default_lang'].'.lang.inc.php';
-}
+// Apply language settings
+require_once(LANGUAGES_BASE_DIR.'localisation.php');
+
 // template info config
-require $sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/tinfo.inc.php';
+if (!file_exists($sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/tinfo.inc.php')) {
+    $sysconf['template']['base'] = 'php'; /* html OR php */
+} else {
+    require $sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/tinfo.inc.php';
+}
+
+#require $sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/tinfo.inc.php';
 // redirect to mobile template on mobile mode
 if (defined('LIGHTWEIGHT_MODE') OR isset($_COOKIE['LIGHTWEIGHT_MODE'])) {
     $sysconf['template']['theme'] = 'lightweight';

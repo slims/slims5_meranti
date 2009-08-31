@@ -49,21 +49,15 @@ $gmd_list = ob_get_clean();
 
 /* Language selection list */
 ob_start();
-$lang_dir = LIB_DIR.'lang';
-$scan_dir = opendir($lang_dir);
-// check if the directory is successfully open
-if ($scan_dir) {
-    // loop the directory content
-    while (false !== ($filename = @readdir($scan_dir))) {
-        if (is_file($lang_dir.DIRECTORY_SEPARATOR.$filename) AND $filename != '.' AND $filename != '..') {
-            $lang = str_ireplace('.lang.inc.php', '', $filename);
+require_once(LANGUAGES_BASE_DIR.'localisation.php');
+foreach ($available_languages AS $lang_index) {
             $selected = null;
-            if ($lang == $sysconf['default_lang']) {
+            $lang_code = $lang_index[0];
+            $lang_name = $lang_index[1];
+            if ($lang_code == $sysconf['default_lang']) {
                 $selected = 'selected';
             }
-            echo '<option value="'.$lang.'" '.$selected.'>'.ucwords($lang).'</option>';
-        }
-    }
+            echo '<option value="'.$lang_code.'" '.$selected.'>'.$lang_name.'</option>';
 }
 $language_select = ob_get_clean();
 

@@ -166,21 +166,8 @@ foreach ($dir_tree as $dir) {
 $form->addSelectList('admin_template', _('Admin Template'), $admin_tpl_options, $sysconf['admin_template']['theme']);
 
 // application language
-// scan language directory
-$lang_dir = LIB_DIR.'lang';
-$scan_dir = opendir($lang_dir);
-// check if the directory is successfully open
-if ($scan_dir) {
-    // loop the directory content
-    while (false !== ($filename = @readdir($scan_dir))) {
-        if (is_file($lang_dir.DIRECTORY_SEPARATOR.$filename) AND $filename != '.' AND $filename != '..') {
-            $lang = str_ireplace('.lang.inc.php', '', $filename);
-            $lang_options[] = array($lang, ucfirst($lang));
-        }
-    }
-} else {
-    $lang_options[] = array('english', 'English');
-}
+require_once(LANGUAGES_BASE_DIR.'localisation.php');
+$lang_options = $available_languages;
 $form->addSelectList('default_lang', _('Default App. Language'), $lang_options, $sysconf['default_lang']);
 
 // opac result list number
