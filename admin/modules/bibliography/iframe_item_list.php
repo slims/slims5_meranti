@@ -71,18 +71,18 @@ if (isset($_POST['remove'])) {
     // send an alert if the member cant be deleted
     if ($loan_q->num_rows > 0) {
         echo '<script type="text/javascript">';
-        echo 'alert(\''.lang_mod_biblio_item_alert_delete_fail_on_loan.'\');';
+        echo 'alert(\''.__('Item data can not be deleted because still on hold by members').'\');';
         echo 'self.location.href = \'iframe_item_list.php?biblioID='.$bid.'\';';
         echo '</script>';
     } else {
         if ($sql_op->delete('item', 'item_id='.$id)) {
             echo '<script type="text/javascript">';
-            echo 'alert(\''.lang_mod_biblio_item_alert_remove_success.'\');';
+            echo 'alert(\''.__('Item succesfully removed!').'\');';
             echo 'self.location.href = \'iframe_item_list.php?biblioID='.$bid.'\';';
             echo '</script>';
         } else {
             echo '<script type="text/javascript">';
-            echo 'alert(\''.lang_mod_biblio_item_alert_remove_failed.'\');';
+            echo 'alert(\''.__('Item FAILED to removed!').'\');';
             echo 'self.location.href = \'iframe_item_list.php?biblioID='.$bid.'\';';
             echo '</script>';
         }

@@ -111,7 +111,7 @@ if (isset($_GET['search']) AND !empty($_GET['search'])) {
 
     // search result info construction
     if ($is_adv) {
-        $info .= '<div style="clear: both;">'.lang_opac_search_result_info.' : </div>  ';
+        $info .= '<div style="clear: both;">'.__('Found  <strong>{biblio_list->num_rows}</strong> from your keywords').' : </div>  '; //mfc
         if ($title) { $info .= 'Title : <strong><cite>'.$title.'</cite></strong>, '; }
         if ($author) { $info .= 'Author : <strong><cite>'.$author.'</cite></strong>, '; }
         if ($subject) { $info .= 'Subject : <strong><cite>'.$subject.'</cite></strong>, '; }
@@ -122,7 +122,7 @@ if (isset($_GET['search']) AND !empty($_GET['search'])) {
         // strip last comma
         $info = substr_replace($info, '', -2);
     } else {
-        $info .= '<div style="clear: both;">'.lang_opac_search_result_info.': <strong><cite>'.$keywords.'</cite></strong></div>';
+        $info .= '<div style="clear: both;">'.__('Found  <strong>{biblio_list->num_rows}</strong> from your keywords').': <strong><cite>'.$keywords.'</cite></strong></div>'; //mfc
     }
 } else {
     // show promoted titles
@@ -155,14 +155,14 @@ $total_pages = ceil($biblio_list->num_rows/$sysconf['opac_result_num']);
 // page number info
 if (isset($_GET['page']) AND $_GET['page'] > 1) {
     $page = intval($_GET['page']);
-    $msg = str_replace('{page}', $page, lang_opac_page_info);
+    $msg = str_replace('{page}', $page, __('You currently on page <strong>{page}</strong> of <strong>{total_pages}</strong> page(s)')); //mfc
     $msg = str_replace('{total_pages}', $total_pages, $msg);
     $info .= '<div style="clear: both;">'.$msg.'</div>';
 } else {
     $page = 1;
 }
 // query time
-$info .= '<div>'.lang_sys_common_query_msg1.' <b>'.$biblio_list->query_time.'</b> '.lang_sys_common_query_msg2.'</div>';
+$info .= '<div>'.__('Query took').' <b>'.$biblio_list->query_time.'</b> '.__('second(s) to complete').'</div>'; //mfc
 if (isset($biblio_list) AND $sysconf['enable_xml_result']) {
     $info .= '<div><a href="index.php?resultXML=true&'.$_SERVER['QUERY_STRING'].'" class="xmlResultLink" target="_blank" title="View Result in XML Format" style="clear: both;">XML Result</a></div>';
 }

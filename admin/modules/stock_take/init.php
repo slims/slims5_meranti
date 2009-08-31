@@ -34,17 +34,17 @@ $can_read = utility::havePrivilege('stock_take', 'r');
 $can_write = utility::havePrivilege('stock_take', 'w');
 
 if (!($can_read AND $can_write)) {
-    die('<div class="errorBox">'.lang_sys_common_no_privilage.'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 
 // check if there is any active stock take proccess
 $stk_q = $dbs->query('SELECT * FROM stock_take WHERE is_active=1');
 if ($stk_q->num_rows) {
-    echo '<div class="errorBox">'.lang_mod_stocktake_init_info.'</div>';
+    echo '<div class="errorBox">'.__('There is already stock taking proccess running!').'</div>';
 } else {
     // add new stock take
     if (isset($_POST['saveData']) AND empty($_POST['name'])) {
-        utility::jsAlert(lang_mod_stocktake_init_alert_noempty);
+        utility::jsAlert(__('Stock Take Name must be filled!'));
         exit();
     } else if (isset($_POST['saveData']) AND !empty($_POST['name'])) {
         $data['stock_take_name'] = trim($dbs->escape_string(strip_tags($_POST['name'])));
@@ -123,12 +123,12 @@ if ($stk_q->num_rows) {
                 $update_total_q = $dbs->query('UPDATE stock_take SET total_item_stock_taked='.$total_rows_d[0].', total_item_loan='.$item_loan_d[0].', total_item_lost='.$total_rows_d[0].", stock_take_users='".$_SESSION['realname']."\n' WHERE stock_take_id=$stock_take_id");
                 // write log
                 utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'stock_take', $_SESSION['realname'].' initialize stock take ('.$data['stock_take_name'].') from address '.$_SERVER['REMOTE_ADDR']);
-                utility::jsAlert(lang_mod_stocktake_init_alert_started);
+                utility::jsAlert(__('Stock Taking Initialized'));
                 echo '<script type="text/javascript">parent.location.href = \''.SENAYAN_WEB_ROOT_DIR.'admin/index.php?mod=stock_take\';</script>';
             } else {
                 // delete stock take data
                 $dbs->query('DELETE FROM stock_take WHERE stock_take_id='.$stock_take_id);
-                utility::jsAlert(lang_mod_stocktake_init_alert_fail_start);
+                utility::jsAlert(__('Stock Taking FAILED to Initialized.\nNo item to stock take!'));
             }
             exit();
         }
@@ -136,7 +136,7 @@ if ($stk_q->num_rows) {
 
     // create new instance
     $form = new simbio_form_table_AJAX('mainForm', $_SERVER['PHP_SELF'].'?action=new', 'post');
-    $form->submit_button_attr = 'name="saveData" value="'.lang_mod_stocktake_init_button_start.'" class="button"';
+    $form->submit_button_attr = 'name="saveData" value="'.__('Initialize Stock Take').'" class="button"';
 
     // form table attributes
     $form->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
@@ -145,37 +145,37 @@ if ($stk_q->num_rows) {
 
     /* Form Element(s) */
     // stock take name
-    $form->addTextField('text', 'name', lang_mod_stocktake_init_field_name.'*', '', 'style="width: 60%;"');
+    $form->addTextField('text', 'name', __('Stock Take Name').'*', '', 'style="width: 60%;"');
     // gmd
         // get gmd data related to this record from database
         $gmd_q = $dbs->query('SELECT gmd_id, gmd_name FROM mst_gmd');
-        $gmd_options[] = array('0', lang_mod_stocktake_init_field_option_all);
+        $gmd_options[] = array('0', __('ALL'));
         while ($gmd_d = $gmd_q->fetch_row()) {
             $gmd_options[] = array($gmd_d[0], $gmd_d[1]);
         }
-    $form->addSelectList('gmdID', lang_mod_stocktake_init_field_GMD, $gmd_options);
+    $form->addSelectList('gmdID', __('GMD'), $gmd_options);
     // collection type
         // get coll_type data related to this record from database
         $coll_type_q = $dbs->query('SELECT coll_type_id, coll_type_name FROM mst_coll_type');
-        $coll_type_options[] = array('0', lang_mod_stocktake_init_field_option_all);
+        $coll_type_options[] = array('0', __('ALL'));
         while ($coll_type_d = $coll_type_q->fetch_row()) {
             $coll_type_options[] = array($coll_type_d[0], $coll_type_d[1]);
         }
-    $form->addSelectList('collTypeID', lang_mod_stocktake_init_field_colltype, $coll_type_options);
+    $form->addSelectList('collTypeID', __('Collection Type'), $coll_type_options);
     // location
         // get language data related to this record from database
         $location_q = $dbs->query("SELECT location_id, location_name FROM mst_location");
-        $location_options[] = array('0', lang_mod_stocktake_init_field_option_all);
+        $location_options[] = array('0', __('ALL'));
         while ($location_d = $location_q->fetch_row()) {
             $location_options[] = array($location_d[0], $location_d[1]);
         }
-    $form->addSelectList('location', lang_mod_stocktake_init_field_location, $location_options);
+    $form->addSelectList('location', __('Location'), $location_options);
     // item site
-    $form->addTextField('text', 'itemSite', lang_mod_stocktake_init_field_site, '', 'style="width: 20%;"');
+    $form->addTextField('text', 'itemSite', __('Shelf Location'), '', 'style="width: 20%;"');
     // classification;
     $str_input = simbio_form_element::textField('text', 'classification', '', 'style="width: 60%;"');
-    $str_input .= '<br />'.lang_mod_stocktake_init_field_class_text;
-    $form->addAnything(lang_mod_stocktake_init_field_classification, $str_input);
+    $str_input .= '<br />'.__('Separate each class comma sign. Use * for wildcard');
+    $form->addAnything(__('Classification'), $str_input);
     // print out the object
     echo $form->printOut();
 }

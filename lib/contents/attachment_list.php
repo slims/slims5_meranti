@@ -43,7 +43,7 @@ if (($ajaxsec_user == $sysconf['ajaxsec_user']) AND ($ajaxsec_passwd == $sysconf
         $attachment_q = $dbs->query('SELECT att.*, f.* FROM biblio_attachment AS att
             LEFT JOIN files AS f ON att.file_id=f.file_id WHERE att.biblio_id='.$id.' AND att.access_type=\'public\'');
         if ($attachment_q->num_rows < 1) {
-            echo '<strong style="color: red; font-weight: bold;">'.lang_opac_rec_detail_attachment_none.'</strong>';
+            echo '<strong style="color: red; font-weight: bold;">'.__('No Attachment').'</strong>';
         } else {
             echo '<ul class="attachList">';
             while ($attachment_d = $attachment_q->fetch_assoc()) {

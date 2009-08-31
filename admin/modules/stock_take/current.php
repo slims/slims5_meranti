@@ -35,7 +35,7 @@ $can_read = utility::havePrivilege('stock_take', 'r');
 $can_write = utility::havePrivilege('stock_take', 'w');
 
 if (!($can_read AND $can_write)) {
-    die('<div class="errorBox">'.lang_sys_common_no_privilage.'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 
 // show only current user stock take item flag
@@ -46,7 +46,7 @@ if (isset($_GET['listShow']) && $_GET['listShow'] == '1') {
 // check if there is any active stock take proccess
 $stk_query = $dbs->query('SELECT * FROM stock_take WHERE is_active=1');
 if ($stk_query->num_rows < 1) {
-    echo '<div class="errorBox">'.lang_mod_stocktake_report_not_initialize.'</div>';
+    echo '<div class="errorBox">'.__('NO stock taking proccess initialized yet!').'</div>';
 } else {
     // check view mode
     $view = 'e';
@@ -58,20 +58,20 @@ if ($stk_query->num_rows < 1) {
     <div class="menuBoxInner stockTakeIcon">
         <?php
         if ($view != 'm') {
-          echo lang_mod_stocktake_current_welcome.'<hr />
+          echo __('STOCK TAKE PROCCESS - Insert Item Code/Barcode with keyboard or barcode scanner').'<hr />
               <form name="stockTakeForm" action="'.MODULES_WEB_ROOT_DIR.'stock_take/stock_take_action.php" target="stockTakeAction" method="post" style="display: inline;">
-              <div><div style="width: 140px; float: left;">'.lang_mod_biblio_item_field_itemcode.':</div><input type="text" id="itemCode" name="itemCode" size="30" /> <input type="submit" value="'.lang_mod_stocktake_current_form_button_change.'" class="button" /></div>
-              <div style="margin-top: 3px;"><div style="width: 140px; float: left;">'.lang_mod_stocktake_current_form_list.':</div>
-              <input type="radio" id="listShow" name="listShow" value="1" onclick="setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'stock_take/current.php?listShow=1\', \'get\')" '.( isset($show_only_current)?'checked="checked"':'' ).' /> '.lang_mod_stocktake_current_form_opt_user_cur.'
-              <input type="radio" id="listShow2" name="listShow" value="0" onclick="setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'stock_take/current.php?listShow=0\', \'get\')" '.( isset($show_only_current)?'':'checked="checked"' ).' /> '.lang_mod_stocktake_current_form_opt_user_all.'
+              <div><div style="width: 140px; float: left;">'.__('Item Code').':</div><input type="text" id="itemCode" name="itemCode" size="30" /> <input type="submit" value="'.__('Change Status').'" class="button" /></div>
+              <div style="margin-top: 3px;"><div style="width: 140px; float: left;">'.__('List stocktakes by').':</div>
+              <input type="radio" id="listShow" name="listShow" value="1" onclick="setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'stock_take/current.php?listShow=1\', \'get\')" '.( isset($show_only_current)?'checked="checked"':'' ).' /> '.__('Current User Only').'
+              <input type="radio" id="listShow2" name="listShow" value="0" onclick="setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'stock_take/current.php?listShow=0\', \'get\')" '.( isset($show_only_current)?'':'checked="checked"' ).' /> '.__('All User').'
               <iframe name="stockTakeAction" style="width: 0; height: 0; visibility: hidden;"></iframe></div>
               </form>';
         } else {
-          echo lang_mod_stocktake_current_welcome_alt.'<hr />';
+          echo __('Current Missing/Lost Items').'<hr />';
         }
         ?>
         <form name="search" id="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" method="get" style="display: inline;">
-        <div style="margin-top: 3px;"><div style="width: 90px; float: left;"><?php echo lang_sys_common_form_search_field; ?> : </div><input type="text" name="keywords" size="30" /> <input type="hidden" name="view" value="<?php echo $view; ?>" /> <input type="submit" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>stock_take/current.php?' + $('search').serialize(), 'post')" value="<?php echo lang_sys_common_form_search; ?>" class="button" /></div>
+        <div style="margin-top: 3px;"><div style="width: 90px; float: left;"><?php echo __('Search'); ?> : </div><input type="text" name="keywords" size="30" /> <input type="hidden" name="view" value="<?php echo $view; ?>" /> <input type="submit" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>stock_take/current.php?' + $('search').serialize(), 'post')" value="<?php echo __('Search'); ?>" class="button" /></div>
         </form>
     </div>
     </fieldset>
@@ -87,11 +87,11 @@ if ($stk_query->num_rows < 1) {
 
     // create datagrid
     $datagrid = new simbio_datagrid();
-    $datagrid->setSQLColumn('item_code AS \''.lang_mod_biblio_item_field_itemcode.'\'',
-        'title AS \''.lang_mod_biblio_field_title.'\'',
-        'coll_type_name AS \''.lang_mod_masterfile_colltype_form_field_colltype.'\'',
-        'classification AS \''.lang_mod_biblio_field_class.'\'',
-        'IF(sti.status=\'e\', \''.lang_mod_biblio_item_common_status_exists.'\', IF(sti.status=\'l\', \''.lang_mod_biblio_item_common_status_onloan.'\', \''.lang_mod_biblio_item_common_status_missing.'\')) AS \'Status\'');
+    $datagrid->setSQLColumn('item_code AS \''.__('Item Code').'\'',
+        'title AS \''.__('Title').'\'',
+        'coll_type_name AS \''.__('Collection Type').'\'',
+        'classification AS \''.__('Classification').'\'',
+        'IF(sti.status=\'e\', \''.__('Exists').'\', IF(sti.status=\'l\', \''.__('On Loan').'\', \''.__('Missing').'\')) AS \'Status\'');
     $datagrid->setSQLorder("last_update DESC");
 
     $criteria = 'item_id <> 0 ';
@@ -132,7 +132,7 @@ if ($stk_query->num_rows < 1) {
     // put the result into variables
     $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, false);
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
-        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, lang_sys_common_search_result_info);
+        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
         echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
     }
 

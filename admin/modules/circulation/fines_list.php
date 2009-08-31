@@ -53,9 +53,9 @@ if (isset($_POST['saveData'])) {
     $credit = preg_replace('@[.,\-a-z ]@i', '', $_POST['credit']);
     // check form validity
     if (empty($_POST['finesDesc']) OR empty($debet)) {
-        utility::jsAlert(''.lang_mod_circ_common_fines_alert_01.'');
+        utility::jsAlert(''.__('Fines Description and Debet value can\'t be empty').'');
     } else if ($credit > $debet) {
-        utility::jsAlert(''.lang_mod_circ_common_fines_alert_02.'');
+        utility::jsAlert(''.__('Value of Credit can not be higher that Debet Value').'');
     } else {
         $data['member_id'] = $_SESSION['memberID'];
         $data['fines_date'] = trim($dbs->escape_string(strip_tags($_POST['finesDate'])));
@@ -73,15 +73,15 @@ if (isset($_POST['saveData'])) {
             // update the data
             $update = $sql_op->update('fines', $data, 'fines_id='.$updateRecordID);
             if ($update) {
-                utility::jsAlert(lang_mod_circ_fines_alert_updated);
-            } else { utility::jsAlert(lang_mod_circ_fines_alert_not_updated."\nDEBUG : ".$sql_op->error); }
+                utility::jsAlert(__('Fines Data Successfully Updated'));
+            } else { utility::jsAlert(__('Fines Data FAILED to Updated. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
         } else {
             /* INSERT RECORD MODE */
             // insert the data
             $insert = $sql_op->insert('fines', $data);
             if ($insert) {
-                utility::jsAlert(lang_mod_circ_fines_alert_new_added);
-            } else { utility::jsAlert(lang_mod_circ_fines_alert_fail_to_save."\n".$sql_op->error); }
+                utility::jsAlert(__('New Fines Data Successfully Saved'));
+            } else { utility::jsAlert(__('Fines Data FAILED to Save. Please Contact System Administrator')."\n".$sql_op->error); }
         }
     }
 } else if ($_SESSION['uid'] == 1 && isset($_POST['itemID']) && !empty($_POST['itemID']) && isset($_POST['itemAction'])) {
@@ -117,9 +117,9 @@ if (isset($_POST['saveData'])) {
 /* header */
 ?>
 <div style="padding: 5px; background-color: #CCCCCC;">
-    <a href="fines_list.php?action=detail" class="headerText2" style="color: #FF0000;"><?php echo lang_mod_circ_tblheader_add_new_fines; ?></a> &nbsp;
-    <a href="fines_list.php" class="headerText2"><?php echo lang_mod_circ_tblheader_fines_list; ?></a>&nbsp;
-    <a href="fines_list.php?balance=true" class="headerText2"><?php echo lang_mod_circ_tblheader_view_balanced_overdue; ?></a>
+    <a href="fines_list.php?action=detail" class="headerText2" style="color: #FF0000;"><?php echo __('Add New Fines'); ?></a> &nbsp;
+    <a href="fines_list.php" class="headerText2"><?php echo __('Fines List'); ?></a>&nbsp;
+    <a href="fines_list.php?balance=true" class="headerText2"><?php echo __('View Balanced Overdue'); ?></a>
 </div>
 <?php
 /* search form end */
@@ -132,7 +132,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 
     // create new instance
     $form = new simbio_form_table('mainForm', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'], 'post');
-    $form->submit_button_attr = 'name="saveData" value="'.lang_sys_common_form_save_change.'" class="button"';
+    $form->submit_button_attr = 'name="saveData" value="'.__('Save').'" class="button"';
 
     // form table attributes
     $form->table_attr = 'align="center" id="dataList" style="width: 100%;" cellpadding="5" cellspacing="0"';
@@ -151,22 +151,22 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         // form record title
         $form->record_title = 'Fines Detail';
         // submit button attribute
-        $form->submit_button_attr = 'name="saveData" value="'.lang_sys_common_form_update.'" class="button"';
+        $form->submit_button_attr = 'name="saveData" value="'.__('Update').'" class="button"';
     }
 
     /* Form Element(s) */
     // fines dates
-    $form->addDateField('finesDate', lang_mod_circ_fines_field_date, $rec_d['fines_date']);
+    $form->addDateField('finesDate', __('Fines Date'), $rec_d['fines_date']);
     // fines description
-    $form->addTextField('text', 'finesDesc', lang_mod_circ_fines_field_description.'*', $rec_d['description'], 'style="width: 60%;"');
+    $form->addTextField('text', 'finesDesc', __('Description/Name').'*', $rec_d['description'], 'style="width: 60%;"');
     // fines debet
-    $form->addTextField('text', 'debet', lang_mod_circ_fines_field_debit.'*', !empty($rec_d['debet'])?$rec_d['debet']:'0', 'style="width: 60%;"');
+    $form->addTextField('text', 'debet', __('Debit').'*', !empty($rec_d['debet'])?$rec_d['debet']:'0', 'style="width: 60%;"');
     // fines credit
-    $form->addTextField('text', 'credit', lang_mod_circ_fines_field_credit, !empty($rec_d['credit'])?$rec_d['credit']:'0', 'style="width: 60%;"');
+    $form->addTextField('text', 'credit', __('Credit'), !empty($rec_d['credit'])?$rec_d['credit']:'0', 'style="width: 60%;"');
 
     // edit mode messagge
     if ($form->edit_mode) {
-        echo '<div class="infoBox">'.lang_mod_circ_fines_common_info.'<b>'.$rec_d['description'].'</b></div>';
+        echo '<div class="infoBox">'.__('You are going to edit fines data').' : <b>'.$rec_d['description'].'</b></div>'; //mfc
     }
     // print out the form object
     echo $form->printOut();
@@ -179,10 +179,10 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // create datagrid
     $datagrid = new simbio_datagrid();
     $datagrid->setSQLColumn('f.fines_id AS \'EDIT\'',
-        'f.description AS \''.lang_mod_circ_fines_field_description.'\'',
-        'f.fines_date AS \''.lang_mod_circ_fines_field_date.'\'',
-        'f.debet AS \''.lang_mod_circ_fines_field_debit.'\'',
-        'f.credit AS \''.lang_mod_circ_fines_field_credit.'\'');
+        'f.description AS \''.__('Description/Name').'\'',
+        'f.fines_date AS \''.__('Fines Date').'\'',
+        'f.debet AS \''.__('Debit').'\'',
+        'f.credit AS \''.__('Credit').'\'');
     $datagrid->setSQLorder("f.fines_date DESC");
 
     $criteria = 'f.member_id=\''.$dbs->escape_string($memberID).'\' ';
@@ -215,7 +215,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // put the result into variables
     $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, true);
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
-        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, lang_sys_common_search_result_info);
+        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
         echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
     }
 

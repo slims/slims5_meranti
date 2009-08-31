@@ -39,7 +39,7 @@ $can_read = utility::havePrivilege('system', 'r');
 $can_write = utility::havePrivilege('system', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'.lang_sys_common_no_privilege.'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
 }
 
 /* RECORD OPERATION */
@@ -62,19 +62,19 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
             // filter update record ID
             $updateRecordID = (integer)$_POST['updateRecordID'];
             if ($sql_op->update('holiday', $data, 'holiday_id='.$updateRecordID)) {
-                utility::jsAlert(lang_sys_conf_holiday_alert_update_ok);
+                utility::jsAlert(__('Holiday Data Successfully updated'));
                 // update holiday_dayname session
                 $_SESSION['holiday_date'][$data['holiday_date']] = $data['holiday_date'];
                 echo '<script type="text/javascript">parent.setContent(\'mainContent\', parent.getPreviousAJAXurl(), \'post\');</script>';
                 exit();
             } else {
-                utility::jsAlert(lang_sys_conf_holiday_alert_update_fail."\n".$sql_op->error);
+                utility::jsAlert(__('Holiday FAILED to update. Please Contact System Administrator')."\n".$sql_op->error);
             }
         } else {
             /* INSERT RECORD MODE */
             // insert the data
             if ($sql_op->insert('holiday', $data)) {
-                utility::jsAlert(lang_sys_conf_holiday_alert_save_ok);
+                utility::jsAlert(__('New Holiday Successfully Saved'));
                 // update holiday_dayname session
                 $_SESSION['holiday_date'][$data['holiday_date']] = $data['holiday_date'];
                 // date range insert
@@ -101,7 +101,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?mode=special\', \'get\');</script>';
                 exit();
             } else {
-                utility::jsAlert(lang_sys_conf_holiday_alert_save_fail."\n".$sql_op->error);
+                utility::jsAlert(__('Holiday FAILED to Save. Please Contact System Administrator')."\n".$sql_op->error);
             }
         }
     }
@@ -134,10 +134,10 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 
     // error alerting
     if ($error_num == 0) {
-        utility::jsAlert(lang_sys_conf_holiday_common_alert_delete_success);
+        utility::jsAlert(__('All Data Successfully Deleted'));
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
     } else {
-        utility::jsAlert(lang_sys_conf_holiday_common_alert_delete_fail);
+        utility::jsAlert(__('Some or All Data NOT deleted successfully!\nPlease contact system administrator'));
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
     }
     exit();
@@ -147,11 +147,11 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner calendarIcon">
-    <?php echo strtoupper(lang_sys_holiday); ?>
+    <?php echo strtoupper(__('Holiday Setting')); ?>
     <hr />
-    <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php', 'post');" class="headerText2"><?php echo lang_sys_holiday_set_day; ?></a>
-    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php?mode=special', 'get');" class="headerText2"><?php echo lang_sys_holiday_list; ?></a>
-    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php?mode=special&action=detail', 'get');" class="headerText2"><?php echo lang_sys_holiday_add_day; ?></a>
+    <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php', 'post');" class="headerText2"><?php echo __('Set holiday'); ?></a>
+    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php?mode=special', 'get');" class="headerText2"><?php echo __('Special holiday'); ?></a>
+    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php?mode=special&action=detail', 'get');" class="headerText2"><?php echo __('Add Special holiday'); ?></a>
 </div>
 </fieldset>
 <?php
@@ -164,7 +164,7 @@ if (isset($_GET['mode'])) {
 
         // create new instance
         $form = new simbio_form_table_AJAX('mainForm', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'], 'post');
-        $form->submit_button_attr = 'name="saveData" value="'.lang_sys_common_form_save.'" class="button"';
+        $form->submit_button_attr = 'name="saveData" value="'.__('Save').'" class="button"';
 
         // form table attributes
         $form->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
@@ -179,22 +179,22 @@ if (isset($_GET['mode'])) {
             // form record title
             $form->record_title = $rec_d['description'];
             // submit button attribute
-            $form->submit_button_attr = 'name="saveData" value="'.lang_sys_common_form_update.'" class="button"';
+            $form->submit_button_attr = 'name="saveData" value="'.__('Update').'" class="button"';
         }
 
         /* Form Element(s) */
         // holiday date start
-        $form->addDateField('holDate', lang_sys_conf_holiday_field_date_day, $rec_d['holiday_date']);
+        $form->addDateField('holDate', __('Holiday Date Start'), $rec_d['holiday_date']);
         // holiday date end
         if (!$form->edit_mode) {
-            $form->addDateField('holDateEnd', lang_sys_conf_holiday_field_date_day_end, $rec_d['holiday_date']);
+            $form->addDateField('holDateEnd', __('Holiday Date End'), $rec_d['holiday_date']);
         }
         // holiday description
-        $form->addTextField('text', 'holDesc', lang_sys_conf_holiday_field_description.'*', $rec_d['description'], 'style="width: 100%;"');
+        $form->addTextField('text', 'holDesc', __('Holiday Description').'*', $rec_d['description'], 'style="width: 100%;"');
 
         // edit mode messagge
         if ($form->edit_mode) {
-            echo '<div class="infoBox">'.lang_sys_conf_holiday_common_edit_info.' : <b>'.$rec_d['description'].'</b></div>';
+            echo '<div class="infoBox">'.__('You are going to edit holiday data').' : <b>'.$rec_d['description'].'</b></div>'; //mfc
         }
         // print out the form object
         echo $form->printOut();
@@ -207,13 +207,13 @@ if (isset($_GET['mode'])) {
         $datagrid = new simbio_datagrid();
         if ($can_read AND $can_write) {
             $datagrid->setSQLColumn('holiday_id',
-                "holiday_dayname AS '".lang_sys_conf_holiday_field_day_name."'",
-                "holiday_date AS '".lang_sys_conf_holiday_field_date_day."'",
-                "description AS '".lang_sys_conf_holiday_field_description."'");
+                "holiday_dayname AS '".__('Day name')."'",
+                "holiday_date AS '".__('Holiday Date Start')."'",
+                "description AS '".__('Holiday Description')."'");
         } else {
-            $datagrid->setSQLColumn("holiday_dayname AS '".lang_sys_conf_holiday_field_day_name."'",
-                "holiday_date AS '".lang_sys_conf_holiday_field_date_day."'",
-                "description AS '".lang_sys_conf_holiday_field_description."'");
+            $datagrid->setSQLColumn("holiday_dayname AS '".__('Day name')."'",
+                "holiday_date AS '".__('Holiday Date Start')."'",
+                "description AS '".__('Holiday Description')."'");
         }
         $datagrid->setSQLorder('holiday_date DESC');
 
@@ -235,7 +235,7 @@ if (isset($_GET['mode'])) {
         // put the result into variables
         $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, ($can_read AND $can_write));
         if (isset($_GET['keywords']) AND $_GET['keywords']) {
-            $msg = str_replace('{result->num_rows}', $datagrid->num_rows, lang_sys_common_search_result_info);
+            $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
             echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
         }
 
@@ -246,7 +246,7 @@ if (isset($_GET['mode'])) {
     if (isset($_POST['dayname'])) {
         // make sure that not all day selected
         if (count($_POST['dayname']) > 6) {
-            echo '<div class="errorBox">'.lang_sys_common_holiday_set_error.'</div>';
+            echo '<div class="errorBox">'.__('Maximum 6 day can be set as holiday!').'</div>';
         } else {
             // delete previous holiday dayname settings
             $dbs->query('DELETE FROM holiday WHERE holiday_date IS NULL');
@@ -259,7 +259,7 @@ if (isset($_GET['mode'])) {
                     $_SESSION['holiday_dayname'][] = $dayname;
                 }
                 // information box
-                echo '<div class="infoBox">'.lang_sys_conf_holiday_alert_set_ok.'</div>';
+                echo '<div class="infoBox">'.__('Holiday settings saved').'</div>';
             }
         }
     }
@@ -288,20 +288,20 @@ if (isset($_GET['mode'])) {
     $table->table_attr = 'align="center" class="border fullWidth" cellpadding="5" cellspacing="0"';
 
     // dayname list
-    $table->appendTableRow(array('<input type="checkbox" name="dayname[]" value="mon" '.isChecked('mon').' /> '.lang_sys_conf_holiday_field_day_1,
-        '<input type="checkbox" name="dayname[]" value="tue" '.isChecked('tue').' /> '.lang_sys_conf_holiday_field_day_2,
-        '<input type="checkbox" name="dayname[]" value="wed" '.isChecked('wed').' /> '.lang_sys_conf_holiday_field_day_3));
+    $table->appendTableRow(array('<input type="checkbox" name="dayname[]" value="mon" '.isChecked('mon').' /> '.__('Monday'),
+        '<input type="checkbox" name="dayname[]" value="tue" '.isChecked('tue').' /> '.__('Tuesday'),
+        '<input type="checkbox" name="dayname[]" value="wed" '.isChecked('wed').' /> '.__('Wednesday')));
 
-    $table->appendTableRow(array('<input type="checkbox" name="dayname[]" value="thu" '.isChecked('thu').' /> '.lang_sys_conf_holiday_field_day_4,
-        '<input type="checkbox" name="dayname[]" value="fri" '.isChecked('fri').' /> '.lang_sys_conf_holiday_field_day_5,
-        '<input type="checkbox" name="dayname[]" value="sat" '.isChecked('sat').' /> '.lang_sys_conf_holiday_field_day_6));
+    $table->appendTableRow(array('<input type="checkbox" name="dayname[]" value="thu" '.isChecked('thu').' /> '.__('Thursday'),
+        '<input type="checkbox" name="dayname[]" value="fri" '.isChecked('fri').' /> '.__('Friday'),
+        '<input type="checkbox" name="dayname[]" value="sat" '.isChecked('sat').' /> '.__('Saturday')));
 
-    $table->appendTableRow(array('<input type="checkbox" name="dayname[]" value="sun" '.isChecked('sun').' /> '.lang_sys_conf_holiday_field_day_7));
+    $table->appendTableRow(array('<input type="checkbox" name="dayname[]" value="sun" '.isChecked('sun').' /> '.__('Sunday')));
     // set cell attribute
     $table->setCellAttr(3, 0, 'colspan="3"');
 
     // submit button
-    $table->appendTableRow(array('<input type="button" name="saveDaynameData" value="'.lang_sys_conf_holiday_form_save.'" onclick="setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'\', \'post\', $(\'holidayForm\').serialize())" />'));
+    $table->appendTableRow(array('<input type="button" name="saveDaynameData" value="'.__('Save Settings').'" onclick="setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'\', \'post\', $(\'holidayForm\').serialize())" />'));
     // set cell attribute
     $table->setCellAttr(4, 0, 'colspan="3" class="alterCell"');
 

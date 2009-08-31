@@ -34,7 +34,7 @@ $can_read = utility::havePrivilege('membership', 'r');
 $can_write = utility::havePrivilege('membership', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'.lang_sys_common_no_privilage.'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 
 // max chars in line for file operations
@@ -43,10 +43,10 @@ $max_chars = 4096;
 if (isset($_POST['doImport'])) {
     // check for form validity
     if (!$_FILES['importFile']['name']) {
-        utility::jsAlert(lang_mod_member_import_alert_file_noempty);
+        utility::jsAlert(__('Please select the file to import!'));
         exit();
     } else if (empty($_POST['fieldSep']) OR empty($_POST['fieldEnc'])) {
-        utility::jsAlert(lang_mod_member_import_alert_required_noempty);
+        utility::jsAlert(__('Required fields (*)  must be filled correctly!'));
         exit();
     } else {
         // set PHP time limit
@@ -64,7 +64,7 @@ if (isset($_POST['doImport'])) {
         $upload->setUploadDir($temp_dir);
         $upload_status = $upload->doUpload('importFile');
         if ($upload_status != UPLOAD_SUCCESS) {
-            utility::jsAlert(lang_mod_member_import_alert_fail.' '.($sysconf['max_upload']/1024).' MB');
+            utility::jsAlert(__('Upload failed! File type not allowed or the size is more than').' '.($sysconf['max_upload']/1024).' MB'); //mfc
             exit();
         }
         // uploaded file path
@@ -155,7 +155,7 @@ if (isset($_POST['doImport'])) {
         fclose($file);
         utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'membership', 'Importing '.$inserted_row.' members data from file : '.$_FILES['importFile']['name']);
         echo '<script type="text/javascript">'."\n";
-        echo 'parent.$(\'importInfo\').update(\'<strong>'.$inserted_row.'</strong> '.lang_mod_member_import_info_record_uploaded.' <strong>'.$_POST['recordOffset'].'</strong>\');'."\n";
+        echo 'parent.$(\'importInfo\').update(\'<strong>'.$inserted_row.'</strong> '.__('records inserted successfully to members database, from record').' <strong>'.$_POST['recordOffset'].'</strong>\');'."\n"; //mfc
         echo 'parent.$(\'importInfo\').setStyle( {display: \'block\'} );'."\n";
         echo '</script>';
         exit();
@@ -165,7 +165,7 @@ if (isset($_POST['doImport'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner importIcon">
-    <?php echo strtoupper(lang_mod_membership_import_data).'<hr />'.lang_mod_membership_import_data_description; ?>
+    <?php echo strtoupper(__('Import Data')).'<hr />'.__('Import for members data from CSV file'); ?>
 </div>
 </fieldset>
 <div id="importInfo" class="infoBox" style="display: none;">&nbsp;</div><div id="importError" class="errorBox" style="display: none;">&nbsp;</div>
@@ -173,7 +173,7 @@ if (isset($_POST['doImport'])) {
 
 // create new instance
 $form = new simbio_form_table_AJAX('mainForm', $_SERVER['PHP_SELF'].'', 'post');
-$form->submit_button_attr = 'name="doImport" value="'.lang_mod_member_import_button_start.'" class="button"';
+$form->submit_button_attr = 'name="doImport" value="'.__('Import Now').'" class="button"';
 
 // form table attributes
 $form->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
@@ -184,15 +184,15 @@ $form->table_content_attr = 'class="alterCell2"';
 // csv files
 $str_input = simbio_form_element::textField('file', 'importFile');
 $str_input .= ' Maximum '.$sysconf['max_upload'].' KB';
-$form->addAnything(lang_mod_member_import_field_file.'*', $str_input);
+$form->addAnything(__('File To Import').'*', $str_input);
 // field separator
-$form->addTextField('text', 'fieldSep', lang_mod_member_import_field_field_separator.'*', ''.htmlentities(',').'', 'style="width: 10%;"');
+$form->addTextField('text', 'fieldSep', __('Field Separator').'*', ''.htmlentities(',').'', 'style="width: 10%;"');
 //  field enclosed
-$form->addTextField('text', 'fieldEnc', lang_mod_member_import_field_field_enclosed.'*', ''.htmlentities('"').'', 'style="width: 10%;"');
+$form->addTextField('text', 'fieldEnc', __('Field Enclosed With').'*', ''.htmlentities('"').'', 'style="width: 10%;"');
 // number of records to import
-$form->addTextField('text', 'recordNum', lang_mod_member_import_field_record_number, '0', 'style="width: 10%;"');
+$form->addTextField('text', 'recordNum', __('Number of Records To Export (0 for all records)'), '0', 'style="width: 10%;"');
 // records offset
-$form->addTextField('text', 'recordOffset', lang_mod_member_import_field_record_offset, '1', 'style="width: 10%;"');
+$form->addTextField('text', 'recordOffset', __('Start From Record'), '1', 'style="width: 10%;"');
 // output the form
 echo $form->printOut();
 ?>

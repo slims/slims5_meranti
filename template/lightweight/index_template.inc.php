@@ -17,9 +17,9 @@
 <!-- header -->
 <tr>
 <td id="mainHeader"><h3 id="libraryName"><?php echo $sysconf['library_name']; ?></h3>
-<a class="menu" href="index.php"><?php echo lang_template_topmenu_1; ?></a>&nbsp;&nbsp;
-<a class="menu" href="index.php?p=libinfo"><?php echo lang_template_topmenu_2; ?></a>&nbsp;&nbsp;
-<a class="menu" href="index.php?p=help"><?php echo lang_template_topmenu_3; ?></a>&nbsp;&nbsp;
+<a class="menu" href="index.php"><?php echo __('Home'); ?></a>&nbsp;&nbsp;
+<a class="menu" href="index.php?p=libinfo"><?php echo __('Library Information'); ?></a>&nbsp;&nbsp;
+<a class="menu" href="index.php?p=help"><?php echo __('Help on Search'); ?></a>&nbsp;&nbsp;
 <a class="menu" href="m/index.php?fullsite=1">Full Site</a>
 </td>
 </tr>
@@ -36,7 +36,7 @@
         <td width="60%">
             <form name="simpleSearch" action="index.php" method="get">
             <input type="text" name="keywords" style="width: 70%;" />
-            <input type="submit" name="search" value="<?php echo lang_sys_common_form_search; ?>" />
+            <input type="submit" name="search" value="<?php echo __('Search'); ?>" />
             </form>
         </td>
         <td width="40%" align="right">

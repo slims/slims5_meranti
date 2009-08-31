@@ -26,10 +26,10 @@
             <img src="template/blue/images/logo.png" border="0" alt="" />
             <div class="title green"><!--LIBRARY_NAME--><div class="title2"><!--LIBRARY_SUBNAME--></div></div>
             <ul id="nav">
-                 <li><a class="menu" href="index.php"><!--lang_template_topmenu_1--></a></li>
-                 <li><a class="menu" href="index.php?p=libinfo"><!--lang_template_topmenu_2--></a></li>
-                 <li><a class="menu" href="index.php?p=help"><!--lang_template_topmenu_3--></a></li>
-                 <li><a class="menu" href="index.php?p=login"><!--lang_template_topmenu_4--></a></li>
+                 <li><a class="menu" href="index.php"><!--__('Home')--></a></li>
+                 <li><a class="menu" href="index.php?p=libinfo"><!--__('Library Information')--></a></li>
+                 <li><a class="menu" href="index.php?p=help"><!--__('Help on Search')--></a></li>
+                 <li><a class="menu" href="index.php?p=login"><!--__('Librarian LOGIN')--></a></li>
             </ul>
         </div>
         <div id="picture"><span>Library Picture</span></div>
@@ -41,7 +41,7 @@
 
         <div id="right">
         <!-- language selection -->
-        <h1 class="title_bar"><!--lang_sys_common_language_select--></h1>
+        <h1 class="title_bar"><!--__('Select Language')--></h1>
         <form name="langSelect" action="index.php" method="get">
         <select name="select_lang" style="width: 99%;" onchange="document.langSelect.submit();">
         <!--LANGUAGE_SELECT-->
@@ -50,27 +50,27 @@
         <br />
         <br />
         <!-- language selection end -->
-        <h1 class="title_bar"><!--lang_template_simple_search--></h1>
+        <h1 class="title_bar"><!--__('Simple Search')--></h1>
         <form name="simpleSearch" action="index.php" method="get">
         <input type="text" name="keywords" class="search" /><br /><br />
-        <input type="submit" name="search" value="<!--lang_sys_common_form_search-->" class="submit" />
+        <input type="submit" name="search" value="<!--__('Search')-->" class="submit" />
         </form>
         <br />
         <br />
-        <h1 class="title_bar"><!--lang_template_adv_search--></h1>
+        <h1 class="title_bar"><!--__('Advanced Search')--></h1>
         <form name="advSearch" action="index.php" method="get">
-        <!--lang_mod_biblio_field_title--> :<br />
+        <!--__('Title')--> :<br />
         <input type="text" name="title" class="search" /><br /><br />
-        <!--lang_mod_biblio_field_authors--> :<br />
+        <!--__('Author(s)')--> :<br />
         <!--ADVSEARCH_AUTHOR--><br /><br />
-        <!--lang_mod_biblio_field_topic--> :<br />
+        <!--__('Subject(s)')--> :<br />
         <!--ADVSEARCH_TOPIC--><br /><br />
-        <!--lang_mod_biblio_item_field_location--> :<br /><br />
+        <!--__('Location')--> :<br /><br />
         <select name="location" style="width: 99%;" class="marginTop" />
         <!--LOCATION_LIST-->
         </select><br />
         <br />
-        <input type="submit" name="search" value="<!--lang_sys_common_form_search-->" class="submit" />
+        <input type="submit" name="search" value="<!--__('Search')-->" class="submit" />
         <!-- <input type="button" value="More Options" onclick="" class="button marginTop" /> -->
         </form>
         <br />

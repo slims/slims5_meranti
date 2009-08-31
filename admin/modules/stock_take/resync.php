@@ -55,10 +55,10 @@ if (isset($_POST['resync'])) {
     exit();
 }
 
-echo '<div class="infoBox">'.lang_mod_stocktake_resync_info."\n";
+echo '<div class="infoBox">'.__('Re-synchronize will only update current stock take\'s item data. It won\'t update any new bibliographic or item data that were inserted in the middle of stock take proccess')."\n";
 echo '<hr size="1" />'."\n";
 echo '<form action="'.$_SERVER['PHP_SELF'].'" method="post" target="resyncSubmit">'."\n";
-echo '<input type="submit" name="resync" value="'.lang_mod_stocktake_resync_button.'" class="button" />'."\n";
+echo '<input type="submit" name="resync" value="'.__('Resynchronize Now').'" class="button" />'."\n";
 echo '</form>'."\n";
 echo '<iframe name="resyncSubmit" style="width: 0; height: 0; visibility: hidden;"></iframe>'."\n";
 echo '</div>';

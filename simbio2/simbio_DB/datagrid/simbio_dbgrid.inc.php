@@ -56,8 +56,8 @@ class simbio_datagrid extends simbio_table
     public $sort_column = array();
     public $sql_group_by = '';
     public $select_flag = '';
-    public $chbox_property = array('itemID', lang_sys_common_tblheader_delete);
-    public $edit_property = array('itemID', lang_sys_common_tblheader_edit);
+    public $chbox_property;
+    public $edit_property;
     public $chbox_action_button = false;
     public $chbox_confirm_msg = false;
     public $current_page = 1;
@@ -77,6 +77,11 @@ class simbio_datagrid extends simbio_table
      */
     public function createDataGrid($obj_db, $str_db_table = '', $int_num2show = 30, $bool_editable = false)
     {
+        // Default checkbox properties
+        if (!isset($this->chbox_property)) $this->chbox_property = array('itemID', __('DELETE'));
+        if (!isset($this->edit_property)) $this->edit_property = array('itemID', __('EDIT'));
+        	
+        
         // check database connection
         if (!$obj_db OR $obj_db->error) {
             $_error = '<div style="padding: 5px; margin: 3px; border: 1px dotted #FF0000; color: #FF0000;">';
@@ -89,11 +94,11 @@ class simbio_datagrid extends simbio_table
         $this->editable = $bool_editable;
 
         if (!$this->chbox_confirm_msg) {
-            $this->chbox_confirm_msg = defined('lang_sys_common_confirm_delete_selected')?lang_sys_common_confirm_delete_selected:'Are You Sure To Delete Selected Data?';
+            $this->chbox_confirm_msg = __('Are You Sure Want to DELETE Selected Data?');
         }
 
         if (!$this->chbox_action_button) {
-            $this->chbox_action_button = defined('lang_sys_common_button_delete_selected')?lang_sys_common_button_delete_selected:'Delete Selected Data';
+            $this->chbox_action_button = __('Delete Selected Data');
         }
 
         $this->sql_table = $str_db_table;
@@ -118,7 +123,7 @@ class simbio_datagrid extends simbio_table
         // change the record sorting if there fld var in URL
         $_dir = 'ASC';
         $_next_dir = 'DESC';
-        $_sort_dir_info = lang_sys_common_tblheader_hover_sort_asc;
+        $_sort_dir_info = __('ascendingly');
         if (isset($_GET['fld']) AND !empty($_GET['fld'])) {
             $this->sql_order = 'ORDER BY `'.urldecode($_GET['fld']).'` ';
         }
@@ -128,7 +133,7 @@ class simbio_datagrid extends simbio_table
                 $_next_dir = 'ASC';
             } else {
                 $_next_dir = 'DESC';
-                $_sort_dir_info = lang_sys_common_tblheader_hover_sort_desc;
+                $_sort_dir_info = __('descendingly');
             }
             // append sort direction
             $this->sql_order .= $_dir;
@@ -198,9 +203,9 @@ class simbio_datagrid extends simbio_table
                 $_order_by = 'fld='.urlencode($this->sort_column[$_fld->name]).'&dir='.$_next_dir;
                 if ($this->using_AJAX) {
                     $this->grid_result_fields[] = '<a onmouseover="window.status = \'\'; return true;" '
-                        .'href="javascript: setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_url_query_str.$_order_by.'\', \'get\');" title="'.lang_sys_common_tblheader_hover_sort.' '.$_fld->name.' '.$_sort_dir_info.'">'.$_fld->name.'</a>';
+                        .'href="javascript: setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_url_query_str.$_order_by.'\', \'get\');" title="'.__('Order list by').' '.$_fld->name.' '.$_sort_dir_info.'">'.$_fld->name.'</a>';
                 } else {
-                    $this->grid_result_fields[] = '<a href="'.$_SERVER['PHP_SELF'].'?'.$_url_query_str.$_order_by.'" title="'.lang_sys_common_tblheader_hover_sort.' '.$_fld->name.' '.$_sort_dir_info.'">'.$_fld->name.'</a>';
+                    $this->grid_result_fields[] = '<a href="'.$_SERVER['PHP_SELF'].'?'.$_url_query_str.$_order_by.'" title="'.__('Order list by').' '.$_fld->name.' '.$_sort_dir_info.'">'.$_fld->name.'</a>';
                 }
             } else {
                 $this->grid_result_fields[] = $_fld->name;
@@ -363,13 +368,8 @@ class simbio_datagrid extends simbio_table
         if ($this->editable) {
             $_buffer .= '<form action="'.$this->chbox_form_URL.'" name="'.$this->table_name.'" id="'.$this->table_name.'" target="'.$_target.'" method="post" style="display: inline;">'."\n";
 
-            if (defined('lang_sys_common_form_checkbox_all')) {
-                $_check_all = lang_sys_common_form_checkbox_all;
-            }
-
-            if (defined('lang_sys_common_form_uncheckbox_all')) {
-                $_uncheck_all = lang_sys_common_form_uncheckbox_all;
-            }
+						$_check_all = __('Check All');
+						$_uncheck_all = __('Uncheck All');
 
             // action buttons group
             $_button_grp = '<table cellspacing="0" cellpadding="5" style="background-color: #dcdcdc; width: 100%;"><tr>';

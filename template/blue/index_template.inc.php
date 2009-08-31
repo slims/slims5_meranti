@@ -26,10 +26,10 @@
             <img src="template/blue/images/logo.png" border="0" alt="" />
             <div class="title green"><?php echo $sysconf['library_name']; ?><div class="title2"><?php echo $sysconf['library_subname']; ?></div></div>
             <ul id="nav">
-                 <li><a class="menu" href="index.php"><?php echo lang_template_topmenu_1; ?></a></li>
-                 <li><a class="menu" href="index.php?p=libinfo"><?php echo lang_template_topmenu_2; ?></a></li>
-                 <li><a class="menu" href="index.php?p=help"><?php echo lang_template_topmenu_3; ?></a></li>
-                 <li><a class="menu" href="index.php?p=login"><?php echo lang_template_topmenu_4; ?></a></li>
+                 <li><a class="menu" href="index.php"><?php echo __('Home'); ?></a></li>
+                 <li><a class="menu" href="index.php?p=libinfo"><?php echo __('Library Information'); ?></a></li>
+                 <li><a class="menu" href="index.php?p=help"><?php echo __('Help on Search'); ?></a></li>
+                 <li><a class="menu" href="index.php?p=login"><?php echo __('Librarian LOGIN'); ?></a></li>
             </ul>
         </div>
         <div id="picture"><span>Library Picture</span></div>
@@ -41,7 +41,7 @@
 
         <div id="right">
         <!-- language selection -->
-        <h1 class="title_bar"><?php echo lang_sys_common_language_select; ?></h1>
+        <h1 class="title_bar"><?php echo __('Select Language'); ?></h1>
         <form name="langSelect" action="index.php" method="get">
         <select name="select_lang" style="width: 99%;" onchange="document.langSelect.submit();">
         <?php echo $language_select; ?>
@@ -50,37 +50,37 @@
         <br />
         <br />
         <!-- language selection end -->
-        <h1 class="title_bar"><?php echo lang_template_simple_search; ?></h1>
+        <h1 class="title_bar"><?php echo __('Simple Search'); ?></h1>
         <form name="simpleSearch" action="index.php" method="get">
         <input type="text" name="keywords" class="search" /><br /><br />
-        <input type="submit" name="search" value="<?php echo lang_sys_common_form_search; ?>" class="submit" />
+        <input type="submit" name="search" value="<?php echo __('Search'); ?>" class="submit" />
         </form>
         <br />
         <br />
-        <h1 class="title_bar"><?php echo lang_template_adv_search; ?></h1>
+        <h1 class="title_bar"><?php echo __('Advanced Search'); ?></h1>
         <form name="advSearch" action="index.php" method="get">
-        <?php echo lang_mod_biblio_field_title; ?> :<br />
+        <?php echo __('Title'); ?> :<br />
         <input type="text" name="title" class="search" /><br /><br />
-        <?php echo lang_mod_biblio_field_authors; ?> :<br />
+        <?php echo __('Author(s)'); ?> :<br />
         <?php echo $advsearch_author; ?><br /><br />
-        <?php echo lang_mod_biblio_field_topic; ?> :<br />
+        <?php echo __('Subject(s)'); ?> :<br />
         <?php echo $advsearch_topic; ?><br /><br />
-        <?php echo lang_mod_biblio_field_isbn; ?> :<br />
+        <?php echo __('ISBN/ISSN'); ?> :<br />
         <input type="text" name="isbn" class="search" /><br />
-        <?php echo lang_mod_biblio_field_gmd; ?> :<br />
+        <?php echo __('GMD'); ?> :<br />
         <select name="gmd" style="width: 99%;" class="marginTop" />
         <?php echo $gmd_list; ?>
         </select><br /><br />
-        <?php echo lang_mod_biblio_item_field_ctype; ?> :<br />
+        <?php echo __('Collection Type'); ?> :<br />
         <select name="colltype" style="width: 99%;" class="marginTop" />
         <?php echo $colltype_list; ?>
         </select><br /><br />
-        <?php echo lang_mod_biblio_item_field_location; ?> :<br />
+        <?php echo __('Location'); ?> :<br />
         <select name="location" style="width: 99%;" class="marginTop" />
         <?php echo $location_list; ?>
         </select><br />
         <br />
-        <input type="submit" name="search" value="<?php echo lang_sys_common_form_search; ?>" class="submit" />
+        <input type="submit" name="search" value="<?php echo __('Search'); ?>" class="submit" />
         <!-- <input type="button" value="More Options" onclick="" class="button marginTop" /> -->
         </form>
         <br />

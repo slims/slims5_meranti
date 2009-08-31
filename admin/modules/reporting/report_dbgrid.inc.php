@@ -73,7 +73,7 @@ class report_datagrid extends simbio_datagrid
         } else {
             $this->paging_set =  '&nbsp;';
         }
-        $_buffer .= '<div class="printPageInfo"><strong>'.$this->num_rows.'</strong> '.lang_sys_common_tblheader_print_header_part1.' '.$this->current_page.' ('.$int_num2show.' '.lang_sys_common_tblheader_print_header_part2.')</div>'."\n";
+        $_buffer .= '<div class="printPageInfo"><strong>'.$this->num_rows.'</strong> '.__('record(s) found. Currently displaying page').' '.$this->current_page.' ('.$int_num2show.' '.__('record each page').')</div>'."\n"; //mfc
         $_buffer .= $this->printTable();
 
         return $_buffer;

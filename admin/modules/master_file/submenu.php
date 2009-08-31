@@ -20,18 +20,18 @@
 
 /* Master File module submenu items */
 
-$menu[] = array('Header', lang_mod_masterfile_authority_files);
-$menu[] = array(lang_mod_masterfile_gmd, MODULES_WEB_ROOT_DIR.'master_file/index.php', lang_mod_masterfile_gmd_titletag);
-$menu[] = array(lang_mod_masterfile_publisher, MODULES_WEB_ROOT_DIR.'master_file/publisher.php', lang_mod_masterfile_publisher_titletag);
-$menu[] = array(lang_mod_masterfile_supplier, MODULES_WEB_ROOT_DIR.'master_file/supplier.php', lang_mod_masterfile_supplier_titletag);
-$menu[] = array(lang_mod_masterfile_author, MODULES_WEB_ROOT_DIR.'master_file/author.php', lang_mod_masterfile_author_titletag);
-$menu[] = array(lang_mod_masterfile_topic, MODULES_WEB_ROOT_DIR.'master_file/topic.php', lang_mod_masterfile_topic_titletag);
-$menu[] = array(lang_mod_masterfile_location, MODULES_WEB_ROOT_DIR.'master_file/location.php', lang_mod_masterfile_location_titletag);
-$menu[] = array('Header', lang_mod_masterfile_lookup_files);
-$menu[] = array(lang_mod_masterfile_place, MODULES_WEB_ROOT_DIR.'master_file/place.php', lang_mod_masterfile_place_titletag);
-$menu[] = array(lang_mod_masterfile_itemstatus_titletag, MODULES_WEB_ROOT_DIR.'master_file/item_status.php', lang_mod_masterfile_itemstatus_titletag);
-$menu[] = array(lang_mod_masterfile_colltype, MODULES_WEB_ROOT_DIR.'master_file/coll_type.php', lang_mod_masterfile_colltype_titletag);
-$menu[] = array(lang_mod_masterfile_lang, MODULES_WEB_ROOT_DIR.'master_file/doc_language.php', lang_mod_masterfile_lang_titletag);
-$menu[] = array(lang_mod_masterfile_label, MODULES_WEB_ROOT_DIR.'master_file/label.php', lang_mod_masterfile_label_titletag);
-$menu[] = array(lang_mod_masterfile_frequency, MODULES_WEB_ROOT_DIR.'master_file/frequency.php', lang_mod_masterfile_frequency_titletag);
+$menu[] = array('Header', __('Authority Files'));
+$menu[] = array(__('GMD'), MODULES_WEB_ROOT_DIR.'master_file/index.php', __('General Material Designation'));
+$menu[] = array(__('Publisher'), MODULES_WEB_ROOT_DIR.'master_file/publisher.php', __('Document Publisher'));
+$menu[] = array(__('Supplier'), MODULES_WEB_ROOT_DIR.'master_file/supplier.php', __('Item Supplier'));
+$menu[] = array(__('Author'), MODULES_WEB_ROOT_DIR.'master_file/author.php', __('Document Authors'));
+$menu[] = array(__('Subject'), MODULES_WEB_ROOT_DIR.'master_file/topic.php', __('Subject'));
+$menu[] = array(__('Location'), MODULES_WEB_ROOT_DIR.'master_file/location.php', __('Item Location'));
+$menu[] = array('Header', __('Lookup Files'));
+$menu[] = array(__('Place'), MODULES_WEB_ROOT_DIR.'master_file/place.php', __('Place Name'));
+$menu[] = array(__('Item Status'), MODULES_WEB_ROOT_DIR.'master_file/item_status.php', __('Item Status'));
+$menu[] = array(__('Collection Type'), MODULES_WEB_ROOT_DIR.'master_file/coll_type.php', __('Collection Type'));
+$menu[] = array(__('Doc. Language'), MODULES_WEB_ROOT_DIR.'master_file/doc_language.php', __('Document Content Language'));
+$menu[] = array(__('Label'), MODULES_WEB_ROOT_DIR.'master_file/label.php', __('Special Labels for Titles to Show Up On Homepage'));
+$menu[] = array(__('Frequency'), MODULES_WEB_ROOT_DIR.'master_file/frequency.php', __('Frequency'));
 ?>

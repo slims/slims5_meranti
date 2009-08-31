@@ -30,7 +30,7 @@ $can_read = utility::havePrivilege('circulation', 'r');
 $can_write = utility::havePrivilege('circulation', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'.lang_sys_common_no_privilage.'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
@@ -50,11 +50,11 @@ if (!$reportView) {
 ?>
     <!-- filter -->
     <fieldset style="margin-bottom: 3px;">
-    <legend style="font-weight: bold"><?php echo strtoupper(lang_mod_circ_transaction_history); ?> - <?php echo lang_mod_reporting_form_generic_header; ?></legend>
+    <legend style="font-weight: bold"><?php echo strtoupper(__('Loan History')); ?> - <?php echo __('Report Filter'); ?></legend>
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
         <div class="divRow">
-            <div class="divRowLabel"><?php echo lang_mod_membership_field_member_id.'/'.lang_mod_membership_field_name; ?></div>
+            <div class="divRowLabel"><?php echo __('Member ID').'/'.__('Member Name'); ?></div>
             <div class="divRowContent">
             <?php
             echo simbio_form_element::textField('text', 'id_name', '', 'style="width: 50%"');
@@ -62,7 +62,7 @@ if (!$reportView) {
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel"><?php echo lang_mod_biblio_field_title; ?></div>
+            <div class="divRowLabel"><?php echo __('Title'); ?></div>
             <div class="divRowContent">
             <?php
             echo simbio_form_element::textField('text', 'title', '', 'style="width: 50%"');
@@ -70,7 +70,7 @@ if (!$reportView) {
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel"><?php echo lang_mod_biblio_item_field_itemcode; ?></div>
+            <div class="divRowLabel"><?php echo __('Item Code'); ?></div>
             <div class="divRowContent">
             <?php
             echo simbio_form_element::textField('text', 'itemCode', '', 'style="width: 50%"');
@@ -78,7 +78,7 @@ if (!$reportView) {
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel"><?php echo lang_mod_report_loanmember_form_loanfrom; ?></div>
+            <div class="divRowLabel"><?php echo __('Loan Date From'); ?></div>
             <div class="divRowContent">
             <?php
             echo simbio_form_element::dateField('startDate', '2000-01-01');
@@ -86,7 +86,7 @@ if (!$reportView) {
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel"><?php echo lang_mod_report_loanmember_form_loanto; ?></div>
+            <div class="divRowLabel"><?php echo __('Loan Date Until'); ?></div>
             <div class="divRowContent">
             <?php
             echo simbio_form_element::dateField('untilDate', date('Y-m-d'));
@@ -94,19 +94,19 @@ if (!$reportView) {
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel"><?php echo lang_mod_biblio_item_common_status_description; ?></div>
+            <div class="divRowLabel"><?php echo __('Loan Status'); ?></div>
             <div class="divRowContent">
-            <select name="loanStatus"><option value="ALL"><?php echo lang_sys_common_all; ?></option><option value="0"><?php echo lang_mod_biblio_item_common_status_onloan; ?></option><option value="1"><?php echo lang_mod_biblio_item_common_status_returned; ?></option></select>
+            <select name="loanStatus"><option value="ALL"><?php echo __('ALL'); ?></option><option value="0"><?php echo __('On Loan'); ?></option><option value="1"><?php echo __('Returned'); ?></option></select>
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel"><?php echo lang_mod_report_common_form_recspage; ?></div>
-            <div class="divRowContent"><input type="text" name="recsEachPage" size="3" maxlength="3" value="<?php echo $num_recs_show; ?>" /> <?php echo lang_mod_report_common_form_recspage_help; ?></div>
+            <div class="divRowLabel"><?php echo __('Record each page'); ?></div>
+            <div class="divRowContent"><input type="text" name="recsEachPage" size="3" maxlength="3" value="<?php echo $num_recs_show; ?>" /> <?php echo __('Set between 20 and 200'); ?></div>
         </div>
     </div>
     <div style="padding-top: 10px; clear: both;">
-    <input type="submit" name="applyFilter" value="<?php echo lang_mod_reporting_form_button_filter_apply; ?>" />
-    <input type="button" name="moreFilter" value="<?php echo lang_mod_reporting_form_button_filter_options_show; ?>" onclick="showHideTableRows('filterForm', 1, this, '<?php echo lang_mod_reporting_form_button_filter_options_show; ?>', '<?php echo lang_mod_reporting_form_button_filter_options_hide; ?>')" />
+    <input type="submit" name="applyFilter" value="<?php echo __('Apply Filter'); ?>" />
+    <input type="button" name="moreFilter" value="<?php echo __('Show More Filter Options'); ?>" onclick="showHideTableRows('filterForm', 1, this, '<?php echo __('Show More Filter Options'); ?>', '<?php echo __('Hide Filter Options'); ?>')" />
     <input type="hidden" name="reportView" value="true" />
     </div>
     </form>
@@ -114,7 +114,7 @@ if (!$reportView) {
     <script type="text/javascript">hideRows('filterForm', 1);</script>
     <!-- filter end -->
     <div class="dataListHeader" style="height: 35px;">
-    <input type="button" value="<?php echo lang_mod_reporting_form_button_print; ?>" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;"
+    <input type="button" value="<?php echo __('Print Current Page'); ?>" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;"
     onclick="javascript: reportView.print();" />
     &nbsp;<span id="pagingBox">&nbsp;</span></div>
     <iframe name="reportView" src="<?php echo $_SERVER['PHP_SELF'].'?reportView=true'; ?>" frameborder="0" style="width: 100%; height: 500px;"></iframe>
@@ -129,12 +129,12 @@ if (!$reportView) {
 
     // create datagrid
     $reportgrid = new report_datagrid();
-    $reportgrid->setSQLColumn('m.member_id AS \''.lang_mod_membership_field_member_id.'\'',
-        'm.member_name AS \''.lang_mod_membership_field_name.'\'',
-        'l.item_code AS \''.lang_mod_biblio_item_field_itemcode.'\'',
-        'b.title AS \''.lang_mod_biblio_field_title.'\'',
-        'l.loan_date AS \''.lang_mod_circ_tblheader_loan_date.'\'',
-        'l.due_date AS \''.lang_mod_circ_tblheader_due_date.'\'', 'l.is_return AS \''.lang_mod_biblio_item_common_status_description.'\'');
+    $reportgrid->setSQLColumn('m.member_id AS \''.__('Member ID').'\'',
+        'm.member_name AS \''.__('Member Name').'\'',
+        'l.item_code AS \''.__('Item Code').'\'',
+        'b.title AS \''.__('Title').'\'',
+        'l.loan_date AS \''.__('Loan Date').'\'',
+        'l.due_date AS \''.__('Due Date').'\'', 'l.is_return AS \''.__('Loan Status').'\'');
     $reportgrid->setSQLorder('l.loan_date DESC');
 
     $criteria = 'm.member_id IS NOT NULL ';
@@ -182,9 +182,9 @@ if (!$reportView) {
     function loanStatus($obj_db, $array_data)
     {
         if ($array_data[6] == 0) {
-            return '<strong>'.lang_mod_biblio_item_common_status_onloan.'</strong>';
+            return '<strong>'.__('On Loan').'</strong>';
         } else {
-            return lang_mod_biblio_item_common_status_returned;
+            return __('Returned');
         }
     }
     // modify column value

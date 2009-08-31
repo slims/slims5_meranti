@@ -20,16 +20,16 @@
 
 /* Bibliographic module submenu items */
 
-$menu[] = array('Header', lang_mod_biblio);
-$menu[] = array(lang_mod_biblio_list, MODULES_WEB_ROOT_DIR.'bibliography/index.php', lang_mod_biblio_list_titletag);
-$menu[] = array(lang_mod_biblio_add, MODULES_WEB_ROOT_DIR.'bibliography/index.php?action=detail', lang_mod_biblio_add_titletag);
-$menu[] = array('Header', lang_mod_biblio_item);
-$menu[] = array(lang_mod_biblio_item_list, MODULES_WEB_ROOT_DIR.'bibliography/item.php', lang_mod_biblio_item_list_titletag);
-$menu[] = array(lang_mod_biblio_item_checkout, MODULES_WEB_ROOT_DIR.'bibliography/checkout_item.php', lang_mod_biblio_item_checkout_titletag);
-$menu[] = array('Header', lang_sys_common_tools);
-$menu[] = array(lang_mod_biblio_tools_z3950, MODULES_WEB_ROOT_DIR.'bibliography/z3950.php', lang_mod_biblio_tools_z3950_titletag);
-$menu[] = array(lang_mod_biblio_tools_label_print, MODULES_WEB_ROOT_DIR.'bibliography/dl_print.php', lang_mod_biblio_tools_label_print_titletag);
-$menu[] = array(lang_mod_biblio_tools_item_barcode, MODULES_WEB_ROOT_DIR.'bibliography/item_barcode_generator.php', lang_mod_biblio_tools_item_barcode_titletag);
-$menu[] = array(lang_mod_biblio_tools_import, MODULES_WEB_ROOT_DIR.'bibliography/import.php', lang_mod_biblio_tools_import_titletag);
-$menu[] = array(lang_mod_biblio_tools_export, MODULES_WEB_ROOT_DIR.'bibliography/export.php', lang_mod_biblio_tools_export_titletag);
+$menu[] = array('Header', __('Bibliographic'));
+$menu[] = array(__('Bibliographic List'), MODULES_WEB_ROOT_DIR.'bibliography/index.php', __('Show Existing Bibliographic Data'));
+$menu[] = array(__('Add New Bibliography'), MODULES_WEB_ROOT_DIR.'bibliography/index.php?action=detail', __('Add New Bibliographic Data/Catalog'));
+$menu[] = array('Header', __('Items'));
+$menu[] = array(__('Item List'), MODULES_WEB_ROOT_DIR.'bibliography/item.php', __('Show List of Library Items'));
+$menu[] = array(__('Checkout Items'), MODULES_WEB_ROOT_DIR.'bibliography/checkout_item.php', __('Show List of Checkout Items'));
+$menu[] = array('Header', __('Tools'));
+$menu[] = array(__('Z3950 Service'), MODULES_WEB_ROOT_DIR.'bibliography/z3950.php', __('Grab Bibliographic Data from Z3950 Web Services'));
+$menu[] = array(__('Labels Printing'), MODULES_WEB_ROOT_DIR.'bibliography/dl_print.php', __('Print Document Labels'));
+$menu[] = array(__('Item Barcodes Printing'), MODULES_WEB_ROOT_DIR.'bibliography/item_barcode_generator.php', __('Print Item Barcodes'));
+$menu[] = array(__('Import Data'), MODULES_WEB_ROOT_DIR.'bibliography/import.php', __('Import Data to Bibliographic Database from CSV file'));
+$menu[] = array(__('Export Data'), MODULES_WEB_ROOT_DIR.'bibliography/export.php', __('Export Bibliographic Data To CSV format'));
 ?>

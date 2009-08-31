@@ -20,11 +20,11 @@
 
 /* Reporting module submenu items */
 
-$menu[] = array('Header', lang_mod_report);
-$menu[] = array(lang_mod_report_stat, MODULES_WEB_ROOT_DIR.'reporting/index.php', lang_mod_report_stat_titletag);
-$menu[] = array(lang_mod_report_loan, MODULES_WEB_ROOT_DIR.'reporting/loan_report.php', lang_mod_report_loan_titletag);
-$menu[] = array(lang_mod_report_member, MODULES_WEB_ROOT_DIR.'reporting/member_report.php', lang_mod_report_member_titletag);
-$menu[] = array('Header', lang_mod_report_other);
+$menu[] = array('Header', __('Reporting'));
+$menu[] = array(__('Collection Statistic'), MODULES_WEB_ROOT_DIR.'reporting/index.php', __('View Library Collection Statistic'));
+$menu[] = array(__('Loan Report'), MODULES_WEB_ROOT_DIR.'reporting/loan_report.php', __('View Library Loan Report'));
+$menu[] = array(__('Membership Report'), MODULES_WEB_ROOT_DIR.'reporting/member_report.php', __('View Membership Report'));
+$menu[] = array('Header', __('Other Reports'));
 // other/custom report menu
 require MODULES_BASE_DIR.'reporting/customs/customs_report_list.inc.php';
 ?>

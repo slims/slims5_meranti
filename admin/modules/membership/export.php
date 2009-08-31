@@ -36,13 +36,13 @@ $can_read = utility::havePrivilege('membership', 'r');
 $can_write = utility::havePrivilege('membership', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'.lang_sys_common_no_privilage.'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 
 if (isset($_POST['doExport'])) {
     // check for form validity
     if (empty($_POST['fieldSep']) OR empty($_POST['fieldEnc'])) {
-        utility::jsAlert(lang_mod_member_export_alert_required_noempty);
+        utility::jsAlert(__('Required fields (*)  must be filled correctly!'));
         exit();
     } else {
         // set PHP time limit
@@ -81,7 +81,7 @@ if (isset($_POST['doExport'])) {
         // die($sql);
         $all_data_q = $dbs->query($sql);
         if ($dbs->error) {
-            utility::jsAlert(lang_mod_member_export_alert_query_fail);
+            utility::jsAlert(__('Error on query to database, Export FAILED!'));
         } else {
             if ($all_data_q->num_rows > 0) {
                 header('Content-type: text/plain');
@@ -102,7 +102,7 @@ if (isset($_POST['doExport'])) {
                 }
                 exit();
             } else {
-                utility::jsAlert(lang_mod_member_export_alert_fail);
+                utility::jsAlert(__('There is no record in membership database yet, Export FAILED!'));
             }
         }
     }
@@ -112,14 +112,14 @@ if (isset($_POST['doExport'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner exportIcon">
-    <?php echo strtoupper(lang_mod_membership_export_data).'<hr />'.lang_mod_membership_export_data_description; ?>
+    <?php echo strtoupper(__('Export Data')).'<hr />'.__('Export member(s) data to CSV file'); ?>
 </div>
 </fieldset>
 <?php
 
 // create new instance
 $form = new simbio_form_table_AJAX('mainForm', $_SERVER['PHP_SELF'].'', 'post');
-$form->submit_button_attr = 'name="doExport" value="'.lang_mod_member_export_button_start.'" class="button"';
+$form->submit_button_attr = 'name="doExport" value="'.__('Export Now').'" class="button"';
 
 // form table attributes
 $form->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
@@ -128,17 +128,17 @@ $form->table_content_attr = 'class="alterCell2"';
 
 /* Form Element(s) */
 // field separator
-$form->addTextField('text', 'fieldSep', lang_mod_member_export_field_field_separator.'*', ''.htmlentities(',').'', 'style="width: 10%;"');
+$form->addTextField('text', 'fieldSep', __('Field Separator').'*', ''.htmlentities(',').'', 'style="width: 10%;"');
 //  field enclosed
-$form->addTextField('text', 'fieldEnc', lang_mod_member_export_field_field_enclosed, ''.htmlentities('"').'', 'style="width: 10%;"');
+$form->addTextField('text', 'fieldEnc', __('Field Enclosed With'), ''.htmlentities('"').'', 'style="width: 10%;"');
 // record separator
 $rec_sep_options[] = array('NEWLINE', 'NEWLINE');
 $rec_sep_options[] = array('RETURN', 'CARRIAGE RETURN');
-$form->addSelectList('recordSep', lang_mod_member_export_field_record_separator, $rec_sep_options);
+$form->addSelectList('recordSep', __('Record Separator'), $rec_sep_options);
 // number of records to export
-$form->addTextField('text', 'recordNum', lang_mod_member_export_field_record_number, '0', 'style="width: 10%;"');
+$form->addTextField('text', 'recordNum', __('Number of Records To Export (0 for all records)'), '0', 'style="width: 10%;"');
 // records offset
-$form->addTextField('text', 'recordOffset', lang_mod_member_export_field_record_offset, '1', 'style="width: 10%;"');
+$form->addTextField('text', 'recordOffset', __('Start From Record'), '1', 'style="width: 10%;"');
 // output the form
 echo $form->printOut();
 ?>

@@ -23,10 +23,10 @@ Ported to Senayan by Hendro Wicaksono (hendrowicaksono@yahoo.com)
       <div id="logo">&nbsp;</div>
       <div id="links">
         <ul>
-          <li><a href="index.php"><?php echo lang_template_topmenu_1; ?></a></li>
-          <li><a href="index.php?p=libinfo"><?php echo lang_template_topmenu_2; ?></a></li>
-          <li><a href="index.php?p=help"><?php echo lang_template_topmenu_3; ?></a></li>
-          <li><a href="index.php?p=login"><?php echo lang_template_topmenu_4; ?></a></li>
+          <li><a href="index.php"><?php echo __('Home'); ?></a></li>
+          <li><a href="index.php?p=libinfo"><?php echo __('Library Information'); ?></a></li>
+          <li><a href="index.php?p=help"><?php echo __('Help on Search'); ?></a></li>
+          <li><a href="index.php?p=login"><?php echo __('Librarian LOGIN'); ?></a></li>
         </ul>
       </div>
     </div>
@@ -44,7 +44,7 @@ Ported to Senayan by Hendro Wicaksono (hendrowicaksono@yahoo.com)
 <!-- simple search -->
     <form name="simpleSearch" id="simpleSearch" action="index.php" method="get">
     <strong>Quick Search :</strong> <input type="text" name="keywords" id="simpleKeywords" style="width: 65%;" />
-    <input type="submit" name="search" value="<?php echo lang_sys_common_form_search; ?>" class="button marginTop" />
+    <input type="submit" name="search" value="<?php echo __('Search'); ?>" class="button marginTop" />
     <script type="text/javascript">$('simpleKeywords').focus();</script>
     </form><br />
 <!-- simple search end -->
@@ -56,37 +56,37 @@ Ported to Senayan by Hendro Wicaksono (hendrowicaksono@yahoo.com)
 <br /><br /><br />
       </div>
       <div id="rightbar">
-        <h2><?php echo lang_sys_common_language_select; ?></h2>
+        <h2><?php echo __('Select Language'); ?></h2>
         <p><form name="langSelect" action="index.php" method="get">
         <select name="select_lang" style="width: 90%;" onchange="document.langSelect.submit();">
         <?php echo $language_select; ?>
         </select>
         </form></p>
-        <h2><?php echo lang_template_adv_search; ?></h2>
+        <h2><?php echo __('Advanced Search'); ?></h2>
         <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
 
-        <span class="orangetext"><?php echo lang_mod_biblio_field_title; ?></span> :
+        <span class="orangetext"><?php echo __('Title'); ?></span> :
         <input type="text" name="title" class="ajaxInputField" /><br />
-        <span class="orangetext"><?php echo lang_mod_biblio_field_authors; ?></span> :
+        <span class="orangetext"><?php echo __('Author(s)'); ?></span> :
         <?php echo $advsearch_author; ?><br />
-        <span class="orangetext"><?php echo lang_mod_biblio_field_topic; ?></span> :
+        <span class="orangetext"><?php echo __('Subject(s)'); ?></span> :
         <?php echo $advsearch_topic; ?><br />
-        <span class="orangetext"><?php echo lang_mod_biblio_field_isbn; ?></span> :
+        <span class="orangetext"><?php echo __('ISBN/ISSN'); ?></span> :
         <input type="text" name="isbn" class="ajaxInputField" /><br />
-        <span class="orangetext"><?php echo lang_mod_biblio_field_gmd; ?></span> :
+        <span class="orangetext"><?php echo __('GMD'); ?></span> :
         <select name="gmd" class="ajaxInputField" />
         <?php echo $gmd_list; ?>
         </select>
-        <span class="orangetext"><?php echo lang_mod_biblio_item_field_ctype; ?></span> :
+        <span class="orangetext"><?php echo __('Collection Type'); ?></span> :
         <select name="colltype" class="ajaxInputField" />
         <?php echo $colltype_list; ?>
         </select>
-        <span class="orangetext"><?php echo lang_mod_biblio_item_field_location; ?></span> :
+        <span class="orangetext"><?php echo __('Location'); ?></span> :
         <select name="location" class="ajaxInputField" />
         <?php echo $location_list; ?>
         </select>
         <br />
-        <input type="submit" name="search" value="<?php echo lang_sys_common_form_search; ?>" class="button marginTop" />
+        <input type="submit" name="search" value="<?php echo __('Search'); ?>" class="button marginTop" />
         <!-- <input type="button" value="More Options" onclick="" class="button marginTop" /> -->
         </form>
 

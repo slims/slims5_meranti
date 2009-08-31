@@ -20,14 +20,14 @@
 
 /* Custom reports list */
 
-$menu[] = array(lang_mod_report_other_recapitulation, MODULES_WEB_ROOT_DIR.'reporting/customs/class_recap.php', lang_mod_report_other_recapitulation_titletag);
-$menu[] = array(lang_mod_report_other_titles, MODULES_WEB_ROOT_DIR.'reporting/customs/titles_list.php', lang_mod_report_other_titles_titletag);
-$menu[] = array(lang_mod_report_other_itemtitles, MODULES_WEB_ROOT_DIR.'reporting/customs/item_titles_list.php', lang_mod_report_other_itemtitles_titletag);
-$menu[] = array(lang_mod_report_other_itemusage, MODULES_WEB_ROOT_DIR.'reporting/customs/item_usage.php', lang_mod_report_other_itemusage_titletag);
-$menu[] = array(lang_mod_report_other_loansclass, MODULES_WEB_ROOT_DIR.'reporting/customs/loan_by_class.php', lang_mod_report_other_loansclass_titletag);
-$menu[] = array(lang_mod_report_other_memberlist, MODULES_WEB_ROOT_DIR.'reporting/customs/member_list.php', lang_mod_report_other_memberlist_titletag);
-$menu[] = array(lang_mod_report_other_loanmember, MODULES_WEB_ROOT_DIR.'reporting/customs/member_loan_list.php', lang_mod_report_other_loanmember_titletag);
-$menu[] = array(lang_mod_circ_transaction_history, MODULES_WEB_ROOT_DIR.'reporting/customs/loan_history.php', lang_mod_circ_transaction_history_titletag);
-$menu[] = array(lang_mod_circ_overdues, MODULES_WEB_ROOT_DIR.'reporting/customs/overdued_list.php', lang_mod_circ_overdues_titletag);
-$menu[] = array(lang_mod_report_other_staffactivity, MODULES_WEB_ROOT_DIR.'reporting/customs/staff_act.php', lang_mod_report_other_staffactivity_titletag);
+$menu[] = array(__('Custom Recapitulations'), MODULES_WEB_ROOT_DIR.'reporting/customs/class_recap.php', __('Title and Collection recapitulation based on classification and others'));
+$menu[] = array(__('Title List'), MODULES_WEB_ROOT_DIR.'reporting/customs/titles_list.php', __('List of bibliographic titles'));
+$menu[] = array(__('Items Title List'), MODULES_WEB_ROOT_DIR.'reporting/customs/item_titles_list.php', __('List of collection/items'));
+$menu[] = array(__('Items Usage Statistics'), MODULES_WEB_ROOT_DIR.'reporting/customs/item_usage.php', __('List of Collection/items usage statistic'));
+$menu[] = array(__('Loans by Classification'), MODULES_WEB_ROOT_DIR.'reporting/customs/loan_by_class.php', __('Loan statistic by classification'));
+$menu[] = array(__('Member List'), MODULES_WEB_ROOT_DIR.'reporting/customs/member_list.php', __('List of library member/patron'));
+$menu[] = array(__('Loan List by Member'), MODULES_WEB_ROOT_DIR.'reporting/customs/member_loan_list.php', __('List of loan by each member'));
+$menu[] = array(__('Loan History'), MODULES_WEB_ROOT_DIR.'reporting/customs/loan_history.php', __('Loan History Overview'));
+$menu[] = array(__('Overdued List'), MODULES_WEB_ROOT_DIR.'reporting/customs/overdued_list.php', __('View Members Having Overdues'));
+$menu[] = array(__('Staff Activity'), MODULES_WEB_ROOT_DIR.'reporting/customs/staff_act.php', __('Staff activity log recapitulation'));
 ?>

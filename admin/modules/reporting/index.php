@@ -36,7 +36,7 @@ $can_read = utility::havePrivilege('reporting', 'r');
 $can_write = utility::havePrivilege('reporting', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'.lang_sys_common_no_privilage.'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 
 /* collection statistic */
@@ -46,22 +46,22 @@ $table->table_attr = 'align="center" class="border" cellpadding="5" cellspacing=
 // total number of titles
 $stat_query = $dbs->query('SELECT COUNT(biblio_id) FROM biblio');
 $stat_data = $stat_query->fetch_row();
-$collection_stat[lang_mod_report_stat_field_title] = $stat_data[0];
+$collection_stat[__('Total Titles')] = $stat_data[0];
 
 // total number of items
 $stat_query = $dbs->query('SELECT COUNT(item_id) FROM item');
 $stat_data = $stat_query->fetch_row();
-$collection_stat[lang_mod_report_stat_field_items] = $stat_data[0];
+$collection_stat[__('Total Items/Copies')] = $stat_data[0];
 
 // total number of checkout items
 $stat_query = $dbs->query('SELECT COUNT(item_id) FROM item AS i
     LEFT JOIN loan AS l ON i.item_code=l.item_code
     WHERE is_lent=1 AND is_return=0');
 $stat_data = $stat_query->fetch_row();
-$collection_stat[lang_mod_report_stat_field_onloan] = $stat_data[0];
+$collection_stat[__('Total Checkout Items')] = $stat_data[0];
 
 // total number of items in library
-$collection_stat[lang_mod_report_stat_field_available] = $collection_stat[lang_mod_report_stat_field_items]-$collection_stat[lang_mod_report_stat_field_onloan];
+$collection_stat[__('Total Items In Library')] = $collection_stat[__('Total Items/Copies')]-$collection_stat[__('Total Checkout Items')];
 
 // total titles by GMD/medium
 $stat_query = $dbs->query('SELECT gmd_name, COUNT(biblio_id) AS total_titles
@@ -73,7 +73,7 @@ while ($data = $stat_query->fetch_row()) {
     $stat_data .= '<strong>'.$data[0].'</strong> : '.$data[1];
     $stat_data .= ', ';
 }
-$collection_stat[lang_mod_report_stat_field_by_gmd] = $stat_data;
+$collection_stat[__('Total Titles By Medium/GMD')] = $stat_data;
 
 // total items by Collection Type
 $stat_query = $dbs->query('SELECT coll_type_name, COUNT(item_id) AS total_items
@@ -87,7 +87,7 @@ while ($data = $stat_query->fetch_row()) {
     $stat_data .= '<strong>'.$data[0].'</strong> : '.$data[1];
     $stat_data .= ', ';
 }
-$collection_stat[lang_mod_report_stat_field_by_colltype] = $stat_data;
+$collection_stat[__('Total Items By Collection Type')] = $stat_data;
 
 // popular titles
 $stat_query = $dbs->query('SELECT b.title,l.item_code,COUNT(l.loan_id) AS total_loans FROM `loan` AS l
@@ -99,10 +99,10 @@ while ($data = $stat_query->fetch_row()) {
     $stat_data .= '<li>'.$data[0].'</li>';
 }
 $stat_data .= '</ul>';
-$collection_stat[lang_mod_report_stat_field_title_topten] = $stat_data;
+$collection_stat[__('10 Most Popular Titles')] = $stat_data;
 
 // table header
-$table->setHeader(array(lang_mod_report_stat_table_head));
+$table->setHeader(array(__('Collection Statistic Summary')));
 $table->table_header_attr = 'class="dataListHeader" colspan="3"';
 // initial row count
 $row = 1;
@@ -130,7 +130,7 @@ if (isset($_GET['print'])) {
     $html_str .= '</style>'."\n";
     $html_str .= '</head>';
     $html_str .= '<body>'."\n";
-    $html_str .= '<h3>'.$sysconf['library_name'].' - '.lang_mod_report_stat_page_head.'</h3>';
+    $html_str .= '<h3>'.$sysconf['library_name'].' - '.__('Collection Statistic Report').'</h3>';
     $html_str .= '<hr size="1" />';
     $html_str .= $table->printTable();
     $html_str .= '<script type="text/javascript">self.print();</script>'."\n";
@@ -147,10 +147,10 @@ if (isset($_GET['print'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner statisticIcon">
-    <?php echo strtoupper(lang_mod_report_stat); ?>
+    <?php echo strtoupper(__('Collection Statistic')); ?>
     <hr />
     <form name="printForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="submitPrint" id="printForm" id="printForm" method="get" style="display: inline;">
-    <input type="hidden" name="print" value="true" /><input type="submit" value="<?php echo lang_sys_common_form_report; ?>" class="button" />
+    <input type="hidden" name="print" value="true" /><input type="submit" value="<?php echo __('Download Report'); ?>" class="button" />
     </form>
     <iframe name="submitPrint" style="visibility: hidden; width: 0; height: 0;"></iframe>
 </div>

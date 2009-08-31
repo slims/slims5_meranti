@@ -33,7 +33,7 @@ $can_read = utility::havePrivilege('reporting', 'r');
 $can_write = utility::havePrivilege('reporting', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'.lang_sys_common_no_privilage.'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 
 /* loan report */
@@ -43,13 +43,13 @@ $table->table_attr = 'align="center" class="border" cellpadding="5" cellspacing=
 // total number of member
 $report_query = $dbs->query('SELECT COUNT(member_id) FROM member');
 $report_data = $report_query->fetch_row();
-$loan_report[lang_mod_report_member_field_registered] = $report_data[0];
+$loan_report[__('Total Registered Members')] = $report_data[0];
 
 // total number of active member
 $report_query = $dbs->query('SELECT COUNT(member_id) FROM member
     WHERE TO_DAYS(expire_date)>TO_DAYS(\''.date('Y-m-d').'\')');
 $report_data = $report_query->fetch_row();
-$loan_report[lang_mod_report_member_field_active] = $report_data[0];
+$loan_report[__('Total Active Member')] = $report_data[0];
 
 // total number of active member by membership type
 $report_query = $dbs->query('SELECT member_type_name, COUNT(member_id) FROM mst_member_type AS mt
@@ -60,13 +60,13 @@ $report_data = '';
 while ($data = $report_query->fetch_row()) {
     $report_data .= '<strong>'.$data[0].'</strong> : '.$data[1].', ';
 }
-$loan_report[lang_mod_report_member_field_by_type] = $report_data;
+$loan_report[__('Total Members By Membership Type')] = $report_data;
 
 // total expired member
 $report_query = $dbs->query('SELECT COUNT(member_id) FROM member
     WHERE TO_DAYS(\''.date('Y-m-d').'\')>TO_DAYS(expire_date)');
 $report_data = $report_query->fetch_row();
-$loan_report[lang_mod_report_member_field_expired] = $report_data[0];
+$loan_report[__('Total Expired Member')] = $report_data[0];
 
 // 10 most active member
 $report_query = $dbs->query('SELECT m.member_name, m.member_id, COUNT(loan_id) FROM loan AS l
@@ -77,10 +77,10 @@ $report_data = '<ul>';
 while ($data = $report_query->fetch_row()) {
     $report_data .= '<li>'.$data[0].' ('.$data[1].')</li>';
 }
-$loan_report[lang_mod_report_member_field_active_topten] = $report_data;
+$loan_report[__('10 most active members')] = $report_data;
 
 // table header
-$table->setHeader(array(lang_mod_report_member_table_head));
+$table->setHeader(array(__('Membership Data Summary')));
 $table->table_header_attr = 'class="dataListHeader" colspan="3"';
 // initial row count
 $row = 1;
@@ -108,7 +108,7 @@ if (isset($_GET['print'])) {
     $html_str .= '</style>'."\n";
     $html_str .= '</head>';
     $html_str .= '<body>'."\n";
-    $html_str .= '<h3>'.$sysconf['library_name'].' - '.lang_mod_report_member_page_head.'</h3>';
+    $html_str .= '<h3>'.$sysconf['library_name'].' - '.__('Membership Report').'</h3>';
     $html_str .= '<hr size="1" />'."\n";
     $html_str .= $table->printTable();
     $html_str .= '<script type="text/javascript">self.print();</script>'."\n";
@@ -125,10 +125,10 @@ if (isset($_GET['print'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner statisticIcon">
-    <?php echo strtoupper(lang_mod_report_member); ?>
+    <?php echo strtoupper(__('Membership Report')); ?>
     <hr />
     <form name="printForm" action="<?php echo $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']; ?>" target="submitPrint" id="printForm" method="get" style="display: inline;">
-    <input type="hidden" name="print" value="true" /><input type="submit" value="<?php echo lang_sys_common_form_report; ?>" class="button" />
+    <input type="hidden" name="print" value="true" /><input type="submit" value="<?php echo __('Download Report'); ?>" class="button" />
     </form>
     <iframe name="submitPrint" style="visibility: hidden; width: 0; height: 0;"></iframe>
 </div>

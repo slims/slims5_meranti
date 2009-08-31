@@ -39,7 +39,7 @@ $can_read = utility::havePrivilege('master_file', 'r');
 $can_write = utility::havePrivilege('master_file', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'.lang_sys_common_no_privilege.'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
 }
 
 /* RECORD OPERATION */
@@ -48,7 +48,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
     $gmdName = trim(strip_tags($_POST['gmdName']));
     // check form validity
     if (empty($gmdCode) OR empty($gmdName)) {
-        utility::jsAlert(lang_mod_masterfile_gmd_alert_name_noempty);
+        utility::jsAlert(__('GMD Code And Name can\'t be empty'));
         exit();
     } else {
         $data['gmd_code'] = $dbs->escape_string($gmdCode);
@@ -67,17 +67,17 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
             // update the data
             $update = $sql_op->update('mst_gmd', $data, 'gmd_id='.$updateRecordID);
             if ($update) {
-                utility::jsAlert(lang_mod_masterfile_gmd_alert_update_ok);
+                utility::jsAlert(__('GMD Data Successfully Updated'));
                 echo '<script type="text/javascript">parent.setContent(\'mainContent\', parent.getPreviousAJAXurl(), \'post\');</script>';
-            } else { utility::jsAlert(lang_mod_masterfile_gmd_alert_update_fail."\nDEBUG : ".$sql_op->error); }
+            } else { utility::jsAlert(__('GMD Data FAILED to Updated. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
         } else {
             /* INSERT RECORD MODE */
             // insert the data
             if ($sql_op->insert('mst_gmd', $data)) {
-                utility::jsAlert(lang_mod_masterfile_gmd_alert_new_add_ok);
+                utility::jsAlert(__('New GMD Data Successfully Saved'));
                 echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'\', \'post\');</script>';
-            } else { utility::jsAlert(lang_mod_masterfile_gmd_alert_add_fail."\nDEBUG : ".$sql_op->error); }
+            } else { utility::jsAlert(__('GMD Data FAILED to Save. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
         }
     }
@@ -104,10 +104,10 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 
     // error alerting
     if ($error_num == 0) {
-        utility::jsAlert(lang_mod_masterfile_gmd_alert_all_delete_ok);
+        utility::jsAlert(__('All Data Successfully Deleted'));
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
     } else {
-        utility::jsAlert(lang_mod_masterfile_gmd_alert_all_delete_fail);
+        utility::jsAlert(__('Some or All Data NOT deleted successfully!\nPlease contact system administrator'));
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
     }
     exit();
@@ -118,12 +118,12 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner masterFileIcon">
-    <?php echo strtoupper(lang_mod_masterfile_gmd); ?> - <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/index.php?action=detail', 'get');" class="headerText2"><?php echo lang_mod_masterfile_gmd_new_add; ?></a>
-    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/index.php', 'get');" class="headerText2"><?php echo lang_mod_masterfile_gmd_list; ?></a>
+    <?php echo strtoupper(__('GMD')); ?> - <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/index.php?action=detail', 'get');" class="headerText2"><?php echo __('Add New GMD'); ?></a>
+    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/index.php', 'get');" class="headerText2"><?php echo __('GMD List'); ?></a>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo lang_sys_common_form_search_field; ?> :
+    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
-    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/index.php?' + $('search').serialize(), 'post')" value="<?php echo lang_sys_common_form_search; ?>" class="button" />
+    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/index.php?' + $('search').serialize(), 'post')" value="<?php echo __('Search'); ?>" class="button" />
     </form>
 </div>
 </fieldset>
@@ -132,7 +132,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 /* main content */
 if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'detail')) {
     if (!($can_read AND $can_write)) {
-        die('<div class="errorBox">'.lang_sys_common_no_privilege.'</div>');
+        die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
     }
     /* RECORD FORM */
     $itemID = (integer)isset($_POST['itemID'])?$_POST['itemID']:0;
@@ -141,7 +141,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 
     // create new instance
     $form = new simbio_form_table_AJAX('mainForm', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'], 'post');
-    $form->submit_button_attr = 'name="saveData" value="'.lang_sys_common_form_save_change.'" class="button"';
+    $form->submit_button_attr = 'name="saveData" value="'.__('Save').'" class="button"';
 
     // form table attributes
     $form->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
@@ -156,18 +156,18 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         // form record title
         $form->record_title = $rec_d['gmd_name'];
         // submit button attribute
-        $form->submit_button_attr = 'name="saveData" value="'.lang_sys_common_form_update.'" class="button"';
+        $form->submit_button_attr = 'name="saveData" value="'.__('Update').'" class="button"';
     }
 
     /* Form Element(s) */
     // gmd code
-    $form->addTextField('text', 'gmdCode', lang_mod_masterfile_gmd_form_field_gmd_code.'*', $rec_d['gmd_code'], 'style="width: 20%;" maxlength="3"');
+    $form->addTextField('text', 'gmdCode', __('GMD Code').'*', $rec_d['gmd_code'], 'style="width: 20%;" maxlength="3"');
     // gmd name
-    $form->addTextField('text', 'gmdName', lang_mod_masterfile_gmd_form_field_gmd_name.'*', $rec_d['gmd_name'], 'style="width: 60%;"');
+    $form->addTextField('text', 'gmdName', __('GMD Name').'*', $rec_d['gmd_name'], 'style="width: 60%;"');
 
     // edit mode messagge
     if ($form->edit_mode) {
-        echo '<div class="infoBox">'.lang_mod_masterfile_gmd_common_edit_info.' : <b>'.$rec_d['gmd_name'].'</b>  <br />'.lang_mod_masterfile_gmd_common_last_update.$rec_d['last_update'].'</div>';
+        echo '<div class="infoBox">'.__('You are going to edit gmd data').' : <b>'.$rec_d['gmd_name'].'</b>  <br />'.__('Last Update').$rec_d['last_update'].'</div>'; //mfc
     }
     // print out the form object
     echo $form->printOut();
@@ -180,13 +180,13 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $datagrid = new simbio_datagrid();
     if ($can_read AND $can_write) {
         $datagrid->setSQLColumn('g.gmd_id',
-            'g.gmd_code AS \''.lang_mod_masterfile_gmd_form_field_gmd_code.'\'',
-            'g.gmd_name AS \''.lang_mod_masterfile_gmd_form_field_gmd_name.'\'',
-            'g.last_update AS \''.lang_mod_masterfile_gmd_common_last_update.'\'');
+            'g.gmd_code AS \''.__('GMD Code').'\'',
+            'g.gmd_name AS \''.__('GMD Name').'\'',
+            'g.last_update AS \''.__('Last Update').'\'');
     } else {
-        $datagrid->setSQLColumn('g.gmd_code AS \''.lang_mod_masterfile_gmd_form_field_gmd_code.'\'',
-            'g.gmd_name AS \''.lang_mod_masterfile_gmd_form_field_gmd_name.'\'',
-            'g.last_update AS \''.lang_mod_masterfile_gmd_common_last_update.'\'');
+        $datagrid->setSQLColumn('g.gmd_code AS \''.__('GMD Code').'\'',
+            'g.gmd_name AS \''.__('GMD Name').'\'',
+            'g.last_update AS \''.__('Last Update').'\'');
     }
     $datagrid->setSQLorder('gmd_name ASC');
 
@@ -205,7 +205,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // put the result into variables
     $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, ($can_read AND $can_write));
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
-        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, lang_sys_common_search_result_info);
+        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
         echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
     }
 
