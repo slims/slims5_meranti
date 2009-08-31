@@ -30,7 +30,7 @@ $can_read = utility::havePrivilege('stock_take', 'r');
 $can_write = utility::havePrivilege('stock_take', 'w');
 
 if (!($can_read AND $can_write)) {
-    die('<div class="errorBox">'._('You don\'t have enough privileges to access this area!').'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 
 // if transaction is started

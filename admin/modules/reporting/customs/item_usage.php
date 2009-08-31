@@ -31,7 +31,7 @@ $can_read = utility::havePrivilege('reporting', 'r');
 $can_write = utility::havePrivilege('reporting', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'._('You don\'t have enough privileges to access this area!').'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
@@ -50,23 +50,23 @@ if (!$reportView) {
 ?>
     <!-- filter -->
     <fieldset style="margin-bottom: 3px;">
-    <legend style="font-weight: bold"><?php echo strtoupper(_('Items Usage Statistics')); ?> - <?php echo _('Report Filter'); ?></legend>
+    <legend style="font-weight: bold"><?php echo strtoupper(__('Items Usage Statistics')); ?> - <?php echo __('Report Filter'); ?></legend>
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
         <div class="divRow">
-            <div class="divRowLabel"><?php echo _('Title/ISBN'); ?></div>
+            <div class="divRowLabel"><?php echo __('Title/ISBN'); ?></div>
             <div class="divRowContent">
             <?php echo simbio_form_element::textField('text', 'title', '', 'style="width: 50%"'); ?>
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel"><?php echo _('Item Code'); ?></div>
+            <div class="divRowLabel"><?php echo __('Item Code'); ?></div>
             <div class="divRowContent">
             <?php echo simbio_form_element::textField('text', 'itemCode', '', 'style="width: 50%"'); ?>
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel"><?php echo _('Year'); ?></div>
+            <div class="divRowLabel"><?php echo __('Year'); ?></div>
             <div class="divRowContent">
             <?php
             $current_year = date('Y');
@@ -80,14 +80,14 @@ if (!$reportView) {
         </div>
     </div>
     <div style="padding-top: 10px; clear: both;">
-    <input type="submit" name="applyFilter" value="<?php echo _('Apply Filter'); ?>" />
+    <input type="submit" name="applyFilter" value="<?php echo __('Apply Filter'); ?>" />
     <input type="hidden" name="reportView" value="true" />
     </div>
     </form>
     </fieldset>
     <!-- filter end -->
     <div class="dataListHeader" style="height: 35px;">
-    <input type="button" value="<?php echo _('Print Current Page'); ?>" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;"
+    <input type="button" value="<?php echo __('Print Current Page'); ?>" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;"
     onclick="javascript: reportView.print();" />
     &nbsp;<span id="pagingBox">&nbsp;</span></div>
     <iframe name="reportView" src="<?php echo $_SERVER['PHP_SELF'].'?reportView=true'; ?>" frameborder="0" style="width: 100%; height: 500px;"></iframe>
@@ -100,20 +100,20 @@ if (!$reportView) {
 
     // create datagrid
     $reportgrid = new report_datagrid();
-    $reportgrid->setSQLColumn('i.item_code AS \''._('Item Code').'\'',
-        'b.title AS \''._('Title').'\'',
-        '\'01\' AS \''._('Jan').'\'',
-        '\'02\' AS \''._('Feb').'\'',
-        '\'03\' AS \''._('Mar').'\'',
-        '\'04\' AS \''._('Apr').'\'',
-        '\'05\' AS \''._('May').'\'',
-        '\'06\' AS \''._('Jun').'\'',
-        '\'07\' AS \''._('Jul').'\'',
-        '\'08\' AS \''._('Aug').'\'',
-        '\'09\' AS \''._('Sep').'\'',
-        '\'10\' AS \''._('Oct').'\'',
-        '\'11\' AS \''._('Nov').'\'',
-        '\'12\' AS \''._('Dec').'\''
+    $reportgrid->setSQLColumn('i.item_code AS \''.__('Item Code').'\'',
+        'b.title AS \''.__('Title').'\'',
+        '\'01\' AS \''.__('Jan').'\'',
+        '\'02\' AS \''.__('Feb').'\'',
+        '\'03\' AS \''.__('Mar').'\'',
+        '\'04\' AS \''.__('Apr').'\'',
+        '\'05\' AS \''.__('May').'\'',
+        '\'06\' AS \''.__('Jun').'\'',
+        '\'07\' AS \''.__('Jul').'\'',
+        '\'08\' AS \''.__('Aug').'\'',
+        '\'09\' AS \''.__('Sep').'\'',
+        '\'10\' AS \''.__('Oct').'\'',
+        '\'11\' AS \''.__('Nov').'\'',
+        '\'12\' AS \''.__('Dec').'\''
         );
     $reportgrid->setSQLorder('b.title ASC');
 
@@ -170,7 +170,7 @@ if (!$reportView) {
     $reportgrid->modifyColumnContent(13, 'callback{showUsage}');
 
     // no sort column
-    $reportgrid->disableSort(_('Jan'), _('Feb'), _('Mar'), _('Apr'), _('May'), _('Jun'), _('Jul'), _('Aug'), _('Sep'), _('Oct'), _('Nov'), _('Dec'));
+    $reportgrid->disableSort(__('Jan'), __('Feb'), __('Mar'), __('Apr'), __('May'), __('Jun'), __('Jul'), __('Aug'), __('Sep'), __('Oct'), __('Nov'), __('Dec'));
 
     // set table and table header attributes
     $reportgrid->table_attr = 'align="center" id="dataListPrinted" cellpadding="3" cellspacing="1"';

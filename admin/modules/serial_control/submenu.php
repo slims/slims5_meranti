@@ -20,6 +20,6 @@
 
 /* Serial control module submenu items */
 
-$menu[] = array('Header', _('Serial Control'));
-$menu[] = array(_('Subscription'), MODULES_WEB_ROOT_DIR.'serial_control/index.php', _('Manage Subscription'));
+$menu[] = array('Header', __('Serial Control'));
+$menu[] = array(__('Subscription'), MODULES_WEB_ROOT_DIR.'serial_control/index.php', __('Manage Subscription'));
 ?>

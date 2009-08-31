@@ -36,7 +36,7 @@ $can_read = utility::havePrivilege('master_file', 'r');
 $can_write = utility::havePrivilege('master_file', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'._('You don\'t have enough privileges to access this area!').'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 
 /* RECORD OPERATION */
@@ -45,7 +45,7 @@ if (isset($_POST['saveData'])) {
     $itemStatusName = strip_tags(trim($_POST['itemStatus']));
     // check form validity
     if (empty($itemStatusID) OR empty($itemStatusName)) {
-        utility::jsAlert(_('Item Status ID and Name can\'t be empty'));
+        utility::jsAlert(__('Item Status ID and Name can\'t be empty'));
         exit();
     } else {
         $data['item_status_id'] = $dbs->escape_string($itemStatusID);
@@ -72,20 +72,20 @@ if (isset($_POST['saveData'])) {
             // update the data
             $update = $sql_op->update('mst_item_status', $data, 'item_status_id=\''.$updateRecordID.'\'');
             if ($update) {
-                utility::jsAlert(_('Item Status Data Successfully Updated'));
+                utility::jsAlert(__('Item Status Data Successfully Updated'));
                 // update item status ID in item table to keep data integrity
                 $sql_op->update('item', array('item_status_id' => $data['item_status_id']), 'item_status_id=\''.$updateRecordID.'\'');
                 echo '<script type="text/javascript">parent.setContent(\'mainContent\', parent.getPreviousAJAXurl(), \'post\');</script>';
-            } else { utility::jsAlert(_('Item Status Data FAILED to Updated. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
+            } else { utility::jsAlert(__('Item Status Data FAILED to Updated. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
         } else {
             /* INSERT RECORD MODE */
             // insert the data
             $insert = $sql_op->insert('mst_item_status', $data);
             if ($insert) {
-                utility::jsAlert(_('New Item Status Data Successfully Saved'));
+                utility::jsAlert(__('New Item Status Data Successfully Saved'));
                 echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'\', \'post\');</script>';
-            } else { utility::jsAlert(_('Item Status Data FAILED to Save. Please Contact System Administrator')."\n".$sql_op->error); }
+            } else { utility::jsAlert(__('Item Status Data FAILED to Save. Please Contact System Administrator')."\n".$sql_op->error); }
             exit();
         }
     }
@@ -112,10 +112,10 @@ if (isset($_POST['saveData'])) {
 
     // error alerting
     if ($error_num == 0) {
-        utility::jsAlert(_('All Data Successfully Deleted'));
+        utility::jsAlert(__('All Data Successfully Deleted'));
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
     } else {
-        utility::jsAlert(_('Some or All Data NOT deleted successfully!\nPlease contact system administrator'));
+        utility::jsAlert(__('Some or All Data NOT deleted successfully!\nPlease contact system administrator'));
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
     }
     exit();
@@ -130,12 +130,12 @@ $rules_option[] = array(STOCK_TAKE_SKIP, 'Skipped By Stock Take');
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner masterFileIcon">
-    <?php echo strtoupper(_('Item Status')); ?> - <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/item_status.php?action=detail', 'get');" class="headerText2"><?php echo _('Add New Item Status'); ?></a>
-    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/item_status.php', 'get');" class="headerText2"><?php echo _('Item Status'); ?></a>
+    <?php echo strtoupper(__('Item Status')); ?> - <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/item_status.php?action=detail', 'get');" class="headerText2"><?php echo __('Add New Item Status'); ?></a>
+    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/item_status.php', 'get');" class="headerText2"><?php echo __('Item Status'); ?></a>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo _('Search'); ?> :
+    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
-    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/item_status.php?' + $('search').serialize(), 'post')" value="<?php echo _('Search'); ?>" class="button" />
+    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/item_status.php?' + $('search').serialize(), 'post')" value="<?php echo __('Search'); ?>" class="button" />
     </form>
 </div>
 </fieldset>
@@ -144,7 +144,7 @@ $rules_option[] = array(STOCK_TAKE_SKIP, 'Skipped By Stock Take');
 /* main content */
 if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'detail')) {
     if (!($can_read AND $can_write)) {
-        die('<div class="errorBox">'._('You don\'t have enough privileges to access this area!').'</div>');
+        die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
     }
     /* RECORD FORM */
     $itemID = trim($dbs->escape_string(isset($_POST['itemID'])?$_POST['itemID']:''));
@@ -153,7 +153,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 
     // create new instance
     $form = new simbio_form_table_AJAX('mainForm', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'], 'post');
-    $form->submit_button_attr = 'name="saveData" value="'._('Save').'" class="button"';
+    $form->submit_button_attr = 'name="saveData" value="'.__('Save').'" class="button"';
 
     // form table attributes
     $form->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
@@ -168,20 +168,20 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         // form record title
         $form->record_title = $rec_d['item_status_name'];
         // submit button attribute
-        $form->submit_button_attr = 'name="saveData" value="'._('Update').'" class="button"';
+        $form->submit_button_attr = 'name="saveData" value="'.__('Update').'" class="button"';
     }
 
     /* Form Element(s) */
     // item status code
-    $form->addTextField('text', 'itemStatusID', _('Item Status Code').'*', $rec_d['item_status_id'], 'style="width: 20%;" maxlength="3"');
+    $form->addTextField('text', 'itemStatusID', __('Item Status Code').'*', $rec_d['item_status_id'], 'style="width: 20%;" maxlength="3"');
     // item status name
-    $form->addTextField('text', 'itemStatus', _('Item Status Name').'*', $rec_d['item_status_name'], 'style="width: 60%;"');
+    $form->addTextField('text', 'itemStatus', __('Item Status Name').'*', $rec_d['item_status_name'], 'style="width: 60%;"');
     // item status rules
-    $form->addCheckbox('rules', _('Rules'), $rules_option, unserialize($rec_d['rules']));
+    $form->addCheckbox('rules', __('Rules'), $rules_option, unserialize($rec_d['rules']));
 
     // edit mode messagge
     if ($form->edit_mode) {
-        echo '<div class="infoBox">'._('You are going to edit Item Status data').' : <b>'.$rec_d['item_status_name'].'</b>  <br />'._('Last Update').$rec_d['last_update'].'</div>'; //mfc
+        echo '<div class="infoBox">'.__('You are going to edit Item Status data').' : <b>'.$rec_d['item_status_name'].'</b>  <br />'.__('Last Update').$rec_d['last_update'].'</div>'; //mfc
     }
     // print out the form object
     echo $form->printOut();
@@ -194,13 +194,13 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $datagrid = new simbio_datagrid();
     if ($can_read AND $can_write) {
         $datagrid->setSQLColumn('ist.item_status_id',
-            'ist.item_status_id AS \''._('Item Status Code').'\'',
-            'ist.item_status_name AS \''._('Item Status Name').'\'',
-            'ist.last_update AS \''._('Last Update').'\'');
+            'ist.item_status_id AS \''.__('Item Status Code').'\'',
+            'ist.item_status_name AS \''.__('Item Status Name').'\'',
+            'ist.last_update AS \''.__('Last Update').'\'');
     } else {
-        $datagrid->setSQLColumn('ist.item_status_id AS \''._('Item Status Code').'\'',
-            'ist.item_status_name AS \''._('Item Status Name').'\'',
-            'ist.last_update AS \''._('Last Update').'\'');
+        $datagrid->setSQLColumn('ist.item_status_id AS \''.__('Item Status Code').'\'',
+            'ist.item_status_name AS \''.__('Item Status Name').'\'',
+            'ist.last_update AS \''.__('Last Update').'\'');
     }
     $datagrid->setSQLorder('item_status_name ASC');
 
@@ -224,7 +224,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // put the result into variables
     $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, ($can_read AND $can_write));
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
-        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, _('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
+        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
         echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
     }
 

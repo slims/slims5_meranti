@@ -36,7 +36,7 @@ $can_read = utility::havePrivilege('master_file', 'r');
 $can_write = utility::havePrivilege('master_file', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'._('You don\'t have enough privileges to access this area!').'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 
 /* RECORD OPERATION */
@@ -44,7 +44,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
     $authorName = trim(strip_tags($_POST['authorName']));
     // check form validity
     if (empty($authorName)) {
-        utility::jsAlert(_('Author name can\'t be empty'));
+        utility::jsAlert(__('Author name can\'t be empty'));
         exit();
     } else {
         $data['author_name'] = $dbs->escape_string($authorName);
@@ -64,18 +64,18 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
             // update the data
             $update = $sql_op->update('mst_author', $data, 'author_id='.$updateRecordID);
             if ($update) {
-                utility::jsAlert(_('Author Data Successfully Updated'));
+                utility::jsAlert(__('Author Data Successfully Updated'));
                 echo '<script type="text/javascript">parent.setContent(\'mainContent\', parent.getPreviousAJAXurl(), \'post\');</script>';
-            } else { utility::jsAlert(_('Author Data FAILED to Updated. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
+            } else { utility::jsAlert(__('Author Data FAILED to Updated. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
         } else {
             /* INSERT RECORD MODE */
             // insert the data
             $insert = $sql_op->insert('mst_author', $data);
             if ($insert) {
-                utility::jsAlert(_('New Author Data Successfully Saved'));
+                utility::jsAlert(__('New Author Data Successfully Saved'));
                 echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'\', \'post\');</script>';
-            } else { utility::jsAlert(_('Author Data FAILED to Save. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
+            } else { utility::jsAlert(__('Author Data FAILED to Save. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
         }
     }
@@ -102,10 +102,10 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 
     // error alerting
     if ($error_num == 0) {
-        utility::jsAlert(_('All Data Successfully Deleted'));
+        utility::jsAlert(__('All Data Successfully Deleted'));
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
     } else {
-        utility::jsAlert(_('Some or All Data NOT deleted successfully!\nPlease contact system administrator'));
+        utility::jsAlert(__('Some or All Data NOT deleted successfully!\nPlease contact system administrator'));
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
     }
     exit();
@@ -116,12 +116,12 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner masterFileIcon">
-    <?php echo strtoupper(_('Author')); ?> - <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/author.php?action=detail', 'get');" class="headerText2"><?php echo _('Add New Author'); ?></a>
-    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/author.php', 'post');" class="headerText2"><?php echo _('Author List'); ?></a>
+    <?php echo strtoupper(__('Author')); ?> - <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/author.php?action=detail', 'get');" class="headerText2"><?php echo __('Add New Author'); ?></a>
+    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/author.php', 'post');" class="headerText2"><?php echo __('Author List'); ?></a>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo _('Search'); ?> :
+    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
-    <input type="button" id="doSearch" onclick="javascript: setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/author.php?' + $('search').serialize(), 'post');" value="<?php echo _('Search'); ?>" class="button">
+    <input type="button" id="doSearch" onclick="javascript: setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/author.php?' + $('search').serialize(), 'post');" value="<?php echo __('Search'); ?>" class="button">
     </form>
 </div>
 </fieldset>
@@ -130,7 +130,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 /* main content */
 if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'detail')) {
     if (!($can_read AND $can_write)) {
-        die('<div class="errorBox">'._('You don\'t have enough privileges to access this area!').'</div>');
+        die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
     }
     /* RECORD FORM */
     $itemID = (integer)isset($_POST['itemID'])?$_POST['itemID']:0;
@@ -139,7 +139,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 
     // create new instance
     $form = new simbio_form_table_AJAX('mainForm', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'], 'post');
-    $form->submit_button_attr = 'name="saveData" value="'._('Save').'" class="button"';
+    $form->submit_button_attr = 'name="saveData" value="'.__('Save').'" class="button"';
 
     // form table attributes
     $form->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
@@ -154,23 +154,23 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         // form record title
         $form->record_title = $rec_d['author_name'];
         // submit button attribute
-        $form->submit_button_attr = 'name="saveData" value="'._('Update').'" class="button"';
+        $form->submit_button_attr = 'name="saveData" value="'.__('Update').'" class="button"';
     }
 
     /* Form Element(s) */
     // author name
-    $form->addTextField('text', 'authorName', _('Author Name').'*', $rec_d['author_name'], 'style="width: 60%;"');
+    $form->addTextField('text', 'authorName', __('Author Name').'*', $rec_d['author_name'], 'style="width: 60%;"');
     // authority type
     foreach ($sysconf['authority_type'] as $auth_type_id => $auth_type) {
         $auth_type_options[] = array($auth_type_id, $auth_type);
     }
-    $form->addSelectList('authorityType', _('Authority Type'), $auth_type_options, $rec_d['authority_type']);
+    $form->addSelectList('authorityType', __('Authority Type'), $auth_type_options, $rec_d['authority_type']);
     // authority list
-    $form->addTextField('text', 'authList', _('Authority Files'), $rec_d['auth_list'], 'style="width: 30%;"');
+    $form->addTextField('text', 'authList', __('Authority Files'), $rec_d['auth_list'], 'style="width: 30%;"');
 
     // edit mode messagge
     if ($form->edit_mode) {
-        echo '<div class="infoBox">'._('You are going to edit author data').' : <b>'.$rec_d['author_name'].'</b> <br />'._('Last Update').$rec_d['last_update'].'</div>'; //mfc
+        echo '<div class="infoBox">'.__('You are going to edit author data').' : <b>'.$rec_d['author_name'].'</b> <br />'.__('Last Update').$rec_d['last_update'].'</div>'; //mfc
     }
     // print out the form object
     echo $form->printOut();
@@ -185,15 +185,15 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $datagrid = new simbio_datagrid();
     if ($can_read AND $can_write) {
         $auth_type_fld = 2;
-        $datagrid->setSQLColumn('a.author_id', 'a.author_name AS \''._('Author Name').'\'',
-            'a.authority_type AS \''._('Authority Type').'\'',
-            'a.auth_list AS \''._('Authority Files').'\'',
-            'a.last_update AS \''._('Last Update').'\'');
+        $datagrid->setSQLColumn('a.author_id', 'a.author_name AS \''.__('Author Name').'\'',
+            'a.authority_type AS \''.__('Authority Type').'\'',
+            'a.auth_list AS \''.__('Authority Files').'\'',
+            'a.last_update AS \''.__('Last Update').'\'');
     } else {
-        $datagrid->setSQLColumn('a.author_name AS \''._('Author Name').'\'',
-            'a.authority_type AS \''._('Authority Type').'\'',
-            'a.auth_list AS \''._('Authority Files').'\'',
-            'a.last_update AS \''._('Last Update').'\'');
+        $datagrid->setSQLColumn('a.author_name AS \''.__('Author Name').'\'',
+            'a.authority_type AS \''.__('Authority Type').'\'',
+            'a.auth_list AS \''.__('Authority Files').'\'',
+            'a.last_update AS \''.__('Last Update').'\'');
     }
     $datagrid->setSQLorder('author_name ASC');
 
@@ -225,7 +225,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // put the result into variable
     $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, ($can_read AND $can_write));
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
-        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, _('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
+        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
         echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
     }
 

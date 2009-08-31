@@ -26,10 +26,10 @@
             <img src="template/blue/images/logo.png" border="0" alt="" />
             <div class="title green"><?php echo $sysconf['library_name']; ?><div class="title2"><?php echo $sysconf['library_subname']; ?></div></div>
             <ul id="nav">
-                 <li><a class="menu" href="index.php"><?php echo _('Home'); ?></a></li>
-                 <li><a class="menu" href="index.php?p=libinfo"><?php echo _('Library Information'); ?></a></li>
-                 <li><a class="menu" href="index.php?p=help"><?php echo _('Help on Search'); ?></a></li>
-                 <li><a class="menu" href="index.php?p=login"><?php echo _('Librarian LOGIN'); ?></a></li>
+                 <li><a class="menu" href="index.php"><?php echo __('Home'); ?></a></li>
+                 <li><a class="menu" href="index.php?p=libinfo"><?php echo __('Library Information'); ?></a></li>
+                 <li><a class="menu" href="index.php?p=help"><?php echo __('Help on Search'); ?></a></li>
+                 <li><a class="menu" href="index.php?p=login"><?php echo __('Librarian LOGIN'); ?></a></li>
             </ul>
         </div>
         <div id="picture"><span>Library Picture</span></div>
@@ -41,7 +41,7 @@
 
         <div id="right">
         <!-- language selection -->
-        <h1 class="title_bar"><?php echo _('Select Language'); ?></h1>
+        <h1 class="title_bar"><?php echo __('Select Language'); ?></h1>
         <form name="langSelect" action="index.php" method="get">
         <select name="select_lang" style="width: 99%;" onchange="document.langSelect.submit();">
         <?php echo $language_select; ?>
@@ -50,37 +50,37 @@
         <br />
         <br />
         <!-- language selection end -->
-        <h1 class="title_bar"><?php echo _('Simple Search'); ?></h1>
+        <h1 class="title_bar"><?php echo __('Simple Search'); ?></h1>
         <form name="simpleSearch" action="index.php" method="get">
         <input type="text" name="keywords" class="search" /><br /><br />
-        <input type="submit" name="search" value="<?php echo _('Search'); ?>" class="submit" />
+        <input type="submit" name="search" value="<?php echo __('Search'); ?>" class="submit" />
         </form>
         <br />
         <br />
-        <h1 class="title_bar"><?php echo _('Advanced Search'); ?></h1>
+        <h1 class="title_bar"><?php echo __('Advanced Search'); ?></h1>
         <form name="advSearch" action="index.php" method="get">
-        <?php echo _('Title'); ?> :<br />
+        <?php echo __('Title'); ?> :<br />
         <input type="text" name="title" class="search" /><br /><br />
-        <?php echo _('Author(s)'); ?> :<br />
+        <?php echo __('Author(s)'); ?> :<br />
         <?php echo $advsearch_author; ?><br /><br />
-        <?php echo _('Subject(s)'); ?> :<br />
+        <?php echo __('Subject(s)'); ?> :<br />
         <?php echo $advsearch_topic; ?><br /><br />
-        <?php echo _('ISBN/ISSN'); ?> :<br />
+        <?php echo __('ISBN/ISSN'); ?> :<br />
         <input type="text" name="isbn" class="search" /><br />
-        <?php echo _('GMD'); ?> :<br />
+        <?php echo __('GMD'); ?> :<br />
         <select name="gmd" style="width: 99%;" class="marginTop" />
         <?php echo $gmd_list; ?>
         </select><br /><br />
-        <?php echo _('Collection Type'); ?> :<br />
+        <?php echo __('Collection Type'); ?> :<br />
         <select name="colltype" style="width: 99%;" class="marginTop" />
         <?php echo $colltype_list; ?>
         </select><br /><br />
-        <?php echo _('Location'); ?> :<br />
+        <?php echo __('Location'); ?> :<br />
         <select name="location" style="width: 99%;" class="marginTop" />
         <?php echo $location_list; ?>
         </select><br />
         <br />
-        <input type="submit" name="search" value="<?php echo _('Search'); ?>" class="submit" />
+        <input type="submit" name="search" value="<?php echo __('Search'); ?>" class="submit" />
         <!-- <input type="button" value="More Options" onclick="" class="button marginTop" /> -->
         </form>
         <br />

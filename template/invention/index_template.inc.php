@@ -23,10 +23,10 @@ Ported to Senayan by Hendro Wicaksono (hendrowicaksono@yahoo.com)
       <div id="logo">&nbsp;</div>
       <div id="links">
         <ul>
-          <li><a href="index.php"><?php echo _('Home'); ?></a></li>
-          <li><a href="index.php?p=libinfo"><?php echo _('Library Information'); ?></a></li>
-          <li><a href="index.php?p=help"><?php echo _('Help on Search'); ?></a></li>
-          <li><a href="index.php?p=login"><?php echo _('Librarian LOGIN'); ?></a></li>
+          <li><a href="index.php"><?php echo __('Home'); ?></a></li>
+          <li><a href="index.php?p=libinfo"><?php echo __('Library Information'); ?></a></li>
+          <li><a href="index.php?p=help"><?php echo __('Help on Search'); ?></a></li>
+          <li><a href="index.php?p=login"><?php echo __('Librarian LOGIN'); ?></a></li>
         </ul>
       </div>
     </div>
@@ -44,7 +44,7 @@ Ported to Senayan by Hendro Wicaksono (hendrowicaksono@yahoo.com)
 <!-- simple search -->
     <form name="simpleSearch" id="simpleSearch" action="index.php" method="get">
     <strong>Quick Search :</strong> <input type="text" name="keywords" id="simpleKeywords" style="width: 65%;" />
-    <input type="submit" name="search" value="<?php echo _('Search'); ?>" class="button marginTop" />
+    <input type="submit" name="search" value="<?php echo __('Search'); ?>" class="button marginTop" />
     <script type="text/javascript">$('simpleKeywords').focus();</script>
     </form><br />
 <!-- simple search end -->
@@ -56,37 +56,37 @@ Ported to Senayan by Hendro Wicaksono (hendrowicaksono@yahoo.com)
 <br /><br /><br />
       </div>
       <div id="rightbar">
-        <h2><?php echo _('Select Language'); ?></h2>
+        <h2><?php echo __('Select Language'); ?></h2>
         <p><form name="langSelect" action="index.php" method="get">
         <select name="select_lang" style="width: 90%;" onchange="document.langSelect.submit();">
         <?php echo $language_select; ?>
         </select>
         </form></p>
-        <h2><?php echo _('Advanced Search'); ?></h2>
+        <h2><?php echo __('Advanced Search'); ?></h2>
         <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
 
-        <span class="orangetext"><?php echo _('Title'); ?></span> :
+        <span class="orangetext"><?php echo __('Title'); ?></span> :
         <input type="text" name="title" class="ajaxInputField" /><br />
-        <span class="orangetext"><?php echo _('Author(s)'); ?></span> :
+        <span class="orangetext"><?php echo __('Author(s)'); ?></span> :
         <?php echo $advsearch_author; ?><br />
-        <span class="orangetext"><?php echo _('Subject(s)'); ?></span> :
+        <span class="orangetext"><?php echo __('Subject(s)'); ?></span> :
         <?php echo $advsearch_topic; ?><br />
-        <span class="orangetext"><?php echo _('ISBN/ISSN'); ?></span> :
+        <span class="orangetext"><?php echo __('ISBN/ISSN'); ?></span> :
         <input type="text" name="isbn" class="ajaxInputField" /><br />
-        <span class="orangetext"><?php echo _('GMD'); ?></span> :
+        <span class="orangetext"><?php echo __('GMD'); ?></span> :
         <select name="gmd" class="ajaxInputField" />
         <?php echo $gmd_list; ?>
         </select>
-        <span class="orangetext"><?php echo _('Collection Type'); ?></span> :
+        <span class="orangetext"><?php echo __('Collection Type'); ?></span> :
         <select name="colltype" class="ajaxInputField" />
         <?php echo $colltype_list; ?>
         </select>
-        <span class="orangetext"><?php echo _('Location'); ?></span> :
+        <span class="orangetext"><?php echo __('Location'); ?></span> :
         <select name="location" class="ajaxInputField" />
         <?php echo $location_list; ?>
         </select>
         <br />
-        <input type="submit" name="search" value="<?php echo _('Search'); ?>" class="button marginTop" />
+        <input type="submit" name="search" value="<?php echo __('Search'); ?>" class="button marginTop" />
         <!-- <input type="button" value="More Options" onclick="" class="button marginTop" /> -->
         </form>
 

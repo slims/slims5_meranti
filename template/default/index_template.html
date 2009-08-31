@@ -16,10 +16,10 @@
 <tr>
 <td id="mainMenu" colspan="2">
 <ul id="menuList">
-        <li><a class="menu" href="index.php"><!--_('Home')--></a></li>
-        <li><a class="menu" href="index.php?p=libinfo"><!--_('Library Information')--></a></li>
-        <li><a class="menu" href="index.php?p=help"><!--_('Help on Search')--></a></li>
-        <li><a class="menu" href="index.php?p=login"><!--_('Librarian LOGIN')--></a></li>
+        <li><a class="menu" href="index.php"><!--__('Home')--></a></li>
+        <li><a class="menu" href="index.php?p=libinfo"><!--__('Library Information')--></a></li>
+        <li><a class="menu" href="index.php?p=help"><!--__('Help on Search')--></a></li>
+        <li><a class="menu" href="index.php?p=login"><!--__('Librarian LOGIN')--></a></li>
 </ul>
 </td>
 </tr>
@@ -40,7 +40,7 @@
 <!-- sidepan -->
 <td id="sidepan" valign="top">
     <!-- language selection -->
-        <div class="heading"><!--_('Select Language')--></div>
+        <div class="heading"><!--__('Select Language')--></div>
         <form name="langSelect" action="index.php" method="get">
         <select name="select_lang" style="width: 99%;" onchange="document.langSelect.submit();">
         <!--LANGUAGE_SELECT-->
@@ -49,38 +49,38 @@
     <!-- language selection end -->
 
     <!-- simple search -->
-        <div class="heading"><!--_('Simple Search')--></div>
+        <div class="heading"><!--__('Simple Search')--></div>
         <form name="simpleSearch" action="index.php" method="get">
         <input type="text" name="keywords" style="width: 99%;" /><br />
-        <input type="submit" name="search" value="<!--_('Search')-->" class="button marginTop" />
+        <input type="submit" name="search" value="<!--__('Search')-->" class="button marginTop" />
         </form>
     <!-- simple search end -->
 
     <!-- advanced search -->
-        <div class="heading"><!--_('Advanced Search')--></div>
+        <div class="heading"><!--__('Advanced Search')--></div>
         <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
-        <!--_('Title')--> :
+        <!--__('Title')--> :
         <input type="text" name="title" class="ajaxInputField" /><br />
-        <!--_('Author(s)')--> :
+        <!--__('Author(s)')--> :
         <!--ADVSEARCH_AUTHOR--><br />
-        <!--_('Subject(s)')--> :
+        <!--__('Subject(s)')--> :
         <!--ADVSEARCH_TOPIC--><br />
-        <!--_('ISBN/ISSN')--> :
+        <!--__('ISBN/ISSN')--> :
         <input type="text" name="isbn" class="ajaxInputField" /><br />
-        <!--_('GMD')--> :
+        <!--__('GMD')--> :
         <select name="gmd" class="ajaxInputField" />
         <!--GMD_LIST-->
         </select>
-        <!--_('Collection Type')--> :
+        <!--__('Collection Type')--> :
         <select name="colltype" class="ajaxInputField" />
         <!--COLLTYPE_LIST-->
         </select>
-        <!--_('Location')--> :
+        <!--__('Location')--> :
         <select name="location" class="ajaxInputField" />
         <!--LOCATION_LIST-->
         </select>
         <br />
-        <input type="submit" name="search" value="<!--_('Search')-->" class="button marginTop" />
+        <input type="submit" name="search" value="<!--__('Search')-->" class="button marginTop" />
         <!-- <input type="button" value="More Options" onclick="" class="button marginTop" /> -->
         </form>
     <!-- advanced search end -->

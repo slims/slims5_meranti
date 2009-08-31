@@ -31,13 +31,13 @@ $can_read = utility::havePrivilege('stock_take', 'r');
 $can_write = utility::havePrivilege('stock_take', 'w');
 
 if (!($can_read AND $can_write)) {
-    die('<div class="errorBox">'._('You don\'t have enough privileges to access this area!').'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 
 // check if there is any active stock take proccess
 $stk_query = $dbs->query('SELECT * FROM stock_take WHERE is_active=1');
 if ($stk_query->num_rows < 1) {
-    echo '<div class="errorBox">'._('NO stock taking proccess initialized yet!').'</div>';
+    echo '<div class="errorBox">'.__('NO stock taking proccess initialized yet!').'</div>';
     die();
 }
 
@@ -80,7 +80,7 @@ if (isset($_POST['stUpload']) && isset($_FILES['stFile'])) {
         fclose($stfile);
         // message
         echo '<script type="text/javascript">'."\n";
-        echo 'parent.$(\'stUploadMsg\').update(\''._('Succesfully upload stock take file').$upload->new_filename.', <b>'.$i.'</b>'._(' item codes scanned!').'\');'."\n"; //mfc
+        echo 'parent.$(\'stUploadMsg\').update(\''.__('Succesfully upload stock take file').$upload->new_filename.', <b>'.$i.'</b>'.__(' item codes scanned!').'\');'."\n"; //mfc
         echo 'parent.$(\'stUploadMsg\').setStyle( {display: \'block\'} );'."\n";
         echo '</script>';
     } else {
@@ -98,10 +98,10 @@ if (isset($_POST['stUpload']) && isset($_FILES['stFile'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner stockTakeIcon">
-    <?php echo _('STOCK TAKE UPLOAD - Upload a plain text file (.txt) containing list of Item Code to stock take. Each Item Code separated by line.'); ?><hr />
+    <?php echo __('STOCK TAKE UPLOAD - Upload a plain text file (.txt) containing list of Item Code to stock take. Each Item Code separated by line.'); ?><hr />
     <form name="uploadForm" method="post" enctype="multipart/form-data" action="<?php echo MODULES_WEB_ROOT_DIR.'stock_take/st_upload.php'; ?>" target="uploadAction" style="display: inline;">
-    <?php echo _(' File'); //mfc ?>: <input type="file" name="stFile" id="stFile" /> Maximum <?php echo $sysconf['max_upload']; ?> KB
-    <div style="margin: 3px;"><input type="submit" name="stUpload" id="stUpload" value="<?php echo _('Upload File'); ?>" class="button" />
+    <?php echo __(' File'); //mfc ?>: <input type="file" name="stFile" id="stFile" /> Maximum <?php echo $sysconf['max_upload']; ?> KB
+    <div style="margin: 3px;"><input type="submit" name="stUpload" id="stUpload" value="<?php echo __('Upload File'); ?>" class="button" />
     <iframe name="uploadAction" style="width: 0; height: 0; visibility: hidden;"></iframe>
     </div>
     </form>

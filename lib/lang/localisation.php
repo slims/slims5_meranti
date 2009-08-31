@@ -9,14 +9,14 @@
  * TODO:	Maybe	change $available_languages	to just	list the native	
  *				language name	(well, useres	should be	able to	find their own
  *				language,	shouldn't	they?) :)
- * TODO:	Currently	the	gettext	library	is used, if	it is	available.
+ * NOTE:	The	gettext	library	might be used, if	it is	available.
  *				The	problem	is that	mo files are cached	by the extension,	so a
  *				server restart is	necessary	if these files are updated (e.g. by	 
- *				a	senayan	update). Replacing all _('') with	__('') would always
- *				use	php-gettext, thus	circumventing	this problem.	Obviously	
- *				there	is no	real speed disadvantage, since this	is the way 
- *				wordpress	does it. NOTE: exclude php-gettext directory from	a
- *				search&replace action. Later...
+ *				a	senayan	update). I replaced all _('') with	__(''), so 
+ *				php-gettext is always used, thus circumventing	this problem.	
+ *				Obviously	there	is no	real speed disadvantage, since this	is the  
+ *				way wordpress	does it. 
+ *				Developers should use __('') and _ngettext in code!
  */
 require_once(LANGUAGES_BASE_DIR.'php-gettext'.DIRECTORY_SEPARATOR.'gettext.inc');
 

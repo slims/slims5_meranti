@@ -40,12 +40,12 @@ $can_write = utility::havePrivilege('system', 'w');
 
 // only administrator have privileges to change global settings
 if (!($can_read AND $can_write) OR $_SESSION['uid'] != 1) {
-    die('<div class="errorBox">'._('You don\'t have enough privileges to view this section').'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
 }
 ?>
 <fieldset class="menuBox">
     <div class="menuBoxInner systemIcon">
-        <?php echo strtoupper(_('System Configuration')).'<hr />'._('Modify global application preferences'); ?>
+        <?php echo strtoupper(__('System Configuration')).'<hr />'.__('Modify global application preferences'); ?>
     </div>
 </fieldset>
 <?php
@@ -112,14 +112,14 @@ if (isset($_POST['updateData'])) {
 
     // write log
     utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'system', $_SESSION['realname'].' change application global configuration');
-    utility::jsAlert(_('Settings saved. Refreshing page'));
+    utility::jsAlert(__('Settings saved. Refreshing page'));
     echo '<script type="text/javascript">parent.location.href = \'../../index.php?mod=system\';</script>';
 }
 /* Config Vars update process end */
 
 // create new instance
 $form = new simbio_form_table_AJAX('mainForm', $_SERVER['PHP_SELF'], 'post');
-$form->submit_button_attr = 'name="updateData" value="'._('Save Settings').'" class="button"';
+$form->submit_button_attr = 'name="updateData" value="'.__('Save Settings').'" class="button"';
 
 // form table attributes
 $form->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
@@ -133,10 +133,10 @@ utility::loadSettings($dbs);
 $form->addAnything('Senayan Version', '<strong>'.SENAYAN_VERSION.'</strong>');
 
 // library name
-$form->addTextField('text', 'library_name', _('Library Name'), $sysconf['library_name'], 'style="width: 100%;"');
+$form->addTextField('text', 'library_name', __('Library Name'), $sysconf['library_name'], 'style="width: 100%;"');
 
 // library subname
-$form->addTextField('text', 'library_subname', _('Library Subname'), $sysconf['library_subname'], 'style="width: 100%;"');
+$form->addTextField('text', 'library_subname', __('Library Subname'), $sysconf['library_subname'], 'style="width: 100%;"');
 
 /* Form Element(s) */
 // public template
@@ -150,7 +150,7 @@ ksort($dir_tree);
 foreach ($dir_tree as $dir) {
     $tpl_options[] = array($dir, $dir);
 }
-$form->addSelectList('template', _('Public Template'), $tpl_options, $sysconf['template']['theme']);
+$form->addSelectList('template', __('Public Template'), $tpl_options, $sysconf['template']['theme']);
 
 // admin template
 // scan admin template directory
@@ -163,12 +163,12 @@ ksort($dir_tree);
 foreach ($dir_tree as $dir) {
     $admin_tpl_options[] = array($dir, $dir);
 }
-$form->addSelectList('admin_template', _('Admin Template'), $admin_tpl_options, $sysconf['admin_template']['theme']);
+$form->addSelectList('admin_template', __('Admin Template'), $admin_tpl_options, $sysconf['admin_template']['theme']);
 
 // application language
 require_once(LANGUAGES_BASE_DIR.'localisation.php');
 $lang_options = $available_languages;
-$form->addSelectList('default_lang', _('Default App. Language'), $lang_options, $sysconf['default_lang']);
+$form->addSelectList('default_lang', __('Default App. Language'), $lang_options, $sysconf['default_lang']);
 
 // opac result list number
 $result_num_options[] = array('10', '10');
@@ -176,44 +176,44 @@ $result_num_options[] = array('20', '20');
 $result_num_options[] = array('30', '30');
 $result_num_options[] = array('40', '40');
 $result_num_options[] = array('40', '50');
-$form->addSelectList('opac_result_num', _('Number Of Collections To Show In OPAC Result List'), $result_num_options, $sysconf['opac_result_num'] );
+$form->addSelectList('opac_result_num', __('Number Of Collections To Show In OPAC Result List'), $result_num_options, $sysconf['opac_result_num'] );
 
 // homepage setting
 $promote_options[] = array('1', 'Yes');
-$form->addCheckBox('enable_promote_titles', _('Show Promoted Titles at Homepage'), $promote_options, $sysconf['enable_promote_titles']?'1':'0');
+$form->addCheckBox('enable_promote_titles', __('Show Promoted Titles at Homepage'), $promote_options, $sysconf['enable_promote_titles']?'1':'0');
 
 // enable quick return
 $options = null;
-$options[] = array('0', _('Disable'));
-$options[] = array('1', _('Enable'));
-$form->addSelectList('quick_return', _('Quick Return'), $options, $sysconf['quick_return']?'1':'0');
+$options[] = array('0', __('Disable'));
+$options[] = array('1', __('Enable'));
+$form->addSelectList('quick_return', __('Quick Return'), $options, $sysconf['quick_return']?'1':'0');
 
 // enable loan limit overriden
 $options = null;
-$options[] = array('0', _('Disable'));
-$options[] = array('1', _('Enable'));
-$form->addSelectList('loan_limit_override', _('Loan Limit Override'), $options, $sysconf['loan_limit_override']?'1':'0');
+$options[] = array('0', __('Disable'));
+$options[] = array('1', __('Enable'));
+$form->addSelectList('loan_limit_override', __('Loan Limit Override'), $options, $sysconf['loan_limit_override']?'1':'0');
 
 // enable bibliography xml detail
 $options = null;
-$options[] = array('0', _('Disable'));
-$options[] = array('1', _('Enable'));
-$form->addSelectList('enable_xml_detail', _('OPAC XML Detail'), $options, $sysconf['enable_xml_detail']?'1':'0');
+$options[] = array('0', __('Disable'));
+$options[] = array('1', __('Enable'));
+$form->addSelectList('enable_xml_detail', __('OPAC XML Detail'), $options, $sysconf['enable_xml_detail']?'1':'0');
 
 // enable bibliography xml result set
 $options = null;
-$options[] = array('0', _('Disable'));
-$options[] = array('1', _('Enable'));
-$form->addSelectList('enable_xml_result', _('OPAC XML Result'), $options, $sysconf['enable_xml_result']?'1':'0');
+$options[] = array('0', __('Disable'));
+$options[] = array('1', __('Enable'));
+$form->addSelectList('enable_xml_result', __('OPAC XML Result'), $options, $sysconf['enable_xml_result']?'1':'0');
 
 // allow file attachment download
 $options = null;
-$options[] = array('0', _('Forbid'));
-$options[] = array('1', _('Allow'));
-$form->addSelectList('allow_file_download', _('Allow OPAC File Download'), $options, $sysconf['allow_file_download']?'1':'0');
+$options[] = array('0', __('Forbid'));
+$options[] = array('1', __('Allow'));
+$form->addSelectList('allow_file_download', __('Allow OPAC File Download'), $options, $sysconf['allow_file_download']?'1':'0');
 
 // session timeout
-$form->addTextField('text', 'session_timeout', _('Session Login Timeout'), $sysconf['session_timeout'], 'style="width: 10%;"');
+$form->addTextField('text', 'session_timeout', __('Session Login Timeout'), $sysconf['session_timeout'], 'style="width: 10%;"');
 
 // print out the object
 echo $form->printOut();

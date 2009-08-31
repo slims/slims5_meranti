@@ -35,7 +35,7 @@ $can_read = utility::havePrivilege('circulation', 'r');
 $can_write = utility::havePrivilege('circulation', 'w');
 
 if (!($can_read AND $can_write)) {
-    die('<div class="errorBox">'._('You don\'t have enough privileges to view this section').'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
 }
 // check if there is transaction running
 if (isset($_SESSION['memberID']) AND !empty($_SESSION['memberID'])) {
@@ -45,10 +45,10 @@ if (isset($_SESSION['memberID']) AND !empty($_SESSION['memberID'])) {
 ?>
     <fieldset class="menuBox">
         <div class="menuBoxInner circulationIcon">
-            <?php echo _('CIRCULATION - Insert a member ID to start transaction with keyboard or barcode reader'); ?>
+            <?php echo __('CIRCULATION - Insert a member ID to start transaction with keyboard or barcode reader'); ?>
             <hr />
             <form id="startCirc" method="post" style="display: inline;" action="blank.html" target="blindSubmit" onsubmit="$('start').click();">
-            <?php echo _('Member ID'); ?> :
+            <?php echo __('Member ID'); ?> :
             <?php
             // create AJAX drop down
             $ajaxDD = new simbio_fe_AJAX_select();
@@ -57,7 +57,7 @@ if (isset($_SESSION['memberID']) AND !empty($_SESSION['memberID'])) {
             $ajaxDD->handler_URL = MODULES_WEB_ROOT_DIR.'membership/member_AJAX_response.php';
             echo $ajaxDD->out();
             ?>
-            <input type="button" value="<?php echo _('Start Transaction'); ?>" id="start" class="button" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/circulation_action.php', 'post', $('startCirc').serialize(), true)" />
+            <input type="button" value="<?php echo __('Start Transaction'); ?>" id="start" class="button" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/circulation_action.php', 'post', $('startCirc').serialize(), true)" />
             </form>
         </div>
     </fieldset>
@@ -67,7 +67,7 @@ if (isset($_SESSION['memberID']) AND !empty($_SESSION['memberID'])) {
     </script>
 <?php
     if (isset($_POST['finishID'])) {
-        $msg = str_ireplace('{member_id}', $_POST['finishID'], _('Transaction with member {member_id} is completed'));
+        $msg = str_ireplace('{member_id}', $_POST['finishID'], __('Transaction with member {member_id} is completed'));
         echo '<div class="infoBox">'.$msg.'</div>';
     }
 }

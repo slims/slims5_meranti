@@ -96,9 +96,9 @@ class simbio_paging_ajax
         }
 
         // Previous page link
-				$_first = _('First Page');
+				$_first = __('First Page');
 
-				$_prev = _('Previous');
+				$_prev = __('Previous');
 
         if ($_page > 1) {
             $_buffer .= ' &nbsp;';
@@ -119,7 +119,7 @@ class simbio_paging_ajax
         }
 
         // Next page link
-				$_next = _('Next');
+				$_next = __('Next');
 
         if (($_pager_offset != $_num_page_total-4) AND ($_page != $_num_page_total)) {
             $_buffer .= ' &nbsp;';
@@ -127,7 +127,7 @@ class simbio_paging_ajax
         }
 
         // Last page link
-				$_last = _('Last Page');
+				$_last = __('Last Page');
 
         if ($_page < $_num_page_total) {
             $_buffer .= ' &nbsp;';

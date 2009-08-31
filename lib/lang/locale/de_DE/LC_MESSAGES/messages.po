@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Senayan3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-31 10:57+0100\n"
-"PO-Revision-Date: 2009-08-31 10:57+0100\n"
+"POT-Creation-Date: 2009-08-31 18:09+0100\n"
+"PO-Revision-Date: 2009-08-31 18:09+0100\n"
 "Last-Translator: Tobias Z.\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-KeywordsList: __;_ngettext:1,2;_gettext\n"
 "X-Poedit-Basepath: ../../../../../\n"
 "X-Poedit-SearchPath-0: .\n"
 
@@ -3253,43 +3253,43 @@ msgstr "Template öffentlicher Bereich"
 msgid "Admin Template"
 msgstr "Template administrativer Bereich"
 
-#: admin/modules/system/index.php:187
+#: admin/modules/system/index.php:171
 msgid "Default App. Language"
 msgstr "Standardsprache"
 
-#: admin/modules/system/index.php:195
+#: admin/modules/system/index.php:179
 msgid "Number Of Collections To Show In OPAC Result List"
 msgstr "Zahl anzuzeigender Sammlungen in der OPAC-Ergebnisliste"
 
-#: admin/modules/system/index.php:199
+#: admin/modules/system/index.php:183
 msgid "Show Promoted Titles at Homepage"
 msgstr "Propagierte Titel auf der Startseite anzeigen"
 
-#: admin/modules/system/index.php:211
+#: admin/modules/system/index.php:195
 msgid "Loan Limit Override"
 msgstr "Ausleihlimit ignorieren können"
 
-#: admin/modules/system/index.php:217
+#: admin/modules/system/index.php:201
 msgid "OPAC XML Detail"
 msgstr "OPAC XML-Detail"
 
-#: admin/modules/system/index.php:223
+#: admin/modules/system/index.php:207
 msgid "OPAC XML Result"
 msgstr "OPAC XML-Ergebnis"
 
-#: admin/modules/system/index.php:227
+#: admin/modules/system/index.php:211
 msgid "Forbid"
 msgstr "Verweigern"
 
-#: admin/modules/system/index.php:228
+#: admin/modules/system/index.php:212
 msgid "Allow"
 msgstr "Zulassen"
 
-#: admin/modules/system/index.php:229
+#: admin/modules/system/index.php:213
 msgid "Allow OPAC File Download"
 msgstr "Herunterladen von Dateien im OPAC zulassen"
 
-#: admin/modules/system/index.php:232
+#: admin/modules/system/index.php:216
 msgid "Session Login Timeout"
 msgstr "Automatisch abmelden nach (Sekunden)"
 
@@ -3521,58 +3521,52 @@ msgstr "Ihr Browser unterstützt keine JavaScript oder die Unterstützung wurde 
 msgid "Back To Previous"
 msgstr "Zurück zur vorherigen Seite"
 
-#: lib/lang/localisation.php:19
+#: lib/lang/localisation.php:37
 msgid "German"
 msgstr ""
 
-#: lib/lang/localisation.php:20
+#: lib/lang/localisation.php:38
 msgid "English"
 msgstr ""
 
-#: lib/lang/localisation.php:21
+#: lib/lang/localisation.php:39
 msgid "Indonesian"
 msgstr ""
 
-#: lib/lang/php-gettext/examples/pigs_dropin.php:75
-msgid ""
-"This is how the story goes.\n"
-"\n"
-msgstr ""
-
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:59
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:81
 msgid "DELETE"
 msgstr "LÖSCHEN"
 
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:60
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:82
 msgid "EDIT"
 msgstr "EDIT"
 
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:92
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:97
 msgid "Are You Sure Want to DELETE Selected Data?"
 msgstr "Wollen Sie die ausgewählten Daten wirklich LÖSCHEN?"
 
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:96
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:101
 msgid "Delete Selected Data"
 msgstr "Ausgewählte Daten löschen"
 
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:121
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:126
 msgid "ascendingly"
 msgstr "aufsteigend"
 
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:131
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:136
 msgid "descendingly"
 msgstr "absteigend"
 
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:201
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:203
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:206
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:208
 msgid "Order list by"
 msgstr "Sortiere List nach Spalte"
 
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:366
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:371
 msgid "Check All"
 msgstr "Alle anwählen"
 
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:367
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:372
 msgid "Uncheck All"
 msgstr "Alle abwählen"
 
@@ -3591,18 +3585,22 @@ msgid "Cancel"
 msgstr "Abbrechen"
 
 #: simbio2/simbio_GUI/paging/simbio_paging.inc.php:103
+#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:99
 msgid "First Page"
 msgstr "Erste Seite"
 
 #: simbio2/simbio_GUI/paging/simbio_paging.inc.php:105
+#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:101
 msgid "Previous"
 msgstr "Vorherige"
 
 #: simbio2/simbio_GUI/paging/simbio_paging.inc.php:126
+#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:122
 msgid "Next"
 msgstr "Nächste"
 
 #: simbio2/simbio_GUI/paging/simbio_paging.inc.php:134
+#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:130
 msgid "Last Page"
 msgstr "Letzte Seite"
 
@@ -3611,37 +3609,51 @@ msgid "No Data"
 msgstr "Keine Daten"
 
 #: template/blue/detail_template.php:80
+#: template/default/custom_frontpage_record.inc.php:12
+#: template/default/detail_template.php:80
 msgid "Availability"
 msgstr "Verfügbarkeit"
 
 #: template/blue/index_template.inc.php:29
+#: template/default/index_template.inc.php:19
 msgid "Home"
 msgstr "Startseite"
 
 #: template/blue/index_template.inc.php:30
+#: template/default/index_template.inc.php:20
 msgid "Library Information"
 msgstr "Über die Bibliothek"
 
 #: template/blue/index_template.inc.php:31
+#: template/default/index_template.inc.php:21
 msgid "Help on Search"
 msgstr "Hilfe zur Suche"
 
 #: template/blue/index_template.inc.php:32
+#: template/default/index_template.inc.php:22
 msgid "Librarian LOGIN"
 msgstr "Mitarbeiter-ANMELDUNG"
 
 #: template/blue/index_template.inc.php:44
+#: template/default/index_template.inc.php:43
 msgid "Select Language"
 msgstr "Sprache wählen"
 
 #: template/blue/index_template.inc.php:53
+#: template/default/index_template.inc.php:52
 msgid "Simple Search"
 msgstr "Einfache Suche"
 
 #: template/blue/index_template.inc.php:60
+#: template/default/index_template.inc.php:60
 msgid "Advanced Search"
 msgstr "Erweiterte Suche"
 
+#, fuzzy
+#~ msgid "%d Auto"
+#~ msgid_plural "%d Autos"
+#~ msgstr[0] "Autor hinzufügen"
+#~ msgstr[1] "Autor hinzufügen"
 #~ msgid ""
 #~ "<strong>{dompdf_libdir}</strong> directory is not writable. Make sure it "
 #~ "is writable (and all directories under it) by changing its permission or "

@@ -20,11 +20,11 @@
 
 /* Circulation module submenu items */
 
-$menu[] = array('Header', _('Circulation'));
-$menu[] = array(_('Start Transaction'), MODULES_WEB_ROOT_DIR.'circulation/index.php?action=start', _('Start Circulation Transaction Proccess'));
-$menu[] = array(_('Quick Return'), MODULES_WEB_ROOT_DIR.'circulation/quick_return.php', _('Quick Return Collection'));
-$menu[] = array(_('Loan Rules'), MODULES_WEB_ROOT_DIR.'circulation/loan_rules.php', _('View and Modify Circulation Loan Rules'));
-$menu[] = array(_('Loan History'), MODULES_WEB_ROOT_DIR.'reporting/customs/loan_history.php', _('Loan History Overview'));
-$menu[] = array(_('Overdued List'), MODULES_WEB_ROOT_DIR.'reporting/customs/overdued_list.php', _('View Members Having Overdues'));
-$menu[] = array(_('Reservation'), MODULES_WEB_ROOT_DIR.'reporting/customs/reserve_list.php', _('Reservation'));
+$menu[] = array('Header', __('Circulation'));
+$menu[] = array(__('Start Transaction'), MODULES_WEB_ROOT_DIR.'circulation/index.php?action=start', __('Start Circulation Transaction Proccess'));
+$menu[] = array(__('Quick Return'), MODULES_WEB_ROOT_DIR.'circulation/quick_return.php', __('Quick Return Collection'));
+$menu[] = array(__('Loan Rules'), MODULES_WEB_ROOT_DIR.'circulation/loan_rules.php', __('View and Modify Circulation Loan Rules'));
+$menu[] = array(__('Loan History'), MODULES_WEB_ROOT_DIR.'reporting/customs/loan_history.php', __('Loan History Overview'));
+$menu[] = array(__('Overdued List'), MODULES_WEB_ROOT_DIR.'reporting/customs/overdued_list.php', __('View Members Having Overdues'));
+$menu[] = array(__('Reservation'), MODULES_WEB_ROOT_DIR.'reporting/customs/reserve_list.php', __('Reservation'));
 ?>

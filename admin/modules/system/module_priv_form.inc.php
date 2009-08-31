@@ -23,7 +23,7 @@
 ob_start();
 $table = new simbio_table();
 $table->table_attr = 'align="center" class="detailTable" style="width: 100%;" cellpadding="2" cellspacing="0"';
-$table->setHeader(array(_('Module Name'), _('Read'), _('Write')));
+$table->setHeader(array(__('Module Name'), __('Read'), __('Write')));
 $table->table_header_attr = 'class="dataListHeader" style="font-weight: bold;"';
 
 // initial row count

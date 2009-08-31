@@ -20,14 +20,14 @@
 
 /* Membership module submenu items */
 
-$menu[] = array('Header', _('System'));
-$menu[] = array(_('System Configuration'), MODULES_WEB_ROOT_DIR.'system/index.php', _('Configure Global System Preferences'));
-$menu[] = array(_('Content'), MODULES_WEB_ROOT_DIR.'system/content.php', _('Content'));
-$menu[] = array(_('Modules'), MODULES_WEB_ROOT_DIR.'system/module.php', _('Configure Application Modules'));
-$menu[] = array(_('System Users'), MODULES_WEB_ROOT_DIR.'system/app_user.php', _('Manage Application User or Library Staff'));
-$menu[] = array(_('User Group'), MODULES_WEB_ROOT_DIR.'system/user_group.php', _('Manage Group of Application User'));
-$menu[] = array(_('Holiday Setting'), MODULES_WEB_ROOT_DIR.'system/holiday.php', _('Configure Holiday Setting'));
-$menu[] = array(_('Barcode Generator'), MODULES_WEB_ROOT_DIR.'system/barcode_generator.php', _('Barcode Generator'));
-$menu[] = array(_('System Log'), MODULES_WEB_ROOT_DIR.'system/sys_log.php', _('View Application System Log'));
-$menu[] = array(_('Database Backup'), MODULES_WEB_ROOT_DIR.'system/backup.php', _('Backup Application Database'));
+$menu[] = array('Header', __('System'));
+$menu[] = array(__('System Configuration'), MODULES_WEB_ROOT_DIR.'system/index.php', __('Configure Global System Preferences'));
+$menu[] = array(__('Content'), MODULES_WEB_ROOT_DIR.'system/content.php', __('Content'));
+$menu[] = array(__('Modules'), MODULES_WEB_ROOT_DIR.'system/module.php', __('Configure Application Modules'));
+$menu[] = array(__('System Users'), MODULES_WEB_ROOT_DIR.'system/app_user.php', __('Manage Application User or Library Staff'));
+$menu[] = array(__('User Group'), MODULES_WEB_ROOT_DIR.'system/user_group.php', __('Manage Group of Application User'));
+$menu[] = array(__('Holiday Setting'), MODULES_WEB_ROOT_DIR.'system/holiday.php', __('Configure Holiday Setting'));
+$menu[] = array(__('Barcode Generator'), MODULES_WEB_ROOT_DIR.'system/barcode_generator.php', __('Barcode Generator'));
+$menu[] = array(__('System Log'), MODULES_WEB_ROOT_DIR.'system/sys_log.php', __('View Application System Log'));
+$menu[] = array(__('Database Backup'), MODULES_WEB_ROOT_DIR.'system/backup.php', __('Backup Application Database'));
 ?>

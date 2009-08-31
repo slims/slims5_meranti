@@ -77,8 +77,9 @@ b2) Tab "Path"
       -> Enter: . (yes, just a dot)
 b3) Tab "Keywords"
     ------------
-    Nothing yet. You might have to add __ and _ngettext if php-gettext only will
-    be supported in the future
+    Add two lines:
+    	__ (two underscores)
+    	_ngettext
 c)  Press ok and save the file under senayan3\lib\lang\locale\{YOUR LANGUAGE}\LC_MESSAGES.
     Name the file messages.po
     

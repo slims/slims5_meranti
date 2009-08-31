@@ -33,7 +33,7 @@ require SIMBIO_BASE_DIR.'simbio_DB/datagrid/simbio_dbgrid.inc.php';
 $can_read = utility::havePrivilege('bibliography', 'r');
 
 if (!$can_read) {
-    die('<div class="errorBox">'._('You are not authorized to view this section').'</div>');
+    die('<div class="errorBox">'.__('You are not authorized to view this section').'</div>');
 }
 
 $max_print = 50;
@@ -67,19 +67,19 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
         $print_count++;
     }
     if (isset($limit_reach)) {
-        $msg = str_replace('{max_print}', $max_print, _('Selected items NOT ADDED to print queue. Only {max_print} can be printed at once')); //mfc
+        $msg = str_replace('{max_print}', $max_print, __('Selected items NOT ADDED to print queue. Only {max_print} can be printed at once')); //mfc
         utility::jsAlert($msg);
     } else {
         // update print queue count object
         echo '<script type="text/javascript">parent.$(\'queueCount\').update(\''.$print_count.'\');</script>';
-        utility::jsAlert(_('Selected items added to print queue'));
+        utility::jsAlert(__('Selected items added to print queue'));
     }
     exit();
 }
 
 // clean print queue
 if (isset($_GET['action']) AND $_GET['action'] == 'clear') {
-    utility::jsAlert(_('Print queue cleared!'));
+    utility::jsAlert(__('Print queue cleared!'));
     echo '<script type="text/javascript">parent.$(\'queueCount\').update(\'0\');</script>';
     unset($_SESSION['labels']);
     exit();
@@ -89,11 +89,11 @@ if (isset($_GET['action']) AND $_GET['action'] == 'clear') {
 if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     // check if label session array is available
     if (!isset($_SESSION['labels'])) {
-        utility::jsAlert(_('There is no data to print!'));
+        utility::jsAlert(__('There is no data to print!'));
         die();
     }
     if (count($_SESSION['labels']) < 1) {
-        utility::jsAlert(_('There is no data to print!'));
+        utility::jsAlert(__('There is no data to print!'));
         die();
     }
 
@@ -168,20 +168,20 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner printIcon">
-    <?php echo _('Labels Printing'); ?> - <a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/dl_print.php?action=print" class="headerText2"><?php echo _('Print Labels for Selected Data'); ?></a>
-    &nbsp; <a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/dl_print.php?action=clear" class="headerText2" style="color: #FF0000;"><?php echo _('Clear Print Queue'); ?></a>
+    <?php echo __('Labels Printing'); ?> - <a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/dl_print.php?action=print" class="headerText2"><?php echo __('Print Labels for Selected Data'); ?></a>
+    &nbsp; <a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/dl_print.php?action=clear" class="headerText2" style="color: #FF0000;"><?php echo __('Clear Print Queue'); ?></a>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo _('Search'); ?> :
+    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
-    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/dl_print.php?' + $('search').serialize(), 'post')" value="<?php echo _('Search'); ?>" class="button" />
+    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/dl_print.php?' + $('search').serialize(), 'post')" value="<?php echo __('Search'); ?>" class="button" />
     </form>
     <div style="margin-top: 3px;">
         <?php
-        echo _('Maximum').' <font style="color: #FF0000">'.$max_print.'</font> '._('records can be printed at once. Currently there is').' '; //mfc
+        echo __('Maximum').' <font style="color: #FF0000">'.$max_print.'</font> '.__('records can be printed at once. Currently there is').' '; //mfc
         if (isset($_SESSION['labels'])) {
             echo '<font id="queueCount" style="color: #FF0000">'.count($_SESSION['labels']).'</font>';
         } else { echo '<font id="queueCount" style="color: #FF0000">0</font>'; }
-        echo ' '._('in queue waiting to be printed.'); //mfc
+        echo ' '.__('in queue waiting to be printed.'); //mfc
         ?>
     </div>
 </div>
@@ -196,8 +196,8 @@ $table_spec = 'biblio LEFT JOIN item ON biblio.biblio_id=item.biblio_id';
 // create datagrid
 $datagrid = new simbio_datagrid();
 if ($can_read) {
-    $datagrid->setSQLColumn('item.item_id', 'biblio.title AS `'._('Title').'`',
-        'IF(item.call_number!=\'\', item.call_number, biblio.call_number) AS `'._('Call Number').'`');
+    $datagrid->setSQLColumn('item.item_id', 'biblio.title AS `'.__('Title').'`',
+        'IF(item.call_number!=\'\', item.call_number, biblio.call_number) AS `'.__('Call Number').'`');
 }
 $datagrid->setSQLorder('item.last_update DESC');
 // is there any search
@@ -224,17 +224,17 @@ $datagrid->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacin
 $datagrid->table_header_attr = 'class="dataListHeader" style="font-weight: bold;"';
 // edit and checkbox property
 $datagrid->edit_property = false;
-$datagrid->chbox_property = array('itemID', _('Add'));
-$datagrid->chbox_action_button = _('Add To Print Queue');
-$datagrid->chbox_confirm_msg = _('Add to print queue?');
+$datagrid->chbox_property = array('itemID', __('Add'));
+$datagrid->chbox_action_button = __('Add To Print Queue');
+$datagrid->chbox_confirm_msg = __('Add to print queue?');
 // set delete proccess URL
 $datagrid->chbox_form_URL = $_SERVER['PHP_SELF'];
 $datagrid->column_width = array(0 => '75%', 1 => '20%');
 // put the result into variables
 $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, $can_read);
 if (isset($_GET['keywords']) AND $_GET['keywords']) {
-    $msg = str_replace('{result->num_rows}', $datagrid->num_rows, _('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
-    echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"<div>'._('Query took').' <b>'.$datagrid->query_time.'</b> '._('second(s) to complete').'</div></div>'; //mfc
+    $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
+    echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"<div>'.__('Query took').' <b>'.$datagrid->query_time.'</b> '.__('second(s) to complete').'</div></div>'; //mfc
 }
 echo $datagrid_result;
 /* main content end */

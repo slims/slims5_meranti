@@ -31,7 +31,7 @@ $can_read = utility::havePrivilege('reporting', 'r');
 $can_write = utility::havePrivilege('reporting', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'._('You don\'t have enough privileges to access this area!').'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 
 require SIMBIO_BASE_DIR.'simbio_GUI/template_parser/simbio_template_parser.inc.php';
@@ -52,16 +52,16 @@ if (!$reportView) {
 ?>
     <!-- filter -->
     <fieldset style="margin-bottom: 3px;">
-    <legend style="font-weight: bold"><?php echo strtoupper(_('Member List')); ?> - <?php echo _('Report Filter'); ?></legend>
+    <legend style="font-weight: bold"><?php echo strtoupper(__('Member List')); ?> - <?php echo __('Report Filter'); ?></legend>
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
         <div class="divRow">
-            <div class="divRowLabel"><?php echo _('Membership Type'); ?></div>
+            <div class="divRowLabel"><?php echo __('Membership Type'); ?></div>
             <div class="divRowContent">
             <?php
             $mtype_q = $dbs->query('SELECT member_type_id, member_type_name FROM mst_member_type');
             $mtype_options = array();
-            $mtype_options[] = array('0', _('ALL'));
+            $mtype_options[] = array('0', __('ALL'));
             while ($mtype_d = $mtype_q->fetch_row()) {
                 $mtype_options[] = array($mtype_d[0], $mtype_d[1]);
             }
@@ -70,48 +70,48 @@ if (!$reportView) {
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel"><?php echo _('Member ID').'/'._('Member Name'); ?></div>
+            <div class="divRowLabel"><?php echo __('Member ID').'/'.__('Member Name'); ?></div>
             <div class="divRowContent">
             <?php echo simbio_form_element::textField('text', 'id_name', '', 'style="width: 50%"'); ?>
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel"><?php echo _('Gender'); ?></div>
+            <div class="divRowLabel"><?php echo __('Gender'); ?></div>
             <div class="divRowContent">
             <?php
-            $gender_chbox[0] = array('ALL', _('ALL'));
-            $gender_chbox[1] = array('1', _('Male'));
-            $gender_chbox[2] = array('0', _('Female'));
+            $gender_chbox[0] = array('ALL', __('ALL'));
+            $gender_chbox[1] = array('1', __('Male'));
+            $gender_chbox[2] = array('0', __('Female'));
             echo simbio_form_element::radioButton('gender', $gender_chbox, 'ALL');
             ?>
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel"><?php echo _('Address'); ?></div>
+            <div class="divRowLabel"><?php echo __('Address'); ?></div>
             <div class="divRowContent">
             <?php echo simbio_form_element::textField('text', 'address', '', 'style="width: 50%"'); ?>
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel"><?php echo _('Register Date From'); ?></div>
+            <div class="divRowLabel"><?php echo __('Register Date From'); ?></div>
             <div class="divRowContent">
             <?php echo simbio_form_element::dateField('startDate', '2000-01-01'); ?>
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel"><?php echo _('Register Date Until'); ?></div>
+            <div class="divRowLabel"><?php echo __('Register Date Until'); ?></div>
             <div class="divRowContent">
             <?php echo simbio_form_element::dateField('untilDate', date('Y-m-d')); ?>
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel"><?php echo _('Record each page'); ?></div>
-            <div class="divRowContent"><input type="text" name="recsEachPage" size="3" maxlength="3" value="<?php echo $num_recs_show; ?>" /> <?php echo _('Set between 20 and 200'); ?></div>
+            <div class="divRowLabel"><?php echo __('Record each page'); ?></div>
+            <div class="divRowContent"><input type="text" name="recsEachPage" size="3" maxlength="3" value="<?php echo $num_recs_show; ?>" /> <?php echo __('Set between 20 and 200'); ?></div>
         </div>
     </div>
     <div style="padding-top: 10px; clear: both;">
-    <input type="submit" name="applyFilter" value="<?php echo _('Apply Filter'); ?>" />
-    <input type="button" name="moreFilter" value="<?php echo _('Show More Filter Options'); ?>" onclick="showHideTableRows('filterForm', 1, this, '<?php echo _('Show More Filter Options'); ?>', '<?php echo _('Hide Filter Options'); ?>')" />
+    <input type="submit" name="applyFilter" value="<?php echo __('Apply Filter'); ?>" />
+    <input type="button" name="moreFilter" value="<?php echo __('Show More Filter Options'); ?>" onclick="showHideTableRows('filterForm', 1, this, '<?php echo __('Show More Filter Options'); ?>', '<?php echo __('Hide Filter Options'); ?>')" />
     <input type="hidden" name="reportView" value="true" />
     </div>
     </form>
@@ -119,7 +119,7 @@ if (!$reportView) {
     <script type="text/javascript">hideRows('filterForm', 1);</script>
     <!-- filter end -->
     <div class="dataListHeader" style="height: 35px;">
-    <input type="button" value="<?php echo _('Print Current Page'); ?>" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;"
+    <input type="button" value="<?php echo __('Print Current Page'); ?>" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;"
     onclick="javascript: reportView.print();" />
     &nbsp;<span id="pagingBox">&nbsp;</span></div>
     <iframe name="reportView" src="<?php echo $_SERVER['PHP_SELF'].'?reportView=true'; ?>" frameborder="0" style="width: 100%; height: 500px;"></iframe>
@@ -132,9 +132,9 @@ if (!$reportView) {
 
     // create datagrid
     $reportgrid = new report_datagrid();
-    $reportgrid->setSQLColumn('m.member_id AS \''._('Member ID').'\'',
-        'm.member_name AS \''._('Member Name').'\'',
-        'mt.member_type_name AS \''._('Membership Type').'\'');
+    $reportgrid->setSQLColumn('m.member_id AS \''.__('Member ID').'\'',
+        'm.member_name AS \''.__('Member Name').'\'',
+        'mt.member_type_name AS \''.__('Membership Type').'\'');
     $reportgrid->setSQLorder('member_name ASC');
 
     // is there any search

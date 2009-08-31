@@ -18,18 +18,18 @@
  *
  */
 
-$menu[] = array('Header', _('Panel'));
-$menu[] = array(_('Change User Profiles'), MODULES_WEB_ROOT_DIR.'system/app_user.php?changecurrent=true&action=detail', _('Change Current User Profiles and Password'));
+$menu[] = array('Header', __('Panel'));
+$menu[] = array(__('Change User Profiles'), MODULES_WEB_ROOT_DIR.'system/app_user.php?changecurrent=true&action=detail', __('Change Current User Profiles and Password'));
 if (utility::havePrivilege('bibliography', 'r') AND utility::havePrivilege('bibliography', 'w')) {
-    $menu[] = array(_('Add New Bibliography'), MODULES_WEB_ROOT_DIR.'bibliography/index.php?action=detail', _('Add New Bibliographic Data/Catalog'));
+    $menu[] = array(__('Add New Bibliography'), MODULES_WEB_ROOT_DIR.'bibliography/index.php?action=detail', __('Add New Bibliographic Data/Catalog'));
 }
 if (utility::havePrivilege('circulation', 'r') AND utility::havePrivilege('circulation', 'w')) {
-    $menu[] = array(_('Start Transaction'), MODULES_WEB_ROOT_DIR.'circulation/index.php?action=start', _('Start Circulation Transaction Proccess'));
+    $menu[] = array(__('Start Transaction'), MODULES_WEB_ROOT_DIR.'circulation/index.php?action=start', __('Start Circulation Transaction Proccess'));
 }
 if (utility::havePrivilege('circulation', 'r') AND utility::havePrivilege('circulation', 'w')) {
-    $menu[] = array(_('Quick Return'), MODULES_WEB_ROOT_DIR.'circulation/quick_return.php', _('Quick Return Collection'));
+    $menu[] = array(__('Quick Return'), MODULES_WEB_ROOT_DIR.'circulation/quick_return.php', __('Quick Return Collection'));
 }
 if (utility::havePrivilege('membership', 'r') AND utility::havePrivilege('membership', 'w')) {
-    $menu[] = array(_('Add New Member'), MODULES_WEB_ROOT_DIR.'membership/index.php?action=new', _('Add New Library Member Data'));
+    $menu[] = array(__('Add New Member'), MODULES_WEB_ROOT_DIR.'membership/index.php?action=new', __('Add New Library Member Data'));
 }
 ?>

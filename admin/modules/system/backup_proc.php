@@ -42,7 +42,7 @@ $can_read = utility::havePrivilege('system', 'r');
 $can_write = utility::havePrivilege('system', 'w');
 
 if (!($can_read AND $can_write)) {
-    die('<div class="errorBox">'._('You don\'t have enough privileges to view this section').'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
 }
 // if backup process is invoked
 if (isset($_POST['start'])) {

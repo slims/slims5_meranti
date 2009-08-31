@@ -88,7 +88,7 @@ if (isset($_POST['save']) AND (isset($_POST['topicID']) OR trim($_POST['search_s
             echo 'opener.setIframeContent(\'topicIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_topic.php?biblioID='.$data['biblio_id'].'\');';
             echo '</script>';
         } else {
-            utility::jsAlert(_('Subject FAILED to Add. Please Contact System Administrator')."\n".$sql_op->error);
+            utility::jsAlert(__('Subject FAILED to Add. Please Contact System Administrator')."\n".$sql_op->error);
         }
     } else {
         if (!empty($_POST['topicID'])) {
@@ -113,7 +113,7 @@ if (isset($_POST['save']) AND (isset($_POST['topicID']) OR trim($_POST['search_s
         }
 
         echo '<script type="text/javascript">';
-        echo 'alert(\''._('Subject added!').'\');';
+        echo 'alert(\''.__('Subject added!').'\');';
         echo 'opener.setIframeContent(\'topicIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_topic.php\');';
         echo '</script>';
     }
@@ -124,13 +124,13 @@ if (isset($_POST['save']) AND (isset($_POST['topicID']) OR trim($_POST['search_s
 <div style="padding: 5px; background: #CCCCCC;">
 <form name="mainForm" action="pop_topic.php?biblioID=<?php echo $biblioID; ?>" method="post">
 <div>
-    <strong><?php echo _('Add Subject'); ?></strong>
+    <strong><?php echo __('Add Subject'); ?></strong>
     <hr />
     <form name="searchTopic" method="post" style="display: inline;">
     <?php
     $ajax_exp = "ajaxFillSelect('../../AJAX_lookup_handler.php', 'mst_topic', 'topic_id:topic', 'topicID', $('search_str').getValue())";
     ?>
-    <?php echo _('Keyword'); ?> : <input type="text" name="search_str" id="search_str" style="width: 30%;" onkeyup="<?php echo $ajax_exp; ?>" />
+    <?php echo __('Keyword'); ?> : <input type="text" name="search_str" id="search_str" style="width: 30%;" onkeyup="<?php echo $ajax_exp; ?>" />
     <select name="type" style="width: 20%;"><?php
     foreach ($sysconf['subject_type'] as $type_id => $type) {
         echo '<option value="'.$type_id.'">'.$type.'</option>';
@@ -144,9 +144,9 @@ if (isset($_POST['save']) AND (isset($_POST['topicID']) OR trim($_POST['search_s
     ?></select>
 </div>
 <div style="margin-top: 5px;">
-<select name="topicID" id="topicID" size="5" style="width: 100%;"><option value="0"><?php echo _('Type to search for existing topics or to add a new one'); ?></option></select>
+<select name="topicID" id="topicID" size="5" style="width: 100%;"><option value="0"><?php echo __('Type to search for existing topics or to add a new one'); ?></option></select>
 <?php if ($biblioID) { echo '<input type="hidden" name="biblioID" value="'.$biblioID.'" />'; } ?>
-<input type="submit" name="save" value="<?php echo _('Insert To Bibliography'); ?>" style="margin-top: 5px;" />
+<input type="submit" name="save" value="<?php echo __('Insert To Bibliography'); ?>" style="margin-top: 5px;" />
 </div>
 </form>
 </div>

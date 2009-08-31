@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Senayan3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-31 13:12+0100\n"
-"PO-Revision-Date: 2009-08-31 13:12+0100\n"
+"POT-Creation-Date: 2009-08-31 18:01+0100\n"
+"PO-Revision-Date: 2009-08-31 18:01+0100\n"
 "Last-Translator: Tobias Z.\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-Language: English\n"
 "X-Poedit-Country: UNITED STATES\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-KeywordsList: __;_ngettext:1,2\n"
 "X-Poedit-Basepath: ../../../../../\n"
 "X-Poedit-SearchPath-0: .\n"
 
@@ -60,6 +60,7 @@ msgstr ""
 #: admin/default/session_check.inc.php:32
 #: admin/default/session_check.inc.php:42
 #: admin/modules/bibliography/checkout_item.php:37
+#: admin/modules/bibliography/dl_print.php:36
 msgid "You are not authorized to view this section"
 msgstr ""
 
@@ -117,6 +118,8 @@ msgstr ""
 
 #: admin/modules/bibliography/checkout_item.php:45
 #: admin/modules/bibliography/checkout_item.php:47
+#: admin/modules/bibliography/dl_print.php:174
+#: admin/modules/bibliography/dl_print.php:176
 msgid "Search"
 msgstr ""
 
@@ -129,6 +132,7 @@ msgid "Member ID"
 msgstr ""
 
 #: admin/modules/bibliography/checkout_item.php:63
+#: admin/modules/bibliography/dl_print.php:199
 msgid "Title"
 msgstr ""
 
@@ -141,33 +145,28 @@ msgid "Due Date"
 msgstr ""
 
 #: admin/modules/bibliography/checkout_item.php:106
+#: admin/modules/bibliography/dl_print.php:236
 msgid "Found <strong>{result->num_rows}</strong> from your keywords"
 msgstr ""
 
 #: admin/modules/bibliography/dl_print.php:70
-#: admin/modules/bibliography/item_barcode_generator.php:88
 msgid "Selected items NOT ADDED to print queue. Only {max_print} can be printed at once"
 msgstr ""
 
 #: admin/modules/bibliography/dl_print.php:75
-#: admin/modules/bibliography/item_barcode_generator.php:93
 msgid "Selected items added to print queue"
 msgstr ""
 
 #: admin/modules/bibliography/dl_print.php:82
-#: admin/modules/bibliography/item_barcode_generator.php:102
 msgid "Print queue cleared!"
 msgstr ""
 
 #: admin/modules/bibliography/dl_print.php:92
 #: admin/modules/bibliography/dl_print.php:96
-#: admin/modules/bibliography/item_barcode_generator.php:111
-#: admin/modules/bibliography/item_barcode_generator.php:115
 msgid "There is no data to print!"
 msgstr ""
 
 #: admin/modules/bibliography/dl_print.php:171
-#: admin/modules/bibliography/submenu.php:31
 msgid "Labels Printing"
 msgstr ""
 
@@ -176,57 +175,42 @@ msgid "Print Labels for Selected Data"
 msgstr ""
 
 #: admin/modules/bibliography/dl_print.php:172
-#: admin/modules/bibliography/item_barcode_generator.php:197
 msgid "Clear Print Queue"
 msgstr ""
 
 #: admin/modules/bibliography/dl_print.php:180
-#: admin/modules/bibliography/item_barcode_generator.php:205
 msgid "Maximum"
 msgstr ""
 
 #: admin/modules/bibliography/dl_print.php:180
-#: admin/modules/bibliography/item_barcode_generator.php:205
 msgid "records can be printed at once. Currently there is"
 msgstr ""
 
 #: admin/modules/bibliography/dl_print.php:184
-#: admin/modules/bibliography/item_barcode_generator.php:209
 msgid "in queue waiting to be printed."
 msgstr ""
 
 #: admin/modules/bibliography/dl_print.php:200
-#: admin/modules/bibliography/index.php:397
-#: admin/modules/bibliography/item.php:277
 msgid "Call Number"
 msgstr ""
 
 #: admin/modules/bibliography/dl_print.php:227
-#: admin/modules/bibliography/item_barcode_generator.php:251
 msgid "Add"
 msgstr ""
 
 #: admin/modules/bibliography/dl_print.php:228
-#: admin/modules/bibliography/item_barcode_generator.php:252
 msgid "Add To Print Queue"
 msgstr ""
 
 #: admin/modules/bibliography/dl_print.php:229
-#: admin/modules/bibliography/item_barcode_generator.php:253
 msgid "Add to print queue?"
 msgstr ""
 
 #: admin/modules/bibliography/dl_print.php:237
-#: admin/modules/bibliography/index.php:567
-#: admin/modules/bibliography/item.php:425
-#: admin/modules/bibliography/item_barcode_generator.php:261
 msgid "Query took"
 msgstr ""
 
 #: admin/modules/bibliography/dl_print.php:237
-#: admin/modules/bibliography/index.php:567
-#: admin/modules/bibliography/item.php:425
-#: admin/modules/bibliography/item_barcode_generator.php:261
 msgid "second(s) to complete"
 msgstr ""
 
@@ -384,6 +368,7 @@ msgid "All Fields"
 msgstr ""
 
 #: admin/modules/bibliography/index.php:271
+#: admin/modules/bibliography/z3950.php:335
 msgid "Title/Series Title"
 msgstr ""
 
@@ -392,6 +377,7 @@ msgid "Topics"
 msgstr ""
 
 #: admin/modules/bibliography/index.php:271
+#: admin/modules/bibliography/z3950.php:335
 msgid "Authors"
 msgstr ""
 
@@ -399,6 +385,7 @@ msgstr ""
 #: admin/modules/bibliography/index.php:363
 #: admin/modules/bibliography/index.php:513
 #: admin/modules/bibliography/index.php:519
+#: admin/modules/bibliography/z3950.php:335
 msgid "ISBN/ISSN"
 msgstr ""
 
@@ -1243,6 +1230,8 @@ msgstr ""
 
 #: admin/modules/master_file/author.php:39
 #: admin/modules/master_file/author.php:133
+#: admin/modules/master_file/doc_language.php:38
+#: admin/modules/master_file/doc_language.php:134
 msgid "You don't have enough privileges to access this area!"
 msgstr ""
 
@@ -1348,7 +1337,6 @@ msgid "Language Data FAILED to Save. Please Contact System Administrator"
 msgstr ""
 
 #: admin/modules/master_file/doc_language.php:120
-#: admin/modules/master_file/submenu.php:34
 msgid "Doc. Language"
 msgstr ""
 
@@ -1909,6 +1897,8 @@ msgstr ""
 #: admin/modules/membership/index.php:324
 #: admin/modules/membership/index.php:382
 #: admin/modules/membership/index.php:388
+#: admin/modules/membership/member_card_generator.php:167
+#: admin/modules/membership/member_card_generator.php:223
 msgid "Membership Type"
 msgstr ""
 
@@ -1976,15 +1966,16 @@ msgid "members extended!"
 msgstr ""
 
 #: admin/modules/membership/index.php:425
+#: admin/modules/membership/member_card_generator.php:256
 msgid "Found"
 msgstr ""
 
 #: admin/modules/membership/index.php:425
+#: admin/modules/membership/member_card_generator.php:256
 msgid "from your search with keyword"
 msgstr ""
 
 #: admin/modules/membership/member_card_generator.php:194
-#: admin/modules/membership/submenu.php:28
 msgid "Member Card Printing"
 msgstr ""
 
@@ -2238,6 +2229,7 @@ msgstr ""
 #: admin/modules/reporting/customs/loan_history.php:53
 #: admin/modules/reporting/customs/member_list.php:55
 #: admin/modules/reporting/customs/member_loan_list.php:54
+#: admin/modules/reporting/customs/overdued_list.php:54
 msgid "Report Filter"
 msgstr ""
 
@@ -2252,6 +2244,7 @@ msgstr ""
 #: admin/modules/reporting/customs/loan_history.php:108
 #: admin/modules/reporting/customs/member_list.php:113
 #: admin/modules/reporting/customs/member_loan_list.php:87
+#: admin/modules/reporting/customs/overdued_list.php:87
 msgid "Apply Filter"
 msgstr ""
 
@@ -2260,6 +2253,7 @@ msgstr ""
 #: admin/modules/reporting/customs/loan_history.php:109
 #: admin/modules/reporting/customs/member_list.php:114
 #: admin/modules/reporting/customs/member_loan_list.php:88
+#: admin/modules/reporting/customs/overdued_list.php:88
 msgid "Show More Filter Options"
 msgstr ""
 
@@ -2268,6 +2262,7 @@ msgstr ""
 #: admin/modules/reporting/customs/loan_history.php:109
 #: admin/modules/reporting/customs/member_list.php:114
 #: admin/modules/reporting/customs/member_loan_list.php:88
+#: admin/modules/reporting/customs/overdued_list.php:88
 msgid "Hide Filter Options"
 msgstr ""
 
@@ -2278,6 +2273,7 @@ msgstr ""
 #: admin/modules/reporting/customs/loan_history.php:117
 #: admin/modules/reporting/customs/member_list.php:122
 #: admin/modules/reporting/customs/member_loan_list.php:96
+#: admin/modules/reporting/customs/overdued_list.php:96
 msgid "Print Current Page"
 msgstr ""
 
@@ -2354,6 +2350,7 @@ msgstr ""
 #: admin/modules/reporting/customs/loan_history.php:103
 #: admin/modules/reporting/customs/member_list.php:108
 #: admin/modules/reporting/customs/member_loan_list.php:82
+#: admin/modules/reporting/customs/overdued_list.php:82
 msgid "Record each page"
 msgstr ""
 
@@ -2361,6 +2358,7 @@ msgstr ""
 #: admin/modules/reporting/customs/loan_history.php:104
 #: admin/modules/reporting/customs/member_list.php:109
 #: admin/modules/reporting/customs/member_loan_list.php:83
+#: admin/modules/reporting/customs/overdued_list.php:83
 msgid "Set between 20 and 200"
 msgstr ""
 
@@ -2486,11 +2484,13 @@ msgstr ""
 
 #: admin/modules/reporting/customs/loan_history.php:81
 #: admin/modules/reporting/customs/member_loan_list.php:66
+#: admin/modules/reporting/customs/overdued_list.php:66
 msgid "Loan Date From"
 msgstr ""
 
 #: admin/modules/reporting/customs/loan_history.php:89
 #: admin/modules/reporting/customs/member_loan_list.php:74
+#: admin/modules/reporting/customs/overdued_list.php:74
 msgid "Loan Date Until"
 msgstr ""
 
@@ -2836,7 +2836,6 @@ msgid "Resynchronize Now"
 msgstr ""
 
 #: admin/modules/stock_take/st_log.php:48
-#: admin/modules/stock_take/submenu.php:32
 msgid "Stock Take Log"
 msgstr ""
 
@@ -3513,52 +3512,52 @@ msgstr ""
 msgid "Back To Previous"
 msgstr ""
 
-#: lib/lang/localisation.php:39
+#: lib/lang/localisation.php:37
 msgid "German"
 msgstr ""
 
-#: lib/lang/localisation.php:40
+#: lib/lang/localisation.php:38
 msgid "English"
 msgstr ""
 
-#: lib/lang/localisation.php:41
+#: lib/lang/localisation.php:39
 msgid "Indonesian"
 msgstr ""
 
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:59
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:81
 msgid "DELETE"
 msgstr ""
 
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:60
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:82
 msgid "EDIT"
 msgstr ""
 
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:92
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:97
 msgid "Are You Sure Want to DELETE Selected Data?"
 msgstr ""
 
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:96
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:101
 msgid "Delete Selected Data"
 msgstr ""
 
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:121
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:126
 msgid "ascendingly"
 msgstr ""
 
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:131
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:136
 msgid "descendingly"
 msgstr ""
 
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:201
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:203
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:206
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:208
 msgid "Order list by"
 msgstr ""
 
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:366
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:371
 msgid "Check All"
 msgstr ""
 
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:367
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:372
 msgid "Uncheck All"
 msgstr ""
 

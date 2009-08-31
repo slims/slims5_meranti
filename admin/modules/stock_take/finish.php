@@ -34,13 +34,13 @@ $can_read = utility::havePrivilege('stock_take', 'r');
 $can_write = utility::havePrivilege('stock_take', 'w');
 
 if (!($can_read AND $can_write)) {
-    die('<div class="errorBox">'._('You don\'t have enough privileges to access this area!').'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 
 // check if there is any active stock take proccess
 $stk_query = $dbs->query("SELECT * FROM stock_take WHERE is_active=1");
 if (!$stk_query->num_rows) {
-    echo '<div class="errorBox">'._('NO stock taking proccess running!').'</div>';
+    echo '<div class="errorBox">'.__('NO stock taking proccess running!').'</div>';
     die();
 }
 
@@ -141,7 +141,7 @@ if (isset($_POST['confirmFinish'])) {
         utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'stock_take', $_SESSION['realname'].' finish stock take ('.$stk_take_d[0].') from address '.$_SERVER['REMOTE_ADDR']);
         // send an alert
         echo '<script type="text/javascript">';
-        echo 'alert(\''._('Stock Take Proccess Finished!').'\');';
+        echo 'alert(\''.__('Stock Take Proccess Finished!').'\');';
         echo 'parent.location.href = \''.SENAYAN_WEB_ROOT_DIR.'admin/index.php?mod=stock_take\';';
         echo '</script>';
     }
@@ -150,15 +150,15 @@ if (isset($_POST['confirmFinish'])) {
 ?>
     <fieldset class="menuBox">
     <div class="menuBoxInner errorIcon">
-    <strong style="color: #FF0000;"><?php echo strtoupper(_('Finish Stock Take')); ?><hr />
-    <?php echo _('Are you sure to end current stock take proccess? Once it finished there is no way you can rollback this stock take'); ?>
+    <strong style="color: #FF0000;"><?php echo strtoupper(__('Finish Stock Take')); ?><hr />
+    <?php echo __('Are you sure to end current stock take proccess? Once it finished there is no way you can rollback this stock take'); ?>
     </strong>
     </div>
     </fieldset>
 <?php
     // create new instance
     $form = new simbio_form_table_AJAX('stockTakeForm', $_SERVER['PHP_SELF'], 'post');
-    $form->submit_button_attr = 'value="'._('Finish Stock Take').'" class="button" style="color: #FF0000; border-color: #FF0000;"';
+    $form->submit_button_attr = 'value="'.__('Finish Stock Take').'" class="button" style="color: #FF0000; border-color: #FF0000;"';
 
     // form table attributes
     $form->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
@@ -167,8 +167,8 @@ if (isset($_POST['confirmFinish'])) {
 
     /* Form Element(s) */
     // purge lost item
-    $purge_options[] = array('1', _('Yes'));
-    $form->addCheckBox('purge', _('Purge Lost Item'), $purge_options);
+    $purge_options[] = array('1', __('Yes'));
+    $form->addCheckBox('purge', __('Purge Lost Item'), $purge_options);
     // hidden item
     $form->addHidden('confirmFinish', 'true');
     // print out the object

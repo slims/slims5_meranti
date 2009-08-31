@@ -45,7 +45,7 @@ if (($ajaxsec_user == $sysconf['ajaxsec_user']) AND ($ajaxsec_passwd == $sysconf
             LEFT JOIN mst_location AS loc ON i.location_id=loc.location_id
             WHERE i.biblio_id='.$id);
         if ($copy_q->num_rows < 1) {
-            echo '<strong style="color: red; font-weight: bold;">'._('There is no item/copy for this title yet').'</strong>';
+            echo '<strong style="color: red; font-weight: bold;">'.__('There is no item/copy for this title yet').'</strong>';
         } else {
             echo '<table width="100%" class="itemList" cellpadding="3" cellspacing="0">';
             while ($copy_d = $copy_q->fetch_assoc()) {
@@ -62,11 +62,11 @@ if (($ajaxsec_user == $sysconf['ajaxsec_user']) AND ($ajaxsec_passwd == $sysconf
                 $_rules = @unserialize($copy_d['rules']);
                 if ($loan_stat_q->num_rows > 0) {
                     $loan_stat_d = $loan_stat_q->fetch_row();
-                    echo '<strong width="50%" style="color: red;">'._('Currently On Loan (Due on').date($sysconf['date_format'], strtotime($loan_stat_d[0])).')</strong>'; //mfc
+                    echo '<strong width="50%" style="color: red;">'.__('Currently On Loan (Due on').date($sysconf['date_format'], strtotime($loan_stat_d[0])).')</strong>'; //mfc
                 } else if (is_array($_rules) AND in_array(NO_LOAN_TRANSACTION, $_rules)) {
-                    echo '<strong width="50%" style="color: red;">'._('Unavailable').'</strong>';
+                    echo '<strong width="50%" style="color: red;">'.__('Unavailable').'</strong>';
                 } else {
-                    echo '<strong width="50%" style="color: navy;">'._('Available').'</strong>';
+                    echo '<strong width="50%" style="color: navy;">'.__('Available').'</strong>';
                 }
                 $loan_stat_q->free_result();
                 echo '</td>';

@@ -35,7 +35,7 @@ $can_read = utility::havePrivilege('master_file', 'r');
 $can_write = utility::havePrivilege('master_file', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'._('You don\'t have enough privileges to view this section').'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
 }
 
 /* RECORD OPERATION */
@@ -43,7 +43,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
     $frequency = trim(strip_tags($_POST['frequencyName']));
     // check form validity
     if (empty($frequency)) {
-        utility::jsAlert(_('Required fields (*)  must be filled correctly!'));
+        utility::jsAlert(__('Required fields (*)  must be filled correctly!'));
         exit();
     } else {
         $data['frequency'] = $dbs->escape_string($frequency);
@@ -64,17 +64,17 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
             // update the data
             $update = $sql_op->update('mst_frequency', $data, 'frequency_id='.$updateRecordID);
             if ($update) {
-                utility::jsAlert(_('Frequency Data Successfully Updated'));
+                utility::jsAlert(__('Frequency Data Successfully Updated'));
                 echo '<script type="text/javascript">parent.setContent(\'mainContent\', parent.getPreviousAJAXurl(), \'post\');</script>';
-            } else { utility::jsAlert(_('Frequency Data FAILED to Updated. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
+            } else { utility::jsAlert(__('Frequency Data FAILED to Updated. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
         } else {
             /* INSERT RECORD MODE */
             // insert the data
             if ($sql_op->insert('mst_frequency', $data)) {
-                utility::jsAlert(_('New Frequency Data Successfully Saved'));
+                utility::jsAlert(__('New Frequency Data Successfully Saved'));
                 echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'\', \'post\');</script>';
-            } else { utility::jsAlert(_('Frequency Data FAILED to Save. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
+            } else { utility::jsAlert(__('Frequency Data FAILED to Save. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
         }
     }
@@ -101,10 +101,10 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 
     // error alerting
     if ($error_num == 0) {
-        utility::jsAlert(_('All Data Successfully Deleted'));
+        utility::jsAlert(__('All Data Successfully Deleted'));
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
     } else {
-        utility::jsAlert(_('Some or All Data NOT deleted successfully!\nPlease contact system administrator'));
+        utility::jsAlert(__('Some or All Data NOT deleted successfully!\nPlease contact system administrator'));
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
     }
     exit();
@@ -115,12 +115,12 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner masterFileIcon">
-    <?php echo strtoupper(_('Frequency')); ?> - <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/frequency.php?action=detail', 'get');" class="headerText2"><?php echo _('Add New Frequency'); ?></a>
-    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/frequency.php', 'get');" class="headerText2"><?php echo _('Frequency Available'); ?></a>
+    <?php echo strtoupper(__('Frequency')); ?> - <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/frequency.php?action=detail', 'get');" class="headerText2"><?php echo __('Add New Frequency'); ?></a>
+    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/frequency.php', 'get');" class="headerText2"><?php echo __('Frequency Available'); ?></a>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo _('Search'); ?> :
+    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
-    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/frequency.php?' + $('search').serialize(), 'post')" value="<?php echo _('Search'); ?>" class="button" />
+    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/frequency.php?' + $('search').serialize(), 'post')" value="<?php echo __('Search'); ?>" class="button" />
     </form>
 </div>
 </fieldset>
@@ -129,7 +129,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 /* main content */
 if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'detail')) {
     if (!($can_read AND $can_write)) {
-        die('<div class="errorBox">'._('You don\'t have enough privileges to view this section').'</div>');
+        die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
     }
     /* RECORD FORM */
     $itemID = (integer)isset($_POST['itemID'])?$_POST['itemID']:0;
@@ -138,7 +138,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 
     // create new instance
     $form = new simbio_form_table_AJAX('mainForm', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'], 'post');
-    $form->submit_button_attr = 'name="saveData" value="'._('Save').'" class="button"';
+    $form->submit_button_attr = 'name="saveData" value="'.__('Save').'" class="button"';
 
     // form table attributes
     $form->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
@@ -153,12 +153,12 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         // form record title
         $form->record_title = $rec_d['frequency'];
         // submit button attribute
-        $form->submit_button_attr = 'name="saveData" value="'._('Update').'" class="button"';
+        $form->submit_button_attr = 'name="saveData" value="'.__('Update').'" class="button"';
     }
 
     /* Form Element(s) */
     // frequency name
-    $form->addTextField('text', 'frequencyName', _('Frequency').'*', $rec_d['frequency'], 'style="width: 60%;"');
+    $form->addTextField('text', 'frequencyName', __('Frequency').'*', $rec_d['frequency'], 'style="width: 60%;"');
     // frequency language
         // get language data related to this record from database
         $lang_q = $dbs->query('SELECT language_id, language_name FROM mst_language');
@@ -166,19 +166,19 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         while ($lang_d = $lang_q->fetch_row()) {
             $lang_options[] = array($lang_d[0], $lang_d[1]);
         }
-    $form->addSelectList('languagePrefix', _('Language'), $lang_options, $rec_d['language_prefix']);
+    $form->addSelectList('languagePrefix', __('Language'), $lang_options, $rec_d['language_prefix']);
     // frequency time increment
-    $form->addTextField('text', 'timeIncrement', _('Time Increment').'*', $rec_d['time_increment'], 'style="width: 10%;"');
+    $form->addTextField('text', 'timeIncrement', __('Time Increment').'*', $rec_d['time_increment'], 'style="width: 10%;"');
     // frequency time unit
-    $unit_options[] = array('day', _('Day'));
-    $unit_options[] = array('week', _('Week'));
-    $unit_options[] = array('month', _('Month'));
-    $unit_options[] = array('year', _('Year'));
-    $form->addSelectList('timeUnit', _('Time Unit'), $unit_options, $rec_d['time_unit']);
+    $unit_options[] = array('day', __('Day'));
+    $unit_options[] = array('week', __('Week'));
+    $unit_options[] = array('month', __('Month'));
+    $unit_options[] = array('year', __('Year'));
+    $form->addSelectList('timeUnit', __('Time Unit'), $unit_options, $rec_d['time_unit']);
 
     // edit mode messagge
     if ($form->edit_mode) {
-        echo '<div class="infoBox">'._('You are going to edit Frequency data').' : <b>'.$rec_d['frequency'].'</b>  <br />'._('Last Update').$rec_d['last_update'].'</div>'; //mfc
+        echo '<div class="infoBox">'.__('You are going to edit Frequency data').' : <b>'.$rec_d['frequency'].'</b>  <br />'.__('Last Update').$rec_d['last_update'].'</div>'; //mfc
     }
     // print out the form object
     echo $form->printOut();
@@ -192,17 +192,17 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $datagrid = new simbio_datagrid();
     if ($can_read AND $can_write) {
         $datagrid->setSQLColumn('f.frequency_id',
-            'f.frequency AS \''._('Frequency').'\'',
-            'l.language_name AS \''._('Language').'\'',
-            'f.time_increment AS \''._('Time Increment').'\'',
-            'f.time_unit AS \''._('Time Unit').'\'',
-            'f.last_update AS \''._('Last Update').'\'');
+            'f.frequency AS \''.__('Frequency').'\'',
+            'l.language_name AS \''.__('Language').'\'',
+            'f.time_increment AS \''.__('Time Increment').'\'',
+            'f.time_unit AS \''.__('Time Unit').'\'',
+            'f.last_update AS \''.__('Last Update').'\'');
     } else {
-        $datagrid->setSQLColumn('f.frequency AS \''._('Frequency').'\'',
-            'l.language_name AS \''._('Language').'\'',
-            'f.time_increment AS \''._('Time Increment').'\'',
-            'f.time_unit AS \''._('Time Unit').'\'',
-            'f.last_update AS \''._('Last Update').'\'');
+        $datagrid->setSQLColumn('f.frequency AS \''.__('Frequency').'\'',
+            'l.language_name AS \''.__('Language').'\'',
+            'f.time_increment AS \''.__('Time Increment').'\'',
+            'f.time_unit AS \''.__('Time Unit').'\'',
+            'f.last_update AS \''.__('Last Update').'\'');
     }
     $datagrid->setSQLorder('frequency ASC');
 
@@ -221,7 +221,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // put the result into variables
     $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, ($can_read AND $can_write));
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
-        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, _('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
+        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
         echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
     }
 

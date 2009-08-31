@@ -37,7 +37,7 @@ $can_read = utility::havePrivilege('bibliography', 'r');
 $can_write = utility::havePrivilege('bibliography', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'._('You are not authorized to view this section').'</div>');
+    die('<div class="errorBox">'.__('You are not authorized to view this section').'</div>');
 }
 
 $in_pop_up = false;
@@ -50,7 +50,7 @@ if (isset($_GET['inPopUp'])) {
 if (isset($_POST['saveData']) AND $can_read AND $can_write) {
     $itemCode = trim(strip_tags($_POST['itemCode']));
     if (empty($itemCode)) {
-        utility::jsAlert(_('Item Code can\'t be empty!'));
+        utility::jsAlert(__('Item Code can\'t be empty!'));
         exit();
     } else {
         // biblio title
@@ -96,14 +96,14 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
             if ($update) {
                 // write log
                 utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'bibliography', $_SESSION['realname'].' update item data ('.$data['item_code'].') with title ('.$title.')');
-                utility::jsAlert(_('Item Data Successfully Updated'));
+                utility::jsAlert(__('Item Data Successfully Updated'));
                 if ($in_pop_up) {
                     echo '<script type="text/javascript">parent.opener.parent.setIframeContent(\'itemIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_item_list.php?biblioID='.$data['biblio_id'].'\');</script>';
                     echo '<script type="text/javascript">parent.window.close();</script>';
                 } else {
                     echo '<script type="text/javascript">parent.setContent(\'mainContent\', parent.getPreviousAJAXurl(), \'get\');</script>';
                 }
-            } else { utility::jsAlert(_('Item Data FAILED to Save. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
+            } else { utility::jsAlert(__('Item Data FAILED to Save. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
         } else {
             /* INSERT RECORD MODE */
@@ -112,14 +112,14 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
             if ($insert) {
                 // write log
                 utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'bibliography', $_SESSION['realname'].' insert item data ('.$data['item_code'].') with title ('.$title.')');
-                utility::jsAlert(_('New Item Data Successfully Saved'));
+                utility::jsAlert(__('New Item Data Successfully Saved'));
                 if ($in_pop_up) {
                     echo '<script type="text/javascript">parent.opener.setIframeContent(\'itemIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_item_list.php?biblioID='.$data['biblio_id'].'\');</script>';
                     echo '<script type="text/javascript">parent.window.close();</script>';
                 } else {
                     echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'\', \'post\');</script>';
                 }
-            } else { utility::jsAlert(_('Item Data FAILED to Save. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
+            } else { utility::jsAlert(__('Item Data FAILED to Save. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
         }
     }
@@ -166,16 +166,16 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         foreach ($still_on_loan as $item) {
             $items .= $item."\n";
         }
-        utility::jsAlert(_('Item data can not be deleted because still on hold by members')." : \n".$items);
+        utility::jsAlert(__('Item data can not be deleted because still on hold by members')." : \n".$items);
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
         exit();
     }
     // error alerting
     if ($error_num == 0) {
-        utility::jsAlert(_('Item succesfully removed!'));
+        utility::jsAlert(__('Item succesfully removed!'));
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
     } else {
-        utility::jsAlert(_('Item FAILED to removed!'));
+        utility::jsAlert(__('Item FAILED to removed!'));
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
     }
     exit();
@@ -187,11 +187,11 @@ if (!$in_pop_up) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner itemIcon">
-    <?php echo strtoupper(_('Items')); ?>
+    <?php echo strtoupper(__('Items')); ?>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo _('Search'); ?> :
+    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" id="keywords" size="30" />
-    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/item.php?' + $('search').serialize(), 'post')" value="<?php echo _('Search'); ?>" class="button" />
+    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/item.php?' + $('search').serialize(), 'post')" value="<?php echo __('Search'); ?>" class="button" />
     </form>
 </div>
 </fieldset>
@@ -205,7 +205,7 @@ $('keywords').focus();
 /* main content */
 if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'detail')) {
     if (!($can_read AND $can_write)) {
-        die('<div class="errorBox">'._('You are not authorized to view this section').'</div>');
+        die('<div class="errorBox">'.__('You are not authorized to view this section').'</div>');
     }
     /* RECORD FORM */
     // try query
@@ -219,7 +219,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 
     // create new instance
     $form = new simbio_form_table_AJAX('mainForm', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'], 'post');
-    $form->submit_button_attr = 'name="saveData" value="'._('Save').'" class="button"';
+    $form->submit_button_attr = 'name="saveData" value="'.__('Save').'" class="button"';
     // form table attributes
     $form->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
     $form->table_header_attr = 'class="alterCell" style="font-weight: bold;"';
@@ -238,7 +238,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         // form record title
         $form->record_title = $rec_d['title'];
         // submit button attribute
-        $form->submit_button_attr = 'name="saveData" value="'._('Update').'" class="button"';
+        $form->submit_button_attr = 'name="saveData" value="'.__('Update').'" class="button"';
         // default biblio title and biblio ID
         $b_title = $rec_d['title'];
         $b_id = $rec_d['biblio_id'];
@@ -266,17 +266,17 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         $str_input = $b_title;
         $str_input .= '<div class="makeHidden"><a title="Edit Bibliographic Data" style="font-weight: bold; color: #ff9900;" href="javascript: openWin(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_biblio.php?inPopUp=true&action=detail&itemID='.$rec_d['biblio_id'].'&itemCollID='.$rec_d['item_id'].'\', \'popBiblio\', 600, 400, true)">Edit Biblographic data</a></div>';
     } else { $str_input = $b_title; }
-    $form->addAnything(_('Title'), $str_input);
+    $form->addAnything(__('Title'), $str_input);
     $form->addHidden('biblioTitle', $b_title);
     $form->addHidden('biblioID', $b_id);
     // item code
     $str_input = simbio_form_element::textField('text', 'itemCode', $rec_d['item_code'], 'onblur="ajaxCheckID(\''.SENAYAN_WEB_ROOT_DIR.'admin/AJAX_check_id.php\', \'item\', \'item_code\', \'msgBox\', \'itemCode\')" style="width: 40%;"');
     $str_input .= ' &nbsp; <span id="msgBox">&nbsp;</span>';
-    $form->addAnything(_('Item Code'), $str_input);
+    $form->addAnything(__('Item Code'), $str_input);
     // call number
-    $form->addTextField('text', 'callNumber', _('Call Number'), isset($rec_d['call_number'])?$rec_d['call_number']:$def_call_number, 'style="width: 40%;"');
+    $form->addTextField('text', 'callNumber', __('Call Number'), isset($rec_d['call_number'])?$rec_d['call_number']:$def_call_number, 'style="width: 40%;"');
     // inventory code
-    $form->addTextField('text', 'inventoryCode', _('Inventory Code'), $rec_d['inventory_code'], 'style="width: 100%;"');
+    $form->addTextField('text', 'inventoryCode', __('Inventory Code'), $rec_d['inventory_code'], 'style="width: 100%;"');
     // item location
         // get location data related to this record from database
         $location_q = $dbs->query("SELECT location_id, location_name FROM mst_location");
@@ -284,9 +284,9 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         while ($location_d = $location_q->fetch_row()) {
             $location_options[] = array($location_d[0], $location_d[1]);
         }
-    $form->addSelectList('locationID', _('Location'), $location_options, $rec_d['location_id']);
+    $form->addSelectList('locationID', __('Location'), $location_options, $rec_d['location_id']);
     // item site
-    $form->addTextField('text', 'itemSite', _('Shelf Location'), $rec_d['site'], 'style="width: 40%;"');
+    $form->addTextField('text', 'itemSite', __('Shelf Location'), $rec_d['site'], 'style="width: 40%;"');
     // collection type
         // get collection type data related to this record from database
         $coll_type_q = $dbs->query("SELECT coll_type_id, coll_type_name FROM mst_coll_type");
@@ -294,46 +294,46 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         while ($coll_type_d = $coll_type_q->fetch_row()) {
             $coll_type_options[] = array($coll_type_d[0], $coll_type_d[1]);
         }
-    $form->addSelectList('collTypeID', _('Collection Type'), $coll_type_options, $rec_d['coll_type_id']);
+    $form->addSelectList('collTypeID', __('Collection Type'), $coll_type_options, $rec_d['coll_type_id']);
     // item status
         // get item status data from database
         $item_status_q = $dbs->query("SELECT item_status_id, item_status_name FROM mst_item_status");
-        $item_status_options[] = array('0', _('Available'));
+        $item_status_options[] = array('0', __('Available'));
         while ($item_status_d = $item_status_q->fetch_row()) {
             $item_status_options[] = array($item_status_d[0], $item_status_d[1]);
         }
-    $form->addSelectList('itemStatusID', _('Item Status'), $item_status_options, $rec_d['item_status_id']);
+    $form->addSelectList('itemStatusID', __('Item Status'), $item_status_options, $rec_d['item_status_id']);
     // order number
-    $form->addTextField('text', 'orderNo', _('Order Number'), $rec_d['order_no'], 'style="width: 40%;"');
+    $form->addTextField('text', 'orderNo', __('Order Number'), $rec_d['order_no'], 'style="width: 40%;"');
     // order date
-    $form->addDateField('ordDate', _('Order Date'), $rec_d['order_date']?$rec_d['order_date']:date('Y-m-d'));
+    $form->addDateField('ordDate', __('Order Date'), $rec_d['order_date']?$rec_d['order_date']:date('Y-m-d'));
     // received date
-    $form->addDateField('recvDate', _('Receiving Date'), $rec_d['received_date']?$rec_d['received_date']:date('Y-m-d'));
+    $form->addDateField('recvDate', __('Receiving Date'), $rec_d['received_date']?$rec_d['received_date']:date('Y-m-d'));
     // item supplier
         // get item status data from database
         $supplier_q = $dbs->query("SELECT supplier_id, supplier_name FROM mst_supplier");
-        $supplier_options[] = array('0', _('Not Applicable'));
+        $supplier_options[] = array('0', __('Not Applicable'));
         while ($supplier_d = $supplier_q->fetch_row()) {
             $supplier_options[] = array($supplier_d[0], $supplier_d[1]);
         }
-    $form->addSelectList('supplierID', _('Supplier'), $supplier_options, $rec_d['supplier_id']);
+    $form->addSelectList('supplierID', __('Supplier'), $supplier_options, $rec_d['supplier_id']);
     // item source
-        $source_options[] = array('1', _('Buy'));
-        $source_options[] = array('2', _('Prize/Grant'));
-    $form->addRadio('source', _('Source'), $source_options, !empty($rec_d['source'])?$rec_d['source']:'1');
+        $source_options[] = array('1', __('Buy'));
+        $source_options[] = array('2', __('Prize/Grant'));
+    $form->addRadio('source', __('Source'), $source_options, !empty($rec_d['source'])?$rec_d['source']:'1');
     // item invoice
-    $form->addTextField('text', 'invoice', _('Invoice'), $rec_d['invoice'], 'style="width: 100%;"');
+    $form->addTextField('text', 'invoice', __('Invoice'), $rec_d['invoice'], 'style="width: 100%;"');
     // invoice date
-    $form->addDateField('invcDate', _('Invoice Date'), $rec_d['invoice_date']?$rec_d['invoice_date']:date('Y-m-d'));
+    $form->addDateField('invcDate', __('Invoice Date'), $rec_d['invoice_date']?$rec_d['invoice_date']:date('Y-m-d'));
     // price
     $str_input = simbio_form_element::textField('text', 'price', !empty($rec_d['price'])?$rec_d['price']:'0', 'style="width: 40%;"');
     $str_input .= simbio_form_element::selectList('priceCurrency', $sysconf['currencies'], $rec_d['price_currency']);;
-    $form->addAnything(_('Price'), $str_input);
+    $form->addAnything(__('Price'), $str_input);
 
     // edit mode messagge
     if ($form->edit_mode) {
-        echo '<div class="infoBox">'._('You are going to edit Item data').': <b>'.$rec_d['title'].'</b> ' //mfc
-            .'<br />'._('Last Updated').' '.$rec_d['last_update'];
+        echo '<div class="infoBox">'.__('You are going to edit Item data').': <b>'.$rec_d['title'].'</b> ' //mfc
+            .'<br />'.__('Last Updated').' '.$rec_d['last_update'];
         echo '</div>'."\n";
     }
     // print out the form object
@@ -373,12 +373,12 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $datagrid = new simbio_datagrid();
     if ($can_write) {
         $datagrid->setSQLColumn('item.item_id',
-            'item.item_code AS \''._('Item Code').'*\'',
-            'item.biblio_id AS \''._('Title').'\'',
-            'ct.coll_type_name AS \''._('Collection Type').'\'',
-            'loc.location_name AS \''._('Location').'\'',
-            'biblio.classification AS \''._('Classification').'\'',
-            'item.last_update AS \''._('Last Updated').'\'');
+            'item.item_code AS \''.__('Item Code').'*\'',
+            'item.biblio_id AS \''.__('Title').'\'',
+            'ct.coll_type_name AS \''.__('Collection Type').'\'',
+            'loc.location_name AS \''.__('Location').'\'',
+            'biblio.classification AS \''.__('Classification').'\'',
+            'item.last_update AS \''.__('Last Updated').'\'');
         $datagrid->modifyColumnContent(2, 'callback{showTitleAuthors}');
         $title_field_idx = 2;
     } else {
@@ -421,8 +421,8 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // put the result into variables
     $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, ($can_read AND $can_write));
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
-        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, _('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
-        echo '<div class="infoBox">'.$msg.' : '.$_GET['keywords'].'<div>'._('Query took').' <b>'.$datagrid->query_time.'</b> '._('second(s) to complete').'</div></div>'; //mfc
+        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
+        echo '<div class="infoBox">'.$msg.' : '.$_GET['keywords'].'<div>'.__('Query took').' <b>'.$datagrid->query_time.'</b> '.__('second(s) to complete').'</div></div>'; //mfc
     }
 
     echo $datagrid_result;

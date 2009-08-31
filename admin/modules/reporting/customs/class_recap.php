@@ -31,7 +31,7 @@ $can_read = utility::havePrivilege('reporting', 'r');
 $can_write = utility::havePrivilege('reporting', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'._('You don\'t have enough privileges to access this area!').'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
@@ -50,26 +50,26 @@ if (!$reportView) {
 ?>
     <!-- filter -->
     <fieldset style="margin-bottom: 3px;">
-    <legend style="font-weight: bold"><?php echo strtoupper(_('Custom Recapitulations')); ?> - <?php echo _('Report Filter'); ?></legend>
+    <legend style="font-weight: bold"><?php echo strtoupper(__('Custom Recapitulations')); ?> - <?php echo __('Report Filter'); ?></legend>
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
         <div class="divRow">
-            <div class="divRowLabel"><?php echo _('Recap By'); ?>:</div>
+            <div class="divRowLabel"><?php echo __('Recap By'); ?>:</div>
             <div class="divRowContent">
             <?php
-            $recapby_options[] = array('', _('Classification'));
-            $recapby_options[] = array('gmd', _('GMD'));
-            $recapby_options[] = array('collType', _('Collection Type'));
-            $recapby_options[] = array('language', _('Language'));
+            $recapby_options[] = array('', __('Classification'));
+            $recapby_options[] = array('gmd', __('GMD'));
+            $recapby_options[] = array('collType', __('Collection Type'));
+            $recapby_options[] = array('language', __('Language'));
             echo simbio_form_element::selectList('recapBy', $recapby_options);
             ?>
             </div>
         </div>
     </div>
     <div style="padding-top: 10px; clear: both;">
-    <input type="submit" name="applyFilter" value="<?php echo _('Apply Filter'); ?>" />
+    <input type="submit" name="applyFilter" value="<?php echo __('Apply Filter'); ?>" />
     <!--
-    <input type="button" name="moreFilter" value="<?php echo _('Show More Filter Options'); ?>" onclick="showHideTableRows('filterForm', 1, this, '<?php echo _('Show More Filter Options'); ?>', '<?php echo _('Hide Filter Options'); ?>')" />
+    <input type="button" name="moreFilter" value="<?php echo __('Show More Filter Options'); ?>" onclick="showHideTableRows('filterForm', 1, this, '<?php echo __('Show More Filter Options'); ?>', '<?php echo __('Hide Filter Options'); ?>')" />
     -->
     <input type="hidden" name="reportView" value="true" />
     </div>
@@ -78,7 +78,7 @@ if (!$reportView) {
     <script type="text/javascript">hideRows('filterForm', 1);</script>
     <!-- filter end -->
     <div class="dataListHeader" style="height: 35px;">
-    <input type="button" value="<?php echo _('Print Current Page'); ?>" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;"
+    <input type="button" value="<?php echo __('Print Current Page'); ?>" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;"
     onclick="javascript: reportView.print();" />
     &nbsp;<span id="pagingBox">&nbsp;</span></div>
     <iframe name="reportView" src="<?php echo $_SERVER['PHP_SELF'].'?reportView=true'; ?>" frameborder="0" style="width: 100%; height: 500px;"></iframe>
@@ -86,16 +86,16 @@ if (!$reportView) {
 } else {
     ob_start();
     $row_class = 'alterCellPrinted';
-    $recapby = _('Classification');
+    $recapby = __('Classification');
     $output = '<table align="center" class="border" style="width: 100%;" cellpadding="3" cellspacing="0">';
     // header
     $output .= '<tr><td class="dataListHeaderPrinted">'.$recapby.'</td>
-        <td class="dataListHeaderPrinted">'._('Title').'</td>
-        <td class="dataListHeaderPrinted">'._('Items').'</td></tr>';
+        <td class="dataListHeaderPrinted">'.__('Title').'</td>
+        <td class="dataListHeaderPrinted">'.__('Items').'</td></tr>';
     if (isset($_GET['recapBy']) AND trim($_GET['recapBy']) != '') {
         switch ($_GET['recapBy']) {
             case 'gmd' :
-            $recapby = _('GMD');
+            $recapby = __('GMD');
             /* GMD */
             $gmd_q = $dbs->query("SELECT DISTINCT gmd_id, gmd_name FROM mst_gmd");
             while ($gmd_d = $gmd_q->fetch_row()) {
@@ -118,7 +118,7 @@ if (!$reportView) {
             /* GMD END */
             break;
             case 'language' :
-            $recapby = _('Language');
+            $recapby = __('Language');
             /* LANGUAGE */
             $lang_q = $dbs->query("SELECT DISTINCT language_id, language_name FROM mst_language");
             while ($lang_d = $lang_q->fetch_row()) {
@@ -141,7 +141,7 @@ if (!$reportView) {
             /* LANGUAGE END */
             break;
             case 'collType' :
-            $recapby = _('Collection Type');
+            $recapby = __('Collection Type');
             /* COLLECTION TYPE */
             $ctype_q = $dbs->query("SELECT DISTINCT coll_type_id, coll_type_name FROM mst_coll_type");
             while ($ctype_d = $ctype_q->fetch_row()) {
@@ -231,7 +231,7 @@ if (!$reportView) {
     $output .= '</table>';
 
     // print out
-    echo '<div class="printPageInfo">'._('Title and Collection Recap by').' <strong>'.$recapby.'</strong></div>'."\n";
+    echo '<div class="printPageInfo">'.__('Title and Collection Recap by').' <strong>'.$recapby.'</strong></div>'."\n";
     echo $output;
 
     $content = ob_get_clean();

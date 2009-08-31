@@ -37,7 +37,7 @@ $can_read = utility::havePrivilege('master_file', 'r');
 $can_write = utility::havePrivilege('master_file', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'._('You don\'t have enough privileges to view this section').'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
 }
 
 /* RECORD OPERATION */
@@ -103,17 +103,17 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
             // update the data
             $update = $sql_op->update('mst_label', $data, 'label_id='.$updateRecordID);
             if ($update) {
-                utility::jsAlert(_('Label Data Successfully Updated'));
+                utility::jsAlert(__('Label Data Successfully Updated'));
                 echo '<script type="text/javascript">parent.setContent(\'mainContent\', parent.getPreviousAJAXurl(), \'post\');</script>';
-            } else { utility::jsAlert(_('Label Data FAILED to Updated. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
+            } else { utility::jsAlert(__('Label Data FAILED to Updated. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
         } else {
             /* INSERT RECORD MODE */
             // insert the data
             if ($sql_op->insert('mst_label', $data)) {
-                utility::jsAlert(_('New Label Data Successfully Saved'));
+                utility::jsAlert(__('New Label Data Successfully Saved'));
                 echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'\', \'post\');</script>';
-            } else { utility::jsAlert(_('Label Data FAILED to Save. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
+            } else { utility::jsAlert(__('Label Data FAILED to Save. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
         }
     }
@@ -140,10 +140,10 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 
     // error alerting
     if ($error_num == 0) {
-        utility::jsAlert(_('All Data Successfully Deleted'));
+        utility::jsAlert(__('All Data Successfully Deleted'));
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
     } else {
-        utility::jsAlert(_('Some or All Data NOT deleted successfully!\nPlease contact system administrator'));
+        utility::jsAlert(__('Some or All Data NOT deleted successfully!\nPlease contact system administrator'));
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
     }
     exit();
@@ -154,12 +154,12 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner masterFileIcon">
-    <?php echo strtoupper(_('Label')); ?> - <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/label.php?action=detail', 'get');" class="headerText2"><?php echo _('Add New Label'); ?></a>
-    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/label.php', 'get');" class="headerText2"><?php echo _('Label List'); ?></a>
+    <?php echo strtoupper(__('Label')); ?> - <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/label.php?action=detail', 'get');" class="headerText2"><?php echo __('Add New Label'); ?></a>
+    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/label.php', 'get');" class="headerText2"><?php echo __('Label List'); ?></a>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo _('Search'); ?> :
+    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
-    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/label.php?' + $('search').serialize(), 'post')" value="<?php echo _('Search'); ?>" class="button" />
+    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/label.php?' + $('search').serialize(), 'post')" value="<?php echo __('Search'); ?>" class="button" />
     </form>
 </div>
 </fieldset>
@@ -168,7 +168,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 /* main content */
 if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'detail')) {
     if (!($can_read AND $can_write)) {
-        die('<div class="errorBox">'._('You don\'t have enough privileges to view this section').'</div>');
+        die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
     }
     /* RECORD FORM */
     $itemID = (integer)isset($_POST['itemID'])?$_POST['itemID']:0;
@@ -177,7 +177,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 
     // create new instance
     $form = new simbio_form_table_AJAX('mainForm', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'], 'post');
-    $form->submit_button_attr = 'name="saveData" value="'._('Save').'" class="button"';
+    $form->submit_button_attr = 'name="saveData" value="'.__('Save').'" class="button"';
 
     // form table attributes
     $form->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
@@ -192,29 +192,29 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         // form record title
         $form->record_title = str_ireplace('label-', '', $rec_d['label_name']);
         // submit button attribute
-        $form->submit_button_attr = 'name="saveData" value="'._('Update').'" class="button"';
+        $form->submit_button_attr = 'name="saveData" value="'.__('Update').'" class="button"';
     }
 
     /* Form Element(s) */
     // label name
-    $form->addTextField('text', 'labelName', _('Label Name').'*', $rec_d['label_name'], 'style="width: 60%;" maxlength="20"');
+    $form->addTextField('text', 'labelName', __('Label Name').'*', $rec_d['label_name'], 'style="width: 60%;" maxlength="20"');
     // label image
     if (empty($rec_d['label_image'])) {
         $str_input = simbio_form_element::textField('file', 'labelImage');
         $str_input .= ' Maximum '.$sysconf['max_image_upload'].' KB. All image will be automatically resized.';
-        $form->addAnything(_('File Attachment'), $str_input);
+        $form->addAnything(__('File Attachment'), $str_input);
     } else {
         $str_input = '<div><img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$rec_d['label_image'].'" align="middle" /> <strong>'.$rec_d['label_image'].'</strong></div>';
         $str_input .= simbio_form_element::textField('file', 'labelImage');
         $str_input .= ' Maximum '.$sysconf['max_image_upload'].' KB. All image will be automatically resized.';
-        $form->addAnything(_('File Attachment'), $str_input);
+        $form->addAnything(__('File Attachment'), $str_input);
     }
     // label desc
-    $form->addTextField('text', 'labelDesc', _('Label Description'), $rec_d['label_desc'], 'style="width: 100%;" maxlength="50"');
+    $form->addTextField('text', 'labelDesc', __('Label Description'), $rec_d['label_desc'], 'style="width: 100%;" maxlength="50"');
 
     // edit mode messagge
     if ($form->edit_mode) {
-        echo '<div class="infoBox">'._('You are going to edit Label data').' : <b>'.$rec_d['label_name'].' - '.$rec_d['label_desc'].'</b>  <br />'._('Last Update').$rec_d['last_update'].'</div>'; //mfc
+        echo '<div class="infoBox">'.__('You are going to edit Label data').' : <b>'.$rec_d['label_name'].' - '.$rec_d['label_desc'].'</b>  <br />'.__('Last Update').$rec_d['last_update'].'</div>'; //mfc
     }
     // print out the form object
     echo $form->printOut();
@@ -227,13 +227,13 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $datagrid = new simbio_datagrid();
     if ($can_read AND $can_write) {
         $datagrid->setSQLColumn('lb.label_id',
-            'lb.label_desc AS \''._('Label Description').'\'',
-            'lb.label_name AS \''._('Label Name').'\'',
-            'lb.last_update AS \''._('Last Update').'\'');
+            'lb.label_desc AS \''.__('Label Description').'\'',
+            'lb.label_name AS \''.__('Label Name').'\'',
+            'lb.last_update AS \''.__('Last Update').'\'');
     } else {
-        $datagrid->setSQLColumn('lb.label_desc AS \''._('Label Description').'\'',
-            'lb.label_name AS \''._('Label Name').'\'',
-            'lb.last_update AS \''._('Last Update').'\'');
+        $datagrid->setSQLColumn('lb.label_desc AS \''.__('Label Description').'\'',
+            'lb.label_name AS \''.__('Label Name').'\'',
+            'lb.last_update AS \''.__('Last Update').'\'');
     }
     $datagrid->setSQLorder('label_name ASC');
 
@@ -254,7 +254,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // put the result into variables
     $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, ($can_read AND $can_write));
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
-        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, _('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
+        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
         echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
     }
 

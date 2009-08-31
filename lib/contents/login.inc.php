@@ -41,7 +41,7 @@ ob_start();
 // if there is login action
 if (isset($_POST['logMeIn'])) {
     if (empty($_POST['userName']) OR empty($_POST['passWord'])) {
-        echo '<script type="text/javascript">alert(\''._('Please supply valid username and password').'\');</script>';
+        echo '<script type="text/javascript">alert(\''.__('Please supply valid username and password').'\');</script>';
     } else {
         require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
         // regenerate session ID to prevent session hijacking
@@ -54,7 +54,7 @@ if (isset($_POST['logMeIn'])) {
             // write log
             utility::writeLogs($dbs, 'staff', $username, 'Login', 'Login success for user '.$username.' from address '.$_SERVER['REMOTE_ADDR']);
             echo '<script type="text/javascript">';
-            echo 'alert(\''._('Welcome to Library Automation,').$logon->real_name.'\');'; //mfc
+            echo 'alert(\''.__('Welcome to Library Automation,').$logon->real_name.'\');'; //mfc
             echo 'location.href = \'admin/index.php\';';
             echo '</script>';
         } else {
@@ -62,7 +62,7 @@ if (isset($_POST['logMeIn'])) {
             utility::writeLogs($dbs, 'staff', $username, 'Login', 'Login FAILED for user '.$username.' from address '.$_SERVER['REMOTE_ADDR']);
             // message
             $msg = '<script type="text/javascript">';
-            $msg .= 'alert(\''._('Wrong Username or Password. ACCESS DENIED').'\');';
+            $msg .= 'alert(\''.__('Wrong Username or Password. ACCESS DENIED').'\');';
             $msg .= 'history.back();';
             $msg .= '</script>';
             simbio_security::destroySessionCookie($msg, SENAYAN_SESSION_COOKIES_NAME, SENAYAN_WEB_ROOT_DIR, false);
@@ -73,7 +73,7 @@ if (isset($_POST['logMeIn'])) {
 
 <div id="loginForm">
     <noscript>
-        <div style="font-weight: bold; color: #FF0000;"><?php echo _('Your browser does not support Javascript or Javascript is disabled. Application won\'t run without Javascript!'); ?><div>
+        <div style="font-weight: bold; color: #FF0000;"><?php echo __('Your browser does not support Javascript or Javascript is disabled. Application won\'t run without Javascript!'); ?><div>
     </noscript>
     <form action="index.php?p=login" method="post">
     <div class="heading1">Username</div>

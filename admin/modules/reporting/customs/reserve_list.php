@@ -31,7 +31,7 @@ $can_read = utility::havePrivilege('circulation', 'r');
 $can_write = utility::havePrivilege('circulation', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'._('You don\'t have enough privileges to access this area!').'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
@@ -50,29 +50,29 @@ if (!$reportView) {
 ?>
     <!-- filter -->
     <fieldset style="margin-bottom: 3px;">
-    <legend style="font-weight: bold"><?php echo strtoupper(_('Reservation')); ?> - <?php echo _('Report Filter'); ?></legend>
+    <legend style="font-weight: bold"><?php echo strtoupper(__('Reservation')); ?> - <?php echo __('Report Filter'); ?></legend>
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
         <div class="divRow">
-            <div class="divRowLabel"><?php echo _('Member ID').'/'._('Member Name'); ?></div>
+            <div class="divRowLabel"><?php echo __('Member ID').'/'.__('Member Name'); ?></div>
             <div class="divRowContent">
             <?php echo simbio_form_element::textField('text', 'member', '', 'style="width: 50%"'); ?>
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel"><?php echo _('Title/ISBN'); ?></div>
+            <div class="divRowLabel"><?php echo __('Title/ISBN'); ?></div>
             <div class="divRowContent">
             <?php echo simbio_form_element::textField('text', 'title', '', 'style="width: 50%"'); ?>
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel"><?php echo _('Item Code'); ?></div>
+            <div class="divRowLabel"><?php echo __('Item Code'); ?></div>
             <div class="divRowContent">
             <?php echo simbio_form_element::textField('text', 'itemCode', '', 'style="width: 50%"'); ?>
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel"><?php echo _('Reserve Date From'); ?></div>
+            <div class="divRowLabel"><?php echo __('Reserve Date From'); ?></div>
             <div class="divRowContent">
             <?php
             echo simbio_form_element::dateField('startDate', '2000-01-01');
@@ -80,7 +80,7 @@ if (!$reportView) {
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel"><?php echo _('Reserve Date Until'); ?></div>
+            <div class="divRowLabel"><?php echo __('Reserve Date Until'); ?></div>
             <div class="divRowContent">
             <?php
             echo simbio_form_element::dateField('untilDate', date('Y-m-d'));
@@ -89,8 +89,8 @@ if (!$reportView) {
         </div>
     </div>
     <div style="padding-top: 10px; clear: both;">
-    <input type="submit" name="applyFilter" value="<?php echo _('Apply Filter'); ?>" />
-    <input type="button" name="moreFilter" value="<?php echo _('Show More Filter Options'); ?>" onclick="showHideTableRows('filterForm', 1, this, '<?php echo _('Show More Filter Options'); ?>', '<?php echo _('Hide Filter Options'); ?>')" />
+    <input type="submit" name="applyFilter" value="<?php echo __('Apply Filter'); ?>" />
+    <input type="button" name="moreFilter" value="<?php echo __('Show More Filter Options'); ?>" onclick="showHideTableRows('filterForm', 1, this, '<?php echo __('Show More Filter Options'); ?>', '<?php echo __('Hide Filter Options'); ?>')" />
     <input type="hidden" name="reportView" value="true" />
     </div>
     </form>
@@ -98,7 +98,7 @@ if (!$reportView) {
     <script type="text/javascript">hideRows('filterForm', 1);</script>
     <!-- filter end -->
     <div class="dataListHeader" style="height: 35px;">
-    <input type="button" value="<?php echo _('Print Current Page'); ?>" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;"
+    <input type="button" value="<?php echo __('Print Current Page'); ?>" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;"
     onclick="javascript: reportView.print();" />
     &nbsp;<span id="pagingBox">&nbsp;</span></div>
     <iframe name="reportView" src="<?php echo $_SERVER['PHP_SELF'].'?reportView=true'; ?>" frameborder="0" style="width: 100%; height: 500px;"></iframe>
@@ -112,10 +112,10 @@ if (!$reportView) {
 
     // create datagrid
     $reportgrid = new report_datagrid();
-    $reportgrid->setSQLColumn('r.item_code AS \''._('Item Code').'\'',
-        'b.title AS \''._('Title').'\'',
-        'm.member_name AS \''._('Member Name').'\'',
-        'r.reserve_date AS \''._('Reserve Date').'\'');
+    $reportgrid->setSQLColumn('r.item_code AS \''.__('Item Code').'\'',
+        'b.title AS \''.__('Title').'\'',
+        'm.member_name AS \''.__('Member Name').'\'',
+        'r.reserve_date AS \''.__('Reserve Date').'\'');
     $reportgrid->setSQLorder('r.reserve_date DESC');
 
     // is there any search

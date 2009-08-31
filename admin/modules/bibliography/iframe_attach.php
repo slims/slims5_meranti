@@ -70,7 +70,7 @@ if (isset($_GET['removesess'])) {
     // remove session array
     unset($_SESSION['biblioAttach'][$idx]);
     echo '<script type="text/javascript">';
-    echo 'alert(\''._('Attachment removed!').'\');';
+    echo 'alert(\''.__('Attachment removed!').'\');';
     echo 'location.href = \'iframe_attach.php\';';
     echo '</script>';
 }

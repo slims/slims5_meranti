@@ -39,16 +39,16 @@ $can_read = utility::havePrivilege('stock_take', 'r');
 $can_write = utility::havePrivilege('stock_take', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'._('You don\'t have enough privileges to access this area!').'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner stockTakeIcon">
-    <?php echo strtoupper(_('Stock Take')); ?>
+    <?php echo strtoupper(__('Stock Take')); ?>
     <hr />
-    <form name="search" action="" id="search" method="get" style="display: inline;"><?php echo _('Search'); ?> :
+    <form name="search" action="" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
-    <input type="button" onclick="javascript: setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>stock_take/index.php?' + $('search').serialize(), 'post');" value="<?php echo _('Search'); ?>" class="button" />
+    <input type="button" onclick="javascript: setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>stock_take/index.php?' + $('search').serialize(), 'post');" value="<?php echo __('Search'); ?>" class="button" />
     </form>
 </div>
 </fieldset>
@@ -56,33 +56,33 @@ if (!$can_read) {
 if (isset($_POST['itemID']) AND !empty($_POST['itemID'])) {
     $itemID = (integer)$_POST['itemID'];
     $rec_q = $dbs->query("SELECT
-        stock_take_name AS '"._('Stock Take Name')."',
-        start_date AS '"._('Start Date')."',
-        end_date AS '"._('End Date')."',
-        init_user AS '"._('Initializer')."',
-        total_item_stock_taked AS '"._('Total Item Stock Taked')."',
-        total_item_lost AS '"._('Total Item Lost')."',
-        total_item_exists AS '"._('Total Item Exists')."',
-        total_item_loan AS '"._('Total Item On Loan')."',
-        stock_take_users AS '"._('Stock Take Participants')."',
-        is_active AS '"._('Status')."',
-        report_file AS '"._('Report')."'
+        stock_take_name AS '".__('Stock Take Name')."',
+        start_date AS '".__('Start Date')."',
+        end_date AS '".__('End Date')."',
+        init_user AS '".__('Initializer')."',
+        total_item_stock_taked AS '".__('Total Item Stock Taked')."',
+        total_item_lost AS '".__('Total Item Lost')."',
+        total_item_exists AS '".__('Total Item Exists')."',
+        total_item_loan AS '".__('Total Item On Loan')."',
+        stock_take_users AS '".__('Stock Take Participants')."',
+        is_active AS '".__('Status')."',
+        report_file AS '".__('Report')."'
         FROM stock_take WHERE stock_take_id=".$itemID);
     $rec_d = $rec_q->fetch_assoc();
     // create table object
     $table = new simbio_table();
     $table->table_attr = 'align="center" class="border" cellpadding="5" cellspacing="0"';
     // table header
-    $table->setHeader(array($rec_d[_('Stock Take Name')]));
+    $table->setHeader(array($rec_d[__('Stock Take Name')]));
     $table->table_header_attr = 'class="dataListHeader" colspan="3"';
     // initial row count
     $row = 1;
     foreach ($rec_d as $headings => $stk_data) {
         if ($headings == 'stock_take_id') {
             continue;
-        } else if ($headings == _('Status')) {
+        } else if ($headings == __('Status')) {
             if ($stk_data == '1') {
-                $stk_data = '<b style="color: #FF0000;">'._('Currently Active').'</b>';
+                $stk_data = '<b style="color: #FF0000;">'.__('Currently Active').'</b>';
             } else {
                 $stk_data = 'Finished';
             }
@@ -105,10 +105,10 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID'])) {
     // create datagrid
     $datagrid = new simbio_datagrid();
     $datagrid->setSQLColumn('st.stock_take_id',
-        'st.stock_take_name AS \''._('Stock Take Name').'\'',
-        'st.start_date AS \''._('Start Date').'\'',
-        'st.end_date AS \''._('End Date').'\'',
-        'CONCAT(\'<a href="'.SENAYAN_WEB_ROOT_DIR.FILES_DIR.'/'.REPORT_DIR.'/\', st.report_file, \'" target="_blank">\', st.report_file, \'</a>\') AS \''._('Report').'\'');
+        'st.stock_take_name AS \''.__('Stock Take Name').'\'',
+        'st.start_date AS \''.__('Start Date').'\'',
+        'st.end_date AS \''.__('End Date').'\'',
+        'CONCAT(\'<a href="'.SENAYAN_WEB_ROOT_DIR.FILES_DIR.'/'.REPORT_DIR.'/\', st.report_file, \'" target="_blank">\', st.report_file, \'</a>\') AS \''.__('Report').'\'');
     $datagrid->setSQLorder('st.start_date DESC');
     $datagrid->disableSort('Report');
 
@@ -141,7 +141,7 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID'])) {
     // put the result into variables
     $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, true);
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
-        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, _('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
+        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
         echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
     }
 

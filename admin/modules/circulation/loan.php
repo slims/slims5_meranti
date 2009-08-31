@@ -46,9 +46,9 @@ if (isset($_SESSION['memberID'])) {
     <!--item loan form-->
     <div style="padding: 5px; background: #CCCCCC;">
         <form name="itemLoan" id="loanForm" action="circulation_action.php" method="post" style="display: inline;">
-            <?php echo _('Insert Item Code/Barcode'); ?> :
+            <?php echo __('Insert Item Code/Barcode'); ?> :
             <input type="text" id="tempLoanID" name="tempLoanID" />
-            <input type="submit" value="<?php echo _('Loan'); ?>" class="button" />
+            <input type="submit" value="<?php echo __('Loan'); ?>" class="button" />
         </form>
     </div>
     <script type="text/javascript">$('tempLoanID').focus();</script>
@@ -62,7 +62,7 @@ if (isset($_SESSION['memberID'])) {
         $temp_loan_list->table_header_attr = 'class="dataListHeader" style="font-weight: bold;"';
         $temp_loan_list->highlight_row = true;
         // table header
-        $headers = array(_('Remove'),  _('Item Code'), _('Title'), _('Loan Date'), _('Due Date'));
+        $headers = array(__('Remove'),  __('Item Code'), __('Title'), __('Loan Date'), __('Due Date'));
         $temp_loan_list->setHeader($headers);
         // row number init
         $row = 1;

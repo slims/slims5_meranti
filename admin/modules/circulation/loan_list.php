@@ -47,9 +47,9 @@ ob_start();
 function confirmProcess(intLoanID, strItemCode, strProcess)
 {
     if (strProcess == 'return') {
-        var confirmBox = confirm('<?php echo _('Are you sure you want to return the item'); ?> ' + strItemCode);
+        var confirmBox = confirm('<?php echo __('Are you sure you want to return the item'); ?> ' + strItemCode);
     } else {
-        var confirmBox = confirm('<?php echo _('Are you sure to extend loan for'); ?> ' + strItemCode); //mfc
+        var confirmBox = confirm('<?php echo __('Are you sure to extend loan for'); ?> ' + strItemCode); //mfc
     }
 
     if (confirmBox) {
@@ -80,7 +80,7 @@ if (isset($_SESSION['memberID'])) {
     $loan_list->table_header_attr = 'class="dataListHeader" style="font-weight: bold;"';
     $loan_list->highlight_row = true;
     // table header
-    $headers = array(_('Return'), _('Extend'), _('Item Code'), _('Title'), _('Loan Date'), _('Due Date'));
+    $headers = array(__('Return'), __('Extend'), __('Item Code'), __('Title'), __('Loan Date'), __('Due Date'));
     $loan_list->setHeader($headers);
     // row number init
     $row = 1;
@@ -89,30 +89,30 @@ if (isset($_SESSION['memberID'])) {
         $row_class = ($row%2 == 0)?'alterCell':'alterCell2';
 
         // return link
-        $return_link = '<a href="#" onclick="confirmProcess('.$loan_list_data['loan_id'].', \''.$loan_list_data['item_code'].'\', \'return\')" title="'._('Return this item').'" class="returnLink">&nbsp;</a>';
+        $return_link = '<a href="#" onclick="confirmProcess('.$loan_list_data['loan_id'].', \''.$loan_list_data['item_code'].'\', \'return\')" title="'.__('Return this item').'" class="returnLink">&nbsp;</a>';
         // extend link
         // check if membership already expired
         if ($_SESSION['is_expire']) {
-            $extend_link = '<span class="noExtendLink" title="'._('No Extend').'">&nbsp;</span>';
+            $extend_link = '<span class="noExtendLink" title="'.__('No Extend').'">&nbsp;</span>';
         } else {
             // check if this loan just already renewed
             if ($loan_list_data['return_date'] == date('Y-m-d')) {
-                $extend_link = '<span class="noExtendLink" title="'._('No Extend').'">&nbsp;</span>';
+                $extend_link = '<span class="noExtendLink" title="'.__('No Extend').'">&nbsp;</span>';
             } else if (in_array($loan_list_data['loan_id'], $_SESSION['reborrowed'])) {
-                $extend_link = '<span class="noExtendLink" title="'._('No Extend').'">&nbsp;</span>';
+                $extend_link = '<span class="noExtendLink" title="'.__('No Extend').'">&nbsp;</span>';
             } else {
-                $extend_link = '<a href="#" onclick="confirmProcess('.$loan_list_data['loan_id'].', \''.$loan_list_data['item_code'].'\', \'extend\')" title="'._('Extend loan for this item').'" class="extendLink">&nbsp;</a>';
+                $extend_link = '<a href="#" onclick="confirmProcess('.$loan_list_data['loan_id'].', \''.$loan_list_data['item_code'].'\', \'extend\')" title="'.__('Extend loan for this item').'" class="extendLink">&nbsp;</a>';
             }
         }
         // renewed flag
         if ($loan_list_data['renewed'] > 0) {
-            $loan_list_data['title'] = $loan_list_data['title'].' - <strong style="color: blue;">'._('Extended').'</strong>';
+            $loan_list_data['title'] = $loan_list_data['title'].' - <strong style="color: blue;">'.__('Extended').'</strong>';
         }
         // check for overdue
         $curr_date = date('Y-m-d');
         $overdue = $circulation->countOverdueValue($loan_list_data['loan_id'], $curr_date);
         if ($overdue) {
-            $loan_list_data['title'] .= '<div style="color: red; font-weight: bold;">'._('OVERDUED for').' '.$overdue['days'].' '._('days(s) with fines value').' '.$overdue['value'].'</div>'; //mfc
+            $loan_list_data['title'] .= '<div style="color: red; font-weight: bold;">'.__('OVERDUED for').' '.$overdue['days'].' '.__('days(s) with fines value').' '.$overdue['value'].'</div>'; //mfc
         }
         // row colums array
         $fields = array(
@@ -146,7 +146,7 @@ if (isset($_SESSION['memberID'])) {
             WHERE item_code=\''.$reservedItem.'\' ORDER BY reserve_date DESC');
         $reserve_d = $reserve_q->fetch_row();
         $member = $reserve_d[1].' ('.$reserve_d[0].')';
-        $reserve_msg = str_replace(array('{itemCode}', '{member}'), array('<b>'.$reservedItem.'</b>', '<b>'.$member.'</b>'), _('Item {itemCode} is being reserved by member {member}')); //mfc
+        $reserve_msg = str_replace(array('{itemCode}', '{member}'), array('<b>'.$reservedItem.'</b>', '<b>'.$member.'</b>'), __('Item {itemCode} is being reserved by member {member}')); //mfc
         echo '<div class="infoBox">'.$reserve_msg.'</div>';
     }
     echo $loan_list->printTable();
