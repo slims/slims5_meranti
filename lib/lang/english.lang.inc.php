@@ -600,7 +600,7 @@ define('lang_mod_masterfile_gmd_new_add', 'Add new GMD');
 define('lang_mod_masterfile_gmd_list', 'GMD List');
 define('lang_mod_masterfile_publisher', 'Publisher');
 define('lang_mod_masterfile_publisher_titletag', 'Document Publisher');
-define('lang_mod_masterfile_publisher_new_add', 'Add new Publisher')
+define('lang_mod_masterfile_publisher_new_add', 'Add new Publisher');
 define('lang_mod_masterfile_publisher_list', 'Publisher List');
 define('lang_mod_masterfile_supplier', 'Supplier');
 define('lang_mod_masterfile_supplier_titletag', 'Item Supplier');
