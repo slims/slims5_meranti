@@ -23,10 +23,10 @@ Ported to Senayan by Hendro Wicaksono (hendrowicaksono@yahoo.com)
       <div id="logo">&nbsp;</div>
       <div id="links">
         <ul>
-          <li><a href="index.php"><!--lang_template_topmenu_1--></a></li>
-          <li><a href="index.php?p=libinfo"><!--lang_template_topmenu_2--></a></li>
-          <li><a href="index.php?p=help"><!--lang_template_topmenu_3--></a></li>
-          <li><a href="index.php?p=login"><!--lang_template_topmenu_4--></a></li>
+          <li><a href="index.php"><!--__('Home')--></a></li>
+          <li><a href="index.php?p=libinfo"><!--__('Library Information')--></a></li>
+          <li><a href="index.php?p=help"><!--__('Help on Search')--></a></li>
+          <li><a href="index.php?p=login"><!--__('Librarian LOGIN')--></a></li>
         </ul>
       </div>
     </div>
@@ -44,7 +44,7 @@ Ported to Senayan by Hendro Wicaksono (hendrowicaksono@yahoo.com)
 <!-- simple search -->
     <form name="simpleSearch" id="simpleSearch" action="index.php" method="get">
     <strong>Quick Search :</strong> <input type="text" name="keywords" id="simpleKeywords" style="width: 65%;" />
-    <input type="submit" name="search" value="<!--lang_sys_common_form_search-->" class="button marginTop" />
+    <input type="submit" name="search" value="<!--__('Search')-->" class="button marginTop" />
     <script type="text/javascript">$('simpleKeywords').focus();</script>
     </form><br />
 <!-- simple search end -->
@@ -67,27 +67,27 @@ Ported to Senayan by Hendro Wicaksono (hendrowicaksono@yahoo.com)
 
       </div>
       <div id="rightbar">
-        <h2><!--lang_sys_common_language_select--></h2>
+        <h2><!--__('Select Language')--></h2>
         <p><form name="langSelect" action="index.php" method="get">
         <select name="select_lang" style="width: 90%;" onchange="document.langSelect.submit();">
         <!--LANGUAGE_SELECT-->
         </select>
         </form></p>
-        <h2><!--lang_template_adv_search--></h2>
+        <h2><!--__('Advanced Search')--></h2>
         <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
 
-        <span class="orangetext"><!--lang_mod_biblio_field_title--></span> :
+        <span class="orangetext"><!--__('Title')--></span> :
         <input type="text" name="title" class="ajaxInputField" /><br />
-        <span class="orangetext"><!--lang_mod_biblio_field_authors--></span> :
+        <span class="orangetext"><!--__('Author(s)')--></span> :
         <!--ADVSEARCH_AUTHOR--><br />
-        <span class="orangetext"><!--lang_mod_biblio_field_topic--></span> :
+        <span class="orangetext"><!--__('Subject(s)')--></span> :
         <!--ADVSEARCH_TOPIC--><br />
-        <span class="orangetext"><!--lang_mod_biblio_item_field_location--></span> :
+        <span class="orangetext"><!--__('Location')--></span> :
         <select name="location" class="ajaxInputField" />
         <!--LOCATION_LIST-->
         </select>
         <br />
-        <input type="submit" name="search" value="<!--lang_sys_common_form_search-->" class="button marginTop" />
+        <input type="submit" name="search" value="<!--__('Search')-->" class="button marginTop" />
         <!-- <input type="button" value="More Options" onclick="" class="button marginTop" /> -->
         </form>
 

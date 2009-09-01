@@ -39,17 +39,17 @@ $can_read = utility::havePrivilege('stock_take', 'r');
 $can_write = utility::havePrivilege('stock_take', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'.lang_sys_common_no_privilage.'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 /* search form */
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner stockTakeIcon">
-    <?php echo strtoupper(lang_mod_stocktake_log); ?>
+    <?php echo strtoupper(__('Stock Take Log')); ?>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo lang_sys_common_form_search_field; ?> :
+    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
-    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>stock_take/st_log.php?' + $('search').serialize(), 'post')" value="<?php echo lang_sys_common_form_search; ?>" class="button" />
+    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>stock_take/st_log.php?' + $('search').serialize(), 'post')" value="<?php echo __('Search'); ?>" class="button" />
 </form>
 </div>
 </fieldset>
@@ -98,7 +98,7 @@ $datagrid->disableSort('Message');
 // put the result into variables
 $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 50, false);
 if (isset($_GET['keywords']) AND $_GET['keywords']) {
-    $msg = str_replace('{result->num_rows}', $datagrid->num_rows, lang_sys_common_search_result_info);
+    $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
     echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
 }
 

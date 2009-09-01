@@ -29,7 +29,7 @@ require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'system', $_SESSION['realname'].' Log Out from application from address '.$_SERVER['REMOTE_ADDR']);
 // redirecting pages
 $msg = '<script type="text/javascript">';
-$msg .= 'alert(\''.lang_sys_logout_alert.'\');';
+$msg .= 'alert(\''.__('You Have Been Logged Out From Library Automation System').'\');';
 $msg .= 'location.href = \''.SENAYAN_WEB_ROOT_DIR.'index.php?p=login\';';
 $msg .= '</script>';
 // completely destroy session cookie

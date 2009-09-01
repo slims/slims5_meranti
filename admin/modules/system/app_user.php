@@ -44,7 +44,7 @@ if (isset($_GET['changecurrent'])) {
 
 if (!$changecurrent) {
     if (!$can_read) {
-        die('<div class="errorBox">'.lang_sys_common_no_privilege.'</div>');
+        die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
     }
 }
 
@@ -56,13 +56,13 @@ if (isset($_POST['saveData'])) {
     $passwd2 = trim($_POST['passwd2']);
     // check form validity
     if (empty($userName) OR empty($realName)) {
-        utility::jsAlert(lang_sys_conf_user_alert_noempty);
+        utility::jsAlert(__('User Name or Real Name can\'t be empty'));
         exit();
     } else if (($userName == 'admin' OR $realName == 'Administrator') AND $_SESSION['uid'] != 1) {
-        utility::jsAlert(lang_sys_conf_user_alert_forbid);
+        utility::jsAlert(__('Login username or Real Name is probihited!'));
         exit();
     } else if (($passwd1 AND $passwd2) AND ($passwd1 !== $passwd2)) {
-        utility::jsAlert(lang_sys_conf_user_alert_nomatch);
+        utility::jsAlert(__('Password confirmation does not match. See if your Caps Lock key is on!'));
         exit();
     } else {
         $data['username'] = $dbs->escape_string($userName);
@@ -96,9 +96,9 @@ if (isset($_POST['saveData'])) {
             if ($update) {
                 // write log
                 utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'system', $_SESSION['realname'].' update user data ('.$data['realname'].') with username ('.$data['username'].')');
-                utility::jsAlert(lang_sys_conf_user_alert_update_ok);
+                utility::jsAlert(__('User Data Successfully Updated'));
                 echo '<script type="text/javascript">parent.setContent(\'mainContent\', parent.getPreviousAJAXurl(), \'post\');</script>';
-            } else { utility::jsAlert(lang_sys_conf_user_alert_update_fail."\nDEBUG : ".$sql_op->error); }
+            } else { utility::jsAlert(__('User Data FAILED to Updated. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
         } else {
             /* INSERT RECORD MODE */
@@ -106,9 +106,9 @@ if (isset($_POST['saveData'])) {
             if ($sql_op->insert('user', $data)) {
                 // write log
                 utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'system', $_SESSION['realname'].' add new user ('.$data['realname'].') with username ('.$data['username'].')');
-                utility::jsAlert(lang_sys_conf_user_alert_save_ok);
+                utility::jsAlert(__('New User Data Successfully Saved'));
                 echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'\', \'post\');</script>';
-            } else { utility::jsAlert(lang_sys_conf_user_alert_save_fail."\n".$sql_op->error); }
+            } else { utility::jsAlert(__('User Data FAILED to Save. Please Contact System Administrator')."\n".$sql_op->error); }
             exit();
         }
     }
@@ -141,10 +141,10 @@ if (isset($_POST['saveData'])) {
 
     // error alerting
     if ($error_num == 0) {
-        utility::jsAlert(lang_sys_conf_user_common_alert_delete_success);
+        utility::jsAlert(__('All Data Successfully Deleted'));
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
     } else {
-        utility::jsAlert(lang_sys_conf_user_common_alert_delete_fail);
+        utility::jsAlert(__('Some or All Data NOT deleted successfully!\nPlease contact system administrator'));
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
     }
     exit();
@@ -156,12 +156,12 @@ if (!$changecurrent) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner userIcon">
-    <?php echo strtoupper(lang_sys_user); ?> - <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/app_user.php?action=detail', 'get');" class="headerText2"><?php echo lang_sys_user_new_add; ?></a>
-    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>/system/app_user.php', 'get');" class="headerText2"><?php echo lang_sys_user_list; ?></a>
+    <?php echo strtoupper(__('System Users')); ?> - <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/app_user.php?action=detail', 'get');" class="headerText2"><?php echo __('Add New User'); ?></a>
+    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>/system/app_user.php', 'get');" class="headerText2"><?php echo __('User List'); ?></a>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo lang_sys_common_form_search_field; ?> :
+    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
-    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/app_user.php?' + $('search').serialize(), 'post')" value="<?php echo lang_sys_common_form_search; ?>" class="button" />
+    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/app_user.php?' + $('search').serialize(), 'post')" value="<?php echo __('Search'); ?>" class="button" />
 </form>
 </div>
 </fieldset>
@@ -172,7 +172,7 @@ if (!$changecurrent) {
 /* main content */
 if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'detail')) {
     if (!($can_read AND $can_write) AND !$changecurrent) {
-        die('<div class="errorBox">'.lang_sys_common_no_privilege.'</div>');
+        die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
     }
     /* RECORD FORM */
     // try query
@@ -185,7 +185,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 
     // create new instance
     $form = new simbio_form_table_AJAX('mainForm', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'], 'post');
-    $form->submit_button_attr = 'name="saveData" value="'.lang_sys_common_form_save_change.'" class="button"';
+    $form->submit_button_attr = 'name="saveData" value="'.__('Save').'" class="button"';
 
     // form table attributes
     $form->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
@@ -206,14 +206,14 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         // form record title
         $form->record_title = $rec_d['realname'];
         // submit button attribute
-        $form->submit_button_attr = 'name="saveData" value="'.lang_sys_common_form_update.'" class="button"';
+        $form->submit_button_attr = 'name="saveData" value="'.__('Update').'" class="button"';
     }
 
     /* Form Element(s) */
     // user name
-    $form->addTextField('text', 'userName', lang_sys_conf_user_field_login_name.'*', $rec_d['username'], 'style="width: 50%;"');
+    $form->addTextField('text', 'userName', __('Login Username').'*', $rec_d['username'], 'style="width: 50%;"');
     // user real name
-    $form->addTextField('text', 'realName', lang_sys_conf_user_field_real.'*', $rec_d['realname'], 'style="width: 50%;"');
+    $form->addTextField('text', 'realName', __('Real Name').'*', $rec_d['realname'], 'style="width: 50%;"');
     // user group
     // only appear by user who hold system module privileges
     if (!$changecurrent AND $can_read AND $can_write) {
@@ -227,17 +227,17 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         while ($group_data = $group_query->fetch_row()) {
             $group_options[] = array($group_data[0], $group_data[1]);
         }
-        $form->addCheckBox('groups', lang_sys_conf_user_field_group, $group_options, unserialize($rec_d['groups']));
+        $form->addCheckBox('groups', __('Group(s)'), $group_options, unserialize($rec_d['groups']));
     }
     // user password
-    $form->addTextField('password', 'passwd1', lang_sys_conf_user_field_password_3.'*', '', 'style="width: 50%;"');
+    $form->addTextField('password', 'passwd1', __('New Password').'*', '', 'style="width: 50%;"');
     // user password confirm
-    $form->addTextField('password', 'passwd2', lang_sys_conf_user_field_password_4.'*', '', 'style="width: 50%;"');
+    $form->addTextField('password', 'passwd2', __('Confirm New Password').'*', '', 'style="width: 50%;"');
 
     // edit mode messagge
     if ($form->edit_mode) {
-        echo '<div class="infoBox">'.lang_sys_conf_user_common_edit_info,' : <b>'.$rec_d['realname'].'</b> <br />'.lang_sys_conf_user_common_last_update.$rec_d['last_update'].'
-            <br />'.lang_sys_conf_user_common_info_1.'</div>';
+        echo '<div class="infoBox">'.__('You are going to edit user profile'),' : <b>'.$rec_d['realname'].'</b> <br />'.__('Last Update').$rec_d['last_update'].' //mfc
+            <br />'.__('Leave Password field blank if you don\'t want to change the password').'</div>';
     }
     // print out the form object
     echo $form->printOut();
@@ -250,15 +250,15 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $datagrid = new simbio_datagrid();
     if ($can_read AND $can_write) {
         $datagrid->setSQLColumn('u.user_id',
-            'u.realname AS \''.lang_sys_conf_user_field_real.'\'',
-            'u.username AS \''.lang_sys_conf_user_field_login_name.'\'',
-            'u.last_login AS \''.lang_sys_conf_user_field_last_login.'\'',
-            'u.last_update AS \''.lang_sys_conf_user_common_last_update.'\'');
+            'u.realname AS \''.__('Real Name').'\'',
+            'u.username AS \''.__('Login Username').'\'',
+            'u.last_login AS \''.__('Last Login').'\'',
+            'u.last_update AS \''.__('Last Update').'\'');
     } else {
-        $datagrid->setSQLColumn('u.realname AS \''.lang_sys_conf_user_field_real.'\'',
-            'u.username AS \''.lang_sys_conf_user_field_real.'\'',
-            'u.last_login AS \''.lang_sys_conf_user_field_last_login.'\'',
-            'u.last_update AS \''.lang_sys_conf_user_common_last_update.'\'');
+        $datagrid->setSQLColumn('u.realname AS \''.__('Real Name').'\'',
+            'u.username AS \''.__('Real Name').'\'',
+            'u.last_login AS \''.__('Last Login').'\'',
+            'u.last_update AS \''.__('Last Update').'\'');
     }
     $datagrid->setSQLorder('username ASC');
 
@@ -280,7 +280,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // put the result into variables
     $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, ($can_read AND $can_write));
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
-        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, lang_sys_common_search_result_info);
+        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
         echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
     }
 

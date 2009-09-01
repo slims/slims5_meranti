@@ -33,7 +33,7 @@ $can_read = utility::havePrivilege('reporting', 'r');
 $can_write = utility::havePrivilege('reporting', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'.lang_sys_common_no_privilage.'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 
 /* loan report */
@@ -43,7 +43,7 @@ $table->table_attr = 'align="center" class="border" cellpadding="5" cellspacing=
 // total number of loan transaction
 $report_query = $dbs->query('SELECT COUNT(loan_id) FROM loan');
 $report_data = $report_query->fetch_row();
-$loan_report[lang_mod_report_loan_field_total] = $report_data[0];
+$loan_report[__('Total Loan')] = $report_data[0];
 
 // total number of loan transaction by GMD/medium
 $report_query = $dbs->query('SELECT gmd_name, COUNT(loan_id) FROM loan AS l
@@ -55,7 +55,7 @@ $report_data = '';
 while ($data = $report_query->fetch_row()) {
     $report_data .= '<strong>'.$data[0].'</strong> : '.$data[1].', ';
 }
-$loan_report[lang_mod_report_loan_field_by_gmd] = $report_data;
+$loan_report[__('Total Loan By GMD/Medium')] = $report_data;
 
 // total number of loan transaction by Collection type
 $report_query = $dbs->query('SELECT coll_type_name, COUNT(loan_id) FROM loan AS l
@@ -66,7 +66,7 @@ $report_data = '';
 while ($data = $report_query->fetch_row()) {
     $report_data .= '<strong>'.$data[0].'</strong> : '.$data[1].', ';
 }
-$loan_report[lang_mod_report_loan_field_by_colltype] = $report_data;
+$loan_report[__('Total Loan By Collection Type')] = $report_data;
 
 // total number of loan transaction
 $report_query = $dbs->query('SELECT COUNT(loan_id)
@@ -74,37 +74,37 @@ $report_query = $dbs->query('SELECT COUNT(loan_id)
     GROUP BY member_id, loan_date
     ORDER BY `COUNT(loan_id)` DESC');
 $report_data = $report_query->num_rows;
-$loan_report[lang_mod_report_loan_field_transaction] = $report_data;
+$loan_report[__('Total Loan Transactions')] = $report_data;
 $peak_transaction_data = $report_query->fetch_row();
 
 // transaction average per day
 $total_loan_days_query = $dbs->query('SELECT DISTINCT loan_date FROM loan');
 $total_loan_days = $total_loan_days_query->num_rows;
-$loan_report[lang_mod_report_loan_field_perday] = @ceil($loan_report[lang_mod_report_loan_field_transaction]/$total_loan_days);
+$loan_report[__('Transaction Average (Per Day)')] = @ceil($loan_report[__('Total Loan Transactions')]/$total_loan_days);
 
 // peak transaction
-$loan_report[lang_mod_report_loan_field_peak] = $peak_transaction_data[0];
+$loan_report[__('Total Peak Transaction')] = $peak_transaction_data[0];
 
 // total members having loans
 $report_query = $dbs->query('SELECT DISTINCT member_id FROM loan');
 $report_data = $report_query->num_rows;
-$loan_report[lang_mod_report_loan_field_member_with_loan] = $report_data;
+$loan_report[__('Members Already Had Loans')] = $report_data;
 
 // total members having loans
 // get total member that already not expired
 $total_members_query = $dbs->query('SELECT COUNT(member_id) FROM member
     WHERE TO_DAYS(expire_date)>TO_DAYS(\''.date('Y-m-d').'\')');
 $total_members_data = $total_members_query->fetch_row();
-$loan_report[lang_mod_report_loan_field_member_no_loan] = $total_members_data[0]-$loan_report[lang_mod_report_loan_field_member_with_loan];
+$loan_report[__('Members Never Have Loans Yet')] = $total_members_data[0]-$loan_report[__('Members Already Had Loans')];
 
 // total overdued loand
 $report_query = $dbs->query('SELECT COUNT(loan_id) FROM loan WHERE
     is_lent=1 AND is_return=0 AND TO_DAYS(due_date)>TO_DAYS(\''.date('Y-m-d').'\')');
 $report_data = $report_query->fetch_row();
-$loan_report[lang_mod_report_loan_field_overdue] = $report_data[0];
+$loan_report[__('Total Overdued Loans')] = $report_data[0];
 
 // table header
-$table->setHeader(array(lang_mod_report_loan_table_head));
+$table->setHeader(array(__('Loan Data Summary')));
 $table->table_header_attr = 'class="dataListHeader" colspan="3"';
 // initial row count
 $row = 1;
@@ -132,7 +132,7 @@ if (isset($_GET['print'])) {
     $html_str .= '</style>'."\n";
     $html_str .= '</head>';
     $html_str .= '<body>'."\n";
-    $html_str .= '<h3>'.$sysconf['library_name'].' - '.lang_mod_report_loan_page_head.'</h3>';
+    $html_str .= '<h3>'.$sysconf['library_name'].' - '.__('Loan Report').'</h3>';
     $html_str .= '<hr size="1" />';
     $html_str .= $table->printTable();
     $html_str .= '<script type="text/javascript">self.print();</script>'."\n";
@@ -149,10 +149,10 @@ if (isset($_GET['print'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner statisticIcon">
-    <?php echo strtoupper(lang_mod_report_loan); ?>
+    <?php echo strtoupper(__('Loan Report')); ?>
     <hr />
     <form name="printForm" action="<?php echo $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']; ?>" target="submitPrint" id="printForm" method="get" style="display: inline;">
-    <input type="hidden" name="print" value="true" /><input type="submit" value="<?php echo lang_sys_common_form_report; ?>" class="button" />
+    <input type="hidden" name="print" value="true" /><input type="submit" value="<?php echo __('Download Report'); ?>" class="button" />
     </form>
     <iframe name="submitPrint" style="visibility: hidden; width: 0; height: 0;"></iframe>
 </div>

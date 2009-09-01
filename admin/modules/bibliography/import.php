@@ -33,7 +33,7 @@ $can_read = utility::havePrivilege('bibliography', 'r');
 $can_write = utility::havePrivilege('bibliography', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'.lang_sys_common_unauthorized.'</div>');
+    die('<div class="errorBox">'.__('You are not authorized to view this section').'</div>');
 }
 
 // max chars in line for file operations
@@ -42,10 +42,10 @@ $max_chars = 1024*100;
 if (isset($_POST['doImport'])) {
     // check for form validity
     if (!$_FILES['importFile']['name']) {
-        utility::jsAlert(lang_mod_biblio_import_file_input_require);
+        utility::jsAlert(__('Please select the file to import!'));
         exit();
     } else if (empty($_POST['fieldSep']) OR empty($_POST['fieldEnc'])) {
-        utility::jsAlert(lang_mod_biblio_import_alert_all_field);
+        utility::jsAlert(__('Required fields (*)  must be filled correctly!'));
         exit();
     } else {
         $start_time = time();
@@ -66,7 +66,7 @@ if (isset($_POST['doImport'])) {
         $upload->setUploadDir($temp_dir);
         $upload_status = $upload->doUpload('importFile');
         if ($upload_status != UPLOAD_SUCCESS) {
-            utility::jsAlert(lang_mod_biblio_import_alert_err_size.($sysconf['max_upload']/1024).' MB');
+            utility::jsAlert(__('Upload failed! File type not allowed or the size is more than').($sysconf['max_upload']/1024).' MB'); //mfc
             exit();
         }
         // uploaded file path
@@ -212,9 +212,9 @@ if (isset($_POST['doImport'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner importIcon">
-    <?php echo lang_mod_biblio_import_header; ?>
+    <?php echo __('IMPORT TOOL'); ?>
     <hr />
-    <?php echo lang_mod_biblio_import_header_text; ?>
+    <?php echo __('Import for bibliographics data from CSV file. For guide on CVS fields order and format please refer to documentation or visit <a href="http://senayan.diknas.go.id" target="_blank">Official Website</a>'); ?>
 </div>
 </fieldset>
 <div id="importInfo" class="infoBox" style="display: none;">&nbsp;</div><div id="importError" class="errorBox" style="display: none;">&nbsp;</div>
@@ -222,7 +222,7 @@ if (isset($_POST['doImport'])) {
 
 // create new instance
 $form = new simbio_form_table_AJAX('mainForm', $_SERVER['PHP_SELF'], 'post');
-$form->submit_button_attr = 'name="doImport" value="'.lang_mod_biblio_import_form_button_start.'" class="button"';
+$form->submit_button_attr = 'name="doImport" value="'.__('Import Now').'" class="button"';
 
 // form table attributes
 $form->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
@@ -233,15 +233,15 @@ $form->table_content_attr = 'class="alterCell2"';
 // csv files
 $str_input = simbio_form_element::textField('file', 'importFile');
 $str_input .= ' Maximum '.$sysconf['max_upload'].' KB';
-$form->addAnything(lang_mod_biblio_import_form_field_file_input, $str_input);
+$form->addAnything(__('File To Import'), $str_input);
 // field separator
-$form->addTextField('text', 'fieldSep', lang_mod_biblio_import_form_field_separator, ''.htmlentities(',').'', 'style="width: 10%;" maxlength="3"');
+$form->addTextField('text', 'fieldSep', __('Field Separator').'*', ''.htmlentities(',').'', 'style="width: 10%;" maxlength="3"');
 //  field enclosed
-$form->addTextField('text', 'fieldEnc', lang_mod_biblio_import_form_field_enclosed, ''.htmlentities('"').'', 'style="width: 10%;"');
+$form->addTextField('text', 'fieldEnc', __('Field Enclosed With').'*', ''.htmlentities('"').'', 'style="width: 10%;"');
 // number of records to import
-$form->addTextField('text', 'recordNum', lang_mod_biblio_import_form_field_rec_to_export, '0', 'style="width: 10%;"');
+$form->addTextField('text', 'recordNum', __('Number of Records To Export (0 for all records)'), '0', 'style="width: 10%;"');
 // records offset
-$form->addTextField('text', 'recordOffset', lang_mod_biblio_import_form_field_rec_start, '1', 'style="width: 10%;"');
+$form->addTextField('text', 'recordOffset', __('Start From Record'), '1', 'style="width: 10%;"');
 // output the form
 echo $form->printOut();
 ?>

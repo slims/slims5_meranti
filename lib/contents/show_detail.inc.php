@@ -48,9 +48,9 @@ if (isset($_GET['inXML']) AND !empty($_GET['inXML'])) {
     $detail = new detail($dbs, $detail_id);
     $detail->setListTemplate($detail_template);
     // set the content for info box
-    $info = '<strong>'.strtoupper(lang_opac_rec_detail).'</strong><hr />';
+    $info = '<strong>'.strtoupper(__('Record Detail')).'</strong><hr />';
     if (!defined('LIGHTWEIGHT_MODE')) {
-        $info .= '<a href="javascript: history.back();">'.lang_opac_back_prev.'</a> &nbsp;';
+        $info .= '<a href="javascript: history.back();">'.__('Back To Previous').'</a> &nbsp;';
     }
     if ($sysconf['enable_xml_detail'] && !defined('LIGHTWEIGHT_MODE')) {
         $info .= '<a href="index.php?p=show_detail&inXML=true&id='.$detail_id.'" class="xmlDetailLink" target="_blank">XML Detail</a>';

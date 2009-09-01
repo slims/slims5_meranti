@@ -96,17 +96,9 @@ class simbio_paging_ajax
         }
 
         // Previous page link
-        if (defined('lang_sys_common_paging_first')) {
-            $_first = lang_sys_common_paging_first;
-        } else {
-            $_first = 'First Page';
-        }
+				$_first = __('First Page');
 
-        if (defined('lang_sys_common_paging_prev')) {
-            $_prev = lang_sys_common_paging_prev;
-        } else {
-            $_prev = 'Previous Page';
-        }
+				$_prev = __('Previous');
 
         if ($_page > 1) {
             $_buffer .= ' &nbsp;';
@@ -127,11 +119,7 @@ class simbio_paging_ajax
         }
 
         // Next page link
-        if (defined('lang_sys_common_paging_next')) {
-            $_next = lang_sys_common_paging_next;
-        } else {
-            $_next = 'Next';
-        }
+				$_next = __('Next');
 
         if (($_pager_offset != $_num_page_total-4) AND ($_page != $_num_page_total)) {
             $_buffer .= ' &nbsp;';
@@ -139,11 +127,7 @@ class simbio_paging_ajax
         }
 
         // Last page link
-        if (defined('lang_sys_common_paging_last')) {
-            $_last = lang_sys_common_paging_last;
-        } else {
-            $_last = 'Last Page';
-        }
+				$_last = __('Last Page');
 
         if ($_page < $_num_page_total) {
             $_buffer .= ' &nbsp;';

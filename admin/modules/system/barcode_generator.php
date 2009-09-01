@@ -34,7 +34,7 @@ $can_read = utility::havePrivilege('system', 'r');
 $can_write = utility::havePrivilege('system', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'.lang_sys_common_no_privilege.'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
 }
 
 $max_print = 50;
@@ -93,12 +93,12 @@ if (isset($_POST['saveData']) AND $can_write) {
         foreach ($_POST['barcode'] as $barcode_text) {
             if (!empty($barcode_text)) {
                 $barcode_text = trim($barcode_text);
-                echo 'new Ajax.Request(\''.SENAYAN_WEB_ROOT_DIR.'lib/phpbarcode/barcode.php?code='.$barcode_text.'&encoding='.$sysconf['barcode_encoding'].'&scale='.$size.'&mode=png\', { method: \'get\', onFailure: function(sendAlert) { alert(\''.lang_sys_conf_barcode_alert_print_fail.'\'); } });'."\n";
+                echo 'new Ajax.Request(\''.SENAYAN_WEB_ROOT_DIR.'lib/phpbarcode/barcode.php?code='.$barcode_text.'&encoding='.$sysconf['barcode_encoding'].'&scale='.$size.'&mode=png\', { method: \'get\', onFailure: function(sendAlert) { alert(\''.__('Error creating barcode!').'\'); } });'."\n";
                 // add to sessions
                 $_SESSION['barcodes'][] = $barcode_text;
             }
         }
-        echo 'alert(\''.lang_sys_conf_barcode_alert_print_ok.'\')'."\n";
+        echo 'alert(\''.__('Barcode generation finished').'\')'."\n";
         echo 'location.href = \''.$_SERVER['PHP_SELF'].'\''."\n";
         echo '</script>';
     }
@@ -108,7 +108,7 @@ if (isset($_POST['saveData']) AND $can_write) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner barcodeIcon">
-    <?php echo strtoupper(lang_sys_barcodes).' <hr />' . lang_sys_barcodes_description. ' "' .lang_sys_conf_barcode_button_print. '".'; ?>
+    <?php echo strtoupper(__('Barcode Generator')).' <hr />' . __('Type barcodes text to one or more text field below and click'). ' "' .__('Generate Barcodes'). '".'; ?>
 </div>
 </fieldset>
 <?php
@@ -122,9 +122,9 @@ $row = 1;
 $row_num = 6;
 
 // submit button
-$table->appendTableRow(array(lang_sys_conf_barcode_field_size.' : <select name="size"><option value="1">'.lang_sys_conf_barcode_field_option_1.'</option>
-    <option value="2" selected>'.lang_sys_conf_barcode_field_option_2.'</option>
-    <option value="3">'.lang_sys_conf_barcode_field_option_3.'</option></select>'));
+$table->appendTableRow(array(__('Barcode Size').' : <select name="size"><option value="1">'.__('Small').'</option>
+    <option value="2" selected>'.__('Medium').'</option>
+    <option value="3">'.__('Big').'</option></select>'));
 // set cell attribute
 $table->setCellAttr($row, 0, 'colspan="3" class="alterCell"');
 $row++;
@@ -138,7 +138,7 @@ while ($row <= $row_num) {
 }
 
 // submit button
-$table->appendTableRow(array('<input type="submit" name="saveData" value="'.lang_sys_conf_barcode_button_print.'" />'));
+$table->appendTableRow(array('<input type="submit" name="saveData" value="'.__('Generate Barcodes').'" />'));
 // set cell attribute
 $table->setCellAttr($row_num+1, 0, 'colspan="3" class="alterCell"');
 

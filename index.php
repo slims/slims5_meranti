@@ -30,7 +30,7 @@ if ($sysconf['template']['base'] == 'html') {
 // page title
 $page_title = $sysconf['library_name'].' | '.$sysconf['library_subname'].' :: OPAC';
 // default library info
-$info = lang_opac_info;
+$info = __('Web Online Public Access Catalog - Use the search options to find documents quickly');
 // total opac result page
 $total_pages = 1;
 // default header info

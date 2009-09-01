@@ -38,7 +38,7 @@ $can_read = utility::havePrivilege('system', 'r');
 $can_write = utility::havePrivilege('system', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'.lang_sys_common_no_privilege.'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
 }
 
 /* RECORD OPERATION */
@@ -47,7 +47,7 @@ if (isset($_POST['saveData'])) {
     $moduleName = trim(strip_tags($_POST['moduleName']));
     $modulePath = trim(strip_tags($_POST['modulePath']));
     if (empty($moduleName) OR empty($modulePath)) {
-        utility::jsAlert(lang_sys_conf_module_alert_noempty);
+        utility::jsAlert(__('Module name and path can\'t be empty'));
         exit();
     } else {
         $data['module_path'] = $dbs->escape_string($modulePath);
@@ -70,9 +70,9 @@ if (isset($_POST['saveData'])) {
             if ($update) {
                 // write log
                 utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'system', $_SESSION['realname'].' update module data ('.$moduleName.') with path ('.$modulePath.')');
-                utility::jsAlert(lang_sys_conf_module_alert_update_ok);
+                utility::jsAlert(__('Module Data Successfully Updated'));
                 echo '<script type="text/javascript">parent.setContent(\'mainContent\', parent.getPreviousAJAXurl(), \'post\');</script>';
-            } else { utility::jsAlert(lang_sys_conf_module_alert_update_fail."\nDEBUG : ".$sql_op->error); }
+            } else { utility::jsAlert(__('Module Data FAILED to Updated. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
         } else {
             /* INSERT RECORD MODE */
@@ -83,9 +83,9 @@ if (isset($_POST['saveData'])) {
                 $dbs->query('INSERT INTO group_access VALUES (1, '.$module_id.', 1, 1)');
                 // write log
                 utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'system', $_SESSION['realname'].' add new module ('.$moduleName.') with path ('.$modulePath.')');
-                utility::jsAlert(lang_sys_conf_module_alert_save_ok);
+                utility::jsAlert(__('New Module Data Successfully Saved'));
                 echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'\', \'post\');</script>';
-            } else { utility::jsAlert(lang_sys_conf_module_alert_save_fail."\n".$sql_op->error); }
+            } else { utility::jsAlert(__('Module Data FAILED to Save. Please Contact System Administrator')."\n".$sql_op->error); }
             exit();
         }
     }
@@ -121,10 +121,10 @@ if (isset($_POST['saveData'])) {
 
     // error alerting
     if ($error_num == 0) {
-        utility::jsAlert(lang_sys_conf_module_common_alert_delete_success);
+        utility::jsAlert(__('All Data Successfully Deleted'));
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
     } else {
-        utility::jsAlert(lang_sys_conf_module_common_alert_delete_fail);
+        utility::jsAlert(__('Some or All Data NOT deleted successfully!\nPlease contact system administrator'));
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
     }
     exit();
@@ -135,12 +135,12 @@ if (isset($_POST['saveData'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner moduleIcon">
-    <?php echo strtoupper(lang_sys_modules); ?> - <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/module.php?action=detail', 'get');" class="headerText2"><?php echo lang_sys_modules_new_add; ?></a>
-    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/module.php', 'get');" class="headerText2"><?php echo lang_sys_modules_list; ?></a>
+    <?php echo strtoupper(__('Modules')); ?> - <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/module.php?action=detail', 'get');" class="headerText2"><?php echo __('Add New Modules'); ?></a>
+    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/module.php', 'get');" class="headerText2"><?php echo __('Modules List'); ?></a>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo lang_sys_common_form_search_field; ?> :
+    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
-    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/module.php?' + $('search').serialize(), 'post')" value="<?php echo lang_sys_common_form_search; ?>" class="button" />
+    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/module.php?' + $('search').serialize(), 'post')" value="<?php echo __('Search'); ?>" class="button" />
     </form>
 </div>
 </fieldset>
@@ -149,7 +149,7 @@ if (isset($_POST['saveData'])) {
 /* main content */
 if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'detail')) {
     if (!($can_read AND $can_write)) {
-        die('<div class="errorBox">'.lang_sys_common_no_privilege.'</div>');
+        die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
     }
     /* RECORD FORM */
     $itemID = (integer)isset($_POST['itemID'])?$_POST['itemID']:0;
@@ -158,7 +158,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 
     // create new instance
     $form = new simbio_form_table_AJAX('mainForm', $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'], 'post');
-    $form->submit_button_attr = 'name="saveData" value="'.lang_sys_common_form_save_change.'" class="button"';
+    $form->submit_button_attr = 'name="saveData" value="'.__('Save').'" class="button"';
 
     // form table attributes
     $form->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
@@ -173,20 +173,20 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         // form record title
         $form->record_title = $rec_d['module_name'];
         // submit button attribute
-        $form->submit_button_attr = 'name="saveData" value="'.lang_sys_common_form_update.'" class="button"';
+        $form->submit_button_attr = 'name="saveData" value="'.__('Update').'" class="button"';
     }
 
     /* Form Element(s) */
     // module
-    $form->addTextField('text', 'moduleName', lang_sys_conf_module_field_name.'*', $rec_d['module_name'], 'style="width: 50%;"');
+    $form->addTextField('text', 'moduleName', __('Module Name').'*', $rec_d['module_name'], 'style="width: 50%;"');
     // module path
-    $form->addTextField('text', 'modulePath', lang_sys_conf_module_field_path.'*', $rec_d['module_path'], 'style="width: 100%;"');
+    $form->addTextField('text', 'modulePath', __('Module Path').'*', $rec_d['module_path'], 'style="width: 100%;"');
     // module desc
-    $form->addTextField('text', 'moduleDesc', lang_sys_conf_module_field_description, $rec_d['module_desc'], 'style="width: 100%;"');
+    $form->addTextField('text', 'moduleDesc', __('Module Description'), $rec_d['module_desc'], 'style="width: 100%;"');
 
     // edit mode messagge
     if ($form->edit_mode) {
-        echo '<div class="infoBox">'.lang_sys_conf_module_common_edit_info.' : <b>'.$rec_d['module_name'].'</b></div>';
+        echo '<div class="infoBox">'.__('You are going to edit data').' : <b>'.$rec_d['module_name'].'</b></div>'; //mfc
     }
     // print out the form object
     echo $form->printOut();
@@ -199,11 +199,11 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $datagrid = new simbio_datagrid();
     if ($can_read AND $can_write) {
         $datagrid->setSQLColumn('mdl.module_id',
-            'mdl.module_name AS \''.lang_sys_conf_module_field_name.'\'',
-            'mdl.module_desc AS \''.lang_sys_conf_module_field_description.'\'');
+            'mdl.module_name AS \''.__('Module Name').'\'',
+            'mdl.module_desc AS \''.__('Module Description').'\'');
     } else {
-        $datagrid->setSQLColumn('mdl.module_name AS \''.lang_sys_conf_module_field_name.'\'',
-            'mdl.module_desc AS \''.lang_sys_conf_module_field_description.'\'');
+        $datagrid->setSQLColumn('mdl.module_name AS \''.__('Module Name').'\'',
+            'mdl.module_desc AS \''.__('Module Description').'\'');
     }
 
     $datagrid->setSQLorder('module_name ASC');
@@ -224,7 +224,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // put the result into variables
     $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, ($can_read AND $can_write));
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
-        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, lang_sys_common_search_result_info);
+        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
         echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
     }
 

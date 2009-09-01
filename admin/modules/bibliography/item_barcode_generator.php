@@ -35,7 +35,7 @@ require SIMBIO_BASE_DIR.'simbio_DB/simbio_dbop.inc.php';
 $can_read = utility::havePrivilege('bibliography', 'r');
 
 if (!$can_read) {
-    die('<div class="errorBox">'.lang_sys_common_unauthorized.'</div>');
+    die('<div class="errorBox">'.__('You are not authorized to view this section').'</div>');
 }
 
 $max_print = 50;
@@ -85,12 +85,12 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
     echo '</script>';
     sleep(2);
     if (isset($limit_reach)) {
-        $msg = str_replace('{max_print}', $max_print, lang_mod_biblio_alert_print_no_add_queue);
+        $msg = str_replace('{max_print}', $max_print, __('Selected items NOT ADDED to print queue. Only {max_print} can be printed at once')); //mfc
         utility::jsAlert($msg);
     } else {
         // update print queue count object
         echo '<script type="text/javascript">parent.$(\'queueCount\').update(\''.$print_count.'\');</script>';
-        utility::jsAlert(lang_mod_biblio_alert_print_add_ok);
+        utility::jsAlert(__('Selected items added to print queue'));
     }
     exit();
 }
@@ -99,7 +99,7 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
 if (isset($_GET['action']) AND $_GET['action'] == 'clear') {
     // update print queue count object
     echo '<script type="text/javascript">parent.$(\'queueCount\').update(\'0\');</script>';
-    utility::jsAlert(lang_mod_biblio_common_print_cleared);
+    utility::jsAlert(__('Print queue cleared!'));
     unset($_SESSION['barcodes']);
     exit();
 }
@@ -108,11 +108,11 @@ if (isset($_GET['action']) AND $_GET['action'] == 'clear') {
 if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     // check if label session array is available
     if (!isset($_SESSION['barcodes'])) {
-        utility::jsAlert(lang_mod_biblio_common_print_no_data);
+        utility::jsAlert(__('There is no data to print!'));
         die();
     }
     if (count($_SESSION['barcodes']) < 1) {
-        utility::jsAlert(lang_mod_biblio_common_print_no_data);
+        utility::jsAlert(__('There is no data to print!'));
         die();
     }
 
@@ -193,20 +193,20 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner printIcon">
-    <?php echo lang_mod_biblio_tools_item_barcode; ?> - <a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/item_barcode_generator.php?action=print" class="headerText2"><?php echo lang_mod_biblio_tools_item_barcode_print_select;?></a>
-    &nbsp; <a href="#" onclick="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/item_barcode_generator.php?action=clear" class="headerText2" style="color: #FF0000;"><?php echo lang_mod_biblio_tools_item_barcode_clear; ?></a>
+    <?php echo __('Item Barcodes Printing'); ?> - <a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/item_barcode_generator.php?action=print" class="headerText2"><?php echo __('Print Barcodes for Selected Data');?></a>
+    &nbsp; <a href="#" onclick="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/item_barcode_generator.php?action=clear" class="headerText2" style="color: #FF0000;"><?php echo __('Clear Print Queue'); ?></a>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo lang_sys_common_form_search_field; ?> :
+    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
-    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/item_barcode_generator.php?' + $('search').serialize(), 'post')" value="<?php echo lang_sys_common_form_search; ?>" class="button" />
+    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/item_barcode_generator.php?' + $('search').serialize(), 'post')" value="<?php echo __('Search'); ?>" class="button" />
     </form>
     <div style="margin-top: 3px;">
     <?php
-    echo lang_mod_biblio_tools_common_print_msg1.' <font style="color: #FF0000">'.$max_print.'</font> '.lang_mod_biblio_tools_common_print_msg2.' ';
+    echo __('Maximum').' <font style="color: #FF0000">'.$max_print.'</font> '.__('records can be printed at once. Currently there is').' '; //mfc
     if (isset($_SESSION['barcodes'])) {
         echo '<font id="queueCount" style="color: #FF0000">'.count($_SESSION['barcodes']).'</font>';
     } else { echo '<font id="queueCount" style="color: #FF0000">0</font>'; }
-    echo ' '.lang_mod_biblio_tools_common_print_msg3;
+    echo ' '.__('in queue waiting to be printed.'); //mfc
     ?>
     </div>
 </div>
@@ -221,8 +221,8 @@ $table_spec = 'item LEFT JOIN biblio ON item.biblio_id=biblio.biblio_id';
 // create datagrid
 $datagrid = new simbio_datagrid();
 $datagrid->setSQLColumn('item.item_code',
-    'item.item_code AS \''.lang_mod_circ_tblheader_item_code.'\'',
-    'biblio.title AS \''.lang_mod_circ_tblheader_title.'\'');
+    'item.item_code AS \''.__('Item Code').'\'',
+    'biblio.title AS \''.__('Title').'\'');
 $datagrid->setSQLorder('item.last_update DESC');
 // is there any search
 if (isset($_GET['keywords']) AND $_GET['keywords']) {
@@ -248,17 +248,17 @@ $datagrid->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacin
 $datagrid->table_header_attr = 'class="dataListHeader" style="font-weight: bold;"';
 // edit and checkbox property
 $datagrid->edit_property = false;
-$datagrid->chbox_property = array('itemID', lang_sys_common_tblheader_add);
-$datagrid->chbox_action_button = lang_mod_biblio_common_form_print_queue;
-$datagrid->chbox_confirm_msg = lang_mod_biblio_common_print_queue_confirm;
+$datagrid->chbox_property = array('itemID', __('Add'));
+$datagrid->chbox_action_button = __('Add To Print Queue');
+$datagrid->chbox_confirm_msg = __('Add to print queue?');
 $datagrid->column_width = array('10%', '85%');
 // set checkbox action URL
 $datagrid->chbox_form_URL = $_SERVER['PHP_SELF'];
 // put the result into variables
 $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, $can_read);
 if (isset($_GET['keywords']) AND $_GET['keywords']) {
-    $msg = str_replace('{result->num_rows}', $datagrid->num_rows, lang_sys_common_search_result_info);
-    echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"<div>'.lang_sys_common_query_msg1.' <b>'.$datagrid->query_time.'</b> '.lang_sys_common_query_msg2.'</div></div>';
+    $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
+    echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"<div>'.__('Query took').' <b>'.$datagrid->query_time.'</b> '.__('second(s) to complete').'</div></div>'; //mfc
 }
 echo $datagrid_result;
 /* main content end */

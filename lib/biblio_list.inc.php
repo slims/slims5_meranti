@@ -321,7 +321,7 @@ class biblio_list
             return '<div style="border: 1px dotted #FF0000; color: #FF0000; padding: 5px; margin: 5px;">Query error : '.$this->query_error.'</div>';
         }
         while ($_biblio_d = $this->resultset->fetch_assoc()) {
-            $_biblio_d['title'] = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" title="'.(defined('lang_opac_rec_detail')?lang_opac_rec_detail:'View Record Detail').'">'.$_biblio_d['title'].'</a>';
+            $_biblio_d['title'] = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" title="'.__('Record Detail').'">'.$_biblio_d['title'].'</a>';
             // label
             if ($this->show_labels AND !empty($_biblio_d['labels'])) {
                 $arr_labels = @unserialize($_biblio_d['labels']);
@@ -342,7 +342,7 @@ class biblio_list
 								}
             }
             // button
-            $_biblio_d['detail_button'] = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" class="detailLink" title="'.(defined('lang_opac_rec_detail')?lang_opac_rec_detail:'View Record Detail').'">'.lang_opac_rec_detail.'</a>';
+            $_biblio_d['detail_button'] = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" class="detailLink" title="'.__('Record Detail').'">'.__('Record Detail').'</a>';
             if ($this->xml_detail) {
                 $_biblio_d['xml_button'] = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&inXML=true&id='.$_biblio_d['biblio_id'].'" class="xmlDetailLink" title="View Detail in XML Format" target="_blank">XML Detail</a>';
             } else {
@@ -373,7 +373,7 @@ class biblio_list
             if ($_authors) {
                 // replace the last strip
                 $_authors = substr_replace($_authors, '', -3);
-                $_buffer .= '<div class="subItem authorField"><b>'.(defined('lang_mod_biblio_field_authors')?lang_mod_biblio_field_authors:'Authors').'</b> : '.$_authors.'</div>';
+                $_buffer .= '<div class="subItem authorField"><b>'.__('Author(s)').'</b> : '.$_authors.'</div>';
             }
 
             # checking custom file

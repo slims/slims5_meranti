@@ -254,13 +254,13 @@ class simbio_fe_radio extends abs_simbio_form_element
 
 /* Date field */
 /* Global vars containing date and month array */
-$simbio_fe_date_array = array( array('01', defined('lang_sys_common_date')?strtoupper(lang_sys_common_date):'DATE'), '01', '02', '03', '04', '05', '06', '07', '08', '09', '10',
+$simbio_fe_date_array = array( array('01', strtoupper(__('Date')), '01', '02', '03', '04', '05', '06', '07', '08', '09', '10',
     '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
-    '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31');
-$simbio_fe_date_month_array = array( array('01', defined('lang_sys_common_month')?strtoupper(lang_sys_common_month):'MONTH'), array('01', 'January'), array('02', 'February'), array('03', 'March'),
+    '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'));
+$simbio_fe_date_month_array = array( array('01', strtoupper(__('Month')), array('01', 'January'), array('02', 'February'), array('03', 'March'),
     array('04', 'April'), array('05', 'May'), array('06', 'June'),
     array('07', 'July'), array('08', 'August'), array('09', 'September'),
-    array('10', 'October'), array('11', 'November'), array('12', 'December') );
+    array('10', 'October'), array('11', 'November'), array('12', 'December')));
 
 /* Depecrated class for compability with older code */
 class simbio_form_element

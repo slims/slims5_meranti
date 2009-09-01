@@ -85,11 +85,11 @@ if (isset($_POST['save']) AND (isset($_POST['authorID']) OR trim($_POST['search_
 
         if ($sql_op->insert('biblio_author', $data)) {
             echo '<script type="text/javascript">';
-            echo 'alert(\''.lang_mod_biblio_author_update_ok.'\');';
+            echo 'alert(\''.__('Author succesfully updated!').'\');';
             echo 'opener.setIframeContent(\'authorIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_author.php?biblioID='.$data['biblio_id'].'\');';
             echo '</script>';
         } else {
-            utility::jsAlert(lang_mod_biblio_author_added_fail."\n".$sql_op->error);
+            utility::jsAlert(__('Author FAILED to Add. Please Contact System Administrator')."\n".$sql_op->error);
         }
     } else {
         if (isset($_POST['authorID']) AND !empty($_POST['authorID'])) {
@@ -114,7 +114,7 @@ if (isset($_POST['save']) AND (isset($_POST['authorID']) OR trim($_POST['search_
         }
 
         echo '<script type="text/javascript">';
-        echo 'alert(\''.lang_mod_biblio_author_added_ok.'\');';
+        echo 'alert(\''.__('Author added!').'\');';
         echo 'opener.setIframeContent(\'authorIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_author.php\');';
         echo '</script>';
     }
@@ -125,12 +125,12 @@ if (isset($_POST['save']) AND (isset($_POST['authorID']) OR trim($_POST['search_
 <div style="padding: 5px; background: #CCCCCC;">
 <form name="mainForm" action="pop_author.php?biblioID=<?php echo $biblioID; ?>" method="post">
 <div>
-    <strong><?php echo lang_mod_biblio_author_form_title; ?> </strong>
+    <strong><?php echo __('Add Author'); ?> </strong>
     <hr />
     <form name="searchAuthor" method="post" style="display: inline;">
     <?php
     $ajax_exp = "ajaxFillSelect('../../AJAX_lookup_handler.php', 'mst_author', 'author_id:author_name', 'authorID', $('search_str').getValue())";
-    echo lang_mod_biblio_author_form_name; ?> : <input type="text" name="search_str" id="search_str" style="width: 30%;" onkeyup="<?php echo $ajax_exp; ?>" onchange="<?php echo $ajax_exp; ?>" />
+    echo __('Author Name'); ?> : <input type="text" name="search_str" id="search_str" style="width: 30%;" onkeyup="<?php echo $ajax_exp; ?>" onchange="<?php echo $ajax_exp; ?>" />
     <select name="type" style="width: 20%;"><?php
     foreach ($sysconf['authority_type'] as $type_id => $type) {
         echo '<option value="'.$type_id.'">'.$type.'</option>';
@@ -143,9 +143,9 @@ if (isset($_POST['save']) AND (isset($_POST['authorID']) OR trim($_POST['search_
     ?></select>
 </div>
 <div style="margin-top: 5px;">
-<select name="authorID" id="authorID" size="5" style="width: 100%;"><option value="0"><?php echo lang_mod_biblio_author_form_search; ?></option></select>
+<select name="authorID" id="authorID" size="5" style="width: 100%;"><option value="0"><?php echo __('Type to search for existing authors or to add a new one'); ?></option></select>
 <?php if ($biblioID) { echo '<input type="hidden" name="biblioID" value="'.$biblioID.'" />'; } ?>
-<input type="submit" name="save" value="<?php echo lang_mod_biblio_author_insert_to_biblio; ?>" style="margin-top: 5px;" />
+<input type="submit" name="save" value="<?php echo __('Insert To Bibliography'); ?>" style="margin-top: 5px;" />
 </div>
 </form>
 </div>

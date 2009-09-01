@@ -33,23 +33,23 @@ $can_read = utility::havePrivilege('circulation', 'r');
 $can_write = utility::havePrivilege('circulation', 'w');
 
 if (!($can_read AND $can_write)) {
-    die('<div class="errorBox">'.lang_sys_common_no_privilege.'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
 }
 
 // check if quick return is enabled
 if (!$sysconf['quick_return']) {
-    die('<div class="errorBox">'.lang_mod_circ_loan_quick_return_disable.'</div');
+    die('<div class="errorBox">'.__('Quick Return is disabled').'</div');
 }
 ?>
 
 <fieldset class="menuBox">
 <div class="menuBoxInner quickReturnIcon">
-    <?php echo strtoupper(lang_mod_circ_quick_return); ?> - <?php echo lang_mod_circ_quick_return_msg1; ?>
+    <?php echo strtoupper(__('Quick Return')); ?> - <?php echo __('Insert an item ID to return collection with keyboard or barcode reader'); ?>
     <hr />
     <form action="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/ajax_action.php" target="circAction" method="post" style="display: inline;">
-    <?php echo lang_mod_circ_loan_quick_return_form_item_id; ?> :
+    <?php echo __('Item ID'); ?> :
     <input type="text" name="quickReturnID" id="quickReturnID" size="30" />
-    <input type="submit" value="<?php echo lang_mod_circ_loan_quick_return_form_button; ?>" class="button" />
+    <input type="submit" value="<?php echo __('Return'); ?>" class="button" />
     </form>
     <iframe name="circAction" id="circAction" style="display: inline; width: 5px; height: 5px; visibility: hidden;"></iframe>
 </div>

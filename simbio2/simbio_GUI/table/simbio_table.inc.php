@@ -210,7 +210,7 @@ class simbio_table
 
         // check if the array have a records
         if (count($this->table_row) < 1) {
-            $_buffer .= '<tr><td align="center" style="color: red; background-color: #CCCCCC;">'.lang_simbio_nodata.'</td></tr>';
+            $_buffer .= '<tr><td align="center" style="color: red; background-color: #CCCCCC;">'.__('No Data').'</td></tr>';
         } else {
             // set header style if exist
             $this->setCellAttr(0, null, $this->table_header_attr);

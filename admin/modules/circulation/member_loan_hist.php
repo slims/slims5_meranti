@@ -49,10 +49,10 @@ if (isset($_SESSION['memberID']) AND !empty($_SESSION['memberID'])) {
     // create datagrid
     $datagrid = new simbio_datagrid();
     $datagrid->setSQLColumn(
-        'l.item_code AS \''.lang_mod_circ_tblheader_item_code.'\'',
-        'b.title AS \''.lang_mod_circ_tblheader_title.'\'',
-        'l.loan_date AS \''.lang_mod_circ_tblheader_loan_date.'\'',
-        'IF(return_date IS NULL, \'<i>'.lang_mod_circ_return_no_return_history_data.'</i>\', return_date) AS \''.lang_mod_circ_tblheader_returned_date.'\'');
+        'l.item_code AS \''.__('Item Code').'\'',
+        'b.title AS \''.__('Title').'\'',
+        'l.loan_date AS \''.__('Loan Date').'\'',
+        'IF(return_date IS NULL, \'<i>'.__('Not Returned Yet').'</i>\', return_date) AS \''.__('Returned Date').'\'');
     $datagrid->setSQLorder("l.loan_date DESC");
 
     $criteria = 'l.member_id=\''.$dbs->escape_string($memberID).'\' ';
@@ -75,7 +75,7 @@ if (isset($_SESSION['memberID']) AND !empty($_SESSION['memberID'])) {
     // put the result into variables
     $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, false);
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
-        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, lang_sys_common_search_result_info);
+        $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
         echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
     }
 

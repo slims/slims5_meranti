@@ -143,7 +143,7 @@ class detail extends content_list
         // authors for metadata
         $this->metadata .= '<meta name="Authors" content="';
         while ($data = $_biblio_authors_q->fetch_row()) {
-            $authors .= '<a href="?author='.urlencode('"'.$data[0].'"').'&search=Search" title="'.lang_mod_biblio_link_author_search.'">'.$data[0]."</a><br />";
+            $authors .= '<a href="?author='.urlencode('"'.$data[0].'"').'&search=Search" title="'.__('Click to view others documents with this author').'">'.$data[0]."</a><br />";
             $this->metadata .= $data[0].'; ';
         }
         $this->metadata .= '" />';
@@ -157,7 +157,7 @@ class detail extends content_list
         $topics = '';
         $this->metadata .= '<meta name="topics" content="';
         while ($data = $_biblio_topics_q->fetch_row()) {
-            $topics .= '<a href="?subject='.urlencode('"'.$data[0].'"').'&search=Search" title="'.lang_mod_biblio_link_topic_search.'">'.$data[0]."</a><br />";
+            $topics .= '<a href="?subject='.urlencode('"'.$data[0].'"').'&search=Search" title="'.__('Click to view others documents with this subject').'">'.$data[0]."</a><br />";
             $this->metadata .= $data[0].'; ';
         }
         $this->metadata .= '" />';
@@ -178,11 +178,11 @@ class detail extends content_list
             LEFT JOIN mst_location AS loc ON i.location_id=loc.location_id
             WHERE i.biblio_id='.$this->detail_id.' GROUP BY i.location_id');
         if ($_item_loc_q->num_rows < 1) {
-            $this->record_detail['location'] = '<strong style="color: red; font-weight: bold;">'.lang_mod_biblio_field_no_item.'</strong>';
+            $this->record_detail['location'] = '<strong style="color: red; font-weight: bold;">'.__('There is no item/copy for this title yet').'</strong>';
         } else {
             $this->record_detail['location'] = '';
             while ($_item_loc_d = $_item_loc_q->fetch_row()) {
-                $this->record_detail['location'] .= '<strong>'.$_item_loc_d[1].' </strong> '.lang_mod_biblio_item_common_location_status_1.' <strong>'.$_item_loc_d[0].'</strong><br />';
+                $this->record_detail['location'] .= '<strong>'.$_item_loc_d[1].' </strong> '.__('copies at').' <strong>'.$_item_loc_d[0].'</strong><br />'; //mfc
             }
         }
 

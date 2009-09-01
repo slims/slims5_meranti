@@ -31,7 +31,7 @@ $can_read = utility::havePrivilege('reporting', 'r');
 $can_write = utility::havePrivilege('reporting', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'.lang_sys_common_no_privilage.'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
@@ -50,25 +50,25 @@ if (!$reportView) {
 ?>
     <!-- filter -->
     <fieldset style="margin-bottom: 3px;">
-    <legend style="font-weight: bold"><?php echo strtoupper(lang_mod_report_other_staffactivity); ?> - <?php echo lang_mod_reporting_form_generic_header; ?></legend>
+    <legend style="font-weight: bold"><?php echo strtoupper(__('Staff Activity')); ?> - <?php echo __('Report Filter'); ?></legend>
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
         <div class="divRow">
-            <div class="divRowLabel"><?php echo lang_mod_report_staffactivity_form_activityfrom; ?></div>
+            <div class="divRowLabel"><?php echo __('Activity Date From'); ?></div>
             <div class="divRowContent">
             <?php echo simbio_form_element::dateField('startDate', '2000-01-01'); ?>
             </div>
         </div>
         <div class="divRow">
-            <div class="divRowLabel"><?php echo lang_mod_report_staffactivity_form_activityto; ?></div>
+            <div class="divRowLabel"><?php echo __('Activity Date Until'); ?></div>
             <div class="divRowContent">
             <?php echo simbio_form_element::dateField('untilDate', date('Y-m-d')); ?>
             </div>
         </div>
     </div>
     <div style="padding-top: 10px; clear: both;">
-    <input type="submit" name="applyFilter" value="<?php echo lang_mod_reporting_form_button_filter_apply; ?>" />
-    <input type="button" name="moreFilter" value="<?php echo lang_mod_reporting_form_button_filter_options_show; ?>" onclick="showHideTableRows('filterForm', 1, this, '<?php echo lang_mod_reporting_form_button_filter_options_show; ?>', '<?php echo lang_mod_reporting_form_button_filter_options_hide; ?>')" />
+    <input type="submit" name="applyFilter" value="<?php echo __('Apply Filter'); ?>" />
+    <input type="button" name="moreFilter" value="<?php echo __('Show More Filter Options'); ?>" onclick="showHideTableRows('filterForm', 1, this, '<?php echo __('Show More Filter Options'); ?>', '<?php echo __('Hide Filter Options'); ?>')" />
     <input type="hidden" name="reportView" value="true" />
     </div>
     </form>
@@ -76,7 +76,7 @@ if (!$reportView) {
     <script type="text/javascript">hideRows('filterForm', 2);</script>
     <!-- filter end -->
     <div class="dataListHeader" style="height: 35px;">
-    <input type="button" value="<?php echo lang_mod_reporting_form_button_print; ?>" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;"
+    <input type="button" value="<?php echo __('Print Current Page'); ?>" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;"
     onclick="javascript: reportView.print();" />
     &nbsp;<span id="pagingBox">&nbsp;</span></div>
     <iframe name="reportView" src="<?php echo $_SERVER['PHP_SELF'].'?reportView=true'; ?>" frameborder="0" style="width: 100%; height: 500px;"></iframe>
@@ -88,12 +88,12 @@ if (!$reportView) {
 
     // create datagrid
     $reportgrid = new report_datagrid();
-    $reportgrid->setSQLColumn('u.realname AS \''.lang_sys_user_field_realname.'\'',
-        'u.username AS \''.lang_sys_user_field_login_username.'\'',
-        'u.user_id AS \''.lang_mod_report_staffactivity_tblheader_bibliography.'\'',
-        'u.user_id AS \''.lang_mod_report_staffactivity_tblheader_items.'\'',
-        'u.user_id AS \''.lang_mod_report_staffactivity_tblheader_members.'\'',
-        'u.user_id AS \''.lang_mod_report_staffactivity_tblheader_circulation.'\'');
+    $reportgrid->setSQLColumn('u.realname AS \''.__('Real Name').'\'',
+        'u.username AS \''.__('Login Username').'\'',
+        'u.user_id AS \''.__('Bibliography Data Entry').'\'',
+        'u.user_id AS \''.__('Item Data Entry').'\'',
+        'u.user_id AS \''.__('Member Data Entry').'\'',
+        'u.user_id AS \''.__('Circulation Tasks').'\'');
     $reportgrid->setSQLorder('realname ASC');
 
     // is there any search

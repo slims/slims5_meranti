@@ -137,9 +137,9 @@ $sysconf['baseurl'] = '';
 // change below setting according to your database configuration
 define('DB_HOST', 'localhost');
 define('DB_PORT', '3306');
-define('DB_NAME', 'senayan3-stable11');
-define('DB_USERNAME', 'arie');
-define('DB_PASSWORD', 'ariearie');
+define('DB_NAME', 'tmp_senayan3');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', 'root');
 // we prefer to use mysqli extensions if its available
 if (extension_loaded('mysqli')) {
     /* MYSQLI */
@@ -159,7 +159,11 @@ if (extension_loaded('mysqli')) {
 $sysconf['session_timeout'] = 7200;
 
 /* default application language */
-$sysconf['default_lang'] = 'english';
+$sysconf['default_lang'] = 'en_US';
+
+/* Force UTF-8 for MySQL connection and HTTP header */
+header("Content-type: text/html; charset=UTF-8");
+$dbs->query("SET NAMES 'utf8'");
 
 /* GUI Template config */
 $sysconf['template']['dir'] = 'template';
@@ -330,10 +334,9 @@ if (stripos($_SERVER['PHP_SELF'], '/admin') === false) {
         $sysconf['default_lang'] = trim($_COOKIE['select_lang']);
     }
 }
-// load language file
-if (file_exists(LANGUAGES_BASE_DIR.$sysconf['default_lang'].'.lang.inc.php')) {
-    include LANGUAGES_BASE_DIR.$sysconf['default_lang'].'.lang.inc.php';
-}
+// Apply language settings
+require_once(LANGUAGES_BASE_DIR.'localisation.php');
+
 // template info config
 if (!file_exists($sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/tinfo.inc.php')) {
     $sysconf['template']['base'] = 'php'; /* html OR php */
