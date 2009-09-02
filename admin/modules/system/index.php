@@ -84,7 +84,9 @@ if (isset($_POST['updateData'])) {
     $dbs->query('INSERT INTO setting VALUES (NULL, \'opac_result_num\', \''.$dbs->escape_string(serialize($_POST['opac_result_num'])).'\')');
 
     // promoted titles in homepage
-    $dbs->query('INSERT INTO setting VALUES (NULL, \'enable_promote_titles\', \''.$dbs->escape_string(serialize($_POST['enable_promote_titles'])).'\')');
+    if (isset($_POST['enable_promote_titles'])) {
+        $dbs->query('INSERT INTO setting VALUES (NULL, \'enable_promote_titles\', \''.$dbs->escape_string(serialize($_POST['enable_promote_titles'])).'\')');
+    }
 
     // quick return
     $quick_return = $_POST['quick_return'] == '1'?true:false;
@@ -167,8 +169,7 @@ $form->addSelectList('admin_template', __('Admin Template'), $admin_tpl_options,
 
 // application language
 require_once(LANGUAGES_BASE_DIR.'localisation.php');
-$lang_options = $available_languages;
-$form->addSelectList('default_lang', __('Default App. Language'), $lang_options, $sysconf['default_lang']);
+$form->addSelectList('default_lang', __('Default App. Language'), $available_languages, $sysconf['default_lang']);
 
 // opac result list number
 $result_num_options[] = array('10', '10');

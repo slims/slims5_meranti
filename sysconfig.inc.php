@@ -335,7 +335,7 @@ if (stripos($_SERVER['PHP_SELF'], '/admin') === false) {
     }
 }
 // Apply language settings
-require_once(LANGUAGES_BASE_DIR.'localisation.php');
+require LANGUAGES_BASE_DIR.'localisation.php';
 
 // template info config
 if (!file_exists($sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/tinfo.inc.php')) {
