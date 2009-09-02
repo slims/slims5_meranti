@@ -164,8 +164,9 @@ var disableForm = function(strFormID)
 /* enable all forms elements
 this function is my own implementation for disabling all form elements
 */
-var enableForm = function(strFormID)
+var enableForm = function(strFormID, event)
 {
+    event.preventDefault();
     var formObj = $(strFormID);
     // get all elements in form
     var formElementsArray = formObj.getElements();

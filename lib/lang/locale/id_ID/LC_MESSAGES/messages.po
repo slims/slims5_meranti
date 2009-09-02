@@ -3224,7 +3224,7 @@ msgstr "Minggu"
 #: admin/modules/system/holiday.php:304
 #: admin/modules/system/index.php:122
 msgid "Save Settings"
-msgstr "Set Hari Libur"
+msgstr "Simpan Konfigurasi"
 
 #: admin/modules/system/index.php:48
 #: admin/modules/system/submenu.php:24

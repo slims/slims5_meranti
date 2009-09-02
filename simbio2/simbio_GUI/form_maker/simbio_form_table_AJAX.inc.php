@@ -89,7 +89,7 @@ class simbio_form_table_AJAX extends simbio_form_maker
 
         // check if we are on edit form mode
         if ($this->edit_mode) {
-            $_edit_link .= '<a href="#" onclick="enableForm(\''.$this->form_name.'\'); enableForm(\'deleteForm\'); removeBlockers();" class="editFormLink">EDIT</a>';
+            $_edit_link .= '<a href="#" onclick="enableForm(\''.$this->form_name.'\', event); enableForm(\'deleteForm\', event); removeBlockers();" class="editFormLink">EDIT</a>';
             // delete button exists if the record_id properties exists
             if ($this->record_id && $this->delete_button) {
                 // create delete button
