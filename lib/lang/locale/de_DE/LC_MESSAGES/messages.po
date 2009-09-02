@@ -357,6 +357,10 @@ msgstr ""
 "Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\n"
 "Bitte kontaktieren Sie den Systemadministrator"
 
+#: admin/modules/bibliography
+msgid "Bibliograpy"
+msgstr "Titelaufnahmen"
+
 #: admin/modules/bibliography/index.php:266
 #: admin/modules/bibliography/submenu.php:23
 msgid "Bibliographic"

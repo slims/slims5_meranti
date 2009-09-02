@@ -357,6 +357,10 @@ msgstr ""
 "Sebagian atau semua data GAGAL dihapus!\n"
 "Hubungi admin sistem untuk pemecahannya"
 
+#: admin/modules/bibliography
+msgid "Bibliograpy"
+msgstr "Katalog"
+
 #: admin/modules/bibliography/index.php:266
 #: admin/modules/bibliography/submenu.php:23
 msgid "Bibliographic"
