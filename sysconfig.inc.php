@@ -138,8 +138,8 @@ $sysconf['baseurl'] = '';
 define('DB_HOST', 'localhost');
 define('DB_PORT', '3306');
 define('DB_NAME', 'senayan3-stable11');
-define('DB_USERNAME', 'arie');
-define('DB_PASSWORD', 'ariearie');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '');
 // we prefer to use mysqli extensions if its available
 if (extension_loaded('mysqli')) {
     /* MYSQLI */
