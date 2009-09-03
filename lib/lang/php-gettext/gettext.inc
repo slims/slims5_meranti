@@ -60,8 +60,7 @@ function _get_reader($domain=null, $category=5, $enable_cache=true) {
         $path = $p . "$locale/". $LC_CATEGORIES[$category] ."/$domain.mo";
         if (file_exists($path)) {
             $input = new FileReader($path);
-        }
-        else {
+        } else {
             $input = null;
         }
         $text_domains[$domain]->l10n = new gettext_reader($input, $enable_cache);
@@ -100,7 +99,7 @@ function _get_codeset($domain=null) {
 function _encode($text) {
     $source_encoding = function_exists('mb_detect_encoding')?mb_detect_encoding($text):'UTF-8';
     $target_encoding = _get_codeset();
-    if ($source_encoding != $target_encoding) {
+    if ($source_encoding != $target_encoding && function_exists('mb_convert_encoding')) {
         return mb_convert_encoding($text, $target_encoding, $source_encoding);
     }
     else {
@@ -123,9 +122,7 @@ function _setlocale($category, $locale) {
             // even if we tried to read locale without setting it first
             return _setlocale($category, $CURRENTLOCALE);
     } else {
-        $ret = 0;
-        if (function_exists('setlocale')) // I don't know if this ever happens ;)
-           $ret = setlocale($category, $locale);
+        $ret = 1;
         if (($ret and $locale == '') or ($ret == $locale)) {
             $EMULATEGETTEXT = 0;
             $CURRENTLOCALE = $ret;
@@ -224,15 +221,12 @@ function _dcngettext($domain, $single, $plural, $number, $category) {
     return _encode($l10n->ngettext($single, $plural, $number));
 }
 
-
-
 // Wrappers to use if the standard gettext functions are available, but the current locale is not supported by the system.
 // Use the standard impl if the current locale is supported, use the custom impl otherwise.
 
 function T_setlocale($category, $locale) {
     return _setlocale($category, $locale);
 }
-
 function T_bindtextdomain($domain, $path) {
     if (_check_locale()) return bindtextdomain($domain, $path);
     else return _bindtextdomain($domain, $path);
@@ -275,10 +269,9 @@ function T_dcngettext($domain, $single, $plural, $number, $category) {
     else return _dcngettext($domain, $single, $plural, $number, $category);
 }
 
-
-
 // Wrappers used as a drop in replacement for the standard gettext functions
-
+// Since we will always use php-gettext, we don't need to create function aliases
+/*
 if (!function_exists('gettext')) {
     function bindtextdomain($domain, $path) {
         return _bindtextdomain($domain, $path);
@@ -311,5 +304,5 @@ if (!function_exists('gettext')) {
         return _dcngettext($domain, $single, $plural, $number, $category);
     }
 }
-
+*/
 ?>
