@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Senayan3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-31 18:09+0100\n"
-"PO-Revision-Date: 2009-08-31 18:09+0100\n"
+"POT-Creation-Date: 2009-09-03 11:37+0100\n"
+"PO-Revision-Date: 2009-09-03 11:37+0100\n"
 "Last-Translator: Tobias Z.\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -356,10 +356,6 @@ msgid ""
 msgstr ""
 "Einige oder alle Daten wurden NICHT erfolgreich gelöscht!\n"
 "Bitte kontaktieren Sie den Systemadministrator"
-
-#: admin/modules/bibliography
-msgid "Bibliograpy"
-msgstr "Titelaufnahmen"
 
 #: admin/modules/bibliography/index.php:266
 #: admin/modules/bibliography/submenu.php:23
@@ -3224,7 +3220,7 @@ msgid "Sunday"
 msgstr "Sonntag"
 
 #: admin/modules/system/holiday.php:304
-#: admin/modules/system/index.php:122
+#: admin/modules/system/index.php:124
 msgid "Save Settings"
 msgstr "Einstellungen speichern"
 
@@ -3237,63 +3233,63 @@ msgstr "Systemkonfiguration"
 msgid "Modify global application preferences"
 msgstr "Globale Anwendungseinstellungen anpassen"
 
-#: admin/modules/system/index.php:115
+#: admin/modules/system/index.php:117
 msgid "Settings saved. Refreshing page"
 msgstr "Einstellungen gespeichert. Seite wird aktualisiert"
 
-#: admin/modules/system/index.php:136
+#: admin/modules/system/index.php:138
 msgid "Library Name"
 msgstr "Bibliotheksname"
 
-#: admin/modules/system/index.php:139
+#: admin/modules/system/index.php:141
 msgid "Library Subname"
 msgstr "Namenszusatz"
 
-#: admin/modules/system/index.php:153
+#: admin/modules/system/index.php:155
 msgid "Public Template"
 msgstr "Template öffentlicher Bereich"
 
-#: admin/modules/system/index.php:166
+#: admin/modules/system/index.php:168
 msgid "Admin Template"
 msgstr "Template administrativer Bereich"
 
-#: admin/modules/system/index.php:171
+#: admin/modules/system/index.php:172
 msgid "Default App. Language"
 msgstr "Standardsprache"
 
-#: admin/modules/system/index.php:179
+#: admin/modules/system/index.php:180
 msgid "Number Of Collections To Show In OPAC Result List"
 msgstr "Zahl anzuzeigender Sammlungen in der OPAC-Ergebnisliste"
 
-#: admin/modules/system/index.php:183
+#: admin/modules/system/index.php:184
 msgid "Show Promoted Titles at Homepage"
 msgstr "Propagierte Titel auf der Startseite anzeigen"
 
-#: admin/modules/system/index.php:195
+#: admin/modules/system/index.php:196
 msgid "Loan Limit Override"
 msgstr "Ausleihlimit ignorieren können"
 
-#: admin/modules/system/index.php:201
+#: admin/modules/system/index.php:202
 msgid "OPAC XML Detail"
 msgstr "OPAC XML-Detail"
 
-#: admin/modules/system/index.php:207
+#: admin/modules/system/index.php:208
 msgid "OPAC XML Result"
 msgstr "OPAC XML-Ergebnis"
 
-#: admin/modules/system/index.php:211
+#: admin/modules/system/index.php:212
 msgid "Forbid"
 msgstr "Verweigern"
 
-#: admin/modules/system/index.php:212
+#: admin/modules/system/index.php:213
 msgid "Allow"
 msgstr "Zulassen"
 
-#: admin/modules/system/index.php:213
+#: admin/modules/system/index.php:214
 msgid "Allow OPAC File Download"
 msgstr "Herunterladen von Dateien im OPAC zulassen"
 
-#: admin/modules/system/index.php:216
+#: admin/modules/system/index.php:217
 msgid "Session Login Timeout"
 msgstr "Automatisch abmelden nach (Sekunden)"
 
@@ -3525,15 +3521,15 @@ msgstr "Ihr Browser unterstützt keine JavaScript oder die Unterstützung wurde 
 msgid "Back To Previous"
 msgstr "Zurück zur vorherigen Seite"
 
-#: lib/lang/localisation.php:37
+#: lib/lang/localisation.php:56
 msgid "German"
 msgstr ""
 
-#: lib/lang/localisation.php:38
+#: lib/lang/localisation.php:57
 msgid "English"
 msgstr ""
 
-#: lib/lang/localisation.php:39
+#: lib/lang/localisation.php:58
 msgid "Indonesian"
 msgstr ""
 
@@ -3578,12 +3574,12 @@ msgstr "Alle abwählen"
 msgid "Date"
 msgstr "Datum"
 
-#: simbio2/simbio_GUI/form_maker/simbio_form_table.inc.php:94
+#: simbio2/simbio_GUI/form_maker/simbio_form_table.inc.php:95
 #: simbio2/simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php:87
 msgid "Delete Record"
 msgstr "Datensatz löschen"
 
-#: simbio2/simbio_GUI/form_maker/simbio_form_table.inc.php:95
+#: simbio2/simbio_GUI/form_maker/simbio_form_table.inc.php:96
 #: simbio2/simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php:88
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -3652,6 +3648,9 @@ msgstr "Einfache Suche"
 #: template/default/index_template.inc.php:60
 msgid "Advanced Search"
 msgstr "Erweiterte Suche"
+
+#~ msgid "Bibliograpy"
+#~ msgstr "Titelaufnahmen"
 
 #, fuzzy
 #~ msgid "%d Auto"
