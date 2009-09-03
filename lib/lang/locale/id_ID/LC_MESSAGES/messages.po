@@ -358,7 +358,7 @@ msgstr ""
 "Hubungi admin sistem untuk pemecahannya"
 
 #: admin/modules/bibliography
-msgid "Bibliograpy"
+msgid "Bibliography"
 msgstr "Katalog"
 
 #: admin/modules/bibliography/index.php:266
