@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com)
+ * Copyright (C) 2009  Arie Nugraha (dicarve@yahoo.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,6 +39,10 @@ if (!$can_read) {
     die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 
+// item status rules
+$rules_option[] = array(NO_LOAN_TRANSACTION, __('No Loan Transaction'));
+$rules_option[] = array(SKIP_STOCK_TAKE, __('Skipped By Stock Take'));
+
 /* RECORD OPERATION */
 if (isset($_POST['saveData'])) {
     $itemStatusID = strip_tags(trim($_POST['itemStatusID']));
@@ -51,13 +55,24 @@ if (isset($_POST['saveData'])) {
         $data['item_status_id'] = $dbs->escape_string($itemStatusID);
         $data['item_status_name'] = $dbs->escape_string($itemStatusName);
         // parsing rules
+		/*
         $rules = '';
         if (isset($_POST['rules']) AND !empty($_POST['rules'])) {
             $rules = serialize($_POST['rules']);
         } else {
             $rules = 'literal{NULL}';
         }
-        $data['rules'] = $rules;
+		*/
+        $data['rules'] = 'literal{NULL}';
+		if (isset($_POST['rules']) AND !empty($_POST['rules'])) {
+			foreach ($_POST['rules'] as $rule) {
+				if ((integer)$rule == NO_LOAN_TRANSACTION) {
+					$data['no_loan'] = 1;
+				} else if ((integer)$rule == SKIP_STOCK_TAKE) {
+					$data['skip_stock_take'] = 1;
+				}
+			}
+		}
         $data['input_date'] = date('Y-m-d');
         $data['last_update'] = date('Y-m-d');
 
@@ -122,10 +137,6 @@ if (isset($_POST['saveData'])) {
 }
 /* item status update process end */
 
-// item status rules
-$rules_option[] = array(NO_LOAN_TRANSACTION, 'No Loan Transaction');
-$rules_option[] = array(STOCK_TAKE_SKIP, 'Skipped By Stock Take');
-
 /* search form */
 ?>
 <fieldset class="menuBox">
@@ -177,7 +188,14 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // item status name
     $form->addTextField('text', 'itemStatus', __('Item Status Name').'*', $rec_d['item_status_name'], 'style="width: 60%;"');
     // item status rules
-    $form->addCheckbox('rules', __('Rules'), $rules_option, unserialize($rec_d['rules']));
+	$rules = array();
+	if ($rec_d['no_loan']) {
+		$rules[] = NO_LOAN_TRANSACTION;
+	}
+	if ($rec_d['skip_stock_take']) {
+		$rules[] = SKIP_STOCK_TAKE;
+	}
+    $form->addCheckbox('rules', __('Rules'), $rules_option, $rules);
 
     // edit mode messagge
     if ($form->edit_mode) {

@@ -144,7 +144,7 @@ class circulation extends member
         if ($this->is_pending) {
             return LOAN_NOT_PERMITTED_PENDING;
         }
-        $_q = $this->obj_db->query("SELECT b.title, i.coll_type_id, b.gmd_id, ist.rules FROM biblio AS b
+        $_q = $this->obj_db->query("SELECT b.title, i.coll_type_id, b.gmd_id, ist.no_loan FROM biblio AS b
             LEFT JOIN item AS i ON b.biblio_id=i.biblio_id
             LEFT JOIN mst_item_status AS ist ON i.item_status_id=ist.item_status_id
             WHERE i.item_code='$str_item_code'");
@@ -157,14 +157,9 @@ class circulation extends member
             if ($_avail_q->num_rows > 0) {
                 return ITEM_UNAVAILABLE;
             }
-            // check status for item
-            if ($_d[3]) {
-                $arr_rules = @unserialize($_d[3]);
-                if ($arr_rules) {
-                    if (in_array(NO_LOAN_TRANSACTION, $arr_rules)) {
-                        return ITEM_LOAN_FORBID;
-                    }
-                }
+            // check loan status for item
+            if ((integer)$_d[3] > 0) {
+				return ITEM_LOAN_FORBID;
             }
             // check if loan rules are ignored
             if (!defined('IGNORE_LOAN_RULES')) {

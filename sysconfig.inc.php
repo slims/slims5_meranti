@@ -103,7 +103,7 @@ define('MODULES_WEB_ROOT_DIR', SENAYAN_WEB_ROOT_DIR.'admin/'.MODULES_DIR.'/');
 
 // item status rules
 define('NO_LOAN_TRANSACTION', 1);
-define('STOCK_TAKE_SKIP', 2);
+define('SKIP_STOCK_TAKE', 2);
 
 // command execution status
 define('BINARY_NOT_FOUND', 127);
@@ -162,8 +162,8 @@ $sysconf['session_timeout'] = 7200;
 $sysconf['default_lang'] = 'en_US';
 
 /* Force UTF-8 for MySQL connection and HTTP header */
-header("Content-type: text/html; charset=UTF-8");
-$dbs->query("SET NAMES 'utf8'");
+header('Content-type: text/html; charset=UTF-8');
+$dbs->query('SET NAMES \'utf8\'');
 
 /* GUI Template config */
 $sysconf['template']['dir'] = 'template';
@@ -219,31 +219,6 @@ PLS     Plesseys
 93      code 93
 */
 $sysconf['barcode_encoding'] = '128B';
-
-/* AUTHORITY TYPE */
-$sysconf['authority_type']['p'] = 'Personal Name';
-$sysconf['authority_type']['o'] = 'Organizational Body';
-$sysconf['authority_type']['c'] = 'Conference';
-
-/* SUBJECT/AUTHORITY TYPE */
-$sysconf['subject_type']['t'] = 'Topic';
-$sysconf['subject_type']['g'] = 'Geographic';
-$sysconf['subject_type']['n'] = 'Name';
-$sysconf['subject_type']['tm'] = 'Temporal';
-$sysconf['subject_type']['gr'] = 'Genre';
-$sysconf['subject_type']['oc'] = 'Occupation';
-
-/* AUTHORITY LEVEL */
-$sysconf['authority_level'][1] = 'Primary Author';
-$sysconf['authority_level'][2] = 'Additional Author';
-$sysconf['authority_level'][3] = 'Editor';
-$sysconf['authority_level'][4] = 'Translator';
-$sysconf['authority_level'][5] = 'Director';
-$sysconf['authority_level'][6] = 'Producer';
-$sysconf['authority_level'][7] = 'Composer';
-$sysconf['authority_level'][8] = 'Illustrator';
-$sysconf['authority_level'][9] = 'Creator';
-$sysconf['authority_level'][10] = 'Contributor';
 
 /* QUICK RETURN */
 $sysconf['quick_return'] = true;
@@ -336,6 +311,31 @@ if (stripos($_SERVER['PHP_SELF'], '/admin') === false) {
 }
 // Apply language settings
 require LANGUAGES_BASE_DIR.'localisation.php';
+
+/* AUTHORITY TYPE */
+$sysconf['authority_type']['p'] = __('Personal Name');
+$sysconf['authority_type']['o'] = __('Organizational Body');
+$sysconf['authority_type']['c'] = __('Conference');
+
+/* SUBJECT/AUTHORITY TYPE */
+$sysconf['subject_type']['t'] = __('Topic');
+$sysconf['subject_type']['g'] = __('Geographic');
+$sysconf['subject_type']['n'] = __('Name');
+$sysconf['subject_type']['tm'] = __('Temporal');
+$sysconf['subject_type']['gr'] = __('Genre');
+$sysconf['subject_type']['oc'] = __('Occupation');
+
+/* AUTHORITY LEVEL */
+$sysconf['authority_level'][1] = __('Primary Author');
+$sysconf['authority_level'][2] = __('Additional Author');
+$sysconf['authority_level'][3] = __('Editor');
+$sysconf['authority_level'][4] = __('Translator');
+$sysconf['authority_level'][5] = __('Director');
+$sysconf['authority_level'][6] = __('Producer');
+$sysconf['authority_level'][7] = __('Composer');
+$sysconf['authority_level'][8] = __('Illustrator');
+$sysconf['authority_level'][9] = __('Creator');
+$sysconf['authority_level'][10] = __('Contributor');
 
 // template info config
 if (!file_exists($sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/tinfo.inc.php')) {

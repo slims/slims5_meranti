@@ -604,3 +604,10 @@ input:hover,textarea:hover,select:hover {
     background: url(media/cal.png) top left no-repeat;
     float: right;
 }
+
+.printReport {
+    padding-left: 20px;
+    background: url(media/printer-small.png) center left no-repeat;
+    font-weight: bold;
+    color: yellow;
+}

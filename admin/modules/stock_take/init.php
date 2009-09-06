@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com)
+ * Copyright (C) 2009  Arie Nugraha (dicarve@yahoo.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,7 +57,7 @@ if ($stk_q->num_rows) {
             // get latest stock take id
             $stock_take_id = $sql_op->insert_id;
             // criteria
-            $criteria = ' WHERE item_id IS NOT NULL ';
+            $criteria = ' WHERE (ist.skip_stock_take<1 OR ist.skip_stock_take IS NULL)  ';
                 // gmd
                 if ($_POST['gmdID'] != '0') {
                     $criteria .= ' AND b.gmd_id='.intval($_POST['gmdID']).' ';
@@ -95,13 +95,13 @@ if ($stk_q->num_rows) {
                     $criteria .= $class_criteria.' )';
                 }
             // for debugging purpose only
-            // die(simbio::colorSQLstring("SELECT $stock_take_id, i.item_id, i.item_code, b.title, i.classification, 'm', '".$_SESSION['realname']."', NULL FROM item AS i LEFT JOIN biblio AS b ON i.biblio_id=b.biblio_id $criteria"));
             // emptying previous stock take item data
             $clean_q = $dbs->query('TRUNCATE TABLE stock_take_item');
             // copy all item data to stock take detail table
             $insert_q = $dbs->query("INSERT INTO stock_take_item (stock_take_id, item_id, item_code, title, gmd_name, classification, coll_type_name, call_number, location, status, checked_by, last_update)
                 SELECT $stock_take_id, i.item_id, i.item_code, b.title, g.gmd_name, b.classification, ct.coll_type_name, b.call_number, loc.location_name, 'm', '".$_SESSION['realname']."', NULL FROM
                 item AS i
+				LEFT JOIN mst_item_status AS ist ON i.item_status_id=ist.item_status_id
                 LEFT JOIN mst_coll_type AS ct ON i.coll_type_id=ct.coll_type_id
                 LEFT JOIN mst_location AS loc ON i.location_id=loc.location_id
                 LEFT JOIN biblio AS b ON i.biblio_id=b.biblio_id

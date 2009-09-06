@@ -26,6 +26,13 @@ class report_datagrid extends simbio_datagrid
     public $paging_set = null;
     public $using_AJAX = false;
 
+    public function __construct()
+    {
+        // set default table and table header attributes
+        $this->table_attr = 'align="center" class="dataListPrinted" cellpadding="3" cellspacing="1"';
+        $this->table_header_attr = 'class="dataListHeaderPrinted"';
+    }
+
     /**
      * Modified method to make HTML output more friendly to printer
      *
@@ -73,7 +80,7 @@ class report_datagrid extends simbio_datagrid
         } else {
             $this->paging_set =  '&nbsp;';
         }
-        $_buffer .= '<div class="printPageInfo"><strong>'.$this->num_rows.'</strong> '.__('record(s) found. Currently displaying page').' '.$this->current_page.' ('.$int_num2show.' '.__('record each page').')</div>'."\n"; //mfc
+        $_buffer .= '<div class="printPageInfo"><strong>'.$this->num_rows.'</strong> '.__('record(s) found. Currently displaying page').' '.$this->current_page.' ('.$int_num2show.' '.__('record each page').') <a class="printReport" onclick="window.print()" href="#">['.__('Print Current Page').']</a></div>'."\n"; //mfc
         $_buffer .= $this->printTable();
 
         return $_buffer;
