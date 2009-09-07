@@ -51,15 +51,12 @@ T_setlocale(LC_ALL, $locale);
 // set locales dictionary location
 _bindtextdomain($domain, LANGUAGES_BASE_DIR.'locale');
 // codeset
-if (function_exists('bind_textdomain_codeset')) {
-    bind_textdomain_codeset($domain, $encoding);
-} else {
-    _bind_textdomain_codeset($domain, $encoding);
-}
+_bind_textdomain_codeset($domain, $encoding);
 // set .mo filename to use
 _textdomain($domain);
+
 // Array with available translations
-// $available_languages[] = array('CODE', _('ENGLISH NAME'), 'NATIVE NAME');
+// $available_languages[] = array('CODE', __('ENGLISH NAME'), 'NATIVE NAME');
 $available_languages[] = array('de_DE', __('German'), 'Deutsch');
 $available_languages[] = array('en_US', __('English'), 'English');
 $available_languages[] = array('id_ID', __('Indonesian'), 'Indonesia');
