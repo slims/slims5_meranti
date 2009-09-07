@@ -3,7 +3,7 @@
  * simbio_template_parser class
  * Simbio Template parser class for easy templating
  *
- * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com)
+ * Copyright (C) 2009  Arie Nugraha (dicarve@yahoo.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -74,14 +74,12 @@ class simbio_template_parser
             return;
         }
         $this->result = str_ireplace($str_maker, $str_replacement, $this->result);
-        // get any language constant
-        preg_match_all('@<!--lang_[^>]+-->@', $this->result, $lang_const);
-        if (count($lang_const[0]) > 0) {
-            foreach ($lang_const[0] as $const_marker) {
-                $const = trim(str_ireplace(array('<!--','-->'), '', $const_marker));
-                if (defined($const)) {
-                    $this->result = str_ireplace($const_marker, constant($const), $this->result);
-                }
+        // get any gettext marker
+        preg_match_all('@<!--__\(.+\)-->@i', $this->result, $_gettext);
+        if (count($_gettext[0]) > 0) {
+            foreach ($_gettext[0] as $_trans_mark) {
+                $_trans_text = str_replace(array('<!--__(\'','\')-->'), '', $_trans_mark);
+                $this->result = str_ireplace($_trans_mark, __($_trans_text), $this->result);
             }
         }
     }
