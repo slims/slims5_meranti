@@ -338,8 +338,4 @@ if (isset($_GET['keywords']) AND $can_read) {
     <div><?php echo __('* Please make sure you have a working Internet connection.'); ?></div>
 </div>
 </fieldset>
-<script type="text/javascript">
-// focus keywords text field
-$('keywords').focus();
-</script>
 <div id="searchResult">&nbsp;</div>

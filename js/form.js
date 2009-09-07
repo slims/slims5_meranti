@@ -255,3 +255,4 @@ var showDropDown = function(strURL, strElmntID, strAddParams) {
     $(listID).setStyle({width: inputObjWidth+'px'});
     $(listID).setStyle({display: 'block'});
 }
+

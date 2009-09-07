@@ -71,6 +71,8 @@ var hideLoading = function(ajaxObj)
 {
     $('blocker').remove();
     $$('.loader').invoke('removeClassName', 'loadingImage').invoke('update', lastStr);
+    // focus all first form input element
+    $$('input[type=text]')[0].focus();
 }
 
 /* get previous AJAX url */

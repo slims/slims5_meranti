@@ -195,10 +195,6 @@ if (!$in_pop_up) {
     </form>
 </div>
 </fieldset>
-<script type="text/javascript">
-// focus member ID text field
-$('keywords').focus();
-</script>
 <?php
 /* search form end */
 }
