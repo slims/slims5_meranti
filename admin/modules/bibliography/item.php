@@ -195,10 +195,6 @@ if (!$in_pop_up) {
     </form>
 </div>
 </fieldset>
-<script type="text/javascript">
-// focus member ID text field
-$('keywords').focus();
-</script>
 <?php
 /* search form end */
 }
@@ -373,7 +369,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $datagrid = new simbio_datagrid();
     if ($can_write) {
         $datagrid->setSQLColumn('item.item_id',
-            'item.item_code AS \''.__('Item Code').'*\'',
+            'item.item_code AS \''.__('Item Code').'\'',
             'item.biblio_id AS \''.__('Title').'\'',
             'ct.coll_type_name AS \''.__('Collection Type').'\'',
             'loc.location_name AS \''.__('Location').'\'',
@@ -382,12 +378,12 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         $datagrid->modifyColumnContent(2, 'callback{showTitleAuthors}');
         $title_field_idx = 2;
     } else {
-        $datagrid->setSQLColumn('item.item_code AS \'Item Code\'',
-            'item.biblio_id AS \'Title\'',
-            'ct.coll_type_name AS \'Type\'',
-            'loc.location_name AS \'Location\'',
-            'biblio.classification AS \'Classification\'',
-            'item.last_update AS \'Last Update\'');
+        $datagrid->setSQLColumn('item.item_code AS \''.__('Item Code').'\'',
+            'item.biblio_id AS \''.__('Title').'\'',
+            'ct.coll_type_name AS \''.__('Collection Type').'\'',
+            'loc.location_name AS \''.__('Location').'\'',
+            'biblio.classification AS \''.__('Classification').'\'',
+            'item.last_update AS \''.__('Last Updated').'\'');
         $datagrid->modifyColumnContent(1, 'callback{showTitleAuthors}');
     }
     $datagrid->setSQLorder('item.last_update DESC');

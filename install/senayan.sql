@@ -529,6 +529,8 @@ CREATE TABLE IF NOT EXISTS `mst_item_status` (
   `item_status_id` char(3) collate utf8_unicode_ci NOT NULL,
   `item_status_name` varchar(30) collate utf8_unicode_ci NOT NULL,
   `rules` varchar(255) collate utf8_unicode_ci default NULL,
+  `no_loan` smallint(1) NOT NULL default '0',
+  `skip_stock_take` smallint(1) NOT NULL default '0',
   `input_date` date default NULL,
   `last_update` date default NULL,
   PRIMARY KEY  (`item_status_id`),

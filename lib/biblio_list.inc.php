@@ -47,7 +47,9 @@ class biblio_list
     protected $custom_fields = array();
     protected $enable_custom_frontpage = false;
     protected $orig_query;
-    protected $searchable_fields = array('title', 'author', 'subject', 'isbn', 'publisher', 'gmd', 'notes', 'colltype', 'location');
+    protected $searchable_fields = array('title', 'author', 'subject', 'isbn', 
+		'publisher', 'gmd', 'notes', 'colltype', 'publishyear',
+		'location', 'itemcode', 'callnumber', 'itemcallnumber', 'notes');
     protected $field_join_type = array('title' => 'OR', 'author' => 'OR', 'subject' => 'OR');
     protected $current_page = 1;
 
@@ -193,6 +195,11 @@ class biblio_list
                         if ($_b == '-') {
                             $_sql_criteria .= " biblio.publisher_id NOT IN ($_subquery)";
                         } else { $_sql_criteria .= " biblio.publisher_id IN ($_subquery)"; }
+                        break;
+                    case 'publishyear' :
+                        if ($_b == '-') {
+                            $_sql_criteria .= ' AND biblio.publish_year!=\''.$_q.'\'';
+                        } else { $_sql_criteria .= ' biblio.publish_year=\''.$_q.'\''; }
                         break;
                     case 'gmd' :
                         $_subquery = 'SELECT gmd_id FROM mst_gmd WHERE gmd_name=\''.$_q.'\'';

@@ -108,10 +108,7 @@ if (!$reportView) {
     </form>
     </fieldset>
     <!-- filter end -->
-    <div class="dataListHeader" style="height: 35px;">
-    <input type="button" value="<?php echo __('Print Current Page'); ?>" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;" onclick="javascript: reportView.print();" />
-    &nbsp;<span id="pagingBox">&nbsp;</span></div>
-    <iframe name="reportView" src="<?php echo $_SERVER['PHP_SELF'].'?reportView=true'; ?>" frameborder="0" style="width: 100%; height: 500px;"></iframe>
+    <iframe name="reportView" id="reportView" src="<?php echo $_SERVER['PHP_SELF'].'?reportView=true'; ?>" frameborder="0" style="width: 100%; height: 500px;"></iframe>
 <?php
 } else {
     ob_start();
@@ -207,11 +204,11 @@ if (!$reportView) {
     $output .= '</table>';
 
     // print out
-    echo '<div class="printPageInfo">Loan Recap By Class <strong>'.$class_num.'</strong> for year <strong>'.$selected_year.'</strong>'.( isset($coll_type_name)?'<div>'.$coll_type_name.'</div>':'' ).'</div>'."\n";
+    echo '<div class="printPageInfo">Loan Recap By Class <strong>'.$class_num.'</strong> for year <strong>'.$selected_year.'</strong>'.( isset($coll_type_name)?'<div>'.$coll_type_name.'</div>':'' ).' <a class="printReport" onclick="window.print()" href="#">['.__('Print Current Page').']</a></div>'."\n";
     echo $output;
 
     $content = ob_get_clean();
     // include the page template
-    require SENAYAN_BASE_DIR.'/admin/'.$sysconf['admin_template']['dir'].'/notemplate_page_tpl.php';
+    require SENAYAN_BASE_DIR.'/admin/'.$sysconf['admin_template']['dir'].'/printed_page_tpl.php';
 }
 ?>

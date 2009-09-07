@@ -61,10 +61,6 @@ if (isset($_SESSION['memberID']) AND !empty($_SESSION['memberID'])) {
             </form>
         </div>
     </fieldset>
-    <script type="text/javascript">
-    // focus member ID text field
-    $('memberID').focus();
-    </script>
 <?php
     if (isset($_POST['finishID'])) {
         $msg = str_ireplace('{member_id}', $_POST['finishID'], __('Transaction with member {member_id} is completed'));

@@ -94,11 +94,6 @@ a {
     margin-bottom: 0;
 }
 
-#dataListPrinted {
-    width: 100%;
-    background-color: #000000;
-}
-
 #headerImage {
     margin-top: 3px;
     float: left;
@@ -138,7 +133,7 @@ a {
 
 .objectDragger:hover {
     background: #CCCCCC no-repeat top center;
-    cursor: move;
+    cursor: s-resize;
 }
 
 .subMenuHeader {
@@ -576,4 +571,11 @@ input:hover,textarea:hover,select:hover {
     height: 20px;
     background: url(media/cal.png) top left no-repeat;
     float: right;
+}
+
+.printReport {
+    padding-left: 20px;
+    background: url(media/printer-small.png) center left no-repeat;
+    font-weight: bold;
+    color: yellow;
 }

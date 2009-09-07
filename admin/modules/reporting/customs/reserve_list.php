@@ -97,11 +97,8 @@ if (!$reportView) {
     </fieldset>
     <script type="text/javascript">hideRows('filterForm', 1);</script>
     <!-- filter end -->
-    <div class="dataListHeader" style="height: 35px;">
-    <input type="button" value="<?php echo __('Print Current Page'); ?>" style="margin-top: 9px; margin-left: 5px; margin-right: 5px;"
-    onclick="javascript: reportView.print();" />
-    &nbsp;<span id="pagingBox">&nbsp;</span></div>
-    <iframe name="reportView" src="<?php echo $_SERVER['PHP_SELF'].'?reportView=true'; ?>" frameborder="0" style="width: 100%; height: 500px;"></iframe>
+    <div class="dataListHeader" style="padding: 3px;"><span id="pagingBox"></span></div>
+    <iframe name="reportView" id="reportView" src="<?php echo $_SERVER['PHP_SELF'].'?reportView=true'; ?>" frameborder="0" style="width: 100%; height: 500px;"></iframe>
 <?php
 } else {
     ob_start();
@@ -151,10 +148,6 @@ if (!$reportView) {
 
     $reportgrid->setSQLCriteria($criteria);
 
-    // set table and table header attributes
-    $reportgrid->table_attr = 'align="center" id="dataListPrinted" cellpadding="3" cellspacing="1"';
-    $reportgrid->table_header_attr = 'class="dataListHeaderPrinted"';
-
     // put the result into variables
     echo $reportgrid->createDataGrid($dbs, $table_spec, 20);
 
@@ -164,6 +157,6 @@ if (!$reportView) {
 
     $content = ob_get_clean();
     // include the page template
-    require SENAYAN_BASE_DIR.'/admin/'.$sysconf['admin_template']['dir'].'/notemplate_page_tpl.php';
+    require SENAYAN_BASE_DIR.'/admin/'.$sysconf['admin_template']['dir'].'/printed_page_tpl.php';
 }
 ?>
