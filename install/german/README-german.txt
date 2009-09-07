@@ -5,7 +5,7 @@ Hendro Wicaksono - hendrowicaksono@yahoo.com
 Arie Nugraha - dicarve@yahoo.com
 
 Folgende Anleitung gilt für eine Neuinstallation von SENAYAN (die deutsche Version gilt
-für Senayan3 Stable10 Patch1):
+für Senayan3 Stable11):
 1. 	Entpacken Sie den Inhalt des SENAYAN-Ordners in das Web-Rootverzeichnis (oder
 		einen Ordner darunter) ihres Webservers.
 
