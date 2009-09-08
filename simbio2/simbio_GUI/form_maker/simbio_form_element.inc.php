@@ -69,7 +69,7 @@ class simbio_fe_text extends abs_simbio_form_element
             $_buffer .= '</textarea>'."\n";
         } else if (stripos($this->element_type, 'date', 0) !== false) {
             $_buffer .= '<div class="dateField"><input class="dateInput" type="'.$this->element_type.'" name="'.$this->element_name.'" id="'.$this->element_name.'" ';
-            $_buffer .= 'value="'.$this->element_value.'" '.$this->element_attr.''.$_disabled.' /><a class="calendarLink" href="#" onclick="javascript: dateType = \''.$this->element_type.'\'; openCalendar(\''.$this->element_name.'\');" title="Open Calendar"></a></div>'."\n";
+            $_buffer .= 'value="'.$this->element_value.'" '.$this->element_attr.''.$_disabled.' /><a class="calendarLink" style="cursor: pointer;" onclick="javascript: dateType = \''.$this->element_type.'\'; openCalendar(\''.$this->element_name.'\');" title="Open Calendar"></a></div>'."\n";
         } else {
             $_buffer .= '<input type="'.$this->element_type.'" name="'.$this->element_name.'" id="'.$this->element_name.'" ';
             $_buffer .= 'value="'.$this->element_value.'" '.$this->element_attr.''.$_disabled.' />'."\n";

@@ -109,6 +109,14 @@ class detail extends content_list
         // get global configuration vars array
         global $sysconf;
 
+        foreach ($this->record_detail as $idx => $data) {
+            $data = trim(strip_tags($data));
+            if ($idx == 'notes') {
+                $data = nl2br($data);
+            }
+            $this->record_detail[$idx] = $data;
+        }
+
         // get title and set it to public record_title property
         $this->record_title = $this->record_detail['title'];
         $this->metadata .= '<meta name="Title" content="'.$this->record_title.'" />';
@@ -124,10 +132,6 @@ class detail extends content_list
         $this->metadata .= '<meta name="Publish Place" content="'.$this->record_detail['publish_place'].'" />';
         $this->metadata .= '<meta name="Physical Description" content="'.$this->record_detail['collation'].'" />';
         $this->metadata .= '<meta name="Notes" content="'.$this->record_detail['notes'].'" />';
-
-        foreach ($this->record_detail as $idx => $data) {
-            $data = strip_tags($data);
-        }
 
         // check image
         if (!empty($this->record_detail['image'])) {

@@ -33,7 +33,7 @@ function openCalendar(strDatefieldID) {
         $(document.body).insert('<div style="width: 300px;" id="calendarPop">'
             + '<div style="float: left; width: 70%">Calendar</div>'
             + '<div style="float: right; width: 20%; text-align: right;">'
-            + '<a href="#" style="color: red; font-weight: bold;" onclick="calendarPop.hide()">Close</a>'
+            + '<a style="color: red; font-weight: bold; cursor: pointer;" onclick="calendarPop.hide()">Close</a>'
             + '</div>'
             + '<div id="calendarContainer">&nbsp;</div>'
             + '<div id="clockContainer">&nbsp;</div>'
