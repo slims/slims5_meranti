@@ -39,7 +39,7 @@ class simbio_date
         if (!$str_start_date) {
             return date($str_date_format, mktime(0, 0, 0, intval(date('n')), (intval(date('j'))+$int_day_num), intval(date('Y')) ) );
         } else if ($_parsed_date = @date_parse($str_start_date)) {
-            return date($str_date_format, mktime(0, 0, 0, (integer)$_parsed_date['month'], ((integer)$_parsed_date['day'])+$int_day_num, (integer)$_parsed_date['year'] ) );
+            return date($str_date_format, mktime(0, 0, 0, $_parsed_date['month'], $_parsed_date['day']+$int_day_num, $_parsed_date['year'] ) );
         } else {
             return null;
         }
@@ -60,7 +60,7 @@ class simbio_date
         if (!$str_start_date) {
             return date($str_date_format, mktime(0, 0, 0, intval(date('n')), (intval(date('j'))-$int_day_num), intval(date('Y')) ) );
         } else if ($_parsed_date = @date_parse($str_start_date)) {
-            return date($str_date_format, mktime(0, 0, 0, (integer)$_parsed_date['month'], ((integer)$_parsed_date['day'])-$int_day_num, (integer)$_parsed_date['year'] ) );
+            return date($str_date_format, mktime(0, 0, 0, $_parsed_date['month'], $_parsed_date['day']-$int_day_num, $_parsed_date['year'] ) );
         } else {
             return null;
         }
@@ -168,14 +168,14 @@ class simbio_date
             return $str_date;
         }
         // parse date
-        list($_year, $_month, $_daym) = explode('-', $str_date);
+        $_parsed_date = @date_parse($str_date);
         // get dayname of $str_date
-        $dayname = date('D', mktime(0, 0, 0, $_month, $_daym, $_year));
+        $dayname = date('D', mktime(0, 0, 0, $_parsed_date['month'], $_parsed_date['day'], $_parsed_date['year']));
         // check date array first
         if ($array_holiday_date) {
             $d = false;
             foreach ($array_holiday_date as $_idx=>$_each_date) {
-                if (substr($str_date, -5) == substr($_each_date, -5)) {
+                if ($str_date == $_each_date) {
                     $d = true;
                     unset($array_holiday_date[$_idx]);
                 }
