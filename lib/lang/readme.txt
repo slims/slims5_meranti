@@ -23,8 +23,8 @@ http://carsonified.com/blog/dev/give-your-web-app-international-appeal-part-ii/
 
 1. GET POEDIT
 ---------------------------------
-Download PoEdit from http://www.poedit.net/. Versions are available for 
-Win/Linux/Mac and install it.
+Download PoEdit from http://www.poedit.net/ and install it. Versions are available for 
+Win/Linux/Mac.
 
 
 2. CREATE A LANGUAGE FOLDER
@@ -66,10 +66,7 @@ b1) Tab "Project info":
       ->  This is a bit more complicated. If your language has just one plural 
           form use:  nplurals=2; plural=n != 1;
           For other languages you can find a list of possible plural forms at
-          http://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html
-          (scroll down a little)
-          If it is too troublesome, leave the field empty. It's not too important.
-b2) Tab "Path"
+          http://translate.sourceforge.net/wiki/l10n/pluralforms
     ------------
     "Base Path"
       -> Enter: ../../../../../

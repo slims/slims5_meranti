@@ -174,10 +174,14 @@ CREATE TABLE `mst_item_status` (
   `item_status_id` char(3) COLLATE utf8_unicode_ci NOT NULL,
   `item_status_name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `rules` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `no_loan` smallint(1) NOT NULL DEFAULT '0',
+  `skip_stock_take` smallint(1) NOT NULL DEFAULT '0',
   `input_date` date DEFAULT NULL,
   `last_update` date DEFAULT NULL,
   PRIMARY KEY (`item_status_id`),
   UNIQUE KEY `item_status_name` (`item_status_name`)
+  KEY `no_loan` (`no_loan`),
+  KEY `skip_stock_take` (`skip_stock_take`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -185,8 +189,8 @@ CREATE TABLE `mst_item_status` (
 --
 
 INSERT INTO `mst_item_status` (`item_status_id`, `item_status_name`, `rules`, `input_date`, `last_update`) VALUES
-('R', 'Reparatur', 'a:1:{i:0;s:1:"1";}', '2009-08-16', '2009-08-20'),
-('NA', 'Nicht Ausleihbar', 'a:1:{i:0;s:1:"1";}', '2009-08-16', '2009-08-20');
+('R', 'Reparatur', 'a:1:{i:0;s:1:"1";}', 1, 0, '2009-08-16', '2009-08-20'),
+('NA', 'Nicht Ausleihbar', 'a:1:{i:0;s:1:"1";}', 1, 0, '2009-08-16', '2009-08-20');
 
 -- --------------------------------------------------------
 
@@ -313,11 +317,11 @@ CREATE TABLE `setting` (
 --
 
 INSERT INTO `setting` (`setting_id`, `setting_name`, `setting_value`) VALUES
-(1, 'library_name', 's:18:"Beispielbibliothek";'),
+(1, 'library_name', 's:26:"Senayan Beispielbibliothek";'),
 (2, 'library_subname', 's:39:"Open Source Bibliotheksmanagementsystem";'),
 (3, 'template', 'a:2:{s:5:"theme";s:7:"default";s:3:"css";s:26:"template/default/style.css";}'),
 (4, 'admin_template', 'a:2:{s:5:"theme";s:7:"default";s:3:"css";s:32:"admin_template/default/style.css";}'),
-(5, 'default_lang', 's:6:"german";'),
+(5, 'default_lang', 's:5:"de_DE";'),
 (6, 'opac_result_num', 's:2:"10";'),
 (7, 'enable_promote_titles', 'a:1:{i:0;s:1:"1";}'),
 (8, 'quick_return', 'b:1;'),
