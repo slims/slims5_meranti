@@ -297,7 +297,7 @@ utility::loadSettings($dbs);
 // check for user language selection if we are not in admin areas
 if (stripos($_SERVER['PHP_SELF'], '/admin') === false) {
     if (isset($_GET['select_lang'])) {
-        $select_lang = trim($_GET['select_lang']);
+        $select_lang = trim(strip_tags($_GET['select_lang']));
         // delete previous language cookie
         if (isset($_COOKIE['select_lang'])) {
             @setcookie('select_lang', $select_lang, time()-14400, SENAYAN_WEB_ROOT_DIR);
@@ -306,7 +306,7 @@ if (stripos($_SERVER['PHP_SELF'], '/admin') === false) {
         @setcookie('select_lang', $select_lang, time()+14400, SENAYAN_WEB_ROOT_DIR);
         $sysconf['default_lang'] = $select_lang;
     } else if (isset($_COOKIE['select_lang'])) {
-        $sysconf['default_lang'] = trim($_COOKIE['select_lang']);
+        $sysconf['default_lang'] = trim(strip_tags($_COOKIE['select_lang']));
     }
 }
 // Apply language settings
