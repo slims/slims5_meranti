@@ -118,10 +118,11 @@ class admin_logon
                 $_SESSION['holiday_dayname'][] = $_holiday_dayname_d[0];
             }
 
-            $_holiday_date_q = $obj_db->query('SELECT holiday_date FROM holiday WHERE holiday_date IS NOT NULL');
+            $_holiday_date_q = $obj_db->query('SELECT holiday_date FROM holiday WHERE holiday_date IS NOT NULL
+                ORDER BY holiday_date DESC LIMIT 365');
             $_SESSION['holiday_date'] = array();
             while ($_holiday_date_d = $_holiday_date_q->fetch_row()) {
-                $_SESSION['holiday_date'][] = $_holiday_date_d[0];
+                $_SESSION['holiday_date'][$_holiday_date_d[0]] = $_holiday_date_d[0];
             }
 
             // save md5sum of  current application path

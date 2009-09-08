@@ -137,9 +137,9 @@ $sysconf['baseurl'] = '';
 // change below setting according to your database configuration
 define('DB_HOST', 'localhost');
 define('DB_PORT', '3306');
-define('DB_NAME', 'senayan3-stable11');
-define('DB_USERNAME', 'user');
-define('DB_PASSWORD', 'password');
+define('DB_NAME', 'senayandb');
+define('DB_USERNAME', 'senayanuser');
+define('DB_PASSWORD', 'password_senayanuser');
 // we prefer to use mysqli extensions if its available
 if (extension_loaded('mysqli')) {
     /* MYSQLI */
