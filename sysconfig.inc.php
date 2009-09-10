@@ -226,6 +226,9 @@ $sysconf['quick_return'] = true;
 /* LOAN LIMIT OVERRIDE */
 $sysconf['loan_limit_override'] = false;
 
+/* LOAN DATE CHANGE IN CIRCULATION */
+$sysconf['allow_loan_date_change'] = false;
+
 /* FILE UPLOADS */
 $sysconf['max_upload'] = intval(ini_get('upload_max_filesize'))*1024;
 $post_max_size = intval(ini_get('post_max_size'))*1024;

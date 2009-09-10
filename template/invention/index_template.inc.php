@@ -94,13 +94,9 @@ Ported to Senayan by Hendro Wicaksono (hendrowicaksono@yahoo.com)
         <p>This Software is Released Under <a href="http://www.gnu.org/copyleft/gpl.html" title="GNU GPL License" target="_blank">GNU GPL License</a>
         Version 3.</p>
         <br />
-        <h2>Produced By</h2>
-        <p align="center"><img src="template/pih_logo.png" alt="Pusat Informasi dan Humas Depdiknas RI" />
-        <br />
-        Pusat Informasi dan Humas Depdiknas</p><br />
 
         <h2>Validated</h2>
-       <p align="center">
+        <p align="center">
         <a href="http://validator.w3.org/check?uri=referer"><img
             src="template/valid-xhtml10.png"
             alt="Valid XHTML 1.0 Transitional" border="0" /></a>

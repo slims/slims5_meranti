@@ -21,11 +21,17 @@
 /* Membership module submenu items */
 
 $menu[] = array('Header', __('System'));
-$menu[] = array(__('System Configuration'), MODULES_WEB_ROOT_DIR.'system/index.php', __('Configure Global System Preferences'));
+// only administrator have privileges for below menus
+if ($_SESSION['uid'] == 1) {
+    $menu[] = array(__('System Configuration'), MODULES_WEB_ROOT_DIR.'system/index.php', __('Configure Global System Preferences'));
+}
 $menu[] = array(__('Content'), MODULES_WEB_ROOT_DIR.'system/content.php', __('Content'));
-$menu[] = array(__('Modules'), MODULES_WEB_ROOT_DIR.'system/module.php', __('Configure Application Modules'));
-$menu[] = array(__('System Users'), MODULES_WEB_ROOT_DIR.'system/app_user.php', __('Manage Application User or Library Staff'));
-$menu[] = array(__('User Group'), MODULES_WEB_ROOT_DIR.'system/user_group.php', __('Manage Group of Application User'));
+// only administrator have privileges for below menus
+if ($_SESSION['uid'] == 1) {
+    $menu[] = array(__('Modules'), MODULES_WEB_ROOT_DIR.'system/module.php', __('Configure Application Modules'));
+    $menu[] = array(__('System Users'), MODULES_WEB_ROOT_DIR.'system/app_user.php', __('Manage Application User or Library Staff'));
+    $menu[] = array(__('User Group'), MODULES_WEB_ROOT_DIR.'system/user_group.php', __('Manage Group of Application User'));
+}
 $menu[] = array(__('Holiday Setting'), MODULES_WEB_ROOT_DIR.'system/holiday.php', __('Configure Holiday Setting'));
 $menu[] = array(__('Barcode Generator'), MODULES_WEB_ROOT_DIR.'system/barcode_generator.php', __('Barcode Generator'));
 $menu[] = array(__('System Log'), MODULES_WEB_ROOT_DIR.'system/sys_log.php', __('View Application System Log'));

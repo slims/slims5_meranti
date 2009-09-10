@@ -55,10 +55,10 @@ while ($module_data = $module_query->fetch_assoc()) {
     $chbox_read = '<input type="checkbox" name="read[]" value="'.$module_data['module_id'].'" '.$read_checked.' />';
     $chbox_write = '<input type="checkbox" name="write[]" value="'.$module_data['module_id'].'" '.$write_checked.' />';
 
-    $table->appendTableRow(array($module_data['module_name'], $chbox_read, $chbox_write));
-    $table->setCellAttr($row, 0, 'valign="top" class="'.$row_class.'"');
-    $table->setCellAttr($row, 1, 'valign="top" class="'.$row_class.'" style="font-weight: bold; width: 5%;"');
-    $table->setCellAttr($row, 2, 'valign="top" class="'.$row_class.'" style="font-weight: bold; width: 5%;"');
+    $table->appendTableRow(array(__( ucwords(str_replace('_', ' ', $module_data['module_name'])) ), $chbox_read, $chbox_write));
+    $table->setCellAttr($row, 0, 'valign="top" class="'.$row_class.'" style="font-weight: bold;"');
+    $table->setCellAttr($row, 1, 'valign="top" class="'.$row_class.'" style="width: 5%;"');
+    $table->setCellAttr($row, 2, 'valign="top" class="'.$row_class.'" style="width: 5%;"');
 
     $row++;
 }

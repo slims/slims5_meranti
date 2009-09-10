@@ -91,16 +91,7 @@
         This Software is Released Under <a href="http://www.gnu.org/copyleft/gpl.html" title="GNU GPL License" target="_blank">GNU GPL License</a>
         Version 3.
         </p>
-        <!-- license end -->
-
-    <!-- sponsored -->
-        <div class="heading">Produce By</div>
-        <p align="center">
-        <img src="template/pih_logo.png" alt="Pusat Informasi dan Humas Depdiknas RI" />
-        <br />
-        Pusat Informasi dan Humas Depdiknas
-        </p>
-    <!-- sponsored end -->
+    <!-- license end -->
 
     <!-- w3c validate -->
         <div class="heading">Validated</div>

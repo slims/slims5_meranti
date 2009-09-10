@@ -56,7 +56,7 @@ if (isset($_POST['saveLogs']) AND $can_write AND $_SESSION['uid'] == 1) {
 // log data clearance action
 if (isset($_POST['clearLogs']) AND $can_write AND $_SESSION['uid'] == 1) {
     $dbs->query('TRUNCATE TABLE system_log');
-    utility::jsAlert('System Log data completely cleared!');
+    utility::jsAlert(__('System Log data completely cleared!'));
     echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'system/sys_log.php\', \'get\');</script>';
     exit();
 }
@@ -67,8 +67,8 @@ if (isset($_POST['clearLogs']) AND $can_write AND $_SESSION['uid'] == 1) {
 <div class="menuBoxInner syslogIcon">
     <?php echo strtoupper(__('System Log'));?> -
     <?php if ($_SESSION['uid'] == 1) { ?>
-    <a href="#" onclick="confSubmit('clearLogsForm', 'Are you SURE to completely clear system log data? This action cannot be undo!')" class="headerText2" style="color: red;">CLEAR LOGS</a>
-    &nbsp; <a href="#" onclick="confSubmit('saveLogsForm', 'Save Logs record to file?')" class="headerText2">SAVE LOGS TO FILE</a>
+    <a href="#" onclick="confSubmit('clearLogsForm', '<?php echo __('Are you SURE to completely clear system log data? This action cannot be undo!'); ?>')" class="headerText2" style="color: red;"><?php echo __('CLEAR LOGS'); ?></a>
+    &nbsp; <a href="#" onclick="confSubmit('saveLogsForm', '<?php echo __('Save Logs record to file?'); ?>')" class="headerText2"><?php echo __('Save Logs To File'); ?></a>
     <?php } ?>
     <hr />
     <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :

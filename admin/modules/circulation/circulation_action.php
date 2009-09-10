@@ -477,7 +477,7 @@ if (isset($_POST['memberID']) OR isset($_SESSION['memberID'])) {
         }
         echo '<input type="button" style="width: 19%;" class="tab" value="'.__('Fines').'" onclick="setIframeContent(\'listsFrame\', \''.MODULES_WEB_ROOT_DIR.'circulation/fines_list.php\'); setTabClass(this);" />';
         echo '<input type="button" style="width: 19%;" class="tab" value="'.__('Loan History').'" onclick="setIframeContent(\'listsFrame\', \''.MODULES_WEB_ROOT_DIR.'circulation/member_loan_hist.php\'); setTabClass(this);" /><br />'."\n";
-        echo '<iframe src="modules/circulation/loan_list.php" id="listsFrame" class="border" style="width: 100%; height: 200px;"></iframe>'."\n";
+        echo '<iframe src="modules/circulation/loan_list.php" id="listsFrame" class="border" style="width: 100%; height: 300px;"></iframe>'."\n";
         echo '<div class="objectDragger" id="iframeDragger">&nbsp;</div>'."\n";
         echo '<script type="text/javascript">registerDraggerEvent(\'iframeDragger\', \'listsFrame\');</script>'."\n";
     }
