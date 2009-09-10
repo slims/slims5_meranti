@@ -208,9 +208,6 @@ var jsonToList = function(strURL, strElmntID) {
                 var respText = ajaxTransport.responseText.strip();
                 if (!respText) {
                     noResult = true;
-                    $(listID).update('<li style="color: red; padding: 2px; font-weight: bold;">NO RESULT FOUND</li>');
-                    // remove drop down list
-                    setTimeout('$(listID).setStyle({display : \'none\'})', 300);
                     return;
                 }
                 noResult = false;
@@ -219,7 +216,7 @@ var jsonToList = function(strURL, strElmntID) {
                 var strListVal = '';
                 jsonObj.each(function(vals) {
                     vals = vals.toString();
-                    strListVal += '<li><a class="DDlink" onclick="setInputValue(\'' + strElmntID + '\', \'' + vals + '\')">' + vals + '</a></li>';
+                    strListVal += '<li><a class="DDlink" onclick="setInputValue(\'' + strElmntID + '\', \'' + vals.sub("'", "\\'") + '\')">' + vals + '</a></li>';
                 });
                 // update the list content
                 $(listID).update(strListVal);
@@ -230,8 +227,7 @@ var jsonToList = function(strURL, strElmntID) {
 /* set drop down input value */
 var setInputValue = function(strElmntID, strValue) {
     $(strElmntID).value = strValue;
-    var listID = strElmntID + 'List';
-    $(listID).setStyle({display: 'none'});
+    $(strElmntID + 'List').hide();
 }
 
 /* populate AJAX drop down list and show the list */
@@ -241,18 +237,19 @@ var showDropDown = function(strURL, strElmntID, strAddParams) {
     var inputObjWidth = inputObj.getWidth();
     var inputObjXY = inputObj.positionedOffset();
     // List ID
-    var listID = strElmntID + 'List';
-    if (inputVal.length < 4) {
-        $(listID).setStyle({display: 'none'});
-        return;
-    }
+    var listObj = $(strElmntID + 'List');
+    if (inputVal.length < 4) { listObj.hide(); return; }
     // populate list ID
     jsonToList(strURL, strElmntID, 'inputSearchVal=' + escape(inputVal) + '&' + strAddParams);
-    if (noResult) {
-        return;
-    }
-    $(listID).setStyle({left: inputObjXY.left+'px'});
-    $(listID).setStyle({width: inputObjWidth+'px'});
-    $(listID).setStyle({display: 'block'});
+    if (noResult) { return; }
+    // show list
+    listObj.setStyle({left: inputObjXY.left+'px', width: inputObjWidth+'px', display: 'block'});
+    // observe click
+    $(document.body).observe('click', function(event) {
+        var clickedElement = Event.element(event);
+        if (!clickedElement.match('#' + strElmntID + 'List')) {
+            listObj.hide();
+        }
+    });
 }
 

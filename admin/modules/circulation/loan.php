@@ -26,16 +26,80 @@ require '../../../sysconfig.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 
+// privileges checking
+$can_read = utility::havePrivilege('circulation', 'r');
+$can_write = utility::havePrivilege('circulation', 'w');
+
+if (!($can_read AND $can_write)) {
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
+}
+
 if (!isset($_SESSION['memberID'])) { die(); }
 
-require SIMBIO_BASE_DIR.'simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
-require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging.inc.php';
-require SIMBIO_BASE_DIR.'simbio_DB/simbio_dbop.inc.php';
 require SIMBIO_BASE_DIR.'simbio_UTILS/simbio_date.inc.php';
 
 // page title
 $page_title = 'Member Loan List';
+
+ob_start();
+?>
+<script type="text/javascript">
+/**
+ * Function to change date text to input text
+ */
+var changeDateForm = function(intLoanID, strDateToChange, strDateElementID)
+{
+    var dateElement = $(strDateElementID);
+    var dateElementVal = dateElement.innerHTML.strip();
+    var inputDate = 'input' + strDateElementID;
+    var inputDateElement = '<input type="text" value="' + dateElementVal + '" name="' + inputDate + '" id="' + inputDate + '" maxlength="10" size="10" />';
+    dateElement.insert({before: inputDateElement}).hide();
+    $(inputDate).focus();
+    // utility function as an Event listener
+    var changeListener = {
+        changed: function(event) {
+            var inputDate = Event.element(event);
+            changeLoanDate(intLoanID, strDateToChange, strDateElementID, inputDate.getValue());
+        }
+    }
+    var evtListener = changeListener.changed.bindAsEventListener(changeListener);
+    $(inputDate).observe('blur', evtListener);
+}
+
+/**
+ * Function to send AJAX request to change loan and due date
+ */
+var changeLoanDate = function(intLoanID, strDateToChange, strDateElementID, strDate)
+{
+    var dateData = {newLoanDate: strDate, loanSessionID: intLoanID};
+    var dateElement = $(strDateElementID);
+    if (strDateToChange == 'due') {
+        dateData = {newDueDate: strDate, loanSessionID: intLoanID};
+    }
+    var ajaxJSON = new Ajax.Request('<?php echo MODULES_WEB_ROOT_DIR.'circulation/loan_date_AJAX_change.php'; ?>', {
+        method: 'post',
+        parameters: dateData,
+        onSuccess: function(ajaxTransport) {
+                // get AJAX response text
+                var respText = ajaxTransport.responseText.strip();
+                if (!respText) {
+                    return;
+                }
+                noResult = false;
+                // evaluate json respons
+                var sessionDate = respText.evalJSON();
+                // update date element
+                dateElement.update(sessionDate.newDate);
+            }
+        });
+    // remove input date
+    $('input' + strDateElementID).remove();
+    dateElement.show();
+}
+</script>
+<?php
+$js = ob_get_clean();
 
 // start the output buffering
 ob_start();
@@ -66,20 +130,26 @@ if (isset($_SESSION['memberID'])) {
         $temp_loan_list->setHeader($headers);
         // row number init
         $row = 1;
-        foreach ($_SESSION['temp_loan'] as $temp_loan_list_data) {
+        foreach ($_SESSION['temp_loan'] as $_loan_ID => $temp_loan_list_d) {
             // alternate the row color
             $row_class = ($row%2 == 0)?'alterCell':'alterCell2';
 
             // remove link
-            $remove_link = '<a href="circulation_action.php?removeID='.$temp_loan_list_data['item_code'].'" title="Remove this item" class="trashLink">&nbsp;</a>';
+            $remove_link = '<a href="circulation_action.php?removeID='.$temp_loan_list_d['item_code'].'" title="Remove this item" class="trashLink">&nbsp;</a>';
+
+            // check if manually changes loan and due date allowed
+            if ($sysconf['allow_loan_date_change']) {
+                $loan_date = '<a href="#" title="'.__('Click To Change Loan Date').'" onclick="changeDateForm(\''.$_loan_ID.'\', \'loan\', \'loanDate'.$row.'\')" id="loanDate'.$row.'">'.$temp_loan_list_d['loan_date'].'</a>';
+                $due_date = '<a href="#" title="'.__('Click To Change Due Date').'" onclick="changeDateForm(\''.$_loan_ID.'\', \'due\', \'dueDate'.$row.'\')" id="dueDate'.$row.'">'.$temp_loan_list_d['due_date'].'</a>';
+            } else {
+                $loan_date = $temp_loan_list_d['loan_date'];
+                $due_date = $temp_loan_list_d['due_date'];
+            }
+
             // row colums array
             $fields = array(
-                $remove_link,
-                $temp_loan_list_data['item_code'],
-                $temp_loan_list_data['title'],
-                $temp_loan_list_data['loan_date'],
-                $temp_loan_list_data['due_date']
-                );
+                $remove_link, $temp_loan_list_d['item_code'],
+                $temp_loan_list_d['title'], $loan_date, $due_date);
 
             // append data to table row
             $temp_loan_list->appendTableRow($fields);

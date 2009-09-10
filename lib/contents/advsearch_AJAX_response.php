@@ -47,7 +47,7 @@ while ($data_d = $data_q->fetch_row()) {
 }
 // encode to JSON array
 if (!function_exists('json_encode')) {
-    die('ERROR! JSON library is not installed in PHP');
+    die();
 }
 echo json_encode($json_array);
 ?>

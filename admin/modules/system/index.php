@@ -28,20 +28,18 @@ if (!defined('SENAYAN_BASE_DIR')) {
     require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 }
 
+// only administrator have privileges to change global settings
+if ($_SESSION['uid'] != 1) {
+    header('Location: '.MODULES_WEB_ROOT_DIR.'system/content.php');
+    die();
+}
+
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 require SIMBIO_BASE_DIR.'simbio_FILE/simbio_directory.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/simbio_dbop.inc.php';
 
-// privileges checking
-$can_read = utility::havePrivilege('system', 'r');
-$can_write = utility::havePrivilege('system', 'w');
-
-// only administrator have privileges to change global settings
-if (!($can_read AND $can_write) OR $_SESSION['uid'] != 1) {
-    die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
-}
 ?>
 <fieldset class="menuBox">
     <div class="menuBoxInner systemIcon">
@@ -91,6 +89,10 @@ if (isset($_POST['updateData'])) {
     // quick return
     $quick_return = $_POST['quick_return'] == '1'?true:false;
     $dbs->query('INSERT INTO setting VALUES (NULL, \'quick_return\', \''.$dbs->escape_string(serialize($quick_return)).'\')');
+
+    // loan and due date manual change
+    $allow_loan_date_change = $_POST['allow_loan_date_change'] == '1'?true:false;
+    $dbs->query('INSERT INTO setting VALUES (NULL, \'allow_loan_date_change\', \''.$dbs->escape_string(serialize($allow_loan_date_change)).'\')');
 
     // loan limit override
     $loan_limit_override = $_POST['loan_limit_override'] == '1'?true:false;
@@ -188,6 +190,12 @@ $options = null;
 $options[] = array('0', __('Disable'));
 $options[] = array('1', __('Enable'));
 $form->addSelectList('quick_return', __('Quick Return'), $options, $sysconf['quick_return']?'1':'0');
+
+// enable manual changes of loan and due date in circulation transaction
+$options = null;
+$options[] = array('0', __('Disable'));
+$options[] = array('1', __('Enable'));
+$form->addSelectList('allow_loan_date_change', __('Loan and Due Date Manual Change'), $options, $sysconf['allow_loan_date_change']?'1':'0');
 
 // enable loan limit overriden
 $options = null;

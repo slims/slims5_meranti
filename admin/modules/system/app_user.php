@@ -43,7 +43,8 @@ if (isset($_GET['changecurrent'])) {
 }
 
 if (!$changecurrent) {
-    if (!$can_read) {
+    // only administrator have privileges add/edit users
+    if ($_SESSION['uid'] != 1) {
         die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
     }
 }
@@ -242,6 +243,11 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // print out the form object
     echo $form->printOut();
 } else {
+    // only administrator have privileges to view user list
+    if (!($can_read AND $can_write) OR $_SESSION['uid'] != 1) {
+        die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
+    }
+
     /* USER LIST */
     // table spec
     $table_spec = 'user AS u';

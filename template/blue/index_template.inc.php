@@ -94,7 +94,6 @@
 
         <div id="footer">
         <p>
-        Senayan was produce by Pusat Informasi dan Humas Depdiknas<br />
         This Software is Released Under <a href="http://www.gnu.org/copyleft/gpl.html" title="GNU GPL License" target="_blank" class="link">GNU GPL License</a> Version 3<br />Valid <a href="http://validator.w3.org/check?uri=referer" class="link" target="_blank">XHTML</a> | <a href="#" class="link">CSS</a> | Design By <a href="http://eddy.ptpci.co.id" target="_blank" class="link">Eddy Subratha</a>, Ported By <a href="http://dicarve.blogspot.com" target="_blank" class="link">Arie Nugraha</a>
         </p>
         </div>

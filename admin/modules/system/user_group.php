@@ -26,20 +26,18 @@ require '../../../sysconfig.inc.php';
 // start the session
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
+
+// only administrator have privileges to modify user groups
+if ($_SESSION['uid'] != 1) {
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
+}
+
 require SIMBIO_BASE_DIR.'simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/template_parser/simbio_template_parser.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/datagrid/simbio_dbgrid.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/simbio_dbop.inc.php';
-
-// privileges checking
-$can_read = utility::havePrivilege('system', 'r');
-$can_write = utility::havePrivilege('system', 'w');
-
-if (!$can_read) {
-    die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
-}
 
 /* RECORD OPERATION */
 if (isset($_POST['saveData']) AND $can_read AND $can_write) {
@@ -174,9 +172,6 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 /* search form end */
 /* main content */
 if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'detail')) {
-    if (!($can_read AND $can_write)) {
-        die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
-    }
     /* RECORD FORM */
     $itemID = (integer)isset($_POST['itemID'])?$_POST['itemID']:0;
     $rec_q = $dbs->query('SELECT * FROM user_group WHERE group_id='.$itemID);
@@ -230,14 +225,9 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 
     // create datagrid
     $datagrid = new simbio_datagrid();
-    if ($can_read AND $can_write) {
-        $datagrid->setSQLColumn('ug.group_id',
-            'ug.group_name AS \''.__('Group Name').'\'',
-            'ug.last_update AS \''.__('Last Update').'\'');
-    } else {
-        $datagrid->setSQLColumn('ug.group_name AS \''.__('Group Name').'\'',
-            'ug.last_update AS \''.__('Last Update').'\'');
-    }
+    $datagrid->setSQLColumn('ug.group_id',
+        'ug.group_name AS \''.__('Group Name').'\'',
+        'ug.last_update AS \''.__('Last Update').'\'');
     $datagrid->setSQLorder('group_name ASC');
 
     // is there any search
@@ -256,7 +246,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $datagrid->chbox_form_URL = $_SERVER['PHP_SELF'];
 
     // put the result into variables
-    $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, ($can_read AND $can_write));
+    $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, true);
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
         $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
         echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
