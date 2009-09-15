@@ -30,6 +30,7 @@ class member
     public $register_date = null;
     public $expire_date = null;
     public $member_email = null;
+    public $inst_name = null;
     public $is_member = false;
     public $member_image = '';
     public $member_notes = null;
@@ -60,6 +61,7 @@ class member
             $this->register_date = $_member_d['register_date'];
             $this->expire_date = $_member_d['expire_date'];
             $this->member_email = $_member_d['member_email'];
+            $this->inst_name = $_member_d['inst_name'];
             $this->member_image = $_member_d['member_image'];
             $this->member_notes = $_member_d['member_notes'];
             $this->is_pending = (bool)$_member_d['is_pending'];
