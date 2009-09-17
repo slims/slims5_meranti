@@ -47,7 +47,7 @@ class biblio_list
     protected $custom_fields = array();
     protected $enable_custom_frontpage = false;
     protected $orig_query;
-    protected $searchable_fields = array('title', 'author', 'subject', 'isbn', 
+    protected $searchable_fields = array('title', 'author', 'subject', 'isbn',
 		'publisher', 'gmd', 'notes', 'colltype', 'publishyear',
 		'location', 'itemcode', 'callnumber', 'itemcallnumber', 'notes');
     protected $field_join_type = array('title' => 'OR', 'author' => 'OR', 'subject' => 'OR');
@@ -73,6 +73,8 @@ class biblio_list
      */
     public function setSQLcriteria($str_criteria)
     {
+        if (!$str_criteria)
+            return null;
         // defaults
         $_sql_criteria = '';
         $_searched_fields = array();
