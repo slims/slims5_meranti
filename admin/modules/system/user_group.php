@@ -40,7 +40,7 @@ require SIMBIO_BASE_DIR.'simbio_DB/datagrid/simbio_dbgrid.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/simbio_dbop.inc.php';
 
 /* RECORD OPERATION */
-if (isset($_POST['saveData']) AND $can_read AND $can_write) {
+if (isset($_POST['saveData'])) {
     $groupName = trim(strip_tags($_POST['groupName']));
     // check form validity
     if (empty($groupName)) {
@@ -115,9 +115,6 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
     }
     exit();
 } else if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemAction'])) {
-    if (!($can_read AND $can_write)) {
-        die();
-    }
     /* DATA DELETION PROCESS */
     $sql_op = new simbio_dbop($dbs);
     $failed_array = array();
