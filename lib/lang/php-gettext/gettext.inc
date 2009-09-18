@@ -51,11 +51,11 @@ $CURRENTLOCALE = '';
  * Utility function to get a StreamReader for the given text domain.
  */
 function _get_reader($domain=null, $category=5, $enable_cache=true) {
-    global $text_domains, $default_domain, $LC_CATEGORIES;
+    global $text_domains, $default_domain, $LC_CATEGORIES, $LC_MESSAGES;
     if (!isset($domain)) $domain = $default_domain;
     if (!isset($text_domains[$domain]->l10n)) {
         // get the current locale
-        $locale = _setlocale(LC_MESSAGES, 0);
+        $locale = _setlocale($LC_MESSAGES, 0);
         $p = isset($text_domains[$domain]->path) ? $text_domains[$domain]->path : './';
         $path = $p . "$locale/". $LC_CATEGORIES[$category] ."/$domain.mo";
         if (file_exists($path)) {
