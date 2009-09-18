@@ -48,7 +48,7 @@ if (isset($_GET['search']) AND !empty($_GET['search'])) {
         $biblio_list->setSQLcriteria($keywords);
     }
     // advanced search
-    $is_adv = isset($_GET['title']) || isset($_GET['author']) || isset($_GET['isbn'])
+    $is_adv = isset($_GET['search']) || isset($_GET['title']) || isset($_GET['author']) || isset($_GET['isbn'])
         || isset($_GET['subject']) || isset($_GET['location'])
         || isset($_GET['gmd']) || isset($_GET['colltype']);
     if ($is_adv) {
@@ -83,27 +83,13 @@ if (isset($_GET['search']) AND !empty($_GET['search'])) {
         // don't do search if all search field is empty
         if ($title || $author || $subject || $isbn || $gmd || $colltype || $location) {
             $criteria = '';
-            if ($title) {
-                $criteria .= ' title='.$title;
-            }
-            if ($author) {
-                $criteria .= ' author='.$author;
-            }
-            if ($subject) {
-                $criteria .= ' subject='.$subject;
-            }
-            if ($isbn) {
-                $criteria .= ' isbn='.$isbn;
-            }
-            if ($gmd) {
-                $criteria .= ' gmd='.$gmd;
-            }
-            if ($colltype) {
-                $criteria .= ' colltype='.$colltype;
-            }
-            if ($location) {
-                $criteria .= ' location='.$location;
-            }
+            if ($title) { $criteria .= ' title='.$title; }
+            if ($author) { $criteria .= ' author='.$author; }
+            if ($subject) { $criteria .= ' subject='.$subject; }
+            if ($isbn) { $criteria .= ' isbn='.$isbn; }
+            if ($gmd) { $criteria .= ' gmd='.$gmd; }
+            if ($colltype) { $criteria .= ' colltype='.$colltype; }
+            if ($location) { $criteria .= ' location='.$location; }
             $criteria = trim($criteria);
             $biblio_list->setSQLcriteria($criteria);
         }
