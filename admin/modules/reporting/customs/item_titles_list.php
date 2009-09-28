@@ -170,14 +170,18 @@ if (!$reportView) {
         $item_code = $dbs->escape_string(trim($_GET['itemCode']));
         $criteria .= ' AND i.item_code LIKE \'%'.$item_code.'%\'';
     }
-    if (isset($_GET['collType']) AND !empty($_GET['collType'])) {
+    if (isset($_GET['collType'])) {
         $coll_type_IDs = '';
         foreach ($_GET['collType'] as $id) {
             $id = (integer)$id;
-            $coll_type_IDs = "$id,";
+            if ($id) {
+                $coll_type_IDs .= "$id,";
+            }
         }
         $coll_type_IDs = substr_replace($coll_type_IDs, '', -1);
-        $criteria .= " AND i.coll_type_id IN($coll_type_IDs)";
+        if ($coll_type_IDs) {
+            $criteria .= " AND i.coll_type_id IN($coll_type_IDs)";
+        }
     }
     if (isset($_GET['status']) AND $_GET['status']!='0') {
         $status = $dbs->escape_string(trim($_GET['status']));

@@ -179,12 +179,16 @@ if ($file_attach_d['file_name']) {
     // create simbio directory object
     $repo = new simbio_directory(REPO_BASE_DIR);
     $repo_dir_tree = $repo->getDirectoryTree(5);
-    // sort array by index
-    ksort($repo_dir_tree);
-    // loop array
-    foreach ($repo_dir_tree as $dir) {
-        $repodir_options[] = array($dir, $dir);
+    $repodir_options[] = array('', __('Repository ROOT'));
+    if (is_array($repo_dir_tree)) {
+        // sort array by index
+        ksort($repo_dir_tree);
+        // loop array
+        foreach ($repo_dir_tree as $dir) {
+            $repodir_options[] = array($dir, $dir);
+        }
     }
+    // add repo directory options to select list
     $form->addSelectList('fileDir', __('Repo. Directory'), $repodir_options);
     // file upload
     $str_input = simbio_form_element::textField('file', 'file2attach');
