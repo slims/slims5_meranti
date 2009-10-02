@@ -60,9 +60,17 @@ class simbio_paging_ajax
             // rebuild query str without "page" var
             $_query_str_page = '';
             foreach ($arr_query_var as $varname => $varvalue) {
-                $varvalue = urlencode($varvalue);
-                if ($varname != 'page') {
-                    $_query_str_page .= $varname.'='.$varvalue.'&';
+                if (is_string($varvalue)) {
+                    $varvalue = urlencode($varvalue);
+                    if ($varname != 'page') {
+                        $_query_str_page .= $varname.'='.$varvalue.'&';
+                    }
+                } else if (is_array($varvalue)) {
+                    foreach ($varvalue as $e_val) {
+                        if ($varname != 'page') {
+                            $_query_str_page .= $varname.'[]='.$e_val.'&';
+                        }
+                    }
                 }
             }
             // append "page" var at the end
