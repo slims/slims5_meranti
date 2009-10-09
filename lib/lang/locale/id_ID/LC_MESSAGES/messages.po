@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Senayan3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-10-09 22:06+0700\n"
-"PO-Revision-Date: 2009-10-09 22:06+0700\n"
+"PO-Revision-Date: 2009-10-09 22:52+0700\n"
 "Last-Translator: Arie Nugraha <dicarve@yahoo.com>\n"
 "Language-Team: Arie Nugraha; Hendro Wicaksono; Wardiyono <dicarve@yahoo.com; hendrowicaksono@yahoo.com; wynerst@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -1590,9 +1590,8 @@ msgid "Special Labels for Titles to Show Up On Homepage"
 msgstr "Label"
 
 #: admin/modules/master_file/item_status.php:43
-#, fuzzy
 msgid "No Loan Transaction"
-msgstr "Total Transsaksi Peminjaman"
+msgstr "Tidak Ada Transaksi Peminjaman"
 
 #: admin/modules/master_file/item_status.php:44
 #, fuzzy
@@ -2430,9 +2429,8 @@ msgid "Member Card Printing"
 msgstr "Kartu Anggota"
 
 #: admin/modules/membership/member_card_generator.php:194
-#, fuzzy
 msgid "Print Member Cards for Selected Data"
-msgstr "Cetak Data Terpilih"
+msgstr "Cetak Kartu Anggota dari Data Terpilih"
 
 #: admin/modules/membership/member_card_generator.php:256
 #: admin/modules/membership/index.php:441
@@ -3731,9 +3729,8 @@ msgid "Login FAILED! Wrong username or password!"
 msgstr "Login GAGAL! Username/E-mail atau password salah!"
 
 #: lib/contents/member.inc.php:69
-#, fuzzy
 msgid "Library Member Login"
-msgstr "Lihat Daftar Anggota Perpustakaan"
+msgstr "Login Anggota Perpustakaan"
 
 #: lib/contents/member.inc.php:70
 msgid ""
@@ -3743,12 +3740,11 @@ msgid ""
 msgstr ""
 "Masukan alamat e-mail dan password\n"
 "       yang diberikan oleh administrator sistem perpustakaan. Apabila anda anggota perpustakaan dan belum memiliki password,\n"
-"       harap hubungi staf perppustakaan."
+"       harap hubungi staf perpustakaan."
 
 #: lib/contents/member.inc.php:74
-#, fuzzy
 msgid "Member E-Mail"
-msgstr "Email Anggota"
+msgstr "E-mail Anggota"
 
 #: lib/contents/member.inc.php:76
 msgid "Password"
@@ -3764,24 +3760,20 @@ msgid "Membership currently in pending state, no loan transaction can be made ye
 msgstr "Keanggotaan saat ini sedang di-pending, transaksi peminjaman tidak bisa dilakukan."
 
 #: lib/contents/member.inc.php:130
-#, fuzzy
 msgid "OVERDUED"
-msgstr "TERLAMBAT selama"
+msgstr "TERLAMBAT"
 
 #: lib/contents/member.inc.php:175
-#, fuzzy
 msgid "item(s) currently on loan"
-msgstr "sedang dipinjam"
+msgstr "koleksi yang sedang dipinjam"
 
 #: lib/contents/member.inc.php:180
-#, fuzzy
 msgid "Member Detail"
-msgstr "Email Anggota"
+msgstr "Data Anggota"
 
 #: lib/contents/member.inc.php:182
-#, fuzzy
 msgid "Your Current Loan"
-msgstr "Sedang Dipinjam"
+msgstr "Peminjaman Anda"
 
 #: lib/contents/default.inc.php:100
 #: lib/contents/default.inc.php:111
@@ -3834,6 +3826,7 @@ msgstr "Tidak Tersedia"
 
 msgid "Bibliography"
 msgstr "Katalog"
+
 #~ msgid ""
 #~ "<strong>{dompdf_libdir}</strong> directory is not writable. Make sure it "
 #~ "is writable (and all directories under it) by changing its permission or "

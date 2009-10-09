@@ -77,6 +77,7 @@ CREATE TABLE IF NOT EXISTS `biblio_attachment` (
   `biblio_id` int(11) NOT NULL,
   `file_id` int(11) NOT NULL,
   `access_type` enum('public','private') collate utf8_unicode_ci NOT NULL,
+  `access_limit` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL,
   KEY `biblio_id` (`biblio_id`),
   KEY `file_id` (`file_id`),
   KEY `biblio_id_2` (`biblio_id`,`file_id`)
@@ -865,7 +866,7 @@ INSERT INTO `setting` (`setting_id`, `setting_name`, `setting_value`) VALUES
 (2, 'library_subname', 's:30:"Open Source Library Automation";'),
 (3, 'template', 'a:2:{s:5:"theme";s:7:"default";s:3:"css";s:26:"template/default/style.css";}'),
 (4, 'admin_template', 'a:2:{s:5:"theme";s:7:"default";s:3:"css";s:32:"admin_template/default/style.css";}'),
-(5, 'default_lang', 's:7:"english";'),
+(5, 'default_lang', 's:5:"en_US";'),
 (6, 'opac_result_num', 's:2:"10";'),
 (7, 'enable_promote_titles', 'N;'),
 (8, 'quick_return', 'b:1;'),

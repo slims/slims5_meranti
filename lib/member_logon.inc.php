@@ -73,6 +73,7 @@ class member_logon
             $_SESSION['m_email'] = $_member_d['member_email'];
             $_SESSION['m_logintime'] = time();
             $_SESSION['m_expire_date'] = $_member_d['expire_date'];
+            $_SESSION['m_member_type_id'] = $_member_d['member_type_id'];
             $_SESSION['m_member_type'] = $_member_d['member_type_name'];
             $_SESSION['m_register_date'] = $_member_d['register_date'];
             $_SESSION['m_membership_pending'] = intval($_member_d['is_pending'])?true:false;

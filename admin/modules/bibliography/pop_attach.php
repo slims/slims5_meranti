@@ -108,10 +108,22 @@ if (isset($_POST['upload']) AND trim(strip_tags($_POST['fileTitle'])) != '') {
         $data['biblio_id'] = $updateBiblioID;
         $data['file_id'] = $uploaded_file_id;
         $data['access_type'] = trim($_POST['accessType']);
+        $data['access_limit'] = 'literal{NULL}';
+        // parsing member type data
+        if ($data['access_type'] == 'public') {
+            $groups = '';
+            if (isset($_POST['accLimit']) AND count($_POST['accLimit']) > 0) {
+                $groups = serialize($_POST['accLimit']);
+            } else {
+                $groups = 'literal{NULL}';
+            }
+            $data['access_limit'] = trim($groups);
+        }
+
         if (isset($_POST['updateFileID'])) {
             $fileID = (integer)$_POST['updateFileID'];
             // file biblio access update
-            $update1 = $sql_op->update('biblio_attachment', array('access_type' => $data['access_type']), 'biblio_id='.$updateBiblioID.' AND file_id='.$fileID);
+            $update1 = $sql_op->update('biblio_attachment', array('access_type' => $data['access_type'], 'access_limit' => $data['access_limit']), 'biblio_id='.$updateBiblioID.' AND file_id='.$fileID);
             // file description update
             $update2 = $sql_op->update('files', array('file_title' => $title, 'file_url' => $url, 'file_desc' => $dbs->escape_string(trim($_POST['fileDesc']))), 'file_id='.$fileID);
             if ($update1) {
@@ -203,6 +215,13 @@ $form->addTextField('textarea', 'fileDesc', __('Description'), $file_attach_d['f
 $acctype_options[] = array('public', __('Public'));
 $acctype_options[] = array('private', __('Private'));
 $form->addSelectList('accessType', __('Access'), $acctype_options, $file_attach_d['access_type']);
+// file access limit if set to public
+$group_query = $dbs->query('SELECT member_type_id, member_type_name FROM mst_member_type');
+$group_options = array();
+while ($group_data = $group_query->fetch_row()) {
+    $group_options[] = array($group_data[0], $group_data[1]);
+}
+$form->addCheckBox('accLimit', __('Access Limit by Member Type'), $group_options, !empty($file_attach_d['access_limit'])?unserialize($file_attach_d['access_limit']):null );
 
 // print out the object
 echo $form->printOut();

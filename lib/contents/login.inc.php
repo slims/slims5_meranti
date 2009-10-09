@@ -33,7 +33,7 @@ if ($sysconf['https_enable']) {
 }
 
 // check if session browser cookie already exists
-if (isset($_COOKIE[SENAYAN_SESSION_COOKIES_NAME])) {
+if (isset($_COOKIE['admin_logged_in'])) {
     header('location: admin/index.php');
 }
 
@@ -55,6 +55,8 @@ if (isset($_POST['logMeIn'])) {
         // create logon class instance
         $logon = new admin_logon($username, $password);
         if ($logon->adminValid($dbs)) {
+            // set cookie admin flag
+            setcookie('admin_logged_in', true, time()+14400, SENAYAN_WEB_ROOT_DIR);
             // write log
             utility::writeLogs($dbs, 'staff', $username, 'Login', 'Login success for user '.$username.' from address '.$_SERVER['REMOTE_ADDR']);
             echo '<script type="text/javascript">';

@@ -15,5 +15,8 @@ ALTER TABLE `biblio` CHANGE `labels` `labels` TEXT CHARACTER SET utf8 COLLATE ut
 
 -- add member password field and other login related fields
 ALTER TABLE `member` ADD `mpasswd` CHAR(32) NULL AFTER `is_pending`;
-ALTER TABLE `member` ADD `last_login` DATETIME NULL AFTER `mpasswd` ,
-ADD `last_login_ip` VARCHAR(20) NULL AFTER `last_login` 
+ALTER TABLE `member` ADD `last_login` DATETIME NULL AFTER `mpasswd`, ADD `last_login_ip` VARCHAR(20) NULL AFTER `last_login` 
+
+-- file attachment access limit fields
+ALTER TABLE `biblio_attachment` ADD `access_limit` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL AFTER `access_type`;
+
