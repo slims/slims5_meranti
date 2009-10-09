@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Senayan3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-10 10:02+0700\n"
-"PO-Revision-Date: 2009-09-10 10:02+0700\n"
+"POT-Creation-Date: 2009-10-09 22:07+0700\n"
+"PO-Revision-Date: 2009-10-09 22:07+0700\n"
 "Last-Translator: Arie Nugraha <dicarve@yahoo.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,86 +17,94 @@ msgstr ""
 "X-Poedit-Basepath: ../../../../../\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: sysconfig.inc.php:319
+#: sysconfig.inc.php:320
 msgid "Personal Name"
 msgstr "Personenname"
 
-#: sysconfig.inc.php:320
+#: sysconfig.inc.php:321
 msgid "Organizational Body"
 msgstr "Körperschaft"
 
-#: sysconfig.inc.php:321
+#: sysconfig.inc.php:322
 msgid "Conference"
 msgstr "Konferenz"
 
-#: sysconfig.inc.php:324
+#: sysconfig.inc.php:325
 msgid "Topic"
 msgstr "Schlagwort"
 
 # Klingt etwas schräg für einen Schlagworttyp
-#: sysconfig.inc.php:325
+#: sysconfig.inc.php:326
 msgid "Geographic"
 msgstr "Geographisch"
 
-#: sysconfig.inc.php:326
+#: sysconfig.inc.php:327
 msgid "Name"
 msgstr "Name"
 
-#: sysconfig.inc.php:327
+#: sysconfig.inc.php:328
 msgid "Temporal"
 msgstr "Zeit"
 
-#: sysconfig.inc.php:328
+#: sysconfig.inc.php:329
 msgid "Genre"
 msgstr "Genre"
 
-#: sysconfig.inc.php:329
+#: sysconfig.inc.php:330
 msgid "Occupation"
 msgstr "Beruf"
 
-#: sysconfig.inc.php:332
+#: sysconfig.inc.php:333
 msgid "Primary Author"
 msgstr "Erster Verfasser"
 
-#: sysconfig.inc.php:333
+#: sysconfig.inc.php:334
 msgid "Additional Author"
 msgstr "Weiterer Autor"
 
-#: sysconfig.inc.php:334
+#: sysconfig.inc.php:335
 msgid "Editor"
 msgstr "Herausgeber"
 
-#: sysconfig.inc.php:335
+#: sysconfig.inc.php:336
 msgid "Translator"
 msgstr "Übersetzer"
 
-#: sysconfig.inc.php:336
+#: sysconfig.inc.php:337
 msgid "Director"
 msgstr "Regisseur"
 
-#: sysconfig.inc.php:337
+#: sysconfig.inc.php:338
 msgid "Producer"
 msgstr "Produzent"
 
-#: sysconfig.inc.php:338
+#: sysconfig.inc.php:339
 msgid "Composer"
 msgstr "Komponist"
 
-#: sysconfig.inc.php:339
+#: sysconfig.inc.php:340
 msgid "Illustrator"
 msgstr "Illustrator"
 
-#: sysconfig.inc.php:340
+#: sysconfig.inc.php:341
 msgid "Creator"
 msgstr "Urheber"
 
-#: sysconfig.inc.php:341
+#: sysconfig.inc.php:342
 msgid "Contributor"
 msgstr "Mitarbeiter"
 
-#: index.php:33
+#: index.php:37
 msgid "Web Online Public Access Catalog - Use the search options to find documents quickly"
 msgstr "Bibliothekskatalog Online - Nutzen Sie die verschiedenen Suchmöglichkeiten um schnell das Gesuchte zu finden"
+
+#: index.php:46
+msgid "You are currently Logged on as member"
+msgstr ""
+
+#: index.php:46
+msgid "LOGOUT"
+msgstr ""
 
 #: template/lightweight/index_template.inc.php:20
 #: template/green/index_template.inc.php:19
@@ -114,8 +122,8 @@ msgid "Help on Search"
 msgstr "Hilfe zur Suche"
 
 #: template/lightweight/index_template.inc.php:39
-#: template/green/index_template.inc.php:55
-#: template/green/index_template.inc.php:83
+#: template/green/index_template.inc.php:56
+#: template/green/index_template.inc.php:84
 msgid "Search"
 msgstr "Suchen"
 
@@ -128,7 +136,7 @@ msgstr "Ausgabe"
 
 #: template/lightweight/custom_frontpage_record.inc.php:8
 #: template/lightweight/detail_template.php:20
-#: template/green/index_template.inc.php:68
+#: template/green/index_template.inc.php:69
 #: template/green/custom_frontpage_record.inc.php:8
 #: template/green/detail_template.php:20
 msgid "ISBN/ISSN"
@@ -156,19 +164,19 @@ msgid "Call Number"
 msgstr "Signatur"
 
 #: template/lightweight/detail_template.php:8
-#: template/green/index_template.inc.php:62
+#: template/green/index_template.inc.php:63
 #: template/green/detail_template.php:8
 msgid "Title"
 msgstr "Titel"
 
 #: template/lightweight/detail_template.php:25
-#: template/green/index_template.inc.php:64
+#: template/green/index_template.inc.php:65
 #: template/green/detail_template.php:25
 msgid "Author(s)"
 msgstr "Autor(en)"
 
 #: template/lightweight/detail_template.php:29
-#: template/green/index_template.inc.php:66
+#: template/green/index_template.inc.php:67
 #: template/green/detail_template.php:29
 msgid "Subject(s)"
 msgstr "Schlagwörter"
@@ -179,7 +187,7 @@ msgid "Classification"
 msgstr "Klassifikation"
 
 #: template/lightweight/detail_template.php:40
-#: template/green/index_template.inc.php:70
+#: template/green/index_template.inc.php:71
 #: template/green/detail_template.php:40
 msgid "GMD"
 msgstr "Ressourcenart"
@@ -230,26 +238,31 @@ msgid "Availability"
 msgstr "Verfügbarkeit"
 
 #: template/green/index_template.inc.php:22
+#, fuzzy
+msgid "Member Area"
+msgstr "Mitgliedersuche"
+
+#: template/green/index_template.inc.php:23
 msgid "Librarian LOGIN"
 msgstr "Mitarbeiter-ANMELDUNG"
 
-#: template/green/index_template.inc.php:43
+#: template/green/index_template.inc.php:44
 msgid "Select Language"
 msgstr "Sprache wählen"
 
-#: template/green/index_template.inc.php:52
+#: template/green/index_template.inc.php:53
 msgid "Simple Search"
 msgstr "Einfache Suche"
 
-#: template/green/index_template.inc.php:60
+#: template/green/index_template.inc.php:61
 msgid "Advanced Search"
 msgstr "Erweiterte Suche"
 
-#: template/green/index_template.inc.php:74
+#: template/green/index_template.inc.php:75
 msgid "Collection Type"
 msgstr "Sammlungstyp"
 
-#: template/green/index_template.inc.php:78
+#: template/green/index_template.inc.php:79
 msgid "Location"
 msgstr "Standort"
 
@@ -690,31 +703,36 @@ msgstr "Speicherung des Dateianhangs FEHLGESCHLAGEN!"
 msgid "Upload Now"
 msgstr "Jetzt hochloaden"
 
-#: admin/modules/bibliography/pop_attach.php:188
-msgid "Repo. Directory"
+#: admin/modules/bibliography/pop_attach.php:182
+#, fuzzy
+msgid "Repository ROOT"
 msgstr "Speicherort"
 
 #: admin/modules/bibliography/pop_attach.php:192
+msgid "Repo. Directory"
+msgstr "Speicherort"
+
+#: admin/modules/bibliography/pop_attach.php:196
 msgid "File To Attach"
 msgstr "Anzuhängende Datei"
 
-#: admin/modules/bibliography/pop_attach.php:195
+#: admin/modules/bibliography/pop_attach.php:199
 msgid "URL"
 msgstr "URL"
 
-#: admin/modules/bibliography/pop_attach.php:197
+#: admin/modules/bibliography/pop_attach.php:201
 msgid "Description"
 msgstr "Beschreibung"
 
-#: admin/modules/bibliography/pop_attach.php:199
+#: admin/modules/bibliography/pop_attach.php:203
 msgid "Public"
 msgstr "Öffentlich"
 
-#: admin/modules/bibliography/pop_attach.php:200
+#: admin/modules/bibliography/pop_attach.php:204
 msgid "Private"
 msgstr "Privat"
 
-#: admin/modules/bibliography/pop_attach.php:201
+#: admin/modules/bibliography/pop_attach.php:205
 msgid "Access"
 msgstr "Zugriff"
 
@@ -2274,7 +2292,7 @@ msgstr "Ausleihstatistik nach Klassifikation"
 
 #: admin/modules/reporting/customs/customs_report_list.inc.php:28
 #: admin/modules/reporting/customs/member_list.php:55
-#: admin/modules/membership/index.php:237
+#: admin/modules/membership/index.php:247
 msgid "Member List"
 msgstr "Mitgliederliste"
 
@@ -2341,24 +2359,24 @@ msgstr "Zurückgegeben"
 #: admin/modules/membership/member_card_generator.php:223
 #: admin/modules/membership/member_type.php:205
 #: admin/modules/membership/member_type.php:211
-#: admin/modules/membership/index.php:324
-#: admin/modules/membership/index.php:382
-#: admin/modules/membership/index.php:388
+#: admin/modules/membership/index.php:334
+#: admin/modules/membership/index.php:398
+#: admin/modules/membership/index.php:404
 msgid "Membership Type"
 msgstr "Mitgliedstyp"
 
 #: admin/modules/reporting/customs/member_list.php:79
-#: admin/modules/membership/index.php:328
+#: admin/modules/membership/index.php:338
 msgid "Gender"
 msgstr "Geschlecht"
 
 #: admin/modules/reporting/customs/member_list.php:83
-#: admin/modules/membership/index.php:326
+#: admin/modules/membership/index.php:336
 msgid "Male"
 msgstr "Männlich"
 
 #: admin/modules/reporting/customs/member_list.php:84
-#: admin/modules/membership/index.php:327
+#: admin/modules/membership/index.php:337
 msgid "Female"
 msgstr "Weiblich"
 
@@ -2412,12 +2430,12 @@ msgid "Print Member Cards for Selected Data"
 msgstr "Mitgliederkartendruck starten"
 
 #: admin/modules/membership/member_card_generator.php:256
-#: admin/modules/membership/index.php:425
+#: admin/modules/membership/index.php:441
 msgid "Found"
 msgstr "Es wurde"
 
 #: admin/modules/membership/member_card_generator.php:256
-#: admin/modules/membership/index.php:425
+#: admin/modules/membership/index.php:441
 msgid "from your search with keyword"
 msgstr "Mitglied(er) gefunden mit dem Suchbegriff"
 
@@ -2430,7 +2448,7 @@ msgid "Import for members data from CSV file"
 msgstr "Mitgliederdaten aus Datei importieren (CSV-Format)"
 
 #: admin/modules/membership/submenu.php:23
-#: admin/modules/membership/index.php:236
+#: admin/modules/membership/index.php:246
 msgid "Membership"
 msgstr "Mitgliedschaften"
 
@@ -2443,7 +2461,7 @@ msgid "View Library Member List"
 msgstr "Liste der Bibliotheksmitglieder aufrufen"
 
 #: admin/modules/membership/submenu.php:25
-#: admin/modules/membership/index.php:236
+#: admin/modules/membership/index.php:246
 msgid "Add New Member"
 msgstr "Neues Mitglied"
 
@@ -2523,7 +2541,7 @@ msgid "Fine Each Day"
 msgstr "Gebühren pro Tag"
 
 #: admin/modules/membership/member_type.php:192
-#: admin/modules/membership/index.php:360
+#: admin/modules/membership/index.php:374
 msgid "You are going to edit member data"
 msgstr "Sie sind im Begriff die Angaben für folgendes Mitglied zu bearbeiten"
 
@@ -2535,98 +2553,114 @@ msgstr "Es befinden sich keine Datensätze in der Mitgliederdatenbank, Export FE
 msgid "Export member(s) data to CSV file"
 msgstr "Mitgliederdaten in Datei exportieren (CSV-Format)"
 
-#: admin/modules/membership/index.php:53
+#: admin/modules/membership/index.php:55
 msgid "Member ID and Name can't be empty"
 msgstr "Mitgliedsnummer und Name müssen angegeben sein"
 
-#: admin/modules/membership/index.php:115
+#: admin/modules/membership/index.php:58
+msgid "Password confirmation does not match. See if your Caps Lock key is on!"
+msgstr "Passwort stimmt nicht mit Passwortbestätigung überein. Prüfen Sie, ob versehentlich die Shift-Lock-Taste aktiviert wurde!"
+
+#: admin/modules/membership/index.php:124
 msgid "Member Data Successfully Updated"
 msgstr "Mitgliedsdaten erfolgreich aktualisiert"
 
-#: admin/modules/membership/index.php:125
-#: admin/modules/membership/index.php:148
+#: admin/modules/membership/index.php:134
+#: admin/modules/membership/index.php:158
 msgid "Image FAILED to upload"
 msgstr "Hochladen des Bildes FEHLGESCHLAGEN"
 
-#: admin/modules/membership/index.php:131
-#: admin/modules/membership/index.php:154
+#: admin/modules/membership/index.php:140
+#: admin/modules/membership/index.php:164
 msgid "Member Data FAILED to Save/Update. Please Contact System Administrator"
 msgstr "Speicherung/Aktualisierung der Mitgliedsdaten FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator"
 
-#: admin/modules/membership/index.php:138
+#: admin/modules/membership/index.php:148
 msgid "New Member Data Successfully Saved"
 msgstr "Neue Mitgliedsdaten erfolgreich gespeichert"
 
-#: admin/modules/membership/index.php:217
+#: admin/modules/membership/index.php:227
 msgid "Below member data can't be deleted because still have unreturned item(s)"
 msgstr "Folgende Mitgliederdaten können nicht geklöscht werden, da noch Entleihungen gebucht sind"
 
-#: admin/modules/membership/index.php:238
+#: admin/modules/membership/index.php:248
 msgid "View Expired Member"
 msgstr "Abgelaufene Mitgliedschaften anzeigen"
 
-#: admin/modules/membership/index.php:240
+#: admin/modules/membership/index.php:250
 msgid "Member Search"
 msgstr "Mitgliedersuche"
 
-#: admin/modules/membership/index.php:288
+#: admin/modules/membership/index.php:298
 msgid "Extend Membership"
 msgstr "Mitgliedschaft verlängern"
 
-#: admin/modules/membership/index.php:299
+#: admin/modules/membership/index.php:309
 msgid "Birth Date"
 msgstr "Geburtsdatum"
 
-#: admin/modules/membership/index.php:302
+#: admin/modules/membership/index.php:312
 msgid "Member Since"
 msgstr "Mitglied seit"
 
-#: admin/modules/membership/index.php:310
+#: admin/modules/membership/index.php:320
 msgid "Auto Set"
 msgstr "Vorgabe verwenden"
 
-#: admin/modules/membership/index.php:316
+#: admin/modules/membership/index.php:326
 msgid "Institution"
 msgstr "Institution"
 
-#: admin/modules/membership/index.php:334
+#: admin/modules/membership/index.php:342
 msgid "Postal Code"
 msgstr "Postleitzahl"
 
-#: admin/modules/membership/index.php:340
+#: admin/modules/membership/index.php:348
 msgid "Personal ID Number"
 msgstr "Personal ID Number"
 
-#: admin/modules/membership/index.php:342
+#: admin/modules/membership/index.php:350
 msgid "Notes"
 msgstr "Bemerkungen"
 
-#: admin/modules/membership/index.php:344
+#: admin/modules/membership/index.php:352
 msgid "Pending Membership"
 msgstr "Ruhende Mitgliedschaft"
 
-#: admin/modules/membership/index.php:344
+#: admin/modules/membership/index.php:352
 msgid "Yes"
 msgstr "Ja"
 
-#: admin/modules/membership/index.php:350
-#: admin/modules/membership/index.php:354
+#: admin/modules/membership/index.php:358
+#: admin/modules/membership/index.php:362
 msgid "Photo"
 msgstr "Foto"
 
-#: admin/modules/membership/index.php:418
+#: admin/modules/membership/index.php:367
+msgid "New Password"
+msgstr "Neues Passwort"
+
+#: admin/modules/membership/index.php:369
+msgid "Confirm New Password"
+msgstr "Neues Passwort bestätigen"
+
+#: admin/modules/membership/index.php:375
+msgid "Leave Password field blank if you don't want to change the password"
+msgstr "Füllen Sie das Passwortfeld nicht aus, wenn Sie das Passwort nicht ändern wollen"
+
+#: admin/modules/membership/index.php:434
 msgid "Expired Member List"
 msgstr "Liste abgelaufener Mitgliedschaften"
 
-#: admin/modules/membership/index.php:419
+#: admin/modules/membership/index.php:435
 msgid "Extend Selected Member(s)"
 msgstr "Ausgewählte Mitglieder verlängern"
 
-#: admin/modules/membership/index.php:419
+#: admin/modules/membership/index.php:435
 msgid "Are you sure to EXTEND membership for selected members?"
 msgstr "Wollen Sie die Mitgliedschaft für die ausgewählten Mitglieder VERLÄNGERN?"
 
-#: admin/modules/membership/index.php:421
+#: admin/modules/membership/index.php:437
 msgid "members extended!"
 msgstr "Mitglieder verlängert!"
 
@@ -3167,7 +3201,7 @@ msgid "Manage Application User or Library Staff"
 msgstr "Systembenutzer oder Bibliotheksangestellte verwalten"
 
 #: admin/modules/system/submenu.php:33
-#: admin/modules/system/user_group.php:162
+#: admin/modules/system/user_group.php:159
 msgid "User Group"
 msgstr "Benutzergruppe"
 
@@ -3222,24 +3256,24 @@ msgstr "Neue Benutzergruppendaten erfolgreich gespeichert"
 msgid "Group Data FAILED to Save. Please Contact System Administrator"
 msgstr "Speicherung der Benutzergruppendaten FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator"
 
-#: admin/modules/system/user_group.php:162
+#: admin/modules/system/user_group.php:159
 msgid "Add New Group"
 msgstr "Neue Benutzergruppe"
 
-#: admin/modules/system/user_group.php:163
+#: admin/modules/system/user_group.php:160
 msgid "Group List"
 msgstr "Benutzergruppen ansehen"
 
-#: admin/modules/system/user_group.php:202
-#: admin/modules/system/user_group.php:229
+#: admin/modules/system/user_group.php:199
+#: admin/modules/system/user_group.php:226
 msgid "Group Name"
 msgstr "Benutzergruppenname"
 
-#: admin/modules/system/user_group.php:213
+#: admin/modules/system/user_group.php:210
 msgid "Privileges"
 msgstr "Rechte"
 
-#: admin/modules/system/user_group.php:218
+#: admin/modules/system/user_group.php:215
 msgid "You are going to edit Group data"
 msgstr "Sie sind im Begriff die Angaben für folgende Benutzergruppe zu bearbeiten"
 
@@ -3302,10 +3336,6 @@ msgstr "Anmeldename und Name müssen angegeben sein"
 msgid "Login username or Real Name is probihited!"
 msgstr "Anmeldename oder Name nicht zulässig!"
 
-#: admin/modules/system/app_user.php:66
-msgid "Password confirmation does not match. See if your Caps Lock key is on!"
-msgstr "Passwort stimmt nicht mit Passwortbestätigung überein. Prüfen Sie, ob versehentlich die Shift-Lock-Taste aktiviert wurde!"
-
 #: admin/modules/system/app_user.php:100
 msgid "User Data Successfully Updated"
 msgstr "Benutzerdaten erfolgreich aktualisiert"
@@ -3334,21 +3364,9 @@ msgstr "Benutzer ansehen"
 msgid "Group(s)"
 msgstr "Benutzergruppe(n)"
 
-#: admin/modules/system/app_user.php:234
-msgid "New Password"
-msgstr "Neues Passwort"
-
-#: admin/modules/system/app_user.php:236
-msgid "Confirm New Password"
-msgstr "Neues Passwort bestätigen"
-
 #: admin/modules/system/app_user.php:240
 msgid "You are going to edit user profile"
 msgstr "Sie sind im Begriff die Angaben für folgendes Benutzerprofil zu bearbeiten"
-
-#: admin/modules/system/app_user.php:241
-msgid "Leave Password field blank if you don't want to change the password"
-msgstr "Füllen Sie das Passwortfeld nicht aus, wenn Sie das Passwort nicht ändern wollen"
 
 #: admin/modules/system/app_user.php:261
 #: admin/modules/system/app_user.php:266
@@ -3625,23 +3643,23 @@ msgstr "Alle abwählen"
 msgid "No Data"
 msgstr "Keine Daten"
 
-#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:103
-#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:99
+#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:111
+#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:107
 msgid "First Page"
 msgstr "Erste Seite"
 
-#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:105
-#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:101
+#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:113
+#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:109
 msgid "Previous"
 msgstr "Vorherige"
 
-#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:126
-#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:122
+#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:134
+#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:130
 msgid "Next"
 msgstr "Nächste"
 
-#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:134
-#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:130
+#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:142
+#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:138
 msgid "Last Page"
 msgstr "Letzte Seite"
 
@@ -3659,6 +3677,11 @@ msgstr "Abbrechen"
 msgid "Date"
 msgstr "Datum"
 
+#: lib/admin_logon.inc.php:64
+#: lib/member_logon.inc.php:59
+msgid "Error authenticating user and password to database"
+msgstr ""
+
 #: lib/detail.inc.php:150
 msgid "Click to view others documents with this author"
 msgstr "Klicken um weitere Titel von diesem Autor anzuzeigen"
@@ -3675,8 +3698,8 @@ msgstr "Für diesen Titel ist noch kein Exemplar eingetragen"
 msgid "copies at"
 msgstr "Exemplare in"
 
-#: lib/biblio_list.inc.php:331
-#: lib/biblio_list.inc.php:352
+#: lib/biblio_list.inc.php:333
+#: lib/biblio_list.inc.php:354
 msgid "Record Detail"
 msgstr "Details zum Titel"
 
@@ -3692,12 +3715,71 @@ msgstr ""
 msgid "Indonesian"
 msgstr ""
 
-#: lib/contents/default.inc.php:114
-#: lib/contents/default.inc.php:125
+#: lib/contents/member.inc.php:44
+#, fuzzy
+msgid "Please fill your Username and Password to Login!"
+msgstr "Bitte geben Sie einen gültigen Benutzernamne und ein gültiges Passwort an"
+
+#: lib/contents/member.inc.php:59
+msgid "Login FAILED! Wrong username or password!"
+msgstr ""
+
+#: lib/contents/member.inc.php:69
+#, fuzzy
+msgid "Library Member Login"
+msgstr "Liste der Bibliotheksmitglieder aufrufen"
+
+#: lib/contents/member.inc.php:70
+msgid ""
+"Please insert your E-mail address and password\n"
+"        given by library system administrator. If you are library's member and don't have a password yet,\n"
+"        please contact library staff."
+msgstr ""
+
+#: lib/contents/member.inc.php:74
+#, fuzzy
+msgid "Member E-Mail"
+msgstr "E-Mail des Mitglieds"
+
+#: lib/contents/member.inc.php:76
+msgid "Password"
+msgstr "Passwort"
+
+#: lib/contents/member.inc.php:98
+msgid "Your Membership Already EXPIRED! Please extend your membership."
+msgstr ""
+
+#: lib/contents/member.inc.php:101
+#, fuzzy
+msgid "Membership currently in pending state, no loan transaction can be made yet."
+msgstr "Status der Mitgliedsschaft ist 'ruhend', keine Ausleihvorgänge möglich."
+
+#: lib/contents/member.inc.php:130
+#, fuzzy
+msgid "OVERDUED"
+msgstr "ÜBERFÄLLIG seit"
+
+#: lib/contents/member.inc.php:175
+#, fuzzy
+msgid "item(s) currently on loan"
+msgstr "derzeit ausgeliehen"
+
+#: lib/contents/member.inc.php:180
+#, fuzzy
+msgid "Member Detail"
+msgstr "E-Mail des Mitglieds"
+
+#: lib/contents/member.inc.php:182
+#, fuzzy
+msgid "Your Current Loan"
+msgstr "Derzeitige Entleihungen"
+
+#: lib/contents/default.inc.php:100
+#: lib/contents/default.inc.php:111
 msgid "Found  <strong>{biblio_list->num_rows}</strong> from your keywords"
 msgstr "<strong>{biblio_list->num_rows}</strong> Ergebnisse gefunden für die Suchbegriffe"
 
-#: lib/contents/default.inc.php:158
+#: lib/contents/default.inc.php:144
 msgid "You currently on page <strong>{page}</strong> of <strong>{total_pages}</strong> page(s)"
 msgstr "Sie befinden sich auf Seite <strong>{page}</strong> von <strong>{total_pages}</strong> Seiten(n)"
 
@@ -3713,19 +3795,19 @@ msgstr "Alle Sammlungen"
 msgid "All GMD/Media"
 msgstr "Alle Ressourcenarten"
 
-#: lib/contents/login.inc.php:44
+#: lib/contents/login.inc.php:48
 msgid "Please supply valid username and password"
 msgstr "Bitte geben Sie einen gültigen Benutzernamne und ein gültiges Passwort an"
 
-#: lib/contents/login.inc.php:57
+#: lib/contents/login.inc.php:61
 msgid "Welcome to Library Automation,"
 msgstr "Willkommen im Bibliotheksmanagementsystem,"
 
-#: lib/contents/login.inc.php:65
+#: lib/contents/login.inc.php:70
 msgid "Wrong Username or Password. ACCESS DENIED"
 msgstr "Benutzername oder Passwort sind inkorrekt. ZUGRIFF VERWEIGERT"
 
-#: lib/contents/login.inc.php:76
+#: lib/contents/login.inc.php:82
 msgid "Your browser does not support Javascript or Javascript is disabled. Application won't run without Javascript!"
 msgstr "Ihr Browser unterstützt keine JavaScript oder die Unterstützung wurde deaktiviert. JavaScript ist für diese Anwendung erforderlich!"
 
@@ -3772,8 +3854,6 @@ msgstr "Nicht verfügbar"
 #~ "eingetragen"
 #~ msgid "Confirm Password"
 #~ msgstr "Passwort bestätigen"
-#~ msgid "currently on loan"
-#~ msgstr "derzeit ausgeliehen"
 #~ msgid "ERROR! Data doesnt exists"
 #~ msgstr "FEHLER! Daten sind nicht vorhanden"
 #~ msgid "Error! Fines data does not exists!"
@@ -3848,8 +3928,6 @@ msgstr "Nicht verfügbar"
 #~ msgstr "Kein Bild vorhanden"
 #~ msgid "No Place data yet"
 #~ msgstr "Kein Erscheinungsort angegeben bisher"
-#~ msgid "Password"
-#~ msgstr "Passwort"
 #~ msgid "Publisher Not Set Yet"
 #~ msgstr "Kein Verlag angegeben bisher"
 #~ msgid "Record failed to delete"

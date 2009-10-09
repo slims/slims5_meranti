@@ -175,7 +175,7 @@ if (!$reportView) {
     }
     $reportgrid->setSQLCriteria($criteria);
 
-   // callback function to show title and authors
+   // callback function to show loan status
     function loanStatus($obj_db, $array_data)
     {
         if ($array_data[6] == 0) {

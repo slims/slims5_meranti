@@ -1,8 +1,8 @@
 <?php
 /**
  *
- * SESSION Settings
- * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com)
+ * Member SESSION Settings
+ * Copyright (C) 2009  Arie Nugraha (dicarve@yahoo.com)
  * Taken and modified from phpMyAdmin's Session library
  *
  * This program is free software; you can redistribute it and/or modify
@@ -33,9 +33,7 @@ if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
 // some pages (e.g. stylesheet) may be cached on clients, but not in shared proxy servers
 @session_cache_limiter('private');
 // set session name and start the session
-@session_name(SENAYAN_SESSION_COOKIES_NAME);
+@session_name(SENAYAN_MEMBER_SESSION_COOKIES_NAME);
 // set session cookies params
-@session_set_cookie_params(86400, SENAYAN_WEB_ROOT_DIR.'admin/');
-// start session
-session_start();
+@session_set_cookie_params(86400, SENAYAN_WEB_ROOT_DIR);
 ?>

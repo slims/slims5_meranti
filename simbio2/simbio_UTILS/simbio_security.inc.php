@@ -60,7 +60,7 @@ class simbio_security
             // shutdown current script
             die($str_msg);
         } else {
-            echo $str_msg;
+            if ($str_msg) { echo $str_msg; }
         }
     }
 }

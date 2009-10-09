@@ -148,6 +148,53 @@ body {
     color: #003380;
 }
 
+/* Member Login related style */
+
+#memberLogin {
+    background: #CCCCCC;
+    border: 1px solid #666;
+}
+
+#memberLogin legend {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#memberLogin .fieldLabel {
+    font-weight: bold;
+}
+
+#memberLogin input[type=text] {
+    width: 90%;
+}
+
+#memberLogin input[type=password] {
+    width: 90%;
+}
+
+#memberLogin .loginInfo {
+    font-style: italic;
+}
+
+#memberLoginInfo {
+    text-align: right;
+    margin: 3px;
+    padding: 3px;
+    border-bottom: 1px solid #999;
+}
+
+#memberLogout {
+    color: #FF0000;
+    font-weight: bold;
+}
+
+.errorBox {
+    margin: 3px;
+    padding: 3px;
+    color: #f00;
+    border: 1px solid #f00;
+}
+
 /* tags spesific style */
 
 input,textarea,select {

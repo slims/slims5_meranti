@@ -61,7 +61,7 @@ class admin_logon
 
         // error check
         if ($obj_db->error) {
-            echo '<div style="border: 1px dotted #FF0000; color: #FF0000; padding: 5px; margin: 3px;">Error authenticating user and password to database</div>';
+            echo '<div style="border: 1px dotted #FF0000; color: #FF0000; padding: 5px; margin: 3px;">'.__('Error authenticating user and password to database').'</div>';
             return false;
         }
 
@@ -126,7 +126,7 @@ class admin_logon
             }
 
             // save md5sum of  current application path
-            $_SESSION['checksum'] = md5($_SERVER['SERVER_ADDR'].SENAYAN_BASE_DIR);
+            $_SESSION['checksum'] = md5($_SERVER['SERVER_ADDR'].SENAYAN_BASE_DIR.'admin');
 
             // update the last login time
             $obj_db->query("UPDATE user SET last_login='".date("Y-m-d H:i:s")."',

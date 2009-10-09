@@ -33,5 +33,5 @@ $msg .= 'alert(\''.__('You Have Been Logged Out From Library Automation System')
 $msg .= 'location.href = \''.SENAYAN_WEB_ROOT_DIR.'index.php?p=login\';';
 $msg .= '</script>';
 // completely destroy session cookie
-simbio_security::destroySessionCookie($msg, SENAYAN_SESSION_COOKIES_NAME, SENAYAN_WEB_ROOT_DIR, true);
+simbio_security::destroySessionCookie($msg, SENAYAN_SESSION_COOKIES_NAME, SENAYAN_WEB_ROOT_DIR.'admin/', true);
 ?>
