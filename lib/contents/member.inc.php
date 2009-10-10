@@ -67,15 +67,13 @@ if (!$is_member_login) {
 ?>
     <fieldset id="memberLogin">
     <legend><?php echo __('Library Member Login'); ?></legend>
-    <div class="loginInfo"><?php echo __('Please insert your E-mail address and password
-        given by library system administrator. If you are library\'s member and don\'t have a password yet,
-        please contact library staff.'); ?></div>
+    <div class="loginInfo"><?php echo __('Please insert your E-mail address and password given by library system administrator. If you are library\'s member and don\'t have a password yet, please contact library staff.'); ?></div>
     <form action="index.php?p=member" method="post">
     <div class="fieldLabel"><?php echo __('Member E-Mail'); ?></div>
         <div><input type="text" name="memberUserName" /></div>
     <div class="fieldLabel marginTop"><?php echo __('Password'); ?></div>
         <div><input type="password" name="memberPassWord" /></div>
-    <div class="marginTop"><input type="submit" name="logMeIn" value="Logon" />
+    <div class="marginTop"><input type="submit" name="logMeIn" value="<?php echo __('Login'); ?>" />
     </div>
     </form>
     </fieldset>
