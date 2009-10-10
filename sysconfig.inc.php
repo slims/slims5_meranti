@@ -52,8 +52,9 @@ if ((bool) ini_get('safe_mode')) {
 // senayan version
 define('SENAYAN_VERSION', 'Senayan3-stable11');
 
-// senayan session cookie name
+// senayan session cookies name
 define('SENAYAN_SESSION_COOKIES_NAME', 'SenayanAdmin');
+define('SENAYAN_MEMBER_SESSION_COOKIES_NAME', 'SenayanMember');
 
 // senayan base dir
 define('SENAYAN_BASE_DIR', realpath(dirname(__FILE__)).DIRECTORY_SEPARATOR);

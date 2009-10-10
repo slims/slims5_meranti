@@ -29,6 +29,7 @@
                  <li><a class="menu" href="index.php"><?php echo __('Home'); ?></a></li>
                  <li><a class="menu" href="index.php?p=libinfo"><?php echo __('Library Information'); ?></a></li>
                  <li><a class="menu" href="index.php?p=help"><?php echo __('Help on Search'); ?></a></li>
+                 <li><a class="menu" href="index.php?p=member"><?php echo __('Member Area'); ?></a></li>
                  <li><a class="menu" href="index.php?p=login"><?php echo __('Librarian LOGIN'); ?></a></li>
             </ul>
         </div>

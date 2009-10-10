@@ -89,3 +89,73 @@
 form.clock {
     text-align: center;
 }
+
+/* Member Login/Area related style */
+#memberLogin {
+    background: #CCCCCC;
+    border: 1px solid #666;
+}
+
+#memberLogin legend {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#memberLogin .fieldLabel {
+    font-weight: bold;
+}
+
+#memberLogin input[type=text] {
+    width: 90%;
+}
+
+#memberLogin input[type=password] {
+    width: 90%;
+}
+
+#memberLogin .loginInfo {
+    font-style: italic;
+}
+
+#memberLoginInfo {
+    text-align: right;
+    margin: 3px;
+    padding: 3px;
+    border-bottom: 1px solid #999;
+}
+
+#memberLogout {
+    color: #FF0000;
+    font-weight: bold;
+}
+
+.errorBox {
+    margin: 3px;
+    padding: 3px;
+    color: #f00;
+    border: 1px solid #f00;
+}
+
+.memberLoanList, .memberDetail {
+    width: 99%;
+    margin: 3px;
+    border: 1px solid #999;
+}
+
+.memberLoanListInfo, .memberDetailInfo {
+    border: 0;
+    padding: 3px;
+}
+
+.dataListHeader {
+    background: #fc0;
+}
+
+.alterCell, .alterCell2 {
+    background-color: #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.alterCell2 {
+    background-color: #fff;
+}

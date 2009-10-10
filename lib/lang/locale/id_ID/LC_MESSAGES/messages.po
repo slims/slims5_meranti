@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Senayan3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-10 10:00+0700\n"
-"PO-Revision-Date: 2009-09-10 10:01+0700\n"
+"POT-Creation-Date: 2009-10-09 22:06+0700\n"
+"PO-Revision-Date: 2009-10-09 22:52+0700\n"
 "Last-Translator: Arie Nugraha <dicarve@yahoo.com>\n"
 "Language-Team: Arie Nugraha; Hendro Wicaksono; Wardiyono <dicarve@yahoo.com; hendrowicaksono@yahoo.com; wynerst@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -17,86 +17,94 @@ msgstr ""
 "X-Poedit-Basepath: ../../../../../\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: sysconfig.inc.php:319
+#: sysconfig.inc.php:320
 msgid "Personal Name"
 msgstr "Nama Orang"
 
-#: sysconfig.inc.php:320
+#: sysconfig.inc.php:321
 msgid "Organizational Body"
 msgstr "Badan Organisasi"
 
-#: sysconfig.inc.php:321
+#: sysconfig.inc.php:322
 msgid "Conference"
 msgstr "Konferensi"
 
-#: sysconfig.inc.php:324
+#: sysconfig.inc.php:325
 #, fuzzy
 msgid "Topic"
 msgstr "Topik"
 
-#: sysconfig.inc.php:325
+#: sysconfig.inc.php:326
 msgid "Geographic"
 msgstr "Geografis"
 
-#: sysconfig.inc.php:326
+#: sysconfig.inc.php:327
 msgid "Name"
 msgstr "Nama"
 
-#: sysconfig.inc.php:327
+#: sysconfig.inc.php:328
 msgid "Temporal"
 msgstr "Sementara"
 
-#: sysconfig.inc.php:328
+#: sysconfig.inc.php:329
 msgid "Genre"
 msgstr "Genre"
 
-#: sysconfig.inc.php:329
+#: sysconfig.inc.php:330
 msgid "Occupation"
 msgstr "Pekerjaan"
 
-#: sysconfig.inc.php:332
+#: sysconfig.inc.php:333
 msgid "Primary Author"
 msgstr "Pengarang Utama"
 
-#: sysconfig.inc.php:333
+#: sysconfig.inc.php:334
 msgid "Additional Author"
 msgstr "Pengarang Tambahan"
 
-#: sysconfig.inc.php:334
+#: sysconfig.inc.php:335
 msgid "Editor"
 msgstr "Editor"
 
-#: sysconfig.inc.php:335
+#: sysconfig.inc.php:336
 msgid "Translator"
 msgstr "Penerjemah"
 
-#: sysconfig.inc.php:336
+#: sysconfig.inc.php:337
 msgid "Director"
 msgstr "Direktur"
 
-#: sysconfig.inc.php:337
+#: sysconfig.inc.php:338
 msgid "Producer"
 msgstr "Produser"
 
-#: sysconfig.inc.php:338
+#: sysconfig.inc.php:339
 msgid "Composer"
 msgstr "Penggubah"
 
-#: sysconfig.inc.php:339
+#: sysconfig.inc.php:340
 msgid "Illustrator"
 msgstr "Ilustrator"
 
-#: sysconfig.inc.php:340
+#: sysconfig.inc.php:341
 msgid "Creator"
 msgstr "Pencipta"
 
-#: sysconfig.inc.php:341
+#: sysconfig.inc.php:342
 msgid "Contributor"
 msgstr "Kontributor"
 
-#: index.php:33
+#: index.php:37
 msgid "Web Online Public Access Catalog - Use the search options to find documents quickly"
 msgstr "Web Online Public Access Catalog - Gunakan fasilitas pencarian untuk mempercepat anda menemukan data katalog"
+
+#: index.php:46
+msgid "You are currently Logged on as member"
+msgstr "Anda saat ini login sebagai anggota"
+
+#: index.php:46
+msgid "LOGOUT"
+msgstr "KELUAR"
 
 #: template/lightweight/index_template.inc.php:20
 #: template/green/index_template.inc.php:19
@@ -114,8 +122,8 @@ msgid "Help on Search"
 msgstr "Bantuan pencarian"
 
 #: template/lightweight/index_template.inc.php:39
-#: template/green/index_template.inc.php:55
-#: template/green/index_template.inc.php:83
+#: template/green/index_template.inc.php:56
+#: template/green/index_template.inc.php:84
 msgid "Search"
 msgstr "Pencarian"
 
@@ -128,7 +136,7 @@ msgstr "Edisi"
 
 #: template/lightweight/custom_frontpage_record.inc.php:8
 #: template/lightweight/detail_template.php:20
-#: template/green/index_template.inc.php:68
+#: template/green/index_template.inc.php:69
 #: template/green/custom_frontpage_record.inc.php:8
 #: template/green/detail_template.php:20
 msgid "ISBN/ISSN"
@@ -156,19 +164,19 @@ msgid "Call Number"
 msgstr "No. Panggil"
 
 #: template/lightweight/detail_template.php:8
-#: template/green/index_template.inc.php:62
+#: template/green/index_template.inc.php:63
 #: template/green/detail_template.php:8
 msgid "Title"
 msgstr "Judul"
 
 #: template/lightweight/detail_template.php:25
-#: template/green/index_template.inc.php:64
+#: template/green/index_template.inc.php:65
 #: template/green/detail_template.php:25
 msgid "Author(s)"
 msgstr "Pengarang"
 
 #: template/lightweight/detail_template.php:29
-#: template/green/index_template.inc.php:66
+#: template/green/index_template.inc.php:67
 #: template/green/detail_template.php:29
 msgid "Subject(s)"
 msgstr "Subyek/Subjek"
@@ -179,7 +187,7 @@ msgid "Classification"
 msgstr "Klasifikasi"
 
 #: template/lightweight/detail_template.php:40
-#: template/green/index_template.inc.php:70
+#: template/green/index_template.inc.php:71
 #: template/green/detail_template.php:40
 msgid "GMD"
 msgstr "GMD"
@@ -230,26 +238,31 @@ msgid "Availability"
 msgstr "Ketersediaan"
 
 #: template/green/index_template.inc.php:22
+#, fuzzy
+msgid "Member Area"
+msgstr "Pencarian Anggota"
+
+#: template/green/index_template.inc.php:23
 msgid "Librarian LOGIN"
 msgstr "LOGIN Pustakawan"
 
-#: template/green/index_template.inc.php:43
+#: template/green/index_template.inc.php:44
 msgid "Select Language"
 msgstr "Select Language"
 
-#: template/green/index_template.inc.php:52
+#: template/green/index_template.inc.php:53
 msgid "Simple Search"
 msgstr "Pencarian Sederhana"
 
-#: template/green/index_template.inc.php:60
+#: template/green/index_template.inc.php:61
 msgid "Advanced Search"
 msgstr "Pencarian Spesifik"
 
-#: template/green/index_template.inc.php:74
+#: template/green/index_template.inc.php:75
 msgid "Collection Type"
 msgstr "Tipe Koleksi"
 
-#: template/green/index_template.inc.php:78
+#: template/green/index_template.inc.php:79
 msgid "Location"
 msgstr "Lokasi"
 
@@ -486,7 +499,7 @@ msgstr "Tanggal Penerimaan"
 
 #: admin/modules/bibliography/item.php:311
 msgid "Not Applicable"
-msgstr ""
+msgstr "Belum Diaplikasikan"
 
 #: admin/modules/bibliography/item.php:315
 msgid "Supplier"
@@ -691,31 +704,36 @@ msgstr "Data Lampiran GAGAL disimpan!"
 msgid "Upload Now"
 msgstr "Unggah Sekarang"
 
-#: admin/modules/bibliography/pop_attach.php:188
-msgid "Repo. Directory"
+#: admin/modules/bibliography/pop_attach.php:182
+#, fuzzy
+msgid "Repository ROOT"
 msgstr "Direktori Repositori"
 
 #: admin/modules/bibliography/pop_attach.php:192
+msgid "Repo. Directory"
+msgstr "Direktori Repositori"
+
+#: admin/modules/bibliography/pop_attach.php:196
 msgid "File To Attach"
 msgstr "Berkas Lampiran"
 
-#: admin/modules/bibliography/pop_attach.php:195
+#: admin/modules/bibliography/pop_attach.php:199
 msgid "URL"
 msgstr "URL"
 
-#: admin/modules/bibliography/pop_attach.php:197
+#: admin/modules/bibliography/pop_attach.php:201
 msgid "Description"
 msgstr "Deskripsi"
 
-#: admin/modules/bibliography/pop_attach.php:199
+#: admin/modules/bibliography/pop_attach.php:203
 msgid "Public"
 msgstr "Publik"
 
-#: admin/modules/bibliography/pop_attach.php:200
+#: admin/modules/bibliography/pop_attach.php:204
 msgid "Private"
 msgstr "Tertutup"
 
-#: admin/modules/bibliography/pop_attach.php:201
+#: admin/modules/bibliography/pop_attach.php:205
 msgid "Access"
 msgstr "Akses"
 
@@ -1572,9 +1590,8 @@ msgid "Special Labels for Titles to Show Up On Homepage"
 msgstr "Label"
 
 #: admin/modules/master_file/item_status.php:43
-#, fuzzy
 msgid "No Loan Transaction"
-msgstr "Total Transsaksi Peminjaman"
+msgstr "Tidak Ada Transaksi Peminjaman"
 
 #: admin/modules/master_file/item_status.php:44
 #, fuzzy
@@ -2277,7 +2294,7 @@ msgstr "Statistik peminjaman berdasarkan kelas desimal"
 
 #: admin/modules/reporting/customs/customs_report_list.inc.php:28
 #: admin/modules/reporting/customs/member_list.php:55
-#: admin/modules/membership/index.php:237
+#: admin/modules/membership/index.php:247
 msgid "Member List"
 msgstr "Daftar Anggota"
 
@@ -2344,24 +2361,24 @@ msgstr "Telah Kembali"
 #: admin/modules/membership/member_card_generator.php:223
 #: admin/modules/membership/member_type.php:205
 #: admin/modules/membership/member_type.php:211
-#: admin/modules/membership/index.php:324
-#: admin/modules/membership/index.php:382
-#: admin/modules/membership/index.php:388
+#: admin/modules/membership/index.php:334
+#: admin/modules/membership/index.php:398
+#: admin/modules/membership/index.php:404
 msgid "Membership Type"
 msgstr "Tipe Keanggotaan"
 
 #: admin/modules/reporting/customs/member_list.php:79
-#: admin/modules/membership/index.php:328
+#: admin/modules/membership/index.php:338
 msgid "Gender"
 msgstr "Jenis Kelamin"
 
 #: admin/modules/reporting/customs/member_list.php:83
-#: admin/modules/membership/index.php:326
+#: admin/modules/membership/index.php:336
 msgid "Male"
 msgstr "Laki-laki"
 
 #: admin/modules/reporting/customs/member_list.php:84
-#: admin/modules/membership/index.php:327
+#: admin/modules/membership/index.php:337
 msgid "Female"
 msgstr "Perempuan"
 
@@ -2412,17 +2429,16 @@ msgid "Member Card Printing"
 msgstr "Kartu Anggota"
 
 #: admin/modules/membership/member_card_generator.php:194
-#, fuzzy
 msgid "Print Member Cards for Selected Data"
-msgstr "Cetak Data Terpilih"
+msgstr "Cetak Kartu Anggota dari Data Terpilih"
 
 #: admin/modules/membership/member_card_generator.php:256
-#: admin/modules/membership/index.php:425
+#: admin/modules/membership/index.php:441
 msgid "Found"
 msgstr "Ditemukan"
 
 #: admin/modules/membership/member_card_generator.php:256
-#: admin/modules/membership/index.php:425
+#: admin/modules/membership/index.php:441
 msgid "from your search with keyword"
 msgstr "dari kata kunci"
 
@@ -2435,7 +2451,7 @@ msgid "Import for members data from CSV file"
 msgstr "Fasilitas Impor data anggota dari berkas CSV"
 
 #: admin/modules/membership/submenu.php:23
-#: admin/modules/membership/index.php:236
+#: admin/modules/membership/index.php:246
 msgid "Membership"
 msgstr "Keanggotaan"
 
@@ -2448,7 +2464,7 @@ msgid "View Library Member List"
 msgstr "Lihat Daftar Anggota Perpustakaan"
 
 #: admin/modules/membership/submenu.php:25
-#: admin/modules/membership/index.php:236
+#: admin/modules/membership/index.php:246
 msgid "Add New Member"
 msgstr "Tambah Anggota"
 
@@ -2528,7 +2544,7 @@ msgid "Fine Each Day"
 msgstr "Denda Per Hari"
 
 #: admin/modules/membership/member_type.php:192
-#: admin/modules/membership/index.php:360
+#: admin/modules/membership/index.php:374
 msgid "You are going to edit member data"
 msgstr "Anda akan meng-edit data anggota"
 
@@ -2540,98 +2556,114 @@ msgstr "Tabel keanggotaan dalam pangkalan data belum memiliki rekod. Ekspor GAGA
 msgid "Export member(s) data to CSV file"
 msgstr "Fasilitas Ekspor data anggota dalam berkas CSV"
 
-#: admin/modules/membership/index.php:53
+#: admin/modules/membership/index.php:55
 msgid "Member ID and Name can't be empty"
 msgstr "ID dan Nama Anggota tidak boleh kosong"
 
-#: admin/modules/membership/index.php:115
+#: admin/modules/membership/index.php:58
+msgid "Password confirmation does not match. See if your Caps Lock key is on!"
+msgstr "Password dan Konfirmasinya tidak cocok. Pastikan penggunaan huruf besar dan kecil yang sesuai!"
+
+#: admin/modules/membership/index.php:124
 msgid "Member Data Successfully Updated"
 msgstr "Data Anggota Berhasil diperbarui"
 
-#: admin/modules/membership/index.php:125
-#: admin/modules/membership/index.php:148
+#: admin/modules/membership/index.php:134
+#: admin/modules/membership/index.php:158
 msgid "Image FAILED to upload"
 msgstr "Citra/Berkas Gambar GAGAL Diunggah"
 
-#: admin/modules/membership/index.php:131
-#: admin/modules/membership/index.php:154
+#: admin/modules/membership/index.php:140
+#: admin/modules/membership/index.php:164
 msgid "Member Data FAILED to Save/Update. Please Contact System Administrator"
 msgstr "Data anggota gagal di-simpan/update. Hubungi admin sistem untuk pemecahannya"
 
-#: admin/modules/membership/index.php:138
+#: admin/modules/membership/index.php:148
 msgid "New Member Data Successfully Saved"
 msgstr "Data Anggota Baru Berhasil Disimpan"
 
-#: admin/modules/membership/index.php:217
+#: admin/modules/membership/index.php:227
 msgid "Below member data can't be deleted because still have unreturned item(s)"
 msgstr "Data anggota dibawah tidak bisa dihapus karena masih memiliki koleksi yang belum dikembalikan"
 
-#: admin/modules/membership/index.php:238
+#: admin/modules/membership/index.php:248
 msgid "View Expired Member"
 msgstr "Lihat Anggota yang Expired"
 
-#: admin/modules/membership/index.php:240
+#: admin/modules/membership/index.php:250
 msgid "Member Search"
 msgstr "Pencarian Anggota"
 
-#: admin/modules/membership/index.php:288
+#: admin/modules/membership/index.php:298
 msgid "Extend Membership"
 msgstr "Perpanjang Keanggotaan"
 
-#: admin/modules/membership/index.php:299
+#: admin/modules/membership/index.php:309
 msgid "Birth Date"
 msgstr "Tanggal Lahir"
 
-#: admin/modules/membership/index.php:302
+#: admin/modules/membership/index.php:312
 msgid "Member Since"
 msgstr "Anggota Sejak"
 
-#: admin/modules/membership/index.php:310
+#: admin/modules/membership/index.php:320
 msgid "Auto Set"
 msgstr "Set Otomatis"
 
-#: admin/modules/membership/index.php:316
+#: admin/modules/membership/index.php:326
 msgid "Institution"
 msgstr "Institusi"
 
-#: admin/modules/membership/index.php:334
+#: admin/modules/membership/index.php:342
 msgid "Postal Code"
 msgstr "Kode Pos"
 
-#: admin/modules/membership/index.php:340
+#: admin/modules/membership/index.php:348
 msgid "Personal ID Number"
 msgstr "Nomor ID Personal"
 
-#: admin/modules/membership/index.php:342
+#: admin/modules/membership/index.php:350
 msgid "Notes"
 msgstr "Catatan"
 
-#: admin/modules/membership/index.php:344
+#: admin/modules/membership/index.php:352
 msgid "Pending Membership"
 msgstr "Tunda Keanggotaan"
 
-#: admin/modules/membership/index.php:344
+#: admin/modules/membership/index.php:352
 msgid "Yes"
 msgstr "Ya"
 
-#: admin/modules/membership/index.php:350
-#: admin/modules/membership/index.php:354
+#: admin/modules/membership/index.php:358
+#: admin/modules/membership/index.php:362
 msgid "Photo"
 msgstr "Foto"
 
-#: admin/modules/membership/index.php:418
+#: admin/modules/membership/index.php:367
+msgid "New Password"
+msgstr "Password Baru"
+
+#: admin/modules/membership/index.php:369
+msgid "Confirm New Password"
+msgstr "Konfirmasi Password Baru"
+
+#: admin/modules/membership/index.php:375
+msgid "Leave Password field blank if you don't want to change the password"
+msgstr "Biarkan kotak Password kosong jika tidak ingin mengubahnya"
+
+#: admin/modules/membership/index.php:434
 msgid "Expired Member List"
 msgstr "Daftar Anggota yang Expired"
 
-#: admin/modules/membership/index.php:419
+#: admin/modules/membership/index.php:435
 msgid "Extend Selected Member(s)"
 msgstr "Perpanjang Anggota terpilih"
 
-#: admin/modules/membership/index.php:419
+#: admin/modules/membership/index.php:435
 msgid "Are you sure to EXTEND membership for selected members?"
 msgstr "Anda yakin ingin memperpanjang keanggotaan untuk anggota terpilih?"
 
-#: admin/modules/membership/index.php:421
+#: admin/modules/membership/index.php:437
 msgid "members extended!"
 msgstr "Keanggotaan berhasil diperpanjang!"
 
@@ -3015,7 +3047,7 @@ msgstr "Ubah Status"
 
 #: admin/modules/stock_take/current.php:64
 msgid "List stocktakes by"
-msgstr ""
+msgstr "Daftar stok take item"
 
 #: admin/modules/stock_take/current.php:65
 msgid "Current User Only"
@@ -3173,7 +3205,7 @@ msgid "Manage Application User or Library Staff"
 msgstr "Pengelolaan Data Pengguna Aplikasi/Staf Perpustakaan"
 
 #: admin/modules/system/submenu.php:33
-#: admin/modules/system/user_group.php:162
+#: admin/modules/system/user_group.php:159
 msgid "User Group"
 msgstr "Kelompok Pengguna"
 
@@ -3228,24 +3260,24 @@ msgstr "Kelompok Baru Berhasil Disimpan"
 msgid "Group Data FAILED to Save. Please Contact System Administrator"
 msgstr "Data Kelompok GAGAL Disimpan. Hubungi admin sistem untuk pemecahannya"
 
-#: admin/modules/system/user_group.php:162
+#: admin/modules/system/user_group.php:159
 msgid "Add New Group"
 msgstr "Data Kelompok Baru"
 
-#: admin/modules/system/user_group.php:163
+#: admin/modules/system/user_group.php:160
 msgid "Group List"
 msgstr "Daftar Kelompok"
 
-#: admin/modules/system/user_group.php:202
-#: admin/modules/system/user_group.php:229
+#: admin/modules/system/user_group.php:199
+#: admin/modules/system/user_group.php:226
 msgid "Group Name"
 msgstr "Nama Kelompok"
 
-#: admin/modules/system/user_group.php:213
+#: admin/modules/system/user_group.php:210
 msgid "Privileges"
 msgstr "Hak Istimewa"
 
-#: admin/modules/system/user_group.php:218
+#: admin/modules/system/user_group.php:215
 msgid "You are going to edit Group data"
 msgstr "Anda akan meng-edit data kelompok"
 
@@ -3308,10 +3340,6 @@ msgstr "Nama Lengkap dan Nama Login tidak boleh kosong"
 msgid "Login username or Real Name is probihited!"
 msgstr "Login Pengguna atau Nama Lengkap tidak bisa digunakan!"
 
-#: admin/modules/system/app_user.php:66
-msgid "Password confirmation does not match. See if your Caps Lock key is on!"
-msgstr "Password dan Konfirmasinya tidak cocok. Pastikan penggunaan huruf besar dan kecil yang sesuai!"
-
 #: admin/modules/system/app_user.php:100
 msgid "User Data Successfully Updated"
 msgstr "Data Pengguna Berhasil Diperbaharui"
@@ -3340,21 +3368,9 @@ msgstr "Daftar Staf"
 msgid "Group(s)"
 msgstr "Kelompok"
 
-#: admin/modules/system/app_user.php:234
-msgid "New Password"
-msgstr "Password Baru"
-
-#: admin/modules/system/app_user.php:236
-msgid "Confirm New Password"
-msgstr "Konfirmasi Password Baru"
-
 #: admin/modules/system/app_user.php:240
 msgid "You are going to edit user profile"
 msgstr "Anda akan meng-edit data pengguna"
-
-#: admin/modules/system/app_user.php:241
-msgid "Leave Password field blank if you don't want to change the password"
-msgstr "Biarkan kotak Password kosong jika tidak ingin mengubahnya"
 
 #: admin/modules/system/app_user.php:261
 #: admin/modules/system/app_user.php:266
@@ -3631,23 +3647,23 @@ msgstr "Hilangkan Cek"
 msgid "No Data"
 msgstr "Tidak Ada Data"
 
-#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:103
-#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:99
+#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:111
+#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:107
 msgid "First Page"
 msgstr "Hal. Pertama"
 
-#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:105
-#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:101
+#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:113
+#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:109
 msgid "Previous"
 msgstr "Sebelumnya"
 
-#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:126
-#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:122
+#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:134
+#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:130
 msgid "Next"
 msgstr "Berikutnya"
 
-#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:134
-#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:130
+#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:142
+#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:138
 msgid "Last Page"
 msgstr "Hal. Akhir"
 
@@ -3665,6 +3681,11 @@ msgstr "Batal"
 msgid "Date"
 msgstr "Tanggal"
 
+#: lib/admin_logon.inc.php:64
+#: lib/member_logon.inc.php:59
+msgid "Error authenticating user and password to database"
+msgstr "Otentikasi user dan password error"
+
 #: lib/detail.inc.php:150
 msgid "Click to view others documents with this author"
 msgstr "Klik disini untuk mencari dokumen lain dari pengarang ini"
@@ -3681,8 +3702,8 @@ msgstr "Tidak ada item untuk judul ini"
 msgid "copies at"
 msgstr "kopi terdapat di"
 
-#: lib/biblio_list.inc.php:331
-#: lib/biblio_list.inc.php:352
+#: lib/biblio_list.inc.php:333
+#: lib/biblio_list.inc.php:354
 msgid "Record Detail"
 msgstr "Detail Rekod"
 
@@ -3698,12 +3719,68 @@ msgstr "Inggris"
 msgid "Indonesian"
 msgstr "Indonesia"
 
-#: lib/contents/default.inc.php:114
-#: lib/contents/default.inc.php:125
+#: lib/contents/member.inc.php:44
+#, fuzzy
+msgid "Please fill your Username and Password to Login!"
+msgstr "Lengkapi username dan password dengan benar"
+
+#: lib/contents/member.inc.php:59
+msgid "Login FAILED! Wrong username or password!"
+msgstr "Login GAGAL! Username/E-mail atau password salah!"
+
+#: lib/contents/member.inc.php:69
+msgid "Library Member Login"
+msgstr "Login Anggota Perpustakaan"
+
+#: lib/contents/member.inc.php:70
+msgid ""
+"Please insert your E-mail address and password\n"
+"        given by library system administrator. If you are library's member and don't have a password yet,\n"
+"        please contact library staff."
+msgstr ""
+"Masukan alamat e-mail dan password\n"
+"       yang diberikan oleh administrator sistem perpustakaan. Apabila anda anggota perpustakaan dan belum memiliki password,\n"
+"       harap hubungi staf perpustakaan."
+
+#: lib/contents/member.inc.php:74
+msgid "Member E-Mail"
+msgstr "E-mail Anggota"
+
+#: lib/contents/member.inc.php:76
+msgid "Password"
+msgstr "Sandi Login"
+
+#: lib/contents/member.inc.php:98
+msgid "Your Membership Already EXPIRED! Please extend your membership."
+msgstr "Keanggotaan anda sudah HABIS MASA BERLAKU-nya! Harap perpanjang keanggotaan anda segera."
+
+#: lib/contents/member.inc.php:101
+#, fuzzy
+msgid "Membership currently in pending state, no loan transaction can be made yet."
+msgstr "Keanggotaan saat ini sedang di-pending, transaksi peminjaman tidak bisa dilakukan."
+
+#: lib/contents/member.inc.php:130
+msgid "OVERDUED"
+msgstr "TERLAMBAT"
+
+#: lib/contents/member.inc.php:175
+msgid "item(s) currently on loan"
+msgstr "koleksi yang sedang dipinjam"
+
+#: lib/contents/member.inc.php:180
+msgid "Member Detail"
+msgstr "Data Anggota"
+
+#: lib/contents/member.inc.php:182
+msgid "Your Current Loan"
+msgstr "Peminjaman Anda"
+
+#: lib/contents/default.inc.php:100
+#: lib/contents/default.inc.php:111
 msgid "Found  <strong>{biblio_list->num_rows}</strong> from your keywords"
 msgstr "Ditemukan  <strong>{biblio_list->num_rows}</strong> dari pencarian anda melalui kata kunci"
 
-#: lib/contents/default.inc.php:158
+#: lib/contents/default.inc.php:144
 msgid "You currently on page <strong>{page}</strong> of <strong>{total_pages}</strong> page(s)"
 msgstr "Saat ini anda berada pada halaman <strong>{page}</strong> dari total <strong>{total_pages}</strong> halaman"
 
@@ -3719,19 +3796,19 @@ msgstr "Semua Koleksi"
 msgid "All GMD/Media"
 msgstr "Semua GMD/Media"
 
-#: lib/contents/login.inc.php:44
+#: lib/contents/login.inc.php:48
 msgid "Please supply valid username and password"
 msgstr "Lengkapi username dan password dengan benar"
 
-#: lib/contents/login.inc.php:57
+#: lib/contents/login.inc.php:61
 msgid "Welcome to Library Automation,"
 msgstr "Selamat datang di automasi perpustakaan,"
 
-#: lib/contents/login.inc.php:65
+#: lib/contents/login.inc.php:70
 msgid "Wrong Username or Password. ACCESS DENIED"
 msgstr "Username atau Password salah. ANDA TIDAK BERHAK MELANJUTKAN"
 
-#: lib/contents/login.inc.php:76
+#: lib/contents/login.inc.php:82
 msgid "Your browser does not support Javascript or Javascript is disabled. Application won't run without Javascript!"
 msgstr "Browser anda tidak mendukung Javascript atau Javascript tidak diaktifkan. Aplikasi tidak dapat dijalankan tanpa Javascript!"
 
@@ -3749,6 +3826,7 @@ msgstr "Tidak Tersedia"
 
 msgid "Bibliography"
 msgstr "Katalog"
+
 #~ msgid ""
 #~ "<strong>{dompdf_libdir}</strong> directory is not writable. Make sure it "
 #~ "is writable (and all directories under it) by changing its permission or "
@@ -3768,8 +3846,6 @@ msgstr "Katalog"
 #~ msgstr "Tipe koleksi {item_name} masih digunakan oleh {number_items} item"
 #~ msgid "Confirm Password"
 #~ msgstr "Konfirmasi Password"
-#~ msgid "currently on loan"
-#~ msgstr "sedang dipinjam"
 #~ msgid "ERROR! Data doesnt exists"
 #~ msgstr "ERROR! Data tidak ditemukan!"
 #~ msgid "Error! Fines data does not exists!"
@@ -3846,8 +3922,6 @@ msgstr "Katalog"
 #~ msgstr "Tidak ada gambar sampul"
 #~ msgid "No Place data yet"
 #~ msgstr "Belum ada tempat terbit"
-#~ msgid "Password"
-#~ msgstr "Sandi Login"
 #~ msgid "Publisher Not Set Yet"
 #~ msgstr "Belum ada penerbit"
 #~ msgid "Record failed to delete"

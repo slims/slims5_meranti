@@ -26,22 +26,22 @@ if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
 }
 
 // check session
-$unauthorized = !isset($_SESSION['uid']) AND !isset($_SESSION['uname']) AND !isset($_SESSION['realname']);
+$unauthorized = !isset($_SESSION['uid']) && !isset($_SESSION['uname']) && !isset($_SESSION['realname']);
 if ($unauthorized) {
     $msg = '<script type="text/javascript">'."\n";
     $msg .= 'alert(\''.__('You are not authorized to view this section').'\');'."\n";
     $msg .= 'location.href = \''.SENAYAN_WEB_ROOT_DIR.'index.php?p=login\';'."\n";
     $msg .= '</script>'."\n";
-    simbio_security::destroySessionCookie($msg, SENAYAN_SESSION_COOKIES_NAME, SENAYAN_WEB_ROOT_DIR, true);
+    simbio_security::destroySessionCookie($msg, SENAYAN_SESSION_COOKIES_NAME, SENAYAN_WEB_ROOT_DIR.'admin', true);
 }
 
 // checking session checksum
-$unauthorized = $_SESSION['checksum'] != md5($_SERVER['SERVER_ADDR'].SENAYAN_BASE_DIR);
+$unauthorized = $_SESSION['checksum'] != md5($_SERVER['SERVER_ADDR'].SENAYAN_BASE_DIR.'admin');
 if ($unauthorized) {
     $msg = '<div style="padding: 5px; border: 1px dotted #FF0000; color: #FF0000;">';
     $msg .= __('You are not authorized to view this section');
     $msg .= '</div>'."\n";
-    simbio_security::destroySessionCookie($msg, SENAYAN_SESSION_COOKIES_NAME, SENAYAN_WEB_ROOT_DIR, true);
+    simbio_security::destroySessionCookie($msg, SENAYAN_SESSION_COOKIES_NAME, SENAYAN_WEB_ROOT_DIR.'admin', true);
 }
 
 // check for session timeout
@@ -51,7 +51,7 @@ if ($timeout) {
     $msg = '<div style="padding: 5px; border: 1px dotted #FF0000; color: #FF0000;">';
     $msg .= __('Your Login Session has already timeout!').' <a href="'.SENAYAN_WEB_ROOT_DIR.'index.php?p=login">Re-Login</a>';
     $msg .= '</div>'."\n";
-    simbio_security::destroySessionCookie($msg, SENAYAN_SESSION_COOKIES_NAME, SENAYAN_WEB_ROOT_DIR, true);
+    simbio_security::destroySessionCookie($msg, SENAYAN_SESSION_COOKIES_NAME, SENAYAN_WEB_ROOT_DIR.'admin', true);
 } else {
     // renew session logintime
     $_SESSION['logintime'] = time();

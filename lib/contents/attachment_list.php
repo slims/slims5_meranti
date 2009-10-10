@@ -23,6 +23,8 @@
 
 // required file
 require '../../sysconfig.inc.php';
+require '../member_session.inc.php';
+session_start();
 
 if (isset($_POST['ajaxsec_user'])) {
     $ajaxsec_user = $_POST['ajaxsec_user'];
@@ -41,12 +43,23 @@ if (($ajaxsec_user == $sysconf['ajaxsec_user']) AND ($ajaxsec_passwd == $sysconf
     if (isset($_POST['id'])) {
         $id = intval($_POST['id']);
         $attachment_q = $dbs->query('SELECT att.*, f.* FROM biblio_attachment AS att
-            LEFT JOIN files AS f ON att.file_id=f.file_id WHERE att.biblio_id='.$id.' AND att.access_type=\'public\'');
+            LEFT JOIN files AS f ON att.file_id=f.file_id WHERE att.biblio_id='.$id.' AND att.access_type=\'public\' LIMIT 20');
         if ($attachment_q->num_rows < 1) {
             echo '<strong style="color: red; font-weight: bold;">'.__('No Attachment').'</strong>';
         } else {
             echo '<ul class="attachList">';
             while ($attachment_d = $attachment_q->fetch_assoc()) {
+                // check member type privileges
+                if ($attachment_d['access_limit']) {
+                    if (utility::isMemberLogin()) {
+                        $allowed_mem_types = @unserialize($attachment_d['access_limit']);
+                        if (!in_array($_SESSION['m_member_type_id'], $allowed_mem_types)) {
+                            continue;
+                        }
+                    } else {
+                        continue;
+                    }
+                }
                 if (preg_match('@(video|audio|image)/.+@i', $attachment_d['mime_type'])) {
                     echo '<li style="list-style-image: url(images/labels/auvi.png)"><strong><a href="#" title="Click to Play, Listen or View" onclick="openHTMLpop(\'index.php?p=multimediastream&fid='.$attachment_d['file_id'].'&bid='.$attachment_d['biblio_id'].'\', 400, 300, \''.$attachment_d['file_title'].'\')">'.$attachment_d['file_title'].'</a></strong>';
                     echo '<div><i>'.$attachment_d['file_desc'].'</i></div>';

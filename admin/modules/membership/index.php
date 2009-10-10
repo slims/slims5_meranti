@@ -49,8 +49,13 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
     // check form validity
     $memberID = trim($_POST['memberID']);
     $memberName = trim($_POST['memberName']);
+    $mpasswd1 = trim($_POST['memberPasswd']);
+    $mpasswd2 = trim($_POST['memberPasswd2']);
     if (empty($memberID) OR empty($memberName)) {
         utility::jsAlert(__('Member ID and Name can\'t be empty')); //mfc
+        exit();
+    } else if (($mpasswd1 AND $mpasswd2) AND ($mpasswd1 !== $mpasswd2)) {
+        utility::jsAlert(__('Password confirmation does not match. See if your Caps Lock key is on!'));
         exit();
     } else {
         $data['member_id'] = $dbs->escape_string($memberID);
@@ -96,6 +101,10 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 $data['member_image'] = $dbs->escape_string($upload->new_filename);
             }
         }
+        // password confirmation
+        if (($mpasswd1 AND $mpasswd2) AND ($mpasswd1 === $mpasswd2)) {
+            $data['mpasswd'] = 'literal{MD5(\''.$mpasswd2.'\')}';
+        }
 
         // create sql op object
         $sql_op = new simbio_dbop($dbs);
@@ -132,6 +141,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
             exit();
         } else {
             /* INSERT RECORD MODE */
+            if (!$mpasswd1 AND !$mpasswd2) { $data['mpasswd'] = 'literal{NULL}'; }
             // insert the data
             $insert = $sql_op->insert('member', $data);
             if ($insert) {
@@ -326,8 +336,6 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $gender_chbox[0] = array('1', __('Male'));
     $gender_chbox[1] = array('0', __('Female'));
     $form->addRadio('gender', __('Gender'), $gender_chbox, !empty($rec_d['gender'])?$rec_d['gender']:'0');
-    // member email
-    $form->addTextField('text', 'memberEmail', __('E-mail'), $rec_d['member_email'], 'style="width: 60%;"');
     // member address
     $form->addTextField('textarea', 'memberAddress', __('Address'), $rec_d['member_address'], 'rows="2" style="width: 100%;"');
     // member postal
@@ -353,17 +361,25 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         $str_input .= ' '.__('Maximum').' '.$sysconf['max_image_upload'].' KB'; //mfc
         $form->addAnything(__('Photo'), $str_input);
     }
+    // member email
+    $form->addTextField('text', 'memberEmail', __('E-mail'), $rec_d['member_email'], 'style="width: 40%;"');
+    // member password
+    $form->addTextField('password', 'memberPasswd', __('New Password'), null, 'style="width: 40%;"');
+    // member password confirmation
+    $form->addTextField('password', 'memberPasswd2', __('Confirm New Password'), null, 'style="width: 40%;"');
 
     // edit mode messagge
     if ($form->edit_mode) {
         echo '<div class="infoBox" style="overflow: auto;">'
-            .'<div style="float: left; width: 80%;">'.__('You are going to edit member data').' : <b>'.$rec_d['member_name'].'</b> <br />'.__('Last Updated').' '.$rec_d['last_update'].' '.$expired_message.'</div>'; //mfc
+            .'<div style="float: left; width: 80%;">'.__('You are going to edit member data').' : <b>'.$rec_d['member_name'].'</b> <br />'.__('Last Updated').' '.$rec_d['last_update'].' '.$expired_message
+            .'<div>'.__('Leave Password field blank if you don\'t want to change the password').'</div>'
+            .'</div>';
             if ($rec_d['member_image']) {
                 if (file_exists(IMAGES_BASE_DIR.'persons/'.$rec_d['member_image'])) {
                     echo '<div style="float: right;"><img src="../lib/phpthumb/phpThumb.php?src=../../images/persons/'.urlencode($rec_d['member_image']).'&w=53" style="border: 1px solid #999999" /></div>';
                 }
             }
-        echo'</div>'."\n";
+        echo '</div>'."\n";
     }
     // print out the form object
     echo $form->printOut();

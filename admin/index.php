@@ -25,7 +25,7 @@ require '../sysconfig.inc.php';
 // start the session
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 // session checking
-require './default/session_check.inc.php';
+require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/template_parser/simbio_template_parser.inc.php';
 require LIB_DIR.'module.inc.php';
 

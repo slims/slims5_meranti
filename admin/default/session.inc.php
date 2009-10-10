@@ -28,14 +28,6 @@ if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
 
 // always use session cookies
 @ini_set('session.use_cookies', true);
-// but not all user allow cookies
-// @ini_set('session.use_only_cookies', false);
-// @ini_set('session.use_trans_sid', true);
-// delete session/cookies when browser is closed
-// @ini_set('session.cookie_lifetime', 0);
-// warn but dont work with bug
-// @ini_set('session.bug_compat_42', false);
-// @ini_set('session.bug_compat_warn', true);
 // use more secure session ids
 @ini_set('session.hash_function', 1);
 // some pages (e.g. stylesheet) may be cached on clients, but not in shared proxy servers
@@ -43,7 +35,7 @@ if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
 // set session name and start the session
 @session_name(SENAYAN_SESSION_COOKIES_NAME);
 // set session cookies params
-@session_set_cookie_params(86400, SENAYAN_WEB_ROOT_DIR);
+@session_set_cookie_params(86400, SENAYAN_WEB_ROOT_DIR.'admin/');
 // start session
-@session_start();
+session_start();
 ?>

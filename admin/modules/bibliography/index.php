@@ -507,7 +507,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         $datagrid->setSQLColumn('biblio.biblio_id', 'biblio.biblio_id AS bid',
             'biblio.title AS \''.__('Title').'\'',
             'biblio.isbn_issn AS \''.__('ISBN/ISSN').'\'',
-            'IF(COUNT(item.item_id)>0, COUNT(item.item_id), \'<strong style="color: #FF0000;">'.__('None').'</strong>\') AS \''.__('None').'\'',
+            'IF(COUNT(item.item_id)>0, COUNT(item.item_id), \'<strong style="color: #FF0000;">'.__('None').'</strong>\') AS \''.__('Copies').'\'',
             'biblio.last_update AS \''.__('Last Update').'\'');
         $datagrid->modifyColumnContent(2, 'callback{showTitleAuthors}');
     } else {

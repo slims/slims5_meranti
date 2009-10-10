@@ -23,6 +23,10 @@
 
 // required file
 require 'sysconfig.inc.php';
+// member session params
+require LIB_DIR.'member_session.inc.php';
+// start session
+session_start();
 if ($sysconf['template']['base'] == 'html') {
     require SIMBIO_BASE_DIR.'simbio_GUI/template_parser/simbio_template_parser.inc.php';
 }
@@ -37,6 +41,10 @@ $total_pages = 1;
 $header_info = '';
 // HTML metadata
 $metadata = '';
+// member login information
+if (utility::isMemberLogin()) {
+    $header_info .= '<div id="memberLoginInfo">'.__('You are currently Logged on as member').': <strong>'.$_SESSION['m_name'].' (<em>'.$_SESSION['m_email'].'</em>)</strong> <a id="memberLogout" href="index.php?p=member&logout=1">['.__('LOGOUT').']</a></div>';
+}
 
 // start the output buffering for main content
 ob_start();
@@ -74,7 +82,7 @@ if (isset($_GET['p'])) {
             $content = new content();
             $content_data = $content->get($dbs, 'headerinfo');
             if ($content_data) {
-                $header_info = '<div id="headerInfo">'.$content_data['Content'].'</div>';
+                $header_info .= '<div id="headerInfo">'.$content_data['Content'].'</div>';
                 unset($content_data);
             }
         }

@@ -78,7 +78,7 @@ class utility
     public static function havePrivilege($str_module_name, $str_privilege_type = 'r')
     {
         // checking checksum
-        if ($_SESSION['checksum'] != md5($_SERVER['SERVER_ADDR'].SENAYAN_BASE_DIR)) {
+        if ($_SESSION['checksum'] != md5($_SERVER['SERVER_ADDR'].SENAYAN_BASE_DIR.'admin')) {
             return false;
         }
         // check privilege type
@@ -224,6 +224,19 @@ class utility
             return true;
         }
         return false;
+    }
+
+
+    /**
+     * Static method to check if member already logged in or not
+     *
+     * @return  boolean
+     **/
+    public static function isMemberLogin()
+    {
+        $_logged_in = false;
+        $_logged_in = isset($_SESSION['mid']) && isset($_SESSION['m_name']) && isset($_SESSION['m_email']);
+        return $_logged_in;
     }
 }
 ?>

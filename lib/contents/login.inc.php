@@ -1,5 +1,7 @@
 <?php
 /**
+ *
+ * Librarian login page
  * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com), Hendro Wicaksono (hendrowicaksono@yahoo.com)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -31,7 +33,7 @@ if ($sysconf['https_enable']) {
 }
 
 // check if session browser cookie already exists
-if (isset($_COOKIE[SENAYAN_SESSION_COOKIES_NAME])) {
+if (isset($_COOKIE['admin_logged_in'])) {
     header('location: admin/index.php');
 }
 
@@ -40,23 +42,28 @@ ob_start();
 
 // if there is login action
 if (isset($_POST['logMeIn'])) {
-    if (empty($_POST['userName']) OR empty($_POST['passWord'])) {
+    $username = trim(strip_tags($_POST['userName']));
+    $password = trim(strip_tags($_POST['passWord']));
+    if (!$username OR !$password) {
         echo '<script type="text/javascript">alert(\''.__('Please supply valid username and password').'\');</script>';
     } else {
+        // destroy previous session set in OPAC
+        simbio_security::destroySessionCookie(null, SENAYAN_MEMBER_SESSION_COOKIES_NAME, SENAYAN_WEB_ROOT_DIR, false);
         require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
         // regenerate session ID to prevent session hijacking
         session_regenerate_id(true);
-        $username = strip_tags($_POST['userName']);
-        $password = strip_tags($_POST['passWord']);
         // create logon class instance
         $logon = new admin_logon($username, $password);
         if ($logon->adminValid($dbs)) {
+            // set cookie admin flag
+            setcookie('admin_logged_in', true, time()+14400, SENAYAN_WEB_ROOT_DIR);
             // write log
             utility::writeLogs($dbs, 'staff', $username, 'Login', 'Login success for user '.$username.' from address '.$_SERVER['REMOTE_ADDR']);
             echo '<script type="text/javascript">';
-            echo 'alert(\''.__('Welcome to Library Automation,').$logon->real_name.'\');'; //mfc
+            echo 'alert(\''.__('Welcome to Library Automation,').$logon->real_name.'\');';
             echo 'location.href = \'admin/index.php\';';
             echo '</script>';
+            exit();
         } else {
             // write log
             utility::writeLogs($dbs, 'staff', $username, 'Login', 'Login FAILED for user '.$username.' from address '.$_SERVER['REMOTE_ADDR']);
@@ -65,7 +72,8 @@ if (isset($_POST['logMeIn'])) {
             $msg .= 'alert(\''.__('Wrong Username or Password. ACCESS DENIED').'\');';
             $msg .= 'history.back();';
             $msg .= '</script>';
-            simbio_security::destroySessionCookie($msg, SENAYAN_SESSION_COOKIES_NAME, SENAYAN_WEB_ROOT_DIR, false);
+            simbio_security::destroySessionCookie($msg, SENAYAN_SESSION_COOKIES_NAME, SENAYAN_WEB_ROOT_DIR.'admin', false);
+            exit();
         }
     }
 }
