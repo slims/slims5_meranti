@@ -171,10 +171,14 @@ if (!$reportView) {
         $gmd_IDs = '';
         foreach ($_GET['gmd'] as $id) {
             $id = (integer)$id;
-            $gmd_IDs = "$id,";
+            if ($id) {
+                $gmd_IDs .= "$id,";
+            }
         }
         $gmd_IDs = substr_replace($gmd_IDs, '', -1);
-        $outer_criteria .= " AND b.gmd_id IN($gmd_IDs)";
+        if ($gmd_IDs) {
+            $outer_criteria .= " AND b.gmd_id IN($gmd_IDs)";
+        }
     }
     if (isset($_GET['language']) AND !empty($_GET['language'])) {
         $language = $dbs->escape_string(trim($_GET['language']));
