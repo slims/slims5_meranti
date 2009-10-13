@@ -141,8 +141,8 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     $html_str .= '<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Member card Label Print Result</title>'."\n";
     $html_str .= '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'."\n";
     $html_str .= '<style type="text/css">'."\n";
-    $html_str .= 'body { padding: 0; margin: 1cm; font-family: '.$card_fonts.'; }'."\n";
-    $html_str .= '.labelStyle { width: '.$card_box_width.'cm; height: '.$card_box_height.'cm; text-align: center; margin: '.$card_items_margin.'cm; border: 1px solid #666666; padding: 5px;}'."\n";
+    $html_str .= 'body { padding: 0; margin: 1cm; font-size: '.$card_font_size.'pt; font-family: '.$card_fonts.'; }'."\n";
+    $html_str .= '.labelStyle { width: '.$card_box_width.'cm; height: '.$card_box_height.'cm; text-align: center; margin: '.$card_items_margin.'cm; border: '.$card_border_size.'px solid #666666; padding: 5px;}'."\n";
     $html_str .= '.labelHeaderStyle { background-color: #CCCCCC; font-weight: bold; padding: 5px; margin-bottom: 5px; }'."\n";
     $html_str .= '#photo { border: 1px solid #666666; float: left; width: '.$card_photo_width.'cm; height: '.$card_photo_height.'cm; overflow: hidden; }'."\n";
     $html_str .= '#photo img { width: 100%; }'."\n";
