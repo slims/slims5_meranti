@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Senayan3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-10 14:41+0100\n"
-"PO-Revision-Date: 2009-10-10 14:42+0100\n"
+"POT-Creation-Date: 2009-10-14 11:46+0100\n"
+"PO-Revision-Date: 2009-10-14 11:50+0100\n"
 "Last-Translator: Tobias Zeumer <github@verweisungsform.de>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -3640,55 +3640,64 @@ msgstr "Benutzername oder Passwort sind inkorrekt. ZUGRIFF VERWEIGERT"
 msgid "Your browser does not support Javascript or Javascript is disabled. Application won't run without Javascript!"
 msgstr "Ihr Browser unterstützt keine JavaScript oder die Unterstützung wurde deaktiviert. JavaScript ist für diese Anwendung erforderlich!"
 
-#: lib/contents/member.inc.php:44
+#: lib/contents/member.inc.php:53
 msgid "Please fill your Username and Password to Login!"
 msgstr "Bitte geben Sie Ihre E-Mail und Ihr Passwort an für die Anmeldung an!"
 
-#: lib/contents/member.inc.php:59
+#: lib/contents/member.inc.php:68
 msgid "Login FAILED! Wrong username or password!"
 msgstr "Anmeldung FEHLGESCHLAGEN! Anmeldename oder Passwort nicht vorhanden!"
 
-#: lib/contents/member.inc.php:69
+#: lib/contents/member.inc.php:78
 msgid "Library Member Login"
 msgstr "Anmeldung im Katalog für Bibliotheksmitglieder"
 
-#: lib/contents/member.inc.php:70
-msgid "Please insert your E-mail address and password given by library system administrator. If you are library's member and don't have a password yet, please contact library staff."
-msgstr "Bitte geben Sie Ihre E-Mail, sowie das Passwort ein, das Ihnen von der Bibliothek mitgeteilt wurde. Sollten Sie Bibliotheksmitglied sein und noch kein Passwort haben, wenden Sie sich bitte an einen unserer Mitarbeiter."
+#: lib/contents/member.inc.php:79
+msgid "Please insert your member ID and password given by library system administrator. If you are library's member and don't have a password yet, please contact library staff."
+msgstr "Bitte geben Sie Ihre Mitgliedsnummer, sowie das Passwort ein, das Ihnen von der Bibliothek mitgeteilt wurde. Sollten Sie Bibliotheksmitglied sein und noch kein Passwort haben, wenden Sie sich bitte an einen unserer Mitarbeiter."
 
-#: lib/contents/member.inc.php:72
-msgid "Member E-Mail"
-msgstr "E-Mail des Mitglieds"
-
-#: lib/contents/member.inc.php:74
+#: lib/contents/member.inc.php:83
 msgid "Password"
 msgstr "Passwort"
 
-#: lib/contents/member.inc.php:76
+#: lib/contents/member.inc.php:85
 msgid "Login"
 msgstr "Anmelden"
 
-#: lib/contents/member.inc.php:96
+#: lib/contents/member.inc.php:102
+msgid "Current Password"
+msgstr "Aktuelles Passwort"
+
+#: lib/contents/member.inc.php:110
+msgid "Confirm Password"
+msgstr "Passwort bestätigen"
+
+#: lib/contents/member.inc.php:114
+#: lib/contents/member.inc.php:243
+msgid "Change Password"
+msgstr "Passwort ändern"
+
+#: lib/contents/member.inc.php:153
 msgid "Your Membership Already EXPIRED! Please extend your membership."
 msgstr "Ihre Mitgliedschaft ist abgelaufen! Bitte wenden Sie sich an einen unserer Mitarbeiter um diese zu verlängern."
 
-#: lib/contents/member.inc.php:99
+#: lib/contents/member.inc.php:156
 msgid "Membership currently in pending state, no loan transaction can be made yet."
 msgstr "Status der Mitgliedsschaft ist 'ruhend', keine Ausleihvorgänge derzeit möglich."
 
-#: lib/contents/member.inc.php:128
+#: lib/contents/member.inc.php:189
 msgid "OVERDUED"
 msgstr "ÜBERFÄLLIG"
 
-#: lib/contents/member.inc.php:173
+#: lib/contents/member.inc.php:234
 msgid "item(s) currently on loan"
 msgstr "Exemplar(e) derzeit ausgeliehen"
 
-#: lib/contents/member.inc.php:178
+#: lib/contents/member.inc.php:239
 msgid "Member Detail"
 msgstr "Mitgliedsdetails"
 
-#: lib/contents/member.inc.php:180
+#: lib/contents/member.inc.php:241
 msgid "Your Current Loan"
 msgstr "Ihre derzeitigen Entleihungen"
 
@@ -3820,6 +3829,8 @@ msgstr "Einfache Suche"
 msgid "Advanced Search"
 msgstr "Erweiterte Suche"
 
+#~ msgid "Member E-Mail"
+#~ msgstr "E-Mail des Mitglieds"
 #~ msgid "Bibliography"
 #~ msgstr "Titelaufnahmen"
 
@@ -3849,8 +3860,6 @@ msgstr "Erweiterte Suche"
 #~ msgstr ""
 #~ "Der Sammlungstyp ({item_name}) ist noch für {number_items} Exemplar(e) "
 #~ "eingetragen"
-#~ msgid "Confirm Password"
-#~ msgstr "Passwort bestätigen"
 #~ msgid "ERROR! Data doesnt exists"
 #~ msgstr "FEHLER! Daten sind nicht vorhanden"
 #~ msgid "Error! Fines data does not exists!"
