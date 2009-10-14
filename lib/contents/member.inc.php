@@ -26,7 +26,7 @@ require LIB_DIR.'member_logon.inc.php';
 $is_member_login = utility::isMemberLogin();
 
 // if member is logged out
-if (isset($_GET['logout']) AND $_GET['logout'] == '1') {
+if (isset($_GET['logout']) && $_GET['logout'] == '1') {
     // write log
     utility::writeLogs($dbs, 'member', $_SESSION['email'], 'Login', $_SESSION['member_name'].' Log Out from address '.$_SERVER['REMOTE_ADDR']);
     // completely destroy session cookie
@@ -35,9 +35,18 @@ if (isset($_GET['logout']) AND $_GET['logout'] == '1') {
     exit();
 }
 
+// if there is change password request
+if ($is_member_login && isset($_POST['changePass'])) {
+    if ( procChangePassword($_POST['currPass'], $_POST['newPass'], $_POST['newPass2']) ) {
+        $info = '';
+    } else {
+        $info = '';
+    }
+}
+
 // if there is member login action
-if (isset($_POST['logMeIn']) AND !$is_member_login) {
-    $username = trim(strip_tags($_POST['memberUserName']));
+if (isset($_POST['logMeIn']) && !$is_member_login) {
+    $username = trim(strip_tags($_POST['memberID']));
     $password = trim(strip_tags($_POST['memberPassWord']));
     // check if username or password is empty
     if (!$username OR !$password) {
@@ -67,12 +76,12 @@ if (!$is_member_login) {
 ?>
     <fieldset id="memberLogin">
     <legend><?php echo __('Library Member Login'); ?></legend>
-    <div class="loginInfo"><?php echo __('Please insert your E-mail address and password
+    <div class="loginInfo"><?php echo __('Please insert your member ID and password
         given by library system administrator. If you are library\'s member and don\'t have a password yet,
         please contact library staff.'); ?></div>
     <form action="index.php?p=member" method="post">
-    <div class="fieldLabel"><?php echo __('Member E-Mail'); ?></div>
-        <div><input type="text" name="memberUserName" /></div>
+    <div class="fieldLabel"><?php echo __('Member ID'); ?></div>
+        <div><input type="text" name="memberID" /></div>
     <div class="fieldLabel marginTop"><?php echo __('Password'); ?></div>
         <div><input type="password" name="memberPassWord" /></div>
     <div class="marginTop"><input type="submit" name="logMeIn" value="Logon" />
@@ -81,6 +90,54 @@ if (!$is_member_login) {
     </fieldset>
 <?php
 } else {
+    /*
+     * Function to show member change password form
+     *
+     * @return      string
+     */
+    function changePassword()
+    {
+        // show the member information
+        $_form = '<form id="memberChangePassword" method="post" action="index.php?p=member">'."\n";
+        $_form .= '<table class="memberDetail" cellpadding="5" cellspacing="0">'."\n";
+        $_form .= '<tr>'."\n";
+        $_form .= '<td class="alterCell" width="20%"><strong>'.__('Current Password').'</strong></td>';
+        $_form .= '<td class="alterCell2"><input type="password" name="currPass" /></td>';
+        $_form .= '</tr>'."\n";
+        $_form .= '<tr>'."\n";
+        $_form .= '<td class="alterCell" width="20%"><strong>'.__('New Password').'</strong></td>';
+        $_form .= '<td class="alterCell2"><input type="password" name="newPass" /></td>';
+        $_form .= '</tr>'."\n";
+        $_form .= '<tr>'."\n";
+        $_form .= '<td class="alterCell" width="20%"><strong>'.__('Confirm Password').'</strong></td>';
+        $_form .= '<td class="alterCell2"><input type="password" name="newPass2" /></td>';
+        $_form .= '</tr>'."\n";
+        $_form .= '<tr>'."\n";
+        $_form .= '<td class="alterCell2" colspan="2"><input type="submit" name="changePass" value="'.__('Change Password').'" /></td>';
+        $_form .= '</tr>'."\n";
+        $_form .= '</table>'."\n";
+        $_form .= '</form>'."\n";
+
+        return $_form;
+    }
+
+
+    /*
+     * Function to process member's password changes
+     *
+     * @param       string      $str_curr_pass = member's current password
+     * @param       string      $str_new_pass = member's new password request
+     * @param       string      $str_conf_new_pass = member's new password request confirmation
+     * @return      boolean     true on success, false on failed
+     */
+    function procChangePassword($str_curr_pass, $str_new_pass, $str_conf_new_pass)
+    {
+        global $dbs;
+
+
+    }
+
+
     /*
      * Function to show membership detail of logged in member
      *
@@ -114,6 +171,10 @@ if (!$is_member_login) {
         $_detail .= '<tr>'."\n";
         $_detail .= '<td class="alterCell" width="15%"><strong>'.__('Register Date').'</strong></td><td class="alterCell2" width="30%">'.$_SESSION['m_register_date'].'</td>';
         $_detail .= '<td class="alterCell" width="15%"><strong>'.__('Expiry Date').'</strong></td><td class="alterCell2" width="30%">'.$_SESSION['m_expire_date'].'</td>';
+        $_detail .= '</tr>'."\n";
+        $_detail .= '<tr>'."\n";
+        $_detail .= '<td class="alterCell" width="15%"><strong>'.__('Institution').'</strong></td>'
+            .'<td class="alterCell2" colspan="3">'.$_SESSION['m_institution'].'</td>';
         $_detail .= '</tr>'."\n";
         $_detail .= '</table>'."\n";
 
@@ -150,9 +211,9 @@ if (!$is_member_login) {
 
         // table spec
         $_table_spec = 'loan AS l
-        LEFT JOIN member AS m ON l.member_id=m.member_id
-        LEFT JOIN item AS i ON l.item_code=i.item_code
-        LEFT JOIN biblio AS b ON i.biblio_id=b.biblio_id';
+            LEFT JOIN member AS m ON l.member_id=m.member_id
+            LEFT JOIN item AS i ON l.item_code=i.item_code
+            LEFT JOIN biblio AS b ON i.biblio_id=b.biblio_id';
 
         // create datagrid
         $_loan_list = new simbio_datagrid();
@@ -161,7 +222,7 @@ if (!$is_member_login) {
             'l.loan_date AS \''.__('Loan Date').'\'',
             'l.due_date AS \''.__('Due Date').'\'');
         $_loan_list->setSQLorder('l.loan_date DESC');
-        $_criteria = 'm.member_id=\''.$_SESSION['mid'].'\' ';
+        $_criteria = 'm.member_id=\''.$_SESSION['mid'].'\' AND l.is_lent=1 AND is_return=0 ';
         $_loan_list->setSQLCriteria($_criteria);
 
         // modify column value
@@ -181,5 +242,7 @@ if (!$is_member_login) {
     echo showMemberDetail();
     echo '<h3 class="memberInfoHead">'.__('Your Current Loan').'</h3>'."\n";
     echo showLoanList();
+    echo '<h3 class="memberInfoHead">'.__('Change Password').'</h3>'."\n";
+    echo changePassword();
 }
 ?>
