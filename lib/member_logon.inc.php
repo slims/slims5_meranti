@@ -47,11 +47,11 @@ class member_logon
      */
     public function valid($obj_db)
     {
-        $_member_q = $obj_db->query("SELECT m.member_id, m.member_name,
+        $_member_q = $obj_db->query("SELECT m.member_id, m.member_name, m.inst_name,
             m.member_email, m.expire_date, m.register_date, m.is_pending,
             m.member_type_id, mt.member_type_name
             FROM member AS m LEFT JOIN mst_member_type AS mt ON m.member_type_id=mt.member_type_id
-            WHERE m.member_email='".$obj_db->escape_string(trim($this->username))."'
+            WHERE m.member_id='".$obj_db->escape_string(trim($this->username))."'
                 AND m.mpasswd=MD5('".$obj_db->escape_string(trim($this->password))."')");
 
         // error check
@@ -71,6 +71,7 @@ class member_logon
             $_SESSION['mid'] = $_member_d['member_id'];
             $_SESSION['m_name'] = $_member_d['member_name'];
             $_SESSION['m_email'] = $_member_d['member_email'];
+            $_SESSION['m_institution'] = $_member_d['inst_name'];
             $_SESSION['m_logintime'] = time();
             $_SESSION['m_expire_date'] = $_member_d['expire_date'];
             $_SESSION['m_member_type_id'] = $_member_d['member_type_id'];

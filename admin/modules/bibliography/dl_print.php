@@ -126,7 +126,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     $html_str .= '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'."\n";
     $html_str .= '<style type="text/css">'."\n";
     $html_str .= 'body { padding: 0; margin: 1cm; font-family: '.$fonts.'; }'."\n";
-    $html_str .= '.labelStyle { width: '.$box_width.'cm; height: '.$box_height.'cm; text-align: center; margin: '.$items_margin.'cm; padding: 0; border: 1px solid #000000; }'."\n";
+    $html_str .= '.labelStyle { width: '.$box_width.'cm; height: '.$box_height.'cm; text-align: center; margin: '.$items_margin.'cm; padding: 0; border: '.$border_size.'px solid #000000; }'."\n";
     $html_str .= '.labelHeaderStyle { background-color: #CCCCCC; font-weight: bold; padding: 5px; margin-bottom: 5px; }'."\n";
     $html_str .= '</style>'."\n";
     $html_str .= '</head>'."\n";
