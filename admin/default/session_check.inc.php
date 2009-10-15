@@ -30,8 +30,10 @@ $unauthorized = !isset($_SESSION['uid']) && !isset($_SESSION['uname']) && !isset
 if ($unauthorized) {
     $msg = '<script type="text/javascript">'."\n";
     $msg .= 'alert(\''.__('You are not authorized to view this section').'\');'."\n";
-    $msg .= 'location.href = \''.SENAYAN_WEB_ROOT_DIR.'index.php?p=login\';'."\n";
+    $msg .= 'top.location.href = \''.SENAYAN_WEB_ROOT_DIR.'index.php?p=login\';'."\n";
     $msg .= '</script>'."\n";
+    // unset cookie admin flag
+    setcookie('admin_logged_in', true, time()-86400, SENAYAN_WEB_ROOT_DIR);
     simbio_security::destroySessionCookie($msg, SENAYAN_SESSION_COOKIES_NAME, SENAYAN_WEB_ROOT_DIR.'admin', true);
 }
 
@@ -41,6 +43,8 @@ if ($unauthorized) {
     $msg = '<div style="padding: 5px; border: 1px dotted #FF0000; color: #FF0000;">';
     $msg .= __('You are not authorized to view this section');
     $msg .= '</div>'."\n";
+    // unset cookie admin flag
+    setcookie('admin_logged_in', true, time()-86400, SENAYAN_WEB_ROOT_DIR);
     simbio_security::destroySessionCookie($msg, SENAYAN_SESSION_COOKIES_NAME, SENAYAN_WEB_ROOT_DIR.'admin', true);
 }
 
@@ -49,8 +53,10 @@ $curr_timestamp = time();
 $timeout = ($curr_timestamp-$_SESSION['logintime']) >= $sysconf['session_timeout'];
 if ($timeout) {
     $msg = '<div style="padding: 5px; border: 1px dotted #FF0000; color: #FF0000;">';
-    $msg .= __('Your Login Session has already timeout!').' <a href="'.SENAYAN_WEB_ROOT_DIR.'index.php?p=login">Re-Login</a>';
+    $msg .= __('Your Login Session has already timeout!').' <a target="_top" href="'.SENAYAN_WEB_ROOT_DIR.'index.php?p=login">Re-Login</a>';
     $msg .= '</div>'."\n";
+    // unset cookie admin flag
+    setcookie('admin_logged_in', true, time()-86400, SENAYAN_WEB_ROOT_DIR);
     simbio_security::destroySessionCookie($msg, SENAYAN_SESSION_COOKIES_NAME, SENAYAN_WEB_ROOT_DIR.'admin', true);
 } else {
     // renew session logintime
