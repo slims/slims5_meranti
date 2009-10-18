@@ -393,3 +393,14 @@ color: #8C8C73;
     color:#797B7A;
     font-weight:normal;
     text-decoration:none;}
+
+#loginForm {
+    margin: 0 auto;
+    margin-top: 40px;
+    padding-top: 105px;
+    background: url(images/login_bg.png) top left no-repeat;
+    width: 400px;
+    height: 300px;
+    text-align: center;
+}
+
