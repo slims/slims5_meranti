@@ -9,7 +9,3 @@ ALTER TABLE `biblio_attachment` ADD `access_limit` TEXT CHARACTER SET utf8 COLLA
 ALTER TABLE `member` ADD `last_login_ip` VARCHAR(20) NULL AFTER `is_pending`;
 ALTER TABLE `member` ADD `last_login` DATETIME NULL AFTER `is_pending`;
 ALTER TABLE `member` ADD `mpasswd` CHAR(32) NULL AFTER `is_pending`;
-
--- mst_item_status table change
-ALTER TABLE `mst_item_status` ADD `skip_stock_take` smallint(1) NOT NULL default '0' AFTER `rules`;
-ALTER TABLE `mst_item_status` ADD `no_loan` smallint(1) NOT NULL default '0' AFTER `rules`;

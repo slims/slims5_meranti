@@ -350,8 +350,12 @@ color: #A8A88D;
 color: #8C8C73;
 }
 
-
-
+.item {
+    clear: both;
+    margin-bottom: 5px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #ccc;
+}
 
 .alterList {
     /*font-family:"Trebuchet MS";*/
@@ -385,6 +389,17 @@ color: #8C8C73;
     font-size:17px;
     font-weight:bold;
 
+}
+
+#loginForm {
+    margin: 0 auto;
+    border: 1px solid #999;
+    border-top: 0;
+    background: #fff url(images/login-bg.png) top left no-repeat;
+    width: 400px;
+    padding: 5px;
+    padding-top: 100px;
+    text-align: center;
 }
 
 .pagingList {
