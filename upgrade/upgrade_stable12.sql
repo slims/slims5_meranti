@@ -9,3 +9,4 @@ ALTER TABLE `biblio_attachment` ADD `access_limit` TEXT CHARACTER SET utf8 COLLA
 ALTER TABLE `member` ADD `last_login_ip` VARCHAR(20) NULL AFTER `is_pending`;
 ALTER TABLE `member` ADD `last_login` DATETIME NULL AFTER `is_pending`;
 ALTER TABLE `member` ADD `mpasswd` CHAR(32) NULL AFTER `is_pending`;
+
