@@ -70,6 +70,8 @@ if (isset($_GET['p'])) {
             $info = '<div class="contentTitle">'.$content_data['Title'].'</div>';
             echo '<div class="contentDesc">'.$content_data['Content'].'</div>';
             unset($content_data);
+        } else {
+            header ("location:index.php");
         }
     }
 } else {
