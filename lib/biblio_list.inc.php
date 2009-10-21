@@ -277,7 +277,7 @@ class biblio_list
         // location
         if ($this->criteria) {
             if (isset($this->criteria['searched_fields']['location']) OR isset($this->criteria['searched_fields']['colltype'])) {
-                $_add_sql_str .= ' LEFT JOIN item ON b.biblio_id=i.biblio_id ';
+                $_add_sql_str .= ' LEFT JOIN item ON biblio.biblio_id=item.biblio_id ';
             }
         }
 
