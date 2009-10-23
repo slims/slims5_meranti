@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * Copyright (C) 2009  Hendro Wicaksono (hendrowicaksono@yahoo.com)
@@ -26,21 +26,29 @@
 $version = "0f4778cafd9442fabb94d070c3598063";
 
 ?>
-<div style="padding-left:10px;">
-<h1>SLiMS Version 3 Stable 12</h1>
+<div style="padding-left: 10px;">
+<h2>SLiMS Version 3 Stable 12</h2>
+<p>&nbsp;</p>
+<p>
 SLiMS (Senayan Library Management System)<br />
 Copyright (c) 2007-2009 Senayan Developer Community<br />
-Simbio Engine v2.0, Copyright (c) 2007-2009 Arie Nugraha<br /><br />
-<span style="font-weight:bold;">Developers:</span><br />
+Simbio Engine v2.0, Copyright (c) 2007-2009 Arie Nugraha
+</p>
+
+<p>
+<div style="font-weight:bold;">Developers:</div>
 Lead Developer: Hendro Wicaksono<br />
 Programmer: Arie Nugraha, Hendro Wicaksono, Tobias Zeumer, Wardiyono<br />
-Documentation: Arif Buitenzorg, Hendro Wicaksono, Purwoko (lead), Rasyid Ridho, Sulfan Zayd, Verina Maria O, Wardiyono<br /><br />
+Documentation: Arif Buitenzorg, Hendro Wicaksono, Purwoko (lead), Rasyid Ridho, Sulfan Zayd, Verina Maria O, Wardiyono
+</p>
 
-Contribution:<br />
+<p>
+<div style="font-weight:bold;">Contribution:</div>
 Simbio Engine (Arie Nugraha)<br />
 PHP-based template system: Hendro Wicaksono<br />
 Blue Template: Eddie Subratha<br />
 Gettext Support: Tobias Zeumer<br />
+</p>
 
 </div>
 

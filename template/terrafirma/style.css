@@ -357,6 +357,19 @@ color: #8C8C73;
     border-bottom: 1px solid #ccc;
 }
 
+.item a {
+    font-weight: bold;
+    font-size: 110%;
+}
+
+.item .detailLink {
+    font-size: 90%;
+}
+
+.item .xmlDetailLink {
+    font-size: 90%;
+}
+
 .alterList {
     /*font-family:"Trebuchet MS";*/
     font-size:13px;
@@ -377,6 +390,10 @@ color: #8C8C73;
     margin-top: 10px;
 }
 
+.tblHead {
+    font-weight: bold;
+}
+
 #infoBox {
     font-family:"Trebuchet MS";
     font-size:13px;
@@ -389,17 +406,6 @@ color: #8C8C73;
     font-size:17px;
     font-weight:bold;
 
-}
-
-#loginForm {
-    margin: 0 auto;
-    border: 1px solid #999;
-    border-top: 0;
-    background: #fff url(images/login-bg.png) top left no-repeat;
-    width: 400px;
-    padding: 5px;
-    padding-top: 100px;
-    text-align: center;
 }
 
 .pagingList {
