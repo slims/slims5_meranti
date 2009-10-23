@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2009, WARDIYONO (wynerst@gmail.com) 
+ * Copyright (C) 2009, WARDIYONO (wynerst@gmail.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
  */
- 
+
 $info = 'Library Location';
 $lat= -6.2254549;
 $long= 106.8023901;
@@ -40,14 +40,11 @@ $long= 106.8023901;
     var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
 	var marker = new google.maps.Marker({
-        position: latlng, 
+        position: latlng,
         map: map,
         title:"<?php echo $sysconf['library_name'] . ' ' . $sysconf['library_subname']; ?>"
     });
   }
-  
-
-
 </script>
 </head>
 <body onload="initialize()">
@@ -102,5 +99,5 @@ $long= 106.8023901;
 </body>
 </html>
 <?php
-	exit();
+exit();
 ?>

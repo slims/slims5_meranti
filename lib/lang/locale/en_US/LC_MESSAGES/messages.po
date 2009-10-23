@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Senayan3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-09 22:01+0700\n"
-"PO-Revision-Date: 2009-10-09 22:01+0700\n"
+"POT-Creation-Date: 2009-10-23 22:30+0700\n"
+"PO-Revision-Date: 2009-10-23 22:30+0700\n"
 "Last-Translator: Arie Nugraha <dicarve@yahoo.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -106,23 +106,23 @@ msgid "LOGOUT"
 msgstr ""
 
 #: template/lightweight/index_template.inc.php:20
-#: template/green/index_template.inc.php:19
+#: template/green/index_template.inc.php:26
 msgid "Home"
 msgstr ""
 
 #: template/lightweight/index_template.inc.php:21
-#: template/green/index_template.inc.php:20
+#: template/green/index_template.inc.php:27
 msgid "Library Information"
 msgstr ""
 
 #: template/lightweight/index_template.inc.php:22
-#: template/green/index_template.inc.php:21
+#: template/green/index_template.inc.php:28
 msgid "Help on Search"
 msgstr ""
 
 #: template/lightweight/index_template.inc.php:39
-#: template/green/index_template.inc.php:56
-#: template/green/index_template.inc.php:84
+#: template/green/index_template.inc.php:63
+#: template/green/index_template.inc.php:91
 msgid "Search"
 msgstr ""
 
@@ -135,7 +135,7 @@ msgstr ""
 
 #: template/lightweight/custom_frontpage_record.inc.php:8
 #: template/lightweight/detail_template.php:20
-#: template/green/index_template.inc.php:69
+#: template/green/index_template.inc.php:76
 #: template/green/custom_frontpage_record.inc.php:8
 #: template/green/detail_template.php:20
 msgid "ISBN/ISSN"
@@ -163,19 +163,19 @@ msgid "Call Number"
 msgstr ""
 
 #: template/lightweight/detail_template.php:8
-#: template/green/index_template.inc.php:63
+#: template/green/index_template.inc.php:70
 #: template/green/detail_template.php:8
 msgid "Title"
 msgstr ""
 
 #: template/lightweight/detail_template.php:25
-#: template/green/index_template.inc.php:65
+#: template/green/index_template.inc.php:72
 #: template/green/detail_template.php:25
 msgid "Author(s)"
 msgstr ""
 
 #: template/lightweight/detail_template.php:29
-#: template/green/index_template.inc.php:67
+#: template/green/index_template.inc.php:74
 #: template/green/detail_template.php:29
 msgid "Subject(s)"
 msgstr ""
@@ -186,7 +186,7 @@ msgid "Classification"
 msgstr ""
 
 #: template/lightweight/detail_template.php:40
-#: template/green/index_template.inc.php:71
+#: template/green/index_template.inc.php:78
 #: template/green/detail_template.php:40
 msgid "GMD"
 msgstr ""
@@ -236,31 +236,31 @@ msgstr ""
 msgid "Availability"
 msgstr ""
 
-#: template/green/index_template.inc.php:22
+#: template/green/index_template.inc.php:29
 msgid "Member Area"
 msgstr ""
 
-#: template/green/index_template.inc.php:23
+#: template/green/index_template.inc.php:30
 msgid "Librarian LOGIN"
 msgstr ""
 
-#: template/green/index_template.inc.php:44
+#: template/green/index_template.inc.php:51
 msgid "Select Language"
 msgstr ""
 
-#: template/green/index_template.inc.php:53
+#: template/green/index_template.inc.php:60
 msgid "Simple Search"
 msgstr ""
 
-#: template/green/index_template.inc.php:61
+#: template/green/index_template.inc.php:68
 msgid "Advanced Search"
 msgstr ""
 
-#: template/green/index_template.inc.php:75
+#: template/green/index_template.inc.php:82
 msgid "Collection Type"
 msgstr ""
 
-#: template/green/index_template.inc.php:79
+#: template/green/index_template.inc.php:86
 msgid "Location"
 msgstr ""
 
@@ -277,8 +277,6 @@ msgid "Welcome To The Library Automation System, you are currently logged in as"
 msgstr ""
 
 #: admin/modules/bibliography/import.php:36
-#: admin/modules/bibliography/item.php:40
-#: admin/modules/bibliography/item.php:204
 msgid "You are not authorized to view this section"
 msgstr ""
 
@@ -331,10 +329,12 @@ msgid "Attachment removed!"
 msgstr ""
 
 #: admin/modules/bibliography/submenu.php:23
+#: admin/modules/bibliography/index.php:266
 msgid "Bibliographic"
 msgstr ""
 
 #: admin/modules/bibliography/submenu.php:24
+#: admin/modules/bibliography/index.php:267
 msgid "Bibliographic List"
 msgstr ""
 
@@ -343,6 +343,7 @@ msgid "Show Existing Bibliographic Data"
 msgstr ""
 
 #: admin/modules/bibliography/submenu.php:25
+#: admin/modules/bibliography/index.php:266
 msgid "Add New Bibliography"
 msgstr ""
 
@@ -364,6 +365,7 @@ msgid "Show List of Library Items"
 msgstr ""
 
 #: admin/modules/bibliography/submenu.php:28
+#: admin/modules/bibliography/checkout_item.php:43
 msgid "Checkout Items"
 msgstr ""
 
@@ -384,6 +386,7 @@ msgid "Grab Bibliographic Data from Z3950 Web Services"
 msgstr ""
 
 #: admin/modules/bibliography/submenu.php:31
+#: admin/modules/bibliography/dl_print.php:171
 msgid "Labels Printing"
 msgstr ""
 
@@ -392,6 +395,7 @@ msgid "Print Document Labels"
 msgstr ""
 
 #: admin/modules/bibliography/submenu.php:32
+#: admin/modules/bibliography/item_barcode_generator.php:196
 msgid "Item Barcodes Printing"
 msgstr ""
 
@@ -441,28 +445,35 @@ msgid "New Item Data Successfully Saved"
 msgstr ""
 
 #: admin/modules/bibliography/item.php:169
+#: admin/modules/bibliography/iframe_item_list.php:74
 msgid "Item data can not be deleted because still on hold by members"
 msgstr ""
 
 #: admin/modules/bibliography/item.php:175
+#: admin/modules/bibliography/iframe_item_list.php:80
 msgid "Item succesfully removed!"
 msgstr ""
 
 #: admin/modules/bibliography/item.php:178
+#: admin/modules/bibliography/iframe_item_list.php:85
 msgid "Item FAILED to removed!"
 msgstr ""
 
 #: admin/modules/bibliography/item.php:218
+#: admin/modules/bibliography/index.php:295
 msgid "Save"
 msgstr ""
 
 #: admin/modules/bibliography/item.php:237
+#: admin/modules/bibliography/index.php:317
 msgid "Update"
 msgstr ""
 
 #: admin/modules/bibliography/item.php:271
 #: admin/modules/bibliography/item.php:372
 #: admin/modules/bibliography/item.php:381
+#: admin/modules/bibliography/checkout_item.php:61
+#: admin/modules/bibliography/item_barcode_generator.php:224
 msgid "Item Code"
 msgstr ""
 
@@ -495,6 +506,7 @@ msgid "Receiving Date"
 msgstr ""
 
 #: admin/modules/bibliography/item.php:311
+#: admin/modules/bibliography/index.php:350
 msgid "Not Applicable"
 msgstr ""
 
@@ -533,18 +545,29 @@ msgstr ""
 #: admin/modules/bibliography/item.php:332
 #: admin/modules/bibliography/item.php:377
 #: admin/modules/bibliography/item.php:386
+#: admin/modules/bibliography/index.php:454
 msgid "Last Updated"
 msgstr ""
 
 #: admin/modules/bibliography/item.php:420
+#: admin/modules/bibliography/checkout_item.php:106
+#: admin/modules/bibliography/item_barcode_generator.php:260
+#: admin/modules/bibliography/index.php:562
+#: admin/modules/bibliography/dl_print.php:236
 msgid "Found <strong>{result->num_rows}</strong> from your keywords"
 msgstr ""
 
 #: admin/modules/bibliography/item.php:421
+#: admin/modules/bibliography/item_barcode_generator.php:261
+#: admin/modules/bibliography/index.php:563
+#: admin/modules/bibliography/dl_print.php:237
 msgid "Query took"
 msgstr ""
 
 #: admin/modules/bibliography/item.php:421
+#: admin/modules/bibliography/item_barcode_generator.php:261
+#: admin/modules/bibliography/index.php:563
+#: admin/modules/bibliography/dl_print.php:237
 msgid "second(s) to complete"
 msgstr ""
 
@@ -573,7 +596,6 @@ msgid "Type to search for existing authors or to add a new one"
 msgstr ""
 
 #: admin/modules/bibliography/pop_author.php:148
-#: admin/modules/bibliography/pop_topic.php:149
 msgid "Insert To Bibliography"
 msgstr ""
 
@@ -606,12 +628,10 @@ msgid "Member ID"
 msgstr ""
 
 #: admin/modules/bibliography/checkout_item.php:64
-#: admin/modules/circulation/loan.php:129
 msgid "Loan Date"
 msgstr ""
 
 #: admin/modules/bibliography/checkout_item.php:65
-#: admin/modules/circulation/loan.php:129
 msgid "Due Date"
 msgstr ""
 
@@ -680,57 +700,61 @@ msgstr ""
 msgid "Upload FAILED! Forbidden file type or file size too big!"
 msgstr ""
 
-#: admin/modules/bibliography/pop_attach.php:119
+#: admin/modules/bibliography/pop_attach.php:131
 msgid "File Attachment data updated!"
 msgstr ""
 
-#: admin/modules/bibliography/pop_attach.php:123
+#: admin/modules/bibliography/pop_attach.php:135
 msgid "File Attachment data FAILED to update!"
 msgstr ""
 
-#: admin/modules/bibliography/pop_attach.php:128
-#: admin/modules/bibliography/pop_attach.php:143
+#: admin/modules/bibliography/pop_attach.php:140
+#: admin/modules/bibliography/pop_attach.php:155
 msgid "File Attachment uploaded succesfully!"
 msgstr ""
 
-#: admin/modules/bibliography/pop_attach.php:132
+#: admin/modules/bibliography/pop_attach.php:144
 msgid "File Attachment data FAILED to save!"
 msgstr ""
 
-#: admin/modules/bibliography/pop_attach.php:152
+#: admin/modules/bibliography/pop_attach.php:164
 msgid "Upload Now"
 msgstr ""
 
-#: admin/modules/bibliography/pop_attach.php:182
+#: admin/modules/bibliography/pop_attach.php:194
 msgid "Repository ROOT"
 msgstr ""
 
-#: admin/modules/bibliography/pop_attach.php:192
+#: admin/modules/bibliography/pop_attach.php:204
 msgid "Repo. Directory"
 msgstr ""
 
-#: admin/modules/bibliography/pop_attach.php:196
+#: admin/modules/bibliography/pop_attach.php:208
 msgid "File To Attach"
 msgstr ""
 
-#: admin/modules/bibliography/pop_attach.php:199
+#: admin/modules/bibliography/pop_attach.php:211
 msgid "URL"
 msgstr ""
 
-#: admin/modules/bibliography/pop_attach.php:201
+#: admin/modules/bibliography/pop_attach.php:213
 msgid "Description"
 msgstr ""
 
-#: admin/modules/bibliography/pop_attach.php:203
+#: admin/modules/bibliography/pop_attach.php:215
 msgid "Public"
 msgstr ""
 
-#: admin/modules/bibliography/pop_attach.php:204
+#: admin/modules/bibliography/pop_attach.php:216
 msgid "Private"
 msgstr ""
 
-#: admin/modules/bibliography/pop_attach.php:205
+#: admin/modules/bibliography/pop_attach.php:217
 msgid "Access"
+msgstr ""
+
+#: admin/modules/bibliography/pop_attach.php:224
+msgid "Access Limit by Member Type"
 msgstr ""
 
 #: admin/modules/bibliography/z3950.php:335
@@ -851,13 +875,14 @@ msgstr ""
 msgid "None"
 msgstr ""
 
+#: admin/modules/bibliography/index.php:510
+#: admin/modules/bibliography/index.php:516
+msgid "Copies"
+msgstr ""
+
 #: admin/modules/bibliography/index.php:511
 #: admin/modules/bibliography/index.php:517
 msgid "Last Update"
-msgstr ""
-
-#: admin/modules/bibliography/index.php:516
-msgid "Copies"
 msgstr ""
 
 #: admin/modules/bibliography/dl_print.php:171
@@ -949,6 +974,7 @@ msgid "Circulation"
 msgstr ""
 
 #: admin/modules/circulation/submenu.php:24
+#: admin/modules/circulation/index.php:60
 msgid "Start Transaction"
 msgstr ""
 
@@ -957,6 +983,7 @@ msgid "Start Circulation Transaction Proccess"
 msgstr ""
 
 #: admin/modules/circulation/submenu.php:25
+#: admin/modules/circulation/quick_return.php:47
 msgid "Quick Return"
 msgstr ""
 
@@ -965,6 +992,7 @@ msgid "Quick Return Collection"
 msgstr ""
 
 #: admin/modules/circulation/submenu.php:26
+#: admin/modules/circulation/loan_rules.php:117
 msgid "Loan Rules"
 msgstr ""
 
@@ -973,6 +1001,7 @@ msgid "View and Modify Circulation Loan Rules"
 msgstr ""
 
 #: admin/modules/circulation/submenu.php:27
+#: admin/modules/circulation/circulation_action.php:479
 msgid "Loan History"
 msgstr ""
 
@@ -993,6 +1022,10 @@ msgid "Reservation"
 msgstr ""
 
 #: admin/modules/circulation/loan.php:34
+#: admin/modules/circulation/quick_return.php:36
+#: admin/modules/circulation/loan_rules.php:40
+#: admin/modules/circulation/loan_rules.php:131
+#: admin/modules/circulation/index.php:38
 msgid "You don't have enough privileges to view this section"
 msgstr ""
 
@@ -1005,6 +1038,7 @@ msgid "Loan"
 msgstr ""
 
 #: admin/modules/circulation/loan.php:129
+#: admin/modules/circulation/reserve_list.php:87
 msgid "Remove"
 msgstr ""
 
@@ -1330,12 +1364,6 @@ msgstr ""
 
 #: admin/modules/master_file/place.php:39
 #: admin/modules/master_file/place.php:131
-#: admin/modules/master_file/topic.php:39
-#: admin/modules/master_file/topic.php:134
-#: admin/modules/master_file/supplier.php:39
-#: admin/modules/master_file/supplier.php:139
-#: admin/modules/master_file/doc_language.php:38
-#: admin/modules/master_file/doc_language.php:134
 msgid "You don't have enough privileges to access this area!"
 msgstr ""
 
@@ -1360,7 +1388,6 @@ msgid "Place Data FAILED to Save. Please Contact System Administrator"
 msgstr ""
 
 #: admin/modules/master_file/place.php:117
-#: admin/modules/master_file/submenu.php:31
 msgid "Place"
 msgstr ""
 
@@ -1375,7 +1402,6 @@ msgstr ""
 #: admin/modules/master_file/place.php:160
 #: admin/modules/master_file/place.php:177
 #: admin/modules/master_file/place.php:180
-#: admin/modules/master_file/submenu.php:31
 msgid "Place Name"
 msgstr ""
 
@@ -1429,6 +1455,9 @@ msgstr ""
 #: admin/modules/master_file/topic.php:191
 #: admin/modules/master_file/topic.php:196
 #: admin/modules/master_file/submenu.php:23
+#: admin/modules/master_file/author.php:169
+#: admin/modules/master_file/author.php:190
+#: admin/modules/master_file/author.php:195
 msgid "Authority Files"
 msgstr ""
 
@@ -1554,6 +1583,7 @@ msgid "Item Supplier"
 msgstr ""
 
 #: admin/modules/master_file/submenu.php:27
+#: admin/modules/master_file/author.php:119
 msgid "Author"
 msgstr ""
 
@@ -1574,6 +1604,7 @@ msgid "Document Content Language"
 msgstr ""
 
 #: admin/modules/master_file/submenu.php:35
+#: admin/modules/master_file/label.php:157
 msgid "Label"
 msgstr ""
 
@@ -1870,7 +1901,6 @@ msgid "Month"
 msgstr ""
 
 #: admin/modules/master_file/frequency.php:176
-#: admin/modules/reporting/customs/loan_by_class.php:91
 msgid "Year"
 msgstr ""
 
@@ -1933,7 +1963,6 @@ msgid "Reporting"
 msgstr ""
 
 #: admin/modules/reporting/submenu.php:24
-#: admin/modules/reporting/index.php:150
 msgid "Collection Statistic"
 msgstr ""
 
@@ -1991,7 +2020,6 @@ msgstr ""
 
 #: admin/modules/reporting/member_report.php:131
 #: admin/modules/reporting/loan_report.php:155
-#: admin/modules/reporting/index.php:153
 msgid "Download Report"
 msgstr ""
 
@@ -2046,7 +2074,6 @@ msgid "record each page"
 msgstr ""
 
 #: admin/modules/reporting/report_dbgrid.inc.php:83
-#: admin/modules/reporting/customs/loan_by_class.php:207
 msgid "Print Current Page"
 msgstr ""
 
@@ -2089,54 +2116,101 @@ msgid "Collection Statistic Report"
 msgstr ""
 
 #: admin/modules/reporting/customs/item_titles_list.php:54
+#: admin/modules/reporting/customs/customs_report_list.inc.php:25
 msgid "Items Title List"
 msgstr ""
 
 #: admin/modules/reporting/customs/item_titles_list.php:54
 #: admin/modules/reporting/customs/overdued_list.php:54
 #: admin/modules/reporting/customs/loan_by_class.php:53
+#: admin/modules/reporting/customs/reserve_list.php:53
+#: admin/modules/reporting/customs/titles_list.php:54
+#: admin/modules/reporting/customs/class_recap.php:53
+#: admin/modules/reporting/customs/item_usage.php:53
+#: admin/modules/reporting/customs/member_loan_list.php:54
+#: admin/modules/reporting/customs/loan_history.php:53
+#: admin/modules/reporting/customs/member_list.php:55
+#: admin/modules/reporting/customs/staff_act.php:53
 msgid "Report Filter"
 msgstr ""
 
 #: admin/modules/reporting/customs/item_titles_list.php:58
+#: admin/modules/reporting/customs/reserve_list.php:63
+#: admin/modules/reporting/customs/titles_list.php:58
+#: admin/modules/reporting/customs/item_usage.php:57
 msgid "Title/ISBN"
 msgstr ""
 
 #: admin/modules/reporting/customs/item_titles_list.php:118
 #: admin/modules/reporting/customs/overdued_list.php:82
+#: admin/modules/reporting/customs/titles_list.php:117
+#: admin/modules/reporting/customs/member_loan_list.php:82
+#: admin/modules/reporting/customs/loan_history.php:103
+#: admin/modules/reporting/customs/member_list.php:108
 msgid "Record each page"
 msgstr ""
 
 #: admin/modules/reporting/customs/item_titles_list.php:119
 #: admin/modules/reporting/customs/overdued_list.php:83
+#: admin/modules/reporting/customs/titles_list.php:118
+#: admin/modules/reporting/customs/member_loan_list.php:83
+#: admin/modules/reporting/customs/loan_history.php:104
+#: admin/modules/reporting/customs/member_list.php:109
 msgid "Set between 20 and 200"
 msgstr ""
 
 #: admin/modules/reporting/customs/item_titles_list.php:123
 #: admin/modules/reporting/customs/overdued_list.php:87
 #: admin/modules/reporting/customs/loan_by_class.php:105
+#: admin/modules/reporting/customs/reserve_list.php:92
+#: admin/modules/reporting/customs/titles_list.php:122
+#: admin/modules/reporting/customs/class_recap.php:70
+#: admin/modules/reporting/customs/item_usage.php:83
+#: admin/modules/reporting/customs/member_loan_list.php:87
+#: admin/modules/reporting/customs/loan_history.php:108
+#: admin/modules/reporting/customs/member_list.php:113
+#: admin/modules/reporting/customs/staff_act.php:70
 msgid "Apply Filter"
 msgstr ""
 
 #: admin/modules/reporting/customs/item_titles_list.php:124
 #: admin/modules/reporting/customs/overdued_list.php:88
+#: admin/modules/reporting/customs/reserve_list.php:93
+#: admin/modules/reporting/customs/titles_list.php:123
+#: admin/modules/reporting/customs/class_recap.php:72
+#: admin/modules/reporting/customs/member_loan_list.php:88
+#: admin/modules/reporting/customs/loan_history.php:109
+#: admin/modules/reporting/customs/member_list.php:114
+#: admin/modules/reporting/customs/staff_act.php:71
 msgid "Show More Filter Options"
 msgstr ""
 
 #: admin/modules/reporting/customs/item_titles_list.php:124
 #: admin/modules/reporting/customs/overdued_list.php:88
+#: admin/modules/reporting/customs/reserve_list.php:93
+#: admin/modules/reporting/customs/titles_list.php:123
+#: admin/modules/reporting/customs/class_recap.php:72
+#: admin/modules/reporting/customs/member_loan_list.php:88
+#: admin/modules/reporting/customs/loan_history.php:109
+#: admin/modules/reporting/customs/member_list.php:114
+#: admin/modules/reporting/customs/staff_act.php:71
 msgid "Hide Filter Options"
 msgstr ""
 
 #: admin/modules/reporting/customs/overdued_list.php:66
+#: admin/modules/reporting/customs/member_loan_list.php:66
+#: admin/modules/reporting/customs/loan_history.php:81
 msgid "Loan Date From"
 msgstr ""
 
 #: admin/modules/reporting/customs/overdued_list.php:74
+#: admin/modules/reporting/customs/member_loan_list.php:74
+#: admin/modules/reporting/customs/loan_history.php:89
 msgid "Loan Date Until"
 msgstr ""
 
 #: admin/modules/reporting/customs/overdued_list.php:164
+#: admin/modules/reporting/customs/member_loan_list.php:162
 msgid "E-mail"
 msgstr ""
 
@@ -2149,6 +2223,7 @@ msgid "day(s)"
 msgstr ""
 
 #: admin/modules/reporting/customs/loan_by_class.php:53
+#: admin/modules/reporting/customs/customs_report_list.inc.php:27
 msgid "Loans by Classification"
 msgstr ""
 
@@ -2201,50 +2276,74 @@ msgid "NON Decimal Classes"
 msgstr ""
 
 #: admin/modules/reporting/customs/loan_by_class.php:116
+#: admin/modules/reporting/customs/item_usage.php:102
+#: admin/modules/reporting/customs/item_usage.php:170
 msgid "Jan"
 msgstr ""
 
 #: admin/modules/reporting/customs/loan_by_class.php:117
+#: admin/modules/reporting/customs/item_usage.php:103
+#: admin/modules/reporting/customs/item_usage.php:170
 msgid "Feb"
 msgstr ""
 
 #: admin/modules/reporting/customs/loan_by_class.php:118
+#: admin/modules/reporting/customs/item_usage.php:104
+#: admin/modules/reporting/customs/item_usage.php:170
 msgid "Mar"
 msgstr ""
 
 #: admin/modules/reporting/customs/loan_by_class.php:119
+#: admin/modules/reporting/customs/item_usage.php:105
+#: admin/modules/reporting/customs/item_usage.php:170
 msgid "Apr"
 msgstr ""
 
 #: admin/modules/reporting/customs/loan_by_class.php:120
+#: admin/modules/reporting/customs/item_usage.php:106
+#: admin/modules/reporting/customs/item_usage.php:170
 msgid "May"
 msgstr ""
 
 #: admin/modules/reporting/customs/loan_by_class.php:121
+#: admin/modules/reporting/customs/item_usage.php:107
+#: admin/modules/reporting/customs/item_usage.php:170
 msgid "Jun"
 msgstr ""
 
 #: admin/modules/reporting/customs/loan_by_class.php:122
+#: admin/modules/reporting/customs/item_usage.php:108
+#: admin/modules/reporting/customs/item_usage.php:170
 msgid "Jul"
 msgstr ""
 
 #: admin/modules/reporting/customs/loan_by_class.php:123
+#: admin/modules/reporting/customs/item_usage.php:109
+#: admin/modules/reporting/customs/item_usage.php:170
 msgid "Aug"
 msgstr ""
 
 #: admin/modules/reporting/customs/loan_by_class.php:124
+#: admin/modules/reporting/customs/item_usage.php:110
+#: admin/modules/reporting/customs/item_usage.php:170
 msgid "Sep"
 msgstr ""
 
 #: admin/modules/reporting/customs/loan_by_class.php:125
+#: admin/modules/reporting/customs/item_usage.php:111
+#: admin/modules/reporting/customs/item_usage.php:170
 msgid "Oct"
 msgstr ""
 
 #: admin/modules/reporting/customs/loan_by_class.php:126
+#: admin/modules/reporting/customs/item_usage.php:112
+#: admin/modules/reporting/customs/item_usage.php:170
 msgid "Nov"
 msgstr ""
 
 #: admin/modules/reporting/customs/loan_by_class.php:127
+#: admin/modules/reporting/customs/item_usage.php:113
+#: admin/modules/reporting/customs/item_usage.php:170
 msgid "Dec"
 msgstr ""
 
@@ -2285,7 +2384,6 @@ msgstr ""
 
 #: admin/modules/reporting/customs/customs_report_list.inc.php:28
 #: admin/modules/reporting/customs/member_list.php:55
-#: admin/modules/membership/index.php:247
 msgid "Member List"
 msgstr ""
 
@@ -2350,26 +2448,18 @@ msgstr ""
 #: admin/modules/reporting/customs/member_list.php:134
 #: admin/modules/membership/member_card_generator.php:167
 #: admin/modules/membership/member_card_generator.php:223
-#: admin/modules/membership/member_type.php:205
-#: admin/modules/membership/member_type.php:211
-#: admin/modules/membership/index.php:334
-#: admin/modules/membership/index.php:398
-#: admin/modules/membership/index.php:404
 msgid "Membership Type"
 msgstr ""
 
 #: admin/modules/reporting/customs/member_list.php:79
-#: admin/modules/membership/index.php:338
 msgid "Gender"
 msgstr ""
 
 #: admin/modules/reporting/customs/member_list.php:83
-#: admin/modules/membership/index.php:336
 msgid "Male"
 msgstr ""
 
 #: admin/modules/reporting/customs/member_list.php:84
-#: admin/modules/membership/index.php:337
 msgid "Female"
 msgstr ""
 
@@ -2423,12 +2513,10 @@ msgid "Print Member Cards for Selected Data"
 msgstr ""
 
 #: admin/modules/membership/member_card_generator.php:256
-#: admin/modules/membership/index.php:441
 msgid "Found"
 msgstr ""
 
 #: admin/modules/membership/member_card_generator.php:256
-#: admin/modules/membership/index.php:441
 msgid "from your search with keyword"
 msgstr ""
 
@@ -2441,7 +2529,6 @@ msgid "Import for members data from CSV file"
 msgstr ""
 
 #: admin/modules/membership/submenu.php:23
-#: admin/modules/membership/index.php:246
 msgid "Membership"
 msgstr ""
 
@@ -2454,7 +2541,6 @@ msgid "View Library Member List"
 msgstr ""
 
 #: admin/modules/membership/submenu.php:25
-#: admin/modules/membership/index.php:246
 msgid "Add New Member"
 msgstr ""
 
@@ -2621,6 +2707,7 @@ msgid "Pending Membership"
 msgstr ""
 
 #: admin/modules/membership/index.php:352
+#: admin/modules/stock_take/finish.php:170
 msgid "Yes"
 msgstr ""
 
@@ -2770,7 +2857,6 @@ msgid "Serial Title"
 msgstr ""
 
 #: admin/modules/stock_take/st_upload.php:40
-#: admin/modules/stock_take/st_report.php:46
 msgid "NO stock taking proccess initialized yet!"
 msgstr ""
 
@@ -2795,7 +2881,6 @@ msgid "Upload File"
 msgstr ""
 
 #: admin/modules/stock_take/submenu.php:23
-#: admin/modules/stock_take/index.php:47
 msgid "Stock Take"
 msgstr ""
 
@@ -2843,7 +2928,6 @@ msgid "View Lost Item in Current Stock Take Proccess"
 msgstr ""
 
 #: admin/modules/stock_take/submenu.php:32
-#: admin/modules/stock_take/st_log.php:48
 msgid "Stock Take Log"
 msgstr ""
 
@@ -2898,10 +2982,6 @@ msgid "Initialize Stock Take"
 msgstr ""
 
 #: admin/modules/stock_take/init.php:148
-#: admin/modules/stock_take/st_report.php:68
-#: admin/modules/stock_take/index.php:59
-#: admin/modules/stock_take/index.php:76
-#: admin/modules/stock_take/index.php:108
 msgid "Stock Take Name"
 msgstr ""
 
@@ -3150,7 +3230,6 @@ msgid "Sunday"
 msgstr ""
 
 #: admin/modules/system/holiday.php:304
-#: admin/modules/system/index.php:126
 msgid "Save Settings"
 msgstr ""
 
@@ -3159,7 +3238,6 @@ msgid "System"
 msgstr ""
 
 #: admin/modules/system/submenu.php:26
-#: admin/modules/system/index.php:46
 msgid "System Configuration"
 msgstr ""
 
@@ -3560,7 +3638,7 @@ msgstr ""
 msgid "Change Current User Profiles and Password"
 msgstr ""
 
-#: admin/default/session_check.inc.php:52
+#: admin/default/session_check.inc.php:56
 msgid "Your Login Session has already timeout!"
 msgstr ""
 
@@ -3654,12 +3732,10 @@ msgid "Last Page"
 msgstr ""
 
 #: simbio2/simbio_GUI/form_maker/simbio_form_table.inc.php:95
-#: simbio2/simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php:87
 msgid "Delete Record"
 msgstr ""
 
 #: simbio2/simbio_GUI/form_maker/simbio_form_table.inc.php:96
-#: simbio2/simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php:88
 msgid "Cancel"
 msgstr ""
 
@@ -3705,54 +3781,84 @@ msgstr ""
 msgid "Indonesian"
 msgstr ""
 
-#: lib/contents/member.inc.php:44
+#: lib/contents/member.inc.php:28
+msgid "Welcome to Member's Area where you can view your current loan information and view your membership status."
+msgstr ""
+
+#: lib/contents/member.inc.php:51
 msgid "Please fill your Username and Password to Login!"
 msgstr ""
 
-#: lib/contents/member.inc.php:59
+#: lib/contents/member.inc.php:66
 msgid "Login FAILED! Wrong username or password!"
 msgstr ""
 
-#: lib/contents/member.inc.php:69
+#: lib/contents/member.inc.php:76
 msgid "Library Member Login"
 msgstr ""
 
-#: lib/contents/member.inc.php:70
-msgid ""
-"Please insert your E-mail address and password\n"
-"        given by library system administrator. If you are library's member and don't have a password yet,\n"
-"        please contact library staff."
+#: lib/contents/member.inc.php:77
+msgid "Please insert your member ID and password given by library system administrator. If you are library's member and don't have a password yet, please contact library staff."
 msgstr ""
 
-#: lib/contents/member.inc.php:74
-msgid "Member E-Mail"
-msgstr ""
-
-#: lib/contents/member.inc.php:76
+#: lib/contents/member.inc.php:81
 msgid "Password"
 msgstr ""
 
-#: lib/contents/member.inc.php:98
+#: lib/contents/member.inc.php:83
+msgid "Login"
+msgstr ""
+
+#: lib/contents/member.inc.php:100
+msgid "Current Password"
+msgstr ""
+
+#: lib/contents/member.inc.php:108
+msgid "Confirm Password"
+msgstr ""
+
+#: lib/contents/member.inc.php:112
+#: lib/contents/member.inc.php:278
+msgid "Change Password"
+msgstr ""
+
+#: lib/contents/member.inc.php:171
 msgid "Your Membership Already EXPIRED! Please extend your membership."
 msgstr ""
 
-#: lib/contents/member.inc.php:101
+#: lib/contents/member.inc.php:174
 msgid "Membership currently in pending state, no loan transaction can be made yet."
 msgstr ""
 
-#: lib/contents/member.inc.php:130
+#: lib/contents/member.inc.php:207
 msgid "OVERDUED"
 msgstr ""
 
-#: lib/contents/member.inc.php:175
+#: lib/contents/member.inc.php:252
 msgid "item(s) currently on loan"
 msgstr ""
 
-#: lib/contents/member.inc.php:180
+#: lib/contents/member.inc.php:260
+msgid "Your password have been changed successfully."
+msgstr ""
+
+#: lib/contents/member.inc.php:263
+msgid "Current password entered WRONG! Please insert the right password!"
+msgstr ""
+
+#: lib/contents/member.inc.php:265
+msgid "Password confirmation FAILED! Make sure to check undercase or uppercase letters!"
+msgstr ""
+
+#: lib/contents/member.inc.php:267
+msgid "Password update FAILED! ERROR ON DATABASE!"
+msgstr ""
+
+#: lib/contents/member.inc.php:274
 msgid "Member Detail"
 msgstr ""
 
-#: lib/contents/member.inc.php:182
+#: lib/contents/member.inc.php:276
 msgid "Your Current Loan"
 msgstr ""
 
@@ -3781,19 +3887,19 @@ msgstr ""
 msgid "Please supply valid username and password"
 msgstr ""
 
-#: lib/contents/login.inc.php:61
+#: lib/contents/login.inc.php:63
 msgid "Welcome to Library Automation,"
 msgstr ""
 
-#: lib/contents/login.inc.php:70
+#: lib/contents/login.inc.php:72
 msgid "Wrong Username or Password. ACCESS DENIED"
 msgstr ""
 
-#: lib/contents/login.inc.php:82
+#: lib/contents/login.inc.php:84
 msgid "Your browser does not support Javascript or Javascript is disabled. Application won't run without Javascript!"
 msgstr ""
 
-#: lib/contents/attachment_list.php:46
+#: lib/contents/attachment_list.php:48
 msgid "No Attachment"
 msgstr ""
 

@@ -25,6 +25,13 @@ require LIB_DIR.'member_logon.inc.php';
 // check if member already logged in
 $is_member_login = utility::isMemberLogin();
 
+$info = __('Welcome to Member\'s Area where you can view your current loan information and view your membership status.');
+
+// member's password changing flags
+define('CURR_PASSWD_WRONG', -1);
+define('PASSWD_NOT_MATCH', -2);
+define('CANT_UPDATE_PASSWD', -3);
+
 // if member is logged out
 if (isset($_GET['logout']) && $_GET['logout'] == '1') {
     // write log
@@ -33,15 +40,6 @@ if (isset($_GET['logout']) && $_GET['logout'] == '1') {
     simbio_security::destroySessionCookie(null, SENAYAN_MEMBER_SESSION_COOKIES_NAME, SENAYAN_WEB_ROOT_DIR, false);
     header('Location: index.php?p=member');
     exit();
-}
-
-// if there is change password request
-if ($is_member_login && isset($_POST['changePass'])) {
-    if ( procChangePassword($_POST['currPass'], $_POST['newPass'], $_POST['newPass2']) ) {
-        $info = '';
-    } else {
-        $info = '';
-    }
 }
 
 // if there is member login action
@@ -131,8 +129,28 @@ if (!$is_member_login) {
     function procChangePassword($str_curr_pass, $str_new_pass, $str_conf_new_pass)
     {
         global $dbs;
-
-
+        // current password checking
+        $_pass_check = $dbs->query('SELECT member_id FROM member
+            WHERE mpasswd=MD5(\''.$dbs->escape_string(trim($str_curr_pass)).'\') AND
+            member_id=\''.$dbs->escape_string(trim($_SESSION['mid'])).'\'');
+        if ($_pass_check->num_rows == 1) {
+            $str_new_pass = trim($str_new_pass);
+            $str_conf_new_pass = trim($str_conf_new_pass);
+            // password confirmation check
+            if ($str_new_pass && $str_conf_new_pass && ($str_new_pass === $str_conf_new_pass)) {
+                @$dbs->query('UPDATE member SET mpasswd=MD5(\''.$dbs->escape_string($str_conf_new_pass).'\')
+                    WHERE member_id=\''.$dbs->escape_string(trim($_SESSION['mid'])).'\'');
+                if (!$dbs->error) {
+                    return true;
+                } else {
+                    return CANT_UPDATE_PASSWD;
+                }
+            } else {
+                return PASSWD_NOT_MATCH;
+            }
+        } else {
+            return CURR_PASSWD_WRONG;
+        }
     }
 
 
@@ -233,6 +251,23 @@ if (!$is_member_login) {
         $_result = $_loan_list->createDataGrid($dbs, $_table_spec, $num_recs_show);
         $_result = '<div class="memberLoanListInfo">'.$_loan_list->num_rows.' '.__('item(s) currently on loan').'</div>'."\n".$_result;
         return $_result;
+    }
+
+    // if there is change password request
+    if ($is_member_login && isset($_POST['changePass'])) {
+        $change_pass = procChangePassword($_POST['currPass'], $_POST['newPass'], $_POST['newPass2']);
+        if ($change_pass === true) {
+            $info = '<span style="font-size: 120%; font-weight: bold;">'.__('Your password have been changed successfully.').'</span>';
+        } else {
+            if ($change_pass === CURR_PASSWD_WRONG) {
+                $info = __('Current password entered WRONG! Please insert the right password!');
+            } else if ($change_pass === PASSWD_NOT_MATCH) {
+                $info = __('Password confirmation FAILED! Make sure to check undercase or uppercase letters!');
+            } else {
+                $info = __('Password update FAILED! ERROR ON DATABASE!');
+            }
+            $info = '<span style="font-size: 120%; font-weight: bold; color: red;">'.$info.'</span>';
+        }
     }
 
     // show all
