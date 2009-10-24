@@ -50,16 +50,16 @@ require SIMBIO_BASE_DIR.'simbio_DB/simbio_dbop.inc.php';
 /* main content */
 /* Config Vars EDIT FORM */
 /* Config Vars update process */
+
 if (isset($_POST['updateData'])) {
     // reset/truncate setting table content
-    $dbs->query('TRUNCATE TABLE setting');
     // library name
     $library_name = $dbs->escape_string(strip_tags(trim($_POST['library_name'])));
-    $dbs->query('INSERT INTO setting VALUES (NULL, \'library_name\', \''.$dbs->escape_string(serialize($library_name)).'\')');
+    $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($library_name)).'\' WHERE setting_name=\'library_name\'');
 
     // library subname
     $library_subname = $dbs->escape_string(strip_tags(trim($_POST['library_subname'])));
-    $dbs->query('INSERT INTO setting VALUES (NULL, \'library_subname\', \''.$dbs->escape_string(serialize($library_subname)).'\')');
+    $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($library_subname)).'\' WHERE setting_name=\'library_subname\'');
 
     // initialize template arrays
     $template = array('theme' => $sysconf['template']['theme'], 'css' => $sysconf['template']['css']);
@@ -68,51 +68,53 @@ if (isset($_POST['updateData'])) {
     // template
     $template['theme'] = $_POST['template'];
     $template['css'] = str_replace($sysconf['template']['theme'], $template['theme'], $sysconf['template']['css']);
-    $dbs->query('INSERT INTO setting VALUES (NULL, \'template\', \''.$dbs->escape_string(serialize($template)).'\')');
+    $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($template)).'\' WHERE setting_name=\'template\'');
 
     // admin template
     $admin_template['theme'] = $_POST['admin_template'];
     $admin_template['css'] = str_replace($sysconf['admin_template']['theme'], $admin_template['theme'], $sysconf['admin_template']['css']);
-    $dbs->query('INSERT INTO setting VALUES (NULL, \'admin_template\', \''.$dbs->escape_string(serialize($admin_template)).'\')');
+    $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($admin_template)).'\' WHERE setting_name=\'admin_template\'');
 
     // language
-    $dbs->query('INSERT INTO setting VALUES (NULL, \'default_lang\', \''.$dbs->escape_string(serialize($_POST['default_lang'])).'\')');
+    $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($_POST['default_lang'])).'\' WHERE setting_name=\'default_lang\'');
 
     // opac num result
-    $dbs->query('INSERT INTO setting VALUES (NULL, \'opac_result_num\', \''.$dbs->escape_string(serialize($_POST['opac_result_num'])).'\')');
+    $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($_POST['opac_result_num'])).'\' WHERE setting_name=\'opac_result_num\'');
 
     // promoted titles in homepage
     if (isset($_POST['enable_promote_titles'])) {
-        $dbs->query('INSERT INTO setting VALUES (NULL, \'enable_promote_titles\', \''.$dbs->escape_string(serialize($_POST['enable_promote_titles'])).'\')');
+        $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($_POST['enable_promote_titles'])).'\' WHERE setting_name=\'enable_promote_titles\'');
+    } else {
+        $dbs->query('UPDATE setting SET setting_value=\'N;\' WHERE setting_name=\'enable_promote_titles\'');
     }
 
     // quick return
     $quick_return = $_POST['quick_return'] == '1'?true:false;
-    $dbs->query('INSERT INTO setting VALUES (NULL, \'quick_return\', \''.$dbs->escape_string(serialize($quick_return)).'\')');
+    $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($quick_return)).'\' WHERE setting_name=\'quick_return\'');
 
     // loan and due date manual change
     $allow_loan_date_change = $_POST['allow_loan_date_change'] == '1'?true:false;
-    $dbs->query('INSERT INTO setting VALUES (NULL, \'allow_loan_date_change\', \''.$dbs->escape_string(serialize($allow_loan_date_change)).'\')');
+    $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($allow_loan_date_change)).'\' WHERE setting_name=\'allow_loan_date_change\'');
 
     // loan limit override
     $loan_limit_override = $_POST['loan_limit_override'] == '1'?true:false;
-    $dbs->query('INSERT INTO setting VALUES (NULL, \'loan_limit_override\', \''.$dbs->escape_string(serialize($loan_limit_override)).'\')');
+    $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($loan_limit_override)).'\' WHERE setting_name=\'loan_limit_override\'');
 
     // xml detail
     $xml_detail = $_POST['enable_xml_detail'] == '1'?true:false;
-    $dbs->query('INSERT INTO setting VALUES (NULL, \'enable_xml_detail\', \''.$dbs->escape_string(serialize($xml_detail)).'\')');
+    $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($xml_detail)).'\' WHERE setting_name=\'enable_xml_detail\'');
 
     // xml result
     $xml_result = $_POST['enable_xml_result'] == '1'?true:false;
-    $dbs->query('INSERT INTO setting VALUES (NULL, \'enable_xml_result\', \''.$dbs->escape_string(serialize($xml_result)).'\')');
+    $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($xml_result)).'\' WHERE setting_name=\'enable_xml_result\'');
 
     // file download
     $file_download = $_POST['allow_file_download'] == '1'?true:false;
-    $dbs->query('INSERT INTO setting VALUES (NULL, \'allow_file_download\', \''.$dbs->escape_string(serialize($file_download)).'\')');
+    $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($file_download)).'\' WHERE setting_name=\'allow_file_download\'');
 
     // session timeout
     $session_timeout = intval($_POST['session_timeout']) >= 1800?$_POST['session_timeout']:1800;
-    $dbs->query('INSERT INTO setting VALUES (NULL, \'session_timeout\', \''.$dbs->escape_string(serialize($session_timeout)).'\')');
+    $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($session_timeout)).'\' WHERE setting_name=\'session_timeout\'');
 
     // write log
     utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'system', $_SESSION['realname'].' change application global configuration');
@@ -178,7 +180,7 @@ $result_num_options[] = array('10', '10');
 $result_num_options[] = array('20', '20');
 $result_num_options[] = array('30', '30');
 $result_num_options[] = array('40', '40');
-$result_num_options[] = array('40', '50');
+$result_num_options[] = array('50', '50');
 $form->addSelectList('opac_result_num', __('Number Of Collections To Show In OPAC Result List'), $result_num_options, $sysconf['opac_result_num'] );
 
 // homepage setting

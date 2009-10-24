@@ -870,11 +870,12 @@ INSERT INTO `setting` (`setting_id`, `setting_name`, `setting_value`) VALUES
 (6, 'opac_result_num', 's:2:"10";'),
 (7, 'enable_promote_titles', 'N;'),
 (8, 'quick_return', 'b:1;'),
-(9, 'loan_limit_override', 'b:0;'),
-(10, 'enable_xml_detail', 'b:1;'),
-(11, 'enable_xml_result', 'b:1;'),
-(12, 'allow_file_download', 'b:1;'),
-(13, 'session_timeout', 's:4:"7200";');
+(9, 'allow_loan_date_change', 'b:0;'),
+(10, 'loan_limit_override', 'b:0;'),
+(11, 'enable_xml_detail', 'b:1;'),
+(12, 'enable_xml_result', 'b:1;'),
+(13, 'allow_file_download', 'b:1;'),
+(14, 'session_timeout', 's:4:"7200";');
 
 -- --------------------------------------------------------
 
