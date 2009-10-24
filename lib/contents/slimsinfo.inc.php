@@ -39,7 +39,7 @@ Simbio Engine v2.0, Copyright (c) 2007-2009 Arie Nugraha
 <div style="font-weight:bold;">Developers:</div>
 Lead Developer: Hendro Wicaksono<br />
 Programmer: Arie Nugraha, Hendro Wicaksono, Tobias Zeumer, Wardiyono<br />
-Documentation: Arif Buitenzorg, Hendro Wicaksono, Purwoko (lead), Rasyid Ridho, Sulfan Zayd, Verina Maria O, Wardiyono
+Documentation: Arif Buitenzorg, Hendro Wicaksono, Purwoko (lead), Rasyid Ridho, Sulfan Zayd, Wardiyono
 </p>
 
 <p>
