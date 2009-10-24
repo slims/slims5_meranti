@@ -50,7 +50,7 @@ if ((bool) ini_get('safe_mode')) {
 }
 
 // senayan version
-define('SENAYAN_VERSION', 'Senayan3-stable11');
+define('SENAYAN_VERSION', 'senayan3-stable12');
 
 // senayan session cookies name
 define('SENAYAN_SESSION_COOKIES_NAME', 'SenayanAdmin');
