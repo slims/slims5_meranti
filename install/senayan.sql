@@ -863,7 +863,7 @@ CREATE TABLE IF NOT EXISTS `setting` (
 
 INSERT INTO `setting` (`setting_id`, `setting_name`, `setting_value`) VALUES
 (1, 'library_name', 's:7:"Senayan";'),
-(2, 'library_subname', 's:30:"Open Source Library Automation";'),
+(2, 'library_subname', 's:37:"Open Source Library Management System";'),
 (3, 'template', 'a:2:{s:5:"theme";s:7:"default";s:3:"css";s:26:"template/default/style.css";}'),
 (4, 'admin_template', 'a:2:{s:5:"theme";s:7:"default";s:3:"css";s:32:"admin_template/default/style.css";}'),
 (5, 'default_lang', 's:5:"en_US";'),

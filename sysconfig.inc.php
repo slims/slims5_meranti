@@ -285,7 +285,7 @@ $sysconf['reserve_expire_periode'] = 7;
 
 /* CONTENT */
 $sysconf['library_name'] = 'Senayan';
-$sysconf['library_subname'] = 'Open Source Library Automation';
+$sysconf['library_subname'] = 'Open Source Library Management System';
 $sysconf['page_footer'] = ' <strong>SENAYAN Library Automation</strong> - Pusat Informasi dan Humas Depdiknas RI - Released Under GNU GPL License';
 
 /* HTTPS Setting */
