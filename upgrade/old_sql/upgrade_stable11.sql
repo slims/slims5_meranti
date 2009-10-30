@@ -13,10 +13,3 @@ UPDATE `mst_item_status` SET `skip_stock_take`=1 WHERE `rules` LIKE '%s:1:"2";%'
 -- change label field definition
 ALTER TABLE `biblio` CHANGE `labels` `labels` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL;
 
--- add member password field and other login related fields
-ALTER TABLE `member` ADD `mpasswd` CHAR(32) NULL AFTER `is_pending`;
-ALTER TABLE `member` ADD `last_login` DATETIME NULL AFTER `mpasswd`, ADD `last_login_ip` VARCHAR(20) NULL AFTER `last_login` 
-
--- file attachment access limit fields
-ALTER TABLE `biblio_attachment` ADD `access_limit` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL AFTER `access_type`;
-
