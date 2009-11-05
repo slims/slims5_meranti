@@ -51,6 +51,8 @@ $font_loc = "./DejaVuSans.ttf";
 // genbarcode binary location
 if (strripos(PHP_OS, 'WIN') !== false) {
     $genbarcode_loc = '.\bin\win\genbarcode.exe';
+} if (stripos(PHP_OS, 'Darwin') !== false) {
+    $genbarcode_loc = './bin/darwin/genbarcode';
 } else {
     $genbarcode_loc = './bin/nix/genbarcode';
 }
