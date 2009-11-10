@@ -148,7 +148,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     $html_str .= '<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Item Barcode Label Print Result</title>'."\n";
     $html_str .= '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'."\n";
     $html_str .= '<style type="text/css">'."\n";
-    $html_str .= 'body { padding: 0; margin: 1cm; font-family: '.$barcode_fonts.' }'."\n";
+    $html_str .= 'body { padding: 0; margin: 1cm; font-family: '.$barcode_fonts.'; font-size: '.$barcode_font_size.'; }'."\n";
     $html_str .= '.labelStyle { width: '.$barcode_box_width.'cm; height: '.$barcode_box_height.'cm; text-align: center; margin: '.$barcode_items_margin.'cm; border: '.$barcode_border_size.'px solid #000000;}'."\n";
     $html_str .= '.labelHeaderStyle { background-color: #CCCCCC; font-weight: bold; padding: 5px; margin-bottom: 5px; }'."\n";
     $html_str .= '</style>'."\n";
