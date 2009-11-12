@@ -136,12 +136,12 @@ if (isset($_POST['save']) AND (isset($_POST['topicID']) OR trim($_POST['search_s
         echo '<option value="'.$type_id.'">'.$type.'</option>';
     }
     ?></select>
-    <select name="level" style="width: 20%;"><?php
-    foreach ($sysconf['authority_level'] as $level_id => $level) {
-        echo '<option value="1">Primary</option>';
-        echo '<option value="2">Additional</option>';
-    }
-    ?></select>
+    <select name="level" style="width: 20%;">
+    <?php
+    echo '<option value="1">Primary</option>';
+    echo '<option value="2">Additional</option>';
+    ?>
+    </select>
 </div>
 <div style="margin-top: 5px;">
 <select name="topicID" id="topicID" size="5" style="width: 100%;"><option value="0"><?php echo __('Type to search for existing topics or to add a new one'); ?></option></select>
