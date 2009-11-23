@@ -20,7 +20,8 @@ SENAYAN 3 Stable 12
 ========================================================================
 - Added : Member login in OPAC
 - Added : File download limitation based on Member type
-- Added : new public template (terrafirma)
+- Added : new public template (igos & terrafirma)
+- Added : new admin template (igos)
 
 
 SENAYAN 3 Stable 11
