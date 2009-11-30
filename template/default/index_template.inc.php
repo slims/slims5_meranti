@@ -101,6 +101,16 @@
         </p>
     <!-- license end -->
 
+    <!-- award -->
+        <div class="heading">Award</div>
+        <p align="center">
+        The Winner in the Category of OSS
+        <img src="template/default/media/logo-inaicta.png"
+            alt="Indonesia ICT Award 2009" border="0" />
+        <br />
+        </p>
+    <!-- award -->
+
     <!-- w3c validate -->
         <div class="heading">Validated</div>
         <p align="center">

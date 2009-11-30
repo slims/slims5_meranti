@@ -143,14 +143,66 @@
 				<img src="template/terrafirma/images/pic2.jpg" class="picB" alt="" />
 				<p><strong>Nullam turpis</strong> vestibulum et sed dolore. Nulla facilisi. Sed tortor. lobortis commodo. <a href="#">More ...</a></p>
 			</div>
-			
-			<h3>Topics</h3>
-			<div class="content">
-				<ul class="linklist">
-					<li class="first"><a href="#">Accumsan congue (32)</a></li>
-					<li><a href="#">Dignissim nec augue (14)</a></li>
-					<li><a href="#">Nunc ante elit nulla (83)</a></li>					<li><a href="#">Aliquam suscipit (74)</a></li>					<li><a href="#">Cursus sed arcu sed (14)</a></li>					<li><a href="#">Eu ante cras at risus (24)</a></li>					<li><a href="#">Donec mollis dolore (39)</a></li>					<li><a href="#">Aliquam suscipit (74)</a></li>				</ul>
-			</div>
+
+                        <!-- language selection -->
+                        <h3><?php echo __('Select Language'); ?></h3>
+                        <form name="langSelect" action="index.php" method="get">
+                        <select name="select_lang" style="width: 99%;" onchange="document.langSelect.submit();">
+                        <?php echo $language_select; ?>
+                        </select>
+                        </form>
+                        <br />
+                        <!-- language selection end -->
+
+                        <!-- advanced search -->
+                        <h3><?php echo __('Advanced Search'); ?></h3>
+                        <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
+                        <?php echo __('Title'); ?> :
+                        <input type="text" name="title" class="ajaxInputField" /><br />
+                        <?php echo __('Author(s)'); ?> :
+                        <?php echo $advsearch_author; ?><br />
+                        <?php echo __('Subject(s)'); ?> :
+                        <?php echo $advsearch_topic; ?><br />
+                        <?php echo __('ISBN/ISSN'); ?> :
+                        <input type="text" name="isbn" class="ajaxInputField" /><br />
+                        <?php echo __('GMD'); ?> :
+                        <select name="gmd" class="ajaxInputField" />
+                        <?php echo $gmd_list; ?>
+                        </select>
+                        <?php echo __('Collection Type'); ?> :
+                        <select name="colltype" class="ajaxInputField" />
+                        <?php echo $colltype_list; ?>
+                        </select>
+                        <?php echo __('Location'); ?> :
+                        <select name="location" class="ajaxInputField" />
+                        <?php echo $location_list; ?>
+                        </select>
+                        <br />
+                        <input type="submit" name="search" value="<?php echo __('Search'); ?>" class="button marginTop" />
+                        <!-- <input type="button" value="More Options" onclick="" class="button marginTop" /> -->
+                        </form>
+                        <br />
+                        <!-- advanced search end -->
+
+    <!-- award -->
+        <h3>Award</h3>
+        <p align="center">
+        The Winner in the Category of OSS
+        <img src="template/default/media/logo-inaicta.png"
+            alt="Indonesia ICT Award 2009" border="0" />
+        </p>
+    <!-- award -->
+
+    <!-- license -->
+        <h3>License</h3>
+        <p>
+        This Software is Released Under <a href="http://www.gnu.org/copyleft/gpl.html" title="GNU GPL License" target="_blank">GNU GPL License</a>
+        Version 3.
+        </p>
+    <!-- license end -->
+
+
+
 
 			<!-- secondary content end -->
 
