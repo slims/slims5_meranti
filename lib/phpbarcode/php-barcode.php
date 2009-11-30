@@ -49,12 +49,12 @@ $text_color = array(0,0,0);
 $font_loc = "./DejaVuSans.ttf";
 
 // genbarcode binary location
-if (strripos(PHP_OS, 'WIN') !== false) {
-    $genbarcode_loc = '.\bin\win\genbarcode.exe';
-} else if (stripos(PHP_OS, 'Darwin') !== false) {
+if (stripos(PHP_OS, 'Darwin') !== false) {
     $genbarcode_loc = './bin/darwin/genbarcode';
-} else {
+} else if (stripos(PHP_OS, 'Linux') !== false) {
     $genbarcode_loc = './bin/nix/genbarcode';
+} else {
+    $genbarcode_loc = '.\bin\win\genbarcode.exe';
 }
 
 // default barcode filename
@@ -107,7 +107,7 @@ function barcode_outimage($text, $bars, $scale = 1, $mode = "png", $total_y = 0,
             $width = false;
             continue;
         }
-        if (ereg("[a-z]", $val)) {
+        if (preg_match("@[a-z]@i", $val)) {
             /* tall bar */
             $val = ord($val)-ord('a')+1;
         }
@@ -141,7 +141,7 @@ function barcode_outimage($text, $bars, $scale = 1, $mode = "png", $total_y = 0,
             $width = false;
             continue;
         }
-        if (ereg("[a-z]", $val)){
+        if (preg_match("@[a-z]@i", $val)){
             /* tall bar */
             $val = ord($val)-ord('a')+1;
             $h = $height2;
@@ -175,13 +175,13 @@ function barcode_outimage($text, $bars, $scale = 1, $mode = "png", $total_y = 0,
     /* output the image */
     if ($mode == 'jpg' || $mode == 'jpeg'){
         header('Content-Type: image/jpeg');
-        imagejpeg($im, '../../images/barcodes/'.$barcode_text.'.jpg');
+        @imagejpeg($im, '../../images/barcodes/'.$barcode_text.'.jpg');
     } else if ($mode == 'gif'){
         header('Content-Type: image/gif');
-        imagegif($im, '../../images/barcodes/'.$barcode_text.'.gif');
+        @imagegif($im, '../../images/barcodes/'.$barcode_text.'.gif');
     } else {
         header('Content-Type: image/png');
-        imagepng($im, '../../images/barcodes/'.$barcode_text.'.png');
+        @imagepng($im, '../../images/barcodes/'.$barcode_text.'.png');
     }
 }
 
@@ -197,13 +197,11 @@ function barcode_outimage($text, $bars, $scale = 1, $mode = "png", $total_y = 0,
 function barcode_encode_genbarcode($code, $encoding){
     global $genbarcode_loc;
     /* delete EAN-13 checksum */
-    if (eregi("^ean$", $encoding) && strlen($code) == 13) $code = substr($code,0,12);
-    if (!$encoding) $encoding = "ANY";
-    $encoding = ereg_replace("[|\\]", "_", $encoding);
-    $code = ereg_replace("[|\\]", "_", $code);
-    $cmd = $genbarcode_loc.' "'.str_replace('"', '\"',$code)."\" \"".str_replace("\"", "\\\"",strtoupper($encoding))."\"";
-    echo "$cmd<br />\n";
-    $fp = popen($cmd, "r");
+    if (preg_match("@^ean$@i", $encoding) && strlen($code) == 13) $code = substr($code,0,12);
+    if (!$encoding) $encoding = 'ANY';
+    $code = preg_replace('@\\\|\/@i', "_", $code);
+    $cmd = $genbarcode_loc.' "'.$code."\" \"".strtoupper($encoding)."\"";
+    $fp = popen($cmd, 'r');
     if ($fp) {
         $bars = fgets($fp, 1024);
         $text = fgets($fp, 1024);
@@ -252,16 +250,16 @@ function barcode_encode_genbarcode($code, $encoding){
 function barcode_encode($code, $encoding){
     global $genbarcode_loc;
     if (
-        ((eregi("^ean$", $encoding)
+        ((preg_match("@^ean$@i", $encoding)
          && ( strlen($code) == 12 || strlen($code) == 13)))
 
-        || (($encoding) && (eregi("^isbn$", $encoding))
+        || (($encoding) && (preg_match("@^isbn$@i", $encoding))
          && (( strlen($code) == 9 || strlen($code) == 10) ||
-         (((ereg("^978", $code) && strlen($code) == 12) ||
+         (((preg_match("@^978@i", $code) && strlen($code) == 12) ||
           (strlen($code) == 13)))))
 
-        || (( !isset($encoding) || !$encoding || (eregi("^ANY$", $encoding) ))
-         && (ereg("^[0-9]{12,13}$", $code)))
+        || (( !isset($encoding) || !$encoding || (preg_match("@^ANY$@i", $encoding) ))
+         && (preg_match("@^[0-9]{12,13}$@i", $code)))
 
         ) {
         /* use built-in EAN-Encoder */
