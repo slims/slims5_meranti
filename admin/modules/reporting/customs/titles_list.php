@@ -186,7 +186,7 @@ if (!$reportView) {
     }
     if (isset($_GET['location']) AND !empty($_GET['location'])) {
         $location = $dbs->escape_string(trim($_GET['location']));
-        $outer_criteria .= 'i.location_id=\''.$location.'\'';
+        $outer_criteria .= ' AND i.location_id=\''.$location.'\'';
     }
     if (isset($_GET['recsEachPage'])) {
         $recsEachPage = (integer)$_GET['recsEachPage'];
