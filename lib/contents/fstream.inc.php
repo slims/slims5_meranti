@@ -20,6 +20,8 @@
 
 /* File Viewer */
 
+session_start();
+
 // get file ID
 $fileID = isset($_GET['fid'])?(integer)$_GET['fid']:0;
 // get biblioID
@@ -35,10 +37,32 @@ $file_d = $file_q->fetch_assoc();
 if ($file_q->num_rows > 0) {
     $file_loc = REPO_BASE_DIR.str_ireplace('/', DIRECTORY_SEPARATOR, $file_d['file_dir']).DIRECTORY_SEPARATOR.$file_d['file_name'];
     if (file_exists($file_loc)) {
+
+        if ($file_d['access_limit']) {
+            if (utility::isMemberLogin()) {
+                $allowed_mem_types = @unserialize($file_d['access_limit']);
+                if (!in_array($_SESSION['m_member_type_id'], $allowed_mem_types)) {
+                    # Access to file restricted
+                    # Member logged in but doesnt have privilege to download
+                    header("location:index.php");
+                    continue;
+                }
+
+            } else {
+                # Access to file restricted
+                # Member not logged in to download
+                header("location:index.php");
+                continue;
+            }
+
+        }
         header('Content-Disposition: inline; filename="'.basename($file_loc).'"');
         header('Content-Type: '.$file_d['mime_type']);
         readfile($file_loc);
         exit();
+
+
+
     } else {
         die('<div class="errorBox">File Not Found!</div>');
     }
