@@ -1,0 +1,3913 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Senayan3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-10-23 22:30+0700\n"
+"PO-Revision-Date: 2009-10-23 22:30+0700\n"
+"Last-Translator: Arie Nugraha <dicarve@yahoo.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_ngettext:1,2\n"
+"X-Poedit-Basepath: ../../../../../\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: sysconfig.inc.php:320
+msgid "Personal Name"
+msgstr ""
+
+#: sysconfig.inc.php:321
+msgid "Organizational Body"
+msgstr ""
+
+#: sysconfig.inc.php:322
+msgid "Conference"
+msgstr ""
+
+#: sysconfig.inc.php:325
+msgid "Topic"
+msgstr ""
+
+#: sysconfig.inc.php:326
+msgid "Geographic"
+msgstr ""
+
+#: sysconfig.inc.php:327
+msgid "Name"
+msgstr ""
+
+#: sysconfig.inc.php:328
+msgid "Temporal"
+msgstr ""
+
+#: sysconfig.inc.php:329
+msgid "Genre"
+msgstr ""
+
+#: sysconfig.inc.php:330
+msgid "Occupation"
+msgstr ""
+
+#: sysconfig.inc.php:333
+msgid "Primary Author"
+msgstr ""
+
+#: sysconfig.inc.php:334
+msgid "Additional Author"
+msgstr ""
+
+#: sysconfig.inc.php:335
+msgid "Editor"
+msgstr ""
+
+#: sysconfig.inc.php:336
+msgid "Translator"
+msgstr ""
+
+#: sysconfig.inc.php:337
+msgid "Director"
+msgstr ""
+
+#: sysconfig.inc.php:338
+msgid "Producer"
+msgstr ""
+
+#: sysconfig.inc.php:339
+msgid "Composer"
+msgstr ""
+
+#: sysconfig.inc.php:340
+msgid "Illustrator"
+msgstr ""
+
+#: sysconfig.inc.php:341
+msgid "Creator"
+msgstr ""
+
+#: sysconfig.inc.php:342
+msgid "Contributor"
+msgstr ""
+
+#: index.php:37
+msgid "Web Online Public Access Catalog - Use the search options to find documents quickly"
+msgstr ""
+
+#: index.php:46
+msgid "You are currently Logged on as member"
+msgstr ""
+
+#: index.php:46
+msgid "LOGOUT"
+msgstr ""
+
+#: template/lightweight/index_template.inc.php:20
+#: template/green/index_template.inc.php:26
+msgid "Home"
+msgstr ""
+
+#: template/lightweight/index_template.inc.php:21
+#: template/green/index_template.inc.php:27
+msgid "Library Information"
+msgstr ""
+
+#: template/lightweight/index_template.inc.php:22
+#: template/green/index_template.inc.php:28
+msgid "Help on Search"
+msgstr ""
+
+#: template/lightweight/index_template.inc.php:39
+#: template/green/index_template.inc.php:63
+#: template/green/index_template.inc.php:91
+msgid "Search"
+msgstr ""
+
+#: template/lightweight/custom_frontpage_record.inc.php:7
+#: template/lightweight/detail_template.php:12
+#: template/green/custom_frontpage_record.inc.php:7
+#: template/green/detail_template.php:12
+msgid "Edition"
+msgstr ""
+
+#: template/lightweight/custom_frontpage_record.inc.php:8
+#: template/lightweight/detail_template.php:20
+#: template/green/index_template.inc.php:76
+#: template/green/custom_frontpage_record.inc.php:8
+#: template/green/detail_template.php:20
+msgid "ISBN/ISSN"
+msgstr ""
+
+#: template/lightweight/custom_frontpage_record.inc.php:9
+#: template/lightweight/detail_template.php:60
+#: template/green/custom_frontpage_record.inc.php:9
+#: template/green/detail_template.php:60
+msgid "Collation"
+msgstr ""
+
+#: template/lightweight/custom_frontpage_record.inc.php:10
+#: template/lightweight/detail_template.php:37
+#: template/green/custom_frontpage_record.inc.php:10
+#: template/green/detail_template.php:37
+msgid "Series Title"
+msgstr ""
+
+#: template/lightweight/custom_frontpage_record.inc.php:11
+#: template/lightweight/detail_template.php:16
+#: template/green/custom_frontpage_record.inc.php:11
+#: template/green/detail_template.php:16
+msgid "Call Number"
+msgstr ""
+
+#: template/lightweight/detail_template.php:8
+#: template/green/index_template.inc.php:70
+#: template/green/detail_template.php:8
+msgid "Title"
+msgstr ""
+
+#: template/lightweight/detail_template.php:25
+#: template/green/index_template.inc.php:72
+#: template/green/detail_template.php:25
+msgid "Author(s)"
+msgstr ""
+
+#: template/lightweight/detail_template.php:29
+#: template/green/index_template.inc.php:74
+#: template/green/detail_template.php:29
+msgid "Subject(s)"
+msgstr ""
+
+#: template/lightweight/detail_template.php:33
+#: template/green/detail_template.php:33
+msgid "Classification"
+msgstr ""
+
+#: template/lightweight/detail_template.php:40
+#: template/green/index_template.inc.php:78
+#: template/green/detail_template.php:40
+msgid "GMD"
+msgstr ""
+
+#: template/lightweight/detail_template.php:44
+#: template/green/detail_template.php:44
+msgid "Language"
+msgstr ""
+
+#: template/lightweight/detail_template.php:48
+#: template/green/detail_template.php:48
+msgid "Publisher"
+msgstr ""
+
+#: template/lightweight/detail_template.php:52
+#: template/green/detail_template.php:52
+msgid "Publishing Year"
+msgstr ""
+
+#: template/lightweight/detail_template.php:56
+#: template/green/detail_template.php:56
+msgid "Publishing Place"
+msgstr ""
+
+#: template/lightweight/detail_template.php:64
+#: template/green/detail_template.php:64
+msgid "Abstract/Notes"
+msgstr ""
+
+#: template/lightweight/detail_template.php:68
+#: template/green/detail_template.php:68
+msgid "Specific Detail Info"
+msgstr ""
+
+#: template/lightweight/detail_template.php:72
+#: template/green/detail_template.php:72
+msgid "Image"
+msgstr ""
+
+#: template/lightweight/detail_template.php:76
+#: template/green/detail_template.php:76
+msgid "File Attachment"
+msgstr ""
+
+#: template/lightweight/detail_template.php:80
+#: template/green/detail_template.php:80
+msgid "Availability"
+msgstr ""
+
+#: template/green/index_template.inc.php:29
+msgid "Member Area"
+msgstr ""
+
+#: template/green/index_template.inc.php:30
+msgid "Librarian LOGIN"
+msgstr ""
+
+#: template/green/index_template.inc.php:51
+msgid "Select Language"
+msgstr ""
+
+#: template/green/index_template.inc.php:60
+msgid "Simple Search"
+msgstr ""
+
+#: template/green/index_template.inc.php:68
+msgid "Advanced Search"
+msgstr ""
+
+#: template/green/index_template.inc.php:82
+msgid "Collection Type"
+msgstr ""
+
+#: template/green/index_template.inc.php:86
+msgid "Location"
+msgstr ""
+
+#: template/green/detail_template.php:85
+msgid "Back To Previous"
+msgstr ""
+
+#: admin/logout.php:32
+msgid "You Have Been Logged Out From Library Automation System"
+msgstr ""
+
+#: admin/index.php:60
+msgid "Welcome To The Library Automation System, you are currently logged in as"
+msgstr ""
+
+#: admin/modules/bibliography/import.php:36
+msgid "You are not authorized to view this section"
+msgstr ""
+
+#: admin/modules/bibliography/import.php:45
+msgid "Please select the file to import!"
+msgstr ""
+
+#: admin/modules/bibliography/import.php:48
+msgid "Required fields (*)  must be filled correctly!"
+msgstr ""
+
+#: admin/modules/bibliography/import.php:69
+msgid "Upload failed! File type not allowed or the size is more than"
+msgstr ""
+
+#: admin/modules/bibliography/import.php:215
+msgid "IMPORT TOOL"
+msgstr ""
+
+#: admin/modules/bibliography/import.php:217
+msgid "Import for bibliographics data from CSV file. For guide on CVS fields order and format please refer to documentation or visit <a href=\"http://senayan.diknas.go.id\" target=\"_blank\">Official Website</a>"
+msgstr ""
+
+#: admin/modules/bibliography/import.php:225
+msgid "Import Now"
+msgstr ""
+
+#: admin/modules/bibliography/import.php:236
+msgid "File To Import"
+msgstr ""
+
+#: admin/modules/bibliography/import.php:238
+msgid "Field Separator"
+msgstr ""
+
+#: admin/modules/bibliography/import.php:240
+msgid "Field Enclosed With"
+msgstr ""
+
+#: admin/modules/bibliography/import.php:242
+msgid "Number of Records To Export (0 for all records)"
+msgstr ""
+
+#: admin/modules/bibliography/import.php:244
+msgid "Start From Record"
+msgstr ""
+
+#: admin/modules/bibliography/iframe_attach.php:73
+msgid "Attachment removed!"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:23
+#: admin/modules/bibliography/index.php:266
+msgid "Bibliographic"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:24
+#: admin/modules/bibliography/index.php:267
+msgid "Bibliographic List"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:24
+msgid "Show Existing Bibliographic Data"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:25
+#: admin/modules/bibliography/index.php:266
+msgid "Add New Bibliography"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:25
+msgid "Add New Bibliographic Data/Catalog"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:26
+#: admin/modules/bibliography/item.php:190
+msgid "Items"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:27
+msgid "Item List"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:27
+msgid "Show List of Library Items"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:28
+#: admin/modules/bibliography/checkout_item.php:43
+msgid "Checkout Items"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:28
+msgid "Show List of Checkout Items"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:29
+msgid "Tools"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:30
+msgid "Z3950 Service"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:30
+msgid "Grab Bibliographic Data from Z3950 Web Services"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:31
+#: admin/modules/bibliography/dl_print.php:171
+msgid "Labels Printing"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:31
+msgid "Print Document Labels"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:32
+#: admin/modules/bibliography/item_barcode_generator.php:196
+msgid "Item Barcodes Printing"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:32
+msgid "Print Item Barcodes"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:33
+msgid "Import Data"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:33
+msgid "Import Data to Bibliographic Database from CSV file"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:34
+msgid "Export Data"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:34
+msgid "Export Bibliographic Data To CSV format"
+msgstr ""
+
+#: admin/modules/bibliography/iframe_author.php:65
+msgid "Author succesfully removed!"
+msgstr ""
+
+#: admin/modules/bibliography/iframe_author.php:76
+msgid "Author removed!"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:53
+msgid "Item Code can't be empty!"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:99
+msgid "Item Data Successfully Updated"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:106
+#: admin/modules/bibliography/item.php:122
+msgid "Item Data FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:115
+msgid "New Item Data Successfully Saved"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:169
+#: admin/modules/bibliography/iframe_item_list.php:74
+msgid "Item data can not be deleted because still on hold by members"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:175
+#: admin/modules/bibliography/iframe_item_list.php:80
+msgid "Item succesfully removed!"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:178
+#: admin/modules/bibliography/iframe_item_list.php:85
+msgid "Item FAILED to removed!"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:218
+#: admin/modules/bibliography/index.php:295
+msgid "Save"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:237
+#: admin/modules/bibliography/index.php:317
+msgid "Update"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:271
+#: admin/modules/bibliography/item.php:372
+#: admin/modules/bibliography/item.php:381
+#: admin/modules/bibliography/checkout_item.php:61
+#: admin/modules/bibliography/item_barcode_generator.php:224
+msgid "Item Code"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:275
+msgid "Inventory Code"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:285
+msgid "Shelf Location"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:297
+msgid "Available"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:301
+msgid "Item Status"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:303
+msgid "Order Number"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:305
+msgid "Order Date"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:307
+msgid "Receiving Date"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:311
+#: admin/modules/bibliography/index.php:350
+msgid "Not Applicable"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:315
+msgid "Supplier"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:317
+msgid "Buy"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:318
+msgid "Prize/Grant"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:319
+msgid "Source"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:321
+msgid "Invoice"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:323
+msgid "Invoice Date"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:327
+msgid "Price"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:331
+msgid "You are going to edit Item data"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:332
+#: admin/modules/bibliography/item.php:377
+#: admin/modules/bibliography/item.php:386
+#: admin/modules/bibliography/index.php:454
+msgid "Last Updated"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:420
+#: admin/modules/bibliography/checkout_item.php:106
+#: admin/modules/bibliography/item_barcode_generator.php:260
+#: admin/modules/bibliography/index.php:562
+#: admin/modules/bibliography/dl_print.php:236
+msgid "Found <strong>{result->num_rows}</strong> from your keywords"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:421
+#: admin/modules/bibliography/item_barcode_generator.php:261
+#: admin/modules/bibliography/index.php:563
+#: admin/modules/bibliography/dl_print.php:237
+msgid "Query took"
+msgstr ""
+
+#: admin/modules/bibliography/item.php:421
+#: admin/modules/bibliography/item_barcode_generator.php:261
+#: admin/modules/bibliography/index.php:563
+#: admin/modules/bibliography/dl_print.php:237
+msgid "second(s) to complete"
+msgstr ""
+
+#: admin/modules/bibliography/pop_author.php:88
+msgid "Author succesfully updated!"
+msgstr ""
+
+#: admin/modules/bibliography/pop_author.php:92
+msgid "Author FAILED to Add. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/bibliography/pop_author.php:117
+msgid "Author added!"
+msgstr ""
+
+#: admin/modules/bibliography/pop_author.php:128
+msgid "Add Author"
+msgstr ""
+
+#: admin/modules/bibliography/pop_author.php:133
+msgid "Author Name"
+msgstr ""
+
+#: admin/modules/bibliography/pop_author.php:146
+msgid "Type to search for existing authors or to add a new one"
+msgstr ""
+
+#: admin/modules/bibliography/pop_author.php:148
+msgid "Insert To Bibliography"
+msgstr ""
+
+#: admin/modules/bibliography/export.php:103
+msgid "Error on query to database, Export FAILED!"
+msgstr ""
+
+#: admin/modules/bibliography/export.php:141
+msgid "There is no record in bibliographic database yet, Export FAILED!"
+msgstr ""
+
+#: admin/modules/bibliography/export.php:150
+msgid "EXPORT TOOL"
+msgstr ""
+
+#: admin/modules/bibliography/export.php:152
+msgid "Export bibliographics data to CSV file"
+msgstr ""
+
+#: admin/modules/bibliography/export.php:159
+msgid "Export Now"
+msgstr ""
+
+#: admin/modules/bibliography/export.php:174
+msgid "Record Separator"
+msgstr ""
+
+#: admin/modules/bibliography/checkout_item.php:62
+msgid "Member ID"
+msgstr ""
+
+#: admin/modules/bibliography/checkout_item.php:64
+msgid "Loan Date"
+msgstr ""
+
+#: admin/modules/bibliography/checkout_item.php:65
+msgid "Due Date"
+msgstr ""
+
+#: admin/modules/bibliography/item_barcode_generator.php:88
+#: admin/modules/bibliography/dl_print.php:70
+msgid "Selected items NOT ADDED to print queue. Only {max_print} can be printed at once"
+msgstr ""
+
+#: admin/modules/bibliography/item_barcode_generator.php:93
+#: admin/modules/bibliography/dl_print.php:75
+msgid "Selected items added to print queue"
+msgstr ""
+
+#: admin/modules/bibliography/item_barcode_generator.php:102
+#: admin/modules/bibliography/dl_print.php:82
+msgid "Print queue cleared!"
+msgstr ""
+
+#: admin/modules/bibliography/item_barcode_generator.php:111
+#: admin/modules/bibliography/item_barcode_generator.php:115
+#: admin/modules/bibliography/dl_print.php:92
+#: admin/modules/bibliography/dl_print.php:96
+msgid "There is no data to print!"
+msgstr ""
+
+#: admin/modules/bibliography/item_barcode_generator.php:196
+msgid "Print Barcodes for Selected Data"
+msgstr ""
+
+#: admin/modules/bibliography/item_barcode_generator.php:197
+#: admin/modules/bibliography/dl_print.php:172
+msgid "Clear Print Queue"
+msgstr ""
+
+#: admin/modules/bibliography/item_barcode_generator.php:205
+#: admin/modules/bibliography/dl_print.php:180
+msgid "Maximum"
+msgstr ""
+
+#: admin/modules/bibliography/item_barcode_generator.php:205
+#: admin/modules/bibliography/dl_print.php:180
+msgid "records can be printed at once. Currently there is"
+msgstr ""
+
+#: admin/modules/bibliography/item_barcode_generator.php:209
+#: admin/modules/bibliography/dl_print.php:184
+msgid "in queue waiting to be printed."
+msgstr ""
+
+#: admin/modules/bibliography/item_barcode_generator.php:251
+#: admin/modules/bibliography/dl_print.php:227
+msgid "Add"
+msgstr ""
+
+#: admin/modules/bibliography/item_barcode_generator.php:252
+#: admin/modules/bibliography/dl_print.php:228
+msgid "Add To Print Queue"
+msgstr ""
+
+#: admin/modules/bibliography/item_barcode_generator.php:253
+#: admin/modules/bibliography/dl_print.php:229
+msgid "Add to print queue?"
+msgstr ""
+
+#: admin/modules/bibliography/pop_attach.php:82
+msgid "Upload FAILED! Forbidden file type or file size too big!"
+msgstr ""
+
+#: admin/modules/bibliography/pop_attach.php:131
+msgid "File Attachment data updated!"
+msgstr ""
+
+#: admin/modules/bibliography/pop_attach.php:135
+msgid "File Attachment data FAILED to update!"
+msgstr ""
+
+#: admin/modules/bibliography/pop_attach.php:140
+#: admin/modules/bibliography/pop_attach.php:155
+msgid "File Attachment uploaded succesfully!"
+msgstr ""
+
+#: admin/modules/bibliography/pop_attach.php:144
+msgid "File Attachment data FAILED to save!"
+msgstr ""
+
+#: admin/modules/bibliography/pop_attach.php:164
+msgid "Upload Now"
+msgstr ""
+
+#: admin/modules/bibliography/pop_attach.php:194
+msgid "Repository ROOT"
+msgstr ""
+
+#: admin/modules/bibliography/pop_attach.php:204
+msgid "Repo. Directory"
+msgstr ""
+
+#: admin/modules/bibliography/pop_attach.php:208
+msgid "File To Attach"
+msgstr ""
+
+#: admin/modules/bibliography/pop_attach.php:211
+msgid "URL"
+msgstr ""
+
+#: admin/modules/bibliography/pop_attach.php:213
+msgid "Description"
+msgstr ""
+
+#: admin/modules/bibliography/pop_attach.php:215
+msgid "Public"
+msgstr ""
+
+#: admin/modules/bibliography/pop_attach.php:216
+msgid "Private"
+msgstr ""
+
+#: admin/modules/bibliography/pop_attach.php:217
+msgid "Access"
+msgstr ""
+
+#: admin/modules/bibliography/pop_attach.php:224
+msgid "Access Limit by Member Type"
+msgstr ""
+
+#: admin/modules/bibliography/z3950.php:335
+#: admin/modules/bibliography/index.php:271
+msgid "Title/Series Title"
+msgstr ""
+
+#: admin/modules/bibliography/z3950.php:335
+#: admin/modules/bibliography/index.php:271
+msgid "Authors"
+msgstr ""
+
+#: admin/modules/bibliography/z3950.php:338
+msgid "* Please make sure you have a working Internet connection."
+msgstr ""
+
+#: admin/modules/bibliography/index.php:57
+msgid "Title can not be empty"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:130
+#: admin/modules/bibliography/index.php:134
+msgid "Image Uploaded Successfully"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:150
+msgid "Bibliography Data Successfully Updated"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:161
+msgid "Bibliography Data FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:188
+msgid "New Bibliography Data Successfully Saved"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:196
+msgid "Bibliography Data FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:245
+msgid "Below data can not be deleted:"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:251
+msgid "All Data Successfully Deleted"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:254
+msgid ""
+"Some or All Data NOT deleted successfully!\\n"
+"Please contact system administrator"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:271
+msgid "All Fields"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:271
+msgid "Topics"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:331
+msgid "Add New Items"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:336
+msgid "Add Author(s)"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:356
+msgid "Use this for Serial publication"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:357
+msgid "Frequency"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:395
+msgid "Add Subject(s)"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:420
+msgid "Add Attachment"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:424
+msgid "Show"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:425
+msgid "Hide"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:426
+msgid "Hide in OPAC"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:428
+msgid "Don't Promote"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:429
+msgid "Promote"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:430
+msgid "Promote To Homepage"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:454
+msgid "You are going to edit biblio data"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:510
+#: admin/modules/bibliography/index.php:516
+msgid "None"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:510
+#: admin/modules/bibliography/index.php:516
+msgid "Copies"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:511
+#: admin/modules/bibliography/index.php:517
+msgid "Last Update"
+msgstr ""
+
+#: admin/modules/bibliography/dl_print.php:171
+msgid "Print Labels for Selected Data"
+msgstr ""
+
+#: admin/modules/bibliography/pop_topic.php:91
+msgid "Subject FAILED to Add. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/bibliography/pop_topic.php:116
+msgid "Subject added!"
+msgstr ""
+
+#: admin/modules/bibliography/pop_topic.php:127
+msgid "Add Subject"
+msgstr ""
+
+#: admin/modules/bibliography/pop_topic.php:133
+msgid "Keyword"
+msgstr ""
+
+#: admin/modules/bibliography/pop_topic.php:147
+msgid "Type to search for existing topics or to add a new one"
+msgstr ""
+
+#: admin/modules/circulation/fines_list.php:56
+msgid "Fines Description and Debet value can't be empty"
+msgstr ""
+
+#: admin/modules/circulation/fines_list.php:58
+msgid "Value of Credit can not be higher that Debet Value"
+msgstr ""
+
+#: admin/modules/circulation/fines_list.php:76
+msgid "Fines Data Successfully Updated"
+msgstr ""
+
+#: admin/modules/circulation/fines_list.php:77
+msgid "Fines Data FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/circulation/fines_list.php:83
+msgid "New Fines Data Successfully Saved"
+msgstr ""
+
+#: admin/modules/circulation/fines_list.php:84
+msgid "Fines Data FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/circulation/fines_list.php:120
+msgid "Add New Fines"
+msgstr ""
+
+#: admin/modules/circulation/fines_list.php:121
+msgid "Fines List"
+msgstr ""
+
+#: admin/modules/circulation/fines_list.php:122
+msgid "View Balanced Overdue"
+msgstr ""
+
+#: admin/modules/circulation/fines_list.php:159
+#: admin/modules/circulation/fines_list.php:183
+msgid "Fines Date"
+msgstr ""
+
+#: admin/modules/circulation/fines_list.php:161
+#: admin/modules/circulation/fines_list.php:182
+msgid "Description/Name"
+msgstr ""
+
+#: admin/modules/circulation/fines_list.php:163
+#: admin/modules/circulation/fines_list.php:184
+msgid "Debit"
+msgstr ""
+
+#: admin/modules/circulation/fines_list.php:165
+#: admin/modules/circulation/fines_list.php:185
+msgid "Credit"
+msgstr ""
+
+#: admin/modules/circulation/fines_list.php:169
+msgid "You are going to edit fines data"
+msgstr ""
+
+#: admin/modules/circulation/submenu.php:23
+msgid "Circulation"
+msgstr ""
+
+#: admin/modules/circulation/submenu.php:24
+#: admin/modules/circulation/index.php:60
+msgid "Start Transaction"
+msgstr ""
+
+#: admin/modules/circulation/submenu.php:24
+msgid "Start Circulation Transaction Proccess"
+msgstr ""
+
+#: admin/modules/circulation/submenu.php:25
+#: admin/modules/circulation/quick_return.php:47
+msgid "Quick Return"
+msgstr ""
+
+#: admin/modules/circulation/submenu.php:25
+msgid "Quick Return Collection"
+msgstr ""
+
+#: admin/modules/circulation/submenu.php:26
+#: admin/modules/circulation/loan_rules.php:117
+msgid "Loan Rules"
+msgstr ""
+
+#: admin/modules/circulation/submenu.php:26
+msgid "View and Modify Circulation Loan Rules"
+msgstr ""
+
+#: admin/modules/circulation/submenu.php:27
+#: admin/modules/circulation/circulation_action.php:479
+msgid "Loan History"
+msgstr ""
+
+#: admin/modules/circulation/submenu.php:27
+msgid "Loan History Overview"
+msgstr ""
+
+#: admin/modules/circulation/submenu.php:28
+msgid "Overdued List"
+msgstr ""
+
+#: admin/modules/circulation/submenu.php:28
+msgid "View Members Having Overdues"
+msgstr ""
+
+#: admin/modules/circulation/submenu.php:29
+msgid "Reservation"
+msgstr ""
+
+#: admin/modules/circulation/loan.php:34
+#: admin/modules/circulation/quick_return.php:36
+#: admin/modules/circulation/loan_rules.php:40
+#: admin/modules/circulation/loan_rules.php:131
+#: admin/modules/circulation/index.php:38
+msgid "You don't have enough privileges to view this section"
+msgstr ""
+
+#: admin/modules/circulation/loan.php:113
+msgid "Insert Item Code/Barcode"
+msgstr ""
+
+#: admin/modules/circulation/loan.php:115
+msgid "Loan"
+msgstr ""
+
+#: admin/modules/circulation/loan.php:129
+#: admin/modules/circulation/reserve_list.php:87
+msgid "Remove"
+msgstr ""
+
+#: admin/modules/circulation/loan.php:142
+msgid "Click To Change Loan Date"
+msgstr ""
+
+#: admin/modules/circulation/loan.php:143
+msgid "Click To Change Due Date"
+msgstr ""
+
+#: admin/modules/circulation/quick_return.php:41
+msgid "Quick Return is disabled"
+msgstr ""
+
+#: admin/modules/circulation/quick_return.php:47
+msgid "Insert an item ID to return collection with keyboard or barcode reader"
+msgstr ""
+
+#: admin/modules/circulation/quick_return.php:50
+msgid "Item ID"
+msgstr ""
+
+#: admin/modules/circulation/quick_return.php:52
+#: admin/modules/circulation/loan_list.php:83
+msgid "Return"
+msgstr ""
+
+#: admin/modules/circulation/loan_rules.php:66
+msgid "Loan Rules Successfully Updated"
+msgstr ""
+
+#: admin/modules/circulation/loan_rules.php:68
+msgid "Loan Rules FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/circulation/loan_rules.php:74
+msgid "New Loan Rules Successfully Saved"
+msgstr ""
+
+#: admin/modules/circulation/loan_rules.php:76
+msgid "Loan Rules FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/circulation/loan_rules.php:117
+msgid "Add New Loan Rules"
+msgstr ""
+
+#: admin/modules/circulation/loan_rules.php:118
+msgid "Loan Rules List"
+msgstr ""
+
+#: admin/modules/circulation/loan_rules.php:168
+#: admin/modules/circulation/loan_rules.php:215
+#: admin/modules/circulation/loan_rules.php:222
+#: admin/modules/circulation/circulation_action.php:447
+msgid "Member Type"
+msgstr ""
+
+#: admin/modules/circulation/loan_rules.php:176
+#: admin/modules/circulation/loan_rules.php:181
+msgid "ALL"
+msgstr ""
+
+#: admin/modules/circulation/loan_rules.php:187
+#: admin/modules/circulation/loan_rules.php:218
+#: admin/modules/circulation/loan_rules.php:225
+msgid "Loan Limit"
+msgstr ""
+
+#: admin/modules/circulation/loan_rules.php:189
+#: admin/modules/circulation/loan_rules.php:219
+#: admin/modules/circulation/loan_rules.php:226
+msgid "Loan Period"
+msgstr ""
+
+#: admin/modules/circulation/loan_rules.php:191
+msgid "Reborrow Limit"
+msgstr ""
+
+#: admin/modules/circulation/loan_rules.php:193
+msgid "Fines Each Day"
+msgstr ""
+
+#: admin/modules/circulation/loan_rules.php:195
+msgid "Overdue Grace Periode"
+msgstr ""
+
+#: admin/modules/circulation/loan_rules.php:199
+msgid "You are going to edit loan rules"
+msgstr ""
+
+#: admin/modules/circulation/reserve_list.php:46
+msgid "Are you sure to remove reservation for"
+msgstr ""
+
+#: admin/modules/circulation/reserve_list.php:60
+msgid "Search Collection"
+msgstr ""
+
+#: admin/modules/circulation/reserve_list.php:67
+msgid "Add Reserve"
+msgstr ""
+
+#: admin/modules/circulation/reserve_list.php:87
+msgid "Reserve Date"
+msgstr ""
+
+#: admin/modules/circulation/reserve_list.php:105
+msgid "ALREADY EXPIRED"
+msgstr ""
+
+#: admin/modules/circulation/loan_list.php:50
+msgid "Are you sure you want to return the item"
+msgstr ""
+
+#: admin/modules/circulation/loan_list.php:52
+msgid "Are you sure to extend loan for"
+msgstr ""
+
+#: admin/modules/circulation/loan_list.php:83
+msgid "Extend"
+msgstr ""
+
+#: admin/modules/circulation/loan_list.php:92
+msgid "Return this item"
+msgstr ""
+
+#: admin/modules/circulation/loan_list.php:96
+#: admin/modules/circulation/loan_list.php:100
+#: admin/modules/circulation/loan_list.php:102
+msgid "No Extend"
+msgstr ""
+
+#: admin/modules/circulation/loan_list.php:104
+msgid "Extend loan for this item"
+msgstr ""
+
+#: admin/modules/circulation/loan_list.php:109
+msgid "Extended"
+msgstr ""
+
+#: admin/modules/circulation/loan_list.php:115
+msgid "OVERDUED for"
+msgstr ""
+
+#: admin/modules/circulation/loan_list.php:115
+msgid "days(s) with fines value"
+msgstr ""
+
+#: admin/modules/circulation/loan_list.php:149
+#: admin/modules/circulation/circulation_action.php:252
+msgid "Item {itemCode} is being reserved by member {member}"
+msgstr ""
+
+#: admin/modules/circulation/member_loan_hist.php:55
+msgid "Not Returned Yet"
+msgstr ""
+
+#: admin/modules/circulation/member_loan_hist.php:55
+msgid "Returned Date"
+msgstr ""
+
+#: admin/modules/circulation/index.php:48
+msgid "CIRCULATION - Insert a member ID to start transaction with keyboard or barcode reader"
+msgstr ""
+
+#: admin/modules/circulation/index.php:66
+msgid "Transaction with member {member_id} is completed"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:46
+msgid "ERROR! Loan data can't be saved to database"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:53
+msgid "Transaction finished"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:75
+#: admin/modules/circulation/circulation_action.php:97
+msgid "Overdue fines inserted to fines database"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:88
+msgid "Item CANNOT BE Extended! This Item is being reserved by other member"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:95
+msgid "Loan Extended"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:123
+#: admin/modules/circulation/circulation_action.php:130
+msgid "Loan Limit Reached!"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:123
+#: admin/modules/circulation/circulation_action.php:144
+msgid "Do You Want To Overide This?"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:144
+msgid "WARNING! This Item is reserved by another member"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:154
+msgid "This Item is not registered in database"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:159
+msgid "This Item is currently not available"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:164
+msgid "Loan NOT PERMITTED! Membership already EXPIRED!"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:169
+msgid "Loan NOT PERMITTED! Membership under PENDING State!"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:174
+msgid "Loan Forbidden for this Item!"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:211
+msgid "Item {removeID} removed from session"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:228
+msgid "This is item already returned or not exists in loan database"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:239
+msgid "OVERDUED for {overdueDays} days(s) with fines value of"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:263
+msgid " successfully returned on"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:265
+#: admin/modules/circulation/circulation_action.php:434
+msgid "Member Name"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:291
+msgid "NO DATA Selected to reserve!"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:304
+msgid "Can not add more reservation. Maximum limit reached"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:322
+msgid "Can't reserve this Item. Loan Forbidden!"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:340
+msgid "Reservation added"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:345
+msgid "Item for this title is already available or already on hold by this member!"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:364
+msgid "Reservation removed"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:379
+msgid "Fines data removed"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:403
+msgid " not valid (unregistered in database)"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:430
+msgid "Finish Transaction"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:430
+msgid "Are you sure want to finish current transaction?"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:446
+msgid "Member Email"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:450
+msgid "Register Date"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:454
+msgid "Membership Already Expired"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:456
+msgid "Expiry Date"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:466
+msgid "Membership currently in pending state, loan transaction is locked."
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:473
+msgid "Loans"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:474
+msgid "Current Loans"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:476
+msgid "Reserve"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:478
+msgid "Fines"
+msgstr ""
+
+#: admin/modules/master_file/place.php:39
+#: admin/modules/master_file/place.php:131
+msgid "You don't have enough privileges to access this area!"
+msgstr ""
+
+#: admin/modules/master_file/place.php:47
+msgid "Place Name can't be empty"
+msgstr ""
+
+#: admin/modules/master_file/place.php:65
+msgid "Place Data Successfully Updated"
+msgstr ""
+
+#: admin/modules/master_file/place.php:67
+msgid "Place Data FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/place.php:74
+msgid "New Place Data Successfully Saved"
+msgstr ""
+
+#: admin/modules/master_file/place.php:76
+msgid "Place Data FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/place.php:117
+msgid "Place"
+msgstr ""
+
+#: admin/modules/master_file/place.php:117
+msgid "Add New Place"
+msgstr ""
+
+#: admin/modules/master_file/place.php:118
+msgid "Place List"
+msgstr ""
+
+#: admin/modules/master_file/place.php:160
+#: admin/modules/master_file/place.php:177
+#: admin/modules/master_file/place.php:180
+msgid "Place Name"
+msgstr ""
+
+#: admin/modules/master_file/place.php:164
+msgid "You are going to edit place data"
+msgstr ""
+
+#: admin/modules/master_file/topic.php:47
+msgid "Subject can't be empty"
+msgstr ""
+
+#: admin/modules/master_file/topic.php:67
+msgid "Subject Data Successfully Updated"
+msgstr ""
+
+#: admin/modules/master_file/topic.php:69
+msgid "Subject Data FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/topic.php:76
+msgid "New Subject Data Successfully Saved"
+msgstr ""
+
+#: admin/modules/master_file/topic.php:78
+msgid "Subject Data FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/topic.php:120
+#: admin/modules/master_file/topic.php:163
+#: admin/modules/master_file/topic.php:189
+#: admin/modules/master_file/topic.php:194
+#: admin/modules/master_file/submenu.php:28
+msgid "Subject"
+msgstr ""
+
+#: admin/modules/master_file/topic.php:120
+msgid "Add New Subject"
+msgstr ""
+
+#: admin/modules/master_file/topic.php:121
+msgid "Subject List"
+msgstr ""
+
+#: admin/modules/master_file/topic.php:168
+#: admin/modules/master_file/topic.php:190
+#: admin/modules/master_file/topic.php:195
+msgid "Subject Type"
+msgstr ""
+
+#: admin/modules/master_file/topic.php:170
+#: admin/modules/master_file/topic.php:191
+#: admin/modules/master_file/topic.php:196
+#: admin/modules/master_file/submenu.php:23
+#: admin/modules/master_file/author.php:169
+#: admin/modules/master_file/author.php:190
+#: admin/modules/master_file/author.php:195
+msgid "Authority Files"
+msgstr ""
+
+#: admin/modules/master_file/topic.php:174
+msgid "You are going to edit Subject data"
+msgstr ""
+
+#: admin/modules/master_file/supplier.php:47
+msgid "Supplier Name can't be empty"
+msgstr ""
+
+#: admin/modules/master_file/supplier.php:71
+msgid "Supplier Data Successfully Updated"
+msgstr ""
+
+#: admin/modules/master_file/supplier.php:73
+msgid "Supplier Data FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/supplier.php:80
+msgid "New Supplier Data Successfully Saved"
+msgstr ""
+
+#: admin/modules/master_file/supplier.php:83
+msgid "Supplier Data FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/supplier.php:125
+msgid "Add New Supplier"
+msgstr ""
+
+#: admin/modules/master_file/supplier.php:126
+msgid "Supplier List"
+msgstr ""
+
+#: admin/modules/master_file/supplier.php:168
+#: admin/modules/master_file/supplier.php:195
+#: admin/modules/master_file/supplier.php:201
+msgid "Supplier Name"
+msgstr ""
+
+#: admin/modules/master_file/supplier.php:170
+msgid "Address"
+msgstr ""
+
+#: admin/modules/master_file/supplier.php:172
+#: admin/modules/master_file/supplier.php:196
+#: admin/modules/master_file/supplier.php:202
+msgid "Contact"
+msgstr ""
+
+#: admin/modules/master_file/supplier.php:174
+#: admin/modules/master_file/supplier.php:197
+#: admin/modules/master_file/supplier.php:203
+msgid "Phone Number"
+msgstr ""
+
+#: admin/modules/master_file/supplier.php:176
+#: admin/modules/master_file/supplier.php:198
+#: admin/modules/master_file/supplier.php:204
+msgid "Fax Number"
+msgstr ""
+
+#: admin/modules/master_file/supplier.php:178
+msgid "Account Number"
+msgstr ""
+
+#: admin/modules/master_file/supplier.php:182
+msgid "You are going to edit Supplier data"
+msgstr ""
+
+#: admin/modules/master_file/doc_language.php:47
+msgid "Language ID or Name can't be empty"
+msgstr ""
+
+#: admin/modules/master_file/doc_language.php:66
+msgid "Language Data Successfully Updated"
+msgstr ""
+
+#: admin/modules/master_file/doc_language.php:70
+msgid "Language Data FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/doc_language.php:77
+msgid "New Language Data Successfully Saved"
+msgstr ""
+
+#: admin/modules/master_file/doc_language.php:79
+msgid "Language Data FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/doc_language.php:120
+#: admin/modules/master_file/submenu.php:34
+msgid "Doc. Language"
+msgstr ""
+
+#: admin/modules/master_file/doc_language.php:120
+msgid "Add New Language"
+msgstr ""
+
+#: admin/modules/master_file/doc_language.php:121
+msgid "Language List"
+msgstr ""
+
+#: admin/modules/master_file/doc_language.php:163
+msgid "Language Code"
+msgstr ""
+
+#: admin/modules/master_file/doc_language.php:168
+msgid "You are going to edit language data"
+msgstr ""
+
+#: admin/modules/master_file/submenu.php:24
+msgid "General Material Designation"
+msgstr ""
+
+#: admin/modules/master_file/submenu.php:25
+msgid "Document Publisher"
+msgstr ""
+
+#: admin/modules/master_file/submenu.php:26
+msgid "Item Supplier"
+msgstr ""
+
+#: admin/modules/master_file/submenu.php:27
+#: admin/modules/master_file/author.php:119
+msgid "Author"
+msgstr ""
+
+#: admin/modules/master_file/submenu.php:27
+msgid "Document Authors"
+msgstr ""
+
+#: admin/modules/master_file/submenu.php:29
+msgid "Item Location"
+msgstr ""
+
+#: admin/modules/master_file/submenu.php:30
+msgid "Lookup Files"
+msgstr ""
+
+#: admin/modules/master_file/submenu.php:34
+msgid "Document Content Language"
+msgstr ""
+
+#: admin/modules/master_file/submenu.php:35
+#: admin/modules/master_file/label.php:157
+msgid "Label"
+msgstr ""
+
+#: admin/modules/master_file/submenu.php:35
+msgid "Special Labels for Titles to Show Up On Homepage"
+msgstr ""
+
+#: admin/modules/master_file/item_status.php:43
+msgid "No Loan Transaction"
+msgstr ""
+
+#: admin/modules/master_file/item_status.php:44
+msgid "Skipped By Stock Take"
+msgstr ""
+
+#: admin/modules/master_file/item_status.php:52
+msgid "Item Status ID and Name can't be empty"
+msgstr ""
+
+#: admin/modules/master_file/item_status.php:90
+msgid "Item Status Data Successfully Updated"
+msgstr ""
+
+#: admin/modules/master_file/item_status.php:94
+msgid "Item Status Data FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/item_status.php:101
+msgid "New Item Status Data Successfully Saved"
+msgstr ""
+
+#: admin/modules/master_file/item_status.php:103
+msgid "Item Status Data FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/item_status.php:144
+msgid "Add New Item Status"
+msgstr ""
+
+#: admin/modules/master_file/item_status.php:187
+#: admin/modules/master_file/item_status.php:215
+#: admin/modules/master_file/item_status.php:219
+msgid "Item Status Code"
+msgstr ""
+
+#: admin/modules/master_file/item_status.php:189
+#: admin/modules/master_file/item_status.php:216
+#: admin/modules/master_file/item_status.php:220
+msgid "Item Status Name"
+msgstr ""
+
+#: admin/modules/master_file/item_status.php:198
+msgid "Rules"
+msgstr ""
+
+#: admin/modules/master_file/item_status.php:202
+msgid "You are going to edit Item Status data"
+msgstr ""
+
+#: admin/modules/master_file/author.php:47
+msgid "Author name can't be empty"
+msgstr ""
+
+#: admin/modules/master_file/author.php:67
+msgid "Author Data Successfully Updated"
+msgstr ""
+
+#: admin/modules/master_file/author.php:69
+msgid "Author Data FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/author.php:76
+msgid "New Author Data Successfully Saved"
+msgstr ""
+
+#: admin/modules/master_file/author.php:78
+#: admin/modules/master_file/coll_type.php:76
+msgid "Author Data FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/author.php:119
+msgid "Add New Author"
+msgstr ""
+
+#: admin/modules/master_file/author.php:120
+msgid "Author List"
+msgstr ""
+
+#: admin/modules/master_file/author.php:167
+#: admin/modules/master_file/author.php:189
+#: admin/modules/master_file/author.php:194
+msgid "Authority Type"
+msgstr ""
+
+#: admin/modules/master_file/author.php:173
+msgid "You are going to edit author data"
+msgstr ""
+
+#: admin/modules/master_file/coll_type.php:47
+msgid "Collection type name can't be empty"
+msgstr ""
+
+#: admin/modules/master_file/coll_type.php:65
+msgid "Colllection Type Data Successfully Updated"
+msgstr ""
+
+#: admin/modules/master_file/coll_type.php:67
+msgid "Colllection Type Data FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/coll_type.php:74
+msgid "New Colllection Type Data Successfully Saved"
+msgstr ""
+
+#: admin/modules/master_file/coll_type.php:106
+#: admin/modules/master_file/location.php:110
+msgid "Location ({item_name}) still used by {number_items} item(s)"
+msgstr ""
+
+#: admin/modules/master_file/coll_type.php:137
+msgid "Add New Collection Type"
+msgstr ""
+
+#: admin/modules/master_file/coll_type.php:138
+msgid "Collection Type List"
+msgstr ""
+
+#: admin/modules/master_file/coll_type.php:183
+msgid "You are going to edit collection type data"
+msgstr ""
+
+#: admin/modules/master_file/label.php:106
+msgid "Label Data Successfully Updated"
+msgstr ""
+
+#: admin/modules/master_file/label.php:108
+msgid "Label Data FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/label.php:114
+msgid "New Label Data Successfully Saved"
+msgstr ""
+
+#: admin/modules/master_file/label.php:116
+msgid "Label Data FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/label.php:157
+msgid "Add New Label"
+msgstr ""
+
+#: admin/modules/master_file/label.php:158
+msgid "Label List"
+msgstr ""
+
+#: admin/modules/master_file/label.php:200
+#: admin/modules/master_file/label.php:231
+#: admin/modules/master_file/label.php:235
+msgid "Label Name"
+msgstr ""
+
+#: admin/modules/master_file/label.php:213
+#: admin/modules/master_file/label.php:230
+#: admin/modules/master_file/label.php:234
+msgid "Label Description"
+msgstr ""
+
+#: admin/modules/master_file/label.php:217
+msgid "You are going to edit Label data"
+msgstr ""
+
+#: admin/modules/master_file/publisher.php:47
+msgid "Publisher Name can't be empty"
+msgstr ""
+
+#: admin/modules/master_file/publisher.php:65
+msgid "Publisher Data Successfully Updated"
+msgstr ""
+
+#: admin/modules/master_file/publisher.php:67
+msgid "PUBLISHER Data FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/publisher.php:74
+msgid "New Publisher Data Successfully Saved"
+msgstr ""
+
+#: admin/modules/master_file/publisher.php:76
+msgid "Publisher Data FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/publisher.php:117
+msgid "Add New Publisher"
+msgstr ""
+
+#: admin/modules/master_file/publisher.php:118
+msgid "Publisher List"
+msgstr ""
+
+#: admin/modules/master_file/publisher.php:160
+#: admin/modules/master_file/publisher.php:178
+#: admin/modules/master_file/publisher.php:182
+msgid "Publisher Name"
+msgstr ""
+
+#: admin/modules/master_file/publisher.php:164
+msgid "You are going to edit publisher data"
+msgstr ""
+
+#: admin/modules/master_file/location.php:48
+msgid "Location ID and Name can't be empty"
+msgstr ""
+
+#: admin/modules/master_file/location.php:67
+msgid "Location Data Successfully Updated"
+msgstr ""
+
+#: admin/modules/master_file/location.php:71
+msgid "Location Data FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/location.php:78
+msgid "New Location Data Successfully Saved"
+msgstr ""
+
+#: admin/modules/master_file/location.php:80
+msgid "Location Data FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/location.php:141
+msgid "Add New Location"
+msgstr ""
+
+#: admin/modules/master_file/location.php:142
+msgid "Location List"
+msgstr ""
+
+#: admin/modules/master_file/location.php:184
+#: admin/modules/master_file/location.php:203
+#: admin/modules/master_file/location.php:207
+msgid "Location Code"
+msgstr ""
+
+#: admin/modules/master_file/location.php:186
+#: admin/modules/master_file/location.php:204
+#: admin/modules/master_file/location.php:208
+msgid "Location Name"
+msgstr ""
+
+#: admin/modules/master_file/location.php:190
+msgid "You are going to edit location data"
+msgstr ""
+
+#: admin/modules/master_file/frequency.php:67
+msgid "Frequency Data Successfully Updated"
+msgstr ""
+
+#: admin/modules/master_file/frequency.php:69
+msgid "Frequency Data FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/frequency.php:75
+msgid "New Frequency Data Successfully Saved"
+msgstr ""
+
+#: admin/modules/master_file/frequency.php:77
+msgid "Frequency Data FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/frequency.php:118
+msgid "Add New Frequency"
+msgstr ""
+
+#: admin/modules/master_file/frequency.php:119
+msgid "Frequency Available"
+msgstr ""
+
+#: admin/modules/master_file/frequency.php:171
+#: admin/modules/master_file/frequency.php:197
+#: admin/modules/master_file/frequency.php:203
+msgid "Time Increment"
+msgstr ""
+
+#: admin/modules/master_file/frequency.php:173
+msgid "Day"
+msgstr ""
+
+#: admin/modules/master_file/frequency.php:174
+msgid "Week"
+msgstr ""
+
+#: admin/modules/master_file/frequency.php:175
+msgid "Month"
+msgstr ""
+
+#: admin/modules/master_file/frequency.php:176
+msgid "Year"
+msgstr ""
+
+#: admin/modules/master_file/frequency.php:177
+#: admin/modules/master_file/frequency.php:198
+#: admin/modules/master_file/frequency.php:204
+msgid "Time Unit"
+msgstr ""
+
+#: admin/modules/master_file/frequency.php:181
+msgid "You are going to edit Frequency data"
+msgstr ""
+
+#: admin/modules/master_file/index.php:51
+msgid "GMD Code And Name can't be empty"
+msgstr ""
+
+#: admin/modules/master_file/index.php:70
+msgid "GMD Data Successfully Updated"
+msgstr ""
+
+#: admin/modules/master_file/index.php:72
+msgid "GMD Data FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/index.php:78
+msgid "New GMD Data Successfully Saved"
+msgstr ""
+
+#: admin/modules/master_file/index.php:80
+msgid "GMD Data FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/master_file/index.php:121
+msgid "Add New GMD"
+msgstr ""
+
+#: admin/modules/master_file/index.php:122
+msgid "GMD List"
+msgstr ""
+
+#: admin/modules/master_file/index.php:164
+#: admin/modules/master_file/index.php:183
+#: admin/modules/master_file/index.php:187
+msgid "GMD Code"
+msgstr ""
+
+#: admin/modules/master_file/index.php:166
+#: admin/modules/master_file/index.php:184
+#: admin/modules/master_file/index.php:188
+msgid "GMD Name"
+msgstr ""
+
+#: admin/modules/master_file/index.php:170
+msgid "You are going to edit gmd data"
+msgstr ""
+
+#: admin/modules/reporting/submenu.php:23
+msgid "Reporting"
+msgstr ""
+
+#: admin/modules/reporting/submenu.php:24
+msgid "Collection Statistic"
+msgstr ""
+
+#: admin/modules/reporting/submenu.php:24
+msgid "View Library Collection Statistic"
+msgstr ""
+
+#: admin/modules/reporting/submenu.php:25
+#: admin/modules/reporting/loan_report.php:135
+#: admin/modules/reporting/loan_report.php:152
+msgid "Loan Report"
+msgstr ""
+
+#: admin/modules/reporting/submenu.php:25
+msgid "View Library Loan Report"
+msgstr ""
+
+#: admin/modules/reporting/submenu.php:26
+#: admin/modules/reporting/member_report.php:111
+#: admin/modules/reporting/member_report.php:128
+msgid "Membership Report"
+msgstr ""
+
+#: admin/modules/reporting/submenu.php:26
+msgid "View Membership Report"
+msgstr ""
+
+#: admin/modules/reporting/submenu.php:27
+msgid "Other Reports"
+msgstr ""
+
+#: admin/modules/reporting/member_report.php:46
+msgid "Total Registered Members"
+msgstr ""
+
+#: admin/modules/reporting/member_report.php:52
+msgid "Total Active Member"
+msgstr ""
+
+#: admin/modules/reporting/member_report.php:63
+msgid "Total Members By Membership Type"
+msgstr ""
+
+#: admin/modules/reporting/member_report.php:69
+msgid "Total Expired Member"
+msgstr ""
+
+#: admin/modules/reporting/member_report.php:80
+msgid "10 most active members"
+msgstr ""
+
+#: admin/modules/reporting/member_report.php:83
+msgid "Membership Data Summary"
+msgstr ""
+
+#: admin/modules/reporting/member_report.php:131
+#: admin/modules/reporting/loan_report.php:155
+msgid "Download Report"
+msgstr ""
+
+#: admin/modules/reporting/loan_report.php:46
+msgid "Total Loan"
+msgstr ""
+
+#: admin/modules/reporting/loan_report.php:58
+msgid "Total Loan By GMD/Medium"
+msgstr ""
+
+#: admin/modules/reporting/loan_report.php:69
+msgid "Total Loan By Collection Type"
+msgstr ""
+
+#: admin/modules/reporting/loan_report.php:77
+#: admin/modules/reporting/loan_report.php:83
+msgid "Total Loan Transactions"
+msgstr ""
+
+#: admin/modules/reporting/loan_report.php:83
+msgid "Transaction Average (Per Day)"
+msgstr ""
+
+#: admin/modules/reporting/loan_report.php:86
+msgid "Total Peak Transaction"
+msgstr ""
+
+#: admin/modules/reporting/loan_report.php:91
+#: admin/modules/reporting/loan_report.php:98
+msgid "Members Already Had Loans"
+msgstr ""
+
+#: admin/modules/reporting/loan_report.php:98
+msgid "Members Never Have Loans Yet"
+msgstr ""
+
+#: admin/modules/reporting/loan_report.php:104
+msgid "Total Overdued Loans"
+msgstr ""
+
+#: admin/modules/reporting/loan_report.php:107
+msgid "Loan Data Summary"
+msgstr ""
+
+#: admin/modules/reporting/report_dbgrid.inc.php:83
+msgid "record(s) found. Currently displaying page"
+msgstr ""
+
+#: admin/modules/reporting/report_dbgrid.inc.php:83
+msgid "record each page"
+msgstr ""
+
+#: admin/modules/reporting/report_dbgrid.inc.php:83
+msgid "Print Current Page"
+msgstr ""
+
+#: admin/modules/reporting/index.php:49
+msgid "Total Titles"
+msgstr ""
+
+#: admin/modules/reporting/index.php:54
+#: admin/modules/reporting/index.php:64
+msgid "Total Items/Copies"
+msgstr ""
+
+#: admin/modules/reporting/index.php:61
+#: admin/modules/reporting/index.php:64
+msgid "Total Checkout Items"
+msgstr ""
+
+#: admin/modules/reporting/index.php:64
+msgid "Total Items In Library"
+msgstr ""
+
+#: admin/modules/reporting/index.php:76
+msgid "Total Titles By Medium/GMD"
+msgstr ""
+
+#: admin/modules/reporting/index.php:90
+msgid "Total Items By Collection Type"
+msgstr ""
+
+#: admin/modules/reporting/index.php:102
+msgid "10 Most Popular Titles"
+msgstr ""
+
+#: admin/modules/reporting/index.php:105
+msgid "Collection Statistic Summary"
+msgstr ""
+
+#: admin/modules/reporting/index.php:133
+msgid "Collection Statistic Report"
+msgstr ""
+
+#: admin/modules/reporting/customs/item_titles_list.php:54
+#: admin/modules/reporting/customs/customs_report_list.inc.php:25
+msgid "Items Title List"
+msgstr ""
+
+#: admin/modules/reporting/customs/item_titles_list.php:54
+#: admin/modules/reporting/customs/overdued_list.php:54
+#: admin/modules/reporting/customs/loan_by_class.php:53
+#: admin/modules/reporting/customs/reserve_list.php:53
+#: admin/modules/reporting/customs/titles_list.php:54
+#: admin/modules/reporting/customs/class_recap.php:53
+#: admin/modules/reporting/customs/item_usage.php:53
+#: admin/modules/reporting/customs/member_loan_list.php:54
+#: admin/modules/reporting/customs/loan_history.php:53
+#: admin/modules/reporting/customs/member_list.php:55
+#: admin/modules/reporting/customs/staff_act.php:53
+msgid "Report Filter"
+msgstr ""
+
+#: admin/modules/reporting/customs/item_titles_list.php:58
+#: admin/modules/reporting/customs/reserve_list.php:63
+#: admin/modules/reporting/customs/titles_list.php:58
+#: admin/modules/reporting/customs/item_usage.php:57
+msgid "Title/ISBN"
+msgstr ""
+
+#: admin/modules/reporting/customs/item_titles_list.php:118
+#: admin/modules/reporting/customs/overdued_list.php:82
+#: admin/modules/reporting/customs/titles_list.php:117
+#: admin/modules/reporting/customs/member_loan_list.php:82
+#: admin/modules/reporting/customs/loan_history.php:103
+#: admin/modules/reporting/customs/member_list.php:108
+msgid "Record each page"
+msgstr ""
+
+#: admin/modules/reporting/customs/item_titles_list.php:119
+#: admin/modules/reporting/customs/overdued_list.php:83
+#: admin/modules/reporting/customs/titles_list.php:118
+#: admin/modules/reporting/customs/member_loan_list.php:83
+#: admin/modules/reporting/customs/loan_history.php:104
+#: admin/modules/reporting/customs/member_list.php:109
+msgid "Set between 20 and 200"
+msgstr ""
+
+#: admin/modules/reporting/customs/item_titles_list.php:123
+#: admin/modules/reporting/customs/overdued_list.php:87
+#: admin/modules/reporting/customs/loan_by_class.php:105
+#: admin/modules/reporting/customs/reserve_list.php:92
+#: admin/modules/reporting/customs/titles_list.php:122
+#: admin/modules/reporting/customs/class_recap.php:70
+#: admin/modules/reporting/customs/item_usage.php:83
+#: admin/modules/reporting/customs/member_loan_list.php:87
+#: admin/modules/reporting/customs/loan_history.php:108
+#: admin/modules/reporting/customs/member_list.php:113
+#: admin/modules/reporting/customs/staff_act.php:70
+msgid "Apply Filter"
+msgstr ""
+
+#: admin/modules/reporting/customs/item_titles_list.php:124
+#: admin/modules/reporting/customs/overdued_list.php:88
+#: admin/modules/reporting/customs/reserve_list.php:93
+#: admin/modules/reporting/customs/titles_list.php:123
+#: admin/modules/reporting/customs/class_recap.php:72
+#: admin/modules/reporting/customs/member_loan_list.php:88
+#: admin/modules/reporting/customs/loan_history.php:109
+#: admin/modules/reporting/customs/member_list.php:114
+#: admin/modules/reporting/customs/staff_act.php:71
+msgid "Show More Filter Options"
+msgstr ""
+
+#: admin/modules/reporting/customs/item_titles_list.php:124
+#: admin/modules/reporting/customs/overdued_list.php:88
+#: admin/modules/reporting/customs/reserve_list.php:93
+#: admin/modules/reporting/customs/titles_list.php:123
+#: admin/modules/reporting/customs/class_recap.php:72
+#: admin/modules/reporting/customs/member_loan_list.php:88
+#: admin/modules/reporting/customs/loan_history.php:109
+#: admin/modules/reporting/customs/member_list.php:114
+#: admin/modules/reporting/customs/staff_act.php:71
+msgid "Hide Filter Options"
+msgstr ""
+
+#: admin/modules/reporting/customs/overdued_list.php:66
+#: admin/modules/reporting/customs/member_loan_list.php:66
+#: admin/modules/reporting/customs/loan_history.php:81
+msgid "Loan Date From"
+msgstr ""
+
+#: admin/modules/reporting/customs/overdued_list.php:74
+#: admin/modules/reporting/customs/member_loan_list.php:74
+#: admin/modules/reporting/customs/loan_history.php:89
+msgid "Loan Date Until"
+msgstr ""
+
+#: admin/modules/reporting/customs/overdued_list.php:164
+#: admin/modules/reporting/customs/member_loan_list.php:162
+msgid "E-mail"
+msgstr ""
+
+#: admin/modules/reporting/customs/overdued_list.php:170
+msgid "Overdue"
+msgstr ""
+
+#: admin/modules/reporting/customs/overdued_list.php:170
+msgid "day(s)"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:53
+#: admin/modules/reporting/customs/customs_report_list.inc.php:27
+msgid "Loans by Classification"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:60
+msgid "0 Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:61
+msgid "1 Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:62
+msgid "2 Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:63
+msgid "2X Classes (Islamic Related)"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:64
+msgid "3 Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:65
+msgid "4 Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:66
+msgid "5 Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:67
+msgid "6 Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:68
+msgid "7 Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:69
+msgid "8 Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:70
+msgid "9 Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:71
+msgid "NON Decimal Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:116
+#: admin/modules/reporting/customs/item_usage.php:102
+#: admin/modules/reporting/customs/item_usage.php:170
+msgid "Jan"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:117
+#: admin/modules/reporting/customs/item_usage.php:103
+#: admin/modules/reporting/customs/item_usage.php:170
+msgid "Feb"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:118
+#: admin/modules/reporting/customs/item_usage.php:104
+#: admin/modules/reporting/customs/item_usage.php:170
+msgid "Mar"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:119
+#: admin/modules/reporting/customs/item_usage.php:105
+#: admin/modules/reporting/customs/item_usage.php:170
+msgid "Apr"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:120
+#: admin/modules/reporting/customs/item_usage.php:106
+#: admin/modules/reporting/customs/item_usage.php:170
+msgid "May"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:121
+#: admin/modules/reporting/customs/item_usage.php:107
+#: admin/modules/reporting/customs/item_usage.php:170
+msgid "Jun"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:122
+#: admin/modules/reporting/customs/item_usage.php:108
+#: admin/modules/reporting/customs/item_usage.php:170
+msgid "Jul"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:123
+#: admin/modules/reporting/customs/item_usage.php:109
+#: admin/modules/reporting/customs/item_usage.php:170
+msgid "Aug"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:124
+#: admin/modules/reporting/customs/item_usage.php:110
+#: admin/modules/reporting/customs/item_usage.php:170
+msgid "Sep"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:125
+#: admin/modules/reporting/customs/item_usage.php:111
+#: admin/modules/reporting/customs/item_usage.php:170
+msgid "Oct"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:126
+#: admin/modules/reporting/customs/item_usage.php:112
+#: admin/modules/reporting/customs/item_usage.php:170
+msgid "Nov"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:127
+#: admin/modules/reporting/customs/item_usage.php:113
+#: admin/modules/reporting/customs/item_usage.php:170
+msgid "Dec"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:23
+#: admin/modules/reporting/customs/class_recap.php:53
+msgid "Custom Recapitulations"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:23
+msgid "Title and Collection recapitulation based on classification and others"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:24
+#: admin/modules/reporting/customs/titles_list.php:54
+msgid "Title List"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:24
+msgid "List of bibliographic titles"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:25
+msgid "List of collection/items"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:26
+#: admin/modules/reporting/customs/item_usage.php:53
+msgid "Items Usage Statistics"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:26
+msgid "List of Collection/items usage statistic"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:27
+msgid "Loan statistic by classification"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:28
+#: admin/modules/reporting/customs/member_list.php:55
+msgid "Member List"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:28
+msgid "List of library member/patron"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:29
+#: admin/modules/reporting/customs/member_loan_list.php:54
+msgid "Loan List by Member"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:29
+msgid "List of loan by each member"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:32
+#: admin/modules/reporting/customs/staff_act.php:53
+msgid "Staff Activity"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:32
+msgid "Staff activity log recapitulation"
+msgstr ""
+
+#: admin/modules/reporting/customs/reserve_list.php:75
+msgid "Reserve Date From"
+msgstr ""
+
+#: admin/modules/reporting/customs/reserve_list.php:83
+msgid "Reserve Date Until"
+msgstr ""
+
+#: admin/modules/reporting/customs/titles_list.php:85
+msgid "Press Ctrl and click to select multiple entries"
+msgstr ""
+
+#: admin/modules/reporting/customs/class_recap.php:57
+msgid "Recap By"
+msgstr ""
+
+#: admin/modules/reporting/customs/class_recap.php:230
+msgid "Title and Collection Recap by"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_history.php:97
+#: admin/modules/reporting/customs/loan_history.php:134
+msgid "Loan Status"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_history.php:99
+#: admin/modules/reporting/customs/loan_history.php:182
+msgid "On Loan"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_history.php:99
+#: admin/modules/reporting/customs/loan_history.php:184
+msgid "Returned"
+msgstr ""
+
+#: admin/modules/reporting/customs/member_list.php:59
+#: admin/modules/reporting/customs/member_list.php:134
+#: admin/modules/membership/member_card_generator.php:167
+#: admin/modules/membership/member_card_generator.php:223
+msgid "Membership Type"
+msgstr ""
+
+#: admin/modules/reporting/customs/member_list.php:79
+msgid "Gender"
+msgstr ""
+
+#: admin/modules/reporting/customs/member_list.php:83
+msgid "Male"
+msgstr ""
+
+#: admin/modules/reporting/customs/member_list.php:84
+msgid "Female"
+msgstr ""
+
+#: admin/modules/reporting/customs/member_list.php:96
+msgid "Register Date From"
+msgstr ""
+
+#: admin/modules/reporting/customs/member_list.php:102
+msgid "Register Date Until"
+msgstr ""
+
+#: admin/modules/reporting/customs/staff_act.php:57
+msgid "Activity Date From"
+msgstr ""
+
+#: admin/modules/reporting/customs/staff_act.php:63
+msgid "Activity Date Until"
+msgstr ""
+
+#: admin/modules/reporting/customs/staff_act.php:88
+msgid "Real Name"
+msgstr ""
+
+#: admin/modules/reporting/customs/staff_act.php:89
+msgid "Login Username"
+msgstr ""
+
+#: admin/modules/reporting/customs/staff_act.php:90
+msgid "Bibliography Data Entry"
+msgstr ""
+
+#: admin/modules/reporting/customs/staff_act.php:91
+msgid "Item Data Entry"
+msgstr ""
+
+#: admin/modules/reporting/customs/staff_act.php:92
+msgid "Member Data Entry"
+msgstr ""
+
+#: admin/modules/reporting/customs/staff_act.php:93
+msgid "Circulation Tasks"
+msgstr ""
+
+#: admin/modules/membership/member_card_generator.php:194
+#: admin/modules/membership/submenu.php:28
+msgid "Member Card Printing"
+msgstr ""
+
+#: admin/modules/membership/member_card_generator.php:194
+msgid "Print Member Cards for Selected Data"
+msgstr ""
+
+#: admin/modules/membership/member_card_generator.php:256
+msgid "Found"
+msgstr ""
+
+#: admin/modules/membership/member_card_generator.php:256
+msgid "from your search with keyword"
+msgstr ""
+
+#: admin/modules/membership/import.php:158
+msgid "records inserted successfully to members database, from record"
+msgstr ""
+
+#: admin/modules/membership/import.php:168
+msgid "Import for members data from CSV file"
+msgstr ""
+
+#: admin/modules/membership/submenu.php:23
+msgid "Membership"
+msgstr ""
+
+#: admin/modules/membership/submenu.php:24
+msgid "View Member List"
+msgstr ""
+
+#: admin/modules/membership/submenu.php:24
+msgid "View Library Member List"
+msgstr ""
+
+#: admin/modules/membership/submenu.php:25
+msgid "Add New Member"
+msgstr ""
+
+#: admin/modules/membership/submenu.php:25
+msgid "Add New Library Member Data"
+msgstr ""
+
+#: admin/modules/membership/submenu.php:26
+msgid "View and modify member type"
+msgstr ""
+
+#: admin/modules/membership/submenu.php:28
+msgid "Print Member Card"
+msgstr ""
+
+#: admin/modules/membership/submenu.php:29
+msgid "Import Members Data From CSV File"
+msgstr ""
+
+#: admin/modules/membership/submenu.php:30
+msgid "Export Members Data To CSV File"
+msgstr ""
+
+#: admin/modules/membership/member_type.php:47
+msgid "Member Type Name can't be empty"
+msgstr ""
+
+#: admin/modules/membership/member_type.php:73
+msgid "Member Type Successfully Updated"
+msgstr ""
+
+#: admin/modules/membership/member_type.php:78
+#: admin/modules/membership/member_type.php:86
+msgid "Member Type Data FAILED to Save/Update. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/membership/member_type.php:84
+msgid "New Member Type Successfully Saved"
+msgstr ""
+
+#: admin/modules/membership/member_type.php:127
+msgid "Add New Member Type"
+msgstr ""
+
+#: admin/modules/membership/member_type.php:128
+msgid "Member Type List"
+msgstr ""
+
+#: admin/modules/membership/member_type.php:170
+msgid "Member Type Name"
+msgstr ""
+
+#: admin/modules/membership/member_type.php:174
+msgid "Loan Periode (In Days)"
+msgstr ""
+
+#: admin/modules/membership/member_type.php:176
+msgid "Enable"
+msgstr ""
+
+#: admin/modules/membership/member_type.php:177
+msgid "Disable"
+msgstr ""
+
+#: admin/modules/membership/member_type.php:180
+msgid "Reserve Limit"
+msgstr ""
+
+#: admin/modules/membership/member_type.php:182
+#: admin/modules/membership/member_type.php:207
+#: admin/modules/membership/member_type.php:213
+msgid "Membership Periode (In Days)"
+msgstr ""
+
+#: admin/modules/membership/member_type.php:186
+msgid "Fine Each Day"
+msgstr ""
+
+#: admin/modules/membership/member_type.php:192
+#: admin/modules/membership/index.php:374
+msgid "You are going to edit member data"
+msgstr ""
+
+#: admin/modules/membership/export.php:105
+msgid "There is no record in membership database yet, Export FAILED!"
+msgstr ""
+
+#: admin/modules/membership/export.php:115
+msgid "Export member(s) data to CSV file"
+msgstr ""
+
+#: admin/modules/membership/index.php:55
+msgid "Member ID and Name can't be empty"
+msgstr ""
+
+#: admin/modules/membership/index.php:58
+msgid "Password confirmation does not match. See if your Caps Lock key is on!"
+msgstr ""
+
+#: admin/modules/membership/index.php:124
+msgid "Member Data Successfully Updated"
+msgstr ""
+
+#: admin/modules/membership/index.php:134
+#: admin/modules/membership/index.php:158
+msgid "Image FAILED to upload"
+msgstr ""
+
+#: admin/modules/membership/index.php:140
+#: admin/modules/membership/index.php:164
+msgid "Member Data FAILED to Save/Update. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/membership/index.php:148
+msgid "New Member Data Successfully Saved"
+msgstr ""
+
+#: admin/modules/membership/index.php:227
+msgid "Below member data can't be deleted because still have unreturned item(s)"
+msgstr ""
+
+#: admin/modules/membership/index.php:248
+msgid "View Expired Member"
+msgstr ""
+
+#: admin/modules/membership/index.php:250
+msgid "Member Search"
+msgstr ""
+
+#: admin/modules/membership/index.php:298
+msgid "Extend Membership"
+msgstr ""
+
+#: admin/modules/membership/index.php:309
+msgid "Birth Date"
+msgstr ""
+
+#: admin/modules/membership/index.php:312
+msgid "Member Since"
+msgstr ""
+
+#: admin/modules/membership/index.php:320
+msgid "Auto Set"
+msgstr ""
+
+#: admin/modules/membership/index.php:326
+msgid "Institution"
+msgstr ""
+
+#: admin/modules/membership/index.php:342
+msgid "Postal Code"
+msgstr ""
+
+#: admin/modules/membership/index.php:348
+msgid "Personal ID Number"
+msgstr ""
+
+#: admin/modules/membership/index.php:350
+msgid "Notes"
+msgstr ""
+
+#: admin/modules/membership/index.php:352
+msgid "Pending Membership"
+msgstr ""
+
+#: admin/modules/membership/index.php:352
+#: admin/modules/stock_take/finish.php:170
+msgid "Yes"
+msgstr ""
+
+#: admin/modules/membership/index.php:358
+#: admin/modules/membership/index.php:362
+msgid "Photo"
+msgstr ""
+
+#: admin/modules/membership/index.php:367
+msgid "New Password"
+msgstr ""
+
+#: admin/modules/membership/index.php:369
+msgid "Confirm New Password"
+msgstr ""
+
+#: admin/modules/membership/index.php:375
+msgid "Leave Password field blank if you don't want to change the password"
+msgstr ""
+
+#: admin/modules/membership/index.php:434
+msgid "Expired Member List"
+msgstr ""
+
+#: admin/modules/membership/index.php:435
+msgid "Extend Selected Member(s)"
+msgstr ""
+
+#: admin/modules/membership/index.php:435
+msgid "Are you sure to EXTEND membership for selected members?"
+msgstr ""
+
+#: admin/modules/membership/index.php:437
+msgid "members extended!"
+msgstr ""
+
+#: admin/modules/serial_control/submenu.php:23
+#: admin/modules/serial_control/index.php:50
+msgid "Serial Control"
+msgstr ""
+
+#: admin/modules/serial_control/submenu.php:24
+msgid "Subscription"
+msgstr ""
+
+#: admin/modules/serial_control/submenu.php:24
+msgid "Manage Subscription"
+msgstr ""
+
+#: admin/modules/serial_control/serial_base_lib.inc.php:146
+msgid "Date Expected"
+msgstr ""
+
+#: admin/modules/serial_control/serial_base_lib.inc.php:147
+msgid "Date Received"
+msgstr ""
+
+#: admin/modules/serial_control/serial_base_lib.inc.php:147
+msgid "Seq. Number"
+msgstr ""
+
+#: admin/modules/serial_control/serial_base_lib.inc.php:148
+msgid "Note"
+msgstr ""
+
+#: admin/modules/serial_control/serial_base_lib.inc.php:196
+msgid "Kardex Detail for subscription"
+msgstr ""
+
+#: admin/modules/serial_control/kardex.php:58
+msgid "Kardex data updated!"
+msgstr ""
+
+#: admin/modules/serial_control/kardex.php:64
+msgid "Kardex data deleted!"
+msgstr ""
+
+#: admin/modules/serial_control/subscription.php:61
+msgid "Error inserting subscription data, Subscription Date must be filled!"
+msgstr ""
+
+#: admin/modules/serial_control/subscription.php:81
+msgid "Subscription Data Successfully Updated"
+msgstr ""
+
+#: admin/modules/serial_control/subscription.php:83
+msgid "Subscription Data FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/serial_control/subscription.php:97
+msgid "New Subscription Data Successfully Saved"
+msgstr ""
+
+#: admin/modules/serial_control/subscription.php:99
+msgid "Subscription Data FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/serial_control/subscription.php:135
+msgid "Subscription data successfully deleted"
+msgstr ""
+
+#: admin/modules/serial_control/subscription.php:137
+msgid "Subscription data FAILED to deleted!"
+msgstr ""
+
+#: admin/modules/serial_control/subscription.php:173
+#: admin/modules/serial_control/subscription.php:216
+msgid "Subscription Start"
+msgstr ""
+
+#: admin/modules/serial_control/subscription.php:176
+msgid "Total Exemplar Expected"
+msgstr ""
+
+#: admin/modules/serial_control/subscription.php:179
+#: admin/modules/serial_control/subscription.php:215
+msgid "Period Name"
+msgstr ""
+
+#: admin/modules/serial_control/subscription.php:181
+#: admin/modules/serial_control/subscription.php:217
+msgid "Subscription Notes"
+msgstr ""
+
+#: admin/modules/serial_control/subscription.php:195
+msgid "You are going to edit Subscription data"
+msgstr ""
+
+#: admin/modules/serial_control/subscription.php:205
+msgid "View/Edit Kardex Detail"
+msgstr ""
+
+#: admin/modules/serial_control/index.php:75
+msgid "Add New Subscription"
+msgstr ""
+
+#: admin/modules/serial_control/index.php:77
+msgid "View Subscriptions"
+msgstr ""
+
+#: admin/modules/serial_control/index.php:79
+msgid "CLOSE"
+msgstr ""
+
+#: admin/modules/serial_control/index.php:87
+msgid "Serial Title"
+msgstr ""
+
+#: admin/modules/stock_take/st_upload.php:40
+msgid "NO stock taking proccess initialized yet!"
+msgstr ""
+
+#: admin/modules/stock_take/st_upload.php:83
+msgid "Succesfully upload stock take file"
+msgstr ""
+
+#: admin/modules/stock_take/st_upload.php:83
+msgid " item codes scanned!"
+msgstr ""
+
+#: admin/modules/stock_take/st_upload.php:101
+msgid "STOCK TAKE UPLOAD - Upload a plain text file (.txt) containing list of Item Code to stock take. Each Item Code separated by line."
+msgstr ""
+
+#: admin/modules/stock_take/st_upload.php:103
+msgid " File"
+msgstr ""
+
+#: admin/modules/stock_take/st_upload.php:104
+msgid "Upload File"
+msgstr ""
+
+#: admin/modules/stock_take/submenu.php:23
+msgid "Stock Take"
+msgstr ""
+
+#: admin/modules/stock_take/submenu.php:24
+msgid "Stock Take History"
+msgstr ""
+
+#: admin/modules/stock_take/submenu.php:24
+msgid "View Stock Take History"
+msgstr ""
+
+#: admin/modules/stock_take/submenu.php:28
+msgid "Current Stock Take"
+msgstr ""
+
+#: admin/modules/stock_take/submenu.php:28
+msgid "View Current Stock Take Process"
+msgstr ""
+
+#: admin/modules/stock_take/submenu.php:29
+msgid "Stock Take Report"
+msgstr ""
+
+#: admin/modules/stock_take/submenu.php:29
+msgid "View Current Stock Take Report"
+msgstr ""
+
+#: admin/modules/stock_take/submenu.php:30
+#: admin/modules/stock_take/finish.php:153
+#: admin/modules/stock_take/finish.php:161
+msgid "Finish Stock Take"
+msgstr ""
+
+#: admin/modules/stock_take/submenu.php:30
+msgid "Finish Current Stock Take Proccess"
+msgstr ""
+
+#: admin/modules/stock_take/submenu.php:31
+#: admin/modules/stock_take/lost_item_list.php:45
+msgid "Current Lost Item"
+msgstr ""
+
+#: admin/modules/stock_take/submenu.php:31
+msgid "View Lost Item in Current Stock Take Proccess"
+msgstr ""
+
+#: admin/modules/stock_take/submenu.php:32
+msgid "Stock Take Log"
+msgstr ""
+
+#: admin/modules/stock_take/submenu.php:32
+msgid "View Log of Current Stock Take Proccess"
+msgstr ""
+
+#: admin/modules/stock_take/submenu.php:33
+msgid "Resynchronize"
+msgstr ""
+
+#: admin/modules/stock_take/submenu.php:33
+msgid "Resynchronize bibliographic data with current stock take"
+msgstr ""
+
+#: admin/modules/stock_take/submenu.php:34
+msgid "Upload List"
+msgstr ""
+
+#: admin/modules/stock_take/submenu.php:34
+msgid "Upload List in text file"
+msgstr ""
+
+#: admin/modules/stock_take/submenu.php:36
+msgid "Initialize"
+msgstr ""
+
+#: admin/modules/stock_take/submenu.php:36
+msgid "Initialize New Stock Take Proccess"
+msgstr ""
+
+#: admin/modules/stock_take/init.php:43
+msgid "There is already stock taking proccess running!"
+msgstr ""
+
+#: admin/modules/stock_take/init.php:47
+msgid "Stock Take Name must be filled!"
+msgstr ""
+
+#: admin/modules/stock_take/init.php:126
+msgid "Stock Taking Initialized"
+msgstr ""
+
+#: admin/modules/stock_take/init.php:131
+msgid ""
+"Stock Taking FAILED to Initialized.\\n"
+"No item to stock take!"
+msgstr ""
+
+#: admin/modules/stock_take/init.php:139
+msgid "Initialize Stock Take"
+msgstr ""
+
+#: admin/modules/stock_take/init.php:148
+msgid "Stock Take Name"
+msgstr ""
+
+#: admin/modules/stock_take/init.php:177
+msgid "Separate each class comma sign. Use * for wildcard"
+msgstr ""
+
+#: admin/modules/stock_take/finish.php:43
+msgid "NO stock taking proccess running!"
+msgstr ""
+
+#: admin/modules/stock_take/finish.php:144
+msgid "Stock Take Proccess Finished!"
+msgstr ""
+
+#: admin/modules/stock_take/finish.php:154
+msgid "Are you sure to end current stock take proccess? Once it finished there is no way you can rollback this stock take"
+msgstr ""
+
+#: admin/modules/stock_take/finish.php:171
+msgid "Purge Lost Item"
+msgstr ""
+
+#: admin/modules/stock_take/st_report.php:55
+msgid "CURRENT STOCK TAKE REPORT"
+msgstr ""
+
+#: admin/modules/stock_take/st_report.php:69
+#: admin/modules/stock_take/index.php:63
+msgid "Total Item Stock Taked"
+msgstr ""
+
+#: admin/modules/stock_take/st_report.php:71
+#: admin/modules/stock_take/st_report.php:72
+#: admin/modules/stock_take/st_report.php:73
+#: admin/modules/stock_take/index.php:64
+msgid "Total Item Lost"
+msgstr ""
+
+#: admin/modules/stock_take/st_report.php:77
+#: admin/modules/stock_take/st_report.php:79
+#: admin/modules/stock_take/index.php:66
+msgid "Total Item On Loan"
+msgstr ""
+
+#: admin/modules/stock_take/st_report.php:85
+msgid "Total Checked/Scanned Items"
+msgstr ""
+
+#: admin/modules/stock_take/st_report.php:87
+#: admin/modules/stock_take/st_report.php:92
+#: admin/modules/stock_take/st_report.php:97
+#: admin/modules/stock_take/index.php:67
+msgid "Stock Take Participants"
+msgstr ""
+
+#: admin/modules/stock_take/st_report.php:92
+msgid "items already checked"
+msgstr ""
+
+#: admin/modules/stock_take/st_report.php:99
+#: admin/modules/stock_take/index.php:60
+#: admin/modules/stock_take/index.php:109
+msgid "Start Date"
+msgstr ""
+
+#: admin/modules/stock_take/st_report.php:101
+#: admin/modules/stock_take/index.php:61
+#: admin/modules/stock_take/index.php:110
+msgid "End Date"
+msgstr ""
+
+#: admin/modules/stock_take/st_report.php:122
+#: admin/modules/stock_take/st_report.php:160
+msgid "Lost Items"
+msgstr ""
+
+#: admin/modules/stock_take/st_report.php:123
+#: admin/modules/stock_take/st_report.php:161
+msgid "Existing Items"
+msgstr ""
+
+#: admin/modules/stock_take/st_report.php:124
+#: admin/modules/stock_take/st_report.php:162
+msgid "On Loan Items"
+msgstr ""
+
+#: admin/modules/stock_take/st_report.php:127
+msgid " classes"
+msgstr ""
+
+#: admin/modules/stock_take/resync.php:58
+msgid "Re-synchronize will only update current stock take's item data. It won't update any new bibliographic or item data that were inserted in the middle of stock take proccess"
+msgstr ""
+
+#: admin/modules/stock_take/resync.php:61
+msgid "Resynchronize Now"
+msgstr ""
+
+#: admin/modules/stock_take/index.php:62
+msgid "Initializer"
+msgstr ""
+
+#: admin/modules/stock_take/index.php:65
+msgid "Total Item Exists"
+msgstr ""
+
+#: admin/modules/stock_take/index.php:68
+#: admin/modules/stock_take/index.php:83
+msgid "Status"
+msgstr ""
+
+#: admin/modules/stock_take/index.php:69
+#: admin/modules/stock_take/index.php:111
+msgid "Report"
+msgstr ""
+
+#: admin/modules/stock_take/index.php:85
+msgid "Currently Active"
+msgstr ""
+
+#: admin/modules/stock_take/current.php:61
+msgid "STOCK TAKE PROCCESS - Insert Item Code/Barcode with keyboard or barcode scanner"
+msgstr ""
+
+#: admin/modules/stock_take/current.php:63
+msgid "Change Status"
+msgstr ""
+
+#: admin/modules/stock_take/current.php:64
+msgid "List stocktakes by"
+msgstr ""
+
+#: admin/modules/stock_take/current.php:65
+msgid "Current User Only"
+msgstr ""
+
+#: admin/modules/stock_take/current.php:66
+msgid "All User"
+msgstr ""
+
+#: admin/modules/stock_take/current.php:70
+msgid "Current Missing/Lost Items"
+msgstr ""
+
+#: admin/modules/stock_take/current.php:94
+msgid "Exists"
+msgstr ""
+
+#: admin/modules/stock_take/current.php:94
+msgid "Missing"
+msgstr ""
+
+#: admin/modules/system/holiday.php:65
+msgid "Holiday Data Successfully updated"
+msgstr ""
+
+#: admin/modules/system/holiday.php:71
+msgid "Holiday FAILED to update. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/system/holiday.php:77
+msgid "New Holiday Successfully Saved"
+msgstr ""
+
+#: admin/modules/system/holiday.php:104
+msgid "Holiday FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/system/holiday.php:150
+#: admin/modules/system/submenu.php:35
+msgid "Holiday Setting"
+msgstr ""
+
+#: admin/modules/system/holiday.php:152
+msgid "Set holiday"
+msgstr ""
+
+#: admin/modules/system/holiday.php:153
+msgid "Special holiday"
+msgstr ""
+
+#: admin/modules/system/holiday.php:154
+msgid "Add Special holiday"
+msgstr ""
+
+#: admin/modules/system/holiday.php:187
+#: admin/modules/system/holiday.php:211
+#: admin/modules/system/holiday.php:215
+msgid "Holiday Date Start"
+msgstr ""
+
+#: admin/modules/system/holiday.php:190
+msgid "Holiday Date End"
+msgstr ""
+
+#: admin/modules/system/holiday.php:193
+#: admin/modules/system/holiday.php:212
+#: admin/modules/system/holiday.php:216
+msgid "Holiday Description"
+msgstr ""
+
+#: admin/modules/system/holiday.php:197
+msgid "You are going to edit holiday data"
+msgstr ""
+
+#: admin/modules/system/holiday.php:210
+#: admin/modules/system/holiday.php:214
+msgid "Day name"
+msgstr ""
+
+#: admin/modules/system/holiday.php:249
+msgid "Maximum 6 day can be set as holiday!"
+msgstr ""
+
+#: admin/modules/system/holiday.php:262
+msgid "Holiday settings saved"
+msgstr ""
+
+#: admin/modules/system/holiday.php:291
+msgid "Monday"
+msgstr ""
+
+#: admin/modules/system/holiday.php:292
+msgid "Tuesday"
+msgstr ""
+
+#: admin/modules/system/holiday.php:293
+msgid "Wednesday"
+msgstr ""
+
+#: admin/modules/system/holiday.php:295
+msgid "Thursday"
+msgstr ""
+
+#: admin/modules/system/holiday.php:296
+msgid "Friday"
+msgstr ""
+
+#: admin/modules/system/holiday.php:297
+msgid "Saturday"
+msgstr ""
+
+#: admin/modules/system/holiday.php:299
+msgid "Sunday"
+msgstr ""
+
+#: admin/modules/system/holiday.php:304
+msgid "Save Settings"
+msgstr ""
+
+#: admin/modules/system/submenu.php:23
+msgid "System"
+msgstr ""
+
+#: admin/modules/system/submenu.php:26
+msgid "System Configuration"
+msgstr ""
+
+#: admin/modules/system/submenu.php:26
+msgid "Configure Global System Preferences"
+msgstr ""
+
+#: admin/modules/system/submenu.php:28
+#: admin/modules/system/content.php:131
+msgid "Content"
+msgstr ""
+
+#: admin/modules/system/submenu.php:31
+#: admin/modules/system/module.php:136
+msgid "Modules"
+msgstr ""
+
+#: admin/modules/system/submenu.php:31
+msgid "Configure Application Modules"
+msgstr ""
+
+#: admin/modules/system/submenu.php:32
+#: admin/modules/system/app_user.php:160
+msgid "System Users"
+msgstr ""
+
+#: admin/modules/system/submenu.php:32
+msgid "Manage Application User or Library Staff"
+msgstr ""
+
+#: admin/modules/system/submenu.php:33
+#: admin/modules/system/user_group.php:159
+msgid "User Group"
+msgstr ""
+
+#: admin/modules/system/submenu.php:33
+msgid "Manage Group of Application User"
+msgstr ""
+
+#: admin/modules/system/submenu.php:35
+msgid "Configure Holiday Setting"
+msgstr ""
+
+#: admin/modules/system/submenu.php:36
+#: admin/modules/system/barcode_generator.php:111
+msgid "Barcode Generator"
+msgstr ""
+
+#: admin/modules/system/submenu.php:37
+#: admin/modules/system/sys_log.php:68
+msgid "System Log"
+msgstr ""
+
+#: admin/modules/system/submenu.php:37
+msgid "View Application System Log"
+msgstr ""
+
+#: admin/modules/system/submenu.php:38
+#: admin/modules/system/backup.php:41
+msgid "Database Backup"
+msgstr ""
+
+#: admin/modules/system/submenu.php:38
+msgid "Backup Application Database"
+msgstr ""
+
+#: admin/modules/system/user_group.php:47
+msgid "Group name can't be empty"
+msgstr ""
+
+#: admin/modules/system/user_group.php:82
+msgid "Group Data Successfully Updated"
+msgstr ""
+
+#: admin/modules/system/user_group.php:84
+msgid "Group Data FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/system/user_group.php:110
+msgid "New Group Data Successfully Saved"
+msgstr ""
+
+#: admin/modules/system/user_group.php:112
+msgid "Group Data FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/system/user_group.php:159
+msgid "Add New Group"
+msgstr ""
+
+#: admin/modules/system/user_group.php:160
+msgid "Group List"
+msgstr ""
+
+#: admin/modules/system/user_group.php:199
+#: admin/modules/system/user_group.php:226
+msgid "Group Name"
+msgstr ""
+
+#: admin/modules/system/user_group.php:210
+msgid "Privileges"
+msgstr ""
+
+#: admin/modules/system/user_group.php:215
+msgid "You are going to edit Group data"
+msgstr ""
+
+#: admin/modules/system/backup.php:41
+msgid "Start New Backup"
+msgstr ""
+
+#: admin/modules/system/module.php:48
+msgid "Module name and path can't be empty"
+msgstr ""
+
+#: admin/modules/system/module.php:71
+msgid "Module Data Successfully Updated"
+msgstr ""
+
+#: admin/modules/system/module.php:73
+msgid "Module Data FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/system/module.php:84
+msgid "New Module Data Successfully Saved"
+msgstr ""
+
+#: admin/modules/system/module.php:86
+msgid "Module Data FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/system/module.php:136
+msgid "Add New Modules"
+msgstr ""
+
+#: admin/modules/system/module.php:137
+msgid "Modules List"
+msgstr ""
+
+#: admin/modules/system/module.php:176
+#: admin/modules/system/module.php:196
+#: admin/modules/system/module_priv_form.inc.php:26
+msgid "Module Name"
+msgstr ""
+
+#: admin/modules/system/module.php:178
+msgid "Module Path"
+msgstr ""
+
+#: admin/modules/system/module.php:180
+#: admin/modules/system/module.php:197
+msgid "Module Description"
+msgstr ""
+
+#: admin/modules/system/module.php:184
+msgid "You are going to edit data"
+msgstr ""
+
+#: admin/modules/system/app_user.php:60
+msgid "User Name or Real Name can't be empty"
+msgstr ""
+
+#: admin/modules/system/app_user.php:63
+msgid "Login username or Real Name is probihited!"
+msgstr ""
+
+#: admin/modules/system/app_user.php:100
+msgid "User Data Successfully Updated"
+msgstr ""
+
+#: admin/modules/system/app_user.php:102
+msgid "User Data FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/system/app_user.php:110
+msgid "New User Data Successfully Saved"
+msgstr ""
+
+#: admin/modules/system/app_user.php:112
+msgid "User Data FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: admin/modules/system/app_user.php:160
+msgid "Add New User"
+msgstr ""
+
+#: admin/modules/system/app_user.php:161
+msgid "User List"
+msgstr ""
+
+#: admin/modules/system/app_user.php:231
+msgid "Group(s)"
+msgstr ""
+
+#: admin/modules/system/app_user.php:240
+msgid "You are going to edit user profile"
+msgstr ""
+
+#: admin/modules/system/app_user.php:261
+#: admin/modules/system/app_user.php:266
+msgid "Last Login"
+msgstr ""
+
+#: admin/modules/system/content.php:50
+msgid "Title or Path can't be empty!"
+msgstr ""
+
+#: admin/modules/system/content.php:72
+msgid "Content data updated"
+msgstr ""
+
+#: admin/modules/system/content.php:74
+msgid "Content data FAILED to update!"
+msgstr ""
+
+#: admin/modules/system/content.php:82
+msgid "Content data saved"
+msgstr ""
+
+#: admin/modules/system/content.php:84
+msgid "Content data FAILED to save!"
+msgstr ""
+
+#: admin/modules/system/content.php:131
+msgid "Add New Content"
+msgstr ""
+
+#: admin/modules/system/content.php:132
+msgid "Content List"
+msgstr ""
+
+#: admin/modules/system/content.php:175
+#: admin/modules/system/content.php:208
+#: admin/modules/system/content.php:212
+msgid "Content Title"
+msgstr ""
+
+#: admin/modules/system/content.php:177
+#: admin/modules/system/content.php:209
+#: admin/modules/system/content.php:213
+msgid "Path (Must be unique)"
+msgstr ""
+
+#: admin/modules/system/content.php:179
+msgid "Content Description"
+msgstr ""
+
+#: admin/modules/system/content.php:183
+msgid "You are going to update Content data"
+msgstr ""
+
+#: admin/modules/system/sys_log.php:59
+msgid "System Log data completely cleared!"
+msgstr ""
+
+#: admin/modules/system/sys_log.php:70
+msgid "Are you SURE to completely clear system log data? This action cannot be undo!"
+msgstr ""
+
+#: admin/modules/system/sys_log.php:70
+msgid "CLEAR LOGS"
+msgstr ""
+
+#: admin/modules/system/sys_log.php:71
+msgid "Save Logs record to file?"
+msgstr ""
+
+#: admin/modules/system/sys_log.php:71
+msgid "Save Logs To File"
+msgstr ""
+
+#: admin/modules/system/sys_log.php:95
+msgid "Time"
+msgstr ""
+
+#: admin/modules/system/sys_log.php:97
+msgid "Message"
+msgstr ""
+
+#: admin/modules/system/module_priv_form.inc.php:26
+msgid "Read"
+msgstr ""
+
+#: admin/modules/system/module_priv_form.inc.php:26
+msgid "Write"
+msgstr ""
+
+#: admin/modules/system/barcode_generator.php:96
+msgid "Error creating barcode!"
+msgstr ""
+
+#: admin/modules/system/barcode_generator.php:101
+msgid "Barcode generation finished"
+msgstr ""
+
+#: admin/modules/system/barcode_generator.php:111
+msgid "Type barcodes text to one or more text field below and click"
+msgstr ""
+
+#: admin/modules/system/barcode_generator.php:111
+#: admin/modules/system/barcode_generator.php:141
+msgid "Generate Barcodes"
+msgstr ""
+
+#: admin/modules/system/barcode_generator.php:125
+msgid "Barcode Size"
+msgstr ""
+
+#: admin/modules/system/barcode_generator.php:125
+msgid "Small"
+msgstr ""
+
+#: admin/modules/system/barcode_generator.php:126
+msgid "Medium"
+msgstr ""
+
+#: admin/modules/system/barcode_generator.php:127
+msgid "Big"
+msgstr ""
+
+#: admin/modules/system/index.php:46
+msgid "Modify global application preferences"
+msgstr ""
+
+#: admin/modules/system/index.php:119
+msgid "Settings saved. Refreshing page"
+msgstr ""
+
+#: admin/modules/system/index.php:140
+msgid "Library Name"
+msgstr ""
+
+#: admin/modules/system/index.php:143
+msgid "Library Subname"
+msgstr ""
+
+#: admin/modules/system/index.php:157
+msgid "Public Template"
+msgstr ""
+
+#: admin/modules/system/index.php:170
+msgid "Admin Template"
+msgstr ""
+
+#: admin/modules/system/index.php:174
+msgid "Default App. Language"
+msgstr ""
+
+#: admin/modules/system/index.php:182
+msgid "Number Of Collections To Show In OPAC Result List"
+msgstr ""
+
+#: admin/modules/system/index.php:186
+msgid "Show Promoted Titles at Homepage"
+msgstr ""
+
+#: admin/modules/system/index.php:198
+msgid "Loan and Due Date Manual Change"
+msgstr ""
+
+#: admin/modules/system/index.php:204
+msgid "Loan Limit Override"
+msgstr ""
+
+#: admin/modules/system/index.php:210
+msgid "OPAC XML Detail"
+msgstr ""
+
+#: admin/modules/system/index.php:216
+msgid "OPAC XML Result"
+msgstr ""
+
+#: admin/modules/system/index.php:220
+msgid "Forbid"
+msgstr ""
+
+#: admin/modules/system/index.php:221
+msgid "Allow"
+msgstr ""
+
+#: admin/modules/system/index.php:222
+msgid "Allow OPAC File Download"
+msgstr ""
+
+#: admin/modules/system/index.php:225
+msgid "Session Login Timeout"
+msgstr ""
+
+#: admin/default/submenu.php:21
+msgid "Panel"
+msgstr ""
+
+#: admin/default/submenu.php:22
+msgid "Change User Profiles"
+msgstr ""
+
+#: admin/default/submenu.php:22
+msgid "Change Current User Profiles and Password"
+msgstr ""
+
+#: admin/default/session_check.inc.php:56
+msgid "Your Login Session has already timeout!"
+msgstr ""
+
+#: admin/default/home.php:30
+msgid "<strong>PHP GD</strong> extension is not installed. Please install it or application won't be able to create image thumbnail and barcode."
+msgstr ""
+
+#: admin/default/home.php:34
+msgid "<strong>Freetype</strong> support is not enabled in PHP GD extension. Rebuild PHP GD extension with Freetype support or application won't be able to create barcode."
+msgstr ""
+
+#: admin/default/home.php:41
+msgid "There is currently <strong>{num_overdue}</strong> library members having overdue. Please check at <b>Circulation</b> module at <b>Overdues</b> section for more detail"
+msgstr ""
+
+#: admin/default/home.php:46
+msgid "<strong>Images</strong> directory and directories under it is not writable. Make sure it is writable by changing its permission or you won't be able to upload any images and create barcodes"
+msgstr ""
+
+#: admin/default/home.php:50
+msgid "<strong>Repository</strong> directory is not writable. Make sure it is writable (and all directories under it) by changing its permission or you won't be able to upload any bibliographic attachments."
+msgstr ""
+
+#: admin/default/home.php:54
+msgid "<strong>File upload</strong> directory is not writable. Make sure it is writable (and all directories under it) by changing its permission or you won't be able to upload any file, create report files and create database backups."
+msgstr ""
+
+#: admin/default/home.php:58
+msgid "The PATH for <strong>mysqldump</strong> program is not right! Please check configuration file or you won't be able to do any database backups."
+msgstr ""
+
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:81
+msgid "DELETE"
+msgstr ""
+
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:82
+msgid "EDIT"
+msgstr ""
+
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:97
+msgid "Are You Sure Want to DELETE Selected Data?"
+msgstr ""
+
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:101
+msgid "Delete Selected Data"
+msgstr ""
+
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:126
+msgid "ascendingly"
+msgstr ""
+
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:136
+msgid "descendingly"
+msgstr ""
+
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:206
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:208
+msgid "Order list by"
+msgstr ""
+
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:371
+msgid "Check All"
+msgstr ""
+
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:372
+msgid "Uncheck All"
+msgstr ""
+
+#: simbio2/simbio_GUI/table/simbio_table.inc.php:213
+msgid "No Data"
+msgstr ""
+
+#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:111
+#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:107
+msgid "First Page"
+msgstr ""
+
+#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:113
+#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:109
+msgid "Previous"
+msgstr ""
+
+#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:134
+#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:130
+msgid "Next"
+msgstr ""
+
+#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:142
+#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:138
+msgid "Last Page"
+msgstr ""
+
+#: simbio2/simbio_GUI/form_maker/simbio_form_table.inc.php:95
+msgid "Delete Record"
+msgstr ""
+
+#: simbio2/simbio_GUI/form_maker/simbio_form_table.inc.php:96
+msgid "Cancel"
+msgstr ""
+
+#: simbio2/simbio_GUI/form_maker/simbio_form_element.inc.php:257
+msgid "Date"
+msgstr ""
+
+#: lib/admin_logon.inc.php:64
+#: lib/member_logon.inc.php:59
+msgid "Error authenticating user and password to database"
+msgstr ""
+
+#: lib/detail.inc.php:150
+msgid "Click to view others documents with this author"
+msgstr ""
+
+#: lib/detail.inc.php:164
+msgid "Click to view others documents with this subject"
+msgstr ""
+
+#: lib/detail.inc.php:185
+msgid "There is no item/copy for this title yet"
+msgstr ""
+
+#: lib/detail.inc.php:189
+msgid "copies at"
+msgstr ""
+
+#: lib/biblio_list.inc.php:333
+#: lib/biblio_list.inc.php:354
+msgid "Record Detail"
+msgstr ""
+
+#: lib/lang/localisation.php:60
+msgid "German"
+msgstr ""
+
+#: lib/lang/localisation.php:61
+msgid "English"
+msgstr ""
+
+#: lib/lang/localisation.php:62
+msgid "Indonesian"
+msgstr ""
+
+#: lib/contents/member.inc.php:28
+msgid "Welcome to Member's Area where you can view your current loan information and view your membership status."
+msgstr ""
+
+#: lib/contents/member.inc.php:51
+msgid "Please fill your Username and Password to Login!"
+msgstr ""
+
+#: lib/contents/member.inc.php:66
+msgid "Login FAILED! Wrong username or password!"
+msgstr ""
+
+#: lib/contents/member.inc.php:76
+msgid "Library Member Login"
+msgstr ""
+
+#: lib/contents/member.inc.php:77
+msgid "Please insert your member ID and password given by library system administrator. If you are library's member and don't have a password yet, please contact library staff."
+msgstr ""
+
+#: lib/contents/member.inc.php:81
+msgid "Password"
+msgstr ""
+
+#: lib/contents/member.inc.php:83
+msgid "Login"
+msgstr ""
+
+#: lib/contents/member.inc.php:100
+msgid "Current Password"
+msgstr ""
+
+#: lib/contents/member.inc.php:108
+msgid "Confirm Password"
+msgstr ""
+
+#: lib/contents/member.inc.php:112
+#: lib/contents/member.inc.php:278
+msgid "Change Password"
+msgstr ""
+
+#: lib/contents/member.inc.php:171
+msgid "Your Membership Already EXPIRED! Please extend your membership."
+msgstr ""
+
+#: lib/contents/member.inc.php:174
+msgid "Membership currently in pending state, no loan transaction can be made yet."
+msgstr ""
+
+#: lib/contents/member.inc.php:207
+msgid "OVERDUED"
+msgstr ""
+
+#: lib/contents/member.inc.php:252
+msgid "item(s) currently on loan"
+msgstr ""
+
+#: lib/contents/member.inc.php:260
+msgid "Your password have been changed successfully."
+msgstr ""
+
+#: lib/contents/member.inc.php:263
+msgid "Current password entered WRONG! Please insert the right password!"
+msgstr ""
+
+#: lib/contents/member.inc.php:265
+msgid "Password confirmation FAILED! Make sure to check undercase or uppercase letters!"
+msgstr ""
+
+#: lib/contents/member.inc.php:267
+msgid "Password update FAILED! ERROR ON DATABASE!"
+msgstr ""
+
+#: lib/contents/member.inc.php:274
+msgid "Member Detail"
+msgstr ""
+
+#: lib/contents/member.inc.php:276
+msgid "Your Current Loan"
+msgstr ""
+
+#: lib/contents/default.inc.php:100
+#: lib/contents/default.inc.php:111
+msgid "Found  <strong>{biblio_list->num_rows}</strong> from your keywords"
+msgstr ""
+
+#: lib/contents/default.inc.php:144
+msgid "You currently on page <strong>{page}</strong> of <strong>{total_pages}</strong> page(s)"
+msgstr ""
+
+#: lib/contents/common.inc.php:25
+msgid "All Locations"
+msgstr ""
+
+#: lib/contents/common.inc.php:34
+msgid "All Collections"
+msgstr ""
+
+#: lib/contents/common.inc.php:43
+msgid "All GMD/Media"
+msgstr ""
+
+#: lib/contents/login.inc.php:48
+msgid "Please supply valid username and password"
+msgstr ""
+
+#: lib/contents/login.inc.php:63
+msgid "Welcome to Library Automation,"
+msgstr ""
+
+#: lib/contents/login.inc.php:72
+msgid "Wrong Username or Password. ACCESS DENIED"
+msgstr ""
+
+#: lib/contents/login.inc.php:84
+msgid "Your browser does not support Javascript or Javascript is disabled. Application won't run without Javascript!"
+msgstr ""
+
+#: lib/contents/attachment_list.php:48
+msgid "No Attachment"
+msgstr ""
+
+#: lib/contents/item_list.php:65
+msgid "Currently On Loan (Due on"
+msgstr ""
+
+#: lib/contents/item_list.php:67
+msgid "Unavailable"
+msgstr ""
+
