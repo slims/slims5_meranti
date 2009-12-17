@@ -56,17 +56,23 @@ if ($file_q->num_rows > 0) {
         }
 
         if ($file_d['mime_type'] == 'application/pdf') {
-            #echo '<h1>PDF</h1>';
-            #exec('/var/www/sendev-01/s3st12-test/lib/swftools/bin/pdf2swf -o /var/www/sendev-01/s3st12-test/files/swfs/document.swf '.$file_loc.'');
-            #exec('lib/swftools/bin/pdf2swf -o files/swfs/document.swf '.$file_loc.'');
-            #exec('lib/swftools/bin/pdf2swf -o files/swfs/'.basename($file_loc).'.swf '.$file_loc.'');
             $swf = basename($file_loc);
             $swf = sha1($swf);
             $swf = $swf.'.swf';
             if (!file_exists('files/swfs/'.$swf.'')) {
                 exec('lib/swftools/bin/pdf2swf -o files/swfs/'.$swf.' '.$file_loc.'');
             }
-            header("location:?p=readpdf&swf=".$swf."");
+
+?>
+            <html>
+            <frameset rows="0%,100%">
+            <frame src="empty.html">
+            <frame src="js/zviewer/index.php?swf=<?php echo $swf; ?>&fid=<?php echo $fileID; ?>&bid=<?php echo $biblioID; ?>">
+            </frameset>
+            </html>
+<?php
+            exit();			
+
         } else {
             header('Content-Disposition: inline; filename="'.basename($file_loc).'"');
             header('Content-Type: '.$file_d['mime_type']);
