@@ -358,4 +358,15 @@ if (defined('LIGHTWEIGHT_MODE') OR isset($_COOKIE['LIGHTWEIGHT_MODE'])) {
 }
 
 $sysconf['allow_pdf_download'] = true;
+
+# Image watermarking
+$sysconf['watermark']['enable'] = true;
+$sysconf['watermark']['type'] = 'image'; # text or image, but image is not yet implemented
+$sysconf['watermark']['text'] = 'Senayan Library Management System';
+$sysconf['watermark']['image'] = '../../images/default/watermark.png';
+$sysconf['watermark']['sizeoftext'] = '5'; # range 1 - 5
+$sysconf['watermark']['alignment'] = 'BR'; #BR, BL, TR, TL, C, R, L, T, B, where B=bottom, T=top, L=left, R=right, C=centre
+$sysconf['watermark']['color'] = 'ffffff'; # the hex color of the text
+$sysconf['watermark']['opacity'] = '50'; #is opacity from 0 (transparent) to 100 (opaque)
+
 ?>
