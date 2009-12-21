@@ -138,9 +138,9 @@ $sysconf['baseurl'] = '';
 // change below setting according to your database configuration
 define('DB_HOST', 'localhost');
 define('DB_PORT', '3306');
-define('DB_NAME', 'senayan3-stable12');
-define('DB_USERNAME', 'arie');
-define('DB_PASSWORD', 'ariearie');
+define('DB_NAME', 'senayandb');
+define('DB_USERNAME', 'senayanuser');
+define('DB_PASSWORD', 'password_senayanuser');
 // we prefer to use mysqli extensions if its available
 if (extension_loaded('mysqli')) {
     /* MYSQLI */
@@ -194,10 +194,10 @@ $sysconf['enable_xml_result'] = true;
 
 /* DATABASE BACKUP config */
 // specify the full path of mysqldump binary
-$sysconf['mysqldump'] = '/Applications/XAMPP/xamppfiles/bin/mysqldump';
+$sysconf['mysqldump'] = '/usr/bin/mysqldump';
 // backup location (make sure it is accessible and rewritable to webserver!)
 $sysconf['temp_dir'] = '/tmp';
-$sysconf['backup_dir'] = 'C:/Backup/senayan/';
+$sysconf['backup_dir'] = FILES_UPLOAD_DIR.'backup'.DIRECTORY_SEPARATOR;
 
 /* FILE DOWNLOAD */
 $sysconf['allow_file_download'] = false;
