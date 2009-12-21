@@ -47,6 +47,11 @@ if ($file_q->num_rows > 0) {
                     header("location:index.php");
                     continue;
                 }
+            } else {
+                # Access to file restricted
+                # Member not logged in to download
+                header("location:index.php");
+                continue;
             }
         }
 
@@ -55,19 +60,17 @@ if ($file_q->num_rows > 0) {
             #exec('/var/www/sendev-01/s3st12-test/lib/swftools/bin/pdf2swf -o /var/www/sendev-01/s3st12-test/files/swfs/document.swf '.$file_loc.'');
             #exec('lib/swftools/bin/pdf2swf -o files/swfs/document.swf '.$file_loc.'');
             #exec('lib/swftools/bin/pdf2swf -o files/swfs/'.basename($file_loc).'.swf '.$file_loc.'');
-            $swf = basename($file_loc);
-            $swf = sha1($swf);
-            $swf = $swf.'.swf';
-            if (!file_exists('files/swfs/'.$swf.'')) {
-                exec('lib/swftools/bin/pdf2swf -o files/swfs/'.$swf.' '.$file_loc.'');
+            if (!file_exists('files/swfs/'.basename($file_loc).'.swf')) {
+                exec('lib/swftools/bin/pdf2swf -o files/swfs/'.basename($file_loc).'.swf '.$file_loc.'');
             }
-            header("location:?p=readpdf&swf=".$swf."");
+            header("location:?p=readpdf&swf=".basename($file_loc).".swf");
         } else {
             header('Content-Disposition: inline; filename="'.basename($file_loc).'"');
             header('Content-Type: '.$file_d['mime_type']);
             readfile($file_loc);
             exit();
         }
+
     } else {
         die('<div class="errorBox">File Not Found!</div>');
     }
