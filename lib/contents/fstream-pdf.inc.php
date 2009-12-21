@@ -18,6 +18,14 @@
  *
  */
 
+if ($sysconf['allow_pdf_download']) {
+
+
+
+
+
+
+
 /* File Viewer */
 
 session_start();
@@ -55,21 +63,10 @@ if ($file_q->num_rows > 0) {
             }
         }
 
-        if ($file_d['mime_type'] == 'application/pdf') {
-            #echo '<h1>PDF</h1>';
-            #exec('/var/www/sendev-01/s3st12-test/lib/swftools/bin/pdf2swf -o /var/www/sendev-01/s3st12-test/files/swfs/document.swf '.$file_loc.'');
-            #exec('lib/swftools/bin/pdf2swf -o files/swfs/document.swf '.$file_loc.'');
-            #exec('lib/swftools/bin/pdf2swf -o files/swfs/'.basename($file_loc).'.swf '.$file_loc.'');
-            if (!file_exists('files/swfs/'.basename($file_loc).'.swf')) {
-                exec('lib/swftools/bin/pdf2swf -o files/swfs/'.basename($file_loc).'.swf '.$file_loc.'');
-            }
-            header("location:?p=readpdf&swf=".basename($file_loc).".swf");
-        } else {
-            header('Content-Disposition: inline; filename="'.basename($file_loc).'"');
-            header('Content-Type: '.$file_d['mime_type']);
-            readfile($file_loc);
-            exit();
-        }
+        header('Content-Disposition: inline; filename="'.basename($file_loc).'"');
+        header('Content-Type: '.$file_d['mime_type']);
+        readfile($file_loc);
+        exit();
 
     } else {
         die('<div class="errorBox">File Not Found!</div>');
@@ -77,4 +74,16 @@ if ($file_q->num_rows > 0) {
 } else {
     die('<div class="errorBox">File Not Found!</div>');
 }
+
+
+
+
+
+
+
+
+} else {
+    header('location:index.php');
+}
+
 ?>

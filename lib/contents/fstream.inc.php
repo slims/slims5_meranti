@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com), Hendro Wicaksono (hendrowicaksono@yahoo.com)
+ * Copyright (C) 2007,2008, 2009  Arie Nugraha (dicarve@yahoo.com), Hendro Wicaksono (hendrowicaksono@yahoo.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -51,17 +51,62 @@ if ($file_q->num_rows > 0) {
         }
 
         if ($file_d['mime_type'] == 'application/pdf') {
-            #echo '<h1>PDF</h1>';
-            #exec('/var/www/sendev-01/s3st12-test/lib/swftools/bin/pdf2swf -o /var/www/sendev-01/s3st12-test/files/swfs/document.swf '.$file_loc.'');
-            #exec('lib/swftools/bin/pdf2swf -o files/swfs/document.swf '.$file_loc.'');
-            #exec('lib/swftools/bin/pdf2swf -o files/swfs/'.basename($file_loc).'.swf '.$file_loc.'');
             $swf = basename($file_loc);
             $swf = sha1($swf);
             $swf = $swf.'.swf';
             if (!file_exists('files/swfs/'.$swf.'')) {
-                exec('lib/swftools/bin/pdf2swf -o files/swfs/'.$swf.' '.$file_loc.'');
+                
+                if (stripos(PHP_OS, 'Darwin') !== false) {
+                    #$genbarcode_loc = './bin/darwin/genbarcode';
+                } else if (stripos(PHP_OS, 'Linux') !== false) {
+                    #$genbarcode_loc = './bin/nix/genbarcode';
+                    exec('lib/swftools/bin/linux/pdf2swf -o files/swfs/'.$swf.' '.$file_loc.'');
+                } else {
+                    #$genbarcode_loc = '.\bin\win\genbarcode.exe';
+                    exec('lib/swftools/bin/windows/pdf2swf.exe -o files/swfs/'.$swf.' '.$file_loc.'');
+                }
             }
-            header("location:?p=readpdf&swf=".$swf."");
+
+?>
+            <html>
+            <frameset rows="0%,100%">
+            <frame src="empty.html">
+            <frame src="js/zviewer/index.php?swf=<?php echo $swf; ?>&fid=<?php echo $fileID; ?>&bid=<?php echo $biblioID; ?>">
+            </frameset>
+            </html>
+<?php
+            exit();			
+
+        } elseif (preg_match('@(image)/.+@i', $file_d['mime_type'])) {
+            if ($sysconf['watermark']['enable']) {
+                #echo $file_loc;
+                #$imgurl = 'lib/phpthumb/phpThumb.php?src=../../repository/'.basename($file_loc).'&fltr[]=wmt|Senayan Library Management System|5|C|000000||30';
+                #$imgurl = 'lib/phpthumb/phpThumb.php?src=../../repository/'.basename($file_loc);
+                $imgurl = 'lib/phpthumb/phpThumb.php?src=../../repository/'.$file_d['file_dir'].'/'.basename($file_loc);
+                if ($sysconf['watermark']['type'] == 'text') {
+                    $imgurl .= '&fltr[]=wmt|';
+                    $imgurl .= $sysconf['watermark']['text'].'|';
+                    $imgurl .= $sysconf['watermark']['sizeoftext'].'|';
+                    $imgurl .= $sysconf['watermark']['alignment'].'|';
+                    $imgurl .= $sysconf['watermark']['color'].'||';
+                    $imgurl .= $sysconf['watermark']['opacity'];
+                } elseif ($sysconf['watermark']['type'] == 'image') {
+                    $imgurl .= '&fltr[]=wmi|';
+                    $imgurl .= $sysconf['watermark']['image'].'|';
+                    $imgurl .= $sysconf['watermark']['alignment'].'|';
+                    $imgurl .= $sysconf['watermark']['opacity'];
+                }
+                echo '<html><head><title>'.$file_d['file_title'].'</title></head><body>';
+                echo "<img src='".$imgurl."' />";
+                echo '</body></html>';
+                exit();
+            } else {
+                header('Content-Disposition: inline; filename="'.basename($file_loc).'"');
+                header('Content-Type: '.$file_d['mime_type']);
+                readfile($file_loc);
+                exit();
+            }
+
         } else {
             header('Content-Disposition: inline; filename="'.basename($file_loc).'"');
             header('Content-Type: '.$file_d['mime_type']);

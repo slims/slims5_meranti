@@ -50,7 +50,7 @@ if ((bool) ini_get('safe_mode')) {
 }
 
 // senayan version
-define('SENAYAN_VERSION', 'senayan3-stable12');
+define('SENAYAN_VERSION', 'senayan3-stable13');
 
 // senayan session cookies name
 define('SENAYAN_SESSION_COOKIES_NAME', 'SenayanAdmin');
@@ -200,7 +200,7 @@ $sysconf['temp_dir'] = '/tmp';
 $sysconf['backup_dir'] = 'C:/Backup/senayan/';
 
 /* FILE DOWNLOAD */
-$sysconf['allow_file_download'] = true;
+$sysconf['allow_file_download'] = false;
 
 /* BARCODE config */
 // encoding
@@ -356,4 +356,17 @@ if (defined('LIGHTWEIGHT_MODE') OR isset($_COOKIE['LIGHTWEIGHT_MODE'])) {
     $sysconf['enable_xml_detail'] = false;
     $sysconf['enable_xml_result'] = false;
 }
+
+$sysconf['allow_pdf_download'] = true;
+
+# Image watermarking
+$sysconf['watermark']['enable'] = true;
+$sysconf['watermark']['type'] = 'image'; # text or image, but image is not yet implemented
+$sysconf['watermark']['text'] = 'Senayan Library Management System';
+$sysconf['watermark']['image'] = '../../images/default/watermark.png';
+$sysconf['watermark']['sizeoftext'] = '5'; # range 1 - 5
+$sysconf['watermark']['alignment'] = 'BR'; #BR, BL, TR, TL, C, R, L, T, B, where B=bottom, T=top, L=left, R=right, C=centre
+$sysconf['watermark']['color'] = 'ffffff'; # the hex color of the text
+$sysconf['watermark']['opacity'] = '50'; #is opacity from 0 (transparent) to 100 (opaque)
+
 ?>
