@@ -55,33 +55,27 @@ if ($file_q->num_rows > 0) {
             $swf = sha1($swf);
             $swf = $swf.'.swf';
             if (!file_exists('files/swfs/'.$swf.'')) {
-                
                 if (stripos(PHP_OS, 'Darwin') !== false) {
-                    #$genbarcode_loc = './bin/darwin/genbarcode';
+                    exec('lib/swftools/bin/darwin/pdf2swf -o files/swfs/'.$swf.' '.$file_loc.'');
                 } else if (stripos(PHP_OS, 'Linux') !== false) {
-                    #$genbarcode_loc = './bin/nix/genbarcode';
                     exec('lib/swftools/bin/linux/pdf2swf -o files/swfs/'.$swf.' '.$file_loc.'');
                 } else {
-                    #$genbarcode_loc = '.\bin\win\genbarcode.exe';
                     exec('lib/swftools/bin/windows/pdf2swf.exe -o files/swfs/'.$swf.' '.$file_loc.'');
                 }
             }
 
-?>
+            ?>
             <html>
             <frameset rows="0%,100%">
             <frame src="empty.html">
             <frame src="js/zviewer/index.php?swf=<?php echo $swf; ?>&fid=<?php echo $fileID; ?>&bid=<?php echo $biblioID; ?>">
             </frameset>
             </html>
-<?php
-            exit();			
+            <?php
+            exit();
 
-        } elseif (preg_match('@(image)/.+@i', $file_d['mime_type'])) {
+        } else if (preg_match('@(image)/.+@i', $file_d['mime_type'])) {
             if ($sysconf['watermark']['enable']) {
-                #echo $file_loc;
-                #$imgurl = 'lib/phpthumb/phpThumb.php?src=../../repository/'.basename($file_loc).'&fltr[]=wmt|Senayan Library Management System|5|C|000000||30';
-                #$imgurl = 'lib/phpthumb/phpThumb.php?src=../../repository/'.basename($file_loc);
                 $imgurl = 'lib/phpthumb/phpThumb.php?src=../../repository/'.$file_d['file_dir'].'/'.basename($file_loc);
                 if ($sysconf['watermark']['type'] == 'text') {
                     $imgurl .= '&fltr[]=wmt|';

@@ -168,6 +168,7 @@ class utility
 
     /**
      * Static method to detect mobile browser
+     * Some Patches by Indra Sutriadi
      *
      * @return  boolean
      * this script is taken from http://mobiforge.com/developing/story/lightweight-device-detection-php
@@ -190,7 +191,7 @@ class utility
             'blaz','brew','cell','cldc','cmd-','dang','doco','eric','hipt','inno',
             'ipaq','java','jigs','kddi','keji','leno','lg-c','lg-d','lg-g','lge-',
             'maui','maxo','midp','mits','mmef','mobi','mot-','moto','mwbp','nec-',
-            'newt','noki','oper','palm','pana','pant','phil','play','port','prox',
+            'newt','noki','palm','pana','pant','phil','play','port','prox',
             'qwap','sage','sams','sany','sch-','sec-','send','seri','sgh-','shar',
             'sie-','siem','smal','smar','sony','sph-','symb','t-mo','teli','tim-',
             'tosh','tsm-','upg1','upsi','vk-v','voda','wap-','wapa','wapi','wapp',
@@ -217,6 +218,14 @@ class utility
         }
 
         if (strpos(strtolower(@$_SERVER['HTTP_USER_AGENT']),'iemobile')>0) {
+            $_is_mobile_browser++;
+        }
+
+        if (strpos(strtolower(@$_SERVER['HTTP_ACCEPT']),'j2me')>0 || strpos(strtolower(@$_SERVER['HTTP_ACCEPT']),'midp')>0) {
+            $_is_mobile_browser++;
+        }
+
+        if (isset($_SERVER['HTTP_X_OPERAMINI_PHONE'])) {
             $_is_mobile_browser++;
         }
 
