@@ -51,13 +51,8 @@ if ($file_q->num_rows > 0) {
                     # Access to file restricted
                     # Member logged in but doesnt have privilege to download
                     header("location:index.php");
-                    continue;
+                    exit();
                 }
-            } else {
-                # Access to file restricted
-                # Member not logged in to download
-                header("location:index.php");
-                continue;
             }
         }
 
