@@ -111,7 +111,7 @@ if ($biblioID) {
         $row_class = ($row%2 == 0)?'alterCell':'alterCell2';
 
         // remove link
-        $remove_link = '<a href="#" onclick="confirmProcess('.$biblioID.', '.$biblio_attach_d['file_id'].', \''.$biblio_attach_d['file_name'].'\')"
+        $remove_link = '<a href="#" onclick="confirmProcess('.$biblioID.', '.$biblio_attach_d['file_id'].', \''.addslashes($biblio_attach_d['file_name']).'\')"
             style="color: #FF0000; text-decoration: underline;">Delete</a>';
 
         // edit link
