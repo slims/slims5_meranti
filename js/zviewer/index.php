@@ -21,6 +21,7 @@
 /* Zviewer */
 
 require '../../sysconfig.inc.php';
+LIB_DIR.'member_session.inc.php';
 session_start();
 
 if (!isset($_GET['swf'])) {
@@ -68,53 +69,51 @@ if ($file_q->num_rows > 0) {
                 exec('lib/swftools/bin/pdf2swf -o files/swfs/'.$swf.' '.$file_loc.'');
             }
 
-			?>
+?>
+		<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+		<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+		    <head>
+		       <title>DOcument flash player -  made in flash 9 actionscript 2.0  with xml suport|Full screen enabled</title>
+		       <META name="description" content="Video flash player -  made in flash 9 actionscript 3.0  with xml suport |Video flash player  full screen" >
+		       <META name="keywords" content="Video flash player -  made in flash 9 actionscript 3.0  with xml suport |Video flash player  full screen cu suport xml" >
+		       <META name="language" content="RO" >
+		       <META name="revisit-after" content="2 Days" >
+		       <meta name="robots" content="index,follow" >
+		       <meta name="robots" content="index,all" >
+		       <META name="copyright" content="Copyright (c) FLASH WEB DESIGN" >
+		       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+			   <style type="text/css">
+			   #wrapper {margin: 0 auto; width: 800px;}
+			   </style>
+			<script type="text/javascript" src="swfobject/swfobject.js"></script>
+			<script type="text/javascript">
+			var flashvars = { doc_url: "../../files/swfs/<?php echo $swf; ?>", };
+			var params = {
+			  menu: "false",
+			  bgcolor: '#efefef',
+			  allowFullScreen: 'true'
+			};
+			var attributes = { id: 'website' };
+			swfobject.embedSWF('zviewer.swf', 'website', '800', '800', '9.0.45', 'swfobject/expressinstall.swf', flashvars, params, attributes);
+			</script>
+		    </head>
+		    <body>
+			<div id="wrapper">
+			<?php if ($sysconf['allow_pdf_download']) { ?>
+			<div style="text-align: right; vertical-align:text-top;"><a href=""><img align="top" border='0' src='../../images/labels/adobe-reader.png' /></a><span style="font-family: verdana; font-size:11px; font-weight: bold;"> <a href="../../index.php?p=fstream-pdf&fid=<?php echo $fileID; ?>&bid=<?php echo $biblioID; ?>">Download PDF</a></span></div>
+			<?php } ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-    <head>
-       <title>DOcument flash player -  made in flash 9 actionscript 2.0  with xml suport|Full screen enabled</title>
-       <META name="description" content="Video flash player -  made in flash 9 actionscript 3.0  with xml suport |Video flash player  full screen" >
-       <META name="keywords" content="Video flash player -  made in flash 9 actionscript 3.0  with xml suport |Video flash player  full screen cu suport xml" >
-       <META name="language" content="RO" >
-       <META name="revisit-after" content="2 Days" >
-       <meta name="robots" content="index,follow" >
-       <meta name="robots" content="index,all" >
-       <META name="copyright" content="Copyright (c) FLASH WEB DESIGN" >
-       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	   <style type="text/css">
-	   #wrapper {margin: 0 auto; width: 800px;}
-	   </style>
-        <script type="text/javascript" src="swfobject/swfobject.js"></script>
-        <script type="text/javascript">
-	var flashvars = { doc_url: "../../files/swfs/<?php echo $swf; ?>", };
-	var params = {
-	  menu: "false",
-	  bgcolor: '#efefef',
-	  allowFullScreen: 'true'
-	};
-	var attributes = { id: 'website' };
-        swfobject.embedSWF('zviewer.swf', 'website', '800', '800', '9.0.45', 'swfobject/expressinstall.swf', flashvars, params, attributes);
-        </script>
-    </head>
-    <body>
-        <div id="wrapper">
-	<?php if ($sysconf['allow_pdf_download']) { ?>
-	<div style="text-align: right; vertical-align:text-top;"><a href=""><img align="top" border='0' src='../../images/labels/adobe-reader.png' /></a><span style="font-family: verdana; font-size:11px; font-weight: bold;"> <a href="../../index.php?p=fstream-pdf&fid=<?php echo $fileID; ?>&bid=<?php echo $biblioID; ?>">Download PDF</a></span></div>
-	<?php } ?>
-
-        <div id="website">
-        <p align="center" class="style1">In order to view this page you need Flash Player 9+ support!</p>
-        <p align="center">
-        <a href="http://www.adobe.com/go/getflashplayer">
-        <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
-    	</div>
-    	</div>
-    </body>
-</html>
-<?php
-exit();
-
+			<div id="website">
+			<p align="center" class="style1">In order to view this page you need Flash Player 9+ support!</p>
+			<p align="center">
+			<a href="http://www.adobe.com/go/getflashplayer">
+			<img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+			</div>
+			</div>
+		    </body>
+		</html>
+		<?php
+		exit();
         } else {
             header('Content-Disposition: inline; filename="'.basename($file_loc).'"');
             header('Content-Type: '.$file_d['mime_type']);

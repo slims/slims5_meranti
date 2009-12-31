@@ -20,8 +20,6 @@
 
 /* File Viewer */
 
-session_start();
-
 // get file ID
 $fileID = isset($_GET['fid'])?(integer)$_GET['fid']:0;
 // get biblioID
