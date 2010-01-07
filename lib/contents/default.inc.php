@@ -87,9 +87,9 @@ if (isset($_GET['search']) AND !empty($_GET['search'])) {
             if ($author) { $criteria .= ' author='.$author; }
             if ($subject) { $criteria .= ' subject='.$subject; }
             if ($isbn) { $criteria .= ' isbn='.$isbn; }
-            if ($gmd) { $criteria .= ' gmd='.$gmd; }
-            if ($colltype) { $criteria .= ' colltype='.$colltype; }
-            if ($location) { $criteria .= ' location='.$location; }
+            if ($gmd) { $criteria .= ' gmd="'.$gmd.'"'; }
+            if ($colltype) { $criteria .= ' colltype="'.$colltype.'"'; }
+            if ($location) { $criteria .= ' location="'.$location.'"'; }
             $criteria = trim($criteria);
             $biblio_list->setSQLcriteria($criteria);
         }
