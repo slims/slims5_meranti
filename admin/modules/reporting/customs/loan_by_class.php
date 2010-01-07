@@ -158,6 +158,21 @@ if (!$reportView) {
     $row_class = ($class_num%2 == 0)?'alterCellPrinted':'alterCellPrinted2';
     if ($class_num == 'NONDECIMAL') {
         $output .= '<tr><td class="'.$row_class.'"><strong style="font-size: 1.5em;">NON DECIMAL Classification</strong></td>';
+        // count loan each month
+        foreach ($months as $month_num => $month) {
+            $loan_q = $dbs->query("SELECT COUNT(*) FROM biblio AS b
+                LEFT JOIN item AS i ON b.biblio_id=i.biblio_id
+                LEFT JOIN loan AS l ON l.item_code=i.item_code
+                WHERE classification REGEXP '^[^0-9]' AND l.loan_date LIKE '$selected_year-$month_num-%'".( !empty($coll_type)?" AND i.coll_type_id=$coll_type":'' ));
+            $loan_d = $loan_q->fetch_row();
+            if ($loan_d[0] > 0) {
+                $output .= '<td class="'.$row_class.'"><strong style="font-size: 1.5em;">'.$loan_d[0].'</strong></td>';
+            } else {
+                $output .= '<td class="'.$row_class.'"><span style="color: #ff0000;">'.$loan_d[0].'</span></td>';
+            }
+        }
+
+        $output .= '</tr>';
     } else {
         $output .= '<tr><td class="'.$row_class.'"><strong style="font-size: 1.5em;">'.$class_num.'00</strong></td>';
 
