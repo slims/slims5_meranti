@@ -65,9 +65,6 @@ if ($file_q->num_rows > 0) {
             $swf = basename($file_loc);
             $swf = sha1($swf);
             $swf = $swf.'.swf';
-            if (!file_exists('files/swfs/'.$swf.'')) {
-                exec('lib/swftools/bin/pdf2swf -o files/swfs/'.$swf.' '.$file_loc.'');
-            }
 
 ?>
 		<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
