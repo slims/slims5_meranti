@@ -5,13 +5,9 @@ Developers :
 Hendro Wicaksono (hendrowicaksono@yahoo.com)
 Arie Nugraha (dicarve@yahoo.com)
 Wardiyono (wynerst@gmail.com)
-
-Documentation :
 Purwoko (purgeologi@yahoo.com)
 Sulfan Zayd (sulfan@gmail.com)
 Arif Syamsudin (buitenzorg812@gmail.com)
-
-Contributors :
 Tobias Zeumer (tzeumer@verweisungsform.de)
 Jhon Urrego Felipe Mejia (ingenierofelipeurrego@gmail.com)
 
