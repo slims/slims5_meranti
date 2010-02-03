@@ -414,6 +414,8 @@ if (isset($_POST['memberID']) OR isset($_SESSION['memberID'])) {
         $_SESSION['is_expire'] = $member->isExpired();
         // check if membership is blacklisted
         $_SESSION['is_pending'] = $member->isPending();
+        // print record
+        $_SESSION['print_record'] = array();
         // set HTML buttons disable flag
         $disabled = '';
         $add_style = '';
