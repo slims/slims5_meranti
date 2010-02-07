@@ -70,11 +70,14 @@ echo '</script>';
 
 if ($current_module AND $can_read) {
     // get content of module default content with AJAX
-    $sysconf['page_footer'] .= '<script type="text/javascript">'
-        .'Event.observe(window, \'load\', function() { setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.$current_module.'/index.php\', \'get\') });'
+    $sysconf['page_footer'] .= "\n"
+        .'<script type="text/javascript">'
+        .'Event.observe(window, \'load\', function() { registerAdminEvents(); setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.$current_module.'/index.php\', \'get\') });'
         .'</script>';
 } else {
     include 'default/home.php';
+    $sysconf['page_footer'] .= "\n"
+        .'<script type="text/javascript">Event.observe(window, \'load\', function() { registerAdminEvents(); });</script>';
 }
 // page content
 $main_content = ob_get_clean();

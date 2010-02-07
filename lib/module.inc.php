@@ -97,9 +97,8 @@ class module extends simbio
             if ($_list[0] == 'Header') {
                 $_submenu .= '<div class="subMenuHeader">'.$_list[1].'</div>';
             } else {
-                $_list_ID = str_replace(' ', '_', (strtolower($_list[0])));
-                $_submenu .= '<a class="subMenuItem" id="'.$_list_ID.'"'
-                    .' onclick="setSubmenuClass(\''.$_list_ID.'\', \'curModuleLink\'); setContent(\'mainContent\', \''.$_list[1].'\', \'get\');"'
+                $_submenu .= '<a class="subMenuItem" '
+                    .' href="'.$_list[1].'"'
                     .' title="'.( isset($_list[2])?$_list[2]:$_list[0] ).'" href="#">'.$_list[0].'</a>';
             }
         }

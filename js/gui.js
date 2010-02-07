@@ -6,19 +6,17 @@
 * UI related functions
 */
 
-/* change the style of submenu link */
-var setSubmenuClass = function(strMenuID, strClassName)
+var registerAdminEvents = function()
 {
-    var elementObj = $(strMenuID);
-    // get other element that already have name 'strClassName'
-    var prevElemnts = $$('.' + strClassName);
-    // iterate
-    prevElemnts.each(function(elmnt) {
-        elmnt.removeClassName(strClassName);
-        });
-
-    // add class name specified in function argument
-    elementObj.addClassName(strClassName);
+    // register submenu event
+    $$('.subMenuItem').invoke('observe', 'click', function(evt) {
+        evt.preventDefault();
+        var subMenu = Event.element(evt);
+        // remove other current link marker on non-active submenu
+        $$('.subMenuItem').invoke('removeClassName', 'curModuleLink');
+        var subMenuHREF = subMenu.addClassName('curModuleLink').readAttribute('href');
+        setContent('mainContent', subMenuHREF, 'get');
+    }).invoke('observe', 'mouseover', function(evt) { evt.preventDefault(); } );
 }
 
 /* change the style of circulation tab */
