@@ -51,6 +51,8 @@ if (isset($_POST['finish'])) {
         // send message
         echo '<script type="text/javascript">';
         echo 'alert(\''.__('Transaction finished').'\');';
+        // open receipt windows
+        echo 'parent.openWin(\''.MODULES_WEB_ROOT_DIR.'circulation/pop_loan_receipt.php\', \'popReceipt\', 350, 500, true);';
         echo 'parent.setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'circulation/index.php\', \'post\', \'finishID='.$memberID.'\');';
         echo '</script>';
     }
@@ -415,7 +417,7 @@ if (isset($_POST['memberID']) OR isset($_SESSION['memberID'])) {
         // check if membership is blacklisted
         $_SESSION['is_pending'] = $member->isPending();
         // print record
-        $_SESSION['print_record'] = array();
+        $_SESSION['receipt_record'] = array();
         // set HTML buttons disable flag
         $disabled = '';
         $add_style = '';

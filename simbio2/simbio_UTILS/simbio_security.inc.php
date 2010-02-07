@@ -54,7 +54,7 @@ class simbio_security
         // deleting session browser cookie
         @setcookie($str_session_name, '', time()-86400, $str_cookie_path);
         // destroy all session
-        unset($_SESSION);
+        $_SESSION = null;
         session_destroy();
         if ($bool_die === true) {
             // shutdown current script

@@ -70,7 +70,9 @@ echo '</script>';
 
 if ($current_module AND $can_read) {
     // get content of module default content with AJAX
-    echo '<script type="text/javascript">setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.$current_module.'/index.php\', \'post\');</script>';
+    $sysconf['page_footer'] .= '<script type="text/javascript">'
+        .'Event.observe(window, \'load\', function() { setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.$current_module.'/index.php\', \'get\') });'
+        .'</script>';
 } else {
     include 'default/home.php';
 }

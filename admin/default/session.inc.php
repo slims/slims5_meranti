@@ -30,8 +30,8 @@ if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
 @ini_set('session.use_cookies', true);
 // use more secure session ids
 @ini_set('session.hash_function', 1);
-// some pages (e.g. stylesheet) may be cached on clients, but not in shared proxy servers
-@session_cache_limiter('private');
+// no cache
+@session_cache_limiter('nocache');
 // set session name and start the session
 @session_name(SENAYAN_SESSION_COOKIES_NAME);
 // set session cookies params
