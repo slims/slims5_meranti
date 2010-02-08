@@ -60,7 +60,6 @@ ob_start();
 $info = __('Welcome To The Library Automation System, you are currently logged in as').' <strong>'.$_SESSION['realname'].'</strong>'; //mfc
 // set some javascript vars
 echo '<script type="text/javascript">';
-echo 'lastStr = \''.addslashes($info).'\';';
 if ($current_module) {
     echo 'defaultAJAXurl = \''.MODULES_WEB_ROOT_DIR.$current_module.'/index.php\';';
 } else {
@@ -72,12 +71,12 @@ if ($current_module AND $can_read) {
     // get content of module default content with AJAX
     $sysconf['page_footer'] .= "\n"
         .'<script type="text/javascript">'
-        .'Event.observe(window, \'load\', function() { registerAdminEvents(); setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.$current_module.'/index.php\', \'get\') });'
+        .'Event.observe(window, \'load\', function() { lastStr = \''.addslashes($info).'\'; registerAdminEvents(); setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.$current_module.'/index.php\', \'get\') });'
         .'</script>';
 } else {
     include 'default/home.php';
     $sysconf['page_footer'] .= "\n"
-        .'<script type="text/javascript">Event.observe(window, \'load\', function() { registerAdminEvents(); });</script>';
+        .'<script type="text/javascript">Event.observe(window, \'load\', function() { lastStr = \''.addslashes($info).'\'; registerAdminEvents(); });</script>';
 }
 // page content
 $main_content = ob_get_clean();

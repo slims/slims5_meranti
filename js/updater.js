@@ -44,7 +44,10 @@ var setContent = function(strContainer, strURL, strMethod)
             parameters: ajaxParams,
             evalScripts: isEvalScript,
             onFailure: errorReport,
-            onComplete: hideLoading
+            onComplete: hideLoading,
+            requestHeaders: {'Pragma': 'no-cache',
+                'Cache-Control': 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0',
+                'Expires': 'Sat, 26 Jul 1997 05:00:00 GMT'}
         });
 }
 
