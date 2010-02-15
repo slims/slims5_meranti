@@ -97,7 +97,7 @@ class simbio_form_table extends simbio_form_maker
 
         // check if we are on edit form mode
         if ($this->edit_mode) {
-            $_edit_link .= '<a href="#" onclick="enableForm(\''.$this->form_name.'\', event); enableForm(\'deleteForm\', event);" style="font-weight: bold;" class="editFormLink">EDIT</a>';
+            $_edit_link .= '<a href="#" class="editFormLink notAJAX">EDIT</a>';
             // delete button exists if the record_id exists
             if ($this->record_id && $this->delete_button) {
                 $_delete_button = '<input type="button" value="'.$_del_value.'" class="button" onclick="confSubmit(\'deleteForm\', \'Are you sure to delete '.addslashes($this->record_title).'?\nOnce Deleted it cant be restored again\')" style="color: red; font-weight: bold;" />';
@@ -138,7 +138,7 @@ class simbio_form_table extends simbio_form_maker
             // hidden form for deleting records
             $_buffer .= '<form action="'.$this->form_action.'" id="deleteForm" method="post" style="display: inline;"><input type="hidden" name="itemID" value="'.$this->record_id.'" /><input type="hidden" name="itemAction" value="true" /></form>';
             // disabling form
-            $_buffer .= '<script type="text/javascript">disableForm(\''.$this->form_name.'\');disableForm(\'deleteForm\');</script>';
+            $_buffer .= '<script type="text/javascript">$(\''.$this->form_name.'\').disable(); $(\'deleteForm\').disable();</script>';
         }
         // output
         return $_buffer;

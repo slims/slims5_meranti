@@ -80,8 +80,8 @@ class simbio_datagrid extends simbio_table
         // Default checkbox properties
         if (!isset($this->chbox_property)) $this->chbox_property = array('itemID', __('DELETE'));
         if (!isset($this->edit_property)) $this->edit_property = array('itemID', __('EDIT'));
-        	
-        
+
+
         // check database connection
         if (!$obj_db OR $obj_db->error) {
             $_error = '<div style="padding: 5px; margin: 3px; border: 1px dotted #FF0000; color: #FF0000;">';
@@ -201,12 +201,7 @@ class simbio_datagrid extends simbio_table
             // check if the column is not listed in no_sort_column array properties
             if (!in_array($_fld->name, $this->no_sort_column) AND isset($this->sort_column[$_fld->name])) {
                 $_order_by = 'fld='.urlencode($this->sort_column[$_fld->name]).'&dir='.$_next_dir;
-                if ($this->using_AJAX) {
-                    $this->grid_result_fields[] = '<a onmouseover="window.status = \'\'; return true;" '
-                        .'href="javascript: setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_url_query_str.$_order_by.'\', \'get\');" title="'.__('Order list by').' '.$_fld->name.' '.$_sort_dir_info.'">'.$_fld->name.'</a>';
-                } else {
-                    $this->grid_result_fields[] = '<a href="'.$_SERVER['PHP_SELF'].'?'.$_url_query_str.$_order_by.'" title="'.__('Order list by').' '.$_fld->name.' '.$_sort_dir_info.'">'.$_fld->name.'</a>';
-                }
+                $this->grid_result_fields[] = '<a href="'.$_SERVER['PHP_SELF'].'?'.$_url_query_str.$_order_by.'" title="'.__('Order list by').' '.$_fld->name.' '.$_sort_dir_info.'">'.$_fld->name.'</a>';
             } else {
                 $this->grid_result_fields[] = $_fld->name;
             }
@@ -279,13 +274,8 @@ class simbio_datagrid extends simbio_table
                 }
                 // check if edit link array is included
                 if ($this->edit_property) {
-                    if ($this->using_AJAX) {
-                        $_edit_link = '<a href="#" class="editLink" '
-                            .'onclick="setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_url_query_str.'\', \'post\', \''.$this->edit_property[0].'='.$this->grid_result_rows[$_row][0].'&detail=true\', true);" title="Detail">'.( $this->edit_link_text?$this->edit_link_text:'&nbsp;' ).'</a>';
-                    } else {
-                        $_edit_link = '<a href="#" class="editLink" '
-                            .'onclick="showDetailForm(\'notAJAXhiddenForm\', \''.$_SERVER['PHP_SELF'].'?'.$_url_query_str.'\', \''.$this->grid_result_rows[$_row][0].'\')" title="Edit">'.( $this->edit_link_text?$this->edit_link_text:'&nbsp;' ).'</a>';
-                    }
+                    $_edit_link = '<a class="editLink" '
+                        .'href="'.$_SERVER['PHP_SELF'].'?'.$_url_query_str.'" postdata="'.$this->edit_property[0].'='.$this->grid_result_rows[$_row][0].'&detail=true" title="Edit">'.( $this->edit_link_text?$this->edit_link_text:'&nbsp;' ).'</a>';
                     $_edit_fields[] = $_edit_link;
                 }
                 // unset the first element (ID field)
@@ -349,11 +339,7 @@ class simbio_datagrid extends simbio_table
         // create paging
         $_paging =  null;
         if ($this->num_rows > $int_num2show) {
-            if ($this->using_AJAX) {
-                $_paging = simbio_paging_ajax::paging($this->num_rows, $int_num2show, 5);
-            } else {
-                $_paging = simbio_paging::paging($this->num_rows, $int_num2show, 5);
-            }
+            $_paging = simbio_paging::paging($this->num_rows, $int_num2show, 5);
         }
         // setting form target
         $_target = '_self';
@@ -368,8 +354,8 @@ class simbio_datagrid extends simbio_table
         if ($this->editable) {
             $_buffer .= '<form action="'.$this->chbox_form_URL.'" name="'.$this->table_name.'" id="'.$this->table_name.'" target="'.$_target.'" method="post" style="display: inline;">'."\n";
 
-						$_check_all = __('Check All');
-						$_uncheck_all = __('Uncheck All');
+	    $_check_all = __('Check All');
+	    $_uncheck_all = __('Uncheck All');
 
             // action buttons group
             $_button_grp = '<table cellspacing="0" cellpadding="5" style="background-color: #dcdcdc; width: 100%;"><tr>';

@@ -156,12 +156,12 @@ if (isset($_POST['saveData'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner userGroupIcon">
-    <?php echo strtoupper(__('User Group')); ?> - <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/user_group.php?action=detail', 'get');" class="headerText2"><?php echo __('Add New Group'); ?></a>
-    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/user_group.php', 'get');" class="headerText2"><?php echo __('Group List'); ?></a>
+    <?php echo strtoupper(__('User Group')); ?> - <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/user_group.php?action=detail" class="headerText2"><?php echo __('Add New Group'); ?></a>
+    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/user_group.php" class="headerText2"><?php echo __('Group List'); ?></a>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
+    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>system/user_group.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
-    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/user_group.php?' + $('search').serialize(), 'post')" value="<?php echo __('Search'); ?>" class="button" />
+    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
 </div>
 </fieldset>

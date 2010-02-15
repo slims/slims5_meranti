@@ -109,36 +109,6 @@ var chboxFormSubmit = function(strFormID)
     }
 }
 
-/* moving option from select list to another select list */
-var moveOption = function(strSelect, strSelectDest)
-{
-    var selectObj = $(strSelect);
-    var destSelectObj = $(strSelectDest);
-    var numOptions = destSelectObj.length;
-    var idx = selectObj.selectedIndex;
-    // get the text and value
-    var optText = selectObj.options[idx].text;
-    var optValue = selectObj.options[idx].value;
-    // create new option for destination select object
-    var newOpt = new Option(optText, optValue, true);
-    // add it to select list
-    destSelectObj.options[numOptions] = newOpt;
-}
-
-/* deleting option from select list */
-var deleteOption = function(strSelect)
-{
-    var selectObj = $(strSelect);
-    var numOptions = selectObj.length;
-    var idx = selectObj.selectedIndex;
-    // remove the option object
-    selectObj.options[numOptions] = null;
-    // select all options
-    for (var o=0; o<numOptions; o++) {
-        selectObj.options[o].selected = true;
-    }
-}
-
 /* form submit confirmation */
 var confSubmit = function(strFormID, strMsg)
 {
@@ -147,45 +117,6 @@ var confSubmit = function(strFormID, strMsg)
     if (yesno) {
         $(strFormID).submit();
     }
-}
-
-/* disable all forms elements
-this function is my own implementation for disabling all form elements
-*/
-var disableForm = function(strFormID)
-{
-    var formObj = $(strFormID);
-    // get all elements in form
-    var formElementsArray = formObj.getElements();
-    // disable it
-    formElementsArray.each( function(elmntObj) { elmntObj.disabled = true; } );
-}
-
-/* enable all forms elements
-this function is my own implementation for disabling all form elements
-*/
-var enableForm = function(strFormID, event)
-{
-    event.preventDefault();
-    var formObj = $(strFormID);
-    // get all elements in form
-    var formElementsArray = formObj.getElements();
-    // enable it
-    formElementsArray.each( function(elmntObj) { elmntObj.disabled = false; } );
-    // display all object with defaultHidden class
-    formObj.select('.makeHidden').each( function(hiddenObj) { hiddenObj.className = 'makeVisible'; } );
-}
-
-/* submit form */
-var showDetailForm = function(strFormID, strFormActionURL, strID)
-{
-    var formObj = $(strFormID);
-    // set form URL
-    formObj.action = strFormActionURL;
-    // set ID value
-    formObj.itemID.value = strID;
-    // submit and add additional query
-    formObj.submit();
 }
 
 /* AJAX drop down */
@@ -252,4 +183,3 @@ var showDropDown = function(strURL, strElmntID, strAddParams) {
         }
     });
 }
-

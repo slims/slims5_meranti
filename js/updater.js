@@ -12,6 +12,48 @@ var urlNum = 0;
 var loadingImage = './admin_template/default/loader.gif';
 var defaultAJAXurl = '';
 
+/* register event after each AJAX call */
+Element.addMethods({
+    registerAJAXEvents: function(element) {
+        // change all anchor to AJAX behaviour
+        element.select('a:not(.notAJAX)').invoke('observe', 'click', function(evt) {
+            evt.preventDefault();
+            var anchor = Event.element(evt);
+            var aHREF = anchor.readAttribute('href');
+            // check where to load AJAX content from loadcontainer attribute
+            var ajaxContainer = anchor.readAttribute('loadcontainer');
+            if (!ajaxContainer) { ajaxContainer = 'mainContent'; }
+            // check if link have postdata attribute
+            var postData = anchor.readAttribute('postdata');
+            if (postData) {
+                setContent(ajaxContainer, aHREF, 'post', postData);
+            } else {
+                setContent(ajaxContainer, aHREF, 'get');
+            }
+        });
+
+        // change all search form submit behaviour to AJAX
+        element.select('.editFormLink').invoke('observe', 'click', function(evt) {
+            evt.stop();
+            var button = Event.element(evt);
+            var theForm = button.up('form');
+            theForm.enable();
+        });
+
+        // change all search form submit behaviour to AJAX
+        element.select('.menuBox form').invoke('observe', 'submit', function(evt) {
+            evt.preventDefault();
+            var theForm = Event.element(evt);
+            var formAction = theForm.readAttribute('action');
+            var formMethod = theForm.readAttribute('method');
+            var formData = theForm.serialize();
+            setContent('mainContent', formAction, formMethod, formData);
+        });
+
+        return element;
+    }
+});
+
 /* set the content of layer */
 var setContent = function(strContainer, strURL, strMethod)
 {
@@ -37,7 +79,7 @@ var setContent = function(strContainer, strURL, strMethod)
     // show loading
     showLoading();
     var ajaxObj = new Ajax.Updater(
-        strContainer,
+        {success: strContainer},
         strURL,
         {
             method: strMethod,
@@ -54,7 +96,7 @@ var setContent = function(strContainer, strURL, strMethod)
 /* show error when ajax updater failed */
 var errorReport = function(ajaxObj)
 {
-    alert('Error on AJAX request');
+    alert('Error on AJAX request! Probably page you requested not found on server.');
 }
 
 /* show loading when ajax updater is in middle of requesting */
@@ -76,6 +118,7 @@ var hideLoading = function(ajaxObj)
     $$('.loader').invoke('removeClassName', 'loadingImage').invoke('update', lastStr);
     // focus all first form input element
     $$('input[type=text]')[0].focus();
+    $(lastAJAXcontainer).registerAJAXEvents();
 }
 
 /* get previous AJAX url */

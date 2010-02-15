@@ -26,7 +26,7 @@ require '../../../sysconfig.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php';
-require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging_ajax.inc.php';
+require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/datagrid/simbio_dbgrid.inc.php';
 
 // privileges checking
@@ -42,9 +42,9 @@ if (!$can_read) {
 <div class="menuBoxInner itemOutIcon">
     <?php echo __('Checkout Items'); ?>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
+    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/checkout_item.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
-    <input type="button" id="doSearch" onclick="javascript: setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/checkout_item.php?' + $('search').serialize(), 'post');" value="<?php echo __('Search'); ?>" class="button" />
+    <input type="submit" id="doSearch" class="button" />
     </form>
 </div>
 </fieldset>

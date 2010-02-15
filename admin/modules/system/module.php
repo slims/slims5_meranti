@@ -133,12 +133,12 @@ if (isset($_POST['saveData'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner moduleIcon">
-    <?php echo strtoupper(__('Modules')); ?> - <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/module.php?action=detail', 'get');" class="headerText2"><?php echo __('Add New Modules'); ?></a>
-    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/module.php', 'get');" class="headerText2"><?php echo __('Modules List'); ?></a>
+    <?php echo strtoupper(__('Modules')); ?> - <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/module.php?action=detail" class="headerText2"><?php echo __('Add New Modules'); ?></a>
+    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/module.php" class="headerText2"><?php echo __('Modules List'); ?></a>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
+    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>system/module.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
-    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/module.php?' + $('search').serialize(), 'post')" value="<?php echo __('Search'); ?>" class="button" />
+    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
 </div>
 </fieldset>

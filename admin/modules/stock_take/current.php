@@ -27,7 +27,7 @@ require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php';
-require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging_ajax.inc.php';
+require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/datagrid/simbio_dbgrid.inc.php';
 
 // privileges checking
@@ -70,8 +70,8 @@ if ($stk_query->num_rows < 1) {
           echo __('Current Missing/Lost Items').'<hr />';
         }
         ?>
-        <form name="search" id="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" method="get" style="display: inline;">
-        <div style="margin-top: 3px;"><div style="width: 90px; float: left;"><?php echo __('Search'); ?> : </div><input type="text" name="keywords" size="30" /> <input type="hidden" name="view" value="<?php echo $view; ?>" /> <input type="submit" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>stock_take/current.php?' + $('search').serialize(), 'post')" value="<?php echo __('Search'); ?>" class="button" /></div>
+        <form name="search" id="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>stock_take/current.php" method="get" style="display: inline;">
+        <div style="margin-top: 3px;"><div style="width: 90px; float: left;"><?php echo __('Search'); ?> : </div><input type="text" name="keywords" size="30" /> <input type="hidden" name="view" value="<?php echo $view; ?>" /> <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" /></div>
         </form>
     </div>
     </fieldset>

@@ -165,17 +165,14 @@ var closeHTMLpop = function()
 {
     // stop observing
     top.Event.stopObserving(document.body, 'keypress', function(event) {});
-    htmlPop.remove();
-    blocker.remove();
+    htmlPop.remove(); blocker.remove();
 }
 
 /* set iframe content */
 var setIframeContent = function(strIframeID, strUrl)
 {
     var iframeObj = $(strIframeID);
-    if (iframeObj != undefined) {
-        iframeObj.src = strUrl;
-    }
+    if (iframeObj != undefined) { iframeObj.src = strUrl; }
 }
 
 /* register event for dragger */
@@ -210,37 +207,6 @@ var registerDraggerEvent = function(str_dragger_id, str_resized_obj_id)
         });
         // register the mouse move event handler
         Event.observe(dragger, 'mousemove', mouseMoveHandler);
-    });
-}
-
-var iframes = [];
-/* remove iframe content blocker */
-var removeBlockers = function()
-{
-    // get all iframe in document
-    iframes.each(function(iframeObj) {
-        if (iframeObj) {
-            var iframeURL = iframeObj.src;
-            // replace block query param
-            iframeURL = iframeURL.sub(/\&block=[^\&]+/, '');
-            iframeObj.src = iframeURL;
-        }
-    });
-}
-
-/* blocked iframes registerer */
-var registerBlockedIframes = function(arr_iframe_id)
-{
-    arr_iframe_id.each(function(str_iframe_id) {
-        var iframeObj = $(str_iframe_id);
-        if (iframeObj) {
-            var iframesNum = iframes.length;
-            if (iframesNum < 1) {
-                iframes[0] = iframeObj;
-            } else { iframes[iframes.length] = iframeObj; }
-            // block iframes
-            iframeObj.src = iframeObj.src + '&block=true';
-        }
     });
 }
 

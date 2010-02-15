@@ -84,12 +84,12 @@ class simbio_form_table_AJAX extends simbio_form_maker
         $_edit_link = '';
         $_delete_button = '';
         $_back_button = '';
-				$_del_value = __('Delete Record');
-				$_cancel_value = __('Cancel');
+	$_del_value = __('Delete Record');
+	$_cancel_value = __('Cancel');
 
         // check if we are on edit form mode
         if ($this->edit_mode) {
-            $_edit_link .= '<a href="#" onclick="enableForm(\''.$this->form_name.'\', event); enableForm(\'deleteForm\', event); removeBlockers();" class="editFormLink">EDIT</a>';
+            $_edit_link .= '<a href="#" class="notAJAX editFormLink">EDIT</a>';
             // delete button exists if the record_id properties exists
             if ($this->record_id && $this->delete_button) {
                 // create delete button
@@ -133,12 +133,12 @@ class simbio_form_table_AJAX extends simbio_form_maker
             $_buffer .= '<form action="'.preg_replace('/\?.+/i', '', $this->form_action).'" id="deleteForm" target="submitExec" method="post" style="display: inline;">'
                 .'<input type="hidden" name="itemID" value="'.$this->record_id.'" /><input type="hidden" name="itemAction" value="true" /></form>';
             // disabling form
-            $_buffer .= '<script type="text/javascript">disableForm(\''.$this->form_name.'\');disableForm(\'deleteForm\');$$(\'.cancelButton\').each( function(cb) { cb.enable(); } );</script>';
+            $_buffer .= '<script type="text/javascript">$(\''.$this->form_name.'\').disable(); $(\'deleteForm\').disable(); $$(\'.cancelButton\').invoke(\'enable\');</script>';
         }
         // for debugging purpose only
         // $_buffer .= '<iframe name="submitExec" style="visibility: visible; width: 100%; height: 200px;"></iframe>';
         // hidden iframe for form executing
-        $_buffer .= '<iframe name="submitExec" style="visibility: hidden; width: 100%; height: 0;"></iframe>';
+        $_buffer .= '<iframe name="submitExec" class="noBlock" style="visibility: hidden; width: 100%; height: 0;"></iframe>';
 
         return $_buffer;
     }

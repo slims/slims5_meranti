@@ -29,7 +29,7 @@ require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/template_parser/simbio_template_parser.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
-require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging_ajax.inc.php';
+require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/datagrid/simbio_dbgrid.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/simbio_dbop.inc.php';
 require SIMBIO_BASE_DIR.'simbio_UTILS/simbio_date.inc.php';
@@ -149,9 +149,9 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 <div class="menuBoxInner calendarIcon">
     <?php echo strtoupper(__('Holiday Setting')); ?>
     <hr />
-    <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php', 'post');" class="headerText2"><?php echo __('Set holiday'); ?></a>
-    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php?mode=special', 'get');" class="headerText2"><?php echo __('Special holiday'); ?></a>
-    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php?mode=special&action=detail', 'get');" class="headerText2"><?php echo __('Add Special holiday'); ?></a>
+    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php" class="headerText2"><?php echo __('Set holiday'); ?></a>
+    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php?mode=special" class="headerText2"><?php echo __('Special holiday'); ?></a>
+    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php?mode=special&action=detail" class="headerText2"><?php echo __('Add Special holiday'); ?></a>
 </div>
 </fieldset>
 <?php

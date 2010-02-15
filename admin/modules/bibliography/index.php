@@ -30,7 +30,7 @@ if (!defined('SENAYAN_BASE_DIR')) {
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php';
-require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging_ajax.inc.php';
+require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/datagrid/simbio_dbgrid.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/simbio_dbop.inc.php';
 require SIMBIO_BASE_DIR.'simbio_FILE/simbio_file_upload.inc.php';
@@ -263,13 +263,13 @@ if (!$in_pop_up) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner biblioIcon">
-    <?php echo strtoupper(__('Bibliographic')); ?> - <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php?action=detail', 'get');" class="headerText2"><?php echo __('Add New Bibliography'); ?></a>
-    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php', 'post');" class="headerText2"><?php echo __('Bibliographic List'); ?></a>
+    <?php echo strtoupper(__('Bibliographic')); ?> - <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php?action=detail" class="headerText2"><?php echo __('Add New Bibliography'); ?></a>
+    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php" class="headerText2"><?php echo __('Bibliographic List'); ?></a>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
+    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" id="keywords" size="30" />
     <select name="field"><option value="0"><?php echo __('All Fields'); ?></option><option value="title"><?php echo __('Title/Series Title'); ?> </option><option value="subject"><?php echo __('Topics'); ?></option><option value="author"><?php echo __('Authors'); ?></option><option value="isbn"><?php echo __('ISBN/ISSN'); ?></option><option value="publisher"><?php echo __('Publisher'); ?></option></select>
-    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php?' + $('search').serialize(), 'post')" value="<?php echo __('Search'); ?>" class="button" />
+    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
 </div>
 </fieldset>
@@ -328,12 +328,12 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $form->addTextField('textarea', 'specDetailInfo', __('Specific Detail Info'), $rec_d['spec_detail_info'], 'rows="2" style="width: 100%"');
     // biblio item add
     if (!$in_pop_up AND $form->edit_mode) {
-        $str_input = '<div class="makeHidden"><a href="javascript: openWin(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_item.php?inPopUp=true&action=detail&biblioID='.$rec_d['biblio_id'].'\', \'popItem\', 600, 400, true)">'.__('Add New Items').'</a></div>';
+        $str_input = '<div class="makeHidden"><a class="notAJAX" href="javascript: openWin(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_item.php?inPopUp=true&action=detail&biblioID='.$rec_d['biblio_id'].'\', \'popItem\', 600, 400, true)">'.__('Add New Items').'</a></div>';
         $str_input .= '<iframe name="itemIframe" id="itemIframe" class="borderAll" style="width: 100%; height: 70px;" src="'.MODULES_WEB_ROOT_DIR.'bibliography/iframe_item_list.php?biblioID='.$rec_d['biblio_id'].'"></iframe>'."\n";
         $form->addAnything('Item(s) Data', $str_input);
     }
     // biblio authors
-        $str_input = '<div class="'.$visibility.'"><a href="javascript: openWin(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_author.php?biblioID='.$rec_d['biblio_id'].'\', \'popAuthor\', 500, 200, true)">'.__('Add Author(s)').'</a></div>';
+        $str_input = '<div class="'.$visibility.'"><a class="notAJAX" href="javascript: openWin(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_author.php?biblioID='.$rec_d['biblio_id'].'\', \'popAuthor\', 500, 200, true)">'.__('Add Author(s)').'</a></div>';
         $str_input .= '<iframe name="authorIframe" id="authorIframe" class="borderAll" style="width: 100%; height: 70px;" src="'.MODULES_WEB_ROOT_DIR.'bibliography/iframe_author.php?biblioID='.$rec_d['biblio_id'].'"></iframe>';
     $form->addAnything(__('Author(s)'), $str_input);
     // biblio gmd
@@ -392,7 +392,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // biblio call_number
     $form->addTextField('text', 'callNumber', __('Call Number'), $rec_d['call_number'], 'style="width: 40%;"');
     // biblio topics
-        $str_input = '<div class="'.$visibility.'"><a href="javascript: openWin(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_topic.php?biblioID='.$rec_d['biblio_id'].'\', \'popTopic\', 500, 200, true)">'.__('Add Subject(s)').'</a></div>';
+        $str_input = '<div class="'.$visibility.'"><a class="notAJAX"  href="javascript: openWin(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_topic.php?biblioID='.$rec_d['biblio_id'].'\', \'popTopic\', 500, 200, true)">'.__('Add Subject(s)').'</a></div>';
         $str_input .= '<iframe name="topicIframe" id="topicIframe" class="borderAll" style="width: 100%; height: 70px;" src="'.MODULES_WEB_ROOT_DIR.'bibliography/iframe_topic.php?biblioID='.$rec_d['biblio_id'].'"></iframe>';
     $form->addAnything(__('Subject(s)'), $str_input);
     // biblio language
@@ -417,7 +417,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         $form->addAnything(__('Image'), $str_input);
     }
     // biblio file attachment
-    $str_input = '<div class="'.$visibility.'"><a href="javascript: openWin(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_attach.php?biblioID='.$rec_d['biblio_id'].'\', \'popAttach\', 600, 200, true)">'.__('Add Attachment').'</a></div>';
+    $str_input = '<div class="'.$visibility.'"><a class="notAJAX" href="javascript: openWin(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_attach.php?biblioID='.$rec_d['biblio_id'].'\', \'popAttach\', 600, 200, true)">'.__('Add Attachment').'</a></div>';
     $str_input .= '<iframe name="attachIframe" id="attachIframe" class="borderAll" style="width: 100%; height: 70px;" src="'.MODULES_WEB_ROOT_DIR.'bibliography/iframe_attach.php?biblioID='.$rec_d['biblio_id'].'"></iframe>';
     $form->addAnything(__('File Attachment'), $str_input);
     // biblio hide from opac
@@ -465,10 +465,6 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     }
     // print out the form object
     echo $form->printOut();
-    // block iframes on edit mode
-    if ($form->edit_mode) {
-        echo '<script type="text/javascript">registerBlockedIframes([\'itemIframe\', \'authorIframe\', \'topicIframe\', \'attachIframe\']);</script>';
-    }
 } else {
     require SIMBIO_BASE_DIR.'simbio_UTILS/simbio_tokenizecql.inc.php';
     require LIB_DIR.'biblio_list.inc.php';

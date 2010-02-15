@@ -40,10 +40,6 @@ if (isset($_GET['biblioID']) AND !empty($_GET['biblioID'])) {
 
 // start the output buffer
 ob_start();
-// iframe blocker
-if (isset($_GET['block'])) {
-    echo '<div id="blocker" style="position: fixed; width: 100%; height: 100%; background-color: #CCCCCC; opacity: 0.3;">&nbsp;</div>';
-}
 ?>
 <script type="text/javascript">
 function confirmProcess(int_biblio_id, int_item_id)

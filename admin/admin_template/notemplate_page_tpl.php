@@ -18,5 +18,15 @@ body { background: #FFFFFF; }
 <div id="pageContent">
 <?php echo $content; ?>
 </div>
+<!-- block if we inside iframe -->
+<script type="text/javascript">
+// if we are inside iframe
+if (self.parent && self.parent.$$('.editFormLink').length > 0) {
+  var enabler = self.parent.$$('.editFormLink');
+  $(document.body).insert('<div id="blocker" style="position: fixed; width: 100%; height: 100%; top: 0; left: 0; background: #ccc; opacity: 0.3">&nbsp;</div>');
+  enabler.invoke('observe', 'click', function(evt) { evt.stop(); self.parent.$$('form').invoke('enable'); self.$$('#blocker').invoke('remove'); self.parent.$$('.makeHidden').invoke('removeClassName', 'makeHidden'); });
+}
+</script>
+<!-- block if we inside iframe -->
 </body>
 </html>

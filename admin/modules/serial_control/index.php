@@ -30,7 +30,7 @@ if (!defined('SENAYAN_BASE_DIR')) {
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php';
-require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging_ajax.inc.php';
+require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/datagrid/simbio_dbgrid.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/simbio_dbop.inc.php';
 require SIMBIO_BASE_DIR.'simbio_FILE/simbio_file_upload.inc.php';
@@ -49,10 +49,10 @@ if (!$can_read) {
 <div class="menuBoxInner serialIcon">
     <?php echo strtoupper(__('Serial Control')); ?>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
+    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>serial_control/index.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" id="keywords" size="30" />
     <select name="field"><option value="0"><?php echo __('ALL'); ?></option><option value="title"><?php echo __('Title'); ?></option><option value="topic"><?php echo __('Subject(s)'); ?></option><option value="author_name"><?php echo __('Author(s)'); ?></option><option value="isbn_issn"><?php echo __('ISBN/ISSN'); ?></option></select>
-    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>serial_control/index.php?' + $('search').serialize(), 'post')" value="<?php echo __('Search'); ?>" class="button" />
+    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
 </div>
 </fieldset>

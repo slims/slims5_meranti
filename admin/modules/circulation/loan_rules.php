@@ -28,7 +28,7 @@ require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/template_parser/simbio_template_parser.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
-require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging_ajax.inc.php';
+require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/datagrid/simbio_dbgrid.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/simbio_dbop.inc.php';
 
@@ -114,12 +114,12 @@ if (isset($_POST['saveData'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner loanRulesIcon">
-    <?php echo strtoupper(__('Loan Rules')); ?> - <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/loan_rules.php?action=detail', 'get');" class="headerText2"><?php echo __('Add New Loan Rules'); ?></a>
-    &nbsp; <a href="#" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/loan_rules.php', 'get');" class="headerText2"><?php echo __('Loan Rules List'); ?></a>
+    <?php echo strtoupper(__('Loan Rules')); ?> - <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/loan_rules.php?action=detail" class="headerText2"><?php echo __('Add New Loan Rules'); ?></a>
+    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/loan_rules.php" class="headerText2"><?php echo __('Loan Rules List'); ?></a>
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="GET" style="display: inline;"><?php echo __('Search'); ?> :
+    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/loan_rules.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30">
-    <input type="button" id="doSearch" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/loan_rules.php?' + $('search').serialize(), 'post')" value="<?php echo __('Search'); ?>" class="button">
+    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button">
     </form>
 </div>
 </fieldset>
