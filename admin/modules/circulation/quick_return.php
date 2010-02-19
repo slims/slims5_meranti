@@ -46,7 +46,7 @@ if (!$sysconf['quick_return']) {
 <div class="menuBoxInner quickReturnIcon">
     <?php echo strtoupper(__('Quick Return')); ?> - <?php echo __('Insert an item ID to return collection with keyboard or barcode reader'); ?>
     <hr />
-    <form action="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/ajax_action.php" target="circAction" method="post" style="display: inline;">
+    <form class="notAJAX" action="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/ajax_action.php" target="circAction" method="post" style="display: inline;">
     <?php echo __('Item ID'); ?> :
     <input type="text" name="quickReturnID" id="quickReturnID" size="30" />
     <input type="submit" value="<?php echo __('Return'); ?>" class="button" />

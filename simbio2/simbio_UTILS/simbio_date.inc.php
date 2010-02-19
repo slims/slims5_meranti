@@ -21,6 +21,15 @@
  *
  */
 
+/* Emulate PHP 5.2 function for date parse in PHP < 5.2 */
+if (!function_exists('date_parse')) {
+    function date_parse($str_date) {
+        $_time = strtotime($str_date);
+        $_date = getdate($_time);
+        return array('month' => $_date['mon'], 'day' => $_date['mday'], 'year' => $_date['year']);
+    }
+}
+
 class simbio_date
 {
     /* ALL METHODS DATE ARGUMENT(s) IS ASSUMED USING YYYY-MM-DD format */

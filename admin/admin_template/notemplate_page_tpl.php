@@ -18,6 +18,7 @@ body { background: #FFFFFF; }
 <div id="pageContent">
 <?php echo $content; ?>
 </div>
+<?php if (isset($_GET['block'])) { ?>
 <!-- block if we inside iframe -->
 <script type="text/javascript">
 // if we are inside iframe
@@ -28,5 +29,6 @@ if (self.parent && self.parent.$$('.editFormLink').length > 0) {
 }
 </script>
 <!-- block if we inside iframe -->
+<?php } ?>
 </body>
 </html>
