@@ -93,6 +93,10 @@ if (isset($_POST['updateData'])) {
     $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($quick_return)).'\' WHERE setting_name=\'quick_return\'');
 
     // loan and due date manual change
+    $circulation_receipt = $_POST['circulation_receipt'] == '1'?true:false;
+    $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($circulation_receipt)).'\' WHERE setting_name=\'circulation_receipt\'');
+
+    // loan and due date manual change
     $allow_loan_date_change = $_POST['allow_loan_date_change'] == '1'?true:false;
     $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($allow_loan_date_change)).'\' WHERE setting_name=\'allow_loan_date_change\'');
 
@@ -115,6 +119,9 @@ if (isset($_POST['updateData'])) {
     // session timeout
     $session_timeout = intval($_POST['session_timeout']) >= 1800?$_POST['session_timeout']:1800;
     $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($session_timeout)).'\' WHERE setting_name=\'session_timeout\'');
+
+    // barcode encoding
+    $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($_POST['barcode_encoding'])).'\' WHERE setting_name=\'barcode_encoding\'');
 
     // write log
     utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'system', $_SESSION['realname'].' change application global configuration');
@@ -193,6 +200,12 @@ $options[] = array('0', __('Disable'));
 $options[] = array('1', __('Enable'));
 $form->addSelectList('quick_return', __('Quick Return'), $options, $sysconf['quick_return']?'1':'0');
 
+// circulation receipt
+$options = null;
+$options[] = array('0', __('Don\'t Print'));
+$options[] = array('1', __('Print'));
+$form->addSelectList('circulation_receipt', __('Print Circulation Receipt'), $options, $sysconf['circulation_receipt']?'1':'0');
+
 // enable manual changes of loan and due date in circulation transaction
 $options = null;
 $options[] = array('0', __('Disable'));
@@ -225,6 +238,9 @@ $form->addSelectList('allow_file_download', __('Allow OPAC File Download'), $opt
 
 // session timeout
 $form->addTextField('text', 'session_timeout', __('Session Login Timeout'), $sysconf['session_timeout'], 'style="width: 10%;"');
+
+// barcode encoding
+$form->addSelectList('barcode_encoding', __('Barcode Encoding'), $barcodes_encoding, $sysconf['barcode_encoding'] );
 
 // print out the object
 echo $form->printOut();

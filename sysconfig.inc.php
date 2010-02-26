@@ -203,23 +203,20 @@ $sysconf['backup_dir'] = FILES_UPLOAD_DIR.'backup'.DIRECTORY_SEPARATOR;
 $sysconf['allow_file_download'] = false;
 
 /* BARCODE config */
-// encoding
-/*
-EAN     8 or 13 EAN-Code
-UPC     12-digit EAN
-ISBN    isbn numbers (still EAN-13)
-39      code 39
-128     code 128
-128C    code 128 (compact form for digits)
-128B    code 128, full printable ascii
-I25     interleaved 2 of 5
-128RAW  Raw code 128
-CBR     Codabars
-MSI     MSI
-PLS     Plesseys
-93      code 93
-*/
-$sysconf['barcode_encoding'] = '128B';
+// encoding selection
+$barcodes_encoding['EAN'] = array('UPC', '12-digit EAN');
+$barcodes_encoding['ISBN'] = array('ISBN', 'isbn numbers (still EAN-13)');
+$barcodes_encoding['39'] = array('39', 'code 39');
+$barcodes_encoding['128'] = array('128', 'code 128');
+$barcodes_encoding['128C'] = array('128C', 'code 128 (compact form for digits)');
+$barcodes_encoding['128B'] = array('128B', 'code 128, full printable ascii');
+$barcodes_encoding['I25'] = array('I25', 'interleaved 2 of 5');
+$barcodes_encoding['128RAW'] = array('128RAW', 'Raw code 128');
+$barcodes_encoding['CBR'] = array('CBR', 'Codabars');
+$barcodes_encoding['MSI'] = array('MSI', 'MSI');
+$barcodes_encoding['PLS'] = array('PLS', 'Plesseys');
+$barcodes_encoding['93'] = array('93', 'code 93');
+$sysconf['barcode_encoding'] = $barcodes_encoding['128B'];
 
 /* QUICK RETURN */
 $sysconf['quick_return'] = true;
@@ -229,6 +226,9 @@ $sysconf['loan_limit_override'] = false;
 
 /* LOAN DATE CHANGE IN CIRCULATION */
 $sysconf['allow_loan_date_change'] = false;
+
+/* CIRCULATION RECEIPT */
+$sysconf['circulation_receipt'] = true;
 
 /* FILE UPLOADS */
 $sysconf['max_upload'] = intval(ini_get('upload_max_filesize'))*1024;

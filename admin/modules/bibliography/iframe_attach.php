@@ -45,10 +45,8 @@ function confirmProcess(int_biblio_id, int_file_id, str_file_name)
     var confirmBox = confirm('Are you sure to remove the file attachment data?');
     if (confirmBox) {
         // set hidden element value
-        var confirmBox2 = confirm('Do you also want to remove ' + str_file_name + ' file from repository?');
-        if (confirmBox2) {
-            document.hiddenActionForm.alsoDeleteFile.value = '1';
-        }
+        var confirmBox2 = confirm('Do you also want to remove ' + str_file_name.sub('\'', '\\\'') + ' file from repository?');
+        if (confirmBox2) { document.hiddenActionForm.alsoDeleteFile.value = '1'; }
         document.hiddenActionForm.bid.value = int_biblio_id;
         document.hiddenActionForm.remove.value = int_file_id;
         // submit form
