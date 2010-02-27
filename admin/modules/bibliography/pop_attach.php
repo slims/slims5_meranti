@@ -182,7 +182,7 @@ if ($file_attach_d['biblio_id'] AND $file_attach_d['file_id']) {
 }
 
 // file title
-$form->addTextField('text', 'fileTitle', __('Title'), $file_attach_d['file_title'], 'style="width: 100%; overflow: auto;"');
+$form->addTextField('text', 'fileTitle', __('Title').'*', $file_attach_d['file_title'], 'style="width: 100%; overflow: auto;"');
 // file attachment
 if ($file_attach_d['file_name']) {
     $form->addAnything('Attachment', $file_attach_d['file_dir'].'/'.$file_attach_d['file_name']);
