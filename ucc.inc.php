@@ -21,6 +21,8 @@
  *
  */
 
+$ucs['addr'] = 'http://localhost/senayan/';
+
 $node['id'] = 'd13205a03e019e5926b910046b676c6c04f20363';
 $node['password'] = 's0beautifulday';
 $node['ip'] = '127.0.0.1';
