@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com)
+ * Copyright (C) 2009  Arie Nugraha (dicarve@yahoo.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -51,8 +51,11 @@ if (isset($_POST['finish'])) {
         // send message
         echo '<script type="text/javascript">';
         echo 'alert(\''.__('Transaction finished').'\');';
-        // open receipt windows
-        echo 'parent.openWin(\''.MODULES_WEB_ROOT_DIR.'circulation/pop_loan_receipt.php\', \'popReceipt\', 350, 500, true);';
+        // print receipt only if enabled and $_SESSION['receipt_record'] not empty
+        if ($sysconf['circulation_receipt'] && $_SESSION['receipt_record']) {
+            // open receipt windows
+            echo 'parent.openWin(\''.MODULES_WEB_ROOT_DIR.'circulation/pop_loan_receipt.php\', \'popReceipt\', 350, 500, true);';
+        }
         echo 'parent.setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'circulation/index.php\', \'post\', \'finishID='.$memberID.'\');';
         echo '</script>';
     }

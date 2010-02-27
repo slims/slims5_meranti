@@ -191,6 +191,11 @@ class simbio_date
             }
             if ($d) {
                 $_str_date_next = self::getNextDate(1, $str_date);
+                // check dayname
+                $dayname = date('D', strtotime($_str_date_next));
+                if (in_array($dayname, $array_holiday_dayname)) {
+                    // return self::getNextDateNotHoliday($_str_date_next, $array_holiday_dayname, $array_holiday_date);
+                }
                 return self::getNextDateNotHoliday($_str_date_next, $array_holiday_dayname, $array_holiday_date);
             } else {
                 // check dayname
