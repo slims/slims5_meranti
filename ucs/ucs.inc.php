@@ -1,7 +1,7 @@
 <?php 
 
 /**
- * SLiMS Union Catalog client configuration
+ * SLiMS Union Catalog server configuration
  *
  * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com), Hendro Wicaksono (hendrowicaksono@yahoo.com), Wardiyono (wynerst@gmail.com)
  *
@@ -21,11 +21,8 @@
  *
  */
 
-$ucs['addr'] = 'http://localhost/s3st13/ucs/';
-
 $node['id'] = 'd13205a03e019e5926b910046b676c6c04f20363';
 $node['password'] = 's0beautifulday';
-$node['name'] = 'SLiMS Library Collection';
-$node['url'] = 'http://localhost/s3st13/';
+$node['ip'] = '';
 
 ?>
