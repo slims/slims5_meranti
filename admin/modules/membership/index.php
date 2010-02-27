@@ -309,13 +309,13 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $form->addDateField('birthDate', __('Birth Date'), $rec_d['birth_date']);
     if ($form->edit_mode) {
         // member since
-        $form->addAnything(__('Member Since'), $rec_d['member_since_date']);
+        $form->addAnything(__('Member Since').'*', $rec_d['member_since_date']);
     }
     // member register date
-    $form->addDateField('regDate', __('Register Date'), $rec_d['register_date']);
+    $form->addDateField('regDate', __('Register Date').'*', $rec_d['register_date']);
     // member expire date
     if ($form->edit_mode) {
-        $form->addDateField('expDate', __('Expiry Date'), $rec_d['expire_date']);
+        $form->addDateField('expDate', __('Expiry Date').'*', $rec_d['expire_date']);
     } else {
         $chbox_array[] = array('1', __('Auto Set'));
         $str_input = '<div>'.simbio_form_element::checkBox('extend', $chbox_array, '1').'</div>';

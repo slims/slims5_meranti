@@ -21,15 +21,6 @@
  *
  */
 
-/* Emulate PHP 5.2 function for date parse in PHP < 5.2 */
-if (!function_exists('date_parse')) {
-    function date_parse($str_date) {
-        $_time = strtotime($str_date);
-        $_date = getdate($_time);
-        return array('month' => $_date['mon'], 'day' => $_date['mday'], 'year' => $_date['year']);
-    }
-}
-
 class simbio_date
 {
     /* ALL METHODS DATE ARGUMENT(s) IS ASSUMED USING YYYY-MM-DD format */
@@ -168,52 +159,49 @@ class simbio_date
      * @param   string  $str_date
      * @param   array   $array_holiday_dayname
      * @param   array   $array_holiday_date
+     * @param   boolean   $dh
+     * @param   boolean   $nh
      * @return  string
      */
-    public static function getNextDateNotHoliday($str_date, $array_holiday_dayname = array(), $array_holiday_date = array())
+    public static function getNextDateNotHoliday($str_date, $array_holiday_dayname = array(), $array_holiday_date = array(), $dh = false, $nh = false)
     {
-        // if array dayname and date is empty
+
+    // if array dayname and date is empty
         if (!$array_holiday_dayname AND !$array_holiday_date) {
             return $str_date;
         }
-        // parse date
-        $_parsed_date = @date_parse($str_date);
-        // get dayname of $str_date
-        $dayname = date('D', mktime(0, 0, 0, $_parsed_date['month'], $_parsed_date['day'], $_parsed_date['year']));
+
         // check date array first
+        $d = false;
         if ($array_holiday_date) {
-            $d = false;
             foreach ($array_holiday_date as $_idx=>$_each_date) {
                 if ($str_date == $_each_date) {
                     $d = true;
-                    unset($array_holiday_date[$_idx]);
                 }
             }
             if ($d) {
                 $_str_date_next = self::getNextDate(1, $str_date);
-                // check dayname
-                $dayname = date('D', strtotime($_str_date_next));
-                if (in_array($dayname, $array_holiday_dayname)) {
-                    // return self::getNextDateNotHoliday($_str_date_next, $array_holiday_dayname, $array_holiday_date);
-                }
-                return self::getNextDateNotHoliday($_str_date_next, $array_holiday_dayname, $array_holiday_date);
             } else {
-                // check dayname
-                if (!in_array($dayname, $array_holiday_dayname)) {
-                    return $str_date;
-                } else {
-                    $_str_date_next = self::getNextDate(1, $str_date);
-                    return self::getNextDateNotHoliday($_str_date_next, $array_holiday_dayname, $array_holiday_date);
-                }
+                $_str_date_next = $str_date;
             }
+        }
+        $n = false;
+        // parse date
+        $_parsed_date = @date_parse($_str_date_next);
+        // get dayname of $str_date
+        $dayname = date('D', mktime(0, 0, 0, $_parsed_date['month'], $_parsed_date['day'], $_parsed_date['year']));
+        // check dayname
+        if (!in_array(strtolower($dayname), $array_holiday_dayname)) {
+            return $_str_date_next;
         } else {
-            // check dayname
-            if (!in_array($dayname, $array_holiday_dayname)) {
-                return $str_date;
-            } else {
-                $_str_date_next = self::getNextDate(1, $str_date);
-                return self::getNextDateNotHoliday($_str_date_next, $array_holiday_dayname);
-            }
+            $_str_date_next = self::getNextDate(1, $_str_date_next);
+        }
+
+        //looping break
+        if ($d and $n) {
+            return $_str_date_next;
+        } else {
+            return self::getNextDateNotHoliday($_str_date_next, $array_holiday_dayname, $array_holiday_date, $d, $n);
         }
     }
 }
