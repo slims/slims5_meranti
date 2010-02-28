@@ -163,7 +163,7 @@ if (!$changecurrent) {
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>system/app_user.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
     <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
-</form>
+    </form>
 </div>
 </fieldset>
 <?php

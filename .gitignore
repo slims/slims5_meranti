@@ -1,4 +1,5 @@
 lib/phpthumb/cache/phpThumb_cache*
+images/barcodes/*
 .DS_Store
 ._.*
 ._*

@@ -49,11 +49,11 @@ a {
     padding: 11px;
     font-size: 11px;
     font-weight: bold;
-    color: #FFF;
+    color: #555;
     text-decoration: none;
 }
 
-#menuList a.menu:hover,a.menuCurrent {
+#menuList a.menuCurrent {
     color: #000;
     background: url(media/tri.png) no-repeat bottom center;
 }

@@ -64,6 +64,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         $data['inst_name'] = trim($dbs->escape_string(strip_tags($_POST['instName'])));
         $data['gender'] = trim($dbs->escape_string(strip_tags($_POST['gender'])));
         $data['birth_date'] = trim($dbs->escape_string(strip_tags($_POST['birthDate'])));
+        $data['member_since_date'] = trim($dbs->escape_string(strip_tags($_POST['sinceDate'])));
         $data['register_date'] = trim($dbs->escape_string(strip_tags($_POST['regDate'])));
         $data['expire_date'] = trim($dbs->escape_string(strip_tags($_POST['expDate'])));
         // extending membership
@@ -307,12 +308,10 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $form->addTextField('text', 'memberName', __('Member Name').'*', $rec_d['member_name'], 'style="width: 100%;"');
     // member birth date
     $form->addDateField('birthDate', __('Birth Date'), $rec_d['birth_date']);
-    if ($form->edit_mode) {
-        // member since
-        $form->addAnything(__('Member Since').'*', $rec_d['member_since_date']);
-    }
+    // member since date
+    $form->addDateField('sinceDate', __('Member Since').'*', $form->edit_mode?$rec_d['member_since_date']:date('Y-m-d'));
     // member register date
-    $form->addDateField('regDate', __('Register Date').'*', $rec_d['register_date']);
+    $form->addDateField('regDate', __('Register Date').'*', $form->edit_mode?$rec_d['register_date']:date('Y-m-d'));
     // member expire date
     if ($form->edit_mode) {
         $form->addDateField('expDate', __('Expiry Date').'*', $rec_d['expire_date']);
@@ -331,7 +330,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         while ($mtype_data = $mtype_query->fetch_row()) {
             $mtype_options[] = array($mtype_data[0], $mtype_data[1]);
         }
-    $form->addSelectList('memberTypeID', __('Membership Type'), $mtype_options, $rec_d['member_type_id']);
+    $form->addSelectList('memberTypeID', __('Membership Type').'*', $mtype_options, $rec_d['member_type_id']);
     // member gender
     $gender_chbox[0] = array('1', __('Male'));
     $gender_chbox[1] = array('0', __('Female'));
