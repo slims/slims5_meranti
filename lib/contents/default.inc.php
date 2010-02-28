@@ -27,7 +27,7 @@ require LIB_DIR.'biblio_list.inc.php';
 
 // create biblio list object
 $biblio_list = new biblio_list($dbs);
-if (!$sysconf['enable_xml_detail']) {
+if (isset($sysconf['enable_xml_detail']) && !$sysconf['enable_xml_detail']) {
     $biblio_list->xml_detail = false;
 }
 
@@ -112,7 +112,7 @@ if (isset($_GET['search']) AND !empty($_GET['search'])) {
     }
 } else {
     // show promoted titles
-    if ($sysconf['enable_promote_titles']) {
+    if (isset($sysconf['enable_promote_titles']) && $sysconf['enable_promote_titles']) {
         $biblio_list->only_promoted = true;
     }
 }
@@ -149,7 +149,7 @@ if (isset($_GET['page']) AND $_GET['page'] > 1) {
 }
 // query time
 $info .= '<div>'.__('Query took').' <b>'.$biblio_list->query_time.'</b> '.__('second(s) to complete').'</div>'; //mfc
-if (isset($biblio_list) AND $sysconf['enable_xml_result']) {
+if (isset($biblio_list) && isset($sysconf['enable_xml_result']) && $sysconf['enable_xml_result']) {
     $info .= '<div><a href="index.php?resultXML=true&'.$_SERVER['QUERY_STRING'].'" class="xmlResultLink" target="_blank" title="View Result in XML Format" style="clear: both;">XML Result</a></div>';
 }
 ?>

@@ -1,8 +1,8 @@
 <?php
 /**
- * SLiMS Union Catalog server and node information
+ * SLiMS Union Catalog polling
  *
- * Copyright (C) 2009  Hendro Wicaksono
+ * Copyright (C) 2009  Arie Nugraha (dicarve@yahoo.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,28 +20,7 @@
  *
  */
 
-// be sure that this file not accessed directly
-if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
-    die();
-}
+require 'ucsysconfig.inc.php';
+require 'ucserver.inc.php';
 
-/**
- *
- * BEGIN SERVER AND NODES CONFIGURATION
- */
-// server configuration
-$sysconf['server'] = array(
-    'id' => 'd13205a03e019e5926b910046b676c6c04f20363',
-    'name' => 'Union Catalog Server',
-    'subname' => 'SENAYAN Library Management System',
-    );
-
-// nodes configuration
-$sysconf['node'][] = array(
-    'id' => 'd13205a03e019e5926b910046b676c6c04f20363',
-    'name' => 'SLiMS Library',
-    'password' => 'c8fed00eb2e87f1cee8e90ebbe870c190ac3848c',
-    'base_url' => 'http://localhost/ucs/',
-    'ip' => ''
-    );
 ?>
