@@ -7,7 +7,7 @@ Arie Nugraha (dicarve@yahoo.com)
 Wardiyono (wynerst@gmail.com)
 Purwoko (purgeologi@yahoo.com)
 Sulfan Zayd (sulfan@gmail.com)
-Arif Syamsudin (buitenzorg812@gmail.com)
+Arif Syamsudin (buitenzorg812@lc.vlsm.org)
 Rasyid Ridho (ridhoedogawa@yahoo.com)
 Tobias Zeumer (tzeumer@verweisungsform.de)
 Jhon Urrego Felipe Mejia (ingenierofelipeurrego@gmail.com)
@@ -18,8 +18,14 @@ SENAYAN 3 Stable 13
 ========================================================================
 - Fixed : Loan by classification reporting for non-decimal class
 - Fixed : OPAC search error when searching with GMD or Collection type containing more than one word
+- Fixed : Non-decimal class total titles and items in Custom Recapitulation reporting
+- Fixed : Holiday calculation bugs in Circulation (critical)
 - Added : Espanol/Spanish translation (thanks a lot to Jhon Urrego Felipe Mejia)
+- Added : Arabic translatation (thanks to Rasyid Ridho)
 - Added : SWF Document Viewer
+- Added : Circulation transaction receipt when transaction is finished
+- Added : Bibliographic item data export and import features
+- Added : Experimental UCS (Union Catalogue Server)
 
 
 SENAYAN 3 Stable 12
