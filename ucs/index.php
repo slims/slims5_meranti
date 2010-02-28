@@ -36,8 +36,23 @@ $metadata = '';
 
 // start the output buffering for main content
 ob_start();
-$metadata = '<meta name="robots" content="noindex, follow">';
-include LIB_DIR.'contents/default.inc.php';
+if (isset($_GET['p'])) {
+    $path = trim($_GET['p']);
+    // some extra checking
+    $path = preg_replace('@^(http|https|ftp|sftp|file|smb):@i', '', $path);
+    // check if the file exists
+    if ($path == 'show_detail') {
+        include LIB_DIR.'contents/show_detail.inc.php';
+    } else if (file_exists(INC_DIR.'contents/'.$path.'.inc.php')) {
+        include INC_DIR.'contents/'.$path.'.inc.php';
+        if ($path != "show_detail") {
+            $metadata = '<meta name="robots" content="noindex, follow">';
+        }
+    }
+} else {
+    $metadata = '<meta name="robots" content="noindex, follow">';
+    include LIB_DIR.'contents/default.inc.php';
+}
 // main content grab
 $main_content = ob_get_clean();
 

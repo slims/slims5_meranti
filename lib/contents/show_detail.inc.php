@@ -27,7 +27,7 @@ if (isset($_GET['inXML']) AND !empty($_GET['inXML'])) {
     // filter the ID
     $detail_id = intval($_GET['id']);
     // include detail library and template
-    include 'lib/detail.inc.php';
+    include LIB_DIR.'detail.inc.php';
     // create detail object
     $detail = new detail($dbs, $detail_id, 'mods');
     $output = $detail->showDetail();
@@ -42,7 +42,7 @@ if (isset($_GET['inXML']) AND !empty($_GET['inXML'])) {
     // filter the ID
     $detail_id = intval($_GET['id']);
     // include detail library and template
-    include 'lib/detail.inc.php';
+    include LIB_DIR.'detail.inc.php';
     include $sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/detail_template.php';
     // create detail object
     $detail = new detail($dbs, $detail_id);
@@ -52,7 +52,7 @@ if (isset($_GET['inXML']) AND !empty($_GET['inXML'])) {
     if (!defined('LIGHTWEIGHT_MODE')) {
         $info .= '<a href="javascript: history.back();">'.__('Back To Previous').'</a> &nbsp;';
     }
-    if ($sysconf['enable_xml_detail'] && !defined('LIGHTWEIGHT_MODE')) {
+    if (isset($sysconf['enable_xml_detail']) && $sysconf['enable_xml_detail'] && !defined('LIGHTWEIGHT_MODE')) {
         $info .= '<a href="index.php?p=show_detail&inXML=true&id='.$detail_id.'" class="xmlDetailLink" target="_blank">XML Detail</a>';
     }
     if (!defined('LIGHTWEIGHT_MODE')) {

@@ -259,7 +259,7 @@ class biblio_list
         $_sql_str = 'SELECT SQL_CALC_FOUND_ROWS biblio.biblio_id, biblio.title, biblio.image, biblio.labels';
 
         // checking custom frontpage fields file
-        $custom_frontpage_record_file = SENAYAN_BASE_DIR.$sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/custom_frontpage_record.inc.php';
+        $custom_frontpage_record_file = (defined('SENAYAN_BASE_DIR')?SENAYAN_BASE_DIR:'').$sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/custom_frontpage_record.inc.php';
         if (file_exists($custom_frontpage_record_file)) {
             include $custom_frontpage_record_file;
             $this->enable_custom_frontpage = true;

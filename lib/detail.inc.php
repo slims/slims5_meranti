@@ -64,8 +64,9 @@ class detail extends content_list
         // query the data to database
         $_det_q = $obj_db->query($_sql);
         if ($obj_db->error) {
-            $this->error = true;
+            $this->error = $obj_db->error;
         } else {
+            $this->error = false;
             $this->record_detail = $_det_q->fetch_assoc();
             // free the memory
             $_det_q->free_result();
@@ -81,7 +82,7 @@ class detail extends content_list
     public function showDetail()
     {
         if ($this->error) {
-            return '<div style="padding: 5px; margin: 3px; border: 1px dotted #FF0000; color: #FF0000;">Error Fetching data for record detail</div>';
+            return '<div style="padding: 5px; margin: 3px; border: 1px dotted #FF0000; color: #FF0000;">Error Fetching data for record detail. Server return error message: '.$this->error.'</div>';
         } else {
             if ($this->output_format == 'html' AND !empty($this->list_template)) {
                 return parent::parseListTemplate($this->htmlOutput());

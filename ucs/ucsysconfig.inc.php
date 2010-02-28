@@ -43,7 +43,7 @@ if (get_magic_quotes_gpc()) {
     $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 }
 // turn off all error messages for security reason
-@ini_set('display_errors', true);
+@ini_set('display_errors', false);
 
 // ucs version
 define('UCS_VERSION', 'ucs-1.0');
@@ -104,6 +104,11 @@ require 'dbc.inc.php';
 
 // themes
 $sysconf['themes'] = 'default';
+
+// compability with slims
+$sysconf['template']['dir'] = 'themes';
+$sysconf['template']['theme'] = $sysconf['themes'];
+
 // check for user language selection if we are not in admin areas
 if (stripos($_SERVER['PHP_SELF'], '/admin') === false) {
     if (isset($_GET['select_lang'])) {
@@ -121,6 +126,8 @@ if (stripos($_SERVER['PHP_SELF'], '/admin') === false) {
         $sysconf['default_lang'] = 'id_ID';
     }
 }
+
+$sysconf['baseurl'] = UCS_WEB_ROOT_DIR;
 
 // catalog search result
 $sysconf['opac_result_num'] = 20;
