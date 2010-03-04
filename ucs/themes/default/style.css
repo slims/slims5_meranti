@@ -7,7 +7,7 @@ body {
 * {
   font-family: Helvetica, Arial;
   font-size: 11px;
-  color: #666;
+  color: #000;
 }
 
 #header {
@@ -21,7 +21,7 @@ body {
 }
 
 #app-title a {
-  color: #666;
+  color: #000;
   font-size: 21px;
   text-decoration: none;
 }
@@ -102,9 +102,13 @@ body {
 #loginForm {
   padding: 10px;
   padding-top: 120px;
-  background: #ffd700 url(media/login-bg.png) top left no-repeat;
+  background: #00736b url(media/login-bg.png) top left no-repeat;
   width: 400px;
   margin: 0 auto;
+}
+
+#loginForm .heading1 {
+  color: #fff;
 }
 
 /*

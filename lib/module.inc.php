@@ -64,8 +64,8 @@ class module extends simbio
             foreach ($this->module_list as $_module) {
                 $_formated_module_name = ucwords(str_replace('_', ' ', $_module['name']));
                 $_mod_dir = $_module['path'];
-                if (isset($_SESSION['priv'][$_module['path']]['r']) AND $_SESSION['priv'][$_module['path']]['r'] AND file_exists($this->modules_dir.$_mod_dir)) {
-                    $_menu .= '<li><a class="menu'.( (isset($_GET['mod']) AND $_GET['mod']==$_module['path'])?' menuCurrent':'' ).'" title="'.$_module['desc'].'" href="index.php?mod='.$_mod_dir.'">'.__($_formated_module_name).'</a></li>';
+                if (isset($_SESSION['priv'][$_module['path']]['r']) && $_SESSION['priv'][$_module['path']]['r'] && file_exists($this->modules_dir.$_mod_dir)) {
+                    $_menu .= '<li><a class="menu'.( (isset($_GET['mod']) && $_GET['mod']==$_module['path'])?' menuCurrent':'' ).'" title="'.$_module['desc'].'" href="index.php?mod='.$_mod_dir.'">'.__($_formated_module_name).'</a></li>';
                 }
             }
         }

@@ -33,7 +33,7 @@ if ($unauthorized) {
     $msg .= 'top.location.href = \''.SENAYAN_WEB_ROOT_DIR.'index.php?p=login\';'."\n";
     $msg .= '</script>'."\n";
     // unset cookie admin flag
-    setcookie('admin_logged_in', true, time()-86400, SENAYAN_WEB_ROOT_DIR);
+    setcookie('admin_logged_in', false, time()-86400, SENAYAN_WEB_ROOT_DIR);
     simbio_security::destroySessionCookie($msg, SENAYAN_SESSION_COOKIES_NAME, SENAYAN_WEB_ROOT_DIR.'admin', true);
 }
 

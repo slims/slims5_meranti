@@ -21,7 +21,8 @@
  */
 
 require 'ucsysconfig.inc.php';
-require 'ucserver.inc.php';
+// common files
+require INC_DIR.'common.inc.php';
 
 // page title
 $page_title = $sysconf['server']['name'].' | '.$sysconf['server']['subname'];
@@ -47,6 +48,20 @@ if (isset($_GET['p'])) {
         include INC_DIR.'contents/'.$path.'.inc.php';
         if ($path != "show_detail") {
             $metadata = '<meta name="robots" content="noindex, follow">';
+        }
+    } else {
+        // get content data from database
+        $metadata = '<meta name="robots" content="noindex, follow">';
+        include LIB_DIR.'content.inc.php';
+        $content = new content();
+        $content_data = $content->get($dbs, $path);
+        if ($content_data) {
+            $page_title = $content_data['Title'];
+            $info = '<div class="contentTitle">'.$content_data['Title'].'</div>';
+            echo '<div class="contentDesc">'.$content_data['Content'].'</div>';
+            unset($content_data);
+        } else {
+            header ("location: index.php");
         }
     }
 } else {

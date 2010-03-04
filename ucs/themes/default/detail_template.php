@@ -73,14 +73,6 @@ ob_start(); /* <- DONT REMOVE THIS COMMAND */
 <td class="tblContent" style="width: 80%;" valign="top">{image}</td>
 </tr>
 <tr>
-<td class="tblHead" style="width: 20%;" valign="top"><?php print __('File Attachment'); ?></td>
-<td class="tblContent" style="width: 80%;" valign="top">{file_att}</td>
-</tr>
-<tr>
-<td class="tblHead" style="width: 20%;" valign="top"><?php print __('Availability'); ?></td>
-<td class="tblContent" style="width: 80%;" valign="top">{availability}</td>
-</tr>
-<tr>
 <td class="tblHead" style="width: 20%;" valign="top">&nbsp;</td>
 <td class="tblContent" style="width: 80%;" valign="top"><a href="javascript: history.back();"><?php print __('Back To Previous'); ?></a></td>
 </tr>

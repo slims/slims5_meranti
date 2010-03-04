@@ -22,9 +22,9 @@
     <div class="grid_12 tabs" id="main-menu">
         <ul id="primary-links">
             <li><a class="menu" href="index.php"><span><?php echo __('Home'); ?></a></span></li>
-            <li><a class="menu" href="index.php?p=libinfo"><span><?php echo __('Library Information'); ?></span></a></li>
-            <li><a class="menu" href="index.php?p=help"><span><?php echo __('Help on Search'); ?></span></a></li>
-            <li><a class="menu" href="http://senayan.diknas.go.id"><span>SENAYAN</span></a></li>
+            <li><a class="menu" href="index.php?p=libinfo"><span><?php echo __('Union Catalog Information'); ?></span></a></li>
+            <li><a class="menu" href="index.php?p=help"><span><?php echo __('Help'); ?></span></a></li>
+            <li><a class="menu" href="http://senayan.diknas.go.id"><span>SLiMS</span></a></li>
         </ul>
     </div>
     <div class="clear">&nbsp;</div>
@@ -42,14 +42,6 @@
             </select>
             </form>
         <!-- language selection end -->
-
-        <!-- simple search -->
-            <div class="block-header"><?php echo __('Simple Search'); ?></div>
-            <form name="simpleSearch" action="index.php" method="get">
-            <input type="text" name="keywords" />
-            <input type="submit" name="search" value="<?php echo __('Search'); ?>" class="button marginTop" />
-            </form>
-        <!-- simple search end -->
 
         <!-- advanced search -->
             <div class="block-header"><?php echo __('Advanced Search'); ?></div>
@@ -102,6 +94,17 @@
     <div class="grid_9" id="main-content">
     <?php echo $header_info; ?>
     <div id="info-box"><?php echo $info; ?></div>
+    <!-- simple search -->
+    <div class="spacer">&nbsp;</div>
+    <fieldset>
+        <div class="block-header"><?php echo __('Quick Search'); ?></div>
+        <form name="simpleSearch" action="index.php" method="get">
+        <input type="text" name="keywords" />
+        <input type="submit" name="search" value="<?php echo __('Search'); ?>" class="button marginTop" />
+        </form>
+    </fieldset>
+    <div class="spacer">&nbsp;</div>
+    <!-- simple search end -->
     <?php echo $main_content; ?>
     </div>
     <!--application main content end -->

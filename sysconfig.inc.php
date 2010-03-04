@@ -2,7 +2,7 @@
 /**
  * SENAYAN application global file configuration
  *
- * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com), Hendro Wicaksono (hendrowicaksono@yahoo.com), Wardiyono (wynerst@gmail.com)
+ * Copyright (C) 2010  Arie Nugraha (dicarve@yahoo.com), Hendro Wicaksono (hendrowicaksono@yahoo.com), Wardiyono (wynerst@gmail.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,29 +57,29 @@ define('SENAYAN_SESSION_COOKIES_NAME', 'SenayanAdmin');
 define('SENAYAN_MEMBER_SESSION_COOKIES_NAME', 'SenayanMember');
 
 // senayan base dir
-define('SENAYAN_BASE_DIR', realpath(dirname(__FILE__)).DIRECTORY_SEPARATOR);
+define('UCS_BASE_DIR', realpath(dirname(__FILE__)).DIRECTORY_SEPARATOR);
 
 // absolute path for simbio platform
-define('SIMBIO_BASE_DIR', SENAYAN_BASE_DIR.'simbio2'.DIRECTORY_SEPARATOR);
+define('SIMBIO_BASE_DIR', UCS_BASE_DIR.'simbio2'.DIRECTORY_SEPARATOR);
 
 // senayan library base dir
-define('LIB_DIR', SENAYAN_BASE_DIR.'lib'.DIRECTORY_SEPARATOR);
+define('LIB_DIR', UCS_BASE_DIR.'lib'.DIRECTORY_SEPARATOR);
 
 // document, member and barcode images base dir
 define('IMAGES_DIR', 'images');
-define('IMAGES_BASE_DIR', SENAYAN_BASE_DIR.IMAGES_DIR.DIRECTORY_SEPARATOR);
+define('IMAGES_BASE_DIR', UCS_BASE_DIR.IMAGES_DIR.DIRECTORY_SEPARATOR);
 
 // library automation module base dir
 define('MODULES_DIR', 'modules');
-define('MODULES_BASE_DIR', SENAYAN_BASE_DIR.'admin'.DIRECTORY_SEPARATOR.MODULES_DIR.DIRECTORY_SEPARATOR);
+define('MODULES_BASE_DIR', UCS_BASE_DIR.'admin'.DIRECTORY_SEPARATOR.MODULES_DIR.DIRECTORY_SEPARATOR);
 
 // files upload dir
 define('FILES_DIR', 'files');
-define('FILES_UPLOAD_DIR', SENAYAN_BASE_DIR.FILES_DIR.DIRECTORY_SEPARATOR);
+define('FILES_UPLOAD_DIR', UCS_BASE_DIR.FILES_DIR.DIRECTORY_SEPARATOR);
 
 // repository dir
 define('REPO_DIR', 'repository');
-define('REPO_BASE_DIR', SENAYAN_BASE_DIR.REPO_DIR.DIRECTORY_SEPARATOR);
+define('REPO_BASE_DIR', UCS_BASE_DIR.REPO_DIR.DIRECTORY_SEPARATOR);
 
 // file attachment dir
 define('ATT_DIR', 'att');

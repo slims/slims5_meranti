@@ -78,7 +78,8 @@ class utility
     public static function havePrivilege($str_module_name, $str_privilege_type = 'r')
     {
         // checking checksum
-        if ($_SESSION['checksum'] != md5($_SERVER['SERVER_ADDR'].SENAYAN_BASE_DIR.'admin')) {
+        $_checksum = defined('UCS_BASE_DIR')?md5($_SERVER['SERVER_ADDR'].UCS_BASE_DIR.'admin'):md5($_SERVER['SERVER_ADDR'].SENAYAN_BASE_DIR.'admin');
+        if ($_SESSION['checksum'] != $_checksum) {
             return false;
         }
         // check privilege type

@@ -111,22 +111,24 @@ class admin_logon
             $_SESSION['biblioTopic'] = array();
             $_SESSION['biblioAttach'] = array();
 
-            // load holiday data from database
-            $_holiday_dayname_q = $obj_db->query('SELECT holiday_dayname FROM holiday WHERE holiday_date IS NULL');
-            $_SESSION['holiday_dayname'] = array();
-            while ($_holiday_dayname_d = $_holiday_dayname_q->fetch_row()) {
-                $_SESSION['holiday_dayname'][] = $_holiday_dayname_d[0];
-            }
+            if (!defined('UCS_VERSION')) {
+                // load holiday data from database
+                $_holiday_dayname_q = $obj_db->query('SELECT holiday_dayname FROM holiday WHERE holiday_date IS NULL');
+                $_SESSION['holiday_dayname'] = array();
+                while ($_holiday_dayname_d = $_holiday_dayname_q->fetch_row()) {
+                    $_SESSION['holiday_dayname'][] = $_holiday_dayname_d[0];
+                }
 
-            $_holiday_date_q = $obj_db->query('SELECT holiday_date FROM holiday WHERE holiday_date IS NOT NULL
-                ORDER BY holiday_date DESC LIMIT 365');
-            $_SESSION['holiday_date'] = array();
-            while ($_holiday_date_d = $_holiday_date_q->fetch_row()) {
-                $_SESSION['holiday_date'][$_holiday_date_d[0]] = $_holiday_date_d[0];
+                $_holiday_date_q = $obj_db->query('SELECT holiday_date FROM holiday WHERE holiday_date IS NOT NULL
+                    ORDER BY holiday_date DESC LIMIT 365');
+                $_SESSION['holiday_date'] = array();
+                while ($_holiday_date_d = $_holiday_date_q->fetch_row()) {
+                    $_SESSION['holiday_date'][$_holiday_date_d[0]] = $_holiday_date_d[0];
+                }
             }
 
             // save md5sum of  current application path
-            $_SESSION['checksum'] = md5($_SERVER['SERVER_ADDR'].SENAYAN_BASE_DIR.'admin');
+            $_SESSION['checksum'] = defined('UCS_BASE_DIR')?md5($_SERVER['SERVER_ADDR'].UCS_BASE_DIR.'admin'):md5($_SERVER['SERVER_ADDR'].SENAYAN_BASE_DIR.'admin');
 
             // update the last login time
             $obj_db->query("UPDATE user SET last_login='".date("Y-m-d H:i:s")."',

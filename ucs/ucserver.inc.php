@@ -2,7 +2,7 @@
 /**
  * SLiMS Union Catalog server and node information
  *
- * Copyright (C) 2009  Hendro Wicaksono
+ * Copyright (C) 2010  Hendro Wicaksono (hendrowicaksono@yahoo.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,16 +32,37 @@ if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
 // server configuration
 $sysconf['server'] = array(
     'id' => 'd13205a03e019e5926b910046b676c6c04f20363',
-    'name' => 'Union Catalog Server',
-    'subname' => 'SENAYAN Library Management System',
+    'name' => $sysconf['library_name'],
+    'subname' => $sysconf['library_subname'],
     );
 
 // nodes configuration
-$sysconf['node'][] = array(
+$sysconf['node'][1] = array(
     'id' => 'd13205a03e019e5926b910046b676c6c04f20363',
     'name' => 'SLiMS Library',
     'password' => 'c8fed00eb2e87f1cee8e90ebbe870c190ac3848c',
-    'base_url' => 'http://localhost/ucs/',
+    'base_url' => 'http://localhost/senayan3-stable13',
+    'ip' => ''
+    );
+
+/*
+ * Add other nodes configuration below
+ */
+// second node
+// $sysconf['node'][2] = array(
+//     'id' => 'd13205a03e019e5926b910046b676c6c04f20363',
+//     'name' => 'SLiMS Library 2',
+//     'password' => 'c8fed00eb2e87f1cee8e90ebbe870c190ac3848c',
+//     'base_url' => 'http://perpustakaan.diknas.go.id',
+//     'ip' => ''
+//     );
+
+// third node
+$sysconf['node'][3] = array(
+    'id' => 'd13205a03e019e5926b910046b676c6c04f20363',
+    'name' => 'SLiMS Library 3',
+    'password' => 'c8fed00eb2e87f1cee8e90ebbe870c190ac3848c',
+    'base_url' => 'http://senayan.diknas.go.id/slims',
     'ip' => ''
     );
 ?>

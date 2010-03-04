@@ -179,6 +179,7 @@ class detail extends content_list
         $this->record_detail['file_att'] .= '<script type="text/javascript">new Ajax.Updater(\'attachListLoad\', \''.SENAYAN_WEB_ROOT_DIR.'lib/contents/attachment_list.php\', {method: \'post\', parameters: \'id='.$this->detail_id.'&ajaxsec_user='.$sysconf['ajaxsec_user'].'&ajaxsec_passwd='.$sysconf['ajaxsec_passwd'].'\'});</script>';
 
         // get location data
+        /*
         $_item_loc_q = $this->obj_db->query('SELECT loc.location_name, COUNT(i.location_id) AS item_num FROM item AS i
             LEFT JOIN mst_location AS loc ON i.location_id=loc.location_id
             WHERE i.biblio_id='.$this->detail_id.' GROUP BY i.location_id');
@@ -190,6 +191,7 @@ class detail extends content_list
                 $this->record_detail['location'] .= '<strong>'.$_item_loc_d[1].' </strong> '.__('copies at').' <strong>'.$_item_loc_d[0].'</strong><br />'; //mfc
             }
         }
+        */
 
         $this->record_detail['notes'] = nl2br(strip_tags($this->record_detail['notes']));
         return $this->record_detail;
