@@ -1,15 +1,15 @@
 /* GENERAL FONT DEFINITION */
 body {
-    font-family: FreeSans, arial, helvetica, sans;
+    font-family: Arial, helvetica;
     font-size: 11px;
     line-height: 170%;
-    color: #666666;
+    color: #000;
     margin: 0;
     padding: 0;
 }
 
 a {
-    color: #666666;
+    color: #000;
 }
 
 #main {
@@ -21,13 +21,13 @@ a {
 #header {
     width: 100%;
     height: 90px;
-    background: #FFFFFF url(media/header2.jpg) no-repeat top right
+    background: #FFF url(media/header-bg.png) no-repeat top right
 }
 
 #mainMenu {
     width: 100%;
     height: 28px;
-    background: url(media/bar_fill_menu.png) repeat-x bottom left;
+    background: url(media/bg.gif);
     font-weight: bold;
     padding-top: 7px;
 }
@@ -49,17 +49,18 @@ a {
     padding: 11px;
     font-size: 11px;
     font-weight: bold;
-    color: #FFFFFF;
+    color: #555;
     text-decoration: none;
 }
 
-#menuList a.menu:hover,a.menuCurrent {
+#menuList a.menuCurrent {
+    color: #000;
     background: url(media/tri.png) no-repeat bottom center;
 }
 
 #sidepan {
     width: 200px;
-    background: #CCCCCC;
+    background: #00e0d3 url(media/sidepan-bg.jpg) no-repeat top center;
 }
 
 #mainContent {
@@ -67,42 +68,42 @@ a {
 }
 
 #footer {
-    color: #FFFFFF;
+    color: #000;
     text-align: center;
     clear: both;
     height: 31px;
-    background: url(media/bar_fill_menu.png) repeat-x bottom left;
+    background: url(media/bg.gif);
     margin: 0;
     padding-top: 9px;
 }
 
 #footer * {
-    color: #FFFFFF;
+    color: #FFF;
 }
 
 #dataList {
     width: 100%;
     font-weight: bold;
-    border: 1px solid #999999;
-    background: #CCCCCC;
+    border: 1px solid #999;
+    background: #CCC;
     margin-bottom: 5px;
 }
 
 #dataList {
-    background: #CCCCCC;
+    background: #CCC;
     font-weight: normal;
     margin-bottom: 0;
 }
 
 #dataListPrinted {
     width: 100%;
-    background-color: #000000;
+    background-color: #000;
 }
 
 #headerImage {
     margin-top: 5px;
     float: left;
-    width: 80px;
+    width: 65px;
     height: 80px;
     background: url(media/logo.png) no-repeat top left;
     margin-left: 10px;
@@ -111,7 +112,7 @@ a {
 #libraryName {
     float: left;
     padding-top: 17px;
-    font-size: 21px;
+    font-size: 25px;
     font-weight: bold;
     margin-left: 10px;
 }
@@ -119,6 +120,7 @@ a {
 #librarySubName {
     margin-top: 7px;
     font-size: 80%;
+    color: #a1cf2f;
 }
 
 /* Classes definition */
@@ -126,85 +128,74 @@ a {
     height: 29px;
     padding-top: 11px;
     padding-left: 10px;
-    background: #CCCCCC;
-}
-
-.objectDragger, .objectDragger:hover {
-    height: 10px;
-    background: #999999 url(media/drag_button.png) no-repeat top center;
-    border: 1px solid #666666;
-    border-top-width: 0;
-}
-
-.objectDragger:hover {
-    background: #CCCCCC no-repeat top center;
-    cursor: move;
+    background: #00e0d3;
 }
 
 .subMenuHeader {
     font-weight: bold;
-    font-size: 14px;
-    color: #FFFFFF;
-    background: url(media/section_bar_fill.png) no-repeat top left;
+    font-size: 15px;
+    color: #FFF;
+    background: url(media/bg.gif);
     padding-top: 9px;
-    padding-left: 37px;
+    padding-left: 10px;
     height: 31px;
 }
 
 .heading {
     font-weight: bold;
     font-size: 14px;
-    border: 0 dotted #003380;
+    border: 0 dotted #999;
     border-bottom-width: 1px;
+    color: #ffd700;
 }
 
 /* link for the currently selected module */
 .curModuleLink {
-    background-image: url(media/bar_fill.png);
-    color: #FFFFFF;
+    background-image: url(media/bg.gif);
+    color: #FFF;
 }
 
 /* tabular data */
 .dataListHeader {
     font-weight: bold;
-    background: #FFFFFF url(media/bar_fill.png) top left repeat-x;
-    color: #FFFFFF;
+    background: #FFF url(media/bg.gif);
+    color: #000;
 }
 
 .dataListHeader a {
-    color: #FFFFFF;
+    color: #000;
 }
 
 .dataListHeader a:hover {
-    color: #FFFFFF;
+    color: #FFF;
     text-decoration: none;
 }
 
 /* printed tabular data styles */
 .alterCellPrinted, .alterCellPrinted2 {
-    color: #000000;
-    background: #CCCCCC;
+    color: #000;
+    background: #CCC;
 }
 
 .alterCellPrinted2 {
-    background: #FFFFFF;
+    background: #FFF;
 }
 
 .dataListHeaderPrinted {
-    background: #000000;
-    color: #FFFFFF;
+    background: #000;
+    color: #FFF;
 }
 
 .dataListHeaderPrinted * {
     font-weight: bold;
-    color: #FFFFFF;
+    color: #FFF;
 }
 
 .printPageInfo {
     font-size: 120%;
     padding: 5px;
-    color: #000000;
-    background-color: #999999;
+    color: #000;
+    background-color: #999;
 }
 
 /* general box element class */
@@ -214,8 +205,8 @@ a {
 
 .menuBox {
     font-weight: bold;
-    border: 1px solid #999999;
-    background: #CCCCCC;
+    border: 1px solid #ccc;
+    background: #caf26d;
     margin-bottom: 5px;
     padding: 0;
 }
@@ -287,19 +278,15 @@ iframe {
     padding-left: 20px;
     margin: 0;
     margin-top: 3px;
-    margin-left: 10px;
+    margin-left: 0;
     font-weight: bold;
     font-size: 97%;
     text-decoration: none;
-    background-image: url(media/submenu_img.png);
-    background-position: left;
-    background-repeat: no-repeat;
+    background: url(media/submenu_img.png) no-repeat left;
 }
 
 .subMenuItem:hover, .curModuleLink, .subMenuItem2:hover {
-    background-image: url(media/submenu_img_hover.png);
-    background-position: left;
-    background-repeat: no-repeat;
+    background: #fff url(media/submenu_img_hover.png) left center no-repeat;
     color: #444444;
 }
 
@@ -415,20 +402,8 @@ input:hover,textarea:hover,select:hover {
     background-image: url(media/modules/backup.png);
 }
 
-.barcodeIcon {
-    background-image: url(media/modules/barcode.png);
-}
-
 .biblioIcon {
     background-image: url(media/modules/biblio.png);
-}
-
-.calendarIcon {
-    background-image: url(media/modules/calendar.png);
-}
-
-.circulationIcon {
-    background-image: url(media/modules/circ.png);
 }
 
 .exportIcon {
@@ -439,48 +414,16 @@ input:hover,textarea:hover,select:hover {
     background-image: url(media/modules/import.png);
 }
 
-.itemIcon {
-    background-image: url(media/modules/biblio.png);
-}
-
-.itemOutIcon {
-    background-image: url(media/modules/item_out.png);
-}
-
-.loanRulesIcon {
-    background-image: url(media/modules/loan_rules.png);
-}
-
 .masterFileIcon {
     background-image: url(media/modules/masterfile.png);
-}
-
-.memberIcon {
-    background-image: url(media/modules/membership.png);
-}
-
-.memberTypeIcon {
-    background-image: url(media/modules/member_type.png);
 }
 
 .moduleIcon {
     background-image: url(media/modules/module.png);
 }
 
-.overdueIcon {
-    background-image: url(media/modules/overdue.png);
-}
-
-.quickReturnIcon {
-    background-image: url(media/modules/quick_return.png);
-}
-
 .reportIcon {
     background-image: url(media/modules/report.png);
-}
-
-.stockTakeIcon {
-    background-image: url(media/modules/sstake.png);
 }
 
 .statisticIcon {
@@ -501,6 +444,10 @@ input:hover,textarea:hover,select:hover {
 
 .userGroupIcon {
     background-image: url(media/modules/user_group.png);
+}
+
+.nodesIcon {
+    background-image: url(media/modules/nodes.png);
 }
 
 .printIcon {
@@ -545,28 +492,6 @@ input:hover,textarea:hover,select:hover {
     background: #ffea01 url(media/loader.gif) no-repeat top left;
 }
 
-/* serial control module */
-.addSubscription {
-    text-decoration: none;
-    display: block;
-    float: right;
-    width: 20px;
-    height: 20px;
-    margin-left: 5px;
-    margin-right: 5px;
-    background: url(media/extend.png) no-repeat top left;
-}
-
-.viewSubscription {
-    text-decoration: none;
-    display: block;
-    float: right;
-    width: 20px;
-    height: 20px;
-    margin-left: 5px;
-    margin-right: 5px;
-    background: url(media/view.png) no-repeat top left;
-}
 
 .editLink {
     display: block;
@@ -578,7 +503,7 @@ input:hover,textarea:hover,select:hover {
 }
 
 .dateField {
-    border: 1px solid #666666;
+    border: 1px solid #000000;
     width: 150px;
     float: left;
     padding: 2px;
@@ -597,26 +522,25 @@ input:hover,textarea:hover,select:hover {
 }
 
 .calendarLink {
-    display: block;
-    text-decoration: none;
-    width: 20px;
-    height: 20px;
-    background: url(media/cal.png) top left no-repeat;
-    float: right;
+  display: block;
+  text-decoration: none;
+  width: 20px;
+  height: 20px;
+  background: url(media/cal.png) top left no-repeat;
+  float: right;
 }
 
 .printReport {
-    padding-left: 20px;
-    background: url(media/printer-small.png) center left no-repeat;
-    font-weight: bold;
-    color: yellow;
+  padding-left: 20px;
+  background: url(media/printer-small.png) center left no-repeat;
+  font-weight: bold;
+  color: yellow;
 }
 
-.ucsUpload {
-    text-decoration: none;
-    padding: 5px;
-    padding-left: 23px;
-    background: #fff url(media/upload.png) center left no-repeat;
-    color: #666;
-    border: 1px solid #ff5d00;
+.isOnline {
+  color: #003380;
+}
+
+.isOffline {
+  color: #777;
 }

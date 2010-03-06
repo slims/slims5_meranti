@@ -141,6 +141,9 @@ var ucsUpload = function(strUploadHandler, strData) {
     var confUpload = false;
     if (strData.strip()) {
         confUpload = confirm('Are you sure to upload selected data to Union Catalog Server?');
+    } else {
+        alert('Please select bibliographic data to upload!');
+        return;
     }
     if (!confUpload) {
         return;

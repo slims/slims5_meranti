@@ -1,0 +1,179 @@
+/* GENERAL FONT DEFINITION */
+
+body {
+    font-family: tahoma, Calibri, verdana, 'Dejavu Sans', sans;
+    font-size: 80%;
+    line-height: 140%;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+}
+
+/* ID definitions */
+
+#main {
+    height: 100%;
+    border: 1px solid #999;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    margin: 0 auto;
+}
+
+#mainHeader {
+    padding: 5px;
+    background: #fff;
+}
+
+#libraryName {
+    padding-top: 5px;
+    margin-bottom: 20px;
+    font-size: 200%;
+    font-weight: bold;
+}
+
+#librarySubName {
+    color: #fff;
+    margin-top: 7px;
+    font-size: 90%;
+}
+
+#headerInfo {
+    padding: 3px;
+}
+
+#mainContent {
+    background: #fff;
+    width: 580px;
+}
+
+#mainContent p,h3 {
+    margin: 3px;
+}
+
+#barTop {
+    padding: 5px;
+    background: #ccc url(media/bar_fill.png) repeat-x top left;
+}
+
+#infoBox {
+    margin: 3px;
+    border: 1px #999 solid;
+    padding: 5px;
+}
+
+/* tags spesific style */
+
+a,a:hover {
+    font-size: 12px;
+    font-weight: bold;
+    color: #003380;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #459801;
+}
+
+/* classes definition */
+
+.author {
+    font-weight: bold;
+    font-size: 80%;
+}
+
+.detailLink, .xmlDetailLink {
+    padding: 1px;
+    border: 1px solid #999;
+    text-decoration: none;
+    background-color: #CCCCCC;
+}
+
+.xmlDetailLink {
+    background-color: #f90;
+}
+
+.xmlResultLink {
+    padding: 1px;
+    padding-left: 3px;
+    padding-right: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #00736b;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.item {
+    clear: both;
+    text-align: left;
+    margin: 5px;
+    margin-bottom: 10px;
+    padding: 5px;
+    padding-top: 1px;
+    background: url(media/image.png) top right no-repeat;
+}
+
+.item a,a:hover {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.item a:hover {
+    text-decoration: none;
+    color: #459801;
+}
+
+.item .detailLink {
+    font-size: 10px;
+}
+
+.item .xmlDetailLink {
+    font-size: 10px;
+    background-color: #FF9900;
+}
+
+.subItem {
+    margin-top: 3px;
+}
+
+.marginTop {
+    margin-top: 5px;
+}
+
+.border {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #999999;
+}
+
+.margined {
+    margin: 3px;
+}
+
+.tblHead {
+    background-color: #CCCCCC;
+    font-weight: bold;
+}
+
+.tblContent {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.authorField {
+    font-size: 85%;
+}
+
+/* ini untuk htdig */
+em a {
+    font-size: 11px;
+}
+
+em a:hover {
+    font-size: 11px;
+}
+
+font {
+    font-size: 11px;
+}

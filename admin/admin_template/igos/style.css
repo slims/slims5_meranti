@@ -619,3 +619,12 @@ input:hover,textarea:hover,select:hover {
   font-weight: bold;
   color: yellow;
 }
+
+.ucsUpload {
+    text-decoration: none;
+    padding: 5px;
+    padding-left: 23px;
+    background: #fff url(media/upload.png) center left no-repeat;
+    color: #000;
+    border: 1px solid #ff5d00;
+}
