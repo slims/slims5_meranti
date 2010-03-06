@@ -41,6 +41,7 @@ class biblio_list
     public $show_labels = true;
     public $stop_words = array('a', 'an', 'of', 'the', 'to', 'so', 'as', 'be');
     public $query_time = 0;
+	public $disable_item_data = false;
     /* Protected properties */
     protected $criteria = array();
     protected $label_cache = array();
@@ -156,21 +157,31 @@ class biblio_list
             } else {
                 switch ($_field) {
                     case 'location' :
-                        $_subquery = 'SELECT location_id FROM mst_location WHERE location_name=\''.$_q.'\'';
-                        if ($_b == '-') {
-                            $_sql_criteria .= " item.location_id NOT IN ($_subquery)";
-                        } else { $_sql_criteria .= " item.location_id IN ($_subquery)"; }
+						if (!$this->disable_item_data) {
+							$_subquery = 'SELECT location_id FROM mst_location WHERE location_name=\''.$_q.'\'';
+							if ($_b == '-') {
+								$_sql_criteria .= " item.location_id NOT IN ($_subquery)";
+							} else { $_sql_criteria .= " item.location_id IN ($_subquery)"; }
+						} else {
+							if ($_b == '-') {
+								$_sql_criteria .= " biblio.node_id !='$_q'";
+							} else { $_sql_criteria .= " biblio.node_id = '$_q'"; }
+						}
                         break;
                     case 'colltype' :
-                        $_subquery = 'SELECT coll_type_id FROM mst_coll_type WHERE coll_type_name=\''.$_q.'\'';
-                        if ($_b == '-') {
-                            $_sql_criteria .= " item.coll_type_id NOT IN ($_subquery)";
-                        } else { $_sql_criteria .= " item.coll_type_id IN ($_subquery)"; }
+						if (!$this->disable_item_data) {
+							$_subquery = 'SELECT coll_type_id FROM mst_coll_type WHERE coll_type_name=\''.$_q.'\'';
+							if ($_b == '-') {
+								$_sql_criteria .= " item.coll_type_id NOT IN ($_subquery)";
+							} else { $_sql_criteria .= " item.coll_type_id IN ($_subquery)"; }
+						}
                         break;
                     case 'itemcode' :
-                        if ($_b == '-') {
-                            $_sql_criteria .= " item.item_code != '$_q'";
-                        } else { $_sql_criteria .= " item.item_code LIKE '$_q%'"; }
+						if (!$this->disable_item_data) {
+							if ($_b == '-') {
+								$_sql_criteria .= " item.item_code != '$_q'";
+							} else { $_sql_criteria .= " item.item_code LIKE '$_q%'"; }
+						}
                         break;
                     case 'callnumber' :
                         if ($_b == '-') {
@@ -178,9 +189,11 @@ class biblio_list
                         } else { $_sql_criteria .= ' biblio.call_number LIKE \''.$_q.'%\''; }
                         break;
                     case 'itemcallnumber' :
-                        if ($_b == '-') {
-                            $_sql_criteria .= ' AND item.call_number NOT LIKE \''.$_q.'%\'';
-                        } else { $_sql_criteria .= ' item.call_number LIKE \''.$_q.'%\''; }
+						if (!$this->disable_item_data) {
+							if ($_b == '-') {
+								$_sql_criteria .= ' AND item.call_number NOT LIKE \''.$_q.'%\'';
+							} else { $_sql_criteria .= ' item.call_number LIKE \''.$_q.'%\''; }
+						}
                         break;
                     case 'class' :
                         if ($_b == '-') {
@@ -259,7 +272,7 @@ class biblio_list
         $_sql_str = 'SELECT SQL_CALC_FOUND_ROWS biblio.biblio_id, biblio.title, biblio.image, biblio.labels';
 
         // checking custom frontpage fields file
-        $custom_frontpage_record_file = (defined('SENAYAN_BASE_DIR')?SENAYAN_BASE_DIR:'').$sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/custom_frontpage_record.inc.php';
+        $custom_frontpage_record_file = (defined('UCS_BASE_DIR')?UCS_BASE_DIR:SENAYAN_BASE_DIR).$sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/custom_frontpage_record.inc.php';
         if (file_exists($custom_frontpage_record_file)) {
             include $custom_frontpage_record_file;
             $this->enable_custom_frontpage = true;
@@ -275,7 +288,7 @@ class biblio_list
         $_add_sql_str = '';
 
         // location
-        if ($this->criteria) {
+        if ($this->criteria && !$this->disable_item_data) {
             if (isset($this->criteria['searched_fields']['location']) OR isset($this->criteria['searched_fields']['colltype'])) {
                 $_add_sql_str .= ' LEFT JOIN item ON biblio.biblio_id=item.biblio_id ';
             }
@@ -348,7 +361,7 @@ class biblio_list
 	                        $_biblio_d['title'] .= ' <img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" />';
 	                    }
 	                }
-								}
+				}
             }
             // button
             $_biblio_d['detail_button'] = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" class="detailLink" title="'.__('Record Detail').'">'.__('Record Detail').'</a>';
@@ -399,7 +412,7 @@ class biblio_list
                             $_buffer .= '<div class="customField seriesTitleField"><b>'.$_field_opts[1].'</b> : '.$_biblio_d['series_title'].'</div>';
                         } else if ($_field == 'call_number') {
                             $_buffer .= '<div class="customField callNumberField"><b>'.$_field_opts[1].'</b> : '.$_biblio_d['call_number'].'</div>';
-                        } else if ($_field == 'availability') {
+                        } else if ($_field == 'availability' && !$this->disable_item_data) {
                             // get total number of this biblio items/copies
                             $_item_q = $this->obj_db->query('SELECT COUNT(*) FROM item WHERE biblio_id='.$_biblio_d['biblio_id']);
                             $_item_c = $_item_q->fetch_row();

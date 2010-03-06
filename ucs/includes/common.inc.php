@@ -23,20 +23,10 @@
 /* Location list */
 ob_start();
 echo '<option value="0">'.__('All Locations').'</option>';
-$loc_q = $dbs->query('SELECT location_name FROM mst_location LIMIT 50');
-while ($loc_d = $loc_q->fetch_row()) {
-    echo '<option value="'.$loc_d[0].'">'.$loc_d[0].'</option>';
+foreach ($sysconf['node'] as $node) {
+    echo '<option value="'.$node['id'].'">'.$node['name'].'</option>';
 }
 $location_list = ob_get_clean();
-
-/* Collection type List */
-ob_start();
-echo '<option value="0">'.__('All Collections').'</option>';
-$colltype_q = $dbs->query('SELECT coll_type_name FROM mst_coll_type LIMIT 50');
-while ($colltype_d = $colltype_q->fetch_row()) {
-    echo '<option value="'.$colltype_d[0].'">'.$colltype_d[0].'</option>';
-}
-$colltype_list = ob_get_clean();
 
 /* GMD List */
 ob_start();
@@ -70,7 +60,7 @@ $ajaxDD = new simbio_fe_AJAX_select();
 $ajaxDD->element_name = 'author';
 $ajaxDD->element_css_class = 'ajaxInputField';
 $ajaxDD->additional_params = 'type=author';
-$ajaxDD->handler_URL = '../lib/contents/advsearch_AJAX_response.php';
+$ajaxDD->handler_URL = UCS_WEB_ROOT_DIR.'includes/contents/advsearch_AJAX_response.php';
 echo $ajaxDD->out();
 $advsearch_author = ob_get_clean();
 
@@ -82,7 +72,7 @@ $ajaxDD = new simbio_fe_AJAX_select();
 $ajaxDD->element_name = 'subject';
 $ajaxDD->element_css_class = 'ajaxInputField';
 $ajaxDD->additional_params = 'type=topic';
-$ajaxDD->handler_URL = '../lib/contents/advsearch_AJAX_response.php';
+$ajaxDD->handler_URL = UCS_WEB_ROOT_DIR.'includes/contents/advsearch_AJAX_response.php';
 echo $ajaxDD->out();
 $advsearch_topic = ob_get_clean();
 ?>

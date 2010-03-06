@@ -34,23 +34,25 @@ $sysconf['server'] = array(
     'id' => 'd13205a03e019e5926b910046b676c6c04f20363',
     'name' => $sysconf['library_name'],
     'subname' => $sysconf['library_subname'],
+    'max_node_all' => 5, // maximum connection to server
+    'max_node_conn' => 1 // maximum connection for each node
     );
 
 // nodes configuration
-$sysconf['node'][1] = array(
-    'id' => 'd13205a03e019e5926b910046b676c6c04f20363',
-    'name' => 'SLiMS Library',
-    'password' => 'c8fed00eb2e87f1cee8e90ebbe870c190ac3848c',
-    'base_url' => 'http://localhost/senayan3-stable13',
-    'ip' => ''
+$sysconf['node']['slims-node'] = array(
+    'id' => 'slims-node', // node id (must be UNIQUE, lowercase and not containing any spaces!)
+    'name' => 'SLiMS Library', // node name
+    'password' => '2325f677e21c1613909c953eb03c57352259cc5d', // this hash created with SHA1 algoritm
+    'base_url' => 'http://localhost/senayan3-stable13', // node base URL
+    'ip' => '' // IP address of node
     );
 
 /*
  * Add other nodes configuration below
  */
 // second node
-// $sysconf['node'][2] = array(
-//     'id' => 'd13205a03e019e5926b910046b676c6c04f20363',
+// $sysconf['node']['slims-node2'] = array(
+//     'id' => 'slims-node2',
 //     'name' => 'SLiMS Library 2',
 //     'password' => 'c8fed00eb2e87f1cee8e90ebbe870c190ac3848c',
 //     'base_url' => 'http://perpustakaan.diknas.go.id',
@@ -58,11 +60,11 @@ $sysconf['node'][1] = array(
 //     );
 
 // third node
-$sysconf['node'][3] = array(
-    'id' => 'd13205a03e019e5926b910046b676c6c04f20363',
-    'name' => 'SLiMS Library 3',
-    'password' => 'c8fed00eb2e87f1cee8e90ebbe870c190ac3848c',
-    'base_url' => 'http://senayan.diknas.go.id/slims',
-    'ip' => ''
-    );
+// $sysconf['node']['slims-node3'] = array(
+// 'id' => 'slims-node3',
+// 'name' => 'SLiMS Library 3',
+// 'password' => 'c8fed00eb2e87f1cee8e90ebbe870c190ac3848c',
+// 'base_url' => 'http://senayan.diknas.go.id/slims',
+// 'ip' => ''
+// );
 ?>

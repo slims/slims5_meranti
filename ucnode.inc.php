@@ -1,9 +1,8 @@
-<?php 
-
+<?php
 /**
  * SLiMS Union Catalog client configuration
  *
- * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com), Hendro Wicaksono (hendrowicaksono@yahoo.com), Wardiyono (wynerst@gmail.com)
+ * Copyright (C) 2010 Hendro Wicaksono (hendrowicaksono@yahoo.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,11 +20,9 @@
  *
  */
 
-$ucs['addr'] = 'http://localhost/s3st13/ucs/';
-
-$node['id'] = 'd13205a03e019e5926b910046b676c6c04f20363';
-$node['password'] = 's0beautifulday';
-$node['name'] = 'SLiMS Library Collection';
-$node['baseurl'] = 'http://localhost/s3st13/';
-
+$ucs['serveraddr'] = 'http://localhost/senayan3-stable13/ucs'; // UCS server address. NO TRAILING SLASH!
+$node['id'] = 'slims-node'; // node ID
+$node['password'] = '2325f677e21c1613909c953eb03c57352259cc5d'; // default is s0beautifulday
+$node['name'] = 'SLiMS Library'; // node name
+$node['baseurl'] = 'http://localhost/senayan3-stable13'; // node base URL used for linking from UCS to original node catalog. NO TRAILING SLASH!
 ?>

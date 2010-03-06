@@ -7,8 +7,7 @@
 */
 
 /* function to fill select list with AJAX */
-var ajaxFillSelect = function(str_handler_file, str_table_name, str_table_fields, str_container_ID)
-{
+var ajaxFillSelect = function(str_handler_file, str_table_name, str_table_fields, str_container_ID) {
     var additionalParams = '';
     if (arguments[4] != undefined) {
         additionalParams = '&keywords=' + arguments[4];
@@ -25,8 +24,7 @@ var ajaxFillSelect = function(str_handler_file, str_table_name, str_table_fields
 }
 
 /* AJAX check ID */
-var ajaxCheckID = function(str_handler_file, str_table_name, str_ID_fields, str_container_ID, str_input_obj_ID)
-{
+var ajaxCheckID = function(str_handler_file, str_table_name, str_ID_fields, str_container_ID, str_input_obj_ID) {
     var inputVal = $(str_input_obj_ID).getValue();
     if (inputVal) {
         additionalParams = '&id=' + inputVal;
@@ -46,9 +44,8 @@ var ajaxCheckID = function(str_handler_file, str_table_name, str_ID_fields, str_
         });
 }
 
-/*function to empty select list*/
-var emptySelectList = function(str_select_elmnt_ID, str_default_text)
-{
+/* function to empty select list */
+var emptySelectList = function(str_select_elmnt_ID, str_default_text) {
     var selectObj = $(str_select_elmnt_ID);
 
     var optionNum = selectObj.length;
@@ -66,8 +63,7 @@ var emptySelectList = function(str_select_elmnt_ID, str_default_text)
 }
 
 /* Javasript function to check or uncheck all checkbox element */
-var checkAll = function(strFormID, boolUncheck)
-{
+var checkAll = function(strFormID, boolUncheck) {
     var formObj = $(strFormID);
     // get all checkbox element
     var chkBoxs = formObj.getInputs('checkbox');
@@ -87,9 +83,8 @@ var checkAll = function(strFormID, boolUncheck)
     }
 }
 
-/* Javascript function to collect checkbox data and submit form */
-var chboxFormSubmit = function(strFormID)
-{
+/* function to collect checkbox data and submit form */
+var chboxFormSubmit = function(strFormID) {
     var formObj = $(strFormID);
     // get all checkbox element
     var chkBoxs = formObj.getInputs('checkbox');
@@ -109,9 +104,21 @@ var chboxFormSubmit = function(strFormID)
     }
 }
 
+/* function to serialize all checkbox element in form */
+var serializeChbox = function(strParentID) {
+    var serialized = '';
+    $(strParentID).select('input[type=checkbox]').each(function(cb) {
+        var cbData = cb.getValue();
+        if (cbData) {
+            serialized += 'itemID[]='+cbData+'&';
+        }
+    })
+    serialized = serialized.sub(/&+$/, '');
+    return serialized;
+}
+
 /* form submit confirmation */
-var confSubmit = function(strFormID, strMsg)
-{
+var confSubmit = function(strFormID, strMsg) {
     strMsg = strMsg.sub('\'', '\\\'');
     var yesno = confirm(strMsg);
     if (yesno) {

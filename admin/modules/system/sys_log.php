@@ -26,8 +26,6 @@ require '../../../sysconfig.inc.php';
 // start the session
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
-require SIMBIO_BASE_DIR.'simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php';
-require SIMBIO_BASE_DIR.'simbio_GUI/template_parser/simbio_template_parser.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/datagrid/simbio_dbgrid.inc.php';
@@ -67,8 +65,8 @@ if (isset($_POST['clearLogs']) AND $can_write AND $_SESSION['uid'] == 1) {
 <div class="menuBoxInner syslogIcon">
     <?php echo strtoupper(__('System Log'));?> -
     <?php if ($_SESSION['uid'] == 1) { ?>
-    <a href="#" onclick="confSubmit('clearLogsForm', '<?php echo __('Are you SURE to completely clear system log data? This action cannot be undo!'); ?>')" class="headerText2" style="color: red;"><?php echo __('CLEAR LOGS'); ?></a>
-    &nbsp; <a href="#" onclick="confSubmit('saveLogsForm', '<?php echo __('Save Logs record to file?'); ?>')" class="headerText2"><?php echo __('Save Logs To File'); ?></a>
+    <a href="#" onclick="confSubmit('clearLogsForm', '<?php echo __('Are you SURE to completely clear system log data? This action cannot be undo!'); ?>')" class="notAJAX headerText2" style="color: red;"><?php echo __('CLEAR LOGS'); ?></a>
+    &nbsp; <a href="#" onclick="confSubmit('saveLogsForm', '<?php echo __('Save Logs record to file?'); ?>')" class="notAJAX headerText2"><?php echo __('Save Logs To File'); ?></a>
     <?php } ?>
     <hr />
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>system/sys_log.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :

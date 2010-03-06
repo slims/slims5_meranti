@@ -57,29 +57,29 @@ define('SENAYAN_SESSION_COOKIES_NAME', 'SenayanAdmin');
 define('SENAYAN_MEMBER_SESSION_COOKIES_NAME', 'SenayanMember');
 
 // senayan base dir
-define('UCS_BASE_DIR', realpath(dirname(__FILE__)).DIRECTORY_SEPARATOR);
+define('SENAYAN_BASE_DIR', realpath(dirname(__FILE__)).DIRECTORY_SEPARATOR);
 
 // absolute path for simbio platform
-define('SIMBIO_BASE_DIR', UCS_BASE_DIR.'simbio2'.DIRECTORY_SEPARATOR);
+define('SIMBIO_BASE_DIR', SENAYAN_BASE_DIR.'simbio2'.DIRECTORY_SEPARATOR);
 
 // senayan library base dir
-define('LIB_DIR', UCS_BASE_DIR.'lib'.DIRECTORY_SEPARATOR);
+define('LIB_DIR', SENAYAN_BASE_DIR.'lib'.DIRECTORY_SEPARATOR);
 
 // document, member and barcode images base dir
 define('IMAGES_DIR', 'images');
-define('IMAGES_BASE_DIR', UCS_BASE_DIR.IMAGES_DIR.DIRECTORY_SEPARATOR);
+define('IMAGES_BASE_DIR', SENAYAN_BASE_DIR.IMAGES_DIR.DIRECTORY_SEPARATOR);
 
 // library automation module base dir
 define('MODULES_DIR', 'modules');
-define('MODULES_BASE_DIR', UCS_BASE_DIR.'admin'.DIRECTORY_SEPARATOR.MODULES_DIR.DIRECTORY_SEPARATOR);
+define('MODULES_BASE_DIR', SENAYAN_BASE_DIR.'admin'.DIRECTORY_SEPARATOR.MODULES_DIR.DIRECTORY_SEPARATOR);
 
 // files upload dir
 define('FILES_DIR', 'files');
-define('FILES_UPLOAD_DIR', UCS_BASE_DIR.FILES_DIR.DIRECTORY_SEPARATOR);
+define('FILES_UPLOAD_DIR', SENAYAN_BASE_DIR.FILES_DIR.DIRECTORY_SEPARATOR);
 
 // repository dir
 define('REPO_DIR', 'repository');
-define('REPO_BASE_DIR', UCS_BASE_DIR.REPO_DIR.DIRECTORY_SEPARATOR);
+define('REPO_BASE_DIR', SENAYAN_BASE_DIR.REPO_DIR.DIRECTORY_SEPARATOR);
 
 // file attachment dir
 define('ATT_DIR', 'att');
@@ -120,9 +120,7 @@ require SIMBIO_BASE_DIR.'simbio_UTILS'.DIRECTORY_SEPARATOR.'simbio_security.inc.
 require LIB_DIR.'utility.inc.php';
 
 // check if we are in mobile browser mode
-if (utility::isMobileBrowser()) {
-    define('LIGHTWEIGHT_MODE', 1);
-}
+if (utility::isMobileBrowser()) { define('LIGHTWEIGHT_MODE', 1); }
 
 /* AJAX SECURITY */
 $sysconf['ajaxsec_user'] = 'ajax';

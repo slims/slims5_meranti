@@ -265,6 +265,7 @@ if (!$in_pop_up) {
 <div class="menuBoxInner biblioIcon">
     <?php echo strtoupper(__('Bibliographic')); ?> - <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php?action=detail" class="headerText2"><?php echo __('Add New Bibliography'); ?></a>
     &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php" class="headerText2"><?php echo __('Bibliographic List'); ?></a>
+    <div class="marginTop"><a href="#" onclick="ucsUpload('<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/ucs_upload.php', serializeChbox('dataList'))" class="notAJAX ucsUpload"><?php echo __('Upload Selected Bibliographic data to Union Catalog Server*'); ?></a></div>
     <hr />
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" id="keywords" size="30" />

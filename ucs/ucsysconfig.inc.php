@@ -149,6 +149,9 @@ require LIB_DIR.'lang'.DSEP.'php-gettext'.DSEP.'gettext.inc';
 // Apply language settings
 require INC_DIR.'localisation.php';
 
+// check if we are in mobile browser mode
+if (utility::isMobileBrowser()) { define('LIGHTWEIGHT_MODE', 1); }
+
 // load settings from database
 utility::loadSettings($dbs);
 
@@ -255,6 +258,14 @@ $sysconf['authority_level'][7] = __('Composer');
 $sysconf['authority_level'][8] = __('Illustrator');
 $sysconf['authority_level'][9] = __('Creator');
 $sysconf['authority_level'][10] = __('Contributor');
+
+// redirect to mobile template on mobile mode
+if (defined('LIGHTWEIGHT_MODE') OR isset($_COOKIE['LIGHTWEIGHT_MODE'])) {
+    $sysconf['template']['theme'] = 'lightweight';
+    $sysconf['template']['css'] = $sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/style.css';
+    $sysconf['enable_xml_detail'] = false;
+    $sysconf['enable_xml_result'] = false;
+}
 
 // Include server configuration
 require 'ucserver.inc.php';

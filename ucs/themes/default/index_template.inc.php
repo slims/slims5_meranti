@@ -58,10 +58,6 @@
             <select name="gmd" />
             <?php echo $gmd_list; ?>
             </select>
-            <?php echo __('Collection Type'); ?> :
-            <select name="colltype" />
-            <?php echo $colltype_list; ?>
-            </select>
             <?php echo __('Location'); ?> :
             <select name="location" />
             <?php echo $location_list; ?>
@@ -79,14 +75,6 @@
             Version 3.
             </p>
         <!-- license end -->
-
-        <!-- Awards -->
-            <div class="block-header">Awards</div>
-            <p>
-            The Winner in the Category of OSS</br>
-			<img src='template/igos/media/logo-inaicta.png' />
-            </p>
-        <!-- Awards end -->
     </div>
     <!--application navigation menu/side menu-->
 

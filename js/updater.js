@@ -55,8 +55,7 @@ Element.addMethods({
 });
 
 /* set the content of layer */
-var setContent = function(strContainer, strURL, strMethod)
-{
+var setContent = function(strContainer, strURL, strMethod) {
     // fill the lastAJAXcontainer global var
     lastAJAXcontainer = strContainer;
     // fill the lastAJAXurl global var
@@ -94,14 +93,12 @@ var setContent = function(strContainer, strURL, strMethod)
 }
 
 /* show error when ajax updater failed */
-var errorReport = function(ajaxObj)
-{
+var errorReport = function(ajaxObj) {
     alert('Error on AJAX request! Probably page you requested not found on server.');
 }
 
 /* show loading when ajax updater is in middle of requesting */
-var showLoading = function()
-{
+var showLoading = function() {
     var blocker = $('blocker');
     if (!blocker) {
         $(document.body).insert('<div id="blocker"></div>');
@@ -112,8 +109,7 @@ var showLoading = function()
 }
 
 /* hide loading when ajax updater complete the request */
-var hideLoading = function(ajaxObj)
-{
+var hideLoading = function(ajaxObj) {
     $('blocker').remove();
     $$('.loader').invoke('removeClassName', 'loadingImage').invoke('update', lastStr);
     // focus all first form input element
@@ -122,8 +118,7 @@ var hideLoading = function(ajaxObj)
 }
 
 /* get previous AJAX url */
-var getPreviousAJAXurl = function()
-{
+var getPreviousAJAXurl = function() {
     if (urlNum > 1) {
         return ajaxURLhistory[urlNum-2];
     } else {
@@ -133,11 +128,38 @@ var getPreviousAJAXurl = function()
 }
 
 /* get latest AJAX url */
-var getLatestAJAXurl = function()
-{
+var getLatestAJAXurl = function() {
     if (urlNum > 0) {
         return ajaxURLhistory[urlNum-1];
     } else {
         return defaultAJAXurl;
     }
+}
+
+/* invoke UCS upload catalog */
+var ucsUpload = function(strUploadHandler, strData) {
+    var confUpload = false;
+    if (strData.strip()) {
+        confUpload = confirm('Are you sure to upload selected data to Union Catalog Server?');
+    }
+    if (!confUpload) {
+        return;
+    }
+    var ajaxJSON = new Ajax.Request(strUploadHandler, {
+        method: 'post',
+        parameters: strData,
+        onSuccess: function(ajaxTransport) {
+                // get AJAX response text
+                var respText = ajaxTransport.responseText.strip();
+                // debugging purpose only
+                // alert(respText);
+                // evaluate json
+                var jsonObj = respText.evalJSON();
+                // alert(jsonObj.status + ': ' + jsonObj.message);
+                alert(jsonObj.message);
+            },
+        onFailure: function() {
+            alert('UCS Upload error!');
+            }
+        });
 }
