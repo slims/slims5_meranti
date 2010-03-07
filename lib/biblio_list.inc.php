@@ -206,7 +206,7 @@ class biblio_list
                         } else { $_sql_criteria .= ' biblio.isbn_issn=\''.$_q.'\''; }
                         break;
                     case 'publisher' :
-                        $_subquery = 'SELECT publisher_id FROM mst_publisher WHERE publisher_name=\''.$_q.'\'';
+                        $_subquery = 'SELECT publisher_id FROM mst_publisher WHERE publisher_name LIKE \'%'.$_q.'%\'';
                         if ($_b == '-') {
                             $_sql_criteria .= " biblio.publisher_id NOT IN ($_subquery)";
                         } else { $_sql_criteria .= " biblio.publisher_id IN ($_subquery)"; }
