@@ -111,9 +111,10 @@ class detail extends content_list
         global $sysconf;
 
         foreach ($this->record_detail as $idx => $data) {
-            $data = trim(strip_tags($data));
             if ($idx == 'notes') {
                 $data = nl2br($data);
+            } else {
+                $data = trim(strip_tags($data));
             }
             $this->record_detail[$idx] = $data;
         }
@@ -132,7 +133,7 @@ class detail extends content_list
         $this->metadata .= '<meta name="Publish Year" content="'.$this->record_detail['publish_year'].'" />';
         $this->metadata .= '<meta name="Publish Place" content="'.$this->record_detail['publish_place'].'" />';
         $this->metadata .= '<meta name="Physical Description" content="'.$this->record_detail['collation'].'" />';
-        $this->metadata .= '<meta name="Notes" content="'.$this->record_detail['notes'].'" />';
+        $this->metadata .= '<meta name="Notes" content="'.strip_tags($this->record_detail['notes']).'" />';
 
         // check image
         if (!empty($this->record_detail['image'])) {
@@ -192,8 +193,6 @@ class detail extends content_list
             }
         }
         */
-
-        $this->record_detail['notes'] = nl2br(strip_tags($this->record_detail['notes']));
         return $this->record_detail;
     }
 

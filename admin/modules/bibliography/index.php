@@ -99,7 +99,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 $data['publish_place_id'] = 'literal{NULL}';
             }
         }
-        $data['notes'] = trim($dbs->escape_string(strip_tags($_POST['notes'])));
+        $data['notes'] = trim($dbs->escape_string(strip_tags($_POST['notes'], '<br><p><div><span><i><em><strong><b><code>s')));
         $data['opac_hide'] = ($_POST['opacHide'] == '0')?'literal{0}':'1';
         $data['promoted'] = ($_POST['promote'] == '0')?'literal{0}':'1';
         // labels
