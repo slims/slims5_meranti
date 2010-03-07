@@ -52,10 +52,12 @@ if ($body) {
 
     // encode to PHP array
     $biblio = json_decode($body, true);
-    // get json error
-    $json_error = json_last_error();
-    if ($json_error) {
-        die(json_encode(array('status' => 'JSON_ERROR', 'message' => $json_errors[$json_error])));
+    if (function_exists('json_last_error')) {
+        // get json error
+        $json_error = json_last_error();
+        if ($json_error) {
+            die(json_encode(array('status' => 'JSON_ERROR', 'message' => $json_errors[$json_error])));
+        }
     }
 
     // node ID
