@@ -96,8 +96,14 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID'])) {
         // send HTTP POST request
         $http_request->send_http_request($ucs['serveraddr'].'/ucpoll.php', $_SERVER['SERVER_ADDR'], $to_sent, 'POST', 'text/json');
         // below is for debugging purpose only
-        // die(json_encode(array('status' => 'RAW', 'message' => $http_request->body())));
-        // print out body
+		// die(json_encode(array('status' => 'RAW', 'message' => $http_request->body())));
+
+		// check for http request error
+		if ($req_error = $http_request->error()) {
+			die(json_encode(array('status' => 'HTTP_REQUEST_ERROR', 'message' => $req_error['message'])));
+		}
+
+        // print out body of request result
         echo $http_request->body();
         exit();
     } else {

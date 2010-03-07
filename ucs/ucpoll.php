@@ -43,16 +43,15 @@ header('Content-type: text/json');
 
 // check content
 if ($body) {
-    // Define the errors.
-    $json_errors = array(
-        JSON_ERROR_DEPTH => 'JSON error: The maximum stack depth has been exceeded',
-        JSON_ERROR_CTRL_CHAR => 'JSON error: Control character error, possibly incorrectly encoded',
-        JSON_ERROR_SYNTAX => 'JSON error: Syntax error',
-    );
-
     // encode to PHP array
     $biblio = json_decode($body, true);
     if (function_exists('json_last_error')) {
+        // Define the errors.
+        $json_errors = array(
+            JSON_ERROR_DEPTH => 'JSON error: The maximum stack depth has been exceeded',
+            JSON_ERROR_CTRL_CHAR => 'JSON error: Control character error, possibly incorrectly encoded',
+            JSON_ERROR_SYNTAX => 'JSON error: Syntax error',
+        );
         // get json error
         $json_error = json_last_error();
         if ($json_error) {
