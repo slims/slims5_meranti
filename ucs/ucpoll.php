@@ -129,9 +129,10 @@ if ($body) {
 
                 // check for errors
                 if ($dbs->error) {
+                    echo json_encode(array('status' => 'DB_ERROR', 'message' => 'Database error: '.$dbs->error.'! Maybe because same record(s) already uploaded to server!'));
                     // close poll
                     ucs_nodes_poll::clear_poll($dbs, $node_id);
-                    die(json_encode(array('status' => 'DB_ERROR', 'message' => 'Database error: '.$dbs->error.'!')));
+                    die();
                 } else {
                     // set authors
                     if ($data['authors']) {

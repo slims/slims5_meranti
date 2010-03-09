@@ -429,7 +429,9 @@ class biblio_list
                             } else {
                                 $_buffer .= '<div class="customField availabilityField"><b>'.$_field_opts[1].'</b> : '.$_total_avail.' copies available for loan</div>';
                             }
-                        }
+                        } else if ($_field == 'node_id' && $this->disable_item_data) {
+							$_buffer .= '<div class="customField locationField"><b>'.$_field_opts[1].'</b> : '.$sysconf['node'][$_biblio_d['node_id']]['name'].'</div>';
+						}
                     }
                 }
             }

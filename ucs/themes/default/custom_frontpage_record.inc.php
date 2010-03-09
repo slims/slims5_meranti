@@ -9,5 +9,6 @@ $custom_fields['isbn_issn'] = array(0, __('ISBN/ISSN'));
 $custom_fields['collation'] = array(0, __('Collation'));
 $custom_fields['series_title'] = array(0, __('Series Title'));
 $custom_fields['call_number'] = array(0, __('Call Number'));
+$custom_fields['node_id'] = array(1, __('Collection Location'));
 
 ?>
