@@ -129,6 +129,8 @@ if ($body) {
 
                 // check for errors
                 if ($dbs->error) {
+                    // close poll
+                    ucs_nodes_poll::clear_poll($dbs, $node_id);
                     die(json_encode(array('status' => 'DB_ERROR', 'message' => 'Database error: '.$dbs->error.'!')));
                 } else {
                     // set authors

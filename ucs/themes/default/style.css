@@ -99,6 +99,11 @@ body {
   padding: 5px;
 }
 
+#simple-search input {
+  width: auto;
+  display: inline;
+}
+
 #loginForm {
   padding: 10px;
   padding-top: 120px;

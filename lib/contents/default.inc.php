@@ -27,6 +27,9 @@ require LIB_DIR.'biblio_list.inc.php';
 
 // create biblio list object
 $biblio_list = new biblio_list($dbs);
+// no item data related search on UCS
+if (defined('UCS_BASE_DIR')) { $biblio_list->disable_item_data = true; }
+
 if (isset($sysconf['enable_xml_detail']) && !$sysconf['enable_xml_detail']) {
     $biblio_list->xml_detail = false;
 }
@@ -80,8 +83,13 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
         if (isset($_GET['location'])) {
             $location = trim(strip_tags(urldecode($_GET['location'])));
         }
+        // UCS only
+        $node = '';
+        if (isset($_GET['node'])) {
+            $node = trim(strip_tags(urldecode($_GET['node'])));
+        }
         // don't do search if all search field is empty
-        if ($title || $author || $subject || $isbn || $gmd || $colltype || $location) {
+        if ($title || $author || $subject || $isbn || $gmd || $colltype || $location || $node) {
             $criteria = '';
             if ($title) { $criteria .= ' title='.$title; }
             if ($author) { $criteria .= ' author='.$author; }
@@ -90,6 +98,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
             if ($gmd) { $criteria .= ' gmd="'.$gmd.'"'; }
             if ($colltype) { $criteria .= ' colltype="'.$colltype.'"'; }
             if ($location) { $criteria .= ' location="'.$location.'"'; }
+            if ($node && defined('UCS_BASE_DIR')) { $criteria .= ' location="'.$node.'"'; }
             $criteria = trim($criteria);
             $biblio_list->setSQLcriteria($criteria);
         }

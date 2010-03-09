@@ -59,7 +59,7 @@
             <?php echo $gmd_list; ?>
             </select>
             <?php echo __('Location'); ?> :
-            <select name="location" />
+            <select name="node" />
             <?php echo $location_list; ?>
             </select>
 
@@ -84,11 +84,10 @@
     <div id="info-box"><?php echo $info; ?></div>
     <!-- simple search -->
     <div class="spacer">&nbsp;</div>
-    <fieldset>
+    <fieldset id="simple-search">
         <div class="block-header"><?php echo __('Quick Search'); ?></div>
         <form name="simpleSearch" action="index.php" method="get">
-        <input type="text" name="keywords" />
-        <input type="submit" name="search" value="<?php echo __('Search'); ?>" class="button marginTop" />
+        <input type="text" name="keywords" style="width: 80%;" /> <input type="submit" name="search" value="<?php echo __('Search'); ?>" class="button" />
         </form>
     </fieldset>
     <div class="spacer">&nbsp;</div>

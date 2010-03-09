@@ -367,4 +367,8 @@ $sysconf['watermark']['alignment'] = 'BR'; #BR, BL, TR, TL, C, R, L, T, B, where
 $sysconf['watermark']['color'] = 'ffffff'; # the hex color of the text
 $sysconf['watermark']['opacity'] = '50'; #is opacity from 0 (transparent) to 100 (opaque)
 
+// check if session is auto started and then destroy it
+if ($is_auto = @ini_get('session.auto_start')) { define('SESSION_AUTO_STARTED', $is_auto); }
+if (defined('SESSION_AUTO_STARTED')) { @session_destroy(); }
+
 ?>

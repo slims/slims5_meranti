@@ -193,6 +193,16 @@ class detail extends content_list
             }
         }
         */
+        // show location on UCS
+        if (isset($this->record_detail['node_id']) && isset($sysconf['node'][$this->record_detail['node_id']])) {
+            $_node = $sysconf['node'][$this->record_detail['node_id']];
+            $_node_name = isset($_node['name'])?$_node['name']:'UNKNOWN';
+            $this->record_detail['location'] = $_node['baseurl']?'<a href="'.$_node['baseurl'].'" target="_blank">'.$_node_name.'</a>':$_node_name;
+            // node detail link
+            $node_detail_id = str_ireplace($_node['id'], '', $this->record_detail['orig_biblio_id']);
+            $this->record_detail['title'] .= ($_node['baseurl'] && $node_detail_id)?'<div class="nodeDetail"><a href="'.$_node['baseurl'].'/index.php?p=show_detail&id='.$node_detail_id.'" title="'.__('View node catalog data').'" target="_blank">'.__('View node catalog data').'</a></div>':'';
+        }
+
         return $this->record_detail;
     }
 

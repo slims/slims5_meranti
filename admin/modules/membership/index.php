@@ -64,8 +64,19 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         $data['inst_name'] = trim($dbs->escape_string(strip_tags($_POST['instName'])));
         $data['gender'] = trim($dbs->escape_string(strip_tags($_POST['gender'])));
         $data['birth_date'] = trim($dbs->escape_string(strip_tags($_POST['birthDate'])));
-        $data['member_since_date'] = trim($dbs->escape_string(strip_tags($_POST['sinceDate'])));
         $data['register_date'] = trim($dbs->escape_string(strip_tags($_POST['regDate'])));
+        // member since date
+        $member_since = trim($dbs->escape_string(strip_tags($_POST['sinceDate'])));
+        if (isset($_POST['updateRecordID'])) {
+            $data['member_since_date'] = $member_since;
+        } else {
+            if ($member_since) {
+                $data['member_since_date'] = $member_since;
+            } else {
+                $data['member_since_date'] = $data['register_date'];
+            }
+        }
+
         $data['expire_date'] = trim($dbs->escape_string(strip_tags($_POST['expDate'])));
         // extending membership
         if (isset($_POST['extend']) AND !empty($_POST['extend'])) {
@@ -74,10 +85,6 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
             $mtype_data = $mtype_query->fetch_row();
             $data['register_date'] = date('Y-m-d');
             $data['expire_date'] = simbio_date::getNextDate($mtype_data[0], $data['register_date']);
-        }
-        // member since date
-        if (!isset($_POST['updateRecordID'])) {
-            $data['member_since_date'] = $data['register_date'];
         }
         $data['pin'] = trim($dbs->escape_string(strip_tags($_POST['memberPIN'])));
         $data['member_address'] = trim($dbs->escape_string(strip_tags($_POST['memberAddress'])));

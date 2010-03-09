@@ -33,7 +33,7 @@ if ($unauthorized) {
     $msg .= 'top.location.href = \''.UCS_WEB_ROOT_DIR.'index.php?p=login\';'."\n";
     $msg .= '</script>'."\n";
     // unset cookie admin flag
-    setcookie('admin_logged_in', false, time()-86400, UCS_WEB_ROOT_DIR);
+    setcookie('ucs_admin_logged_in', false, time()-86400, UCS_WEB_ROOT_DIR);
     simbio_security::destroySessionCookie($msg, UCS_SESSION_COOKIES_NAME, UCS_WEB_ROOT_DIR.'admin', true);
 }
 
@@ -44,7 +44,7 @@ if ($unauthorized) {
     $msg .= __('You are not authorized to view this section');
     $msg .= '</div>'."\n";
     // unset cookie admin flag
-    setcookie('admin_logged_in', true, time()-86400, UCS_WEB_ROOT_DIR);
+    setcookie('ucs_admin_logged_in', false, time()-86400, UCS_WEB_ROOT_DIR);
     simbio_security::destroySessionCookie($msg, UCS_SESSION_COOKIES_NAME, UCS_WEB_ROOT_DIR.'admin', true);
 }
 
@@ -56,7 +56,7 @@ if ($timeout) {
     $msg .= __('Your Login Session has already timeout!').' <a target="_top" href="'.UCS_WEB_ROOT_DIR.'index.php?p=login">Re-Login</a>';
     $msg .= '</div>'."\n";
     // unset cookie admin flag
-    setcookie('admin_logged_in', true, time()-86400, UCS_WEB_ROOT_DIR);
+    setcookie('ucs_admin_logged_in', false, time()-86400, UCS_WEB_ROOT_DIR);
     simbio_security::destroySessionCookie($msg, UCS_SESSION_COOKIES_NAME, UCS_WEB_ROOT_DIR.'admin', true);
 } else {
     // renew session logintime

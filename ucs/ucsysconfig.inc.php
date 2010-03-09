@@ -270,6 +270,10 @@ if (defined('LIGHTWEIGHT_MODE') OR isset($_COOKIE['LIGHTWEIGHT_MODE'])) {
 // Include server configuration
 require 'ucserver.inc.php';
 
+// check if session is auto started and then destroy it
+if ($is_auto = @ini_get('session.auto_start')) { define('SESSION_AUTO_STARTED', $is_auto); }
+if (defined('SESSION_AUTO_STARTED')) { @session_destroy(); }
+
 /* Force UTF-8 for MySQL connection and HTTP header */
 header('Content-type: text/html; charset=UTF-8');
 $dbs->query('SET NAMES \'utf8\'');

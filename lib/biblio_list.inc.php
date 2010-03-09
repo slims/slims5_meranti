@@ -288,9 +288,11 @@ class biblio_list
         $_add_sql_str = '';
 
         // location
-        if ($this->criteria && !$this->disable_item_data) {
-            if (isset($this->criteria['searched_fields']['location']) OR isset($this->criteria['searched_fields']['colltype'])) {
-                $_add_sql_str .= ' LEFT JOIN item ON biblio.biblio_id=item.biblio_id ';
+        if ($this->criteria) {
+            if (isset($this->criteria['searched_fields']['location']) || isset($this->criteria['searched_fields']['colltype'])) {
+                if (!$this->disable_item_data) {
+					$_add_sql_str .= ' LEFT JOIN item ON biblio.biblio_id=item.biblio_id ';
+				}
             }
         }
 

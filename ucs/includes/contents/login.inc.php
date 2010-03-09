@@ -33,8 +33,8 @@ if ($sysconf['https_enable']) {
 }
 
 // check if session browser cookie already exists
-if (isset($_COOKIE['admin_logged_in'])) {
-    header('location: admin/index.php');
+if (isset($_COOKIE['ucs_admin_logged_in'])) {
+    if ($_COOKIE['ucs_admin_logged_in']) { header('location: admin/index.php'); }
 }
 
 // start the output buffering for main content
@@ -54,7 +54,7 @@ if (isset($_POST['logMeIn'])) {
         $logon = new admin_logon($username, $password);
         if ($logon->adminValid($dbs)) {
             // set cookie admin flag
-            setcookie('admin_logged_in', true, time()+14400, UCS_WEB_ROOT_DIR);
+            setcookie('ucs_admin_logged_in', true, time()+14400, UCS_WEB_ROOT_DIR);
             // write log
             utility::writeLogs($dbs, 'staff', $username, 'Login', 'Login success for user '.$username.' from address '.$_SERVER['REMOTE_ADDR']);
             echo '<script type="text/javascript">';

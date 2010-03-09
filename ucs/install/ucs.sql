@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 06, 2010 at 03:52 PM
+-- Generation Time: Mar 09, 2010 at 08:21 AM
 -- Server version: 5.1.37
 -- PHP Version: 5.3.0
 
@@ -73,9 +73,9 @@ CREATE TABLE IF NOT EXISTS `biblio` (
   `input_date` datetime DEFAULT NULL,
   `last_update` datetime DEFAULT NULL,
   PRIMARY KEY (`biblio_id`),
+  UNIQUE KEY `orig_biblio_id` (`orig_biblio_id`),
   KEY `references_idx` (`gmd_id`,`publisher_id`,`language_id`,`publish_place_id`),
   KEY `classification` (`classification`),
-  KEY `orig_biblio_id` (`orig_biblio_id`),
   KEY `node_id` (`node_id`),
   FULLTEXT KEY `title_ft_idx` (`title`,`series_title`),
   FULLTEXT KEY `notes_ft_idx` (`notes`)
@@ -328,6 +328,8 @@ CREATE TABLE IF NOT EXISTS `mst_language` (
 -- Dumping data for table `mst_language`
 --
 
+INSERT INTO `mst_language` (`language_id`, `language_name`, `input_date`, `last_update`) VALUES
+('en', 'English', '2010-03-07', '2010-03-07');
 
 -- --------------------------------------------------------
 
@@ -516,7 +518,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `realname`, `passwd`, `last_login`, `last_login_ip`, `groups`, `input_date`, `last_update`) VALUES
-(1, 'admin', 'Administrator', '21232f297a57a5a743894a0e4a801fc3', '2010-03-06 12:58:54', '::1', 'a:1:{i:0;s:1:"1";}', '2009-09-13', '2009-09-13');
+(1, 'admin', 'Administrator', '21232f297a57a5a743894a0e4a801fc3', '2010-03-09 06:31:19', '::1', 'a:1:{i:0;s:1:"1";}', '2009-09-13', '2009-09-13');
 
 -- --------------------------------------------------------
 
