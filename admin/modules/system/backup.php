@@ -38,11 +38,11 @@ if (!($can_read AND $can_write)) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner backupIcon">
-    <?php echo strtoupper(__('Database Backup')); ?> - <a onMouseOver="return noStatus()" href="javascript: setContent('backupStat', '<?php echo MODULES_WEB_ROOT_DIR; ?>/system/backup_proc.php', 'post', 'start=true');" class="headerText2"><?php echo __('Start New Backup'); ?></a>
+    <?php echo strtoupper(__('Database Backup')); ?> - <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>/system/backup_proc.php" postdata="start=true" loadcontainer="backupStat" class="headerText2"><?php echo __('Start New Backup'); ?></a>
     <hr />
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>system/backup_proc.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
-    <input type="submit" id="doSearch" loadcontainer="backupStat" value="<?php echo __('Search'); ?>" class="button" />
+    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
 </div>
 </fieldset>

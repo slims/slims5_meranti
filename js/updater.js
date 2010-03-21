@@ -81,6 +81,7 @@ var setContent = function(strContainer, strURL, strMethod) {
         {success: strContainer},
         strURL,
         {
+            asynchronous: false,
             method: strMethod,
             parameters: ajaxParams,
             evalScripts: isEvalScript,
@@ -99,19 +100,13 @@ var errorReport = function(ajaxObj) {
 
 /* show loading when ajax updater is in middle of requesting */
 var showLoading = function() {
-    var blocker = $('blocker');
-    if (!blocker) {
-        $(document.body).insert('<div id="blocker"></div>');
-        blocker = $('blocker');
-    }
-    blocker.setStyle({top: 0, left: 0, width: '100%', height: screen.height+'px', position: 'fixed'});
     $$('.loader').invoke('addClassName', 'loadingImage').invoke('update', 'LOADING CONTENT... PLEASE WAIT');
 }
 
 /* hide loading when ajax updater complete the request */
 var hideLoading = function(ajaxObj) {
-    $('blocker').remove();
-    $$('.loader').invoke('removeClassName', 'loadingImage').invoke('update', lastStr);
+    var loaders = $$('.loader');
+    if (loaders.length > 0) { loaders.invoke('removeClassName', 'loadingImage').invoke('update', lastStr); }
     // focus all first form input element
     var inputEl = $$('input[type=text]'); if (inputEl.length > 0) {inputEl[0].focus();}
     $(lastAJAXcontainer).registerAJAXEvents();

@@ -169,7 +169,7 @@ class serial
 
             if ($_can_read AND $_can_write) {
                 // kardex removal links
-                $_remove_link = '<a href="#" onclick="confirmProcess('.$this->serial_id.', '.$_kardex['kardex_id'].')" class="trashLink">&nbsp;</a>';
+                $_remove_link = '<a href="#" onclick="confirmProcess('.$this->serial_id.', '.$_kardex['kardex_id'].')" class="trashLink notAJAX">&nbsp;</a>';
                 $_date_exp = simbio_form_element::dateField('dateExpected['.$_kardex['kardex_id'].']', $_kardex['date_expected']);
                 $_date_rec = simbio_form_element::dateField('dateReceived['.$_kardex['kardex_id'].']', $_kardex['date_received']);
                 $_seq_num = simbio_form_element::textField('text', 'seqNumber['.$_kardex['kardex_id'].']', $_kardex['seq_number'], 'width: 100%;');

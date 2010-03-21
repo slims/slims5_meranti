@@ -39,7 +39,7 @@ if (!$can_read) {
 if (!extension_loaded('yaz')) {
     die('<div class="errorBox">YAZ extension library is not loaded/installed yet. '
         .'YAZ library is needed to use z3950 enabled service. '
-        .'Please refer to official <a href="http://www.php.net/manual/en/book.yaz.php" target="_blank">YAZ PHP Manual</a>'
+        .'Please refer to official <a href="http://www.php.net/manual/en/book.yaz.php" class="notAJAX" target="_blank">YAZ PHP Manual</a>'
         .' on how to setup/install YAZ extension library in PHP.</div>');
 }
 

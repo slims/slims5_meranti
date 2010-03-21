@@ -108,7 +108,7 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID'])) {
         'st.stock_take_name AS \''.__('Stock Take Name').'\'',
         'st.start_date AS \''.__('Start Date').'\'',
         'st.end_date AS \''.__('End Date').'\'',
-        'CONCAT(\'<a href="'.SENAYAN_WEB_ROOT_DIR.FILES_DIR.'/'.REPORT_DIR.'/\', st.report_file, \'" target="_blank">\', st.report_file, \'</a>\') AS \''.__('Report').'\'');
+        'CONCAT(\'<a class="notAJAX" href="'.SENAYAN_WEB_ROOT_DIR.FILES_DIR.'/'.REPORT_DIR.'/\', st.report_file, \'" target="_blank">\', st.report_file, \'</a>\') AS \''.__('Report').'\'');
     $datagrid->setSQLorder('st.start_date DESC');
     $datagrid->disableSort('Report');
 
