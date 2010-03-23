@@ -149,7 +149,7 @@ if (isset($_GET['print'])) {
 <div class="menuBoxInner statisticIcon">
     <?php echo strtoupper(__('Collection Statistic')); ?>
     <hr />
-    <form name="printForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="submitPrint" id="printForm" id="printForm" method="get" style="display: inline;">
+    <form name="printForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="submitPrint" id="printForm" class="notAJAX" method="get" style="display: inline;">
     <input type="hidden" name="print" value="true" /><input type="submit" value="<?php echo __('Download Report'); ?>" class="button" />
     </form>
     <iframe name="submitPrint" style="visibility: hidden; width: 0; height: 0;"></iframe>

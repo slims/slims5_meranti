@@ -47,7 +47,7 @@ if (isset($_SESSION['memberID']) AND !empty($_SESSION['memberID'])) {
         <div class="menuBoxInner circulationIcon">
             <?php echo __('CIRCULATION - Insert a member ID to start transaction with keyboard or barcode reader'); ?>
             <hr />
-            <form id="startCirc" method="post" style="display: inline;" action="blank.html" target="blindSubmit" onsubmit="$('start').click();">
+            <form id="startCirc" class="notAJAX" method="post" style="display: inline;" action="blank.html" target="blindSubmit" onsubmit="$('start').click();">
             <?php echo __('Member ID'); ?> :
             <?php
             // create AJAX drop down
