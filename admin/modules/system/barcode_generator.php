@@ -76,10 +76,11 @@ if (isset($_SESSION['barcodes'])) {
     // unset the session
     unset($_SESSION['barcodes']);
     // write to file
-    $file_write = @file_put_contents(FILES_UPLOAD_DIR.'barcode_gen_print_result.html', $html_str);
+    $print_file_name = 'barcode_gen_print_result_'.strtolower(str_replace(' ', '_', $_SESSION['uname'])).'.html';
+    $file_write = @file_put_contents(FILES_UPLOAD_DIR.$print_file_name, $html_str);
     if ($file_write) {
         // open result in window
-        echo '<script type="text/javascript">parent.openWin(\''.SENAYAN_WEB_ROOT_DIR.FILES_DIR.'/barcode_gen_print_result.html\', \'popBarcodeGen\', 800, 500, true)</script>';
+        echo '<script type="text/javascript">parent.openWin(\''.SENAYAN_WEB_ROOT_DIR.FILES_DIR.'/'.$print_file_name.'\', \'popBarcodeGen\', 800, 500, true)</script>';
     } else { utility::jsAlert('ERROR! Barcodes failed to generate, possibly because '.SENAYAN_BASE_DIR.FILES_DIR.' directory is not writable'); }
     exit();
 }

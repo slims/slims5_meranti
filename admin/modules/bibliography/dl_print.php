@@ -45,13 +45,15 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
     }
     if (!is_array($_POST['itemID'])) {
         // make an array
-        $_POST['itemID'] = array((integer)$_POST['itemID']);
+        $_POST['itemID'] = array($_POST['itemID']);
     }
     /* LABEL SESSION ADDING PROCESS */
-    if (isset($_SESSION['labels'])) {
-        $print_count = count($_SESSION['labels']);
-    } else {
-        $print_count = 0;
+    $print_count = 0;
+    if (isset($_SESSION['labels']['biblio'])) {
+        $print_count += count($_SESSION['labels']['biblio']);
+    }
+    if (isset($_SESSION['labels']['item'])) {
+        $print_count += count($_SESSION['labels']['item']);
     }
     // loop array
     foreach ($_POST['itemID'] as $itemID) {
@@ -59,11 +61,21 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
             $limit_reach = true;
             break;
         }
-        $itemID = (integer)$itemID;
-        if (isset($_SESSION['labels'][$itemID])) {
-            continue;
+        if (stripos($itemID, 'b', 0) !== false) {
+            // Biblio ID
+            $itemID = preg_replace('@[a-zA-Z ]@i', '', $itemID);
+            if (isset($_SESSION['labels']['biblio'][$itemID])) {
+                continue;
+            }
+            $_SESSION['labels']['biblio'][$itemID] = $itemID;
+        } else {
+            // Item ID
+            $itemID = (integer)$itemID;
+            if (isset($_SESSION['labels'][$itemID])) {
+                continue;
+            }
+            $_SESSION['labels']['item'][$itemID] = $itemID;
         }
-        $_SESSION['labels'][$itemID] = $itemID;
         $print_count++;
     }
     if (isset($limit_reach)) {
@@ -88,24 +100,43 @@ if (isset($_GET['action']) AND $_GET['action'] == 'clear') {
 // on print action
 if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     // check if label session array is available
-    if (!isset($_SESSION['labels'])) {
-        utility::jsAlert(__('There is no data to print!'));
-        die();
-    }
-    if (count($_SESSION['labels']) < 1) {
+    if (!isset($_SESSION['labels']['item']) && !isset($_SESSION['labels']['biblio'])) {
         utility::jsAlert(__('There is no data to print!'));
         die();
     }
 
-    // concat all ID together
+    // concat item ID
     $item_ids = '';
-    foreach ($_SESSION['labels'] as $id) {
-        $item_ids .= $id.',';
+    if (isset($_SESSION['labels']['item'])) {
+        foreach ($_SESSION['labels']['item'] as $id) {
+            $item_ids .= $id.',';
+        }
+    }
+    // concat biblio ID
+    $biblio_ids = '';
+    if (isset($_SESSION['labels']['biblio'])) {
+        foreach ($_SESSION['labels']['biblio'] as $id) {
+            $biblio_ids .= $id.',';
+        }
     }
     // strip the last comma
     $item_ids = substr_replace($item_ids, '', -1);
+    $biblio_ids = substr_replace($biblio_ids, '', -1);
+
+    // SQL criteria
+    if ($item_ids) {
+        $criteria = "i.item_id IN($item_ids)";
+    }
+    if ($biblio_ids) {
+        $criteria = "b.biblio_id IN($biblio_ids)";
+    }
+    if ($item_ids && $biblio_ids) {
+        $criteria = "i.item_id IN($item_ids) OR b.biblio_id IN($biblio_ids)";
+    }
+
     // send query to database
-    $biblio_q = $dbs->query('SELECT IF(i.call_number!=\'\', i.call_number, b.call_number) FROM biblio AS b LEFT JOIN item AS i ON b.biblio_id=i.biblio_id WHERE i.item_id IN('.$item_ids.')');
+    $biblio_q = $dbs->query('SELECT IF(i.call_number<>\'\', i.call_number, b.call_number) FROM biblio AS b LEFT JOIN item AS i ON b.biblio_id=i.biblio_id WHERE '.$criteria);
+    echo 'SELECT IF(i.call_number!=\'\', i.call_number, b.call_number) FROM biblio AS b LEFT JOIN item AS i ON b.biblio_id=i.biblio_id WHERE '.$criteria;
     $label_data_array = array();
     while ($biblio_d = $biblio_q->fetch_row()) {
         if ($biblio_d[0]) { $label_data_array[] = $biblio_d[0]; }
@@ -156,11 +187,12 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     // unset the session
     unset($_SESSION['labels']);
     // write to file
-    $file_write = @file_put_contents(FILES_UPLOAD_DIR.'label_print_result.html', $html_str);
+    $print_file_name = 'label_print_result_'.strtolower(str_replace(' ', '_', $_SESSION['uname'])).'.html';
+    $file_write = @file_put_contents(FILES_UPLOAD_DIR.$print_file_name, $html_str);
     if ($file_write) {
         echo '<script type="text/javascript">parent.$(\'queueCount\').update(\'0\');</script>';
         // open result in new window
-        echo '<script type="text/javascript">parent.openWin(\''.SENAYAN_WEB_ROOT_DIR.FILES_DIR.'/label_print_result.html\', \'popLabelGen\', 800, 500, true)</script>';
+        echo '<script type="text/javascript">parent.openWin(\''.SENAYAN_WEB_ROOT_DIR.FILES_DIR.'/'.$print_file_name.'\', \'popLabelGen\', 800, 500, true)</script>';
     } else { utility::jsAlert('ERROR! Label failed to generate, possibly because '.SENAYAN_BASE_DIR.FILES_DIR.' directory is not writable'); }
     exit();
 }
@@ -197,8 +229,8 @@ $table_spec = 'biblio LEFT JOIN item ON biblio.biblio_id=item.biblio_id';
 // create datagrid
 $datagrid = new simbio_datagrid();
 if ($can_read) {
-    $datagrid->setSQLColumn('item.item_id', 'biblio.title AS `'.__('Title').'`',
-        'IF(item.call_number!=\'\', item.call_number, biblio.call_number) AS `'.__('Call Number').'`');
+    $datagrid->setSQLColumn('IF(item.item_id IS NOT NULL, item.item_id, CONCAT(\'b\', biblio.biblio_id))', 'biblio.title AS `'.__('Title').'`',
+        'IF(item.call_number<>\'\', item.call_number, biblio.call_number) AS `'.__('Call Number').'`');
 }
 $datagrid->setSQLorder('item.last_update DESC');
 // is there any search

@@ -179,12 +179,13 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     // unset the session
     unset($_SESSION['card']);
     // write to file
-    $file_write = @file_put_contents(FILES_UPLOAD_DIR.'member_card_gen_print_result.html', $html_str);
+    $print_file_name = 'member_card_gen_print_result_'.strtolower(str_replace(' ', '_', $_SESSION['uname'])).'.html';
+    $file_write = @file_put_contents(FILES_UPLOAD_DIR.$print_file_name, $html_str);
     if ($file_write) {
         // update print queue count object
         echo '<script type="text/javascript">parent.$(\'queueCount\').update(\'0\');</script>';
         // open result in window
-        echo '<script type="text/javascript">parent.openWin(\''.SENAYAN_WEB_ROOT_DIR.FILES_DIR.'/member_card_gen_print_result.html\', \'popItemcardGen\', 800, 500, true)</script>';
+        echo '<script type="text/javascript">parent.openWin(\''.SENAYAN_WEB_ROOT_DIR.FILES_DIR.'/'.$print_file_name.'\', \'popMemberCardGen\', 800, 500, true)</script>';
     } else { utility::jsAlert('ERROR! Cards failed to generate, possibly because '.SENAYAN_BASE_DIR.FILES_DIR.' directory is not writable'); }
     exit();
 }
