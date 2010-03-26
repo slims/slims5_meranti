@@ -30,4 +30,6 @@ $menu[] = array(__('Loan List by Member'), MODULES_WEB_ROOT_DIR.'reporting/custo
 $menu[] = array(__('Loan History'), MODULES_WEB_ROOT_DIR.'reporting/customs/loan_history.php', __('Loan History Overview'));
 $menu[] = array(__('Overdued List'), MODULES_WEB_ROOT_DIR.'reporting/customs/overdued_list.php', __('View Members Having Overdues'));
 $menu[] = array(__('Staff Activity'), MODULES_WEB_ROOT_DIR.'reporting/customs/staff_act.php', __('Staff activity log recapitulation'));
+$menu[] = array(__('Visitor Statistic'), MODULES_WEB_ROOT_DIR.'reporting/customs/visitor_report.php', __('Visitor Statistic'));
+$menu[] = array(__('Visitor List'), MODULES_WEB_ROOT_DIR.'reporting/customs/visitor_list.php', __('Visitor List'));
 ?>

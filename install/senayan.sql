@@ -1008,3 +1008,19 @@ CREATE TABLE IF NOT EXISTS `user_group` (
 
 INSERT INTO `user_group` (`group_id`, `group_name`, `input_date`, `last_update`) VALUES
 (1, 'Administrator', DATE(NOW()), DATE(NOW()));
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `visitor_count`
+--
+
+CREATE TABLE IF NOT EXISTS `visitor_count` (
+  `visitor_id` int(11) NOT NULL AUTO_INCREMENT,
+  `member_id` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `member_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `institution` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `checkin_date` datetime NOT NULL,
+  PRIMARY KEY (`visitor_id`),
+  KEY `member_id` (`member_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
