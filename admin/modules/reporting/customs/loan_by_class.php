@@ -34,11 +34,7 @@ if (!$can_read) {
     die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 
-require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
-require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/form_maker/simbio_form_element.inc.php';
-require SIMBIO_BASE_DIR.'simbio_DB/datagrid/simbio_dbgrid.inc.php';
-require MODULES_BASE_DIR.'reporting/report_dbgrid.inc.php';
 
 $page_title = 'Loan Report by Class Report';
 $reportView = false;

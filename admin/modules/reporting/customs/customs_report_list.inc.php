@@ -32,4 +32,5 @@ $menu[] = array(__('Overdued List'), MODULES_WEB_ROOT_DIR.'reporting/customs/ove
 $menu[] = array(__('Staff Activity'), MODULES_WEB_ROOT_DIR.'reporting/customs/staff_act.php', __('Staff activity log recapitulation'));
 $menu[] = array(__('Visitor Statistic'), MODULES_WEB_ROOT_DIR.'reporting/customs/visitor_report.php', __('Visitor Statistic'));
 $menu[] = array(__('Visitor List'), MODULES_WEB_ROOT_DIR.'reporting/customs/visitor_list.php', __('Visitor List'));
+$menu[] = array(__('Fines Report'), MODULES_WEB_ROOT_DIR.'reporting/customs/fines_report.php', __('Fines Report'));
 ?>

@@ -29,7 +29,7 @@ if (isset($_POST['counter'])) {
     $member_name = 'Guest';
     $photo = 'person.png';
     // sleep for a while
-    sleep(3);
+    sleep(1);
     /**
      * Insert counter data to database
      */

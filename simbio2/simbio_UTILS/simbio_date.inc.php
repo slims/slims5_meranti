@@ -215,5 +215,68 @@ class simbio_date
             return self::getNextDateNotHoliday($_str_date_next, $array_holiday_dayname, $array_holiday_date, $d, $n);
         }
     }
+
+
+    /**
+     * Generate calendar
+     *
+     * @param   mixed   $mix_year: year
+     * @param   mixed   $mix_month: month
+     * @param   array   $arr_date_data: optional date data
+     * @return  string
+     */
+    public static function generateCalendar($mix_year, $mix_month, $arr_date_data = array())
+    {
+        $_calendar = '<table cellspacing="0" class="calendar">'."\n";
+        $_date = getdate(strtotime($mix_year.'-'.$mix_month.'-01'));
+        $_max_week = 5;
+
+        // start day of month
+        $_start_day = $_date['wday'];
+        if ($_start_day == 6) {
+            $_max_week = 6;
+        }
+        // get the last date of month
+        $_lastdate_ts = mktime(0, 0, 0, preg_replace('@^0+@i', '', $mix_month)+1, 0, (integer)$mix_year);
+        $_lastdate =  date('j', $_lastdate_ts);
+
+        $_day[0] = 'Sunday';
+        $_day[1] = 'Monday';
+        $_day[2] = 'Tuesday';
+        $_day[3] = 'Wednesday';
+        $_day[4] = 'Thursday';
+        $_day[5] = 'Friday';
+        $_day[6] = 'Saturday';
+
+        // calendar table head
+        $_calendar .= '<tr class="week">';
+        foreach ($_day as $_wday => $_dayname) {
+            $_calendar .= '<th class="dayname">'.$_dayname.'</th>';
+        }
+        $_calendar .= '</tr>'."\n";
+
+        $_week_alter = 'even';
+        for ($_w = 1; $_w <= $_max_week; $_w++) {
+            $_week_alter = ($_w%2)?'even':'odd';
+            $_calendar .= '<tr class="week">';
+            foreach ($_day as $_wday => $_dayname) {
+                if ($_w == 1 && $_wday == $_start_day ) {
+                    $_mday = 1;
+                    $_date_data = (isset($arr_date_data[$_mday]))?$arr_date_data[$_mday]:'';
+                    $_calendar .= '<td class="day '.$_week_alter.'">'.$_mday.$_date_data.'</td>';
+                } else if (isset($_mday) && $_mday < $_lastdate) {
+                    $_mday++;
+                    $_date_data = (isset($arr_date_data[$_mday]))?$arr_date_data[$_mday]:'';
+                    $_calendar .= '<td class="day '.$_week_alter.'">'.$_mday.$_date_data.'</td>';
+                } else {
+                    $_calendar .= '<td class="day '.$_week_alter.' none">&nbsp;</td>';
+                }
+            }
+            $_calendar .= '</tr>'."\n";
+        }
+        $_calendar .= '</table>'."\n";
+
+        return $_calendar;
+    }
 }
 ?>

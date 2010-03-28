@@ -143,7 +143,7 @@ if (!$reportView) {
     }
     if (isset($_GET['institution']) AND !empty($_GET['institution'])) {
         $institution = $dbs->escape_string(trim($_GET['institution']));
-        $criteria .= ' AND vc.institution LIKE \'%'.$address.'%\'';
+        $criteria .= ' AND vc.institution LIKE \'%'.$institution.'%\'';
     }
     // register date
     if (isset($_GET['startDate']) AND isset($_GET['untilDate'])) {

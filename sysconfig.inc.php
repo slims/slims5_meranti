@@ -182,6 +182,9 @@ $sysconf['admin_template']['css'] = $sysconf['admin_template']['dir'].'/'.$sysco
 /* OPAC */
 $sysconf['opac_result_num'] = 10;
 
+/* Biblio module */
+$sysconf['biblio_result_num'] = 100;
+
 /* Promote selected title(s) to homepage setting */
 $sysconf['enable_promote_titles'] = false;
 $sysconf['promote_first_emphasized'] = true;
