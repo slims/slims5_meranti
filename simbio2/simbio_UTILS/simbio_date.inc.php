@@ -3,7 +3,7 @@
  * simbio_date class
  * A Collection of static function for doing date arithmatic related operation
  *
- * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com)
+ * Copyright (C) 2010 Arie Nugraha (dicarve@yahoo.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,6 +20,17 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
  */
+
+/**
+ * Emulate date_parse function for PHP < 5.2
+ */
+if (!function_exists('date_parse')) {
+    function date_parse($str_date) {
+        $_ts = strtotime($str_date);
+        $_date = getdate($_ts);
+        return array('month' => $_date['mon'], 'day' => $_date['mday'], 'year' => $_date['year']);
+    }
+}
 
 class simbio_date
 {

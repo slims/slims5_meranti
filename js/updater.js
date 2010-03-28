@@ -161,3 +161,18 @@ var ucsUpload = function(strUploadHandler, strData) {
             }
         });
 }
+
+/* invoke UCS record update */
+var ucsUpdate = function(strURLHandler, strData) {
+    strData = strData.strip();
+    var ajaxJSON = new Ajax.Request(strURLHandler, {
+        method: 'post',
+        parameters: strData,
+            onSuccess: function(ajaxTransport) {
+            // get AJAX response text
+            // var respText = ajaxTransport.responseText.strip();
+            // debugging purpose only
+            // alert(respText);
+            }
+        });
+}

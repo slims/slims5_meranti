@@ -20,9 +20,8 @@
  *
  */
 
-$ucs['serveraddr'] = 'http://127.0.0.1/senayan3-stable13/ucs'; // UCS server address. NO TRAILING SLASH! for local testing on Windows machine don't use localhost, use 127.0.0.1 instead
+$ucs['serveraddr'] = 'http://127.0.0.1/senayan3-stable14/ucs'; // UCS server address. NO TRAILING SLASH! for local testing on Windows machine don't use localhost, use 127.0.0.1 instead
 $node['id'] = 'slims-node'; // node ID
 $node['password'] = '2325f677e21c1613909c953eb03c57352259cc5d'; // default is s0beautifulday
 $node['name'] = 'SLiMS Library'; // node name
-$node['baseurl'] = 'http://127.0.0.1/senayan3-stable13'; // node base URL used for linking from UCS to original node catalog. NO TRAILING SLASH!
 ?>

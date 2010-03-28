@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `backup_log` (
 
 CREATE TABLE IF NOT EXISTS `biblio` (
   `biblio_id` int(11) NOT NULL AUTO_INCREMENT,
-  `orig_biblio_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `orig_biblio_id` INT(11) NOT NULL,
   `gmd_id` int(3) DEFAULT NULL,
   `title` text COLLATE utf8_unicode_ci NOT NULL,
   `edition` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `biblio` (
   `input_date` datetime DEFAULT NULL,
   `last_update` datetime DEFAULT NULL,
   PRIMARY KEY (`biblio_id`),
-  UNIQUE KEY `orig_biblio_id` (`orig_biblio_id`),
+  UNIQUE KEY `orig_biblio_idx` (`orig_biblio_id`, `node_id`),
   KEY `references_idx` (`gmd_id`,`publisher_id`,`language_id`,`publish_place_id`),
   KEY `classification` (`classification`),
   KEY `node_id` (`node_id`),

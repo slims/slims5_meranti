@@ -49,6 +49,10 @@ if ((bool) ini_get('safe_mode')) {
     define('SENAYAN_IN_SAFE_MODE', 1);
 }
 
+// set default timezone
+// for a list of timezone, please see PHP Manual at "List of Supported Timezones" section
+@date_default_timezone_set('Asia/Jakarta');
+
 // senayan version
 define('SENAYAN_VERSION', 'senayan3-stable14');
 
@@ -366,6 +370,15 @@ $sysconf['watermark']['sizeoftext'] = '5'; # range 1 - 5
 $sysconf['watermark']['alignment'] = 'BR'; #BR, BL, TR, TL, C, R, L, T, B, where B=bottom, T=top, L=left, R=right, C=centre
 $sysconf['watermark']['color'] = 'ffffff'; # the hex color of the text
 $sysconf['watermark']['opacity'] = '50'; #is opacity from 0 (transparent) to 100 (opaque)
+
+/**
+ * UCS global settings
+ */
+$sysconf['ucs']['enable'] = true;
+// auto delete same record on UCS?
+$sysconf['ucs']['auto_delete'] = true;
+// auto insert new record to UCS?
+$sysconf['ucs']['auto_insert'] = false;
 
 // check if session is auto started and then destroy it
 if ($is_auto = @ini_get('session.auto_start')) { define('SESSION_AUTO_STARTED', $is_auto); }

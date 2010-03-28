@@ -148,6 +148,10 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
             // send an alert
             if ($update) {
                 utility::jsAlert(__('Bibliography Data Successfully Updated'));
+                // auto insert catalog to UCS if enabled
+                if ($sysconf['ucs']['enable']) {
+                    echo '<script type="text/javascript">parent.ucsUpload(\''.MODULES_WEB_ROOT_DIR.'bibliography/ucs_upload.php\', \'itemID[]='.$updateRecordID.'\');</script>';
+                }
                 // write log
                 utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'bibliography', $_SESSION['realname'].' update bibliographic data ('.$data['title'].') with biblio_id ('.$_POST['itemID'].')');
                 // close window OR redirect main page
@@ -192,6 +196,10 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 $_SESSION['biblioAuthor'] = array();
                 $_SESSION['biblioTopic'] = array();
                 $_SESSION['biblioAttach'] = array();
+                // auto insert catalog to UCS if enabled
+                if ($sysconf['ucs']['enable'] && $sysconf['ucs']['auto_insert']) {
+                    echo '<script type="text/javascript">parent.ucsUpload(\''.MODULES_WEB_ROOT_DIR.'bibliography/ucs_upload.php\', \'itemID[]='.$last_biblio_id.'\');</script>';
+                }
                 echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'bibliography/index.php\', \'post\', \'itemID='.$last_biblio_id.'&detail=true\');</script>';
             } else { utility::jsAlert(__('Bibliography Data FAILED to Save. Please Contact System Administrator')."\n".$sql_op->error); }
             exit();
@@ -213,6 +221,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         $_POST['itemID'] = array((integer)$_POST['itemID']);
     }
     // loop array
+    $http_query = '';
     foreach ($_POST['itemID'] as $itemID) {
         $itemID = (integer)$itemID;
         // check if this biblio data still have an item
@@ -230,6 +239,8 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 $sql_op->delete('biblio_topic', "biblio_id=$itemID");
                 $sql_op->delete('biblio_author', "biblio_id=$itemID");
                 $sql_op->delete('biblio_attachment', "biblio_id=$itemID");
+                // add to http query for UCS delete
+                $http_query .= "itemID[]=$itemID&";
             }
         } else {
             $still_have_item[] = substr($biblio_item_d[0], 0, 45).'... still have '.$biblio_item_d[1].' copies';
@@ -245,6 +256,10 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         utility::jsAlert(__('Below data can not be deleted:')."\n".$titles);
         echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
         exit();
+    }
+    // auto delete data on UCS if enabled
+    if ($http_query && $sysconf['ucs']['enable'] && $sysconf['ucs']['auto_delete']) {
+        echo '<script type="text/javascript">parent.ucsUpdate(\''.MODULES_WEB_ROOT_DIR.'bibliography/ucs_update.php\', \'nodeOperation=delete&'.$http_query.'\');</script>';
     }
     // error alerting
     if ($error_num == 0) {
@@ -265,7 +280,14 @@ if (!$in_pop_up) {
 <div class="menuBoxInner biblioIcon">
     <?php echo strtoupper(__('Bibliographic')); ?> - <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php?action=detail" class="headerText2"><?php echo __('Add New Bibliography'); ?></a>
     &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php" class="headerText2"><?php echo __('Bibliographic List'); ?></a>
+    <?php
+    // enable UCS?
+    if ($sysconf['ucs']['enable']) {
+    ?>
     <div class="marginTop"><a href="#" onclick="ucsUpload('<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/ucs_upload.php', serializeChbox('dataList'))" class="notAJAX ucsUpload"><?php echo __('Upload Selected Bibliographic data to Union Catalog Server*'); ?></a></div>
+    <?php
+    }
+    ?>
     <hr />
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" id="keywords" size="30" />

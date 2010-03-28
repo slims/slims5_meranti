@@ -86,10 +86,10 @@ if ($body) {
             // insert upload catalog data to database
             $r = 0;
             // prepare query
-            $sql = "INSERT INTO biblio (orig_biblio_id,gmd_id,title,edition,isbn_issn,publisher_id,publish_year,
+            $sql = "REPLACE INTO biblio (orig_biblio_id,gmd_id,title,edition,isbn_issn,publisher_id,publish_year,
                 collation,series_title,call_number,language_id,publish_place_id,
                 classification,notes,frequency_id,spec_detail_info,node_id,post_date,input_date,last_update)
-                VALUES ('%s',%d,'%s','%s','%s',%d,%d,'%s','%s','%s','%s',%d,'%s','%s',%d,'%s','%s','%s','%s','%s')";
+                VALUES (%d,%d,'%s','%s','%s',%d,%d,'%s','%s','%s','%s',%d,'%s','%s',%d,'%s','%s','%s','%s','%s')";
             // execute statement
             foreach ($biblio['node_data'] as $data) {
                 // SQL escaping string
@@ -116,7 +116,7 @@ if ($body) {
                 $frequency_id = $data['frequency']?utility::getID($dbs, 'mst_frequency', 'frequency_id', 'frequency', $data['frequency'], $cache_frequency):'NULL';
 
                 // create original node biblio data
-                $orig_biblio_id = $node_id.$data['biblio_id'];
+                $orig_biblio_id = $data['biblio_id'];
                 // format SQL string
                 $real_sql = sprintf($sql, $orig_biblio_id,$gmd_id,$data['title'],$data['edition'],$data['isbn_issn'],$publisher_id,$data['publish_year'],
                     $data['collation'],$data['series_title'],$data['call_number'],$language_id,$place_id,
