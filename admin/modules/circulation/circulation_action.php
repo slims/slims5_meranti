@@ -444,7 +444,7 @@ if (isset($_POST['memberID']) OR isset($_SESSION['memberID'])) {
         if ($member->member_image) {
             if (file_exists(IMAGES_BASE_DIR.'persons/'.$member->member_image)) {
                 echo '<td class="alterCell2" valign="top" rowspan="3">';
-                echo '<img src="'.SENAYAN_WEB_ROOT_DIR.'lib/phpthumb/phpThumb.php?src=../../images/persons/'.urlencode($member->member_image).'&w=53" style="border: 1px solid #999999" />';
+                echo '<img src="'.SENAYAN_WEB_ROOT_DIR.'lib/phpthumb/phpThumb.php?src=../../images/persons/'.urlencode($member->member_image).'&w=100" style="border: 1px solid #999999" />';
                 echo '</td>';
             }
         }

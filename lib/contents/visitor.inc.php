@@ -26,13 +26,15 @@ ob_start();
 define('INSTITUTION_EMPTY', 11);
 
 if (isset($_POST['counter'])) {
+    $member_name = 'Guest';
+    $photo = 'person.png';
     // sleep for a while
-    sleep(2);
+    sleep(3);
     /**
      * Insert counter data to database
      */
     function setCounter($str_member_ID) {
-        global $dbs;
+        global $dbs, $member_name, $photo;
         // check if ID exists
         $str_member_ID = $dbs->escape_string($str_member_ID);
         $_q = $dbs->query("SELECT * FROM member WHERE member_id='$str_member_ID'");
@@ -41,6 +43,7 @@ if (isset($_POST['counter'])) {
             $_d = $_q->fetch_assoc();
             $member_id = $_d['member_id'];
             $member_name = $_d['member_name'];
+            $photo = trim($_d['member_image'])?trim($_d['member_image']):'person.png';
             $_institution = trim($_d['inst_name'])?"'".$_d['inst_name']."'":'NULL';
             $_checkin_date = date('Y-m-d H:i:s');
             $_i = $dbs->query("INSERT INTO visitor_count (member_id, member_name, institution, checkin_date) VALUES ('$member_id', '$member_name', $_institution, '$_checkin_date')");
@@ -63,7 +66,7 @@ if (isset($_POST['counter'])) {
     $memberID = trim($_POST['memberID']);
     $counter = setCounter($memberID);
     if ($counter === true) {
-        echo __('Thank you for inserting your data to our visitor log');
+        echo __($member_name.', thank you for inserting your data to our visitor log').'<span id="memberImage" src="images/persons/'.urlencode($photo).'"></span>';
     } else if ($counter === INSTITUTION_EMPTY) {
         echo __('Sorry, Please fill institution field if you are not library member');
     } else {
@@ -86,6 +89,7 @@ if (isset($_POST['counter'])) {
     <div class="marginTop"><input type="submit" name="counter" value="<?php echo __('Add'); ?>" />
 </div>
 </form>
+<img id="visitorCounterPhoto" src="images/persons/person.png" />
 </fieldset>
 
 <script type="text/javascript">
@@ -102,6 +106,12 @@ if (isset($_POST['counter'])) {
     // AJAX counter complete handler
     function counterComplete(ajax) {
         $('visitorCounterForm').enable().select('input[type=text]').invoke('clear');
+        var memberImage = $('memberImage');
+        if (memberImage) {
+            // update visitor photo
+            var imageSRC = memberImage.readAttribute('src'); memberImage.remove();
+            $('visitorCounterPhoto').src = imageSRC;
+        }
         $('memberID').focus();
     }
 
