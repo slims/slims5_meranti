@@ -31,6 +31,7 @@ $menu[] = array(__('Loan History'), MODULES_WEB_ROOT_DIR.'reporting/customs/loan
 $menu[] = array(__('Overdued List'), MODULES_WEB_ROOT_DIR.'reporting/customs/overdued_list.php', __('View Members Having Overdues'));
 $menu[] = array(__('Staff Activity'), MODULES_WEB_ROOT_DIR.'reporting/customs/staff_act.php', __('Staff activity log recapitulation'));
 $menu[] = array(__('Visitor Statistic'), MODULES_WEB_ROOT_DIR.'reporting/customs/visitor_report.php', __('Visitor Statistic'));
+$menu[] = array(__('Visitor Statistic (by Day)'), MODULES_WEB_ROOT_DIR.'reporting/customs/visitor_report_day.php', __('Visitor Statistic (by Day)'));
 $menu[] = array(__('Visitor List'), MODULES_WEB_ROOT_DIR.'reporting/customs/visitor_list.php', __('Visitor List'));
 $menu[] = array(__('Fines Report'), MODULES_WEB_ROOT_DIR.'reporting/customs/fines_report.php', __('Fines Report'));
 ?>

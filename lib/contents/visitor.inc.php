@@ -77,6 +77,7 @@ if (isset($_POST['counter'])) {
 
 ?>
 
+<script type="text/javascript" src="js/prototype.js"></script>
 <fieldset id="visitorCounterWrap">
 <legend><?php echo __('Visitor Counter'); ?></legend>
 <div id="counterInfo"></div>
