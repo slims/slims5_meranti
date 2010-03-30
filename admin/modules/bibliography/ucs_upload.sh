@@ -1,4 +1,4 @@
-#!/usr/bin/env php
+#!/usr/bin/php
 <?php
 /**
  * Copyright (C) 2010  Arie Nugraha (dicarve@yahoo.com)
@@ -34,7 +34,6 @@ if (!$sysconf['ucs']['enable']) {
 require SENAYAN_BASE_DIR.'ucnode.inc.php';
 require LIB_DIR.'http_request.inc.php';
 
-
 // fetch all data from biblio table
 $sql = "SELECT
     b.biblio_id, b.title, b.spec_detail_info, gmd.gmd_code, gmd.gmd_name, b.edition,
@@ -54,6 +53,8 @@ $q = @$dbs->query($sql);
 if ($dbs->error) {
     die('Error on database: '.$dbs->error);
 }
+
+echo "Starting send data to UCS server... \n"; flush();
 
 $data = array();
 // loop record and poll it in an array
@@ -81,17 +82,19 @@ if ($data) {
     // create HTTP request
     $http_request = new http_request();
     // send HTTP POST request
-    $http_request->send_http_request($ucs['serveraddr'].'/ucpoll.php', $_SERVER['SERVER_ADDR'], $to_sent, 'POST', 'text/json');
+    $http_request->send_http_request($ucs['serveraddr'].'/ucpoll.php', @gethostbyaddr(), $to_sent, 'POST', 'text/json');
     // below is for debugging purpose only
 	// die($http_request->body());
 
 	// check for http request error
 	if ($req_error = $http_request->error()) {
-		die($req_error['message']);
+		echo $req_error['message']."\n";
+        exit(6);
 	}
 
     // print out body of request result
-    echo $http_request->body();
+    $response = json_decode($http_request->body(), true);
+    echo $response['message']."\n";
     exit(0);
 } else {
     exit(0);
