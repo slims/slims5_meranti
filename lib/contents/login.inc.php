@@ -60,7 +60,7 @@ if (isset($_POST['logMeIn'])) {
             // write log
             utility::writeLogs($dbs, 'staff', $username, 'Login', 'Login success for user '.$username.' from address '.$_SERVER['REMOTE_ADDR']);
             echo '<script type="text/javascript">';
-            echo 'alert(\''.__('Welcome to Library Automation,').$logon->real_name.'\');';
+            echo 'alert(\''.__('Welcome to Library Automation, ').$logon->real_name.'\');';
             echo 'location.href = \'admin/index.php\';';
             echo '</script>';
             exit();

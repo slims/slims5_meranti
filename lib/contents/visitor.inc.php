@@ -20,6 +20,20 @@
  *
  */
 
+$allowed_counter_ip = array('127.0.0.1');
+$remote_addr = $_SERVER['REMOTE_ADDR'];
+$confirmation = 0;
+
+foreach ($allowed_counter_ip as $ip) {
+    if ($ip == $remote_addr) {
+        $confirmation = 1;
+    }
+}
+
+if (!$confirmation) {
+    header ("location:index.php");
+}
+
 // start the output buffering for main content
 ob_start();
 
