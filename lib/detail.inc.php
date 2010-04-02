@@ -316,26 +316,28 @@ class detail extends content_list
         // ISBN/ISSN
         $_xml_output .= '<identifier type="isbn">'.str_replace(array('-', ' '), '', $this->record_detail['isbn_issn']).'</identifier>';
 
-        // Location and Copies information
-        $_xml_output .= '<location>'."\n";
-        $_xml_output .= '<physicalLocation>'.$sysconf['library_name'].' '.$sysconf['library_subname'].'</physicalLocation>'."\n";
-        $_xml_output .= '<shelfLocator>'.$this->record_detail['call_number'].'</shelfLocator>'."\n";
-        $_copy_q = $this->obj_db->query('SELECT i.item_code, i.call_number, stat.item_status_name, loc.location_name, stat.rules, i.site FROM item AS i '
-            .'LEFT JOIN mst_item_status AS stat ON i.item_status_id=stat.item_status_id '
-            .'LEFT JOIN mst_location AS loc ON i.location_id=loc.location_id '
-            .'WHERE i.biblio_id='.$this->detail_id);
-        if ($_copy_q->num_rows > 0) {
-            $_xml_output .= '<holdingSimple>'."\n";
-            while ($_copy_d = $_copy_q->fetch_assoc()) {
-                $_xml_output .= '<copyInformation>'."\n";
-                $_xml_output .= '<numerationAndChronology type="1">'.$_copy_d['item_code'].'</numerationAndChronology>'."\n";
-                $_xml_output .= '<sublocation>'.$_copy_d['location_name'].( $_copy_d['site']?' ('.$_copy_d['site'].')':'' ).'</sublocation>'."\n";
-                $_xml_output .= '<shelfLocator>'.$_copy_d['call_number'].'</shelfLocator>'."\n";
-                $_xml_output .= '</copyInformation>'."\n";
+        if (!defined('UCS_BASE_DIR')) {
+            // Location and Copies information
+            $_xml_output .= '<location>'."\n";
+            $_xml_output .= '<physicalLocation>'.$sysconf['library_name'].' '.$sysconf['library_subname'].'</physicalLocation>'."\n";
+            $_xml_output .= '<shelfLocator>'.$this->record_detail['call_number'].'</shelfLocator>'."\n";
+            $_copy_q = $this->obj_db->query('SELECT i.item_code, i.call_number, stat.item_status_name, loc.location_name, stat.rules, i.site FROM item AS i '
+                .'LEFT JOIN mst_item_status AS stat ON i.item_status_id=stat.item_status_id '
+                .'LEFT JOIN mst_location AS loc ON i.location_id=loc.location_id '
+                .'WHERE i.biblio_id='.$this->detail_id);
+            if ($_copy_q->num_rows > 0) {
+                $_xml_output .= '<holdingSimple>'."\n";
+                while ($_copy_d = $_copy_q->fetch_assoc()) {
+                    $_xml_output .= '<copyInformation>'."\n";
+                    $_xml_output .= '<numerationAndChronology type="1">'.$_copy_d['item_code'].'</numerationAndChronology>'."\n";
+                    $_xml_output .= '<sublocation>'.$_copy_d['location_name'].( $_copy_d['site']?' ('.$_copy_d['site'].')':'' ).'</sublocation>'."\n";
+                    $_xml_output .= '<shelfLocator>'.$_copy_d['call_number'].'</shelfLocator>'."\n";
+                    $_xml_output .= '</copyInformation>'."\n";
+                }
+                $_xml_output .= '</holdingSimple>'."\n";
             }
-            $_xml_output .= '</holdingSimple>'."\n";
+            $_xml_output .= '</location>'."\n";
         }
-        $_xml_output .= '</location>'."\n";
 
         // record info
         $_xml_output .= '<recordInfo>'."\n";

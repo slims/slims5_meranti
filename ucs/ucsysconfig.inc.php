@@ -181,6 +181,10 @@ $sysconf['baseurl'] = UCS_WEB_ROOT_DIR;
 // enable HTTPS
 $sysconf['https_enable'] = false;
 
+/* XML */
+$sysconf['enable_xml_detail'] = true;
+$sysconf['enable_xml_result'] = true;
+
 // page footer info
 $sysconf['page_footer'] = 'SLiMS Union Catalog Server';
 

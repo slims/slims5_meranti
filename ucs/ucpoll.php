@@ -176,7 +176,7 @@ if ($body) {
             ucs_nodes_poll::clear_poll($dbs, $node_id);
 
             // write log
-            utility::writeLogs($dbs, 'nodes', $biblio['node_info']['id'], 'ucs', 'Node '.$node_id.'('.$biblio['node_info']['name'].') upload '.$r.' of catalog data');
+            utility::writeLogs($dbs, 'nodes', $biblio['node_info']['id'], 'ucs', 'Node '.$node_id.'('.$sysconf['node'][$node_id]['name'].') upload '.$r.' of catalog data');
             die(json_encode(array('status' => 'UPLOADED', 'message' => $r.' catalog record uploaded succesfully to '.$sysconf['server']['name'].'!')));
         } else {
             die(json_encode(array('status' => 'NOT_AUTHORIZED', 'message' => 'You not authorized to upload data to server '.$sysconf['server']['name'].'! Please check your ucnode.inc.php file for correct configuration!')));
