@@ -95,7 +95,7 @@ if (isset($_POST['counter'])) {
 <fieldset id="visitorCounterWrap">
 <legend><?php echo __('Visitor Counter'); ?></legend>
 <div id="counterInfo"></div>
-<div class="info"><?php echo __('Please insert your library member ID or your name if you don\'t have it yet'); ?></div>
+<div class="info"><?php echo __('Please insert your library member ID otherwise your full name instead'); ?></div>
 <form action="index.php?p=visitor" name="visitorCounterForm" id="visitorCounterForm" method="post">
     <div class="fieldLabel"><?php echo __('Member ID'); ?>/<?php echo __('Visitor Name'); ?>*</div>
     <div><input type="text" name="memberID" id="memberID" /></div>
