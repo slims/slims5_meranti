@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Senayan3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-26 18:04+0700\n"
-"PO-Revision-Date: 2010-02-26 18:04+0700\n"
+"POT-Creation-Date: 2010-04-03 20:06+0700\n"
+"PO-Revision-Date: 2010-04-04 00:04+0700\n"
 "Last-Translator: M. Rasyid Ridho <rasyidridho@gmail.com>\n"
 "Language-Team: M. Rasyid Ridho. Miranti Heras Tuwinda <rasyidridho@gmail.com, windaa_4588@rocketmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +17,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: index.php:37
+#: ucs/index.php:30
 msgid "Web Online Public Access Catalog - Use the search options to find documents quickly"
 msgstr "فحص الكل"
 
@@ -28,100 +29,1529 @@ msgstr "أنت بصدد تسجيل دخول كالأعضاء "
 msgid "LOGOUT"
 msgstr "تسجيل الخروج"
 
-#: sysconfig.inc.php:320
-#: install/german/sysconfig.inc.php:316
+#: sysconfig.inc.php:325
+#: ucs/ucsysconfig.inc.php:242
 msgid "Personal Name"
 msgstr "اسم الشخصية"
 
-#: sysconfig.inc.php:321
-#: install/german/sysconfig.inc.php:317
+#: sysconfig.inc.php:326
+#: ucs/ucsysconfig.inc.php:243
 msgid "Organizational Body"
 msgstr "الهيئة التنظيمية"
 
-#: sysconfig.inc.php:322
-#: install/german/sysconfig.inc.php:318
+#: sysconfig.inc.php:327
+#: ucs/ucsysconfig.inc.php:244
 msgid "Conference"
 msgstr "مؤتمر"
 
-#: sysconfig.inc.php:325
-#: install/german/sysconfig.inc.php:321
+#: sysconfig.inc.php:330
+#: ucs/ucsysconfig.inc.php:247
 msgid "Topic"
 msgstr "الموضوع"
 
-#: sysconfig.inc.php:326
-#: install/german/sysconfig.inc.php:322
+#: sysconfig.inc.php:331
+#: ucs/ucsysconfig.inc.php:248
 msgid "Geographic"
 msgstr "الجغرافية"
 
-#: sysconfig.inc.php:327
-#: install/german/sysconfig.inc.php:323
+#: sysconfig.inc.php:332
+#: ucs/ucsysconfig.inc.php:249
 msgid "Name"
 msgstr "اسم"
 
-#: sysconfig.inc.php:328
-#: install/german/sysconfig.inc.php:324
+#: sysconfig.inc.php:333
+#: ucs/ucsysconfig.inc.php:250
 msgid "Temporal"
 msgstr "الزمانية"
 
-#: sysconfig.inc.php:329
-#: install/german/sysconfig.inc.php:325
+#: sysconfig.inc.php:334
+#: ucs/ucsysconfig.inc.php:251
 msgid "Genre"
 msgstr "النوع"
 
-#: sysconfig.inc.php:330
-#: install/german/sysconfig.inc.php:326
+#: sysconfig.inc.php:335
+#: ucs/ucsysconfig.inc.php:252
 msgid "Occupation"
 msgstr "الاحتلال"
 
-#: sysconfig.inc.php:333
-#: install/german/sysconfig.inc.php:329
+#: sysconfig.inc.php:338
+#: ucs/ucsysconfig.inc.php:255
 msgid "Primary Author"
 msgstr "كاتب الابتدائية"
 
-#: sysconfig.inc.php:334
-#: install/german/sysconfig.inc.php:330
+#: sysconfig.inc.php:339
+#: ucs/ucsysconfig.inc.php:256
 msgid "Additional Author"
 msgstr "كاتب إضافية"
 
-#: sysconfig.inc.php:335
-#: install/german/sysconfig.inc.php:331
+#: sysconfig.inc.php:340
+#: ucs/ucsysconfig.inc.php:257
 msgid "Editor"
 msgstr "المحرر"
 
-#: sysconfig.inc.php:336
-#: install/german/sysconfig.inc.php:332
+#: sysconfig.inc.php:341
+#: ucs/ucsysconfig.inc.php:258
 msgid "Translator"
 msgstr "المترجم"
 
-#: sysconfig.inc.php:337
-#: install/german/sysconfig.inc.php:333
+#: sysconfig.inc.php:342
+#: ucs/ucsysconfig.inc.php:259
 msgid "Director"
 msgstr "المخرج"
 
-#: sysconfig.inc.php:338
-#: install/german/sysconfig.inc.php:334
+#: sysconfig.inc.php:343
+#: ucs/ucsysconfig.inc.php:260
 msgid "Producer"
 msgstr "المنتج"
 
-#: sysconfig.inc.php:339
-#: install/german/sysconfig.inc.php:335
+#: sysconfig.inc.php:344
+#: ucs/ucsysconfig.inc.php:261
 msgid "Composer"
 msgstr "مؤلف الموسيقى"
 
-#: sysconfig.inc.php:340
-#: install/german/sysconfig.inc.php:336
+#: sysconfig.inc.php:345
+#: ucs/ucsysconfig.inc.php:262
 msgid "Illustrator"
 msgstr "المصور"
 
-#: sysconfig.inc.php:341
-#: install/german/sysconfig.inc.php:337
+#: sysconfig.inc.php:346
+#: ucs/ucsysconfig.inc.php:263
 msgid "Creator"
 msgstr "المبدع"
 
-#: sysconfig.inc.php:342
-#: install/german/sysconfig.inc.php:338
+#: sysconfig.inc.php:347
+#: ucs/ucsysconfig.inc.php:264
 msgid "Contributor"
 msgstr "المساهم"
+
+#: ucs/themes/default/custom_frontpage_record.inc.php:7
+#: ucs/themes/default/detail_template.php:16
+#: ucs/themes/lightweight/custom_frontpage_record.inc.php:7
+msgid "Edition"
+msgstr "الطبعة"
+
+#: ucs/themes/default/custom_frontpage_record.inc.php:8
+#: ucs/themes/default/detail_template.php:24
+#: ucs/themes/default/index_template.inc.php:55
+#: ucs/themes/lightweight/custom_frontpage_record.inc.php:8
+msgid "ISBN/ISSN"
+msgstr "رقم الكتاب/رقم مسلسل"
+
+#: ucs/themes/default/custom_frontpage_record.inc.php:9
+#: ucs/themes/default/detail_template.php:64
+#: ucs/themes/lightweight/custom_frontpage_record.inc.php:9
+msgid "Collation"
+msgstr "الترتيب"
+
+#: ucs/themes/default/custom_frontpage_record.inc.php:10
+#: ucs/themes/default/detail_template.php:41
+#: ucs/themes/lightweight/custom_frontpage_record.inc.php:10
+msgid "Series Title"
+msgstr "سلسلة العنوان"
+
+#: ucs/themes/default/custom_frontpage_record.inc.php:11
+#: ucs/themes/default/detail_template.php:20
+#: ucs/themes/lightweight/custom_frontpage_record.inc.php:11
+msgid "Call Number"
+msgstr "رقم التصنيف"
+
+#: ucs/themes/default/custom_frontpage_record.inc.php:12
+#: ucs/themes/default/detail_template.php:12
+#, fuzzy
+msgid "Collection Location"
+msgstr "كل اﻻماكن"
+
+#: ucs/themes/default/detail_template.php:8
+#: ucs/themes/default/index_template.inc.php:49
+msgid "Title"
+msgstr "عنوان كتاب"
+
+#: ucs/themes/default/detail_template.php:29
+#: ucs/themes/default/index_template.inc.php:51
+msgid "Author(s)"
+msgstr "المؤلف"
+
+#: ucs/themes/default/detail_template.php:33
+#: ucs/themes/default/index_template.inc.php:53
+msgid "Subject(s)"
+msgstr "الموضوع"
+
+#: ucs/themes/default/detail_template.php:37
+msgid "Classification"
+msgstr "رقم التصنيف"
+
+#: ucs/themes/default/detail_template.php:44
+#: ucs/themes/default/index_template.inc.php:57
+msgid "GMD"
+msgstr "المواد الأولية"
+
+#: ucs/themes/default/detail_template.php:48
+msgid "Language"
+msgstr "اللغة"
+
+#: ucs/themes/default/detail_template.php:52
+msgid "Publisher"
+msgstr "الناشر"
+
+#: ucs/themes/default/detail_template.php:56
+msgid "Publishing Year"
+msgstr "سنة النشر"
+
+#: ucs/themes/default/detail_template.php:60
+msgid "Publishing Place"
+msgstr "مكان النشر"
+
+#: ucs/themes/default/detail_template.php:68
+msgid "Abstract/Notes"
+msgstr "مجردة / ملاحظات"
+
+#: ucs/themes/default/detail_template.php:72
+msgid "Specific Detail Info"
+msgstr "معلومات تفصيلية محددة"
+
+#: ucs/themes/default/detail_template.php:76
+msgid "Image"
+msgstr "الصور"
+
+#: ucs/themes/default/detail_template.php:81
+msgid "Back To Previous"
+msgstr "إلى الوراء"
+
+#: ucs/themes/default/index_template.inc.php:24
+msgid "Home"
+msgstr " الصفحة الرئيسية"
+
+#: ucs/themes/default/index_template.inc.php:25
+#, fuzzy
+msgid "Union Catalog Information"
+msgstr "معلومات المكتبة"
+
+#: ucs/themes/default/index_template.inc.php:26
+msgid "Help"
+msgstr "مساعدة"
+
+#: ucs/themes/default/index_template.inc.php:38
+msgid "Select Language"
+msgstr "اختيار اللغة"
+
+#: ucs/themes/default/index_template.inc.php:47
+msgid "Advanced Search"
+msgstr "بحث متقدم"
+
+#: ucs/themes/default/index_template.inc.php:61
+msgid "Location"
+msgstr "موقع"
+
+#: ucs/themes/default/index_template.inc.php:66
+#: ucs/themes/default/index_template.inc.php:90
+msgid "Search"
+msgstr "بحث"
+
+#: ucs/themes/default/index_template.inc.php:88
+#, fuzzy
+msgid "Quick Search"
+msgstr "ارجاع ميسرة"
+
+#: ucs/themes/lightweight/detail_template.php:76
+msgid "File Attachment"
+msgstr "ملف مرفق"
+
+#: ucs/themes/lightweight/index_template.inc.php:21
+msgid "Library Information"
+msgstr "معلومات المكتبة"
+
+#: ucs/themes/lightweight/index_template.inc.php:22
+msgid "Help on Search"
+msgstr "مساعدة فى البحث"
+
+#: ucs/includes/localisation.php:57
+msgid "English"
+msgstr ""
+
+#: ucs/includes/localisation.php:58
+msgid "Indonesian"
+msgstr ""
+
+#: ucs/includes/common.inc.php:25
+msgid "All Locations"
+msgstr "كل اﻻماكن"
+
+#: ucs/includes/common.inc.php:33
+msgid "All GMD/Media"
+msgstr "كل الواد اﻷؤلية / الؤسائط"
+
+#: ucs/includes/contents/login.inc.php:48
+msgid "Please supply valid username and password"
+msgstr "اكتب اسم المستخدم وكلمةالسر صالحة"
+
+#: ucs/includes/contents/login.inc.php:61
+msgid "Welcome to Union Catalog Server administration,"
+msgstr ""
+
+#: ucs/includes/contents/login.inc.php:70
+msgid "Wrong Username or Password. ACCESS DENIED"
+msgstr "اسم المستخدم او كلمةالسر غير صحيحين. رفض الوصول."
+
+#: ucs/includes/contents/login.inc.php:82
+msgid "Your browser does not support Javascript or Javascript is disabled. Application won't run without Javascript!"
+msgstr "المتصفة غير مدعو مة Javascript او تم إيقاف Javascript. لن يعمل التطبيق بدون Javascript!"
+
+#: ucs/admin/index.php:57
+#, fuzzy
+msgid "Union Catalog Server administration console. you are currently logged in as"
+msgstr " إ هلا وسهلا! إلى التشغيل الآلي للمكتبة, قمت بتسجيل الدخول على النحو XXXX "
+
+#: ucs/admin/logout.php:32
+#, fuzzy
+msgid "You Have Been Logged Out From Union Catalog Server console"
+msgstr "لقد تم تسجيل الخروج من نظام أتمتة المكتبة"
+
+#: ucs/admin/default/submenu.php:21
+msgid "Panel"
+msgstr "لوحة التحكم"
+
+#: ucs/admin/default/submenu.php:22
+msgid "Change User Profiles"
+msgstr "تغيير اسم الوضع"
+
+#: ucs/admin/default/submenu.php:22
+msgid "Change Current User Profiles and Password"
+msgstr "تغييراسم الوضع و كلمة السر"
+
+#: ucs/admin/default/submenu.php:24
+#, fuzzy
+msgid "Bibliography List"
+msgstr "قائمة ببليوجرافي"
+
+#: ucs/admin/default/submenu.php:24
+msgid "View existing Union Server Catalog data"
+msgstr ""
+
+#: ucs/admin/default/home.php:30
+msgid "<strong>PHP GD</strong> extension is not installed. Please install it or application won't be able to create image thumbnail."
+msgstr ""
+
+#: ucs/admin/default/home.php:34
+msgid "The PATH for <strong>mysqldump</strong> program is not right! Please check configuration file or you won't be able to do any database backups."
+msgstr ""
+
+#: ucs/admin/default/session_check.inc.php:32
+#: ucs/admin/default/session_check.inc.php:44
+msgid "You are not authorized to view this section"
+msgstr "أنت غير مخول لعرض هذا القسم"
+
+#: ucs/admin/default/session_check.inc.php:56
+msgid "Your Login Session has already timeout!"
+msgstr "الدخول وسيتم تعدى الوقت"
+
+#: ucs/admin/modules/master_file/publisher.php:39
+#: ucs/admin/modules/master_file/publisher.php:131
+#: ucs/admin/modules/master_file/doc_language.php:38
+#: ucs/admin/modules/master_file/doc_language.php:134
+#: ucs/admin/modules/master_file/supplier.php:39
+#: ucs/admin/modules/master_file/supplier.php:139
+#: ucs/admin/modules/master_file/topic.php:39
+#: ucs/admin/modules/master_file/topic.php:134
+#: ucs/admin/modules/master_file/author.php:39
+#: ucs/admin/modules/master_file/author.php:133
+#: ucs/admin/modules/master_file/place.php:39
+#: ucs/admin/modules/master_file/place.php:131
+msgid "You don't have enough privileges to access this area!"
+msgstr ""
+
+#: ucs/admin/modules/master_file/publisher.php:47
+msgid "Publisher Name can't be empty"
+msgstr "ﻻ يمكن ترك اسم الناشر فارغاً"
+
+#: ucs/admin/modules/master_file/publisher.php:65
+msgid "Publisher Data Successfully Updated"
+msgstr "تم تحديث بيانات الناشر"
+
+#: ucs/admin/modules/master_file/publisher.php:67
+msgid "PUBLISHER Data FAILED to Updated. Please Contact System Administrator"
+msgstr "لم يتم تحديث بيانات الناشر. رجاء الاتصال بنظام البيانات"
+
+#: ucs/admin/modules/master_file/publisher.php:74
+msgid "New Publisher Data Successfully Saved"
+msgstr "تم حفظ بيانات الناشر الجديد"
+
+#: ucs/admin/modules/master_file/publisher.php:76
+msgid "Publisher Data FAILED to Save. Please Contact System Administrator"
+msgstr "لم يتم تحفظ بيانات الناشر. رجاء اﻻتصال بنظام البيانات"
+
+#: ucs/admin/modules/master_file/publisher.php:103
+#: ucs/admin/modules/master_file/index.php:107
+#: ucs/admin/modules/master_file/doc_language.php:106
+#: ucs/admin/modules/master_file/supplier.php:111
+#: ucs/admin/modules/master_file/topic.php:106
+#: ucs/admin/modules/master_file/author.php:105
+#: ucs/admin/modules/master_file/frequency.php:104
+#: ucs/admin/modules/master_file/place.php:103
+#: ucs/admin/modules/bibliography/index.php:182
+msgid "All Data Successfully Deleted"
+msgstr "تم مسح كل البيانات"
+
+#: ucs/admin/modules/master_file/publisher.php:106
+#: ucs/admin/modules/master_file/index.php:110
+#: ucs/admin/modules/master_file/doc_language.php:109
+#: ucs/admin/modules/master_file/supplier.php:114
+#: ucs/admin/modules/master_file/topic.php:109
+#: ucs/admin/modules/master_file/author.php:108
+#: ucs/admin/modules/master_file/frequency.php:107
+#: ucs/admin/modules/master_file/place.php:106
+#: ucs/admin/modules/bibliography/index.php:185
+msgid ""
+"Some or All Data NOT deleted successfully!\\n"
+"Please contact system administrator"
+msgstr "لم يتم مسح كل البيانات او بعضها!//رجاء اﻻتصال بنظام البيانات"
+
+#: ucs/admin/modules/master_file/publisher.php:117
+msgid "Add New Publisher"
+msgstr "اضافة الناشر الجديد"
+
+#: ucs/admin/modules/master_file/publisher.php:118
+msgid "Publisher List"
+msgstr "الناشر التفسيلى"
+
+#: ucs/admin/modules/master_file/publisher.php:140
+#: ucs/admin/modules/master_file/index.php:144
+#: ucs/admin/modules/master_file/doc_language.php:143
+#: ucs/admin/modules/master_file/supplier.php:148
+#: ucs/admin/modules/master_file/topic.php:143
+#: ucs/admin/modules/master_file/author.php:142
+#: ucs/admin/modules/master_file/frequency.php:141
+#: ucs/admin/modules/master_file/place.php:140
+#: ucs/admin/modules/bibliography/index.php:224
+msgid "Save"
+msgstr "حفظ"
+
+#: ucs/admin/modules/master_file/publisher.php:155
+#: ucs/admin/modules/master_file/index.php:159
+#: ucs/admin/modules/master_file/doc_language.php:158
+#: ucs/admin/modules/master_file/supplier.php:163
+#: ucs/admin/modules/master_file/topic.php:158
+#: ucs/admin/modules/master_file/author.php:157
+#: ucs/admin/modules/master_file/frequency.php:156
+#: ucs/admin/modules/master_file/place.php:155
+#: ucs/admin/modules/bibliography/index.php:241
+msgid "Update"
+msgstr "التحديث"
+
+#: ucs/admin/modules/master_file/publisher.php:160
+#: ucs/admin/modules/master_file/publisher.php:178
+#: ucs/admin/modules/master_file/publisher.php:182
+msgid "Publisher Name"
+msgstr "اسم الناشر"
+
+#: ucs/admin/modules/master_file/publisher.php:164
+msgid "You are going to edit publisher data"
+msgstr "ستعديل بيانات الناشر"
+
+#: ucs/admin/modules/master_file/publisher.php:164
+#: ucs/admin/modules/master_file/publisher.php:179
+#: ucs/admin/modules/master_file/publisher.php:184
+#: ucs/admin/modules/master_file/index.php:170
+#: ucs/admin/modules/master_file/index.php:185
+#: ucs/admin/modules/master_file/index.php:189
+#: ucs/admin/modules/master_file/doc_language.php:168
+#: ucs/admin/modules/master_file/doc_language.php:178
+#: ucs/admin/modules/master_file/doc_language.php:180
+#: ucs/admin/modules/master_file/supplier.php:182
+#: ucs/admin/modules/master_file/supplier.php:199
+#: ucs/admin/modules/master_file/supplier.php:205
+#: ucs/admin/modules/master_file/topic.php:174
+#: ucs/admin/modules/master_file/topic.php:192
+#: ucs/admin/modules/master_file/topic.php:197
+#: ucs/admin/modules/master_file/author.php:173
+#: ucs/admin/modules/master_file/author.php:191
+#: ucs/admin/modules/master_file/author.php:196
+#: ucs/admin/modules/master_file/frequency.php:181
+#: ucs/admin/modules/master_file/frequency.php:199
+#: ucs/admin/modules/master_file/frequency.php:205
+#: ucs/admin/modules/master_file/place.php:164
+#: ucs/admin/modules/master_file/place.php:178
+#: ucs/admin/modules/master_file/place.php:181
+#: ucs/admin/modules/bibliography/index.php:393
+#: ucs/admin/modules/bibliography/index.php:400
+msgid "Last Update"
+msgstr "آخر تحديث"
+
+#: ucs/admin/modules/master_file/publisher.php:204
+#: ucs/admin/modules/master_file/index.php:208
+#: ucs/admin/modules/master_file/doc_language.php:199
+#: ucs/admin/modules/master_file/supplier.php:226
+#: ucs/admin/modules/master_file/topic.php:236
+#: ucs/admin/modules/master_file/author.php:228
+#: ucs/admin/modules/master_file/frequency.php:224
+#: ucs/admin/modules/master_file/place.php:200
+#: ucs/admin/modules/bibliography/index.php:446
+msgid "Found <strong>{result->num_rows}</strong> from your keywords"
+msgstr ""
+
+#: ucs/admin/modules/master_file/index.php:42
+#: ucs/admin/modules/master_file/index.php:135
+#: ucs/admin/modules/master_file/frequency.php:38
+#: ucs/admin/modules/master_file/frequency.php:132
+msgid "You don't have enough privileges to view this section"
+msgstr "لست اﻹمتياز لنظرهذا المقطع"
+
+#: ucs/admin/modules/master_file/index.php:51
+msgid "GMD Code And Name can't be empty"
+msgstr "ﻻ يمكن ترك المواد الأولية فارغة"
+
+#: ucs/admin/modules/master_file/index.php:70
+msgid "GMD Data Successfully Updated"
+msgstr "تم تحديث المواد الأولية"
+
+#: ucs/admin/modules/master_file/index.php:72
+msgid "GMD Data FAILED to Updated. Please Contact System Administrator"
+msgstr "لم يتم تحديث المواد الأولية"
+
+#: ucs/admin/modules/master_file/index.php:78
+msgid "New GMD Data Successfully Saved"
+msgstr "تم حفظ المواد الأولية"
+
+#: ucs/admin/modules/master_file/index.php:80
+msgid "GMD Data FAILED to Save. Please Contact System Administrator"
+msgstr "لم يتم حفظ المواد الأولية. رجاء الاتصال بنظام البيانات"
+
+#: ucs/admin/modules/master_file/index.php:121
+msgid "Add New GMD"
+msgstr "اضافة المواد الأولية"
+
+#: ucs/admin/modules/master_file/index.php:122
+msgid "GMD List"
+msgstr "قائمة المواد الأولية"
+
+#: ucs/admin/modules/master_file/index.php:164
+#: ucs/admin/modules/master_file/index.php:183
+#: ucs/admin/modules/master_file/index.php:187
+msgid "GMD Code"
+msgstr "كود المواد الأولية"
+
+#: ucs/admin/modules/master_file/index.php:166
+#: ucs/admin/modules/master_file/index.php:184
+#: ucs/admin/modules/master_file/index.php:188
+msgid "GMD Name"
+msgstr "اسم المواد الأولية"
+
+#: ucs/admin/modules/master_file/index.php:170
+msgid "You are going to edit gmd data"
+msgstr "ستعديل بيانات المواد الأولية"
+
+#: ucs/admin/modules/master_file/doc_language.php:47
+msgid "Language ID or Name can't be empty"
+msgstr "ﻻ يمكن ترك تعريف اللغة فارغة"
+
+#: ucs/admin/modules/master_file/doc_language.php:66
+msgid "Language Data Successfully Updated"
+msgstr "تمت تحديث بيانات اللغة"
+
+#: ucs/admin/modules/master_file/doc_language.php:70
+msgid "Language Data FAILED to Updated. Please Contact System Administrator"
+msgstr "لم يتم تحديث بيانات اللغة. رجاء اﻻتصال بنظام البيانات"
+
+#: ucs/admin/modules/master_file/doc_language.php:77
+msgid "New Language Data Successfully Saved"
+msgstr "تم حفظ بيانات اللغة الجديدة"
+
+#: ucs/admin/modules/master_file/doc_language.php:79
+msgid "Language Data FAILED to Save. Please Contact System Administrator"
+msgstr "لم يتم حفظ بيانات اللغة الجديدة. رجاء اﻻتصال بنظام البيانات"
+
+#: ucs/admin/modules/master_file/doc_language.php:120
+#: ucs/admin/modules/master_file/submenu.php:29
+msgid "Doc. Language"
+msgstr "لغة توثيق"
+
+#: ucs/admin/modules/master_file/doc_language.php:120
+msgid "Add New Language"
+msgstr "اضافة لغة جديدة"
+
+#: ucs/admin/modules/master_file/doc_language.php:121
+msgid "Language List"
+msgstr "قائمة اللغة"
+
+#: ucs/admin/modules/master_file/doc_language.php:163
+msgid "Language Code"
+msgstr "كود لغة"
+
+#: ucs/admin/modules/master_file/doc_language.php:168
+msgid "You are going to edit language data"
+msgstr "ستعديل لغة توثيق"
+
+#: ucs/admin/modules/master_file/supplier.php:47
+msgid "Supplier Name can't be empty"
+msgstr "ﻻ يمكن ترك اسم المورِّد فارغاً"
+
+#: ucs/admin/modules/master_file/supplier.php:71
+msgid "Supplier Data Successfully Updated"
+msgstr "تم تحديث بيانات مورِّد"
+
+#: ucs/admin/modules/master_file/supplier.php:73
+msgid "Supplier Data FAILED to Updated. Please Contact System Administrator"
+msgstr "لم يتم تحديث بيانات مورِّد. رجاء اﻻتصال بنظام البيانات"
+
+#: ucs/admin/modules/master_file/supplier.php:80
+msgid "New Supplier Data Successfully Saved"
+msgstr "تم حفظ بيانات مورِّد"
+
+#: ucs/admin/modules/master_file/supplier.php:83
+msgid "Supplier Data FAILED to Save. Please Contact System Administrator"
+msgstr "لم يتم حفظ بيانات مورِّد. رجاء اﻻتصال بنظام البيانات"
+
+#: ucs/admin/modules/master_file/supplier.php:125
+msgid "Supplier"
+msgstr "مورِّد"
+
+#: ucs/admin/modules/master_file/supplier.php:125
+msgid "Add New Supplier"
+msgstr "اضافة مورِّد"
+
+#: ucs/admin/modules/master_file/supplier.php:126
+msgid "Supplier List"
+msgstr "قائمة المورِّد"
+
+#: ucs/admin/modules/master_file/supplier.php:168
+#: ucs/admin/modules/master_file/supplier.php:195
+#: ucs/admin/modules/master_file/supplier.php:201
+msgid "Supplier Name"
+msgstr "اسم المورِّد"
+
+#: ucs/admin/modules/master_file/supplier.php:170
+msgid "Address"
+msgstr "عنوان"
+
+#: ucs/admin/modules/master_file/supplier.php:172
+#: ucs/admin/modules/master_file/supplier.php:196
+#: ucs/admin/modules/master_file/supplier.php:202
+msgid "Contact"
+msgstr "اتصال"
+
+#: ucs/admin/modules/master_file/supplier.php:174
+#: ucs/admin/modules/master_file/supplier.php:197
+#: ucs/admin/modules/master_file/supplier.php:203
+msgid "Phone Number"
+msgstr "رقم هاتف"
+
+#: ucs/admin/modules/master_file/supplier.php:176
+#: ucs/admin/modules/master_file/supplier.php:198
+#: ucs/admin/modules/master_file/supplier.php:204
+msgid "Fax Number"
+msgstr "رقم فاكس"
+
+#: ucs/admin/modules/master_file/supplier.php:178
+msgid "Account Number"
+msgstr "رقم الحساب"
+
+#: ucs/admin/modules/master_file/supplier.php:182
+msgid "You are going to edit Supplier data"
+msgstr "ستعديل بيانات المورِّد"
+
+#: ucs/admin/modules/master_file/topic.php:47
+msgid "Subject can't be empty"
+msgstr "ﻻ يمكن ترك العنوان فارغاً"
+
+#: ucs/admin/modules/master_file/topic.php:67
+msgid "Subject Data Successfully Updated"
+msgstr "تم تخديث الموضوع"
+
+#: ucs/admin/modules/master_file/topic.php:69
+msgid "Subject Data FAILED to Updated. Please Contact System Administrator"
+msgstr "لم يتم تخديث الموضوع"
+
+#: ucs/admin/modules/master_file/topic.php:76
+msgid "New Subject Data Successfully Saved"
+msgstr "تم حفظ الموضوع الجديد"
+
+#: ucs/admin/modules/master_file/topic.php:78
+msgid "Subject Data FAILED to Save. Please Contact System Administrator"
+msgstr "لم يتم حفظ الموضوع الجديد. رجاء اﻻتصال بنظام البيانات"
+
+#: ucs/admin/modules/master_file/topic.php:120
+#: ucs/admin/modules/master_file/topic.php:163
+#: ucs/admin/modules/master_file/topic.php:189
+#: ucs/admin/modules/master_file/topic.php:194
+#: ucs/admin/modules/master_file/submenu.php:27
+msgid "Subject"
+msgstr "الموضوع"
+
+#: ucs/admin/modules/master_file/topic.php:120
+msgid "Add New Subject"
+msgstr "اضافة الموضوع"
+
+#: ucs/admin/modules/master_file/topic.php:121
+msgid "Subject List"
+msgstr "قائمة الموضوع"
+
+#: ucs/admin/modules/master_file/topic.php:168
+#: ucs/admin/modules/master_file/topic.php:190
+#: ucs/admin/modules/master_file/topic.php:195
+msgid "Subject Type"
+msgstr "تصنيف الموضوع"
+
+#: ucs/admin/modules/master_file/topic.php:170
+#: ucs/admin/modules/master_file/topic.php:191
+#: ucs/admin/modules/master_file/topic.php:196
+#: ucs/admin/modules/master_file/submenu.php:23
+#: ucs/admin/modules/master_file/author.php:169
+#: ucs/admin/modules/master_file/author.php:190
+#: ucs/admin/modules/master_file/author.php:195
+msgid "Authority Files"
+msgstr "ملف إسناد الأسماء"
+
+#: ucs/admin/modules/master_file/topic.php:174
+msgid "You are going to edit Subject data"
+msgstr "ستعديل بيانات الموضوع"
+
+#: ucs/admin/modules/master_file/submenu.php:24
+msgid "General Material Designation"
+msgstr "المواد الأولية"
+
+#: ucs/admin/modules/master_file/submenu.php:25
+msgid "Document Publisher"
+msgstr "وثائق الناشر"
+
+#: ucs/admin/modules/master_file/submenu.php:26
+#: ucs/admin/modules/master_file/author.php:119
+msgid "Author"
+msgstr "المؤلف"
+
+#: ucs/admin/modules/master_file/submenu.php:26
+msgid "Document Authors"
+msgstr "وثيق المؤلف"
+
+#: ucs/admin/modules/master_file/submenu.php:28
+#: ucs/admin/modules/master_file/place.php:117
+msgid "Place"
+msgstr "مكان"
+
+#: ucs/admin/modules/master_file/submenu.php:28
+#: ucs/admin/modules/master_file/place.php:160
+#: ucs/admin/modules/master_file/place.php:177
+#: ucs/admin/modules/master_file/place.php:180
+msgid "Place Name"
+msgstr "اسم المكان"
+
+#: ucs/admin/modules/master_file/submenu.php:29
+msgid "Document Content Language"
+msgstr "توثيق لغة محتويات"
+
+#: ucs/admin/modules/master_file/submenu.php:30
+#: ucs/admin/modules/master_file/frequency.php:118
+#: ucs/admin/modules/master_file/frequency.php:161
+#: ucs/admin/modules/master_file/frequency.php:195
+#: ucs/admin/modules/master_file/frequency.php:201
+#: ucs/admin/modules/bibliography/index.php:275
+msgid "Frequency"
+msgstr "عدد مرات الصدور"
+
+#: ucs/admin/modules/master_file/author.php:47
+msgid "Author name can't be empty"
+msgstr "ﻻ يمكن ترك اسم المؤلف فارغاً"
+
+#: ucs/admin/modules/master_file/author.php:67
+msgid "Author Data Successfully Updated"
+msgstr "تم تحديث بيانات مؤلف"
+
+#: ucs/admin/modules/master_file/author.php:69
+msgid "Author Data FAILED to Updated. Please Contact System Administrator"
+msgstr "لم يتم تحديث بيانات مؤلف. رجاء اﻻتصال بنظام البيانات"
+
+#: ucs/admin/modules/master_file/author.php:76
+msgid "New Author Data Successfully Saved"
+msgstr "تم حفظ بيانات مؤلف"
+
+#: ucs/admin/modules/master_file/author.php:78
+msgid "Author Data FAILED to Save. Please Contact System Administrator"
+msgstr "لم يتم حفظ بيانات مؤلف. رجاء اﻻتصال بنظام البيانات"
+
+#: ucs/admin/modules/master_file/author.php:119
+msgid "Add New Author"
+msgstr "اضافة مؤلف جديد"
+
+#: ucs/admin/modules/master_file/author.php:120
+msgid "Author List"
+msgstr "قائمة المؤلف"
+
+#: ucs/admin/modules/master_file/author.php:162
+#: ucs/admin/modules/master_file/author.php:188
+#: ucs/admin/modules/master_file/author.php:193
+msgid "Author Name"
+msgstr "اسم المؤلف"
+
+#: ucs/admin/modules/master_file/author.php:167
+#: ucs/admin/modules/master_file/author.php:189
+#: ucs/admin/modules/master_file/author.php:194
+msgid "Authority Type"
+msgstr "تصنيف إسناد الأسماء"
+
+#: ucs/admin/modules/master_file/author.php:173
+msgid "You are going to edit author data"
+msgstr "بصدد تعديل اعدات البيانات المؤلف"
+
+#: ucs/admin/modules/master_file/frequency.php:46
+#: ucs/admin/modules/bibliography/export.php:43
+msgid "Required fields (*)  must be filled correctly!"
+msgstr "الحقول المطلوبة (*) يجب ان يكون شغلها بشكل صحيح!"
+
+#: ucs/admin/modules/master_file/frequency.php:67
+msgid "Frequency Data Successfully Updated"
+msgstr "تم تحديث عدد مرات الصدور"
+
+#: ucs/admin/modules/master_file/frequency.php:69
+msgid "Frequency Data FAILED to Updated. Please Contact System Administrator"
+msgstr "لم يتم تحديث عدد مرات الصدور. رجاء الاتصال بنظام البيانات"
+
+#: ucs/admin/modules/master_file/frequency.php:75
+msgid "New Frequency Data Successfully Saved"
+msgstr "تم حفظ عدد مرات الصدور"
+
+#: ucs/admin/modules/master_file/frequency.php:77
+msgid "Frequency Data FAILED to Save. Please Contact System Administrator"
+msgstr "لم يتم حفظ عدد مرات الصدورالجديد. رجاء الاتصال بنظام البيانات"
+
+#: ucs/admin/modules/master_file/frequency.php:118
+msgid "Add New Frequency"
+msgstr "اضاف عدد مرات الصدورالجديد"
+
+#: ucs/admin/modules/master_file/frequency.php:119
+msgid "Frequency Available"
+msgstr "متاح عدد مرات الصدورالجديد"
+
+#: ucs/admin/modules/master_file/frequency.php:171
+#: ucs/admin/modules/master_file/frequency.php:197
+#: ucs/admin/modules/master_file/frequency.php:203
+msgid "Time Increment"
+msgstr "ازدياد الوقت"
+
+#: ucs/admin/modules/master_file/frequency.php:173
+msgid "Day"
+msgstr "يوم"
+
+#: ucs/admin/modules/master_file/frequency.php:174
+msgid "Week"
+msgstr "اسبوع"
+
+#: ucs/admin/modules/master_file/frequency.php:175
+msgid "Month"
+msgstr "شهر"
+
+#: ucs/admin/modules/master_file/frequency.php:176
+msgid "Year"
+msgstr "سنة"
+
+#: ucs/admin/modules/master_file/frequency.php:177
+#: ucs/admin/modules/master_file/frequency.php:198
+#: ucs/admin/modules/master_file/frequency.php:204
+msgid "Time Unit"
+msgstr "وحدةالوقت"
+
+#: ucs/admin/modules/master_file/frequency.php:181
+msgid "You are going to edit Frequency data"
+msgstr "ستعديل عدد مرات الصدور"
+
+#: ucs/admin/modules/master_file/place.php:47
+msgid "Place Name can't be empty"
+msgstr "ﻻيمكن ترك اسم المكان"
+
+#: ucs/admin/modules/master_file/place.php:65
+msgid "Place Data Successfully Updated"
+msgstr "تم تحديث بيانات مكان"
+
+#: ucs/admin/modules/master_file/place.php:67
+msgid "Place Data FAILED to Updated. Please Contact System Administrator"
+msgstr "لم يتم تحديث بيانات مكان. رجاء اﻻتصال بنظام البيانات"
+
+#: ucs/admin/modules/master_file/place.php:74
+msgid "New Place Data Successfully Saved"
+msgstr "تم حفظ بيانات مكان"
+
+#: ucs/admin/modules/master_file/place.php:76
+msgid "Place Data FAILED to Save. Please Contact System Administrator"
+msgstr "لم يتم حفظ بيانات مكان. رجاء اﻻتصال بنظام البيانات"
+
+#: ucs/admin/modules/master_file/place.php:117
+msgid "Add New Place"
+msgstr "اضافة مكان جديد"
+
+#: ucs/admin/modules/master_file/place.php:118
+msgid "Place List"
+msgstr "قائمة المكان"
+
+#: ucs/admin/modules/master_file/place.php:164
+msgid "You are going to edit place data"
+msgstr "ستعديل بيانات المكان"
+
+#: ucs/admin/modules/bibliography/export.php:102
+msgid "Error on query to database, Export FAILED!"
+msgstr ""
+
+#: ucs/admin/modules/bibliography/export.php:140
+msgid "There is no record in bibliographic database yet, Export FAILED!"
+msgstr ""
+
+#: ucs/admin/modules/bibliography/export.php:149
+msgid "EXPORT TOOL"
+msgstr "ادؤاات التصدير"
+
+#: ucs/admin/modules/bibliography/export.php:151
+msgid "Export bibliographics data to CSV file"
+msgstr ""
+
+#: ucs/admin/modules/bibliography/export.php:158
+msgid "Export Now"
+msgstr "إرسال الآن"
+
+#: ucs/admin/modules/bibliography/export.php:167
+msgid "Field Separator"
+msgstr "فاصل حقل"
+
+#: ucs/admin/modules/bibliography/export.php:169
+msgid "Field Enclosed With"
+msgstr "الميدان محاطة"
+
+#: ucs/admin/modules/bibliography/export.php:173
+msgid "Record Separator"
+msgstr "فاصل السجلات"
+
+#: ucs/admin/modules/bibliography/export.php:175
+msgid "Number of Records To Export (0 for all records)"
+msgstr "عدد السجلات لتصدي ( 0 لكل حقل) "
+
+#: ucs/admin/modules/bibliography/export.php:177
+msgid "Start From Record"
+msgstr "ابداء من تسجيلة"
+
+#: ucs/admin/modules/bibliography/pop_attach.php:82
+msgid "Upload FAILED! Forbidden file type or file size too big!"
+msgstr ""
+
+#: ucs/admin/modules/bibliography/pop_attach.php:131
+msgid "File Attachment data updated!"
+msgstr "تم تحديث ملف مرفق"
+
+#: ucs/admin/modules/bibliography/pop_attach.php:135
+msgid "File Attachment data FAILED to update!"
+msgstr "لم يتم تحديث ملف مرفق"
+
+#: ucs/admin/modules/bibliography/pop_attach.php:140
+#: ucs/admin/modules/bibliography/pop_attach.php:155
+msgid "File Attachment uploaded succesfully!"
+msgstr "تم ارسال ملف مرفق"
+
+#: ucs/admin/modules/bibliography/pop_attach.php:144
+msgid "File Attachment data FAILED to save!"
+msgstr "لم يتم حفظ ملف مرفق"
+
+#: ucs/admin/modules/bibliography/pop_attach.php:164
+msgid "Upload Now"
+msgstr "ارسال اﻵن"
+
+#: ucs/admin/modules/bibliography/pop_attach.php:194
+msgid "Repository ROOT"
+msgstr ""
+
+#: ucs/admin/modules/bibliography/pop_attach.php:204
+msgid "Repo. Directory"
+msgstr ""
+
+#: ucs/admin/modules/bibliography/pop_attach.php:208
+msgid "File To Attach"
+msgstr "ارفاق الملف"
+
+#: ucs/admin/modules/bibliography/pop_attach.php:211
+msgid "URL"
+msgstr "موقع"
+
+#: ucs/admin/modules/bibliography/pop_attach.php:213
+msgid "Description"
+msgstr "وصف"
+
+#: ucs/admin/modules/bibliography/pop_attach.php:215
+msgid "Public"
+msgstr "الجمهور"
+
+#: ucs/admin/modules/bibliography/pop_attach.php:216
+msgid "Private"
+msgstr "خاصّ"
+
+#: ucs/admin/modules/bibliography/pop_attach.php:217
+msgid "Access"
+msgstr "الوصل"
+
+#: ucs/admin/modules/bibliography/pop_attach.php:224
+msgid "Access Limit by Member Type"
+msgstr "حد الوصول بأنواع الأعضاء"
+
+#: ucs/admin/modules/bibliography/index.php:51
+msgid "Title can not be empty"
+msgstr "ﻻ يمكن ترك عنوان فارغاً"
+
+#: ucs/admin/modules/bibliography/index.php:115
+#: ucs/admin/modules/bibliography/index.php:119
+msgid "Image Uploaded Successfully"
+msgstr "تمت تحصيل الصور"
+
+#: ucs/admin/modules/bibliography/index.php:135
+msgid "Bibliography Data Successfully Updated"
+msgstr "تم تحديث بيانات ببليوجرافى"
+
+#: ucs/admin/modules/bibliography/index.php:146
+msgid "Bibliography Data FAILED to Updated. Please Contact System Administrator"
+msgstr "فشل تحديث بيانات ببليوجرافى. رجاء اﻹتصال بنظام البيانات"
+
+#: ucs/admin/modules/bibliography/index.php:196
+#: ucs/admin/modules/bibliography/submenu.php:23
+msgid "Bibliographic"
+msgstr "ببليوجرافي"
+
+#: ucs/admin/modules/bibliography/index.php:196
+#: ucs/admin/modules/bibliography/submenu.php:24
+msgid "Bibliographic List"
+msgstr "قائمة ببليوجرافي"
+
+#: ucs/admin/modules/bibliography/index.php:200
+msgid "All Fields"
+msgstr "كل الحقول"
+
+#: ucs/admin/modules/bibliography/index.php:200
+msgid "Title/Series Title"
+msgstr "عنوان / عنوان السلسلة"
+
+#: ucs/admin/modules/bibliography/index.php:200
+msgid "Topics"
+msgstr "الموضوع"
+
+#: ucs/admin/modules/bibliography/index.php:200
+msgid "Authors"
+msgstr "مؤلف"
+
+#: ucs/admin/modules/bibliography/index.php:254
+msgid "Add Author(s)"
+msgstr "إضافة المؤلف"
+
+#: ucs/admin/modules/bibliography/index.php:268
+msgid "Not Applicable"
+msgstr "غير ملائم"
+
+#: ucs/admin/modules/bibliography/index.php:274
+msgid "Use this for Serial publication"
+msgstr "استخدم هذا المطبوعات المسلسلة"
+
+#: ucs/admin/modules/bibliography/index.php:313
+msgid "Add Subject(s)"
+msgstr "إضافة موضوع"
+
+#: ucs/admin/modules/bibliography/index.php:338
+msgid "Show"
+msgstr "عرض"
+
+#: ucs/admin/modules/bibliography/index.php:339
+msgid "Hide"
+msgstr "خفاء"
+
+#: ucs/admin/modules/bibliography/index.php:340
+msgid "Hide in OPAC"
+msgstr "إخفاء في كتالوج إلكتروني"
+
+#: ucs/admin/modules/bibliography/index.php:345
+msgid "You are going to edit biblio data"
+msgstr "بصدد تعديل إعدادات البيانات ببليوغرافيا"
+
+#: ucs/admin/modules/bibliography/index.php:345
+msgid "Last Updated"
+msgstr "آخر تحديث"
+
+#: ucs/admin/modules/bibliography/index.php:392
+#: ucs/admin/modules/bibliography/index.php:399
+#, fuzzy
+msgid "Node"
+msgstr "لا يوجد"
+
+#: ucs/admin/modules/bibliography/index.php:447
+msgid "Query took"
+msgstr "استفسلر"
+
+#: ucs/admin/modules/bibliography/index.php:447
+msgid "second(s) to complete"
+msgstr ""
+
+#: ucs/admin/modules/bibliography/submenu.php:24
+msgid "Show Existing Bibliographic Data"
+msgstr "اعرض بيانات ببليوجرافى الموجودة"
+
+#: ucs/admin/modules/bibliography/submenu.php:25
+msgid "Tools"
+msgstr "الأدوات"
+
+#: ucs/admin/modules/bibliography/submenu.php:26
+msgid "Export Data"
+msgstr "إرسال بيانات"
+
+#: ucs/admin/modules/bibliography/submenu.php:26
+msgid "Export Bibliographic Data To CSV format"
+msgstr ""
+
+#: ucs/admin/modules/bibliography/iframe_author.php:61
+msgid "Author succesfully removed!"
+msgstr ""
+
+#: ucs/admin/modules/bibliography/iframe_author.php:72
+msgid "Author removed!"
+msgstr "مسح مؤلف"
+
+#: ucs/admin/modules/bibliography/pop_author.php:88
+msgid "Author succesfully updated!"
+msgstr "تم تحديث مؤلف!"
+
+#: ucs/admin/modules/bibliography/pop_author.php:92
+msgid "Author FAILED to Add. Please Contact System Administrator"
+msgstr "فشل ﻹضافةمؤلف! إتصل مديرالبيانات"
+
+#: ucs/admin/modules/bibliography/pop_author.php:117
+msgid "Author added!"
+msgstr "تمت إضافةمؤلف"
+
+#: ucs/admin/modules/bibliography/pop_author.php:128
+msgid "Add Author"
+msgstr "إضافةمؤلف"
+
+#: ucs/admin/modules/bibliography/pop_author.php:146
+msgid "Type to search for existing authors or to add a new one"
+msgstr ""
+
+#: ucs/admin/modules/bibliography/pop_author.php:148
+#: ucs/admin/modules/bibliography/pop_topic.php:149
+msgid "Insert To Bibliography"
+msgstr "ادراج فى ببليوجرافى"
+
+#: ucs/admin/modules/bibliography/pop_topic.php:91
+msgid "Subject FAILED to Add. Please Contact System Administrator"
+msgstr "لم يتم اصاف الموضوع"
+
+#: ucs/admin/modules/bibliography/pop_topic.php:116
+msgid "Subject added!"
+msgstr "تم اضاف الموضوع"
+
+#: ucs/admin/modules/bibliography/pop_topic.php:127
+msgid "Add Subject"
+msgstr "اضاف الموضوع"
+
+#: ucs/admin/modules/bibliography/pop_topic.php:133
+msgid "Keyword"
+msgstr "الكلمات الأساسية"
+
+#: ucs/admin/modules/bibliography/pop_topic.php:147
+msgid "Type to search for existing topics or to add a new one"
+msgstr ""
+
+#: ucs/admin/modules/system/sys_log.php:58
+msgid "System Log data completely cleared!"
+msgstr ""
+
+#: ucs/admin/modules/system/sys_log.php:67
+#: ucs/admin/modules/system/submenu.php:36
+msgid "System Log"
+msgstr ""
+
+#: ucs/admin/modules/system/sys_log.php:69
+msgid "Are you SURE to completely clear system log data? This action cannot be undo!"
+msgstr ""
+
+#: ucs/admin/modules/system/sys_log.php:69
+msgid "CLEAR LOGS"
+msgstr ""
+
+#: ucs/admin/modules/system/sys_log.php:70
+msgid "Save Logs record to file?"
+msgstr ""
+
+#: ucs/admin/modules/system/sys_log.php:70
+msgid "Save Logs To File"
+msgstr ""
+
+#: ucs/admin/modules/system/sys_log.php:94
+msgid "Time"
+msgstr ""
+
+#: ucs/admin/modules/system/sys_log.php:96
+msgid "Message"
+msgstr ""
+
+#: ucs/admin/modules/system/module_priv_form.inc.php:26
+#: ucs/admin/modules/system/module.php:175
+#: ucs/admin/modules/system/module.php:195
+msgid "Module Name"
+msgstr ""
+
+#: ucs/admin/modules/system/module_priv_form.inc.php:26
+msgid "Read"
+msgstr ""
+
+#: ucs/admin/modules/system/module_priv_form.inc.php:26
+msgid "Write"
+msgstr ""
+
+#: ucs/admin/modules/system/backup.php:41
+#: ucs/admin/modules/system/submenu.php:37
+msgid "Database Backup"
+msgstr ""
+
+#: ucs/admin/modules/system/backup.php:41
+msgid "Start New Backup"
+msgstr ""
+
+#: ucs/admin/modules/system/module.php:47
+msgid "Module name and path can't be empty"
+msgstr ""
+
+#: ucs/admin/modules/system/module.php:70
+msgid "Module Data Successfully Updated"
+msgstr ""
+
+#: ucs/admin/modules/system/module.php:72
+msgid "Module Data FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: ucs/admin/modules/system/module.php:83
+msgid "New Module Data Successfully Saved"
+msgstr ""
+
+#: ucs/admin/modules/system/module.php:85
+msgid "Module Data FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: ucs/admin/modules/system/module.php:135
+#: ucs/admin/modules/system/submenu.php:31
+msgid "Modules"
+msgstr ""
+
+#: ucs/admin/modules/system/module.php:135
+msgid "Add New Modules"
+msgstr ""
+
+#: ucs/admin/modules/system/module.php:136
+msgid "Modules List"
+msgstr ""
+
+#: ucs/admin/modules/system/module.php:177
+msgid "Module Path"
+msgstr ""
+
+#: ucs/admin/modules/system/module.php:179
+#: ucs/admin/modules/system/module.php:196
+msgid "Module Description"
+msgstr ""
+
+#: ucs/admin/modules/system/module.php:183
+msgid "You are going to edit data"
+msgstr ""
+
+#: ucs/admin/modules/system/content.php:49
+msgid "Title or Path can't be empty!"
+msgstr ""
+
+#: ucs/admin/modules/system/content.php:71
+msgid "Content data updated"
+msgstr ""
+
+#: ucs/admin/modules/system/content.php:73
+msgid "Content data FAILED to update!"
+msgstr ""
+
+#: ucs/admin/modules/system/content.php:81
+msgid "Content data saved"
+msgstr ""
+
+#: ucs/admin/modules/system/content.php:83
+msgid "Content data FAILED to save!"
+msgstr ""
+
+#: ucs/admin/modules/system/content.php:130
+#: ucs/admin/modules/system/submenu.php:28
+msgid "Content"
+msgstr ""
+
+#: ucs/admin/modules/system/content.php:130
+msgid "Add New Content"
+msgstr ""
+
+#: ucs/admin/modules/system/content.php:131
+msgid "Content List"
+msgstr ""
+
+#: ucs/admin/modules/system/content.php:174
+#: ucs/admin/modules/system/content.php:207
+#: ucs/admin/modules/system/content.php:211
+msgid "Content Title"
+msgstr ""
+
+#: ucs/admin/modules/system/content.php:176
+#: ucs/admin/modules/system/content.php:208
+#: ucs/admin/modules/system/content.php:212
+msgid "Path (Must be unique)"
+msgstr ""
+
+#: ucs/admin/modules/system/content.php:178
+msgid "Content Description"
+msgstr ""
+
+#: ucs/admin/modules/system/content.php:182
+msgid "You are going to update Content data"
+msgstr ""
+
+#: ucs/admin/modules/system/index.php:46
+#: ucs/admin/modules/system/submenu.php:26
+msgid "System Configuration"
+msgstr ""
+
+#: ucs/admin/modules/system/index.php:46
+msgid "Modify global application preferences"
+msgstr ""
+
+#: ucs/admin/modules/system/index.php:90
+msgid "Settings saved. Refreshing page"
+msgstr ""
+
+#: ucs/admin/modules/system/index.php:97
+msgid "Save Settings"
+msgstr ""
+
+#: ucs/admin/modules/system/index.php:111
+msgid "Library Name"
+msgstr ""
+
+#: ucs/admin/modules/system/index.php:114
+msgid "Library Subname"
+msgstr ""
+
+#: ucs/admin/modules/system/index.php:128
+msgid "OPAC Template"
+msgstr ""
+
+#: ucs/admin/modules/system/index.php:132
+msgid "Default App. Language"
+msgstr ""
+
+#: ucs/admin/modules/system/index.php:140
+msgid "Number Of Collections To Show In OPAC Result List"
+msgstr ""
+
+#: ucs/admin/modules/system/index.php:144
+#: ucs/admin/modules/system/index.php:150
+msgid "Disable"
+msgstr ""
+
+#: ucs/admin/modules/system/index.php:145
+#: ucs/admin/modules/system/index.php:151
+msgid "Enable"
+msgstr ""
+
+#: ucs/admin/modules/system/index.php:146
+msgid "OPAC XML Detail"
+msgstr ""
+
+#: ucs/admin/modules/system/index.php:152
+msgid "OPAC XML Result"
+msgstr ""
+
+#: ucs/admin/modules/system/index.php:155
+msgid "Session Login Timeout"
+msgstr ""
+
+#: ucs/admin/modules/system/nodes_poll.php:46
+msgid "Nodes poll cleared!"
+msgstr ""
+
+#: ucs/admin/modules/system/nodes_poll.php:55
+msgid "NODES POLL"
+msgstr ""
+
+#: ucs/admin/modules/system/nodes_poll.php:57
+msgid "Are you SURE to completely clear nodes poll!"
+msgstr ""
+
+#: ucs/admin/modules/system/nodes_poll.php:57
+msgid "CLEAR ALL NODES POLL"
+msgstr ""
+
+#: ucs/admin/modules/system/nodes_poll.php:87
+#, fuzzy
+msgid "IP Address"
+msgstr "عنوان"
+
+#: ucs/admin/modules/system/nodes_poll.php:88
+msgid "Request Start"
+msgstr ""
+
+#: ucs/admin/modules/system/nodes_poll.php:89
+msgid "Request End"
+msgstr ""
+
+#: ucs/admin/modules/system/nodes_poll.php:90
+msgid "Status"
+msgstr "حالة"
+
+#: ucs/admin/modules/system/submenu.php:23
+msgid "System"
+msgstr ""
+
+#: ucs/admin/modules/system/submenu.php:26
+msgid "Configure Global System Preferences"
+msgstr ""
+
+#: ucs/admin/modules/system/submenu.php:31
+msgid "Configure Application Modules"
+msgstr ""
+
+#: ucs/admin/modules/system/submenu.php:32
+#: ucs/admin/modules/system/app_user.php:159
+msgid "System Users"
+msgstr ""
+
+#: ucs/admin/modules/system/submenu.php:32
+msgid "Manage Application User or Library Staff"
+msgstr ""
+
+#: ucs/admin/modules/system/submenu.php:33
+#: ucs/admin/modules/system/user_group.php:158
+msgid "User Group"
+msgstr ""
+
+#: ucs/admin/modules/system/submenu.php:33
+msgid "Manage Group of Application User"
+msgstr ""
+
+#: ucs/admin/modules/system/submenu.php:34
+msgid "Nodes Poll"
+msgstr ""
+
+#: ucs/admin/modules/system/submenu.php:34
+msgid "View Nodes Poll/Request"
+msgstr ""
+
+#: ucs/admin/modules/system/submenu.php:36
+msgid "View Application System Log"
+msgstr ""
+
+#: ucs/admin/modules/system/submenu.php:37
+msgid "Backup Application Database"
+msgstr ""
+
+#: ucs/admin/modules/system/user_group.php:46
+msgid "Group name can't be empty"
+msgstr ""
+
+#: ucs/admin/modules/system/user_group.php:81
+msgid "Group Data Successfully Updated"
+msgstr ""
+
+#: ucs/admin/modules/system/user_group.php:83
+msgid "Group Data FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: ucs/admin/modules/system/user_group.php:109
+msgid "New Group Data Successfully Saved"
+msgstr ""
+
+#: ucs/admin/modules/system/user_group.php:111
+msgid "Group Data FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: ucs/admin/modules/system/user_group.php:158
+msgid "Add New Group"
+msgstr ""
+
+#: ucs/admin/modules/system/user_group.php:159
+msgid "Group List"
+msgstr ""
+
+#: ucs/admin/modules/system/user_group.php:198
+#: ucs/admin/modules/system/user_group.php:225
+msgid "Group Name"
+msgstr ""
+
+#: ucs/admin/modules/system/user_group.php:209
+msgid "Privileges"
+msgstr ""
+
+#: ucs/admin/modules/system/user_group.php:214
+msgid "You are going to edit Group data"
+msgstr ""
+
+#: ucs/admin/modules/system/app_user.php:59
+msgid "User Name or Real Name can't be empty"
+msgstr ""
+
+#: ucs/admin/modules/system/app_user.php:62
+msgid "Login username or Real Name is probihited!"
+msgstr ""
+
+#: ucs/admin/modules/system/app_user.php:65
+msgid "Password confirmation does not match. See if your Caps Lock key is on!"
+msgstr ""
+
+#: ucs/admin/modules/system/app_user.php:99
+msgid "User Data Successfully Updated"
+msgstr ""
+
+#: ucs/admin/modules/system/app_user.php:101
+msgid "User Data FAILED to Updated. Please Contact System Administrator"
+msgstr ""
+
+#: ucs/admin/modules/system/app_user.php:109
+msgid "New User Data Successfully Saved"
+msgstr ""
+
+#: ucs/admin/modules/system/app_user.php:111
+msgid "User Data FAILED to Save. Please Contact System Administrator"
+msgstr ""
+
+#: ucs/admin/modules/system/app_user.php:159
+msgid "Add New User"
+msgstr ""
+
+#: ucs/admin/modules/system/app_user.php:160
+msgid "User List"
+msgstr ""
+
+#: ucs/admin/modules/system/app_user.php:214
+#: ucs/admin/modules/system/app_user.php:259
+msgid "Login Username"
+msgstr ""
+
+#: ucs/admin/modules/system/app_user.php:216
+#: ucs/admin/modules/system/app_user.php:258
+#: ucs/admin/modules/system/app_user.php:263
+#: ucs/admin/modules/system/app_user.php:264
+msgid "Real Name"
+msgstr ""
+
+#: ucs/admin/modules/system/app_user.php:230
+msgid "Group(s)"
+msgstr ""
+
+#: ucs/admin/modules/system/app_user.php:233
+msgid "New Password"
+msgstr "كلمة السر جديدة"
+
+#: ucs/admin/modules/system/app_user.php:235
+msgid "Confirm New Password"
+msgstr ""
+
+#: ucs/admin/modules/system/app_user.php:239
+msgid "You are going to edit user profile"
+msgstr ""
+
+#: ucs/admin/modules/system/app_user.php:240
+msgid "Leave Password field blank if you don't want to change the password"
+msgstr ""
+
+#: ucs/admin/modules/system/app_user.php:260
+#: ucs/admin/modules/system/app_user.php:265
+msgid "Last Login"
+msgstr ""
 
 #: admin/index.php:60
 msgid "Welcome To The Library Automation System, you are currently logged in as"
@@ -130,18 +1560,6 @@ msgstr " إ هلا وسهلا! إلى التشغيل الآلي للمكتبة, 
 #: admin/logout.php:32
 msgid "You Have Been Logged Out From Library Automation System"
 msgstr "لقد تم تسجيل الخروج من نظام أتمتة المكتبة"
-
-#: admin/default/submenu.php:21
-msgid "Panel"
-msgstr ""
-
-#: admin/default/submenu.php:22
-msgid "Change User Profiles"
-msgstr ""
-
-#: admin/default/submenu.php:22
-msgid "Change Current User Profiles and Password"
-msgstr ""
 
 #: admin/default/submenu.php:24
 msgid "Add New Bibliography"
@@ -153,19 +1571,19 @@ msgstr "اضافة بيانات ببليوجرافى جديدة"
 
 #: admin/default/submenu.php:27
 msgid "Start Transaction"
-msgstr ""
+msgstr "ابداع اﻹجراء"
 
 #: admin/default/submenu.php:27
 msgid "Start Circulation Transaction Proccess"
-msgstr ""
+msgstr "ابداع اجراء اﻹعارة "
 
 #: admin/default/submenu.php:30
 msgid "Quick Return"
-msgstr ""
+msgstr "ارجاع ميسرة"
 
 #: admin/default/submenu.php:30
 msgid "Quick Return Collection"
-msgstr ""
+msgstr "ارجاع الكتاب ميسرة"
 
 #: admin/default/submenu.php:33
 msgid "Add New Member"
@@ -199,765 +1617,125 @@ msgstr ""
 msgid "<strong>File upload</strong> directory is not writable. Make sure it is writable (and all directories under it) by changing its permission or you won't be able to upload any file, create report files and create database backups."
 msgstr ""
 
-#: admin/default/home.php:58
-msgid "The PATH for <strong>mysqldump</strong> program is not right! Please check configuration file or you won't be able to do any database backups."
-msgstr ""
-
-#: admin/default/session_check.inc.php:32
-#: admin/default/session_check.inc.php:44
-msgid "You are not authorized to view this section"
-msgstr "أنت غير مخول لعرض هذا القسم"
-
-#: admin/default/session_check.inc.php:56
-msgid "Your Login Session has already timeout!"
-msgstr ""
-
-#: admin/modules/master_file/publisher.php:39
-#: admin/modules/master_file/publisher.php:131
-#: admin/modules/master_file/doc_language.php:38
-#: admin/modules/master_file/doc_language.php:134
-#: admin/modules/master_file/supplier.php:39
-#: admin/modules/master_file/supplier.php:139
-#: admin/modules/master_file/topic.php:39
-#: admin/modules/master_file/topic.php:134
-#: admin/modules/master_file/author.php:39
-#: admin/modules/master_file/author.php:133
-#: admin/modules/master_file/place.php:39
-#: admin/modules/master_file/place.php:131
-#: admin/modules/master_file/item_status.php:39
-#: admin/modules/master_file/item_status.php:158
-#: admin/modules/master_file/location.php:39
-#: admin/modules/master_file/location.php:155
-msgid "You don't have enough privileges to access this area!"
-msgstr ""
-
-#: admin/modules/master_file/publisher.php:47
-msgid "Publisher Name can't be empty"
-msgstr "ﻻ يمكن ترك اسم الناشر فارغاً"
-
-#: admin/modules/master_file/publisher.php:65
-msgid "Publisher Data Successfully Updated"
-msgstr "تم تحديث بيانات الناشر"
-
-#: admin/modules/master_file/publisher.php:67
-msgid "PUBLISHER Data FAILED to Updated. Please Contact System Administrator"
-msgstr "لم يتم تحديث بيانات الناشر. رجاء الاتصال بنظام البيانات"
-
-#: admin/modules/master_file/publisher.php:74
-msgid "New Publisher Data Successfully Saved"
-msgstr "تم حفظ بيانات الناشر الجديد"
-
-#: admin/modules/master_file/publisher.php:76
-msgid "Publisher Data FAILED to Save. Please Contact System Administrator"
-msgstr "لم يتم تحفظ بيانات الناشر. رجاء اﻻتصال بنظام البيانات"
-
-#: admin/modules/master_file/publisher.php:103
-#: admin/modules/master_file/index.php:107
-#: admin/modules/master_file/doc_language.php:106
-#: admin/modules/master_file/supplier.php:111
-#: admin/modules/master_file/topic.php:106
-#: admin/modules/master_file/author.php:105
-#: admin/modules/master_file/frequency.php:104
-#: admin/modules/master_file/place.php:103
-#: admin/modules/master_file/label.php:143
-#: admin/modules/master_file/item_status.php:130
-#: admin/modules/master_file/location.php:127
-#: admin/modules/master_file/coll_type.php:123
-msgid "All Data Successfully Deleted"
-msgstr "تم مسح كل البيانات"
-
-#: admin/modules/master_file/publisher.php:106
-#: admin/modules/master_file/index.php:110
-#: admin/modules/master_file/doc_language.php:109
-#: admin/modules/master_file/supplier.php:114
-#: admin/modules/master_file/topic.php:109
-#: admin/modules/master_file/author.php:108
-#: admin/modules/master_file/frequency.php:107
-#: admin/modules/master_file/place.php:106
-#: admin/modules/master_file/label.php:146
-#: admin/modules/master_file/item_status.php:133
-#: admin/modules/master_file/location.php:130
-#: admin/modules/master_file/coll_type.php:126
-msgid ""
-"Some or All Data NOT deleted successfully!\\n"
-"Please contact system administrator"
-msgstr "لم يتم مسح كل البيانات او بعضها!//رجاء اﻻتصال بنظام البيانات"
-
-#: admin/modules/master_file/publisher.php:117
-#: admin/modules/master_file/submenu.php:25
-msgid "Publisher"
-msgstr "الناشر"
-
-#: admin/modules/master_file/publisher.php:117
-msgid "Add New Publisher"
-msgstr "اضافة الناشر الجديد"
-
-#: admin/modules/master_file/publisher.php:118
-msgid "Publisher List"
-msgstr "الناشر التفسيلى"
-
-#: admin/modules/master_file/publisher.php:120
-#: admin/modules/master_file/publisher.php:122
-#: admin/modules/master_file/index.php:124
-#: admin/modules/master_file/index.php:126
-#: admin/modules/master_file/doc_language.php:123
-#: admin/modules/master_file/doc_language.php:125
-#: admin/modules/master_file/supplier.php:128
-#: admin/modules/master_file/supplier.php:130
-#: admin/modules/master_file/topic.php:123
-#: admin/modules/master_file/topic.php:125
-#: admin/modules/master_file/author.php:122
-#: admin/modules/master_file/author.php:124
-#: admin/modules/master_file/frequency.php:121
-#: admin/modules/master_file/frequency.php:123
-#: admin/modules/master_file/place.php:120
-#: admin/modules/master_file/place.php:122
-#: admin/modules/master_file/label.php:160
-#: admin/modules/master_file/label.php:162
-#: admin/modules/master_file/item_status.php:147
-#: admin/modules/master_file/item_status.php:149
-#: admin/modules/master_file/location.php:144
-#: admin/modules/master_file/location.php:146
-#: admin/modules/master_file/coll_type.php:140
-#: admin/modules/master_file/coll_type.php:142
-msgid "Search"
-msgstr "بحث"
-
-#: admin/modules/master_file/publisher.php:140
-#: admin/modules/master_file/index.php:144
-#: admin/modules/master_file/doc_language.php:143
-#: admin/modules/master_file/supplier.php:148
-#: admin/modules/master_file/topic.php:143
-#: admin/modules/master_file/author.php:142
-#: admin/modules/master_file/frequency.php:141
-#: admin/modules/master_file/place.php:140
-#: admin/modules/master_file/label.php:180
-#: admin/modules/master_file/item_status.php:167
-#: admin/modules/master_file/location.php:164
-#: admin/modules/master_file/coll_type.php:159
-msgid "Save"
-msgstr "حفظ"
-
-#: admin/modules/master_file/publisher.php:155
-#: admin/modules/master_file/index.php:159
-#: admin/modules/master_file/doc_language.php:158
-#: admin/modules/master_file/supplier.php:163
-#: admin/modules/master_file/topic.php:158
-#: admin/modules/master_file/author.php:157
-#: admin/modules/master_file/frequency.php:156
-#: admin/modules/master_file/place.php:155
-#: admin/modules/master_file/label.php:195
-#: admin/modules/master_file/item_status.php:182
-#: admin/modules/master_file/location.php:179
-#: admin/modules/master_file/coll_type.php:174
-msgid "Update"
-msgstr "التحديث"
-
-#: admin/modules/master_file/publisher.php:160
-#: admin/modules/master_file/publisher.php:178
-#: admin/modules/master_file/publisher.php:182
-msgid "Publisher Name"
-msgstr "اسم الناشر"
-
-#: admin/modules/master_file/publisher.php:164
-msgid "You are going to edit publisher data"
-msgstr ""
-
-#: admin/modules/master_file/publisher.php:164
-#: admin/modules/master_file/publisher.php:179
-#: admin/modules/master_file/publisher.php:184
-#: admin/modules/master_file/index.php:170
-#: admin/modules/master_file/index.php:185
-#: admin/modules/master_file/index.php:189
-#: admin/modules/master_file/doc_language.php:168
-#: admin/modules/master_file/doc_language.php:178
-#: admin/modules/master_file/doc_language.php:180
-#: admin/modules/master_file/supplier.php:182
-#: admin/modules/master_file/supplier.php:199
-#: admin/modules/master_file/supplier.php:205
-#: admin/modules/master_file/topic.php:174
-#: admin/modules/master_file/topic.php:192
-#: admin/modules/master_file/topic.php:197
-#: admin/modules/master_file/author.php:173
-#: admin/modules/master_file/author.php:191
-#: admin/modules/master_file/author.php:196
-#: admin/modules/master_file/frequency.php:181
-#: admin/modules/master_file/frequency.php:199
-#: admin/modules/master_file/frequency.php:205
-#: admin/modules/master_file/place.php:164
-#: admin/modules/master_file/place.php:178
-#: admin/modules/master_file/place.php:181
-#: admin/modules/master_file/label.php:217
-#: admin/modules/master_file/label.php:232
-#: admin/modules/master_file/label.php:236
-#: admin/modules/master_file/item_status.php:202
-#: admin/modules/master_file/item_status.php:217
-#: admin/modules/master_file/item_status.php:221
-#: admin/modules/master_file/location.php:190
-#: admin/modules/master_file/location.php:205
-#: admin/modules/master_file/location.php:209
-#: admin/modules/master_file/coll_type.php:183
-#: admin/modules/master_file/coll_type.php:195
-#: admin/modules/master_file/coll_type.php:197
-msgid "Last Update"
-msgstr "آخر تحديث"
-
-#: admin/modules/master_file/publisher.php:204
-#: admin/modules/master_file/index.php:208
-#: admin/modules/master_file/doc_language.php:199
-#: admin/modules/master_file/supplier.php:226
-#: admin/modules/master_file/topic.php:236
-#: admin/modules/master_file/author.php:228
-#: admin/modules/master_file/frequency.php:224
-#: admin/modules/master_file/place.php:200
-#: admin/modules/master_file/label.php:257
-#: admin/modules/master_file/item_status.php:245
-#: admin/modules/master_file/location.php:228
-#: admin/modules/master_file/coll_type.php:221
-msgid "Found <strong>{result->num_rows}</strong> from your keywords"
-msgstr ""
-
-#: admin/modules/master_file/index.php:42
-#: admin/modules/master_file/index.php:135
-#: admin/modules/master_file/frequency.php:38
-#: admin/modules/master_file/frequency.php:132
-#: admin/modules/master_file/label.php:40
-#: admin/modules/master_file/label.php:171
-#: admin/modules/master_file/coll_type.php:39
-#: admin/modules/master_file/coll_type.php:151
-msgid "You don't have enough privileges to view this section"
-msgstr ""
-
-#: admin/modules/master_file/index.php:51
-msgid "GMD Code And Name can't be empty"
-msgstr ""
-
-#: admin/modules/master_file/index.php:70
-msgid "GMD Data Successfully Updated"
-msgstr ""
-
-#: admin/modules/master_file/index.php:72
-msgid "GMD Data FAILED to Updated. Please Contact System Administrator"
-msgstr ""
-
-#: admin/modules/master_file/index.php:78
-msgid "New GMD Data Successfully Saved"
-msgstr ""
-
-#: admin/modules/master_file/index.php:80
-msgid "GMD Data FAILED to Save. Please Contact System Administrator"
-msgstr ""
-
-#: admin/modules/master_file/index.php:121
-#: admin/modules/master_file/submenu.php:24
-msgid "GMD"
-msgstr "المواد الأولية"
-
-#: admin/modules/master_file/index.php:121
-msgid "Add New GMD"
-msgstr ""
-
-#: admin/modules/master_file/index.php:122
-msgid "GMD List"
-msgstr ""
-
-#: admin/modules/master_file/index.php:164
-#: admin/modules/master_file/index.php:183
-#: admin/modules/master_file/index.php:187
-msgid "GMD Code"
-msgstr ""
-
-#: admin/modules/master_file/index.php:166
-#: admin/modules/master_file/index.php:184
-#: admin/modules/master_file/index.php:188
-msgid "GMD Name"
-msgstr ""
-
-#: admin/modules/master_file/index.php:170
-msgid "You are going to edit gmd data"
-msgstr ""
-
-#: admin/modules/master_file/doc_language.php:47
-msgid "Language ID or Name can't be empty"
-msgstr "ﻻ يمكن ترك تعريف اللغة فارغة"
-
-#: admin/modules/master_file/doc_language.php:66
-msgid "Language Data Successfully Updated"
-msgstr "تمت تحديث بيانات اللغة"
-
-#: admin/modules/master_file/doc_language.php:70
-msgid "Language Data FAILED to Updated. Please Contact System Administrator"
-msgstr "لم يتم تحديث بيانات اللغة. رجاء اﻻتصال بنظام البيانات"
-
-#: admin/modules/master_file/doc_language.php:77
-msgid "New Language Data Successfully Saved"
-msgstr "تم حفظ بيانات اللغة الجديدة"
-
-#: admin/modules/master_file/doc_language.php:79
-msgid "Language Data FAILED to Save. Please Contact System Administrator"
-msgstr "لم يتم حفظ بيانات اللغة الجديدة. رجاء اﻻتصال بنظام البيانات"
-
-#: admin/modules/master_file/doc_language.php:120
-#: admin/modules/master_file/submenu.php:34
-msgid "Doc. Language"
-msgstr ""
-
-#: admin/modules/master_file/doc_language.php:120
-msgid "Add New Language"
-msgstr "اضافة لغة جديدة"
-
-#: admin/modules/master_file/doc_language.php:121
-msgid "Language List"
-msgstr "قائمة اللغة"
-
-#: admin/modules/master_file/doc_language.php:163
-msgid "Language Code"
-msgstr "كود لغة"
-
-#: admin/modules/master_file/doc_language.php:165
-#: admin/modules/master_file/doc_language.php:178
-#: admin/modules/master_file/doc_language.php:180
-#: admin/modules/master_file/frequency.php:169
-#: admin/modules/master_file/frequency.php:196
-#: admin/modules/master_file/frequency.php:202
-msgid "Language"
-msgstr "اللغة"
-
-#: admin/modules/master_file/doc_language.php:168
-msgid "You are going to edit language data"
-msgstr ""
-
-#: admin/modules/master_file/supplier.php:47
-msgid "Supplier Name can't be empty"
-msgstr "ﻻ يمكن ترك اسم المورِّد فارغاً"
-
-#: admin/modules/master_file/supplier.php:71
-msgid "Supplier Data Successfully Updated"
-msgstr "تم تحديث بيانات مورِّد"
-
-#: admin/modules/master_file/supplier.php:73
-msgid "Supplier Data FAILED to Updated. Please Contact System Administrator"
-msgstr "لم يتم تحديث بيانات مورِّد. رجاء اﻻتصال بنظام البيانات"
-
-#: admin/modules/master_file/supplier.php:80
-msgid "New Supplier Data Successfully Saved"
-msgstr "تم حفظ بيانات مورِّد"
-
-#: admin/modules/master_file/supplier.php:83
-msgid "Supplier Data FAILED to Save. Please Contact System Administrator"
-msgstr "لم يتم حفظ بيانات مورِّد. رجاء اﻻتصال بنظام البيانات"
-
-#: admin/modules/master_file/supplier.php:125
-#: admin/modules/master_file/submenu.php:26
-msgid "Supplier"
-msgstr "مورِّد"
-
-#: admin/modules/master_file/supplier.php:125
-msgid "Add New Supplier"
-msgstr "اضافة مورِّد"
-
-#: admin/modules/master_file/supplier.php:126
-msgid "Supplier List"
-msgstr "قائمة المورِّد"
-
-#: admin/modules/master_file/supplier.php:168
-#: admin/modules/master_file/supplier.php:195
-#: admin/modules/master_file/supplier.php:201
-msgid "Supplier Name"
-msgstr "اسم المورِّد"
-
-#: admin/modules/master_file/supplier.php:170
-msgid "Address"
-msgstr ""
-
-#: admin/modules/master_file/supplier.php:172
-#: admin/modules/master_file/supplier.php:196
-#: admin/modules/master_file/supplier.php:202
-msgid "Contact"
-msgstr ""
-
-#: admin/modules/master_file/supplier.php:174
-#: admin/modules/master_file/supplier.php:197
-#: admin/modules/master_file/supplier.php:203
-msgid "Phone Number"
-msgstr ""
-
-#: admin/modules/master_file/supplier.php:176
-#: admin/modules/master_file/supplier.php:198
-#: admin/modules/master_file/supplier.php:204
-msgid "Fax Number"
-msgstr ""
-
-#: admin/modules/master_file/supplier.php:178
-msgid "Account Number"
-msgstr ""
-
-#: admin/modules/master_file/supplier.php:182
-msgid "You are going to edit Supplier data"
-msgstr ""
-
-#: admin/modules/master_file/topic.php:47
-msgid "Subject can't be empty"
-msgstr "ﻻ يمكن ترك العنوان فارغاً"
-
-#: admin/modules/master_file/topic.php:67
-msgid "Subject Data Successfully Updated"
-msgstr "تم تخديث الموضوع"
-
-#: admin/modules/master_file/topic.php:69
-msgid "Subject Data FAILED to Updated. Please Contact System Administrator"
-msgstr "لم يتم تخديث الموضوع"
-
-#: admin/modules/master_file/topic.php:76
-msgid "New Subject Data Successfully Saved"
-msgstr "تم حفظ الموضوع الجديد"
-
-#: admin/modules/master_file/topic.php:78
-msgid "Subject Data FAILED to Save. Please Contact System Administrator"
-msgstr "لم يتم حفظ الموضوع الجديد. رجاء اﻻتصال بنظام البيانات"
-
-#: admin/modules/master_file/topic.php:120
-#: admin/modules/master_file/topic.php:163
-#: admin/modules/master_file/topic.php:189
-#: admin/modules/master_file/topic.php:194
-#: admin/modules/master_file/submenu.php:28
-msgid "Subject"
-msgstr "الموضوع"
-
-#: admin/modules/master_file/topic.php:120
-msgid "Add New Subject"
-msgstr "اضافة الموضوع"
-
-#: admin/modules/master_file/topic.php:121
-msgid "Subject List"
-msgstr "قائمة الموضوع"
-
-#: admin/modules/master_file/topic.php:168
-#: admin/modules/master_file/topic.php:190
-#: admin/modules/master_file/topic.php:195
-msgid "Subject Type"
-msgstr ""
-
-#: admin/modules/master_file/topic.php:170
-#: admin/modules/master_file/topic.php:191
-#: admin/modules/master_file/topic.php:196
-#: admin/modules/master_file/submenu.php:23
-#: admin/modules/master_file/author.php:169
-#: admin/modules/master_file/author.php:190
-#: admin/modules/master_file/author.php:195
-msgid "Authority Files"
-msgstr ""
-
-#: admin/modules/master_file/topic.php:174
-msgid "You are going to edit Subject data"
-msgstr ""
-
-#: admin/modules/master_file/submenu.php:24
-msgid "General Material Designation"
-msgstr ""
-
-#: admin/modules/master_file/submenu.php:25
-msgid "Document Publisher"
-msgstr ""
-
 #: admin/modules/master_file/submenu.php:26
 msgid "Item Supplier"
-msgstr ""
-
-#: admin/modules/master_file/submenu.php:27
-#: admin/modules/master_file/author.php:119
-msgid "Author"
-msgstr "المؤلف"
-
-#: admin/modules/master_file/submenu.php:27
-msgid "Document Authors"
-msgstr ""
-
-#: admin/modules/master_file/submenu.php:29
-#: admin/modules/master_file/location.php:141
-msgid "Location"
-msgstr "موقع"
+msgstr "عنصر المورِّد"
 
 #: admin/modules/master_file/submenu.php:29
 msgid "Item Location"
-msgstr ""
+msgstr "عنصرالمكان"
 
 #: admin/modules/master_file/submenu.php:30
 msgid "Lookup Files"
-msgstr ""
-
-#: admin/modules/master_file/submenu.php:31
-#: admin/modules/master_file/place.php:117
-msgid "Place"
-msgstr "مكان"
-
-#: admin/modules/master_file/submenu.php:31
-#: admin/modules/master_file/place.php:160
-#: admin/modules/master_file/place.php:177
-#: admin/modules/master_file/place.php:180
-msgid "Place Name"
-msgstr "اسم المكان"
+msgstr "بحث الملفات"
 
 #: admin/modules/master_file/submenu.php:32
 #: admin/modules/master_file/item_status.php:144
 #: admin/modules/master_file/item_status.php:145
 msgid "Item Status"
-msgstr ""
+msgstr "عنصرحالة"
 
 #: admin/modules/master_file/submenu.php:33
 #: admin/modules/master_file/coll_type.php:137
 #: admin/modules/master_file/coll_type.php:179
 #: admin/modules/master_file/coll_type.php:195
 #: admin/modules/master_file/coll_type.php:197
+#: admin/modules/stock_take/init.php:164
 msgid "Collection Type"
 msgstr "نوع من كوكتيل"
-
-#: admin/modules/master_file/submenu.php:34
-msgid "Document Content Language"
-msgstr ""
 
 #: admin/modules/master_file/submenu.php:35
 #: admin/modules/master_file/label.php:157
 msgid "Label"
-msgstr ""
+msgstr "رقعة الكتاب"
 
 #: admin/modules/master_file/submenu.php:35
 msgid "Special Labels for Titles to Show Up On Homepage"
 msgstr ""
 
-#: admin/modules/master_file/submenu.php:36
-#: admin/modules/master_file/frequency.php:118
-#: admin/modules/master_file/frequency.php:161
-#: admin/modules/master_file/frequency.php:195
-#: admin/modules/master_file/frequency.php:201
-msgid "Frequency"
-msgstr "عدد مرات الصدور"
-
-#: admin/modules/master_file/author.php:47
-msgid "Author name can't be empty"
-msgstr "ﻻ يمكن ترك اسم المؤلف فارغاً"
-
-#: admin/modules/master_file/author.php:67
-msgid "Author Data Successfully Updated"
-msgstr "تم تحديث بيانات مؤلف"
-
-#: admin/modules/master_file/author.php:69
-msgid "Author Data FAILED to Updated. Please Contact System Administrator"
-msgstr "لم يتم تحديث بيانات مؤلف. رجاء اﻻتصال بنظام البيانات"
-
-#: admin/modules/master_file/author.php:76
-msgid "New Author Data Successfully Saved"
-msgstr "تم حفظ بيانات مؤلف"
-
-#: admin/modules/master_file/author.php:78
-#: admin/modules/master_file/coll_type.php:76
-msgid "Author Data FAILED to Save. Please Contact System Administrator"
-msgstr "لم يتم حفظ بيانات مؤلف. رجاء اﻻتصال بنظام البيانات"
-
-#: admin/modules/master_file/author.php:119
-msgid "Add New Author"
-msgstr "اضافة مؤلف جديد"
-
-#: admin/modules/master_file/author.php:120
-msgid "Author List"
-msgstr "قائمة المؤلف"
-
-#: admin/modules/master_file/author.php:162
-#: admin/modules/master_file/author.php:188
-#: admin/modules/master_file/author.php:193
-msgid "Author Name"
-msgstr "اسم المؤلف"
-
-#: admin/modules/master_file/author.php:167
-#: admin/modules/master_file/author.php:189
-#: admin/modules/master_file/author.php:194
-msgid "Authority Type"
-msgstr ""
-
-#: admin/modules/master_file/author.php:173
-msgid "You are going to edit author data"
-msgstr "بصدد تعديل اعدات البيانات المؤلف"
-
-#: admin/modules/master_file/frequency.php:46
-msgid "Required fields (*)  must be filled correctly!"
-msgstr "الحقول المطلوبة (*) يجب ان يكون شغلها بشكل صحيح!"
-
-#: admin/modules/master_file/frequency.php:67
-msgid "Frequency Data Successfully Updated"
-msgstr ""
-
-#: admin/modules/master_file/frequency.php:69
-msgid "Frequency Data FAILED to Updated. Please Contact System Administrator"
-msgstr ""
-
-#: admin/modules/master_file/frequency.php:75
-msgid "New Frequency Data Successfully Saved"
-msgstr ""
-
-#: admin/modules/master_file/frequency.php:77
-msgid "Frequency Data FAILED to Save. Please Contact System Administrator"
-msgstr ""
-
-#: admin/modules/master_file/frequency.php:118
-msgid "Add New Frequency"
-msgstr ""
-
-#: admin/modules/master_file/frequency.php:119
-msgid "Frequency Available"
-msgstr ""
-
-#: admin/modules/master_file/frequency.php:171
-#: admin/modules/master_file/frequency.php:197
-#: admin/modules/master_file/frequency.php:203
-msgid "Time Increment"
-msgstr ""
-
-#: admin/modules/master_file/frequency.php:173
-msgid "Day"
-msgstr "يوم"
-
-#: admin/modules/master_file/frequency.php:174
-msgid "Week"
-msgstr "اسبوع"
-
-#: admin/modules/master_file/frequency.php:175
-msgid "Month"
-msgstr "شهر"
-
-#: admin/modules/master_file/frequency.php:176
-msgid "Year"
-msgstr "سنة"
-
-#: admin/modules/master_file/frequency.php:177
-#: admin/modules/master_file/frequency.php:198
-#: admin/modules/master_file/frequency.php:204
-msgid "Time Unit"
-msgstr ""
-
-#: admin/modules/master_file/frequency.php:181
-msgid "You are going to edit Frequency data"
-msgstr ""
-
-#: admin/modules/master_file/place.php:47
-msgid "Place Name can't be empty"
-msgstr "ﻻيمكن ترك اسم المكان"
-
-#: admin/modules/master_file/place.php:65
-msgid "Place Data Successfully Updated"
-msgstr "تم تحديث بيانات مكان"
-
-#: admin/modules/master_file/place.php:67
-msgid "Place Data FAILED to Updated. Please Contact System Administrator"
-msgstr "لم يتم تحديث بيانات مكان. رجاء اﻻتصال بنظام البيانات"
-
-#: admin/modules/master_file/place.php:74
-msgid "New Place Data Successfully Saved"
-msgstr "تم حفظ بيانات مكان"
-
-#: admin/modules/master_file/place.php:76
-msgid "Place Data FAILED to Save. Please Contact System Administrator"
-msgstr "لم يتم حفظ بيانات مكان. رجاء اﻻتصال بنظام البيانات"
-
-#: admin/modules/master_file/place.php:117
-msgid "Add New Place"
-msgstr "اضافة مكان جديد"
-
-#: admin/modules/master_file/place.php:118
-msgid "Place List"
-msgstr "قائمة المكان"
-
-#: admin/modules/master_file/place.php:164
-msgid "You are going to edit place data"
-msgstr ""
-
 #: admin/modules/master_file/label.php:106
 msgid "Label Data Successfully Updated"
-msgstr ""
+msgstr "تم تحديث رقعة الكتاب"
 
 #: admin/modules/master_file/label.php:108
 msgid "Label Data FAILED to Updated. Please Contact System Administrator"
-msgstr ""
+msgstr "لم يتم تحديث رقعة الكتاب. رجاء الاتصال بنظام البيانات"
 
 #: admin/modules/master_file/label.php:114
 msgid "New Label Data Successfully Saved"
-msgstr ""
+msgstr "تم حفظ رقعة الكتاب"
 
 #: admin/modules/master_file/label.php:116
 msgid "Label Data FAILED to Save. Please Contact System Administrator"
-msgstr ""
+msgstr "لم يتم حفظ رقعة الكتاب. رجاء الاتصال بنظام البيانات"
 
 #: admin/modules/master_file/label.php:157
 msgid "Add New Label"
-msgstr ""
+msgstr "اضافة رقعة الكتاب"
 
 #: admin/modules/master_file/label.php:158
 msgid "Label List"
-msgstr ""
+msgstr "قائمة رقعة الكتاب"
 
 #: admin/modules/master_file/label.php:200
 #: admin/modules/master_file/label.php:231
 #: admin/modules/master_file/label.php:235
 msgid "Label Name"
-msgstr ""
-
-#: admin/modules/master_file/label.php:205
-#: admin/modules/master_file/label.php:210
-msgid "File Attachment"
-msgstr "ملف مرفق"
+msgstr "اسم رقعة الكتاب"
 
 #: admin/modules/master_file/label.php:213
 #: admin/modules/master_file/label.php:230
 #: admin/modules/master_file/label.php:234
 msgid "Label Description"
-msgstr ""
+msgstr "وصف رقعة الكتاب"
 
 #: admin/modules/master_file/label.php:217
 msgid "You are going to edit Label data"
-msgstr ""
+msgstr "ستعديل بيانات رقعة الكتاب"
 
 #: admin/modules/master_file/item_status.php:43
 msgid "No Loan Transaction"
-msgstr ""
+msgstr "يتعذر اجراءاﻹعارة"
 
 #: admin/modules/master_file/item_status.php:44
 msgid "Skipped By Stock Take"
-msgstr ""
+msgstr "تخطي بالجرد"
 
 #: admin/modules/master_file/item_status.php:52
 msgid "Item Status ID and Name can't be empty"
-msgstr ""
+msgstr "ﻻ يمكن ترك تعريف عنصرحالة و اسم الحالة فارغة"
 
 #: admin/modules/master_file/item_status.php:90
 msgid "Item Status Data Successfully Updated"
-msgstr ""
+msgstr "تم تحديث بيانات عنصرحالة"
 
 #: admin/modules/master_file/item_status.php:94
 msgid "Item Status Data FAILED to Updated. Please Contact System Administrator"
-msgstr ""
+msgstr "لم يتم تحديث بيانات عنصرحالة. رجاء الاتصال بنظام البيانات"
 
 #: admin/modules/master_file/item_status.php:101
 msgid "New Item Status Data Successfully Saved"
-msgstr ""
+msgstr "تم حفظ بيانات عنصرحالة"
 
 #: admin/modules/master_file/item_status.php:103
 msgid "Item Status Data FAILED to Save. Please Contact System Administrator"
-msgstr ""
+msgstr "لم يتم حفظ بيانات عنصرحالة. رجاء الاتصال بنظام البيانات"
 
 #: admin/modules/master_file/item_status.php:144
 msgid "Add New Item Status"
-msgstr ""
+msgstr "اضافة عنصرحالة جديدة"
 
 #: admin/modules/master_file/item_status.php:187
 #: admin/modules/master_file/item_status.php:215
 #: admin/modules/master_file/item_status.php:219
 msgid "Item Status Code"
-msgstr ""
+msgstr "كودعنصرحالة"
 
 #: admin/modules/master_file/item_status.php:189
 #: admin/modules/master_file/item_status.php:216
 #: admin/modules/master_file/item_status.php:220
 msgid "Item Status Name"
-msgstr ""
+msgstr "اسم عنصرحالة"
 
 #: admin/modules/master_file/item_status.php:198
 msgid "Rules"
@@ -965,7 +1743,7 @@ msgstr "قاعدة"
 
 #: admin/modules/master_file/item_status.php:202
 msgid "You are going to edit Item Status data"
-msgstr ""
+msgstr "ستعديل عنصرحالة"
 
 #: admin/modules/master_file/location.php:48
 msgid "Location ID and Name can't be empty"
@@ -1019,40 +1797,39 @@ msgstr "اسم الموقع"
 
 #: admin/modules/master_file/location.php:190
 msgid "You are going to edit location data"
-msgstr ""
+msgstr "ستعديل بيانات المكان"
 
 #: admin/modules/master_file/coll_type.php:47
 msgid "Collection type name can't be empty"
-msgstr ""
+msgstr "ﻻ يمكن ترك اسم انواع المجموعة فارغة"
 
 #: admin/modules/master_file/coll_type.php:65
 msgid "Colllection Type Data Successfully Updated"
-msgstr ""
+msgstr "تمت تحديث انواع المجموعة"
 
 #: admin/modules/master_file/coll_type.php:67
 msgid "Colllection Type Data FAILED to Updated. Please Contact System Administrator"
-msgstr ""
+msgstr "لم يتم تحديث انواع المجموعة. رجاء الاتصال بنظام البيانات"
 
 #: admin/modules/master_file/coll_type.php:74
 msgid "New Colllection Type Data Successfully Saved"
-msgstr ""
+msgstr "تمت حفظ انواع المجموعة"
 
 #: admin/modules/master_file/coll_type.php:137
 msgid "Add New Collection Type"
-msgstr ""
+msgstr "اضافة انواع المجموعة"
 
 #: admin/modules/master_file/coll_type.php:138
 msgid "Collection Type List"
-msgstr ""
+msgstr "قائمة انواع المجموعة"
 
 #: admin/modules/master_file/coll_type.php:183
 msgid "You are going to edit collection type data"
-msgstr ""
+msgstr "ستعديل بيانات انواع المجموعة"
 
 #: admin/modules/stock_take/st_log.php:48
-#: admin/modules/stock_take/submenu.php:32
 msgid "Stock Take Log"
-msgstr ""
+msgstr "سجل الجرد"
 
 #: admin/modules/stock_take/init.php:43
 msgid "There is already stock taking proccess running!"
@@ -1060,37 +1837,31 @@ msgstr ""
 
 #: admin/modules/stock_take/init.php:47
 msgid "Stock Take Name must be filled!"
-msgstr ""
+msgstr "يلزم تدخل اسم الجرد"
 
 #: admin/modules/stock_take/init.php:126
 msgid "Stock Taking Initialized"
-msgstr ""
+msgstr "تم شغل الجرد"
 
 #: admin/modules/stock_take/init.php:131
 msgid ""
 "Stock Taking FAILED to Initialized.\\n"
 "No item to stock take!"
-msgstr ""
+msgstr "لم يتم شغل الجرد"
 
 #: admin/modules/stock_take/init.php:139
 msgid "Initialize Stock Take"
-msgstr ""
+msgstr "شغل الجرد"
 
 #: admin/modules/stock_take/init.php:148
-#: admin/modules/stock_take/st_report.php:68
-#: admin/modules/stock_take/index.php:59
-#: admin/modules/stock_take/index.php:76
-#: admin/modules/stock_take/index.php:108
 msgid "Stock Take Name"
-msgstr ""
+msgstr "اسم الجرد"
 
 #: admin/modules/stock_take/init.php:152
 #: admin/modules/stock_take/init.php:160
 #: admin/modules/stock_take/init.php:168
-#: admin/modules/stock_take/lost_item_list.php:78
-#: admin/modules/stock_take/lost_item_list.php:92
 msgid "ALL"
-msgstr ""
+msgstr "لكل"
 
 #: admin/modules/stock_take/init.php:174
 msgid "Shelf Location"
@@ -1100,14 +1871,6 @@ msgstr "مكان الرفوق"
 msgid "Separate each class comma sign. Use * for wildcard"
 msgstr ""
 
-#: admin/modules/stock_take/init.php:178
-#: admin/modules/stock_take/st_report.php:121
-#: admin/modules/stock_take/current.php:93
-#: admin/modules/stock_take/lost_item_list.php:65
-#: admin/modules/stock_take/lost_item_list.php:121
-msgid "Classification"
-msgstr "رقم التصنيف"
-
 #: admin/modules/stock_take/st_report.php:46
 #: admin/modules/stock_take/current.php:49
 #: admin/modules/stock_take/st_upload.php:40
@@ -1116,23 +1879,23 @@ msgstr ""
 
 #: admin/modules/stock_take/st_report.php:55
 msgid "CURRENT STOCK TAKE REPORT"
-msgstr ""
+msgstr "تقرير عملية الجر"
 
 #: admin/modules/stock_take/st_report.php:58
 msgid "Download Report"
-msgstr ""
+msgstr "تقريراﻹنزال"
 
 #: admin/modules/stock_take/st_report.php:69
 #: admin/modules/stock_take/index.php:63
 msgid "Total Item Stock Taked"
-msgstr ""
+msgstr "مجموع بيانات الجرد"
 
 #: admin/modules/stock_take/st_report.php:71
 #: admin/modules/stock_take/st_report.php:72
 #: admin/modules/stock_take/st_report.php:73
 #: admin/modules/stock_take/index.php:64
 msgid "Total Item Lost"
-msgstr ""
+msgstr "مجموع بيانات المفقود"
 
 #: admin/modules/stock_take/st_report.php:73
 #: admin/modules/stock_take/st_report.php:77
@@ -1143,53 +1906,53 @@ msgstr "لا يوجد"
 #: admin/modules/stock_take/st_report.php:79
 #: admin/modules/stock_take/index.php:66
 msgid "Total Item On Loan"
-msgstr ""
+msgstr "مجموع بيانات المعار"
 
 #: admin/modules/stock_take/st_report.php:85
 msgid "Total Checked/Scanned Items"
-msgstr ""
+msgstr "العرض المفحوص"
 
 #: admin/modules/stock_take/st_report.php:87
 #: admin/modules/stock_take/st_report.php:92
 #: admin/modules/stock_take/st_report.php:97
 #: admin/modules/stock_take/index.php:67
 msgid "Stock Take Participants"
-msgstr ""
+msgstr "الجرد المشاركون"
 
 #: admin/modules/stock_take/st_report.php:92
 msgid "items already checked"
-msgstr ""
+msgstr "تم حفص عناصر"
 
 #: admin/modules/stock_take/st_report.php:99
 #: admin/modules/stock_take/index.php:60
 #: admin/modules/stock_take/index.php:109
 msgid "Start Date"
-msgstr ""
+msgstr "تاريخ البداية"
 
 #: admin/modules/stock_take/st_report.php:101
 #: admin/modules/stock_take/index.php:61
 #: admin/modules/stock_take/index.php:110
 msgid "End Date"
-msgstr ""
+msgstr "تاريخ النهاية"
 
 #: admin/modules/stock_take/st_report.php:122
 #: admin/modules/stock_take/st_report.php:160
 msgid "Lost Items"
-msgstr ""
+msgstr "عناصرالمفقود"
 
 #: admin/modules/stock_take/st_report.php:123
 #: admin/modules/stock_take/st_report.php:161
 msgid "Existing Items"
-msgstr ""
+msgstr "عنلصر الموجودة"
 
 #: admin/modules/stock_take/st_report.php:124
 #: admin/modules/stock_take/st_report.php:162
 msgid "On Loan Items"
-msgstr ""
+msgstr "عناصر المعار"
 
 #: admin/modules/stock_take/st_report.php:127
 msgid " classes"
-msgstr ""
+msgstr "اﻻقسام"
 
 #: admin/modules/stock_take/current.php:61
 msgid "STOCK TAKE PROCCESS - Insert Item Code/Barcode with keyboard or barcode scanner"
@@ -1199,12 +1962,13 @@ msgstr ""
 #: admin/modules/stock_take/current.php:90
 #: admin/modules/stock_take/lost_item_list.php:57
 #: admin/modules/stock_take/lost_item_list.php:119
+#: admin/modules/bibliography/checkout_item.php:61
 msgid "Item Code"
 msgstr "رمزالعناصر"
 
 #: admin/modules/stock_take/current.php:63
 msgid "Change Status"
-msgstr ""
+msgstr "تغييرالحالة"
 
 #: admin/modules/stock_take/current.php:64
 msgid "List stocktakes by"
@@ -1212,7 +1976,7 @@ msgstr ""
 
 #: admin/modules/stock_take/current.php:65
 msgid "Current User Only"
-msgstr ""
+msgstr "مستخدم الحالية فقط"
 
 #: admin/modules/stock_take/current.php:66
 msgid "All User"
@@ -1222,16 +1986,9 @@ msgstr "كل المستخدم"
 msgid "Current Missing/Lost Items"
 msgstr ""
 
-#: admin/modules/stock_take/current.php:91
-#: admin/modules/stock_take/lost_item_list.php:120
-#: admin/modules/bibliography/pop_attach.php:185
-#: admin/modules/bibliography/dl_print.php:199
-msgid "Title"
-msgstr "عنوان كتاب"
-
 #: admin/modules/stock_take/current.php:94
 msgid "Exists"
-msgstr ""
+msgstr "موجود"
 
 #: admin/modules/stock_take/current.php:94
 msgid "On Loan"
@@ -1239,34 +1996,29 @@ msgstr "معار"
 
 #: admin/modules/stock_take/current.php:94
 msgid "Missing"
-msgstr ""
+msgstr "مفقود"
 
 #: admin/modules/stock_take/index.php:47
 #: admin/modules/stock_take/submenu.php:23
 msgid "Stock Take"
-msgstr ""
+msgstr "جرد"
 
 #: admin/modules/stock_take/index.php:62
 msgid "Initializer"
-msgstr ""
+msgstr "المعدّ"
 
 #: admin/modules/stock_take/index.php:65
 msgid "Total Item Exists"
-msgstr ""
-
-#: admin/modules/stock_take/index.php:68
-#: admin/modules/stock_take/index.php:83
-msgid "Status"
-msgstr ""
+msgstr "عنصر الموجود الكليا"
 
 #: admin/modules/stock_take/index.php:69
 #: admin/modules/stock_take/index.php:111
 msgid "Report"
-msgstr ""
+msgstr "تقرير"
 
 #: admin/modules/stock_take/index.php:85
 msgid "Currently Active"
-msgstr ""
+msgstr "نشط حاليا"
 
 #: admin/modules/stock_take/finish.php:43
 msgid "NO stock taking proccess running!"
@@ -1274,13 +2026,13 @@ msgstr ""
 
 #: admin/modules/stock_take/finish.php:144
 msgid "Stock Take Proccess Finished!"
-msgstr ""
+msgstr "تم يتعذّر تغيير هذه الخانة الجرد"
 
 #: admin/modules/stock_take/finish.php:153
 #: admin/modules/stock_take/finish.php:161
 #: admin/modules/stock_take/submenu.php:30
 msgid "Finish Stock Take"
-msgstr ""
+msgstr "يتعذّر تغيير هذه الخانة الجرد"
 
 #: admin/modules/stock_take/finish.php:154
 msgid "Are you sure to end current stock take proccess? Once it finished there is no way you can rollback this stock take"
@@ -1292,15 +2044,15 @@ msgstr "نعم"
 
 #: admin/modules/stock_take/finish.php:171
 msgid "Purge Lost Item"
-msgstr ""
+msgstr "عناصرالمفقود نهاية الصلاحية"
 
 #: admin/modules/stock_take/st_upload.php:83
 msgid "Succesfully upload stock take file"
-msgstr ""
+msgstr "تم ارسال ملف الجرد"
 
 #: admin/modules/stock_take/st_upload.php:83
 msgid " item codes scanned!"
-msgstr ""
+msgstr "تمت كود مقروء ضوئيا"
 
 #: admin/modules/stock_take/st_upload.php:101
 msgid "STOCK TAKE UPLOAD - Upload a plain text file (.txt) containing list of Item Code to stock take. Each Item Code separated by line."
@@ -1312,19 +2064,19 @@ msgstr "ملف"
 
 #: admin/modules/stock_take/st_upload.php:104
 msgid "Upload File"
-msgstr ""
+msgstr "ارسال ملف"
 
 #: admin/modules/stock_take/submenu.php:24
 msgid "Stock Take History"
-msgstr ""
+msgstr "التاريخ الجرد"
 
 #: admin/modules/stock_take/submenu.php:24
 msgid "View Stock Take History"
-msgstr ""
+msgstr "عرض التاريخ الجرد"
 
 #: admin/modules/stock_take/submenu.php:28
 msgid "Current Stock Take"
-msgstr ""
+msgstr "جرد حاليا"
 
 #: admin/modules/stock_take/submenu.php:28
 msgid "View Current Stock Take Process"
@@ -1332,52 +2084,52 @@ msgstr ""
 
 #: admin/modules/stock_take/submenu.php:29
 msgid "Stock Take Report"
-msgstr ""
+msgstr "تقرير الجرد"
 
 #: admin/modules/stock_take/submenu.php:29
 msgid "View Current Stock Take Report"
-msgstr ""
+msgstr "عرض تقرير الجرد الحالي"
 
 #: admin/modules/stock_take/submenu.php:30
 msgid "Finish Current Stock Take Proccess"
-msgstr ""
+msgstr "يتعذّر تغييرالعملية هذه الخانة الجرد"
 
 #: admin/modules/stock_take/submenu.php:31
 #: admin/modules/stock_take/lost_item_list.php:45
 msgid "Current Lost Item"
-msgstr ""
+msgstr "عناصر المفقود الحالي"
 
 #: admin/modules/stock_take/submenu.php:31
 msgid "View Lost Item in Current Stock Take Proccess"
-msgstr ""
+msgstr "عرض المفقود الحالي فى عملية الجرد"
 
 #: admin/modules/stock_take/submenu.php:32
 msgid "View Log of Current Stock Take Proccess"
-msgstr ""
+msgstr "عرض سجلعملية الجرد"
 
 #: admin/modules/stock_take/submenu.php:33
 msgid "Resynchronize"
-msgstr ""
+msgstr "أعاد المزامنة"
 
 #: admin/modules/stock_take/submenu.php:33
 msgid "Resynchronize bibliographic data with current stock take"
-msgstr ""
+msgstr "أعاد المزامنة بيانات ببليوجرافى بعملية الجرد"
 
 #: admin/modules/stock_take/submenu.php:34
 msgid "Upload List"
-msgstr ""
+msgstr "قائمة اﻻرسال"
 
 #: admin/modules/stock_take/submenu.php:34
 msgid "Upload List in text file"
-msgstr ""
+msgstr "قائمة اﻻرسال فى نص الملف"
 
 #: admin/modules/stock_take/submenu.php:36
 msgid "Initialize"
-msgstr ""
+msgstr "شغّل"
 
 #: admin/modules/stock_take/submenu.php:36
 msgid "Initialize New Stock Take Proccess"
-msgstr ""
+msgstr "شغّل الجرد الجديد"
 
 #: admin/modules/stock_take/resync.php:58
 msgid "Re-synchronize will only update current stock take's item data. It won't update any new bibliographic or item data that were inserted in the middle of stock take proccess"
@@ -1385,11 +2137,11 @@ msgstr ""
 
 #: admin/modules/stock_take/resync.php:61
 msgid "Resynchronize Now"
-msgstr ""
+msgstr "أعاد المزامنة اﻵن"
 
 #: admin/modules/stock_take/lost_item_list.php:45
 msgid "Report Filter"
-msgstr ""
+msgstr "تقرير الترشيح"
 
 #: admin/modules/stock_take/lost_item_list.php:49
 msgid "Title/ISBN"
@@ -1397,213 +2149,85 @@ msgstr "عنوان / رقم الكتاب"
 
 #: admin/modules/stock_take/lost_item_list.php:101
 msgid "Apply Filter"
-msgstr ""
+msgstr "تطبيق الترشيح"
 
 #: admin/modules/stock_take/lost_item_list.php:102
 msgid "Show More Filter Options"
-msgstr ""
+msgstr "عرض اختيار ترشيح الميزاد"
 
 #: admin/modules/stock_take/lost_item_list.php:102
 msgid "Hide Filter Options"
-msgstr ""
+msgstr "اخفاء اختيار ترشيح"
 
-#: admin/modules/stock_take/lost_item_list.php:123
-#: admin/modules/bibliography/dl_print.php:200
-msgid "Call Number"
-msgstr "رقم التصنيف"
-
-#: admin/modules/bibliography/iframe_item_list.php:74
+#: admin/modules/bibliography/iframe_item_list.php:70
 msgid "Item data can not be deleted because still on hold by members"
 msgstr ""
 
-#: admin/modules/bibliography/iframe_item_list.php:80
+#: admin/modules/bibliography/iframe_item_list.php:76
 msgid "Item succesfully removed!"
 msgstr "تم حذف عناصر"
 
-#: admin/modules/bibliography/iframe_item_list.php:85
+#: admin/modules/bibliography/iframe_item_list.php:81
 msgid "Item FAILED to removed!"
 msgstr "لم يتم حذف عناصر"
-
-#: admin/modules/bibliography/export.php:103
-msgid "Error on query to database, Export FAILED!"
-msgstr ""
-
-#: admin/modules/bibliography/export.php:141
-msgid "There is no record in bibliographic database yet, Export FAILED!"
-msgstr ""
-
-#: admin/modules/bibliography/export.php:150
-msgid "EXPORT TOOL"
-msgstr "ادؤاات التصدير"
-
-#: admin/modules/bibliography/export.php:152
-msgid "Export bibliographics data to CSV file"
-msgstr ""
-
-#: admin/modules/bibliography/export.php:159
-msgid "Export Now"
-msgstr "إرسال الآن"
-
-#: admin/modules/bibliography/export.php:168
-msgid "Field Separator"
-msgstr "فاصل حقل"
-
-#: admin/modules/bibliography/export.php:170
-msgid "Field Enclosed With"
-msgstr "الميدان محاطة"
-
-#: admin/modules/bibliography/export.php:174
-msgid "Record Separator"
-msgstr "فاصل السجلات"
-
-#: admin/modules/bibliography/export.php:176
-msgid "Number of Records To Export (0 for all records)"
-msgstr "عدد السجلات لتصدي ( 0 لكل حقل) "
-
-#: admin/modules/bibliography/export.php:178
-msgid "Start From Record"
-msgstr ""
-
-#: admin/modules/bibliography/z3950.php:335
-msgid "ISBN/ISSN"
-msgstr "رقم الكتاب/رقم مسلسل"
-
-#: admin/modules/bibliography/z3950.php:335
-msgid "Title/Series Title"
-msgstr "عنوان / عنوان السلسلة"
-
-#: admin/modules/bibliography/z3950.php:335
-msgid "Authors"
-msgstr "مؤلف"
 
 #: admin/modules/bibliography/z3950.php:338
 msgid "* Please make sure you have a working Internet connection."
 msgstr ""
 
-#: admin/modules/bibliography/pop_attach.php:82
-msgid "Upload FAILED! Forbidden file type or file size too big!"
-msgstr ""
-
-#: admin/modules/bibliography/pop_attach.php:131
-msgid "File Attachment data updated!"
-msgstr ""
-
-#: admin/modules/bibliography/pop_attach.php:135
-msgid "File Attachment data FAILED to update!"
-msgstr ""
-
-#: admin/modules/bibliography/pop_attach.php:140
-#: admin/modules/bibliography/pop_attach.php:155
-msgid "File Attachment uploaded succesfully!"
-msgstr ""
-
-#: admin/modules/bibliography/pop_attach.php:144
-msgid "File Attachment data FAILED to save!"
-msgstr ""
-
-#: admin/modules/bibliography/pop_attach.php:164
-msgid "Upload Now"
-msgstr ""
-
-#: admin/modules/bibliography/pop_attach.php:194
-msgid "Repository ROOT"
-msgstr ""
-
-#: admin/modules/bibliography/pop_attach.php:204
-msgid "Repo. Directory"
-msgstr ""
-
-#: admin/modules/bibliography/pop_attach.php:208
-msgid "File To Attach"
-msgstr ""
-
-#: admin/modules/bibliography/pop_attach.php:211
-msgid "URL"
-msgstr ""
-
-#: admin/modules/bibliography/pop_attach.php:213
-msgid "Description"
-msgstr ""
-
-#: admin/modules/bibliography/pop_attach.php:215
-msgid "Public"
-msgstr ""
-
-#: admin/modules/bibliography/pop_attach.php:216
-msgid "Private"
-msgstr ""
-
-#: admin/modules/bibliography/pop_attach.php:217
-msgid "Access"
-msgstr ""
-
-#: admin/modules/bibliography/pop_attach.php:224
-msgid "Access Limit by Member Type"
-msgstr ""
-
-#: admin/modules/bibliography/dl_print.php:70
+#: admin/modules/bibliography/dl_print.php:82
 msgid "Selected items NOT ADDED to print queue. Only {max_print} can be printed at once"
-msgstr ""
+msgstr "لم يتم اضافة اختيار العناصر فى الطابور الطباعة"
 
-#: admin/modules/bibliography/dl_print.php:75
+#: admin/modules/bibliography/dl_print.php:87
 msgid "Selected items added to print queue"
 msgstr ""
 
-#: admin/modules/bibliography/dl_print.php:82
+#: admin/modules/bibliography/dl_print.php:94
 msgid "Print queue cleared!"
 msgstr "تم مسح طابورالطباعة"
 
-#: admin/modules/bibliography/dl_print.php:92
-#: admin/modules/bibliography/dl_print.php:96
+#: admin/modules/bibliography/dl_print.php:104
 msgid "There is no data to print!"
 msgstr "ﻻ توجد بيانات فالطباعة"
 
-#: admin/modules/bibliography/dl_print.php:171
+#: admin/modules/bibliography/dl_print.php:204
 msgid "Labels Printing"
 msgstr "طباعة رقعة الكتاب "
 
-#: admin/modules/bibliography/dl_print.php:171
+#: admin/modules/bibliography/dl_print.php:204
 msgid "Print Labels for Selected Data"
 msgstr ""
 
-#: admin/modules/bibliography/dl_print.php:172
+#: admin/modules/bibliography/dl_print.php:205
 msgid "Clear Print Queue"
 msgstr "مسح طابور الطباعة"
 
-#: admin/modules/bibliography/dl_print.php:180
+#: admin/modules/bibliography/dl_print.php:213
 msgid "Maximum"
 msgstr ""
 
-#: admin/modules/bibliography/dl_print.php:180
+#: admin/modules/bibliography/dl_print.php:213
 msgid "records can be printed at once. Currently there is"
 msgstr ""
 
-#: admin/modules/bibliography/dl_print.php:184
+#: admin/modules/bibliography/dl_print.php:217
 msgid "in queue waiting to be printed."
-msgstr ""
+msgstr "فى الطابور الطباعة"
 
-#: admin/modules/bibliography/dl_print.php:227
+#: admin/modules/bibliography/dl_print.php:260
 msgid "Add"
 msgstr "اضافة"
 
-#: admin/modules/bibliography/dl_print.php:228
+#: admin/modules/bibliography/dl_print.php:261
 msgid "Add To Print Queue"
 msgstr "اضافة فى الطابورالطباعة"
 
-#: admin/modules/bibliography/dl_print.php:229
+#: admin/modules/bibliography/dl_print.php:262
 msgid "Add to print queue?"
 msgstr "هل تؤكد بإضافة فى الطابورالطباعة؟"
 
-#: admin/modules/bibliography/dl_print.php:237
-msgid "Query took"
-msgstr ""
-
-#: admin/modules/bibliography/dl_print.php:237
-msgid "second(s) to complete"
-msgstr ""
-
 #: admin/modules/bibliography/checkout_item.php:43
-#: admin/modules/bibliography/submenu.php:28
 msgid "Checkout Items"
 msgstr "استعارة العناصر"
 
@@ -1612,169 +2236,54 @@ msgid "Member ID"
 msgstr "تعريف الأعضاء"
 
 #: admin/modules/bibliography/checkout_item.php:64
-#: admin/modules/circulation/loan.php:129
-#: admin/modules/circulation/member_loan_hist.php:54
 msgid "Loan Date"
 msgstr "تاريخ الإعارة"
 
 #: admin/modules/bibliography/checkout_item.php:65
-#: admin/modules/circulation/loan.php:129
 msgid "Due Date"
 msgstr "تاريخ انتهاء الإعارة"
 
-#: admin/modules/bibliography/index.php:57
-msgid "Title can not be empty"
-msgstr "ﻻ يمكن ترك عنوان فارغاً"
-
-#: admin/modules/bibliography/index.php:130
-#: admin/modules/bibliography/index.php:134
-msgid "Image Uploaded Successfully"
+#: admin/modules/bibliography/ucs_upload.php:28
+msgid "UCS is not enabled! Change global system configuration to enable UCS"
 msgstr ""
 
-#: admin/modules/bibliography/index.php:150
-msgid "Bibliography Data Successfully Updated"
-msgstr "تم تحديث بيانات ببليوجرافى"
-
-#: admin/modules/bibliography/index.php:161
-msgid "Bibliography Data FAILED to Updated. Please Contact System Administrator"
-msgstr "فشل تحديث بيانات ببليوجرافى. رجاء اﻹتصال بنظام البيانات"
-
-#: admin/modules/bibliography/index.php:188
+#: admin/modules/bibliography/index.php:192
 msgid "New Bibliography Data Successfully Saved"
 msgstr "تم ح"
 
-#: admin/modules/bibliography/index.php:196
+#: admin/modules/bibliography/index.php:204
 msgid "Bibliography Data FAILED to Save. Please Contact System Administrator"
-msgstr ""
+msgstr "لم يتم حفظ بيانات ببليوجرافى. رجاء الاتصال بنظام البيانات"
 
-#: admin/modules/bibliography/index.php:266
-#: admin/modules/bibliography/submenu.php:23
-msgid "Bibliographic"
-msgstr "ببليوجرافي"
+#: admin/modules/bibliography/index.php:287
+#, fuzzy
+msgid "Upload Selected Bibliographic data to Union Catalog Server*"
+msgstr "اضافة بيانات ببليوجرافى جديدة"
 
-#: admin/modules/bibliography/index.php:267
-#: admin/modules/bibliography/submenu.php:24
-msgid "Bibliographic List"
-msgstr "قائمة ببليوجرافي"
-
-#: admin/modules/bibliography/index.php:271
-msgid "All Fields"
-msgstr "كل الحقول"
-
-#: admin/modules/bibliography/index.php:271
-msgid "Topics"
-msgstr "الموضوع"
-
-#: admin/modules/bibliography/index.php:326
-msgid "Edition"
-msgstr "الطبعة"
-
-#: admin/modules/bibliography/index.php:328
-msgid "Specific Detail Info"
-msgstr "معلومات تفصيلية محددة"
-
-#: admin/modules/bibliography/index.php:331
+#: admin/modules/bibliography/index.php:354
 msgid "Add New Items"
 msgstr "إضافة عناصر جديدة "
 
-#: admin/modules/bibliography/index.php:336
-msgid "Add Author(s)"
-msgstr "إضافة المؤلف"
-
-#: admin/modules/bibliography/index.php:338
-msgid "Author(s)"
-msgstr "المؤلف"
-
-#: admin/modules/bibliography/index.php:350
-#: admin/modules/bibliography/item.php:311
-msgid "Not Applicable"
-msgstr "غير ملائم"
-
-#: admin/modules/bibliography/index.php:356
-msgid "Use this for Serial publication"
-msgstr ""
-
-#: admin/modules/bibliography/index.php:375
-msgid "Publishing Year"
-msgstr "سنة النشر"
-
-#: admin/modules/bibliography/index.php:383
-#: admin/modules/bibliography/index.php:387
-msgid "Publishing Place"
-msgstr "مكان النشر"
-
-#: admin/modules/bibliography/index.php:389
-msgid "Collation"
-msgstr "الترتيب"
-
-#: admin/modules/bibliography/index.php:391
-msgid "Series Title"
-msgstr "سلسلة العنوان"
-
-#: admin/modules/bibliography/index.php:395
-msgid "Add Subject(s)"
-msgstr "إضافة موضوع"
-
-#: admin/modules/bibliography/index.php:397
-msgid "Subject(s)"
-msgstr "الموضوع"
-
-#: admin/modules/bibliography/index.php:407
-msgid "Abstract/Notes"
-msgstr "مجردة / ملاحظات"
-
-#: admin/modules/bibliography/index.php:412
-#: admin/modules/bibliography/index.php:417
-msgid "Image"
-msgstr "الصور"
-
-#: admin/modules/bibliography/index.php:420
+#: admin/modules/bibliography/index.php:443
 msgid "Add Attachment"
 msgstr "إضافة مرفق"
 
-#: admin/modules/bibliography/index.php:424
-msgid "Show"
-msgstr "عرض"
-
-#: admin/modules/bibliography/index.php:425
-msgid "Hide"
-msgstr "خفاء"
-
-#: admin/modules/bibliography/index.php:426
-msgid "Hide in OPAC"
-msgstr "إخفاء في كتالوج إلكتروني"
-
-#: admin/modules/bibliography/index.php:428
+#: admin/modules/bibliography/index.php:451
 msgid "Don't Promote"
-msgstr ""
+msgstr "ﻻ تعزز"
 
-#: admin/modules/bibliography/index.php:429
+#: admin/modules/bibliography/index.php:452
 msgid "Promote"
-msgstr ""
+msgstr "تعزز"
 
-#: admin/modules/bibliography/index.php:430
+#: admin/modules/bibliography/index.php:453
 msgid "Promote To Homepage"
 msgstr ""
 
-#: admin/modules/bibliography/index.php:454
-msgid "You are going to edit biblio data"
-msgstr "بصدد تعديل إعدادات البيانات ببليوغرافيا"
-
-#: admin/modules/bibliography/index.php:454
-#: admin/modules/bibliography/item.php:332
-#: admin/modules/bibliography/item.php:377
-#: admin/modules/bibliography/item.php:386
-msgid "Last Updated"
-msgstr "آخر تحديث"
-
-#: admin/modules/bibliography/index.php:510
-#: admin/modules/bibliography/index.php:516
+#: admin/modules/bibliography/index.php:529
+#: admin/modules/bibliography/index.php:535
 msgid "Copies"
 msgstr "عدد النسخ المطبوعة"
-
-#: admin/modules/bibliography/submenu.php:24
-msgid "Show Existing Bibliographic Data"
-msgstr ""
 
 #: admin/modules/bibliography/submenu.php:26
 #: admin/modules/bibliography/item.php:190
@@ -1787,15 +2296,11 @@ msgstr "قائمة عنصر  "
 
 #: admin/modules/bibliography/submenu.php:27
 msgid "Show List of Library Items"
-msgstr ""
+msgstr "اعرض قائدة العناصر المكبة"
 
 #: admin/modules/bibliography/submenu.php:28
 msgid "Show List of Checkout Items"
 msgstr ""
-
-#: admin/modules/bibliography/submenu.php:29
-msgid "Tools"
-msgstr "الأدوات"
 
 #: admin/modules/bibliography/submenu.php:30
 msgid "Z3950 Service"
@@ -1810,7 +2315,7 @@ msgid "Print Document Labels"
 msgstr ""
 
 #: admin/modules/bibliography/submenu.php:32
-#: admin/modules/bibliography/item_barcode_generator.php:196
+#: admin/modules/bibliography/item_barcode_generator.php:198
 msgid "Item Barcodes Printing"
 msgstr "عنصر الباركود طباعة"
 
@@ -1826,30 +2331,40 @@ msgstr "جلب بيانات"
 msgid "Import Data to Bibliographic Database from CSV file"
 msgstr ""
 
-#: admin/modules/bibliography/submenu.php:34
-msgid "Export Data"
-msgstr "إرسال بيانات"
+#: admin/modules/bibliography/submenu.php:35
+#, fuzzy
+msgid "Item Import"
+msgstr "ملف للاستيراد"
 
-#: admin/modules/bibliography/submenu.php:34
-msgid "Export Bibliographic Data To CSV format"
+#: admin/modules/bibliography/submenu.php:35
+msgid "Import Data to Item/Copies database from CSV file"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:36
+#, fuzzy
+msgid "Item Export"
+msgstr "رمزالعناصر"
+
+#: admin/modules/bibliography/submenu.php:36
+msgid "Export Item/Copies data To CSV format"
 msgstr ""
 
 #: admin/modules/bibliography/item.php:53
 msgid "Item Code can't be empty!"
-msgstr ""
+msgstr "ﻻ يمكن ترك عنصر كون فارغأً"
 
 #: admin/modules/bibliography/item.php:99
 msgid "Item Data Successfully Updated"
-msgstr ""
+msgstr "تمت تحديث  عنصرالبيانات"
 
 #: admin/modules/bibliography/item.php:106
 #: admin/modules/bibliography/item.php:122
 msgid "Item Data FAILED to Save. Please Contact System Administrator"
-msgstr ""
+msgstr "لم يتم حفظ عنصرالبيانات. رجاء اﻵتصال بنظام البيانات"
 
 #: admin/modules/bibliography/item.php:115
 msgid "New Item Data Successfully Saved"
-msgstr ""
+msgstr "تم حفظ عنصزالبيانات الجديدة"
 
 #: admin/modules/bibliography/item.php:275
 msgid "Inventory Code"
@@ -1861,49 +2376,51 @@ msgstr "متاح"
 
 #: admin/modules/bibliography/item.php:303
 msgid "Order Number"
-msgstr ""
+msgstr "رقم الطلب"
 
 #: admin/modules/bibliography/item.php:305
 msgid "Order Date"
-msgstr ""
+msgstr "تاريخ الطلب"
 
 #: admin/modules/bibliography/item.php:307
 msgid "Receiving Date"
-msgstr ""
+msgstr "تاريخ اﻻستقبال"
 
 #: admin/modules/bibliography/item.php:317
 msgid "Buy"
-msgstr ""
+msgstr "شراء"
 
 #: admin/modules/bibliography/item.php:318
 msgid "Prize/Grant"
-msgstr ""
+msgstr "هبة"
 
 #: admin/modules/bibliography/item.php:319
 msgid "Source"
-msgstr ""
+msgstr "اصل"
 
 #: admin/modules/bibliography/item.php:321
 msgid "Invoice"
-msgstr ""
+msgstr "الفاطرة"
 
 #: admin/modules/bibliography/item.php:323
 msgid "Invoice Date"
-msgstr ""
+msgstr "تاريج الفاطرة"
 
 #: admin/modules/bibliography/item.php:327
 msgid "Price"
-msgstr ""
+msgstr "سعر"
 
 #: admin/modules/bibliography/item.php:331
 msgid "You are going to edit Item data"
 msgstr ""
 
 #: admin/modules/bibliography/import.php:45
+#: admin/modules/bibliography/item_import.php:45
 msgid "Please select the file to import!"
 msgstr "اختار الملف للاستيراد"
 
 #: admin/modules/bibliography/import.php:69
+#: admin/modules/bibliography/item_import.php:69
 msgid "Upload failed! File type not allowed or the size is more than"
 msgstr "فشل إيداع! نوع الملف غير مسموح به أو حجم هو أكثر من"
 
@@ -1916,77 +2433,48 @@ msgid "Import for bibliographics data from CSV file. For guide on CVS fields ord
 msgstr "استيراد البيانات الببليوغرافية من ملف CSV. لدليل على CSV حقول النظام وتنسيق يرجى الرجوع إلى وثائق أو زيارة <a href=\"http://senayan.diknas.go.id\" target=\"_blank\">Official Website</a>"
 
 #: admin/modules/bibliography/import.php:225
+#: admin/modules/bibliography/item_import.php:180
 msgid "Import Now"
 msgstr "استيراد الآن!"
 
 #: admin/modules/bibliography/import.php:236
+#: admin/modules/bibliography/item_import.php:190
 msgid "File To Import"
 msgstr "ملف للاستيراد"
 
-#: admin/modules/bibliography/iframe_attach.php:73
+#: admin/modules/bibliography/iframe_attach.php:67
 msgid "Attachment removed!"
 msgstr ""
 
-#: admin/modules/bibliography/iframe_author.php:65
-msgid "Author succesfully removed!"
-msgstr ""
-
-#: admin/modules/bibliography/iframe_author.php:76
-msgid "Author removed!"
-msgstr ""
-
-#: admin/modules/bibliography/item_barcode_generator.php:196
+#: admin/modules/bibliography/item_barcode_generator.php:198
 msgid "Print Barcodes for Selected Data"
 msgstr ""
 
-#: admin/modules/bibliography/pop_author.php:88
-msgid "Author succesfully updated!"
-msgstr "تم تحديث مؤلف!"
+#: admin/modules/bibliography/item_import.php:171
+#, fuzzy
+msgid "ITEM IMPORT TOOL"
+msgstr "أداة استيراد"
 
-#: admin/modules/bibliography/pop_author.php:92
-msgid "Author FAILED to Add. Please Contact System Administrator"
-msgstr "فشل ﻹضافةمؤلف! إتصل مديرالبيانات"
-
-#: admin/modules/bibliography/pop_author.php:117
-msgid "Author added!"
-msgstr "تمت إضافةمؤلف"
-
-#: admin/modules/bibliography/pop_author.php:128
-msgid "Add Author"
-msgstr "إضافةمؤلف"
-
-#: admin/modules/bibliography/pop_author.php:146
-msgid "Type to search for existing authors or to add a new one"
+#: admin/modules/bibliography/item_import.php:173
+msgid "Import for item data from CSV file"
 msgstr ""
 
-#: admin/modules/bibliography/pop_author.php:148
-#: admin/modules/bibliography/pop_topic.php:149
-msgid "Insert To Bibliography"
+#: admin/modules/bibliography/item_export.php:123
+msgid "There is no record in item database yet, Export FAILED!"
 msgstr ""
 
-#: admin/modules/bibliography/pop_topic.php:91
-msgid "Subject FAILED to Add. Please Contact System Administrator"
-msgstr ""
+#: admin/modules/bibliography/item_export.php:132
+#, fuzzy
+msgid "ITEM EXPORT TOOL"
+msgstr "ادؤاات التصدير"
 
-#: admin/modules/bibliography/pop_topic.php:116
-msgid "Subject added!"
-msgstr ""
-
-#: admin/modules/bibliography/pop_topic.php:127
-msgid "Add Subject"
-msgstr ""
-
-#: admin/modules/bibliography/pop_topic.php:133
-msgid "Keyword"
-msgstr "الكلمات الأساسية"
-
-#: admin/modules/bibliography/pop_topic.php:147
-msgid "Type to search for existing topics or to add a new one"
+#: admin/modules/bibliography/item_export.php:134
+msgid "Export item data to CSV file"
 msgstr ""
 
 #: admin/modules/circulation/loan.php:113
 msgid "Insert Item Code/Barcode"
-msgstr ""
+msgstr "ادراج كود عنصر "
 
 #: admin/modules/circulation/loan.php:115
 msgid "Loan"
@@ -1994,47 +2482,49 @@ msgstr "اعارة"
 
 #: admin/modules/circulation/loan.php:129
 msgid "Remove"
-msgstr ""
+msgstr "مسح"
 
 #: admin/modules/circulation/loan.php:142
 msgid "Click To Change Loan Date"
-msgstr ""
+msgstr "اذقر لتغيير تاريخ اﻹعارة"
 
 #: admin/modules/circulation/loan.php:143
 msgid "Click To Change Due Date"
-msgstr ""
+msgstr "اذقر لتغيير تاريخ التأخير"
 
 #: admin/modules/circulation/loan_rules.php:66
 msgid "Loan Rules Successfully Updated"
-msgstr ""
+msgstr "تمت تحديث قواعد الإعارة"
 
 #: admin/modules/circulation/loan_rules.php:68
 msgid "Loan Rules FAILED to Updated. Please Contact System Administrator"
-msgstr ""
+msgstr "لم يتم تحديث قواعد الإعارة. رجاء اﻻتصال بنظام البيانات"
 
 #: admin/modules/circulation/loan_rules.php:74
 msgid "New Loan Rules Successfully Saved"
-msgstr ""
+msgstr "تمت اضافة قواعد الإعارة الجديدة"
 
 #: admin/modules/circulation/loan_rules.php:76
 msgid "Loan Rules FAILED to Save. Please Contact System Administrator"
-msgstr ""
+msgstr "لم يتم تحديث قواعد الإعارة. رجاء اﻻتصال بنظام البيانات"
 
 #: admin/modules/circulation/loan_rules.php:117
+#: admin/modules/circulation/submenu.php:26
 msgid "Loan Rules"
 msgstr "قواعد الإعارة"
 
 #: admin/modules/circulation/loan_rules.php:117
 msgid "Add New Loan Rules"
-msgstr ""
+msgstr "اضافة قواعد الإعارة الجديدة"
 
 #: admin/modules/circulation/loan_rules.php:118
 msgid "Loan Rules List"
-msgstr ""
+msgstr "قائمة القواعد الإعارة"
 
 #: admin/modules/circulation/loan_rules.php:168
 #: admin/modules/circulation/loan_rules.php:215
 #: admin/modules/circulation/loan_rules.php:222
+#: admin/modules/circulation/circulation_action.php:454
 msgid "Member Type"
 msgstr "أنواع الأعضاء"
 
@@ -2042,17 +2532,17 @@ msgstr "أنواع الأعضاء"
 #: admin/modules/circulation/loan_rules.php:218
 #: admin/modules/circulation/loan_rules.php:225
 msgid "Loan Limit"
-msgstr ""
+msgstr "حد اﻻعارة"
 
 #: admin/modules/circulation/loan_rules.php:189
 #: admin/modules/circulation/loan_rules.php:219
 #: admin/modules/circulation/loan_rules.php:226
 msgid "Loan Period"
-msgstr ""
+msgstr "فترة اﻻعارة"
 
 #: admin/modules/circulation/loan_rules.php:191
 msgid "Reborrow Limit"
-msgstr ""
+msgstr "حدعدد اﻻعارة"
 
 #: admin/modules/circulation/loan_rules.php:193
 msgid "Fines Each Day"
@@ -2064,15 +2554,15 @@ msgstr ""
 
 #: admin/modules/circulation/loan_rules.php:199
 msgid "You are going to edit loan rules"
-msgstr ""
+msgstr "دخول الى تحرير نظام الاعارة"
 
 #: admin/modules/circulation/member_loan_hist.php:55
 msgid "Not Returned Yet"
-msgstr ""
+msgstr "لم يرجع"
 
 #: admin/modules/circulation/member_loan_hist.php:55
 msgid "Returned Date"
-msgstr ""
+msgstr "تاريخ الرجاع"
 
 #: admin/modules/circulation/fines_list.php:56
 msgid "Fines Description and Debet value can't be empty"
@@ -2084,11 +2574,11 @@ msgstr ""
 
 #: admin/modules/circulation/fines_list.php:76
 msgid "Fines Data Successfully Updated"
-msgstr ""
+msgstr "بيا تة الغرم كملة من تجديد"
 
 #: admin/modules/circulation/fines_list.php:77
 msgid "Fines Data FAILED to Updated. Please Contact System Administrator"
-msgstr ""
+msgstr "لم يتم تحديث بيانات الغرم, رجاء  اﻻتصال بنظام البيانات "
 
 #: admin/modules/circulation/fines_list.php:83
 msgid "New Fines Data Successfully Saved"
@@ -2104,7 +2594,7 @@ msgstr ""
 
 #: admin/modules/circulation/fines_list.php:121
 msgid "Fines List"
-msgstr ""
+msgstr "غرام الكشف"
 
 #: admin/modules/circulation/fines_list.php:122
 msgid "View Balanced Overdue"
@@ -2113,7 +2603,7 @@ msgstr ""
 #: admin/modules/circulation/fines_list.php:159
 #: admin/modules/circulation/fines_list.php:183
 msgid "Fines Date"
-msgstr ""
+msgstr "غرام التاريخ"
 
 #: admin/modules/circulation/fines_list.php:161
 #: admin/modules/circulation/fines_list.php:182
@@ -2136,7 +2626,7 @@ msgstr ""
 
 #: admin/modules/circulation/quick_return.php:41
 msgid "Quick Return is disabled"
-msgstr ""
+msgstr "عجر فى سريع إعارة"
 
 #: admin/modules/circulation/quick_return.php:47
 msgid "Insert an item ID to return collection with keyboard or barcode reader"
@@ -2144,12 +2634,13 @@ msgstr ""
 
 #: admin/modules/circulation/quick_return.php:50
 msgid "Item ID"
-msgstr ""
+msgstr "مادة مماثلة"
 
 #: admin/modules/circulation/quick_return.php:52
+#: admin/modules/circulation/pop_loan_receipt.php:101
 #: admin/modules/circulation/loan_list.php:83
 msgid "Return"
-msgstr ""
+msgstr "اعادة"
 
 #: admin/modules/circulation/index.php:48
 msgid "CIRCULATION - Insert a member ID to start transaction with keyboard or barcode reader"
@@ -2168,9 +2659,9 @@ msgid "View and Modify Circulation Loan Rules"
 msgstr ""
 
 #: admin/modules/circulation/submenu.php:27
-#: admin/modules/circulation/circulation_action.php:479
+#: admin/modules/circulation/circulation_action.php:486
 msgid "Loan History"
-msgstr ""
+msgstr "تاريخ اﻹعارة"
 
 #: admin/modules/circulation/submenu.php:27
 msgid "Loan History Overview"
@@ -2198,7 +2689,7 @@ msgstr ""
 
 #: admin/modules/circulation/loan_list.php:83
 msgid "Extend"
-msgstr ""
+msgstr "يمدّ"
 
 #: admin/modules/circulation/loan_list.php:92
 msgid "Return this item"
@@ -2208,184 +2699,184 @@ msgstr ""
 #: admin/modules/circulation/loan_list.php:100
 #: admin/modules/circulation/loan_list.php:102
 msgid "No Extend"
-msgstr ""
+msgstr "غير متطاول"
 
 #: admin/modules/circulation/loan_list.php:104
 msgid "Extend loan for this item"
-msgstr ""
+msgstr "طويل الاعارة اهذالمادة"
 
 #: admin/modules/circulation/loan_list.php:109
 msgid "Extended"
-msgstr ""
+msgstr "متطاول"
 
 #: admin/modules/circulation/loan_list.php:115
 msgid "OVERDUED for"
-msgstr ""
+msgstr "تأخير ل"
 
 #: admin/modules/circulation/loan_list.php:115
 msgid "days(s) with fines value"
 msgstr ""
 
 #: admin/modules/circulation/loan_list.php:149
-#: admin/modules/circulation/circulation_action.php:252
+#: admin/modules/circulation/circulation_action.php:257
 msgid "Item {itemCode} is being reserved by member {member}"
 msgstr ""
 
 #: admin/modules/circulation/circulation_action.php:46
 msgid "ERROR! Loan data can't be saved to database"
-msgstr ""
+msgstr "خطأ ! ﻻ يعل حفظ من بيانة اﻻعارة الى قاعدة البيانات"
 
 #: admin/modules/circulation/circulation_action.php:53
 msgid "Transaction finished"
-msgstr ""
+msgstr "كلمة اﻻعارة"
 
-#: admin/modules/circulation/circulation_action.php:75
-#: admin/modules/circulation/circulation_action.php:97
+#: admin/modules/circulation/circulation_action.php:80
+#: admin/modules/circulation/circulation_action.php:102
 msgid "Overdue fines inserted to fines database"
 msgstr ""
 
-#: admin/modules/circulation/circulation_action.php:88
+#: admin/modules/circulation/circulation_action.php:93
 msgid "Item CANNOT BE Extended! This Item is being reserved by other member"
 msgstr ""
 
-#: admin/modules/circulation/circulation_action.php:95
+#: admin/modules/circulation/circulation_action.php:100
 msgid "Loan Extended"
-msgstr ""
+msgstr "مدّ اﻻعارة"
 
-#: admin/modules/circulation/circulation_action.php:123
-#: admin/modules/circulation/circulation_action.php:130
+#: admin/modules/circulation/circulation_action.php:128
+#: admin/modules/circulation/circulation_action.php:135
 msgid "Loan Limit Reached!"
-msgstr ""
+msgstr "درك الا عارة"
 
-#: admin/modules/circulation/circulation_action.php:123
-#: admin/modules/circulation/circulation_action.php:144
+#: admin/modules/circulation/circulation_action.php:128
+#: admin/modules/circulation/circulation_action.php:149
 msgid "Do You Want To Overide This?"
 msgstr ""
 
-#: admin/modules/circulation/circulation_action.php:144
+#: admin/modules/circulation/circulation_action.php:149
 msgid "WARNING! This Item is reserved by another member"
 msgstr ""
 
-#: admin/modules/circulation/circulation_action.php:154
+#: admin/modules/circulation/circulation_action.php:159
 msgid "This Item is not registered in database"
 msgstr ""
 
-#: admin/modules/circulation/circulation_action.php:159
+#: admin/modules/circulation/circulation_action.php:164
 msgid "This Item is currently not available"
 msgstr ""
 
-#: admin/modules/circulation/circulation_action.php:164
+#: admin/modules/circulation/circulation_action.php:169
 msgid "Loan NOT PERMITTED! Membership already EXPIRED!"
 msgstr ""
 
-#: admin/modules/circulation/circulation_action.php:169
+#: admin/modules/circulation/circulation_action.php:174
 msgid "Loan NOT PERMITTED! Membership under PENDING State!"
 msgstr ""
 
-#: admin/modules/circulation/circulation_action.php:174
+#: admin/modules/circulation/circulation_action.php:179
 msgid "Loan Forbidden for this Item!"
-msgstr ""
+msgstr "ممنوع الا عارة لهذا المادة"
 
-#: admin/modules/circulation/circulation_action.php:211
+#: admin/modules/circulation/circulation_action.php:216
 msgid "Item {removeID} removed from session"
 msgstr ""
 
-#: admin/modules/circulation/circulation_action.php:228
+#: admin/modules/circulation/circulation_action.php:233
 msgid "This is item already returned or not exists in loan database"
 msgstr ""
 
-#: admin/modules/circulation/circulation_action.php:239
+#: admin/modules/circulation/circulation_action.php:244
 msgid "OVERDUED for {overdueDays} days(s) with fines value of"
 msgstr ""
 
-#: admin/modules/circulation/circulation_action.php:263
+#: admin/modules/circulation/circulation_action.php:268
 msgid " successfully returned on"
 msgstr ""
 
-#: admin/modules/circulation/circulation_action.php:265
-#: admin/modules/circulation/circulation_action.php:434
+#: admin/modules/circulation/circulation_action.php:270
+#: admin/modules/circulation/circulation_action.php:441
 msgid "Member Name"
 msgstr "اسم الأعضاء"
 
-#: admin/modules/circulation/circulation_action.php:291
+#: admin/modules/circulation/circulation_action.php:296
 msgid "NO DATA Selected to reserve!"
 msgstr ""
 
-#: admin/modules/circulation/circulation_action.php:304
+#: admin/modules/circulation/circulation_action.php:309
 msgid "Can not add more reservation. Maximum limit reached"
 msgstr ""
 
-#: admin/modules/circulation/circulation_action.php:322
+#: admin/modules/circulation/circulation_action.php:327
 msgid "Can't reserve this Item. Loan Forbidden!"
 msgstr ""
 
-#: admin/modules/circulation/circulation_action.php:340
+#: admin/modules/circulation/circulation_action.php:345
 msgid "Reservation added"
 msgstr ""
 
-#: admin/modules/circulation/circulation_action.php:345
+#: admin/modules/circulation/circulation_action.php:350
 msgid "Item for this title is already available or already on hold by this member!"
 msgstr ""
 
-#: admin/modules/circulation/circulation_action.php:364
+#: admin/modules/circulation/circulation_action.php:369
 msgid "Reservation removed"
 msgstr ""
 
-#: admin/modules/circulation/circulation_action.php:379
+#: admin/modules/circulation/circulation_action.php:384
 msgid "Fines data removed"
 msgstr ""
 
-#: admin/modules/circulation/circulation_action.php:403
+#: admin/modules/circulation/circulation_action.php:408
 msgid " not valid (unregistered in database)"
-msgstr ""
+msgstr "غير صحيح"
 
-#: admin/modules/circulation/circulation_action.php:430
+#: admin/modules/circulation/circulation_action.php:437
 msgid "Finish Transaction"
-msgstr ""
+msgstr "يتعذّر تغيير هذه الخانة اﻹجرائية"
 
-#: admin/modules/circulation/circulation_action.php:430
+#: admin/modules/circulation/circulation_action.php:437
 msgid "Are you sure want to finish current transaction?"
-msgstr ""
+msgstr "اتريد انكمل ةذا الا جراء حقيقة"
 
-#: admin/modules/circulation/circulation_action.php:446
+#: admin/modules/circulation/circulation_action.php:453
 msgid "Member Email"
 msgstr "عنوان البريد الإلكتروني"
 
-#: admin/modules/circulation/circulation_action.php:450
+#: admin/modules/circulation/circulation_action.php:457
 msgid "Register Date"
 msgstr "تاريخ التسجيل"
 
-#: admin/modules/circulation/circulation_action.php:454
+#: admin/modules/circulation/circulation_action.php:461
 msgid "Membership Already Expired"
-msgstr ""
+msgstr "انتهى في الضوية"
 
-#: admin/modules/circulation/circulation_action.php:456
+#: admin/modules/circulation/circulation_action.php:463
 msgid "Expiry Date"
 msgstr "تاريخ الانتهاء"
 
-#: admin/modules/circulation/circulation_action.php:466
+#: admin/modules/circulation/circulation_action.php:473
 msgid "Membership currently in pending state, loan transaction is locked."
 msgstr ""
 
-#: admin/modules/circulation/circulation_action.php:473
+#: admin/modules/circulation/circulation_action.php:480
 msgid "Loans"
-msgstr ""
+msgstr "اعارة "
 
-#: admin/modules/circulation/circulation_action.php:474
+#: admin/modules/circulation/circulation_action.php:481
 msgid "Current Loans"
-msgstr ""
+msgstr "حضرة الﻻعارة"
 
-#: admin/modules/circulation/circulation_action.php:476
+#: admin/modules/circulation/circulation_action.php:483
 msgid "Reserve"
-msgstr ""
+msgstr "حجز"
 
-#: admin/modules/circulation/circulation_action.php:478
+#: admin/modules/circulation/circulation_action.php:485
 msgid "Fines"
-msgstr ""
+msgstr "يعرم"
 
 #: admin/modules/circulation/reserve_list.php:46
 msgid "Are you sure to remove reservation for"
-msgstr ""
+msgstr "اتو ريد ان تعيد المادة"
 
 #: admin/modules/circulation/reserve_list.php:60
 msgid "Search Collection"
@@ -2403,543 +2894,192 @@ msgstr ""
 msgid "ALREADY EXPIRED"
 msgstr ""
 
-#: admin/modules/system/sys_log.php:59
-msgid "System Log data completely cleared!"
-msgstr ""
-
-#: admin/modules/system/sys_log.php:68
-msgid "System Log"
-msgstr ""
-
-#: admin/modules/system/sys_log.php:70
-msgid "Are you SURE to completely clear system log data? This action cannot be undo!"
-msgstr ""
-
-#: admin/modules/system/sys_log.php:70
-msgid "CLEAR LOGS"
-msgstr ""
-
-#: admin/modules/system/sys_log.php:71
-msgid "Save Logs record to file?"
-msgstr ""
-
-#: admin/modules/system/sys_log.php:71
-msgid "Save Logs To File"
-msgstr ""
-
-#: admin/modules/system/sys_log.php:95
-msgid "Time"
-msgstr ""
-
-#: admin/modules/system/sys_log.php:97
-msgid "Message"
-msgstr ""
-
-#: admin/modules/system/module_priv_form.inc.php:26
-#: admin/modules/system/module.php:176
-#: admin/modules/system/module.php:196
-msgid "Module Name"
-msgstr ""
-
-#: admin/modules/system/module_priv_form.inc.php:26
-msgid "Read"
-msgstr ""
-
-#: admin/modules/system/module_priv_form.inc.php:26
-msgid "Write"
-msgstr ""
-
-#: admin/modules/system/backup.php:41
-msgid "Database Backup"
-msgstr ""
-
-#: admin/modules/system/backup.php:41
-msgid "Start New Backup"
-msgstr ""
-
-#: admin/modules/system/module.php:48
-msgid "Module name and path can't be empty"
-msgstr ""
-
-#: admin/modules/system/module.php:71
-msgid "Module Data Successfully Updated"
-msgstr ""
-
-#: admin/modules/system/module.php:73
-msgid "Module Data FAILED to Updated. Please Contact System Administrator"
-msgstr ""
-
-#: admin/modules/system/module.php:84
-msgid "New Module Data Successfully Saved"
-msgstr ""
-
-#: admin/modules/system/module.php:86
-msgid "Module Data FAILED to Save. Please Contact System Administrator"
-msgstr ""
-
-#: admin/modules/system/module.php:136
-msgid "Modules"
-msgstr ""
-
-#: admin/modules/system/module.php:136
-msgid "Add New Modules"
-msgstr ""
-
-#: admin/modules/system/module.php:137
-msgid "Modules List"
-msgstr ""
-
-#: admin/modules/system/module.php:178
-msgid "Module Path"
-msgstr ""
-
-#: admin/modules/system/module.php:180
-#: admin/modules/system/module.php:197
-msgid "Module Description"
-msgstr ""
-
-#: admin/modules/system/module.php:184
-msgid "You are going to edit data"
-msgstr ""
-
-#: admin/modules/system/content.php:50
-msgid "Title or Path can't be empty!"
-msgstr ""
-
-#: admin/modules/system/content.php:72
-msgid "Content data updated"
-msgstr ""
-
-#: admin/modules/system/content.php:74
-msgid "Content data FAILED to update!"
-msgstr ""
-
-#: admin/modules/system/content.php:82
-msgid "Content data saved"
-msgstr ""
-
-#: admin/modules/system/content.php:84
-msgid "Content data FAILED to save!"
-msgstr ""
-
-#: admin/modules/system/content.php:131
-msgid "Content"
-msgstr ""
-
-#: admin/modules/system/content.php:131
-msgid "Add New Content"
-msgstr ""
-
-#: admin/modules/system/content.php:132
-msgid "Content List"
-msgstr ""
-
-#: admin/modules/system/content.php:175
-#: admin/modules/system/content.php:208
-#: admin/modules/system/content.php:212
-msgid "Content Title"
-msgstr ""
-
-#: admin/modules/system/content.php:177
-#: admin/modules/system/content.php:209
-#: admin/modules/system/content.php:213
-msgid "Path (Must be unique)"
-msgstr ""
-
-#: admin/modules/system/content.php:179
-msgid "Content Description"
-msgstr ""
-
-#: admin/modules/system/content.php:183
-msgid "You are going to update Content data"
-msgstr ""
-
-#: admin/modules/system/index.php:46
-#: admin/modules/system/submenu.php:26
-msgid "System Configuration"
-msgstr ""
-
-#: admin/modules/system/index.php:46
-msgid "Modify global application preferences"
-msgstr ""
-
-#: admin/modules/system/index.php:121
-msgid "Settings saved. Refreshing page"
-msgstr ""
-
-#: admin/modules/system/index.php:128
-#: admin/modules/system/holiday.php:304
-msgid "Save Settings"
-msgstr ""
-
-#: admin/modules/system/index.php:142
-msgid "Library Name"
-msgstr ""
-
-#: admin/modules/system/index.php:145
-msgid "Library Subname"
-msgstr ""
-
-#: admin/modules/system/index.php:159
+#: admin/modules/system/index.php:166
 msgid "Public Template"
 msgstr ""
 
-#: admin/modules/system/index.php:172
+#: admin/modules/system/index.php:179
 msgid "Admin Template"
 msgstr ""
 
-#: admin/modules/system/index.php:176
-msgid "Default App. Language"
-msgstr ""
-
-#: admin/modules/system/index.php:184
-msgid "Number Of Collections To Show In OPAC Result List"
-msgstr ""
-
-#: admin/modules/system/index.php:188
+#: admin/modules/system/index.php:195
 msgid "Show Promoted Titles at Homepage"
 msgstr ""
 
-#: admin/modules/system/index.php:192
-#: admin/modules/system/index.php:198
-#: admin/modules/system/index.php:204
-#: admin/modules/system/index.php:210
-#: admin/modules/system/index.php:216
-#: admin/modules/membership/member_type.php:177
-msgid "Disable"
-msgstr ""
-
-#: admin/modules/system/index.php:193
-#: admin/modules/system/index.php:199
 #: admin/modules/system/index.php:205
-#: admin/modules/system/index.php:211
-#: admin/modules/system/index.php:217
-#: admin/modules/membership/member_type.php:176
-msgid "Enable"
-msgstr ""
+#, fuzzy
+msgid "Don't Print"
+msgstr "ﻻ تعزز"
 
-#: admin/modules/system/index.php:200
+#: admin/modules/system/index.php:206
+#, fuzzy
+msgid "Print"
+msgstr "هبة"
+
+#: admin/modules/system/index.php:207
+#, fuzzy
+msgid "Print Circulation Receipt"
+msgstr "الاستعارة"
+
+#: admin/modules/system/index.php:213
 msgid "Loan and Due Date Manual Change"
 msgstr ""
 
-#: admin/modules/system/index.php:206
+#: admin/modules/system/index.php:219
 msgid "Loan Limit Override"
 msgstr ""
 
-#: admin/modules/system/index.php:212
-msgid "OPAC XML Detail"
-msgstr ""
-
-#: admin/modules/system/index.php:218
-msgid "OPAC XML Result"
-msgstr ""
-
-#: admin/modules/system/index.php:222
+#: admin/modules/system/index.php:235
 msgid "Forbid"
 msgstr ""
 
-#: admin/modules/system/index.php:223
+#: admin/modules/system/index.php:236
 msgid "Allow"
 msgstr ""
 
-#: admin/modules/system/index.php:224
+#: admin/modules/system/index.php:237
 msgid "Allow OPAC File Download"
 msgstr ""
 
-#: admin/modules/system/index.php:227
-msgid "Session Login Timeout"
-msgstr ""
+#: admin/modules/system/index.php:243
+#, fuzzy
+msgid "Barcode Encoding"
+msgstr "عنصر الباركود طباعة"
 
-#: admin/modules/system/holiday.php:65
+#: admin/modules/system/holiday.php:64
 msgid "Holiday Data Successfully updated"
 msgstr ""
 
-#: admin/modules/system/holiday.php:71
+#: admin/modules/system/holiday.php:70
 msgid "Holiday FAILED to update. Please Contact System Administrator"
 msgstr ""
 
-#: admin/modules/system/holiday.php:77
+#: admin/modules/system/holiday.php:76
 msgid "New Holiday Successfully Saved"
 msgstr ""
 
-#: admin/modules/system/holiday.php:104
+#: admin/modules/system/holiday.php:103
 msgid "Holiday FAILED to Save. Please Contact System Administrator"
 msgstr ""
 
-#: admin/modules/system/holiday.php:150
+#: admin/modules/system/holiday.php:149
 #: admin/modules/system/submenu.php:35
 msgid "Holiday Setting"
 msgstr ""
 
-#: admin/modules/system/holiday.php:152
+#: admin/modules/system/holiday.php:151
 msgid "Set holiday"
 msgstr ""
 
-#: admin/modules/system/holiday.php:153
+#: admin/modules/system/holiday.php:152
 msgid "Special holiday"
 msgstr ""
 
-#: admin/modules/system/holiday.php:154
+#: admin/modules/system/holiday.php:153
 msgid "Add Special holiday"
 msgstr ""
 
-#: admin/modules/system/holiday.php:187
-#: admin/modules/system/holiday.php:211
-#: admin/modules/system/holiday.php:215
+#: admin/modules/system/holiday.php:186
+#: admin/modules/system/holiday.php:210
+#: admin/modules/system/holiday.php:214
 msgid "Holiday Date Start"
 msgstr ""
 
-#: admin/modules/system/holiday.php:190
+#: admin/modules/system/holiday.php:189
 msgid "Holiday Date End"
 msgstr ""
 
-#: admin/modules/system/holiday.php:193
-#: admin/modules/system/holiday.php:212
-#: admin/modules/system/holiday.php:216
+#: admin/modules/system/holiday.php:192
+#: admin/modules/system/holiday.php:211
+#: admin/modules/system/holiday.php:215
 msgid "Holiday Description"
 msgstr ""
 
-#: admin/modules/system/holiday.php:197
+#: admin/modules/system/holiday.php:196
 msgid "You are going to edit holiday data"
 msgstr ""
 
-#: admin/modules/system/holiday.php:210
-#: admin/modules/system/holiday.php:214
+#: admin/modules/system/holiday.php:209
+#: admin/modules/system/holiday.php:213
 msgid "Day name"
-msgstr ""
+msgstr "اسم اليوم"
 
-#: admin/modules/system/holiday.php:249
+#: admin/modules/system/holiday.php:248
 msgid "Maximum 6 day can be set as holiday!"
 msgstr ""
 
-#: admin/modules/system/holiday.php:262
+#: admin/modules/system/holiday.php:261
 msgid "Holiday settings saved"
 msgstr ""
 
-#: admin/modules/system/holiday.php:291
+#: admin/modules/system/holiday.php:290
 msgid "Monday"
-msgstr ""
+msgstr "إثنين"
+
+#: admin/modules/system/holiday.php:291
+msgid "Tuesday"
+msgstr "ثلث"
 
 #: admin/modules/system/holiday.php:292
-msgid "Tuesday"
-msgstr ""
-
-#: admin/modules/system/holiday.php:293
 msgid "Wednesday"
-msgstr ""
+msgstr "رابع"
+
+#: admin/modules/system/holiday.php:294
+msgid "Thursday"
+msgstr "خمس"
 
 #: admin/modules/system/holiday.php:295
-msgid "Thursday"
-msgstr ""
+msgid "Friday"
+msgstr "جمعة"
 
 #: admin/modules/system/holiday.php:296
-msgid "Friday"
-msgstr ""
-
-#: admin/modules/system/holiday.php:297
 msgid "Saturday"
-msgstr ""
+msgstr "سبت"
 
-#: admin/modules/system/holiday.php:299
+#: admin/modules/system/holiday.php:298
 msgid "Sunday"
-msgstr ""
-
-#: admin/modules/system/submenu.php:23
-msgid "System"
-msgstr ""
-
-#: admin/modules/system/submenu.php:26
-msgid "Configure Global System Preferences"
-msgstr ""
-
-#: admin/modules/system/submenu.php:31
-msgid "Configure Application Modules"
-msgstr ""
-
-#: admin/modules/system/submenu.php:32
-#: admin/modules/system/app_user.php:160
-msgid "System Users"
-msgstr ""
-
-#: admin/modules/system/submenu.php:32
-msgid "Manage Application User or Library Staff"
-msgstr ""
-
-#: admin/modules/system/submenu.php:33
-#: admin/modules/system/user_group.php:159
-msgid "User Group"
-msgstr ""
-
-#: admin/modules/system/submenu.php:33
-msgid "Manage Group of Application User"
-msgstr ""
+msgstr "أحد"
 
 #: admin/modules/system/submenu.php:35
 msgid "Configure Holiday Setting"
 msgstr ""
 
 #: admin/modules/system/submenu.php:36
-#: admin/modules/system/barcode_generator.php:111
+#: admin/modules/system/barcode_generator.php:113
 msgid "Barcode Generator"
 msgstr ""
 
-#: admin/modules/system/submenu.php:37
-msgid "View Application System Log"
-msgstr ""
-
-#: admin/modules/system/submenu.php:38
-msgid "Backup Application Database"
-msgstr ""
-
-#: admin/modules/system/user_group.php:47
-msgid "Group name can't be empty"
-msgstr ""
-
-#: admin/modules/system/user_group.php:82
-msgid "Group Data Successfully Updated"
-msgstr ""
-
-#: admin/modules/system/user_group.php:84
-msgid "Group Data FAILED to Updated. Please Contact System Administrator"
-msgstr ""
-
-#: admin/modules/system/user_group.php:110
-msgid "New Group Data Successfully Saved"
-msgstr ""
-
-#: admin/modules/system/user_group.php:112
-msgid "Group Data FAILED to Save. Please Contact System Administrator"
-msgstr ""
-
-#: admin/modules/system/user_group.php:159
-msgid "Add New Group"
-msgstr ""
-
-#: admin/modules/system/user_group.php:160
-msgid "Group List"
-msgstr ""
-
-#: admin/modules/system/user_group.php:199
-#: admin/modules/system/user_group.php:226
-msgid "Group Name"
-msgstr ""
-
-#: admin/modules/system/user_group.php:210
-msgid "Privileges"
-msgstr ""
-
-#: admin/modules/system/user_group.php:215
-msgid "You are going to edit Group data"
-msgstr ""
-
-#: admin/modules/system/barcode_generator.php:96
+#: admin/modules/system/barcode_generator.php:98
 msgid "Error creating barcode!"
 msgstr ""
 
-#: admin/modules/system/barcode_generator.php:101
+#: admin/modules/system/barcode_generator.php:103
 msgid "Barcode generation finished"
 msgstr ""
 
-#: admin/modules/system/barcode_generator.php:111
+#: admin/modules/system/barcode_generator.php:113
 msgid "Type barcodes text to one or more text field below and click"
 msgstr ""
 
-#: admin/modules/system/barcode_generator.php:111
-#: admin/modules/system/barcode_generator.php:141
+#: admin/modules/system/barcode_generator.php:113
+#: admin/modules/system/barcode_generator.php:143
 msgid "Generate Barcodes"
 msgstr ""
 
-#: admin/modules/system/barcode_generator.php:125
+#: admin/modules/system/barcode_generator.php:127
 msgid "Barcode Size"
 msgstr ""
 
-#: admin/modules/system/barcode_generator.php:125
+#: admin/modules/system/barcode_generator.php:127
 msgid "Small"
 msgstr ""
 
-#: admin/modules/system/barcode_generator.php:126
+#: admin/modules/system/barcode_generator.php:128
 msgid "Medium"
 msgstr ""
 
-#: admin/modules/system/barcode_generator.php:127
+#: admin/modules/system/barcode_generator.php:129
 msgid "Big"
-msgstr ""
-
-#: admin/modules/system/app_user.php:60
-msgid "User Name or Real Name can't be empty"
-msgstr ""
-
-#: admin/modules/system/app_user.php:63
-msgid "Login username or Real Name is probihited!"
-msgstr ""
-
-#: admin/modules/system/app_user.php:66
-#: admin/modules/membership/index.php:58
-msgid "Password confirmation does not match. See if your Caps Lock key is on!"
-msgstr ""
-
-#: admin/modules/system/app_user.php:100
-msgid "User Data Successfully Updated"
-msgstr ""
-
-#: admin/modules/system/app_user.php:102
-msgid "User Data FAILED to Updated. Please Contact System Administrator"
-msgstr ""
-
-#: admin/modules/system/app_user.php:110
-msgid "New User Data Successfully Saved"
-msgstr ""
-
-#: admin/modules/system/app_user.php:112
-msgid "User Data FAILED to Save. Please Contact System Administrator"
-msgstr ""
-
-#: admin/modules/system/app_user.php:160
-msgid "Add New User"
-msgstr ""
-
-#: admin/modules/system/app_user.php:161
-msgid "User List"
-msgstr ""
-
-#: admin/modules/system/app_user.php:215
-#: admin/modules/system/app_user.php:260
-msgid "Login Username"
-msgstr ""
-
-#: admin/modules/system/app_user.php:217
-#: admin/modules/system/app_user.php:259
-#: admin/modules/system/app_user.php:264
-#: admin/modules/system/app_user.php:265
-msgid "Real Name"
-msgstr ""
-
-#: admin/modules/system/app_user.php:231
-msgid "Group(s)"
-msgstr ""
-
-#: admin/modules/system/app_user.php:234
-#: admin/modules/membership/index.php:367
-msgid "New Password"
-msgstr "كلمة السر جديدة"
-
-#: admin/modules/system/app_user.php:236
-#: admin/modules/membership/index.php:369
-msgid "Confirm New Password"
-msgstr ""
-
-#: admin/modules/system/app_user.php:240
-msgid "You are going to edit user profile"
-msgstr ""
-
-#: admin/modules/system/app_user.php:241
-#: admin/modules/membership/index.php:375
-msgid "Leave Password field blank if you don't want to change the password"
-msgstr ""
-
-#: admin/modules/system/app_user.php:261
-#: admin/modules/system/app_user.php:266
-msgid "Last Login"
 msgstr ""
 
 #: admin/modules/serial_control/subscription.php:61
@@ -2956,7 +3096,7 @@ msgstr ""
 
 #: admin/modules/serial_control/subscription.php:97
 msgid "New Subscription Data Successfully Saved"
-msgstr ""
+msgstr "كملة الحفظ على اشراك البيانات جديدة"
 
 #: admin/modules/serial_control/subscription.php:99
 msgid "Subscription Data FAILED to Save. Please Contact System Administrator"
@@ -2973,7 +3113,7 @@ msgstr ""
 #: admin/modules/serial_control/subscription.php:173
 #: admin/modules/serial_control/subscription.php:216
 msgid "Subscription Start"
-msgstr ""
+msgstr "ابداء اﻻشتراك"
 
 #: admin/modules/serial_control/subscription.php:176
 msgid "Total Exemplar Expected"
@@ -2982,12 +3122,12 @@ msgstr ""
 #: admin/modules/serial_control/subscription.php:179
 #: admin/modules/serial_control/subscription.php:215
 msgid "Period Name"
-msgstr ""
+msgstr "دورالسم"
 
 #: admin/modules/serial_control/subscription.php:181
 #: admin/modules/serial_control/subscription.php:217
 msgid "Subscription Notes"
-msgstr ""
+msgstr "اشتراك الملاحظة"
 
 #: admin/modules/serial_control/subscription.php:195
 msgid "You are going to edit Subscription data"
@@ -3004,19 +3144,19 @@ msgstr ""
 
 #: admin/modules/serial_control/index.php:75
 msgid "Add New Subscription"
-msgstr ""
+msgstr "زيادة اكتناب جديد"
 
 #: admin/modules/serial_control/index.php:77
 msgid "View Subscriptions"
-msgstr ""
+msgstr "ابصار اﻻسرال"
 
 #: admin/modules/serial_control/index.php:79
 msgid "CLOSE"
-msgstr ""
+msgstr "اقفل"
 
 #: admin/modules/serial_control/index.php:87
 msgid "Serial Title"
-msgstr ""
+msgstr "عنوان المطبوعات المسلسلة"
 
 #: admin/modules/serial_control/submenu.php:24
 msgid "Subscription"
@@ -3028,11 +3168,11 @@ msgstr ""
 
 #: admin/modules/serial_control/serial_base_lib.inc.php:146
 msgid "Date Expected"
-msgstr ""
+msgstr "تاريخ التوقع"
 
 #: admin/modules/serial_control/serial_base_lib.inc.php:147
 msgid "Date Received"
-msgstr ""
+msgstr "تاريخ اﻻستقبال"
 
 #: admin/modules/serial_control/serial_base_lib.inc.php:147
 msgid "Seq. Number"
@@ -3040,7 +3180,7 @@ msgstr ""
 
 #: admin/modules/serial_control/serial_base_lib.inc.php:148
 msgid "Note"
-msgstr ""
+msgstr "ملا حظة"
 
 #: admin/modules/serial_control/serial_base_lib.inc.php:196
 msgid "Kardex Detail for subscription"
@@ -3054,11 +3194,11 @@ msgstr ""
 msgid "Kardex data deleted!"
 msgstr ""
 
-#: admin/modules/membership/export.php:105
+#: admin/modules/membership/export.php:102
 msgid "There is no record in membership database yet, Export FAILED!"
 msgstr ""
 
-#: admin/modules/membership/export.php:115
+#: admin/modules/membership/export.php:112
 msgid "Export member(s) data to CSV file"
 msgstr ""
 
@@ -3093,7 +3233,7 @@ msgstr ""
 
 #: admin/modules/membership/member_type.php:174
 msgid "Loan Periode (In Days)"
-msgstr ""
+msgstr "دورة الاعارة"
 
 #: admin/modules/membership/member_type.php:180
 msgid "Reserve Limit"
@@ -3110,15 +3250,17 @@ msgid "Fine Each Day"
 msgstr ""
 
 #: admin/modules/membership/member_type.php:192
-#: admin/modules/membership/index.php:374
+#: admin/modules/membership/index.php:380
 msgid "You are going to edit member data"
 msgstr ""
 
 #: admin/modules/membership/member_type.php:205
 #: admin/modules/membership/member_type.php:211
-#: admin/modules/membership/index.php:334
-#: admin/modules/membership/index.php:398
+#: admin/modules/membership/index.php:340
 #: admin/modules/membership/index.php:404
+#: admin/modules/membership/index.php:410
+#: admin/modules/membership/member_card_generator.php:168
+#: admin/modules/membership/member_card_generator.php:225
 msgid "Membership Type"
 msgstr ""
 
@@ -3126,125 +3268,128 @@ msgstr ""
 msgid "Member ID and Name can't be empty"
 msgstr ""
 
-#: admin/modules/membership/index.php:124
+#: admin/modules/membership/index.php:132
 msgid "Member Data Successfully Updated"
 msgstr ""
 
-#: admin/modules/membership/index.php:134
-#: admin/modules/membership/index.php:158
+#: admin/modules/membership/index.php:142
+#: admin/modules/membership/index.php:166
 msgid "Image FAILED to upload"
 msgstr ""
 
-#: admin/modules/membership/index.php:140
-#: admin/modules/membership/index.php:164
+#: admin/modules/membership/index.php:148
+#: admin/modules/membership/index.php:172
 msgid "Member Data FAILED to Save/Update. Please Contact System Administrator"
 msgstr ""
 
-#: admin/modules/membership/index.php:148
+#: admin/modules/membership/index.php:156
 msgid "New Member Data Successfully Saved"
 msgstr ""
 
-#: admin/modules/membership/index.php:227
+#: admin/modules/membership/index.php:235
 msgid "Below member data can't be deleted because still have unreturned item(s)"
 msgstr ""
 
-#: admin/modules/membership/index.php:246
+#: admin/modules/membership/index.php:254
 #: admin/modules/membership/submenu.php:23
 msgid "Membership"
 msgstr "عضوية"
 
-#: admin/modules/membership/index.php:247
+#: admin/modules/membership/index.php:255
+#: admin/modules/reporting/customs/customs_report_list.inc.php:28
 msgid "Member List"
 msgstr ""
 
-#: admin/modules/membership/index.php:248
+#: admin/modules/membership/index.php:256
 msgid "View Expired Member"
 msgstr ""
 
-#: admin/modules/membership/index.php:250
+#: admin/modules/membership/index.php:258
 msgid "Member Search"
 msgstr ""
 
-#: admin/modules/membership/index.php:298
+#: admin/modules/membership/index.php:306
 msgid "Extend Membership"
 msgstr ""
 
-#: admin/modules/membership/index.php:309
+#: admin/modules/membership/index.php:317
 msgid "Birth Date"
 msgstr ""
 
-#: admin/modules/membership/index.php:312
+#: admin/modules/membership/index.php:319
 msgid "Member Since"
 msgstr ""
 
-#: admin/modules/membership/index.php:320
+#: admin/modules/membership/index.php:326
 msgid "Auto Set"
 msgstr ""
 
-#: admin/modules/membership/index.php:326
+#: admin/modules/membership/index.php:332
 msgid "Institution"
 msgstr "مؤسسة"
 
-#: admin/modules/membership/index.php:336
+#: admin/modules/membership/index.php:342
 msgid "Male"
 msgstr ""
 
-#: admin/modules/membership/index.php:337
+#: admin/modules/membership/index.php:343
 msgid "Female"
 msgstr ""
 
-#: admin/modules/membership/index.php:338
+#: admin/modules/membership/index.php:344
 msgid "Gender"
 msgstr ""
 
-#: admin/modules/membership/index.php:342
+#: admin/modules/membership/index.php:348
 msgid "Postal Code"
 msgstr ""
 
-#: admin/modules/membership/index.php:348
+#: admin/modules/membership/index.php:354
 msgid "Personal ID Number"
 msgstr ""
 
-#: admin/modules/membership/index.php:350
+#: admin/modules/membership/index.php:356
 msgid "Notes"
-msgstr ""
-
-#: admin/modules/membership/index.php:352
-msgid "Pending Membership"
-msgstr ""
+msgstr "ملا حظة"
 
 #: admin/modules/membership/index.php:358
-#: admin/modules/membership/index.php:362
-msgid "Photo"
-msgstr ""
+msgid "Pending Membership"
+msgstr "اثناء العضوية"
 
-#: admin/modules/membership/index.php:365
-#: admin/modules/membership/index.php:399
+#: admin/modules/membership/index.php:364
+#: admin/modules/membership/index.php:368
+msgid "Photo"
+msgstr "صورة"
+
+#: admin/modules/membership/index.php:371
 #: admin/modules/membership/index.php:405
+#: admin/modules/membership/index.php:411
 msgid "E-mail"
 msgstr ""
 
-#: admin/modules/membership/index.php:434
+#: admin/modules/membership/index.php:440
 msgid "Expired Member List"
-msgstr ""
+msgstr "انتهت كشف اﻷعضائيات"
 
-#: admin/modules/membership/index.php:435
+#: admin/modules/membership/index.php:441
 msgid "Extend Selected Member(s)"
-msgstr ""
+msgstr "امداد مختار اﻷعضائيات"
 
-#: admin/modules/membership/index.php:435
+#: admin/modules/membership/index.php:441
 msgid "Are you sure to EXTEND membership for selected members?"
-msgstr ""
+msgstr "اتريد ان تمدّ العضوية الختيار اﻷعضائية"
 
-#: admin/modules/membership/index.php:437
+#: admin/modules/membership/index.php:443
 msgid "members extended!"
-msgstr ""
+msgstr "مدّ العضوية"
 
-#: admin/modules/membership/index.php:441
+#: admin/modules/membership/index.php:447
+#: admin/modules/membership/member_card_generator.php:258
 msgid "Found"
-msgstr ""
+msgstr "يوجد"
 
-#: admin/modules/membership/index.php:441
+#: admin/modules/membership/index.php:447
+#: admin/modules/membership/member_card_generator.php:258
 msgid "from your search with keyword"
 msgstr ""
 
@@ -3261,6 +3406,7 @@ msgid "View and modify member type"
 msgstr ""
 
 #: admin/modules/membership/submenu.php:28
+#: admin/modules/membership/member_card_generator.php:196
 msgid "Member Card Printing"
 msgstr ""
 
@@ -3284,7 +3430,7 @@ msgstr ""
 msgid "Import for members data from CSV file"
 msgstr ""
 
-#: admin/modules/membership/member_card_generator.php:194
+#: admin/modules/membership/member_card_generator.php:196
 msgid "Print Member Cards for Selected Data"
 msgstr ""
 
@@ -3345,7 +3491,7 @@ msgid "record each page"
 msgstr ""
 
 #: admin/modules/reporting/report_dbgrid.inc.php:83
-#: admin/modules/reporting/customs/class_recap.php:230
+#: admin/modules/reporting/customs/class_recap.php:255
 msgid "Print Current Page"
 msgstr ""
 
@@ -3448,14 +3594,10 @@ msgid "Items Title List"
 msgstr ""
 
 #: admin/modules/reporting/customs/item_titles_list.php:118
-#: admin/modules/reporting/customs/overdued_list.php:82
-#: admin/modules/reporting/customs/member_loan_list.php:82
 msgid "Record each page"
 msgstr ""
 
 #: admin/modules/reporting/customs/item_titles_list.php:119
-#: admin/modules/reporting/customs/overdued_list.php:83
-#: admin/modules/reporting/customs/member_loan_list.php:83
 msgid "Set between 20 and 200"
 msgstr ""
 
@@ -3533,7 +3675,7 @@ msgstr ""
 msgid "Recap By"
 msgstr ""
 
-#: admin/modules/reporting/customs/class_recap.php:230
+#: admin/modules/reporting/customs/class_recap.php:255
 msgid "Title and Collection Recap by"
 msgstr ""
 
@@ -3570,7 +3712,6 @@ msgid "List of library member/patron"
 msgstr ""
 
 #: admin/modules/reporting/customs/customs_report_list.inc.php:29
-#: admin/modules/reporting/customs/member_loan_list.php:54
 msgid "Loan List by Member"
 msgstr ""
 
@@ -3579,13 +3720,30 @@ msgid "List of loan by each member"
 msgstr ""
 
 #: admin/modules/reporting/customs/customs_report_list.inc.php:32
-#: admin/modules/reporting/customs/staff_act.php:53
 msgid "Staff Activity"
 msgstr ""
 
 #: admin/modules/reporting/customs/customs_report_list.inc.php:32
 msgid "Staff activity log recapitulation"
 msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:33
+msgid "Visitor Statistic"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:34
+msgid "Visitor Statistic (by Day)"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:35
+#, fuzzy
+msgid "Visitor List"
+msgstr "قائمة المؤلف"
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:36
+#, fuzzy
+msgid "Fines Report"
+msgstr "تقرير"
 
 #: admin/modules/reporting/customs/staff_act.php:57
 msgid "Activity Date From"
@@ -3611,13 +3769,47 @@ msgstr ""
 msgid "Circulation Tasks"
 msgstr ""
 
+#: admin/modules/reporting/customs/visitor_report_day.php:64
+#, fuzzy
+msgid "Visitor Report"
+msgstr "تقرير"
+
+#: admin/modules/reporting/customs/visitor_list.php:65
+msgid "NON-Member visitor"
+msgstr ""
+
+#: admin/modules/reporting/customs/visitor_list.php:74
+msgid "Visitor ID"
+msgstr ""
+
+#: admin/modules/reporting/customs/visitor_list.php:74
+#: admin/modules/reporting/customs/visitor_list.php:124
+#, fuzzy
+msgid "Visitor Name"
+msgstr "اسم المؤلف"
+
+#: admin/modules/reporting/customs/visitor_list.php:86
+msgid "Visit Date From"
+msgstr ""
+
+#: admin/modules/reporting/customs/visitor_list.php:92
+msgid "Visit Date Until"
+msgstr ""
+
+#: admin/modules/reporting/customs/visitor_list.php:127
+#, fuzzy
+msgid "Visit Date"
+msgstr "غرام التاريخ"
+
 #: admin/modules/reporting/customs/overdued_list.php:66
 #: admin/modules/reporting/customs/member_loan_list.php:66
+#: admin/modules/reporting/customs/loan_history.php:81
 msgid "Loan Date From"
 msgstr ""
 
 #: admin/modules/reporting/customs/overdued_list.php:74
 #: admin/modules/reporting/customs/member_loan_list.php:74
+#: admin/modules/reporting/customs/loan_history.php:89
 msgid "Loan Date Until"
 msgstr ""
 
@@ -3633,6 +3825,19 @@ msgstr ""
 msgid "Press Ctrl and click to select multiple entries"
 msgstr ""
 
+#: admin/modules/reporting/customs/visitor_report.php:49
+msgid "Library Visitor Report"
+msgstr ""
+
+#: admin/modules/reporting/customs/visitor_report.php:141
+msgid "NON-Member Visitor"
+msgstr ""
+
+#: admin/modules/reporting/customs/visitor_report.php:158
+#, fuzzy
+msgid "Total visit/month"
+msgstr "مجموع بيانات المفقود"
+
 #: admin/modules/reporting/customs/loan_history.php:97
 #: admin/modules/reporting/customs/loan_history.php:134
 msgid "Loan Status"
@@ -3641,7 +3846,7 @@ msgstr ""
 #: admin/modules/reporting/customs/loan_history.php:99
 #: admin/modules/reporting/customs/loan_history.php:184
 msgid "Returned"
-msgstr ""
+msgstr "معيد"
 
 #: admin/modules/reporting/customs/member_list.php:96
 msgid "Register Date From"
@@ -3651,53 +3856,53 @@ msgstr ""
 msgid "Register Date Until"
 msgstr ""
 
-#: admin/modules/reporting/customs/loan_by_class.php:60
+#: admin/modules/reporting/customs/loan_by_class.php:56
 msgid "0 Classes"
-msgstr ""
+msgstr " صفوف 0"
+
+#: admin/modules/reporting/customs/loan_by_class.php:57
+msgid "1 Classes"
+msgstr " صفوف 1"
+
+#: admin/modules/reporting/customs/loan_by_class.php:58
+msgid "2 Classes"
+msgstr "صفوف 2"
+
+#: admin/modules/reporting/customs/loan_by_class.php:59
+msgid "2X Classes (Islamic Related)"
+msgstr "صفوف 2"
+
+#: admin/modules/reporting/customs/loan_by_class.php:60
+msgid "3 Classes"
+msgstr "صفوف 3"
 
 #: admin/modules/reporting/customs/loan_by_class.php:61
-msgid "1 Classes"
-msgstr ""
+msgid "4 Classes"
+msgstr "صفوف 4"
 
 #: admin/modules/reporting/customs/loan_by_class.php:62
-msgid "2 Classes"
-msgstr ""
+msgid "5 Classes"
+msgstr "صفوف 5"
 
 #: admin/modules/reporting/customs/loan_by_class.php:63
-msgid "2X Classes (Islamic Related)"
-msgstr ""
+msgid "6 Classes"
+msgstr "صفوف 6"
 
 #: admin/modules/reporting/customs/loan_by_class.php:64
-msgid "3 Classes"
-msgstr ""
+msgid "7 Classes"
+msgstr "صفوف 7"
 
 #: admin/modules/reporting/customs/loan_by_class.php:65
-msgid "4 Classes"
-msgstr ""
+msgid "8 Classes"
+msgstr "صفوف 8"
 
 #: admin/modules/reporting/customs/loan_by_class.php:66
-msgid "5 Classes"
-msgstr ""
+msgid "9 Classes"
+msgstr "صفوف 9"
 
 #: admin/modules/reporting/customs/loan_by_class.php:67
-msgid "6 Classes"
-msgstr ""
-
-#: admin/modules/reporting/customs/loan_by_class.php:68
-msgid "7 Classes"
-msgstr ""
-
-#: admin/modules/reporting/customs/loan_by_class.php:69
-msgid "8 Classes"
-msgstr ""
-
-#: admin/modules/reporting/customs/loan_by_class.php:70
-msgid "9 Classes"
-msgstr ""
-
-#: admin/modules/reporting/customs/loan_by_class.php:71
 msgid "NON Decimal Classes"
-msgstr ""
+msgstr "ﻻ عشرى الصفوف"
 
 #: admin/modules/reporting/customs/reserve_list.php:75
 msgid "Reserve Date From"
@@ -3731,16 +3936,15 @@ msgstr "تصاعديا"
 msgid "descendingly"
 msgstr "تنازليًا"
 
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:206
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:208
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:204
 msgid "Order list by"
 msgstr ""
 
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:371
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:357
 msgid "Check All"
 msgstr "تفحص الكل"
 
-#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:372
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:358
 msgid "Uncheck All"
 msgstr "غير محدود كلها"
 
@@ -3759,22 +3963,18 @@ msgid "Cancel"
 msgstr "إلغاء"
 
 #: simbio2/simbio_GUI/paging/simbio_paging.inc.php:111
-#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:107
 msgid "First Page"
 msgstr "الصفحة الأولى"
 
 #: simbio2/simbio_GUI/paging/simbio_paging.inc.php:113
-#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:109
 msgid "Previous"
 msgstr ""
 
 #: simbio2/simbio_GUI/paging/simbio_paging.inc.php:134
-#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:130
 msgid "Next"
 msgstr "التالي"
 
 #: simbio2/simbio_GUI/paging/simbio_paging.inc.php:142
-#: simbio2/simbio_GUI/paging/simbio_paging_ajax.inc.php:138
 msgid "Last Page"
 msgstr "الصفحة الأخيرة"
 
@@ -3783,57 +3983,24 @@ msgid "No Data"
 msgstr "لا توجد البيانات"
 
 #: template/invention/detail_template.php:80
-#: template/default/custom_frontpage_record.inc.php:12
-#: template/default/detail_template.php:80
 msgid "Availability"
 msgstr "توافر الخدمة"
 
-#: template/invention/detail_template.php:85
-#: template/default/detail_template.php:85
-msgid "Back To Previous"
-msgstr "إلى الوراء"
-
-#: template/invention/index_template.inc.php:26
-#: template/default/index_template.inc.php:26
-msgid "Home"
-msgstr " الصفحة الرئيسية"
-
-#: template/invention/index_template.inc.php:27
-#: template/default/index_template.inc.php:27
-msgid "Library Information"
-msgstr "معلومات المكتبة"
-
-#: template/invention/index_template.inc.php:28
-#: template/default/index_template.inc.php:28
-msgid "Help on Search"
-msgstr "مساعدة فى البحث"
-
 #: template/invention/index_template.inc.php:29
-#: template/default/index_template.inc.php:29
 msgid "Member Area"
 msgstr "عضو المنطقة"
 
 #: template/invention/index_template.inc.php:30
-#: template/default/index_template.inc.php:30
 msgid "Librarian LOGIN"
 msgstr "تسجيل الدخول أمين المكتبة"
 
-#: template/invention/index_template.inc.php:60
-#: template/default/index_template.inc.php:51
-msgid "Select Language"
-msgstr "اختيار اللغة"
-
-#: template/invention/index_template.inc.php:66
-#: template/default/index_template.inc.php:68
-msgid "Advanced Search"
-msgstr "بحث متقدم"
-
 #: template/default/index_template.inc.php:60
+#: template/green/index_template.inc.php:60
 msgid "Simple Search"
 msgstr "بحث بسيط"
 
-#: lib/biblio_list.inc.php:333
-#: lib/biblio_list.inc.php:354
+#: lib/biblio_list.inc.php:348
+#: lib/biblio_list.inc.php:369
 msgid "Record Detail"
 msgstr "تسجيل تفصيلي"
 
@@ -3842,155 +4009,152 @@ msgstr "تسجيل تفصيلي"
 msgid "Error authenticating user and password to database"
 msgstr ""
 
-#: lib/detail.inc.php:150
+#: lib/detail.inc.php:152
 msgid "Click to view others documents with this author"
 msgstr "اذقر لعرض المستندات الخرى بهذالمؤلف"
 
-#: lib/detail.inc.php:164
+#: lib/detail.inc.php:166
 msgid "Click to view others documents with this subject"
 msgstr "اذقر لعزض المستنداث اخرى بهذاالموصوغ"
 
-#: lib/detail.inc.php:185
-msgid "There is no item/copy for this title yet"
-msgstr "ﻻ تجد عنصر لهذاالعنوان"
-
-#: lib/detail.inc.php:189
-msgid "copies at"
+#: lib/detail.inc.php:203
+msgid "View node catalog data"
 msgstr ""
 
 #: lib/lang/localisation.php:60
-msgid "German"
-msgstr "ألماني"
-
-#: lib/lang/localisation.php:61
-msgid "English"
-msgstr "انجليزى"
-
-#: lib/lang/localisation.php:62
-msgid "Indonesian"
-msgstr "أندونيسيا"
-
-#: lib/lang/localisation.php:63
 msgid "Arabic"
-msgstr "عربي"
-
-#: lib/contents/login.inc.php:48
-msgid "Please supply valid username and password"
-msgstr "اكتب اسم المستخدم وكلمةالسر صالحة"
-
-#: lib/contents/login.inc.php:63
-msgid "Welcome to Library Automation,"
 msgstr ""
 
-#: lib/contents/login.inc.php:72
-msgid "Wrong Username or Password. ACCESS DENIED"
-msgstr "اسم المستخدم او كلمةالسر غير صحيحين. رفض الوصول."
+#: lib/lang/localisation.php:61
+msgid "German"
+msgstr ""
 
-#: lib/contents/login.inc.php:84
-msgid "Your browser does not support Javascript or Javascript is disabled. Application won't run without Javascript!"
-msgstr "المتصفة غير مدعو مة Javascript او تم إيقاف Javascript. لن يعمل التطبيق بدون Javascript!"
+#: lib/lang/localisation.php:63
+msgid "Espanol"
+msgstr ""
 
-#: lib/contents/default.inc.php:100
-#: lib/contents/default.inc.php:111
+#: lib/contents/login.inc.php:63
+#, fuzzy
+msgid "Welcome to Library Automation, "
+msgstr "لقد تم تسجيل الخروج من نظام أتمتة المكتبة"
+
+#: lib/contents/visitor.inc.php:83
+msgid ", thank you for inserting your data to our visitor log"
+msgstr ""
+
+#: lib/contents/visitor.inc.php:85
+msgid "Sorry, Please fill institution field if you are not library member"
+msgstr ""
+
+#: lib/contents/visitor.inc.php:87
+msgid "Error inserting counter data to database!"
+msgstr ""
+
+#: lib/contents/visitor.inc.php:96
+msgid "Visitor Counter"
+msgstr ""
+
+#: lib/contents/visitor.inc.php:98
+msgid "Please insert your library member ID or your name if you don't have it yet"
+msgstr ""
+
+#: lib/contents/default.inc.php:109
+#: lib/contents/default.inc.php:120
 msgid "Found  <strong>{biblio_list->num_rows}</strong> from your keywords"
 msgstr ""
 
-#: lib/contents/default.inc.php:144
+#: lib/contents/default.inc.php:153
 msgid "You currently on page <strong>{page}</strong> of <strong>{total_pages}</strong> page(s)"
 msgstr ""
-
-#: lib/contents/common.inc.php:25
-msgid "All Locations"
-msgstr "كل اﻻماكن"
 
 #: lib/contents/common.inc.php:34
 msgid "All Collections"
 msgstr "كل المجموعة"
 
-#: lib/contents/common.inc.php:43
-msgid "All GMD/Media"
-msgstr "كل الواد اﻷؤلية / الؤسائط"
-
 #: lib/contents/member.inc.php:28
 msgid "Welcome to Member's Area where you can view your current loan information and view your membership status."
 msgstr ""
 
-#: lib/contents/member.inc.php:51
+#: lib/contents/member.inc.php:54
 msgid "Please fill your Username and Password to Login!"
 msgstr "أدخل اسم المستخدم وكلمةالسر!"
 
-#: lib/contents/member.inc.php:66
+#: lib/contents/member.inc.php:69
 msgid "Login FAILED! Wrong username or password!"
 msgstr "فشل فى الدخول! اسم المسثخدم وكلمةالسر غيرصحيحين!"
 
-#: lib/contents/member.inc.php:76
+#: lib/contents/member.inc.php:79
 msgid "Library Member Login"
 msgstr "اسم المستخدم للأعضاءالمكتبة"
 
-#: lib/contents/member.inc.php:77
+#: lib/contents/member.inc.php:80
 msgid "Please insert your member ID and password given by library system administrator. If you are library's member and don't have a password yet, please contact library staff."
 msgstr "رجاءادخل تعريف الأعضاء وكلمةالسر يعطى من نظام إدارة بيانات للمكتبة. فإذاكنث اعضاءالمكتبة ولم تنال كلمةالسر, رجاء الإصال أمين المكتبة."
 
-#: lib/contents/member.inc.php:81
+#: lib/contents/member.inc.php:84
 msgid "Password"
 msgstr "كلمة السر"
 
-#: lib/contents/member.inc.php:83
+#: lib/contents/member.inc.php:86
 msgid "Login"
 msgstr "تسجيل دخول"
 
-#: lib/contents/member.inc.php:100
+#: lib/contents/member.inc.php:103
 msgid "Current Password"
 msgstr "قائمة كلمة السر"
 
-#: lib/contents/member.inc.php:108
+#: lib/contents/member.inc.php:111
 msgid "Confirm Password"
 msgstr "تأكيد كلمة السر"
 
-#: lib/contents/member.inc.php:112
-#: lib/contents/member.inc.php:278
+#: lib/contents/member.inc.php:115
+#: lib/contents/member.inc.php:281
 msgid "Change Password"
 msgstr "تغيير كلمة السر"
 
-#: lib/contents/member.inc.php:171
+#: lib/contents/member.inc.php:174
 msgid "Your Membership Already EXPIRED! Please extend your membership."
 msgstr "إنهت ا لعضوية!"
 
-#: lib/contents/member.inc.php:174
+#: lib/contents/member.inc.php:177
 msgid "Membership currently in pending state, no loan transaction can be made yet."
 msgstr ""
 
-#: lib/contents/member.inc.php:207
+#: lib/contents/member.inc.php:210
 msgid "OVERDUED"
 msgstr "التأخير"
 
-#: lib/contents/member.inc.php:252
+#: lib/contents/member.inc.php:255
 msgid "item(s) currently on loan"
 msgstr "العناصرعلى الإعارةحالياً"
 
-#: lib/contents/member.inc.php:260
+#: lib/contents/member.inc.php:263
 msgid "Your password have been changed successfully."
 msgstr "تم تغييركلمةالسر"
 
-#: lib/contents/member.inc.php:263
+#: lib/contents/member.inc.php:266
 msgid "Current password entered WRONG! Please insert the right password!"
 msgstr "ادخال كلمةالسرغيرصحيحين!رجاءادخال كلمةالصحيحة"
 
-#: lib/contents/member.inc.php:265
+#: lib/contents/member.inc.php:268
 msgid "Password confirmation FAILED! Make sure to check undercase or uppercase letters!"
 msgstr ""
 
-#: lib/contents/member.inc.php:267
+#: lib/contents/member.inc.php:270
 msgid "Password update FAILED! ERROR ON DATABASE!"
 msgstr ""
 
-#: lib/contents/member.inc.php:274
+#: lib/contents/member.inc.php:277
 msgid "Member Detail"
 msgstr ""
 
-#: lib/contents/member.inc.php:276
+#: lib/contents/member.inc.php:279
 msgid "Your Current Loan"
 msgstr "اﻹعارةاحاالحالي"
+
+#: lib/contents/item_list.php:48
+msgid "There is no item/copy for this title yet"
+msgstr "ﻻ تجد عنصر لهذاالعنوان"
 
 #: lib/contents/item_list.php:65
 msgid "Currently On Loan (Due on"
