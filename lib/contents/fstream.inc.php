@@ -57,11 +57,11 @@ if ($file_q->num_rows > 0) {
             $swf = $swf.'.swf';
             if (!file_exists('files/swfs/'.$swf.'')) {
                 if (stripos(PHP_OS, 'Darwin') !== false) {
-                    exec('lib/swftools/bin/darwin/pdf2swf -o files/swfs/'.$swf.' '.$file_loc.'');
+                    exec('lib/swftools/bin/darwin/pdf2swf -o files/swfs/'.$swf.' "'.$file_loc.'"');
                 } else if (stripos(PHP_OS, 'Linux') !== false) {
-                    exec('lib/swftools/bin/linux/pdf2swf -o files/swfs/'.$swf.' '.$file_loc.'');
+                    exec('lib/swftools/bin/linux/pdf2swf -o files/swfs/'.$swf.' "'.$file_loc.'"');
                 } else {
-                    exec('lib\swftools\bin\windows\pdf2swf.exe -o files/swfs/'.$swf.' '.$file_loc.'');
+                    exec('lib\swftools\bin\windows\pdf2swf.exe -o files/swfs/'.$swf.' "'.$file_loc.'"');
                 }
             }
 
