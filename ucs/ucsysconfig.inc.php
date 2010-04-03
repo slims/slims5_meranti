@@ -98,8 +98,17 @@ define('ADMIN_WEB_ROOT_DIR', UCS_WEB_ROOT_DIR.'admin/');
 // ucs themes web root dir
 define('THEMES_WEB_ROOT_DIR', UCS_WEB_ROOT_DIR.'themes/');
 
+// files dir
+define('FILES_DIR', UCS_BASE_DIR.'files'.DIRECTORY_SEPARATOR);
+
 // cookies name
 define('UCS_SESSION_COOKIES_NAME', 'ucsadmin');
+
+// command execution status
+define('BINARY_NOT_FOUND', 127);
+define('BINARY_FOUND', 1);
+define('COMMAND_SUCCESS', 0);
+define('COMMAND_FAILED', 2);
 
 /* DATABASE CONNECTION config */
 // database constant
@@ -190,6 +199,7 @@ $sysconf['page_footer'] = 'SLiMS Union Catalog Server';
 
 // mysqldump
 $sysconf['mysqldump'] = '/usr/bin/mysqldump';
+$sysconf['backup_dir'] = FILES_DIR.'backup'.DIRECTORY_SEPARATOR;
 
 /* FILE UPLOADS */
 $sysconf['max_upload'] = intval(ini_get('upload_max_filesize'))*1024;
