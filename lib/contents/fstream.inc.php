@@ -33,9 +33,9 @@ $file_q = $dbs->query($sql_q);
 $file_d = $file_q->fetch_assoc();
 
 if ($file_q->num_rows > 0) {
-    $file_loc = REPO_BASE_DIR.str_ireplace('/', DIRECTORY_SEPARATOR, $file_d['file_dir']).DIRECTORY_SEPARATOR.$file_d['file_name'];
+    $file_loc = REPO_BASE_DIR.str_ireplace('/', DIRECTORY_SEPARATOR, $file_d['file_dir']).$file_d['file_name'];
     if (file_exists($file_loc)) {
-
+        // check access limit
         if ($file_d['access_limit']) {
             if (utility::isMemberLogin()) {
                 $allowed_mem_types = @unserialize($file_d['access_limit']);
@@ -64,15 +64,7 @@ if ($file_q->num_rows > 0) {
                     exec('lib\swftools\bin\windows\pdf2swf.exe -o files/swfs/'.$swf.' "'.$file_loc.'"');
                 }
             }
-
-            ?>
-            <html>
-            <frameset rows="0%,100%">
-            <frame src="empty.html">
-            <frame src="js/zviewer/index.php?swf=<?php echo $swf; ?>&fid=<?php echo $fileID; ?>&bid=<?php echo $biblioID; ?>">
-            </frameset>
-            </html>
-            <?php
+            header('Location: js/zviewer/index.php?swf='.$swf.'&fid='.$fileID.'&bid='.$biblioID);
             exit();
 
         } else if (preg_match('@(image)/.+@i', $file_d['mime_type'])) {

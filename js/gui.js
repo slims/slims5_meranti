@@ -135,11 +135,12 @@ var htmlPop = null;
 var blocker = null;
 var openHTMLpop = function(strURL, intWidth, intHeight, strPopTitle)
 {
-    // variables to determine the center position of window
-    var xPos = (screen.width - intWidth)/2;
-    var yPos = ((screen.height - intHeight)/2)/2;
+    // retrieve required dimensions
+    var browserDims = document.body.getDimensions();
+    // calculate the center of the page using the browser and element dimensions
+    var yPos = 30;
+    var xPos = (browserDims.width - intWidth)/2;
 
-    htmlPop = $('htmlPop');
     $(document.body).insert('<div id="blocker"></div>'
         + '<div id="htmlPop">'
         + '<div id="htmlPopTitle" style="float: left; width: 70%">' + strPopTitle + '</div>'
@@ -148,13 +149,14 @@ var openHTMLpop = function(strURL, intWidth, intHeight, strPopTitle)
         + '</div>'
         + '<iframe id="htmlPopFrame" src="' + strURL + '" frameborder="0"></iframe>'
         + '</div>');
+    // set element
     blocker = $('blocker');
     htmlPop = $('htmlPop');
     htmlPopFrame = $('htmlPopFrame');
     // set pop up styles property
-    htmlPopFrame.setStyle({height: intHeight+'px'});
-    htmlPop.setStyle({top: yPos+'px', left: xPos+'px', width: intWidth+'px', position: 'fixed', opacity: 0.9, display: 'block'});
-    blocker.setStyle({top: 0, left: 0, width: '100%', height: screen.height+'px', position: 'fixed', backgroundColor: '#000', opacity: 0.3, display: 'block'});
+    blocker.setStyle({top: 0, left: 0, width: '100%', height: screen.height+'px', position: 'fixed', backgroundColor: '#000', opacity: 0.3});
+    htmlPopFrame.setStyle({width: '100%', height: intHeight+'px'});
+    htmlPop.setStyle({position: 'fixed', top: yPos+'px', left: xPos+'px', margin: 'auto', width: intWidth+'px', opacity: 0.9});
     // register ESC button event handler
     top.Event.observe(document.body, 'keypress', function(event) {
         if (event.which == 0) { closeHTMLpop(); }
