@@ -507,6 +507,16 @@ input:hover,textarea:hover,select:hover {
     background-image: url(media/return.png);
 }
 
+.chartLink {
+    font-weight: bold;
+    padding-left: 30px;
+    background: url(../../../images/default/charts.png) center left no-repeat;
+}
+
+.chartLink a {
+    color: #f60;
+}
+
 .loadingImage {
     font-weight: bold;
     padding-left: 53px;
