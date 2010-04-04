@@ -85,7 +85,7 @@ if (isset($_POST['save']) AND (isset($_POST['topicID']) OR trim($_POST['search_s
         if ($sql_op->insert('biblio_topic', $data)) {
             echo '<script type="text/javascript">';
             echo 'alert(\'Topic succesfully updated!\');';
-            echo 'opener.setIframeContent(\'topicIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_topic.php?biblioID='.$data['biblio_id'].'\');';
+            echo 'parent.setIframeContent(\'topicIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_topic.php?biblioID='.$data['biblio_id'].'\');';
             echo '</script>';
         } else {
             utility::jsAlert(__('Subject FAILED to Add. Please Contact System Administrator')."\n".$sql_op->error);
@@ -114,7 +114,7 @@ if (isset($_POST['save']) AND (isset($_POST['topicID']) OR trim($_POST['search_s
 
         echo '<script type="text/javascript">';
         echo 'alert(\''.__('Subject added!').'\');';
-        echo 'opener.setIframeContent(\'topicIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_topic.php\');';
+        echo 'parent.setIframeContent(\'topicIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_topic.php\');';
         echo '</script>';
     }
 }

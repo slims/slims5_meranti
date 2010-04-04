@@ -149,7 +149,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     $html_str .= '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
     $html_str .= '<meta http-equiv="Pragma" content="no-cache" /><meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0" /><meta http-equiv="Expires" content="Sat, 26 Jul 1997 05:00:00 GMT" />';
     $html_str .= '<style type="text/css">'."\n";
-    $html_str .= 'body { padding: 0; margin: 1cm; font-family: '.$barcode_fonts.'; font-size: '.$barcode_font_size.'; }'."\n";
+    $html_str .= 'body { padding: 0; margin: 1cm; font-family: '.$barcode_fonts.'; font-size: '.$barcode_font_size.'; background: #fff; }'."\n";
     $html_str .= '.labelStyle { width: '.$barcode_box_width.'cm; height: '.$barcode_box_height.'cm; text-align: center; margin: '.$barcode_items_margin.'cm; border: '.$barcode_border_size.'px solid #000000;}'."\n";
     $html_str .= '.labelHeaderStyle { background-color: #CCCCCC; font-weight: bold; padding: 5px; margin-bottom: 5px; }'."\n";
     $html_str .= '</style>'."\n";
@@ -187,7 +187,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
         // update print queue count object
         echo '<script type="text/javascript">parent.$(\'queueCount\').update(\'0\');</script>';
         // open result in window
-        echo '<script type="text/javascript">parent.openWin(\''.SENAYAN_WEB_ROOT_DIR.FILES_DIR.'/'.$print_file_name.'\', \'popItemBarcodeGen\', 800, 500, true)</script>';
+        echo '<script type="text/javascript">top.openHTMLpop(\''.SENAYAN_WEB_ROOT_DIR.FILES_DIR.'/'.$print_file_name.'\', 800, 500, \''.__('Item Barcodes Printing').'\')</script>';
     } else { utility::jsAlert('ERROR! Item barcodes failed to generate, possibly because '.SENAYAN_BASE_DIR.FILES_DIR.' directory is not writable'); }
     exit();
 }

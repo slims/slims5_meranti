@@ -56,7 +56,7 @@ if (isset($_SESSION['barcodes'])) {
     $html_str .= '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
     $html_str .= '<meta http-equiv="Pragma" content="no-cache" /><meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0" /><meta http-equiv="Expires" content="Sat, 26 Jul 1997 05:00:00 GMT" />';
     $html_str .= '<style type="text/css">'."\n";
-    $html_str .= 'body { padding: 0; overflow: auto; }'."\n";
+    $html_str .= 'body { padding: 0; overflow: auto; background: #fff; }'."\n";
     $html_str .= '.labelStyle { text-align: center; float: left; margin: '.$barcodegen_items_margin.'cm; border: '.($barcodegen_include_border>0?$barcodegen_include_border:0).'px solid #000000; }'."\n";
     $html_str .= '</style>'."\n";
     $html_str .= '</head>'."\n";
@@ -80,7 +80,7 @@ if (isset($_SESSION['barcodes'])) {
     $file_write = @file_put_contents(FILES_UPLOAD_DIR.$print_file_name, $html_str);
     if ($file_write) {
         // open result in window
-        echo '<script type="text/javascript">parent.openWin(\''.SENAYAN_WEB_ROOT_DIR.FILES_DIR.'/'.$print_file_name.'\', \'popBarcodeGen\', 800, 500, true)</script>';
+        echo '<script type="text/javascript">top.openHTMLpop(\''.SENAYAN_WEB_ROOT_DIR.FILES_DIR.'/'.$print_file_name.'\', 800, 500, \''.__('Barcode Generator').'\')</script>';
     } else { utility::jsAlert('ERROR! Barcodes failed to generate, possibly because '.SENAYAN_BASE_DIR.FILES_DIR.' directory is not writable'); }
     exit();
 }
@@ -110,7 +110,7 @@ if (isset($_POST['saveData']) AND $can_write) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner barcodeIcon">
-    <?php echo strtoupper(__('Barcode Generator')).' <hr />' . __('Type barcodes text to one or more text field below and click'). ' "' .__('Generate Barcodes'). '".'; ?>
+    <?php echo __('Barcode Generator').' <hr />' . __('Type barcodes text to one or more text field below and click'). ' "' .__('Generate Barcodes'). '".'; ?>
 </div>
 </fieldset>
 <?php

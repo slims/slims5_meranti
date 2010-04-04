@@ -145,7 +145,7 @@ var openHTMLpop = function(strURL, intWidth, intHeight, strPopTitle)
         + '<div id="htmlPop">'
         + '<div id="htmlPopTitle" style="float: left; width: 70%">' + strPopTitle + '</div>'
         + '<div style="float: right; width: 20%; text-align: right;">'
-        + '<a href="#" style="color: red; font-weight: bold;" onclick="closeHTMLpop()">Close</a>'
+        + '<a href="#" id="closePop" style="color: red; font-weight: bold;">Close</a>'
         + '</div>'
         + '<iframe id="htmlPopFrame" src="' + strURL + '" frameborder="0"></iframe>'
         + '</div>');
@@ -158,15 +158,13 @@ var openHTMLpop = function(strURL, intWidth, intHeight, strPopTitle)
     htmlPopFrame.setStyle({width: '100%', height: intHeight+'px'});
     htmlPop.setStyle({position: 'fixed', top: yPos+'px', left: xPos+'px', margin: 'auto', width: intWidth+'px', opacity: 0.9});
     // register ESC button event handler
-    top.Event.observe(document.body, 'keypress', function(event) {
-        if (event.which == 0) { closeHTMLpop(); }
+    Event.observe('closePop', 'click', function(evt) {
+        evt.preventDefault(); closeHTMLpop();
     });
 }
 
 var closeHTMLpop = function()
 {
-    // stop observing
-    top.Event.stopObserving(document.body, 'keypress', function(event) {});
     htmlPop.remove(); blocker.remove();
 }
 

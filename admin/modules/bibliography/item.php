@@ -98,8 +98,8 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'bibliography', $_SESSION['realname'].' update item data ('.$data['item_code'].') with title ('.$title.')');
                 utility::jsAlert(__('Item Data Successfully Updated'));
                 if ($in_pop_up) {
-                    echo '<script type="text/javascript">parent.opener.parent.setIframeContent(\'itemIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_item_list.php?biblioID='.$data['biblio_id'].'\');</script>';
-                    echo '<script type="text/javascript">parent.window.close();</script>';
+                    echo '<script type="text/javascript">top.setIframeContent(\'itemIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_item_list.php?biblioID='.$data['biblio_id'].'\');</script>';
+                    echo '<script type="text/javascript">top.closeHTMLpop();</script>';
                 } else {
                     echo '<script type="text/javascript">parent.setContent(\'mainContent\', parent.getPreviousAJAXurl(), \'get\');</script>';
                 }
@@ -114,8 +114,8 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'bibliography', $_SESSION['realname'].' insert item data ('.$data['item_code'].') with title ('.$title.')');
                 utility::jsAlert(__('New Item Data Successfully Saved'));
                 if ($in_pop_up) {
-                    echo '<script type="text/javascript">parent.opener.setIframeContent(\'itemIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_item_list.php?biblioID='.$data['biblio_id'].'\');</script>';
-                    echo '<script type="text/javascript">parent.window.close();</script>';
+                    echo '<script type="text/javascript">top.setIframeContent(\'itemIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_item_list.php?biblioID='.$data['biblio_id'].'\');</script>';
+                    echo '<script type="text/javascript">top.closeHTMLpop();</script>';
                 } else {
                     echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'\', \'post\');</script>';
                 }

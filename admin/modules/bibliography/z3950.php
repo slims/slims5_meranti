@@ -330,7 +330,7 @@ if (isset($_GET['keywords']) AND $can_read) {
 <div class="menuBoxInner biblioIcon">
     Z3950
     <hr />
-    <form name="search" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
+    <form name="search" class="notAJAX" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" id="keywords" size="30" />
     <select name="field"><option value="isbn"><?php echo __('ISBN/ISSN'); ?></option><option value="ti"><?php echo __('Title/Series Title'); ?></option><option value="au"><?php echo __('Authors'); ?></option></select>
     <input type="button" id="doSearch" onclick="setContent('searchResult', '<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/z3950.php?' + $('search').serialize(), 'get')" value="<?php echo __('Search'); ?>" class="button" />

@@ -104,7 +104,7 @@ if ($biblioID) {
         $row_class = ($row%2 == 0)?'alterCell':'alterCell2';
 
         // links
-        $edit_link = '<a href="#" onclick="openWin(\'pop_item.php?inPopUp=true&action=detail&biblioID='.$biblioID.'&itemID='.$item_d['item_id'].'\', \'popItem\', 600, 400, true)"
+        $edit_link = '<a href="#" onclick="top.openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_item.php?inPopUp=true&action=detail&biblioID='.$biblioID.'&itemID='.$item_d['item_id'].'\', 650, 400, \''.__('Items/Copies').'\')"
             style="text-decoration: underline;">Edit</a>';
         $remove_link = '<a href="#" onclick="confirmProcess('.$biblioID.', '.$item_d['item_id'].')"
             style="color: #FF0000; text-decoration: underline;">Delete</a>';

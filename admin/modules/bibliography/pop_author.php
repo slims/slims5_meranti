@@ -86,7 +86,7 @@ if (isset($_POST['save']) AND (isset($_POST['authorID']) OR trim($_POST['search_
         if ($sql_op->insert('biblio_author', $data)) {
             echo '<script type="text/javascript">';
             echo 'alert(\''.__('Author succesfully updated!').'\');';
-            echo 'opener.setIframeContent(\'authorIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_author.php?biblioID='.$data['biblio_id'].'\');';
+            echo 'parent.setIframeContent(\'authorIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_author.php?biblioID='.$data['biblio_id'].'\');';
             echo '</script>';
         } else {
             utility::jsAlert(__('Author FAILED to Add. Please Contact System Administrator')."\n".$sql_op->error);
@@ -115,7 +115,7 @@ if (isset($_POST['save']) AND (isset($_POST['authorID']) OR trim($_POST['search_
 
         echo '<script type="text/javascript">';
         echo 'alert(\''.__('Author added!').'\');';
-        echo 'opener.setIframeContent(\'authorIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_author.php\');';
+        echo 'parent.setIframeContent(\'authorIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_author.php\');';
         echo '</script>';
     }
 }

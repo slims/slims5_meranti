@@ -109,11 +109,11 @@ if ($biblioID) {
             style="color: #FF0000; text-decoration: underline;">Delete</a>';
 
         // edit link
-        $edit_link = '<a href="javascript: openWin(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_attach.php?biblioID='.$biblioID.'&fileID='.$biblio_attach_d['file_id'].'\', \'popAttach\', 600, 300, true)">Edit</a>';
+        $edit_link = '<a href="#" onclick="top.openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_attach.php?biblioID='.$biblioID.'&fileID='.$biblio_attach_d['file_id'].'\', 600, 300, \''.__('File Attachments').'\')">Edit</a>';
 
         // file link
         if (preg_match('@(video|audio|image)/.+@i', $biblio_attach_d['mime_type'])) {
-            $file = '<a href="#" onclick="parent.openHTMLpop(\''.SENAYAN_WEB_ROOT_DIR.'index.php?p=multimediastream&fid='.$biblio_attach_d['file_id'].'&bid='.$biblio_attach_d['biblio_id'].'\', 400, 300, \''.$biblio_attach_d['file_title'].'\')">'.$biblio_attach_d['file_title'].'</a>';
+            $file = '<a href="#" onclick="top.openHTMLpop(\''.SENAYAN_WEB_ROOT_DIR.'index.php?p=multimediastream&fid='.$biblio_attach_d['file_id'].'&bid='.$biblio_attach_d['biblio_id'].'\', 400, 300, \''.$biblio_attach_d['file_title'].'\')">'.$biblio_attach_d['file_title'].'</a>';
         } else {
             $file = '<a href="'.SENAYAN_WEB_ROOT_DIR.'admin/view.php?fid='.urlencode($biblio_attach_d['file_id']).'" target="_blank">'.$biblio_attach_d['file_title'].'</a>';
         }

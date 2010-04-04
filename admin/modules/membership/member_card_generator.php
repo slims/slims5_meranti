@@ -142,7 +142,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     $html_str .= '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
     $html_str .= '<meta http-equiv="Pragma" content="no-cache" /><meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0" /><meta http-equiv="Expires" content="Sat, 26 Jul 1997 05:00:00 GMT" />';
     $html_str .= '<style type="text/css">'."\n";
-    $html_str .= 'body { padding: 0; margin: 1cm; font-size: '.$card_font_size.'pt; font-family: '.$card_fonts.'; }'."\n";
+    $html_str .= 'body { padding: 0; margin: 1cm; font-size: '.$card_font_size.'pt; font-family: '.$card_fonts.'; background: #fff; }'."\n";
     $html_str .= '.labelStyle { width: '.$card_box_width.'cm; height: '.$card_box_height.'cm; text-align: center; margin: '.$card_items_margin.'cm; border: '.$card_border_size.'px solid #666666; padding: 5px;}'."\n";
     $html_str .= '.labelHeaderStyle { background-color: #CCCCCC; font-weight: bold; padding: 5px; margin-bottom: 5px; }'."\n";
     $html_str .= '#photo { border: 1px solid #666666; float: left; width: '.$card_photo_width.'cm; height: '.$card_photo_height.'cm; overflow: hidden; }'."\n";
@@ -185,7 +185,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
         // update print queue count object
         echo '<script type="text/javascript">parent.$(\'queueCount\').update(\'0\');</script>';
         // open result in window
-        echo '<script type="text/javascript">parent.openWin(\''.SENAYAN_WEB_ROOT_DIR.FILES_DIR.'/'.$print_file_name.'\', \'popMemberCardGen\', 800, 500, true)</script>';
+        echo '<script type="text/javascript">top.openHTMLpop(\''.SENAYAN_WEB_ROOT_DIR.FILES_DIR.'/'.$print_file_name.'\', 800, 500, \''.__('Member Card Printing').'\')</script>';
     } else { utility::jsAlert('ERROR! Cards failed to generate, possibly because '.SENAYAN_BASE_DIR.FILES_DIR.' directory is not writable'); }
     exit();
 }
@@ -193,7 +193,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner printIcon">
-    <?php echo strtoupper(__('Member Card Printing')); ?> - <a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_card_generator.php?action=print" class="notAJAX headerText2"><?php echo __('Print Member Cards for Selected Data'); ?></a>
+    <?php echo __('Member Card Printing'); ?> - <a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_card_generator.php?action=print" class="notAJAX headerText2"><?php echo __('Print Member Cards for Selected Data'); ?></a>
     &nbsp;<a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_card_generator.php?action=clear" class="notAJAX headerText2" style="color: #FF0000;"><?php echo __('Clear Print Queue'); ?></a>
     <hr />
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_card_generator.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?>:
