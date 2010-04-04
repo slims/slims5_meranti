@@ -64,7 +64,7 @@ if (($ajaxsec_user == $sysconf['ajaxsec_user']) AND ($ajaxsec_passwd == $sysconf
                     $loan_stat_d = $loan_stat_q->fetch_row();
                     echo '<strong width="50%" style="color: red;">'.__('Currently On Loan (Due on').date($sysconf['date_format'], strtotime($loan_stat_d[0])).')</strong>'; //mfc
                 } else if (is_array($_rules) AND in_array(NO_LOAN_TRANSACTION, $_rules)) {
-                    echo '<strong width="50%" style="color: red;">'.__('Unavailable').'</strong>';
+                    echo '<strong width="50%" style="color: red;">'.__('Available but not for loan').'</strong>';
                 } else {
                     echo '<strong width="50%" style="color: navy;">'.__('Available').'</strong>';
                 }
