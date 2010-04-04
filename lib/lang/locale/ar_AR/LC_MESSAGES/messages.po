@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Senayan3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-03 20:06+0700\n"
-"PO-Revision-Date: 2010-04-04 00:04+0700\n"
+"POT-Creation-Date: 2010-04-04 13:07+0700\n"
+"PO-Revision-Date: 2010-04-04 13:35+0700\n"
 "Last-Translator: M. Rasyid Ridho <rasyidridho@gmail.com>\n"
 "Language-Team: M. Rasyid Ridho. Miranti Heras Tuwinda <rasyidridho@gmail.com, windaa_4588@rocketmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -897,7 +897,7 @@ msgstr "ادؤاات التصدير"
 
 #: ucs/admin/modules/bibliography/export.php:151
 msgid "Export bibliographics data to CSV file"
-msgstr ""
+msgstr "ارسال بيانات ببليوجرافى الى ملف csv"
 
 #: ucs/admin/modules/bibliography/export.php:158
 msgid "Export Now"
@@ -1091,11 +1091,11 @@ msgstr "إرسال بيانات"
 
 #: ucs/admin/modules/bibliography/submenu.php:26
 msgid "Export Bibliographic Data To CSV format"
-msgstr ""
+msgstr "ارسال بيانات ببليوجغرارمن ملف CSV"
 
 #: ucs/admin/modules/bibliography/iframe_author.php:61
 msgid "Author succesfully removed!"
-msgstr ""
+msgstr "تم مسح المؤلف"
 
 #: ucs/admin/modules/bibliography/iframe_author.php:72
 msgid "Author removed!"
@@ -1173,76 +1173,76 @@ msgstr ""
 
 #: ucs/admin/modules/system/sys_log.php:94
 msgid "Time"
-msgstr ""
+msgstr "وقت"
 
 #: ucs/admin/modules/system/sys_log.php:96
 msgid "Message"
-msgstr ""
+msgstr "الرسالة"
 
 #: ucs/admin/modules/system/module_priv_form.inc.php:26
 #: ucs/admin/modules/system/module.php:175
 #: ucs/admin/modules/system/module.php:195
 msgid "Module Name"
-msgstr ""
+msgstr "اسم وحدة نمطية"
 
 #: ucs/admin/modules/system/module_priv_form.inc.php:26
 msgid "Read"
-msgstr ""
+msgstr "قراءة"
 
 #: ucs/admin/modules/system/module_priv_form.inc.php:26
 msgid "Write"
-msgstr ""
+msgstr "كتابة"
 
 #: ucs/admin/modules/system/backup.php:41
 #: ucs/admin/modules/system/submenu.php:37
 msgid "Database Backup"
-msgstr ""
+msgstr "وحدة نمطية احتياطي"
 
 #: ucs/admin/modules/system/backup.php:41
 msgid "Start New Backup"
-msgstr ""
+msgstr "ابداء احتياطي جديد "
 
 #: ucs/admin/modules/system/module.php:47
 msgid "Module name and path can't be empty"
-msgstr ""
+msgstr "ﻻ يمكن ترك وحدة نمطية ومسار فارغاً"
 
 #: ucs/admin/modules/system/module.php:70
 msgid "Module Data Successfully Updated"
-msgstr ""
+msgstr "تمت تحديث بيانات وحدة نمطية "
 
 #: ucs/admin/modules/system/module.php:72
 msgid "Module Data FAILED to Updated. Please Contact System Administrator"
-msgstr ""
+msgstr "لم يتم تحديث بيانات وحدة نمطية. رجاء  اﻻتصال بنظام البيانات "
 
 #: ucs/admin/modules/system/module.php:83
 msgid "New Module Data Successfully Saved"
-msgstr ""
+msgstr "تمت حفظ بيانات وحدة نمطية جديدة "
 
 #: ucs/admin/modules/system/module.php:85
 msgid "Module Data FAILED to Save. Please Contact System Administrator"
-msgstr ""
+msgstr "لم يتم حفظ بيانات وحدة نمطية. رجاء  اﻻتصال بنظام البيانات "
 
 #: ucs/admin/modules/system/module.php:135
 #: ucs/admin/modules/system/submenu.php:31
 msgid "Modules"
-msgstr ""
+msgstr "نمائط"
 
 #: ucs/admin/modules/system/module.php:135
 msgid "Add New Modules"
-msgstr ""
+msgstr "اضافة نمائط جديدة"
 
 #: ucs/admin/modules/system/module.php:136
 msgid "Modules List"
-msgstr ""
+msgstr "قائمة "
 
 #: ucs/admin/modules/system/module.php:177
 msgid "Module Path"
-msgstr ""
+msgstr "مساروحدة نمطية "
 
 #: ucs/admin/modules/system/module.php:179
 #: ucs/admin/modules/system/module.php:196
 msgid "Module Description"
-msgstr ""
+msgstr "وصف وحدة نمطية "
 
 #: ucs/admin/modules/system/module.php:183
 msgid "You are going to edit data"
@@ -1250,52 +1250,52 @@ msgstr ""
 
 #: ucs/admin/modules/system/content.php:49
 msgid "Title or Path can't be empty!"
-msgstr ""
+msgstr "لا يمكن ترك عنوان الكتاب ومسار فارغأً"
 
 #: ucs/admin/modules/system/content.php:71
 msgid "Content data updated"
-msgstr ""
+msgstr "تمت تحديث بيانات محتوى"
 
 #: ucs/admin/modules/system/content.php:73
 msgid "Content data FAILED to update!"
-msgstr ""
+msgstr "لم يتمت تحديث بيانات محتوى"
 
 #: ucs/admin/modules/system/content.php:81
 msgid "Content data saved"
-msgstr ""
+msgstr "تمت حفظ بيانات محتوى"
 
 #: ucs/admin/modules/system/content.php:83
 msgid "Content data FAILED to save!"
-msgstr ""
+msgstr "لم يتمت حفظ بيانات محتوى"
 
 #: ucs/admin/modules/system/content.php:130
 #: ucs/admin/modules/system/submenu.php:28
 msgid "Content"
-msgstr ""
+msgstr "محتوى"
 
 #: ucs/admin/modules/system/content.php:130
 msgid "Add New Content"
-msgstr ""
+msgstr "اضافة محتوى جديد"
 
 #: ucs/admin/modules/system/content.php:131
 msgid "Content List"
-msgstr ""
+msgstr "قائمة محتوى"
 
 #: ucs/admin/modules/system/content.php:174
 #: ucs/admin/modules/system/content.php:207
 #: ucs/admin/modules/system/content.php:211
 msgid "Content Title"
-msgstr ""
+msgstr "محتوى عنوان الكتاب"
 
 #: ucs/admin/modules/system/content.php:176
 #: ucs/admin/modules/system/content.php:208
 #: ucs/admin/modules/system/content.php:212
 msgid "Path (Must be unique)"
-msgstr ""
+msgstr "مسار"
 
 #: ucs/admin/modules/system/content.php:178
 msgid "Content Description"
-msgstr ""
+msgstr "وصف محتوى"
 
 #: ucs/admin/modules/system/content.php:182
 msgid "You are going to update Content data"
@@ -1320,11 +1320,11 @@ msgstr ""
 
 #: ucs/admin/modules/system/index.php:111
 msgid "Library Name"
-msgstr ""
+msgstr "اسم المكتبة"
 
 #: ucs/admin/modules/system/index.php:114
 msgid "Library Subname"
-msgstr ""
+msgstr "اسم الفرعية للمكتبة"
 
 #: ucs/admin/modules/system/index.php:128
 msgid "OPAC Template"
@@ -1341,7 +1341,7 @@ msgstr ""
 #: ucs/admin/modules/system/index.php:144
 #: ucs/admin/modules/system/index.php:150
 msgid "Disable"
-msgstr ""
+msgstr "حجب"
 
 #: ucs/admin/modules/system/index.php:145
 #: ucs/admin/modules/system/index.php:151
@@ -1383,11 +1383,11 @@ msgstr "عنوان"
 
 #: ucs/admin/modules/system/nodes_poll.php:88
 msgid "Request Start"
-msgstr ""
+msgstr "ابداء طلب"
 
 #: ucs/admin/modules/system/nodes_poll.php:89
 msgid "Request End"
-msgstr ""
+msgstr "انتهاء طلب"
 
 #: ucs/admin/modules/system/nodes_poll.php:90
 msgid "Status"
@@ -1395,7 +1395,7 @@ msgstr "حالة"
 
 #: ucs/admin/modules/system/submenu.php:23
 msgid "System"
-msgstr ""
+msgstr "نظام"
 
 #: ucs/admin/modules/system/submenu.php:26
 msgid "Configure Global System Preferences"
@@ -1555,7 +1555,7 @@ msgstr ""
 
 #: admin/index.php:60
 msgid "Welcome To The Library Automation System, you are currently logged in as"
-msgstr " إ هلا وسهلا! إلى التشغيل الآلي للمكتبة, قمت بتسجيل الدخول على النحو XXXX "
+msgstr ""
 
 #: admin/logout.php:32
 msgid "You Have Been Logged Out From Library Automation System"
@@ -2338,7 +2338,7 @@ msgstr "ملف للاستيراد"
 
 #: admin/modules/bibliography/submenu.php:35
 msgid "Import Data to Item/Copies database from CSV file"
-msgstr ""
+msgstr "استيراد بيانات الى عناصر قاعدة البيانات من ملف CSV"
 
 #: admin/modules/bibliography/submenu.php:36
 #, fuzzy
@@ -2347,7 +2347,7 @@ msgstr "رمزالعناصر"
 
 #: admin/modules/bibliography/submenu.php:36
 msgid "Export Item/Copies data To CSV format"
-msgstr ""
+msgstr "ارسال بيانات العناصرمن ملف CSV"
 
 #: admin/modules/bibliography/item.php:53
 msgid "Item Code can't be empty!"
@@ -2444,7 +2444,7 @@ msgstr "ملف للاستيراد"
 
 #: admin/modules/bibliography/iframe_attach.php:67
 msgid "Attachment removed!"
-msgstr ""
+msgstr "مسح ملف مرفق"
 
 #: admin/modules/bibliography/item_barcode_generator.php:198
 msgid "Print Barcodes for Selected Data"
@@ -2457,7 +2457,7 @@ msgstr "أداة استيراد"
 
 #: admin/modules/bibliography/item_import.php:173
 msgid "Import for item data from CSV file"
-msgstr ""
+msgstr "استيراد عناصربيانات من ملف csv "
 
 #: admin/modules/bibliography/item_export.php:123
 msgid "There is no record in item database yet, Export FAILED!"
@@ -2546,7 +2546,7 @@ msgstr "حدعدد اﻻعارة"
 
 #: admin/modules/circulation/loan_rules.php:193
 msgid "Fines Each Day"
-msgstr ""
+msgstr "غرامة فى كل يوم"
 
 #: admin/modules/circulation/loan_rules.php:195
 msgid "Overdue Grace Periode"
@@ -3200,7 +3200,7 @@ msgstr ""
 
 #: admin/modules/membership/export.php:112
 msgid "Export member(s) data to CSV file"
-msgstr ""
+msgstr "ارسال بيانات العضوية من ملف CSV"
 
 #: admin/modules/membership/member_type.php:47
 msgid "Member Type Name can't be empty"
@@ -3314,7 +3314,7 @@ msgstr ""
 
 #: admin/modules/membership/index.php:317
 msgid "Birth Date"
-msgstr ""
+msgstr "تاريج ميلاد"
 
 #: admin/modules/membership/index.php:319
 msgid "Member Since"
@@ -3330,23 +3330,23 @@ msgstr "مؤسسة"
 
 #: admin/modules/membership/index.php:342
 msgid "Male"
-msgstr ""
+msgstr "مذكر"
 
 #: admin/modules/membership/index.php:343
 msgid "Female"
-msgstr ""
+msgstr "مؤنث"
 
 #: admin/modules/membership/index.php:344
 msgid "Gender"
-msgstr ""
+msgstr "جنس"
 
 #: admin/modules/membership/index.php:348
 msgid "Postal Code"
-msgstr ""
+msgstr "رقم البريدي"
 
 #: admin/modules/membership/index.php:354
 msgid "Personal ID Number"
-msgstr ""
+msgstr "رقم السر لتعريف الشخصى"
 
 #: admin/modules/membership/index.php:356
 msgid "Notes"
@@ -3365,7 +3365,7 @@ msgstr "صورة"
 #: admin/modules/membership/index.php:405
 #: admin/modules/membership/index.php:411
 msgid "E-mail"
-msgstr ""
+msgstr "بريد الإلكتروني"
 
 #: admin/modules/membership/index.php:440
 msgid "Expired Member List"
@@ -3408,19 +3408,19 @@ msgstr ""
 #: admin/modules/membership/submenu.php:28
 #: admin/modules/membership/member_card_generator.php:196
 msgid "Member Card Printing"
-msgstr ""
+msgstr "طبع بطاقة العضوية"
 
 #: admin/modules/membership/submenu.php:28
 msgid "Print Member Card"
-msgstr ""
+msgstr "طبع بطاقة العضوية"
 
 #: admin/modules/membership/submenu.php:29
 msgid "Import Members Data From CSV File"
-msgstr ""
+msgstr "جلب بيانات العضوية من ملف CSV"
 
 #: admin/modules/membership/submenu.php:30
 msgid "Export Members Data To CSV File"
-msgstr ""
+msgstr "ارسال بيانات العضوية من ملف CSV"
 
 #: admin/modules/membership/import.php:158
 msgid "records inserted successfully to members database, from record"
@@ -3436,7 +3436,7 @@ msgstr ""
 
 #: admin/modules/reporting/loan_report.php:46
 msgid "Total Loan"
-msgstr ""
+msgstr "مجموع اﻹعارة"
 
 #: admin/modules/reporting/loan_report.php:58
 msgid "Total Loan By GMD/Medium"
