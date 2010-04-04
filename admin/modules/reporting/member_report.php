@@ -41,51 +41,51 @@ $table = new simbio_table();
 $table->table_attr = 'align="center" class="border" cellpadding="5" cellspacing="0"';
 
 // total number of member
-$report_query = $dbs->query('SELECT COUNT(member_id) FROM member');
-$report_data = $report_query->fetch_row();
-$loan_report[__('Total Registered Members')] = $report_data[0];
+$report_q = $dbs->query('SELECT COUNT(member_id) FROM member');
+$report_d = $report_q->fetch_row();
+$loan_report[__('Total Registered Members')] = $report_d[0];
 
 // total number of active member
-$report_query = $dbs->query('SELECT COUNT(member_id) FROM member
+$report_q = $dbs->query('SELECT COUNT(member_id) FROM member
     WHERE TO_DAYS(expire_date)>TO_DAYS(\''.date('Y-m-d').'\')');
-$report_data = $report_query->fetch_row();
-$loan_report[__('Total Active Member')] = $report_data[0];
+$report_d = $report_q->fetch_row();
+$loan_report[__('Total Active Member')] = $report_d[0];
 
 // total number of active member by membership type
-$report_query = $dbs->query('SELECT member_type_name, COUNT(member_id) FROM mst_member_type AS mt
+$report_q = $dbs->query('SELECT member_type_name, COUNT(member_id) FROM mst_member_type AS mt
     LEFT JOIN member AS m ON mt.member_type_id=m.member_type_id
     WHERE TO_DAYS(expire_date)>TO_DAYS(\''.date('Y-m-d').'\')
     GROUP BY m.member_type_id ORDER BY COUNT(member_id) DESC');
-$report_data = '';
-while ($data = $report_query->fetch_row()) {
-    $report_data .= '<strong>'.$data[0].'</strong> : '.$data[1].', ';
+$report_d = '<div class="chartLink"><a class="notAJAX" href="#" onclick="openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'reporting/charts_report.php?chart=total_member_by_type\', 700, 470, \''.__('Total Members By Membership Type').'\')">'.__('Show in chart/plot').'</a></div>';;
+while ($data = $report_q->fetch_row()) {
+    $report_d .= '<strong>'.$data[0].'</strong> : '.$data[1].', ';
 }
-$loan_report[__('Total Members By Membership Type')] = $report_data;
+$loan_report[__('Total Members By Membership Type')] = $report_d;
 
 // total expired member
-$report_query = $dbs->query('SELECT COUNT(member_id) FROM member
+$report_q = $dbs->query('SELECT COUNT(member_id) FROM member
     WHERE TO_DAYS(\''.date('Y-m-d').'\')>TO_DAYS(expire_date)');
-$report_data = $report_query->fetch_row();
-$loan_report[__('Total Expired Member')] = $report_data[0];
+$report_d = $report_q->fetch_row();
+$loan_report[__('Total Expired Member')] = $report_d[0];
 
 // 10 most active member
-$report_query = $dbs->query('SELECT m.member_name, m.member_id, COUNT(loan_id) FROM loan AS l
+$report_q = $dbs->query('SELECT m.member_name, m.member_id, COUNT(loan_id) FROM loan AS l
     INNER JOIN member AS m ON m.member_id=l.member_id
     WHERE TO_DAYS(expire_date)>TO_DAYS(\''.date('Y-m-d').'\')
     GROUP BY l.member_id ORDER BY COUNT(loan_id) DESC LIMIT 10');
-$report_data = '<ul>';
-while ($data = $report_query->fetch_row()) {
-    $report_data .= '<li>'.$data[0].' ('.$data[1].')</li>';
+$report_d = '<ul>';
+while ($data = $report_q->fetch_row()) {
+    $report_d .= '<li>'.$data[0].' ('.$data[1].')</li>';
 }
-$loan_report[__('10 most active members')] = $report_data;
+$loan_report[__('10 most active members')] = $report_d;
 
 // table header
 $table->setHeader(array(__('Membership Data Summary')));
 $table->table_header_attr = 'class="dataListHeader" colspan="3"';
 // initial row count
 $row = 1;
-foreach ($loan_report as $headings=>$report_data) {
-    $table->appendTableRow(array($headings, ':', $report_data));
+foreach ($loan_report as $headings=>$report_d) {
+    $table->appendTableRow(array($headings, ':', $report_d));
     // set cell attribute
     $table->setCellAttr($row, 0, 'class="alterCell" valign="top" style="width: 170px;"');
     $table->setCellAttr($row, 1, 'class="alterCell" valign="top" style="width: 1%;"');

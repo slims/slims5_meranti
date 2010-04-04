@@ -45,19 +45,19 @@ if (!$can_read) { die(); }
 
 /**
  * Function to generate random color
+ * Taken from http://www.jonasjohn.de/snippets/php/random-color.htm
+ * Licensed in Public Domain
  */
 function generateRandomColors()
 {
     @mt_srand((double)microtime()*1000000);
     $_c = '';
-    while(strlen($_c)<6){
-        $_c .= sprintf("%02X", mt_rand(0, 255));
-    }
+    while(strlen($_c)<6){ $_c .= sprintf("%02X", mt_rand(0, 255)); }
     return $_c;
 }
 
 // create PHPLot object
-$plot = new PHPlot(700);
+$plot = new PHPlot(770, 515);
 $plot_data = array();
 $data_colors = array();
 // default chart
@@ -83,6 +83,18 @@ switch ($chart) {
             ORDER BY COUNT(item_id) DESC');
         // set plot data and colors
         while ($data = $stat_query->fetch_row()) {
+            $plot_data[] = array($data[0], $data[1]);
+            $data_colors[] = '#'.generateRandomColors();
+        }
+        break;
+    case 'total_member_by_type':
+        $chart_title = __('Total Members By Membership Type');
+        // total number of active member by membership type
+        $report_q = $dbs->query('SELECT member_type_name, COUNT(member_id) FROM mst_member_type AS mt
+            LEFT JOIN member AS m ON mt.member_type_id=m.member_type_id
+            WHERE TO_DAYS(expire_date)>TO_DAYS(\''.date('Y-m-d').'\')
+            GROUP BY m.member_type_id ORDER BY COUNT(member_id) DESC');
+        while ($data = $report_q->fetch_row()) {
             $plot_data[] = array($data[0], $data[1]);
             $data_colors[] = '#'.generateRandomColors();
         }

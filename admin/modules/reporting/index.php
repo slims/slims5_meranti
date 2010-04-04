@@ -68,7 +68,7 @@ $stat_query = $dbs->query('SELECT gmd_name, COUNT(biblio_id) AS total_titles
     FROM `biblio` AS b
     INNER JOIN mst_gmd AS gmd ON b.gmd_id = gmd.gmd_id
     GROUP BY b.gmd_id HAVING total_titles>0 ORDER BY COUNT(biblio_id) DESC');
-$stat_data = '<div class="chartLink"><a class="notAJAX" href="#" onclick="openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'reporting/charts_report.php?chart=total_title_gmd\', 710, 470, \''.__('Total Titles By Medium/GMD').'\')">'.__('Show in chart/plot').'</a></div>';
+$stat_data = '<div class="chartLink"><a class="notAJAX" href="#" onclick="openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'reporting/charts_report.php?chart=total_title_gmd\', 700, 470, \''.__('Total Titles By Medium/GMD').'\')">'.__('Show in chart/plot').'</a></div>';
 while ($data = $stat_query->fetch_row()) {
     $stat_data .= '<strong>'.$data[0].'</strong> : '.$data[1];
     $stat_data .= ', ';
@@ -82,7 +82,7 @@ $stat_query = $dbs->query('SELECT coll_type_name, COUNT(item_id) AS total_items
     GROUP BY i.coll_type_id
     HAVING total_items >0
     ORDER BY COUNT(item_id) DESC');
-$stat_data = '<div class="chartLink"><a class="notAJAX" href="#" onclick="openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'reporting/charts_report.php?chart=total_title_colltype\', 710, 470, \''.__('Total Items By Collection Type').'\')">'.__('Show in chart/plot').'</a></div>';
+$stat_data = '<div class="chartLink"><a class="notAJAX" href="#" onclick="openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'reporting/charts_report.php?chart=total_title_colltype\', 700, 470, \''.__('Total Items By Collection Type').'\')">'.__('Show in chart/plot').'</a></div>';
 while ($data = $stat_query->fetch_row()) {
     $stat_data .= '<strong>'.$data[0].'</strong> : '.$data[1];
     $stat_data .= ', ';
