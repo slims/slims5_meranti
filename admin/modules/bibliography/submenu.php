@@ -28,6 +28,7 @@ $menu[] = array(__('Item List'), MODULES_WEB_ROOT_DIR.'bibliography/item.php', _
 $menu[] = array(__('Checkout Items'), MODULES_WEB_ROOT_DIR.'bibliography/checkout_item.php', __('Show List of Checkout Items'));
 $menu[] = array('Header', __('Tools'));
 $menu[] = array(__('Z3950 Service'), MODULES_WEB_ROOT_DIR.'bibliography/z3950.php', __('Grab Bibliographic Data from Z3950 Web Services'));
+$menu[] = array(__('P2P Service'), MODULES_WEB_ROOT_DIR.'bibliography/p2p.php', __('Grab Bibliographic Data from Other SLiMS Web Services'));
 $menu[] = array(__('Labels Printing'), MODULES_WEB_ROOT_DIR.'bibliography/dl_print.php', __('Print Document Labels'));
 $menu[] = array(__('Item Barcodes Printing'), MODULES_WEB_ROOT_DIR.'bibliography/item_barcode_generator.php', __('Print Item Barcodes'));
 $menu[] = array(__('Import Data'), MODULES_WEB_ROOT_DIR.'bibliography/import.php', __('Import Data to Bibliographic Database from CSV file'));
