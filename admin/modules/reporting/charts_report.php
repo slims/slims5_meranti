@@ -99,6 +99,30 @@ switch ($chart) {
             $data_colors[] = '#'.generateRandomColors();
         }
         break;
+    case 'total_loan_gmd':
+        $chart_title = __('Total Loan By GMD/Medium');
+        $report_q = $dbs->query('SELECT gmd_name, COUNT(loan_id) FROM loan AS l
+            INNER JOIN item AS i ON l.item_code=i.item_code
+            INNER JOIN biblio AS b ON i.biblio_id=b.biblio_id
+            INNER JOIN mst_gmd AS gmd ON b.gmd_id=gmd.gmd_id
+            GROUP BY b.gmd_id ORDER BY COUNT(loan_id) DESC');
+        $report_d = '';
+        while ($data = $report_q->fetch_row()) {
+            $plot_data[] = array($data[0], $data[1]);
+            $data_colors[] = '#'.generateRandomColors();
+        }
+        break;
+    case 'total_loan_colltype':
+        $chart_title = __('Total Loan By Collection Type');
+        $report_q = $dbs->query('SELECT coll_type_name, COUNT(loan_id) FROM loan AS l
+            INNER JOIN item AS i ON l.item_code=i.item_code
+            INNER JOIN mst_coll_type AS ct ON i.coll_type_id=ct.coll_type_id
+            GROUP BY i.coll_type_id ORDER BY COUNT(loan_id) DESC');
+        while ($data = $report_q->fetch_row()) {
+            $plot_data[] = array($data[0], $data[1]);
+            $data_colors[] = '#'.generateRandomColors();
+        }
+        break;
     default:
         $stat_query = $dbs->query('SELECT gmd_name, COUNT(biblio_id) AS total_titles
             FROM `biblio` AS b
@@ -117,14 +141,17 @@ switch ($chart) {
 
 // Create plot
 if ($plot_data && $chart) {
-    // plot titles
+    // set plot titles
     $plot->SetTitle($chart_title);
 
     // set data
     $plot->SetDataValues($plot_data);
 
-    // plot colors
+    // set plot colors
     $plot->SetDataColors($data_colors);
+
+    // set plot shading
+    $plot->SetShading(20);
 
     // set plot type to pie
     $plot->SetPlotType('pie');

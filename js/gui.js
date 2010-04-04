@@ -140,6 +140,12 @@ var openHTMLpop = function(strURL, intWidth, intHeight, strPopTitle)
     // calculate the center of the page using the browser and element dimensions
     var yPos = 30;
     var xPos = (browserDims.width - intWidth)/2;
+    // set pop content
+    var popContent = '<iframe id="htmlPopFrame" src="' + strURL + '" frameborder="0"></iframe>';
+    // if the 5th argument is set then it is straight content not URL
+    if (arguments[4] != undefined) {
+        popContent = strURL;
+    }
 
     $(document.body).insert('<div id="blocker"></div>'
         + '<div id="htmlPop">'
@@ -147,15 +153,16 @@ var openHTMLpop = function(strURL, intWidth, intHeight, strPopTitle)
         + '<div style="float: right; width: 20%; text-align: right;">'
         + '<a href="#" id="closePop" style="color: red; font-weight: bold;">Close</a>'
         + '</div>'
-        + '<iframe id="htmlPopFrame" src="' + strURL + '" frameborder="0"></iframe>'
+        + '<div>' + popContent + '</div>'
         + '</div>');
     // set element
     blocker = $('blocker');
     htmlPop = $('htmlPop');
-    htmlPopFrame = $('htmlPopFrame');
     // set pop up styles property
     blocker.setStyle({top: 0, left: 0, width: '100%', height: screen.height+'px', position: 'fixed', backgroundColor: '#000', opacity: 0.3});
-    htmlPopFrame.setStyle({width: '100%', height: intHeight+'px'});
+    if (arguments[4] == undefined) {
+        var htmlPopFrame = $('htmlPopFrame').setStyle({width: '100%', height: intHeight+'px'});
+    }
     htmlPop.setStyle({position: 'fixed', top: yPos+'px', left: xPos+'px', margin: 'auto', width: intWidth+'px', opacity: 0.9});
     // register ESC button event handler
     Event.observe('closePop', 'click', function(evt) {

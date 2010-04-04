@@ -41,41 +41,41 @@ $table = new simbio_table();
 $table->table_attr = 'align="center" class="border" cellpadding="5" cellspacing="0"';
 
 // total number of loan transaction
-$report_query = $dbs->query('SELECT COUNT(loan_id) FROM loan');
-$report_data = $report_query->fetch_row();
-$loan_report[__('Total Loan')] = $report_data[0];
+$report_q = $dbs->query('SELECT COUNT(loan_id) FROM loan');
+$report_d = $report_q->fetch_row();
+$loan_report[__('Total Loan')] = $report_d[0];
 
 // total number of loan transaction by GMD/medium
-$report_query = $dbs->query('SELECT gmd_name, COUNT(loan_id) FROM loan AS l
+$report_q = $dbs->query('SELECT gmd_name, COUNT(loan_id) FROM loan AS l
     INNER JOIN item AS i ON l.item_code=i.item_code
     INNER JOIN biblio AS b ON i.biblio_id=b.biblio_id
     INNER JOIN mst_gmd AS gmd ON b.gmd_id=gmd.gmd_id
     GROUP BY b.gmd_id ORDER BY COUNT(loan_id) DESC');
-$report_data = '';
-while ($data = $report_query->fetch_row()) {
-    $report_data .= '<strong>'.$data[0].'</strong> : '.$data[1].', ';
+$report_d = '<div class="chartLink"><a class="notAJAX" href="#" onclick="openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'reporting/charts_report.php?chart=total_loan_gmd\', 700, 470, \''.__('Total Loan By GMD/Medium').'\')">'.__('Show in chart/plot').'</a></div>';
+while ($data = $report_q->fetch_row()) {
+    $report_d .= '<strong>'.$data[0].'</strong> : '.$data[1].', ';
 }
-$loan_report[__('Total Loan By GMD/Medium')] = $report_data;
+$loan_report[__('Total Loan By GMD/Medium')] = $report_d;
 
 // total number of loan transaction by Collection type
-$report_query = $dbs->query('SELECT coll_type_name, COUNT(loan_id) FROM loan AS l
+$report_q = $dbs->query('SELECT coll_type_name, COUNT(loan_id) FROM loan AS l
     INNER JOIN item AS i ON l.item_code=i.item_code
     INNER JOIN mst_coll_type AS ct ON i.coll_type_id=ct.coll_type_id
     GROUP BY i.coll_type_id ORDER BY COUNT(loan_id) DESC');
-$report_data = '';
-while ($data = $report_query->fetch_row()) {
-    $report_data .= '<strong>'.$data[0].'</strong> : '.$data[1].', ';
+$report_d = '<div class="chartLink"><a class="notAJAX" href="#" onclick="openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'reporting/charts_report.php?chart=total_loan_colltype\', 700, 470, \''.__('Total Loan By Collection Type').'\')">'.__('Show in chart/plot').'</a></div>';
+while ($data = $report_q->fetch_row()) {
+    $report_d .= '<strong>'.$data[0].'</strong> : '.$data[1].', ';
 }
-$loan_report[__('Total Loan By Collection Type')] = $report_data;
+$loan_report[__('Total Loan By Collection Type')] = $report_d;
 
 // total number of loan transaction
-$report_query = $dbs->query('SELECT COUNT(loan_id)
+$report_q = $dbs->query('SELECT COUNT(loan_id)
     FROM loan
     GROUP BY member_id, loan_date
     ORDER BY `COUNT(loan_id)` DESC');
-$report_data = $report_query->num_rows;
-$loan_report[__('Total Loan Transactions')] = $report_data;
-$peak_transaction_data = $report_query->fetch_row();
+$report_d = $report_q->num_rows;
+$loan_report[__('Total Loan Transactions')] = $report_d;
+$peak_transaction_data = $report_q->fetch_row();
 
 // transaction average per day
 $total_loan_days_query = $dbs->query('SELECT DISTINCT loan_date FROM loan');
@@ -86,9 +86,9 @@ $loan_report[__('Transaction Average (Per Day)')] = @ceil($loan_report[__('Total
 $loan_report[__('Total Peak Transaction')] = $peak_transaction_data[0];
 
 // total members having loans
-$report_query = $dbs->query('SELECT DISTINCT member_id FROM loan');
-$report_data = $report_query->num_rows;
-$loan_report[__('Members Already Had Loans')] = $report_data;
+$report_q = $dbs->query('SELECT DISTINCT member_id FROM loan');
+$report_d = $report_q->num_rows;
+$loan_report[__('Members Already Had Loans')] = $report_d;
 
 // total members having loans
 // get total member that already not expired
@@ -98,18 +98,18 @@ $total_members_data = $total_members_query->fetch_row();
 $loan_report[__('Members Never Have Loans Yet')] = $total_members_data[0]-$loan_report[__('Members Already Had Loans')];
 
 // total overdued loand
-$report_query = $dbs->query('SELECT COUNT(loan_id) FROM loan WHERE
+$report_q = $dbs->query('SELECT COUNT(loan_id) FROM loan WHERE
     is_lent=1 AND is_return=0 AND TO_DAYS(due_date)>TO_DAYS(\''.date('Y-m-d').'\')');
-$report_data = $report_query->fetch_row();
-$loan_report[__('Total Overdued Loans')] = $report_data[0];
+$report_d = $report_q->fetch_row();
+$loan_report[__('Total Overdued Loans')] = $report_d[0];
 
 // table header
 $table->setHeader(array(__('Loan Data Summary')));
 $table->table_header_attr = 'class="dataListHeader" colspan="3"';
 // initial row count
 $row = 1;
-foreach ($loan_report as $headings=>$report_data) {
-    $table->appendTableRow(array($headings, ':', $report_data));
+foreach ($loan_report as $headings=>$report_d) {
+    $table->appendTableRow(array($headings, ':', $report_d));
     // set cell attribute
     $table->setCellAttr($row, 0, 'class="alterCell" valign="top" style="width: 170px;"');
     $table->setCellAttr($row, 1, 'class="alterCell" valign="top" style="width: 1%;"');
