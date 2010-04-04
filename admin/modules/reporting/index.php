@@ -82,7 +82,7 @@ $stat_query = $dbs->query('SELECT coll_type_name, COUNT(item_id) AS total_items
     GROUP BY i.coll_type_id
     HAVING total_items >0
     ORDER BY COUNT(item_id) DESC');
-$stat_data = '';
+$stat_data = '<div class="chartLink"><a class="notAJAX" href="#" onclick="openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'reporting/charts_report.php?chart=total_title_colltype\', 710, 470, \''.__('Total Items By Collection Type').'\')">'.__('Show in chart/plot').'</a></div>';
 while ($data = $stat_query->fetch_row()) {
     $stat_data .= '<strong>'.$data[0].'</strong> : '.$data[1];
     $stat_data .= ', ';

@@ -56,8 +56,8 @@ function generateRandomColors()
     return $_c;
 }
 
-// create PHPLot object with 800x600 pixels
-$plot = new PHPlot(700, 450);
+// create PHPLot object
+$plot = new PHPlot(700);
 $plot_data = array();
 $data_colors = array();
 // default chart
@@ -74,6 +74,7 @@ if (isset($_GET['chart'])) {
  */
 switch ($chart) {
     case 'total_title_colltype':
+        $chart_title = __('Total Items By Collection Type');
         $stat_query = $dbs->query('SELECT coll_type_name, COUNT(item_id) AS total_items
             FROM `item` AS i
             INNER JOIN mst_coll_type AS ct ON i.coll_type_id = ct.coll_type_id
