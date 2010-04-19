@@ -42,7 +42,7 @@ if (isset($_POST['saveResults']) && isset($_POST['p2precord']) && isset($_POST['
     $p2pserver = trim($_POST['p2pserver_save']);
     foreach ($_POST['p2precord'] as $key => $value) {
         #echo $key.' --> '.$value.'<br />';
-        $xml = @simplexml_load_file($p2pserver."/index.php?p=show_detail&inXML=true&id=".$value);
+        $xml = file_get_contents($p2pserver."/index.php?p=show_detail&inXML=true&id=".$value);
         #echo $p2pserver."/index.php?p=show_detail&inXML=true&id=".$value;
         if ($xml) {
 
@@ -70,7 +70,6 @@ if (isset($_GET['keywords']) && $can_read && isset($_GET['p2pserver']))  {
     # debugging tools
     # echo $p2pserver."/index.php?resultXML=true&keywords=".$keywords;
     # echo '<br />';
-
     if ($xml) {
         echo '<div class="infoBox">Found '.$xml->modsResultNum.' records from <strong>'.$p2pserver_name.'</strong> Server</div>';
         echo '<form method="post" class="notAJAX" action="'.MODULES_WEB_ROOT_DIR.'bibliography/p2p.php" target="blindSubmit">';

@@ -38,6 +38,7 @@ Element.addMethods({
             var button = Event.element(evt);
             var theForm = button.up('form');
             theForm.enable();
+            theForm.select('.makeHidden').invoke('removeClassName', 'makeHidden');
         });
 
         // change all search form submit behaviour to AJAX

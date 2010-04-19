@@ -269,7 +269,7 @@ class biblio_list
         }
 
         // init sql string
-        $_sql_str = 'SELECT SQL_CALC_FOUND_ROWS biblio.biblio_id, biblio.title, biblio.image, biblio.labels';
+        $_sql_str = 'SELECT SQL_CALC_FOUND_ROWS biblio.biblio_id, biblio.title, biblio.image, biblio.isbn_issn, biblio.labels';
 
         // checking custom frontpage fields file
         $custom_frontpage_record_file = (defined('UCS_BASE_DIR')?UCS_BASE_DIR:SENAYAN_BASE_DIR).$sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/custom_frontpage_record.inc.php';
@@ -278,7 +278,7 @@ class biblio_list
             $this->enable_custom_frontpage = true;
             $this->custom_fields = $custom_fields;
             foreach ($this->custom_fields as $_field => $_field_opts) {
-                if ($_field_opts[0] == 1 && $_field != 'availability') {
+                if ($_field_opts[0] == 1 && !in_array($_field, array('availability', 'isbn_issn'))) {
                     $_sql_str .= ", biblio.$_field";
                 }
             }
@@ -466,10 +466,10 @@ class biblio_list
     {
         global $sysconf;
         // loop data
-        $_buffer = '<modsCollection xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.loc.gov/mods/v3" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd">'."\n";
-        $_buffer .= '<modsResultNum>'.$this->num_rows.'</modsResultNum>'."\n";
-        $_buffer .= '<modsResultPage>'.$this->current_page.'</modsResultPage>'."\n";
-        $_buffer .= '<modsResultShowed>'.$this->num2show.'</modsResultShowed>'."\n";
+        $_buffer = '<modsCollection xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.loc.gov/mods/v3" xmlns:slims="http://senayan.diknas.go.id" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd">'."\n";
+        $_buffer .= '<slims:modsResultNum>'.$this->num_rows.'</slims:modsResultNum>'."\n";
+        $_buffer .= '<slims:modsResultPage>'.$this->current_page.'</slims:modsResultPage>'."\n";
+        $_buffer .= '<slims:modsResultShowed>'.$this->num2show.'</slims:modsResultShowed>'."\n";
         while ($_biblio_d = $this->resultset->fetch_assoc()) {
             $_buffer .= '<mods ID="'.$_biblio_d['biblio_id'].'">'."\n";
             // parse title
@@ -498,6 +498,9 @@ class biblio_list
             }
             $_buffer .= '<typeOfResource manuscript="yes" collection="yes">mixed material</typeOfResource>'."\n";
             $_biblio_authors_q->free_result();
+
+			// ISBN
+			$_buffer .= '<identifier type="isbn">'.str_replace(array('-', ' '), '', $_biblio_d['isbn_issn']).'</identifier>'."\n";
             $_buffer .= '</mods>'."\n";
         }
         $_buffer .= '</modsCollection>';

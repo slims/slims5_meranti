@@ -28,7 +28,7 @@
  **/
 function modsXMLsenayan($str_modsxml, $str_xml_type = 'string')
 {
-    // MARC XML file path
+    // initiate records array
     $_records = array();
 
     // load XML
@@ -51,16 +51,31 @@ function modsXMLsenayan($str_modsxml, $str_xml_type = 'string')
     $record_num = 0;
     // start iterate records
     foreach($xml->mods as $record) {
-        # mods->titleInfo
-        $data['title'] = $record->titleInfo->title.$record->titleInfo->subTitle;
+        # authors
+        $data['author_main'] = array();
+        $data['author_add'] = array();
+        $data['author_corp'] = array();
+        $data['author_conf'] = array();
 
-        # mods->name (repeatable)
-        foreach ($record->name as $value) {
-            $name_ptype[] = $record->name['type'];
-            $name_pauthority[] = $record->name['authority'];
-            $name_namePart[] = $record->name->namePart;
-            $name_role_roleTerm_ptype[] = $record->name->role->roleTerm['type'];
-            $name_role_roleTerm[] = $record->name->role->roleTerm;
+        # title
+        $data['title'] = $record->titleInfo->title;
+
+        if (isset($record->titleInfo->subTitle)) {
+            $data['title'] .= $record->titleInfo->subTitle;
+        }
+
+        # name/author (repeatable)
+        if (isset($record->name)) {
+            foreach ($record->name as $value) {
+                $name_ptype[] = $record->name['type'];
+                $name_pauthority[] = $record->name['authority'];
+                $name_namePart[] = $record->name->namePart;
+                $name_role_roleTerm_ptype[] = $record->name->role->roleTerm['type'];
+                $name_role_roleTerm[] = $record->name->role->roleTerm;
+                if ($record->name->role->roleTerm == 'Primary Author') {
+                    $data['author_main'] = array('name' => $record->name->namePart, 'authority_list' => $record->name['authority']);
+                }
+            }
         }
 
         # mods->typeOfResource
