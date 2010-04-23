@@ -233,7 +233,7 @@ $sysconf['loan_limit_override'] = false;
 $sysconf['allow_loan_date_change'] = false;
 
 /* CIRCULATION RECEIPT */
-$sysconf['circulation_receipt'] = true;
+$sysconf['circulation_receipt'] = false;
 
 /* FILE UPLOADS */
 $sysconf['max_upload'] = intval(ini_get('upload_max_filesize'))*1024;
