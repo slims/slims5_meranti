@@ -14,6 +14,12 @@ Jhon Urrego Felipe Mejia (ingenierofelipeurrego@gmail.com)
 
 THANKS TO OUR USERS AND COMMUNITIES, YOU ARE DEVELOPERS TOO!
 
+SENAYAN 3 Stable 14 (Seulanga)
+========================================================================
+- Fixed : Expiration date checking in membership management
+- Added : Union Catalogue Server
+
+
 SENAYAN 3 Stable 13
 ========================================================================
 - Fixed : Loan by classification reporting for non-decimal class
