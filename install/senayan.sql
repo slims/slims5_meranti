@@ -389,8 +389,8 @@ CREATE TABLE IF NOT EXISTS `member` (
 --
 
 INSERT INTO `member` (`member_id`, `member_name`, `gender`, `birth_date`, `member_type_id`, `member_address`, `member_email`, `postal_code`, `inst_name`, `is_new`, `member_image`, `pin`, `member_phone`, `member_fax`, `member_since_date`, `register_date`, `expire_date`, `member_notes`, `is_pending`, `input_date`, `last_update`) VALUES
-('M00001', 'Hendro Wicaksono', 1, '1974-06-05', 1, '', 'hendrowicaksono@yahoo.com', '', 'Perpustakaan Depdiknas', NULL, NULL, '', '', '', '2009-04-15', '2009-04-15', '2010-04-15', '', 0, '2009-04-15', '2009-06-11'),
-('M00002', 'Arie Nugraha', 1, '1982-12-06', 1, '', 'dicarve@yahoo.com', '', 'Perpustakaan Depdiknas', NULL, NULL, '', '', '', '2009-04-15', '2009-04-15', '2010-04-15', '', 0, '2009-04-15', '2009-06-11');
+('M00001', 'Hendro Wicaksono', 1, '1974-06-05', 1, '', 'hendrowicaksono@yahoo.com', '', 'Perpustakaan Depdiknas', NULL, NULL, '', '', '', '2009-04-15', '2009-04-15', '2099-04-15', '', 0, '2009-04-15', '2009-06-11'),
+('M00002', 'Arie Nugraha', 1, '1982-12-06', 1, '', 'dicarve@yahoo.com', '', 'Perpustakaan Depdiknas', NULL, NULL, '', '', '', '2009-04-15', '2009-04-15', '2099-04-15', '', 0, '2009-04-15', '2009-06-11');
 
 -- --------------------------------------------------------
 
