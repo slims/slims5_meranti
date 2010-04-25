@@ -10,13 +10,13 @@ var registerAdminEvents = function()
 {
     // register submenu event
     $$('.subMenuItem').invoke('observe', 'click', function(evt) {
-        evt.preventDefault();
+        evt.stop();
         var subMenu = Event.element(evt);
         // remove other current link marker on non-active submenu
         $$('.subMenuItem').invoke('removeClassName', 'curModuleLink');
         var subMenuHREF = subMenu.addClassName('curModuleLink').readAttribute('href');
         setContent('mainContent', subMenuHREF, 'get');
-    }).invoke('observe', 'mouseover', function(evt) { evt.preventDefault(); } );
+    }).invoke('observe', 'mouseover', function(evt) { evt.stop(); } );
 }
 
 /* change the style of circulation tab */

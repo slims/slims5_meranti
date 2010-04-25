@@ -124,9 +124,9 @@ if (isset($_POST['saveData'])) {
 <?php
 /* search form end */
 /* main content */
-if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'detail')) {
+if ((isset($_GET['detail']) && isset($_GET['itemID'])) || (isset($_GET['action']) && $_GET['action'] == 'detail')) {
     /* RECORD FORM */
-    $itemID = (integer)isset($_POST['itemID'])?$_POST['itemID']:0;
+    $itemID = (integer)isset($_GET['itemID'])?$_GET['itemID']:0;
     $rec_q = $dbs->query('SELECT * FROM fines WHERE fines_id='.$itemID);
     $rec_d = $rec_q->fetch_assoc();
 

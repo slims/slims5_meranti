@@ -57,6 +57,26 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         utility::jsAlert(__('Title can not be empty'));
         exit();
     } else {
+        // include custom fields file
+        if (file_exists(MODULES_BASE_DIR.'bibliography/custom_fields.inc.php')) {
+            include MODULES_BASE_DIR.'bibliography/custom_fields.inc.php';
+        }
+
+        /**
+         * Custom fields
+         */
+        if (isset($biblio_custom_fields)) {
+            if (is_array($biblio_custom_fields) && $biblio_custom_fields) {
+                foreach ($biblio_custom_fields as $fid => $cfield) {
+                    // custom field
+                    $cf_dbfield = $cfield['dbfield'];
+                    if (isset($_POST[$cf_dbfield]) AND trim($_POST[$cf_dbfield]) != '') {
+                        $data[$cf_dbfield] = trim($dbs->escape_string(strip_tags($_POST[$cf_dbfield], $sysconf['content']['allowable_tags'])));
+                    }
+                }
+            }
+        }
+
         $data['title'] = $dbs->escape_string($title);
         $data['edition'] = trim($dbs->escape_string(strip_tags($_POST['edition'])));
         $data['gmd_id'] = $_POST['gmdID'];
@@ -114,6 +134,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         $data['spec_detail_info'] = trim($dbs->escape_string(strip_tags($_POST['specDetailInfo'])));
         $data['input_date'] = date('Y-m-d H:i:s');
         $data['last_update'] = date('Y-m-d H:i:s');
+
         // image uploading
         if (!empty($_FILES['image']) AND $_FILES['image']['size']) {
             // create upload object
@@ -342,6 +363,11 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         $visibility = 'makeHidden';
     }
 
+    // include custom fields file
+    if (file_exists(MODULES_BASE_DIR.'bibliography/custom_fields.inc.php')) {
+        include MODULES_BASE_DIR.'bibliography/custom_fields.inc.php';
+    }
+
     /* Form Element(s) */
     // biblio title
     $form->addTextField('textarea', 'title', __('Title').'*', $rec_d['title'], 'rows="1" style="width: 100%; overflow: auto;"');
@@ -443,6 +469,38 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $str_input = '<div class="'.$visibility.'"><a class="notAJAX" href="javascript: openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_attach.php?biblioID='.$rec_d['biblio_id'].'\', 600, 300, \''.__('File Attachments').'\')">'.__('Add Attachment').'</a></div>';
     $str_input .= '<iframe name="attachIframe" id="attachIframe" class="borderAll" style="width: 100%; height: 70px;" src="'.MODULES_WEB_ROOT_DIR.'bibliography/iframe_attach.php?biblioID='.$rec_d['biblio_id'].'&block=1"></iframe>';
     $form->addAnything(__('File Attachment'), $str_input);
+
+    /**
+     * Custom fields
+     */
+    if (isset($biblio_custom_fields)) {
+        if (is_array($biblio_custom_fields) && $biblio_custom_fields) {
+            foreach ($biblio_custom_fields as $fid => $cfield) {
+
+                // custom field properties
+                $cf_dbfield = $cfield['dbfield'];
+                $cf_label = $cfield['label'];
+                $cf_default = $cfield['default'];
+                $cf_data = (isset($cfield['data']) && $cfield['data'])?$cfield['data']:array();
+
+                // custom field processing
+                if (in_array($cfield['type'], array('text', 'longtext', 'numeric'))) {
+                    $cf_max = isset($cfield['max'])?$cfield['max']:'200';
+                    $cf_width = isset($cfield['width'])?$cfield['width']:'50';
+                    $form->addTextField( ($cfield['type'] == 'longtext')?'textarea':'text', $cf_dbfield, $cf_label, isset($rec_d[$cf_dbfield])?$rec_d[$cf_dbfield]:$cf_default, 'style="width: '.$cf_width.'%;" maxlength="'.$cf_max.'"');
+                } else if ($cfield['type'] == 'dropdown') {
+                    $form->addSelectList($cf_dbfield, $cf_label, $cf_data, isset($rec_d[$cf_dbfield])?$rec_d[$cf_dbfield]:$cf_default);
+                } else if ($cfield['type'] == 'checklist') {
+                    $form->addCheckBox($cf_dbfield, $cf_label, $cf_data, isset($rec_d[$cf_dbfield])?$rec_d[$cf_dbfield]:$cf_default);
+                } else if ($cfield['type'] == 'choice') {
+                    $form->addRadio($cf_dbfield, $cf_label, $cf_data, isset($rec_d[$cf_dbfield])?$rec_d[$cf_dbfield]:$cf_default);
+                } else if ($cfield['type'] == 'date') {
+                    $form->addDateField($cf_dbfield, $cf_label, isset($rec_d[$cf_dbfield])?$rec_d[$cf_dbfield]:$cf_default);
+                }
+            }
+        }
+    }
+
     // biblio hide from opac
     $hide_options[] = array('0', __('Show'));
     $hide_options[] = array('1', __('Hide'));
