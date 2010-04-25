@@ -145,8 +145,8 @@ class simbio_date
             // get the UNIX timestamp of date
             $_parsed_date1 = date_parse($date1);
             $_parsed_date2 = date_parse($date2);
-            $timestamp1 = $_parsed_date1['year'].$_parsed_date1['month'].$_parsed_date1['day'];
-            $timestamp2 = $_parsed_date2['year'].$_parsed_date2['month'].$_parsed_date2['day'];
+            $timestamp1 = (integer)$_parsed_date1['year'].$_parsed_date1['month'].$_parsed_date1['day'];
+            $timestamp2 = (integer)$_parsed_date2['year'].$_parsed_date2['month'].$_parsed_date2['day'];
 
             if ($timestamp1 > $timestamp2) {
                 return $date1;
