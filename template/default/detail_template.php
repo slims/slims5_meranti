@@ -80,6 +80,16 @@ ob_start(); /* <- DONT REMOVE THIS COMMAND */
 <td class="tblHead" style="width: 20%;" valign="top"><?php print __('Availability'); ?></td>
 <td class="tblContent" style="width: 80%;" valign="top">{availability}</td>
 </tr>
+<!-- insert custom field here
+<tr>
+<td class="tblHead" style="width: 20%;" valign="top"><?php print __('Custom Field 1'); ?></td>
+<td class="tblContent" style="width: 80%;" valign="top">{customfield1}</td>
+</tr>
+<tr>
+<td class="tblHead" style="width: 20%;" valign="top"><?php print __('Custom Field 2'); ?></td>
+<td class="tblContent" style="width: 80%;" valign="top">{customfield2}</td>
+</tr>
+-->
 <tr>
 <td class="tblHead" style="width: 20%;" valign="top">&nbsp;</td>
 <td class="tblContent" style="width: 80%;" valign="top"><a href="javascript: history.back();"><?php print __('Back To Previous'); ?></a></td>

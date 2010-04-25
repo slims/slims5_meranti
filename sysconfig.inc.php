@@ -303,6 +303,7 @@ $sysconf['date_format'] = 'Y-m-d'; /* Produce 2009-12-31 */
 
 // load global settings from database. Uncomment below lines if you dont want to load it
 utility::loadSettings($dbs);
+
 // check for user language selection if we are not in admin areas
 if (stripos($_SERVER['PHP_SELF'], '/admin') === false) {
     if (isset($_GET['select_lang'])) {

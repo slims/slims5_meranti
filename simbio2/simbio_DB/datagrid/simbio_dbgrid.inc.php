@@ -274,8 +274,9 @@ class simbio_datagrid extends simbio_table
                 }
                 // check if edit link array is included
                 if ($this->edit_property) {
-                    $_edit_link = '<a class="editLink" '
-                        .'href="'.$_SERVER['PHP_SELF'].'?'.$_url_query_str.'" postdata="'.$this->edit_property[0].'='.$this->grid_result_rows[$_row][0].'&detail=true" title="Edit">'.( $this->edit_link_text?$this->edit_link_text:'&nbsp;' ).'</a>';
+                    $_edit_data = $this->edit_property[0].'='.$this->grid_result_rows[$_row][0].'&detail=true';
+                    $_edit_link = '<a class="editLink'.( !$this->using_AJAX?' notAJAX':'' ).'" '
+                        .'href="'.$_SERVER['PHP_SELF'].'?'.$_edit_data.'&'.$_url_query_str.'" postdata="'.$_edit_data.'" title="Edit">'.( $this->edit_link_text?$this->edit_link_text:'&nbsp;' ).'</a>';
                     $_edit_fields[] = $_edit_link;
                 }
                 // unset the first element (ID field)
@@ -341,9 +342,10 @@ class simbio_datagrid extends simbio_table
         if ($this->num_rows > $int_num2show) {
             $_paging = simbio_paging::paging($this->num_rows, $int_num2show, 5);
         }
+        // iframe
+        $_iframe = '';
         // setting form target
         $_target = '_self';
-        $_iframe = '<form name="notAJAXhiddenForm" id="notAJAXhiddenForm" action="" method="post" style="display: inline;"><input type="hidden" name="itemID" value="" /><input type="hidden" name="detail" value="true" /></form>';
         if ($this->using_AJAX) {
             $_target = 'submitExec';
             $_iframe = '<iframe name="submitExec" style="visibility: hidden; width: 100%; height: 0;"></iframe>'."\n";

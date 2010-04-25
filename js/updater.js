@@ -17,7 +17,7 @@ Element.addMethods({
     registerAJAXEvents: function(element) {
         // change all anchor to AJAX behaviour
         element.select('a:not(.notAJAX)').invoke('observe', 'click', function(evt) {
-            evt.preventDefault();
+            evt.stop();
             var anchor = Event.element(evt);
             var aHREF = anchor.readAttribute('href');
             // check where to load AJAX content from loadcontainer attribute
@@ -43,7 +43,7 @@ Element.addMethods({
 
         // change all search form submit behaviour to AJAX
         element.select('.menuBox form:not(.notAJAX)').invoke('observe', 'submit', function(evt) {
-            evt.preventDefault();
+            evt.stop();
             var theForm = Event.element(evt);
             var formAction = theForm.readAttribute('action');
             var formMethod = theForm.readAttribute('method');
@@ -73,25 +73,27 @@ var setContent = function(strContainer, strURL, strMethod) {
         isEvalScript = arguments[4];
     } else { isEvalScript = true; }
 
-    // escape single quotes chars
-    strURL = strURL.sub('\'', '\\\'');
+    if (strURL) {
+        // escape single quotes chars
+        strURL = strURL.sub('\'', '\\\'');
 
-    // show loading
-    showLoading();
-    var ajaxObj = new Ajax.Updater(
-        {success: strContainer},
-        strURL,
-        {
-            asynchronous: false,
-            method: strMethod,
-            parameters: ajaxParams,
-            evalScripts: isEvalScript,
-            onFailure: errorReport,
-            onComplete: hideLoading,
-            requestHeaders: {'Pragma': 'no-cache',
-                'Cache-Control': 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0',
-                'Expires': 'Sat, 26 Jul 1997 05:00:00 GMT'}
-        });
+        // show loading
+        showLoading();
+        var ajaxObj = new Ajax.Updater(
+            {success: strContainer},
+            strURL,
+            {
+                asynchronous: false,
+                method: strMethod,
+                parameters: ajaxParams,
+                evalScripts: isEvalScript,
+                onFailure: errorReport,
+                onComplete: hideLoading,
+                requestHeaders: {'Pragma': 'no-cache',
+                    'Cache-Control': 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0',
+                    'Expires': 'Sat, 26 Jul 1997 05:00:00 GMT'}
+            });
+    }
 }
 
 /* show error when ajax updater failed */
