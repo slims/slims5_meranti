@@ -238,6 +238,7 @@ $sysconf['circulation_receipt'] = false;
 /* NOTIFICATION RELATED */
 $sysconf['transaction_finished_notification'] = false;
 $sysconf['login_message'] = true;
+$sysconf['logout_message'] = false;
 
 /* FILE UPLOADS */
 $sysconf['max_upload'] = intval(ini_get('upload_max_filesize'))*1024;
