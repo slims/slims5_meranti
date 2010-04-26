@@ -172,7 +172,9 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
             }
             // send an alert
             if ($update) {
-                utility::jsAlert(__('Bibliography Data Successfully Updated'));
+            	if ($sysconf['bibliography_update_notification']) {
+                    utility::jsAlert(__('Bibliography Data Successfully Updated'));
+			    }
                 // auto insert catalog to UCS if enabled
                 if ($sysconf['ucs']['enable']) {
                     echo '<script type="text/javascript">parent.ucsUpload(\''.MODULES_WEB_ROOT_DIR.'bibliography/ucs_upload.php\', \'itemID[]='.$updateRecordID.'\', false);</script>';

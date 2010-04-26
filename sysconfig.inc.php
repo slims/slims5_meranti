@@ -1,6 +1,6 @@
 <?php
 /**
- * SENAYAN application global file configuration
+ * SENAYAN application global configuration file
  *
  * Copyright (C) 2010  Arie Nugraha (dicarve@yahoo.com), Hendro Wicaksono (hendrowicaksono@yahoo.com), Wardiyono (wynerst@gmail.com)
  *
@@ -237,7 +237,9 @@ $sysconf['circulation_receipt'] = false;
 
 /* NOTIFICATION RELATED */
 $sysconf['transaction_finished_notification'] = false;
-$sysconf['login_message'] = true;
+$sysconf['bibliography_update_notification'] = true;
+$sysconf['bibliography_item_update_notification'] = true;
+$sysconf['login_message'] = false;
 $sysconf['logout_message'] = false;
 
 /* FILE UPLOADS */

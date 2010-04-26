@@ -96,7 +96,9 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
             if ($update) {
                 // write log
                 utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'bibliography', $_SESSION['realname'].' update item data ('.$data['item_code'].') with title ('.$title.')');
-                utility::jsAlert(__('Item Data Successfully Updated'));
+                if ($sysconf['bibliography_item_update_notification']) {
+                    utility::jsAlert(__('Item Data Successfully Updated'));
+			    }
                 if ($in_pop_up) {
                     echo '<script type="text/javascript">top.setIframeContent(\'itemIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_item_list.php?biblioID='.$data['biblio_id'].'\');</script>';
                     echo '<script type="text/javascript">top.closeHTMLpop();</script>';
