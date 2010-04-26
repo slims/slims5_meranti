@@ -50,7 +50,9 @@ if (isset($_POST['finish'])) {
         utility::writeLogs($dbs, 'member', $memberID, 'circulation', $_SESSION['realname'].' finish circulation transaction with member ('.$memberID.')');
         // send message
         echo '<script type="text/javascript">';
-        echo 'alert(\''.__('Transaction finished').'\');';
+        if ($sysconf['transaction_finished_notification']) {
+            echo 'alert(\''.__('Transaction finished').'\');';
+        }
         // print receipt only if enabled and $_SESSION['receipt_record'] not empty
         if ($sysconf['circulation_receipt'] && $_SESSION['receipt_record']) {
             // open receipt windows
