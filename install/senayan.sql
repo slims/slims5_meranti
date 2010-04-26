@@ -876,7 +876,7 @@ INSERT INTO `setting` (`setting_id`, `setting_name`, `setting_value`) VALUES
 (12, 'enable_xml_result', 'b:1;'),
 (13, 'allow_file_download', 'b:1;'),
 (14, 'session_timeout', 's:4:"7200";'),
-(15, 'circulation_receipt', 'b:1;'),
+(15, 'circulation_receipt', 'b:0;'),
 (16, 'barcode_encoding', 's:4:"128B";');
 
 -- --------------------------------------------------------
