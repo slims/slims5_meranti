@@ -234,7 +234,10 @@ $sysconf['allow_loan_date_change'] = false;
 
 /* CIRCULATION RELATED */
 $sysconf['circulation_receipt'] = false;
+
+/* NOTIFICATION RELATED */
 $sysconf['transaction_finished_notification'] = false;
+$sysconf['login_message'] = true;
 
 /* FILE UPLOADS */
 $sysconf['max_upload'] = intval(ini_get('upload_max_filesize'))*1024;
