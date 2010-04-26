@@ -233,7 +233,7 @@ $sysconf['loan_limit_override'] = false;
 $sysconf['allow_loan_date_change'] = false;
 
 /* CIRCULATION RECEIPT */
-$sysconf['circulation_receipt'] = true;
+$sysconf['circulation_receipt'] = false;
 
 /* FILE UPLOADS */
 $sysconf['max_upload'] = intval(ini_get('upload_max_filesize'))*1024;
@@ -378,7 +378,7 @@ $sysconf['watermark']['opacity'] = '50'; #is opacity from 0 (transparent) to 100
 /**
  * UCS global settings
  */
-$sysconf['ucs']['enable'] = true;
+$sysconf['ucs']['enable'] = false;
 // auto delete same record on UCS?
 $sysconf['ucs']['auto_delete'] = true;
 // auto insert new record to UCS?
@@ -387,7 +387,7 @@ $sysconf['ucs']['auto_insert'] = false;
 /**
  * Peer to peer server config
  */
-$sysconf['p2pserver'][1] = array('uri' => 'http://localhost/senayan3-stable14', 'name' => 'SLiMS Library');
+$sysconf['p2pserver'][1] = array('uri' => 'http://127.0.0.1/senayan3-stable14', 'name' => 'SLiMS Library');
 
 // check if session is auto started and then destroy it
 if ($is_auto = @ini_get('session.auto_start')) { define('SESSION_AUTO_STARTED', $is_auto); }
