@@ -2,13 +2,13 @@ SENAYAN 3 Stable Branch
 Changes Log
 
 Developers :
-Hendro Wicaksono (hendrowicaksono@yahoo.com)
-Arie Nugraha (dicarve@yahoo.com)
+Hendro Wicaksono (hendrowicaksono@yahoo.com, hendrowicaksono@gmail.com)
+Arie Nugraha (dicarve@yahoo.com, dicarve@gmail.com)
 Wardiyono (wynerst@gmail.com)
-Purwoko (purgeologi@yahoo.com)
+Purwoko (purgeologi@yahoo.com, tamanjiwa@gmail.com)
 Sulfan Zayd (sulfan@gmail.com)
-Arif Syamsudin (buitenzorg812@lc.vlsm.org)
-Rasyid Ridho (ridhoedogawa@yahoo.com)
+Arif Syamsudin (buitenzorg812@lc.vlsm.org, buitenzorg812@gmail.com)
+Rasyid Ridho (rasyidridho@gmail.com, ridhoedogawa@yahoo.com)
 Tobias Zeumer (tzeumer@verweisungsform.de)
 Jhon Urrego Felipe Mejia (ingenierofelipeurrego@gmail.com)
 
@@ -16,8 +16,10 @@ THANKS TO OUR USERS AND COMMUNITIES, YOU ARE DEVELOPERS TOO!
 
 SENAYAN 3 Stable 14 (Seulanga)
 ========================================================================
-- Fixed : Expiration date checking in membership management
-- Added : Union Catalogue Server
+- Fixed : Expiration date checking in membership management & circulation transaction.
+- Added : Union Catalogue Server (more stable for production use)
+- Added : Custom fields for bibliographic data/Bibliography module (experimental)
+- Added : New infrastructure for retrieval system for improving scalability & flexibility (experimental)
 
 
 SENAYAN 3 Stable 13

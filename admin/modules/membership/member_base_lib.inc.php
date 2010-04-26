@@ -80,7 +80,7 @@ class member
             // compare it with current date
             $_current_date = date('Y-m-d');
             $_expired_date = simbio_date::compareDates($_current_date, $_member_d['expire_date']);
-            if ($_current_date == $_member_d['expire_date']) {
+            if ($_expired_date <= $_member_d['expire_date']) {
                 $this->is_expire = false;
             }
         }
