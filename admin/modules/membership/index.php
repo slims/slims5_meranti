@@ -58,6 +58,27 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         utility::jsAlert(__('Password confirmation does not match. See if your Caps Lock key is on!'));
         exit();
     } else {
+
+        // include custom fields file
+        if (file_exists(MODULES_BASE_DIR.'membership/member_custom_fields.inc.php')) {
+            include MODULES_BASE_DIR.'membership/member_custom_fields.inc.php';
+        }
+
+        /**
+         * Custom fields
+         */
+        if (isset($member_custom_fields)) {
+            if (is_array($member_custom_fields) && $member_custom_fields) {
+                foreach ($member_custom_fields as $fid => $cfield) {
+                    // custom field
+                    $cf_dbfield = $cfield['dbfield'];
+                    if (isset($_POST[$cf_dbfield]) AND trim($_POST[$cf_dbfield]) != '') {
+                        $data[$cf_dbfield] = trim($dbs->escape_string(strip_tags($_POST[$cf_dbfield], $sysconf['content']['allowable_tags'])));
+                    }
+                }
+            }
+        }
+
         $data['member_id'] = $dbs->escape_string($memberID);
         $data['member_name'] = $dbs->escape_string($memberName);
         $data['member_type_id'] = (integer)$_POST['memberTypeID'];
@@ -307,6 +328,12 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
             $expired_message = '<b style="color: #FF0000;">('.__('Membership Already Expired').')</b>';
         }
     }
+
+    // include custom fields file
+    if (file_exists(MODULES_BASE_DIR.'membership/member_custom_fields.inc.php')) {
+        include MODULES_BASE_DIR.'membership/member_custom_fields.inc.php';
+    }
+
     // member code
     $str_input = simbio_form_element::textField('text', 'memberID', $rec_d['member_id'], 'id="memberID" onblur="ajaxCheckID(\''.SENAYAN_WEB_ROOT_DIR.'admin/AJAX_check_id.php\', \'member\', \'member_id\', \'msgBox\', \'memberID\')" style="width: 30%;"');
     $str_input .= ' &nbsp; <span id="msgBox">&nbsp;</span>';
@@ -354,6 +381,38 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $form->addTextField('text', 'memberPIN', __('Personal ID Number'), $rec_d['pin'], 'style="width: 100%;"');
     // member notes
     $form->addTextField('textarea', 'memberNotes', __('Notes'), $rec_d['member_notes'], 'rows="2" style="width: 100%;"');
+
+    /**
+     * Custom fields
+     */
+    if (isset($member_custom_fields)) {
+        if (is_array($member_custom_fields) && $member_custom_fields) {
+            foreach ($member_custom_fields as $fid => $cfield) {
+
+                // custom field properties
+                $cf_dbfield = $cfield['dbfield'];
+                $cf_label = $cfield['label'];
+                $cf_default = $cfield['default'];
+                $cf_data = (isset($cfield['data']) && $cfield['data'])?$cfield['data']:array();
+
+                // custom field processing
+                if (in_array($cfield['type'], array('text', 'longtext', 'numeric'))) {
+                    $cf_max = isset($cfield['max'])?$cfield['max']:'200';
+                    $cf_width = isset($cfield['width'])?$cfield['width']:'50';
+                    $form->addTextField( ($cfield['type'] == 'longtext')?'textarea':'text', $cf_dbfield, $cf_label, isset($rec_d[$cf_dbfield])?$rec_d[$cf_dbfield]:$cf_default, 'style="width: '.$cf_width.'%;" maxlength="'.$cf_max.'"');
+                } else if ($cfield['type'] == 'dropdown') {
+                    $form->addSelectList($cf_dbfield, $cf_label, $cf_data, isset($rec_d[$cf_dbfield])?$rec_d[$cf_dbfield]:$cf_default);
+                } else if ($cfield['type'] == 'checklist') {
+                    $form->addCheckBox($cf_dbfield, $cf_label, $cf_data, isset($rec_d[$cf_dbfield])?$rec_d[$cf_dbfield]:$cf_default);
+                } else if ($cfield['type'] == 'choice') {
+                    $form->addRadio($cf_dbfield, $cf_label, $cf_data, isset($rec_d[$cf_dbfield])?$rec_d[$cf_dbfield]:$cf_default);
+                } else if ($cfield['type'] == 'date') {
+                    $form->addDateField($cf_dbfield, $cf_label, isset($rec_d[$cf_dbfield])?$rec_d[$cf_dbfield]:$cf_default);
+                }
+            }
+        }
+    }
+
     // member is_pending
     $form->addCheckBox('isPending', __('Pending Membership'), array( array('1', __('Yes')) ), $rec_d['is_pending']);
     // member photo

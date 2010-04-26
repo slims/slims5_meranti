@@ -67,13 +67,8 @@ function modsXMLsenayan($str_modsxml, $str_xml_type = 'string')
         # name/author (repeatable)
         if (isset($record->name)) {
             foreach ($record->name as $value) {
-                $name_ptype[] = $record->name['type'];
-                $name_pauthority[] = $record->name['authority'];
-                $name_namePart[] = $record->name->namePart;
-                $name_role_roleTerm_ptype[] = $record->name->role->roleTerm['type'];
-                $name_role_roleTerm[] = $record->name->role->roleTerm;
-                if ($record->name->role->roleTerm == 'Primary Author') {
-                    $data['author_main'] = array('name' => $record->name->namePart, 'authority_list' => $record->name['authority']);
+                if ($value->role->roleTerm == 'Primary Author') {
+                    $data['author_main'] = array('name' => $value->namePart, 'authority_list' => $value['authority']);
                 }
             }
         }
@@ -142,7 +137,6 @@ function modsXMLsenayan($str_modsxml, $str_xml_type = 'string')
         $recordInfo_recordOrigin = $record->recordInfo->recordOrigin;
 
         $data['gmd'] = (string)$gmd;
-        $data['gmd'] = str_replace(array('[', ']'), '', trim($data['gmd']));
         $data['edition'] = (string)$edition;
         $data['isbn_issn'] = (string)$isbn_issn;
         $data['publisher'] = (string)$publisher;
