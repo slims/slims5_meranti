@@ -28,6 +28,7 @@ $menu[] = array(__('Loans by Classification'), MODULES_WEB_ROOT_DIR.'reporting/c
 $menu[] = array(__('Member List'), MODULES_WEB_ROOT_DIR.'reporting/customs/member_list.php', __('List of library member/patron'));
 $menu[] = array(__('Loan List by Member'), MODULES_WEB_ROOT_DIR.'reporting/customs/member_loan_list.php', __('List of loan by each member'));
 $menu[] = array(__('Loan History'), MODULES_WEB_ROOT_DIR.'reporting/customs/loan_history.php', __('Loan History Overview'));
+$menu[] = array(__('Due Date Warning'), MODULES_WEB_ROOT_DIR.'reporting/customs/due_date_warning.php', __('Loan Due Date Warnings'));
 $menu[] = array(__('Overdued List'), MODULES_WEB_ROOT_DIR.'reporting/customs/overdued_list.php', __('View Members Having Overdues'));
 $menu[] = array(__('Staff Activity'), MODULES_WEB_ROOT_DIR.'reporting/customs/staff_act.php', __('Staff activity log recapitulation'));
 $menu[] = array(__('Visitor Statistic'), MODULES_WEB_ROOT_DIR.'reporting/customs/visitor_report.php', __('Visitor Statistic'));
