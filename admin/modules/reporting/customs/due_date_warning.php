@@ -52,6 +52,7 @@ if (!$reportView) {
     <!-- filter -->
     <fieldset style="margin-bottom: 3px;">
     <legend style="font-weight: bold"><?php echo strtoupper(__('Due Date Warning')); ?> - <?php echo __('Report Filter'); ?></legend>
+    <div><?php echo __('This report loan items which will due in 3 to 0 days'); ?></div>
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
         <div class="divRow">
