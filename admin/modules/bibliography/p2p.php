@@ -39,18 +39,114 @@ if (!$can_read) {
 
 /* RECORD OPERATION */
 if (isset($_POST['saveResults']) && isset($_POST['p2precord']) && isset($_POST['p2pserver_save'])) {
-    $p2pserver = trim($_POST['p2pserver_save']);
-    foreach ($_POST['p2precord'] as $key => $value) {
-        #echo $key.' --> '.$value.'<br />';
-        $xml = file_get_contents($p2pserver."/index.php?p=show_detail&inXML=true&id=".$value);
-        #echo $p2pserver."/index.php?p=show_detail&inXML=true&id=".$value;
-        if ($xml) {
+    require MODULES_BASE_DIR.'bibliography/biblio_utils.inc.php';
 
-        } else {
-            echo '<div class="errorBox">'.__('Sorry, no result found from '.$p2pserver).'</div>';
+    $p2pserver = trim($_POST['p2pserver_save']);
+    $gmd_cache = array();
+    $publ_cache = array();
+    $place_cache = array();
+    $lang_cache = array();
+    $author_cache = array();
+    $subject_cache = array();
+    $input_date = date('Y-m-d H:i:s');
+    // record counter
+    $r = 0;
+
+    foreach ($_POST['p2precord'] as $id) {
+        // construct full XML URI
+        $detail_uri = $p2pserver."/index.php?p=show_detail&inXML=true&id=".$id;
+        // parse XML
+        $data = modsXMLsenayan($detail_uri, 'uri');
+        // get record detail
+        $record = $data['records'][0];
+        // insert record to database
+        if ($record) {
+            // create dbop object
+            $sql_op = new simbio_dbop($dbs);
+            // escape all string value
+            foreach ($record as $field => $content) { if (is_string($content)) { $biblio[$field] = $dbs->escape_string(trim($content)); } }
+            // gmd
+            $biblio['gmd_id'] = utility::getID($dbs, 'mst_gmd', 'gmd_id', 'gmd_name', $record['gmd'], $gmd_cache);
+            unset($biblio['gmd']);
+            // publisher
+            $biblio['publisher_id'] = utility::getID($dbs, 'mst_publisher', 'publisher_id', 'publisher_name', $record['publisher'], $publ_cache);
+            unset($biblio['publisher']);
+            // publish place
+            $biblio['publish_place_id'] = utility::getID($dbs, 'mst_place', 'place_id', 'place_name', $record['publish_place'], $place_cache);
+            unset($biblio['publish_place']);
+            // language
+            $biblio['language_id'] = utility::getID($dbs, 'mst_language', 'language_id', 'language_name', $record['language']['name'], $lang_cache);
+            unset($biblio['language']);
+            // authors
+            $authors = array();
+            if (isset($record['authors'])) {
+                $authors = $record['authors'];
+                unset($biblio['authors']);
+            }
+            // subject
+            $subjects = array();
+            if (isset($record['subjects'])) {
+                $subjects = $record['subjects'];
+                unset($biblio['subjects']);
+            }
+
+            $biblio['input_date'] = $biblio['create_date'];
+            $biblio['last_update'] = $biblio['modified_date'];
+
+            // remove unneeded elements
+            unset($biblio['manuscript']);
+            unset($biblio['collection']);
+            unset($biblio['resource_type']);
+            unset($biblio['genre_authority']);
+            unset($biblio['genre']);
+            unset($biblio['issuance']);
+            unset($biblio['location']);
+            unset($biblio['id']);
+            unset($biblio['create_date']);
+            unset($biblio['modified_date']);
+            unset($biblio['origin']);
+
+            // fot debugging purpose
+            // var_dump($biblio);
+            // die();
+
+            // insert biblio data
+            $sql_op->insert('biblio', $biblio);
+            echo '<p>'.$sql_op->error.'</p><p>&nbsp;</p>';
+            $biblio_id = $sql_op->insert_id;
+            if ($biblio_id < 1) {
+                continue;
+            }
+            // insert authors
+            if ($authors) {
+                $author_id = 0;
+                foreach ($authors as $author) {
+                    $author_id = getAuthorID($author['name'], strtolower(substr($author['author_type'], 0, 1)), $author_cache);
+                    @$dbs->query("INSERT IGNORE INTO biblio_author (biblio_id, author_id, level) VALUES ($biblio_id, $author_id, ".$author['level'].")");
+                }
+            }
+            // insert subject/topical terms
+            if ($subjects) {
+                foreach ($subjects as $subject) {
+                    if ($subject['term_type'] == 'Temporal') {
+                        $subject_type = 'tm';
+                    } else if ($subject['term_type'] == 'Genre') {
+                        $subject_type = 'gr';
+                    } else if ($subject['term_type'] == 'Occupation') {
+                        $subject_type = 'oc';
+                    } else {
+                        $subject_type = strtolower(substr($subject['term_type'], 0, 1));
+                    }
+                    $subject_id = getSubjectID($subject['term'], $subject_type, $subject_cache);
+                    @$dbs->query("INSERT IGNORE INTO biblio_topic (biblio_id, topic_id, level) VALUES ($biblio_id, $subject_id, 1)");
+                }
+            }
+            if ($biblio_id) { $r++; }
         }
     }
-    exit;
+    utility::jsAlert($r.' records inserted to database.');
+    echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'\', \'get\');</script>';
+    exit();
 }
 
 /* RECORD OPERATION END */
@@ -58,6 +154,7 @@ if (isset($_POST['saveResults']) && isset($_POST['p2precord']) && isset($_POST['
 
 /* SEARCH OPERATION */
 if (isset($_GET['keywords']) && $can_read && isset($_GET['p2pserver']))  {
+    $max_fetch = 20;
     # get server information
     $serverid = (integer)$_GET['p2pserver'];
     $p2pserver = $sysconf['p2pserver'][$serverid]['uri'];
@@ -65,28 +162,29 @@ if (isset($_GET['keywords']) && $can_read && isset($_GET['p2pserver']))  {
     # get keywords
     $keywords = urlencode($_GET['keywords']);
     # $p2pquery = $p2pserver.'index.php?resultXML=true&keywords='.$_GET['keywords'];
-    $xml = @simplexml_load_file($p2pserver."/index.php?resultXML=true&search=Search&keywords=".$keywords);
+    $data = modsXMLsenayan($p2pserver."/index.php?resultXML=true&search=Search&keywords=".$keywords, 'uri');
 
     # debugging tools
     # echo $p2pserver."/index.php?resultXML=true&keywords=".$keywords;
     # echo '<br />';
-    if ($xml) {
-        echo '<div class="infoBox">Found '.$xml->modsResultNum.' records from <strong>'.$p2pserver_name.'</strong> Server</div>';
+    if ($data['records']) {
+        echo '<div class="infoBox">Found '.$data['result_num'].' records from <strong>'.$p2pserver_name.'</strong> Server</div>';
         echo '<form method="post" class="notAJAX" action="'.MODULES_WEB_ROOT_DIR.'bibliography/p2p.php" target="blindSubmit">';
         echo '<table align="center" id="dataList" cellpadding="5" cellspacing="0">';
         echo '<tr><td colspan="3"><input type="submit" name="saveResults" value="Save P2P Records to Database" /></td></tr>';
         $row = 1;
-        foreach($xml->mods as $record) {
+        foreach($data['records'] as $record) {
+            if ($row > $max_fetch) {
+                break;
+            }
             $row_class = ($row%2 == 0)?'alterCell':'alterCell2';
             echo '<tr>';
-            echo '<td width="2%" class="'.$row_class.'"><input type="checkbox" name="p2precord['.$record['ID'].']" value="'.$record['ID'].'" /></td>';
-            echo '<td width="98%" class="'.$row_class.'"><strong>';
-            echo $record->titleInfo->title;
-            if (isset($record->titleInfo->subTitle)) { echo ' '.trim($record->titleInfo->subTitle)."\n"; }
-            echo '</strong>';
+            echo '<td width="2%" class="'.$row_class.'"><input type="checkbox" name="p2precord[]" value="'.$record['id'].'" /></td>';
+            echo '<td width="98%" class="'.$row_class.'"><strong>'.$record['title'].'</strong>';
             echo '<div><i>';
+            // concat authors name
             $buffer_authors = '';
-            foreach ($record->name as $name) { $buffer_authors .= $name->namePart.' - '; }
+            foreach ($record['authors'] as $author) { $buffer_authors .= $author['name'].' - '; }
             echo substr_replace($buffer_authors, '', -3);
             echo '</i></div>';
             echo '</td>';

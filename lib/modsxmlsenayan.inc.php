@@ -57,22 +57,28 @@ function modsXMLsenayan($str_modsxml, $str_xml_type = 'string')
     // get result information from SLiMS Namespaced node
     $_slims = $xml->children('http://senayan.diknas.go.id');
     if ($_slims) {
-        $_records['result_num'] = (integer)$_slims->resultInfo->modsResultNum;
-        $_records['result_page'] = (integer)$_slims->resultInfo->modsResultPage;
-        $_records['result_showed'] = (integer)$_slims->resultInfo->modsResultShowed;
+        if (isset($_slims->resultInfo)) {
+            $_records['result_num'] = (integer)$_slims->resultInfo->modsResultNum;
+            $_records['result_page'] = (integer)$_slims->resultInfo->modsResultPage;
+            $_records['result_showed'] = (integer)$_slims->resultInfo->modsResultShowed;
+        } else {
+            $_records['result_num'] = (integer)$_slims->modsResultNum;
+            $_records['result_page'] = (integer)$_slims->modsResultPage;
+            $_records['result_showed'] = (integer)$_slims->modsResultShowed;
+        }
     }
 
     $record_num = 0;
     // start iterate records
     foreach($xml->mods as $record) {
         $data = array();
+
+        $data['id'] = (string)$record['ID'];
         # authors
-        $data['author_main'] = array();
-        $data['author_add'] = array();
+        $data['authors'] = array();
 
         # title
         $data['title'] = (string)$record->titleInfo->title;
-
         if (isset($record->titleInfo->subTitle)) {
             $data['title'] .= (string)$record->titleInfo->subTitle;
         }
@@ -82,10 +88,11 @@ function modsXMLsenayan($str_modsxml, $str_xml_type = 'string')
             foreach ($record->name as $value) {
                 $_author_type = $value['type'];
                 if ($value->role->roleTerm == 'Primary Author') {
-                    $data['author_main'][] = array('name' => (string)$value->namePart, 'authority_list' => (string)$value['authority'], 'author_type' => (string)$_author_type);
+                    $_level = 1;
                 } else {
-                    $data['author_add'][] = array('name' => (string)$value->namePart, 'authority_list' => (string)$value['authority'], 'author_type' => (string)$_author_type);
+                    $_level = 2;
                 }
+                $data['authors'][] = array('name' => (string)$value->namePart, 'authority_list' => (string)$value['authority'], 'level' => $_level, 'author_type' => (string)$_author_type);
             }
         }
 
@@ -155,7 +162,7 @@ function modsXMLsenayan($str_modsxml, $str_xml_type = 'string')
                 $_term_type = 'occupation';
                 $_term = (string)$_subj->occupation;
             }
-            $data['subject'][] = array('term' => $_term, 'term_type' => $_term_type, 'authority' => $_authority);
+            $data['subjects'][] = array('term' => $_term, 'term_type' => $_term_type, 'authority' => $_authority);
         }
 
         # mods->classification
@@ -171,12 +178,14 @@ function modsXMLsenayan($str_modsxml, $str_xml_type = 'string')
         $data['call_number'] = (string)$record->location->shelfLocator;
 
         # mods->recordInfo
-        $data['id'] = (string)$record->recordInfo->recordIdentifier;
-        $data['create_date'] = (string)$record->recordInfo->recordCreationDate;
-        $data['modified_date'] = (string)$record->recordInfo->recordChangeDate;
-        $data['origin'] = (string)$record->recordInfo->recordOrigin;
+        if (isset($record->recordInfo)) {
+            $data['id'] = (string)$record->recordInfo->recordIdentifier;
+            $data['create_date'] = (string)$record->recordInfo->recordCreationDate;
+            $data['modified_date'] = (string)$record->recordInfo->recordChangeDate;
+            $data['origin'] = (string)$record->recordInfo->recordOrigin;
+        }
 
-        $_records[] = $data;
+        $_records['records'][] = $data;
         $record_num++;
     }
     return $_records;
