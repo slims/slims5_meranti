@@ -30,6 +30,7 @@ function modsXMLsenayan($str_modsxml, $str_xml_type = 'string')
 {
     // initiate records array
     $_records = array();
+    libxml_use_internal_errors(true);
 
     // load XML
     if ($str_xml_type == 'file') {
@@ -42,122 +43,140 @@ function modsXMLsenayan($str_modsxml, $str_xml_type = 'string')
     } else {
         // load from string
         try {
-            $xml = new SimpleXMLElement($str_modsxml);
+            // check if type is URI
+            if ($str_xml_type == 'uri') {
+                $xml = new SimpleXMLElement($str_modsxml, LIBXML_NSCLEAN, true);
+            } else {
+                $xml = new SimpleXMLElement($str_modsxml, LIBXML_NSCLEAN);
+            }
         } catch (Exception $xmlerr) {
             die($xmlerr->getMessage());
         }
     }
 
+    // get result information from SLiMS Namespaced node
+    $_slims = $xml->children('http://senayan.diknas.go.id');
+    if ($_slims) {
+        $_records['result_num'] = (integer)$_slims->resultInfo->modsResultNum;
+        $_records['result_page'] = (integer)$_slims->resultInfo->modsResultPage;
+        $_records['result_showed'] = (integer)$_slims->resultInfo->modsResultShowed;
+    }
+
     $record_num = 0;
     // start iterate records
     foreach($xml->mods as $record) {
+        $data = array();
         # authors
         $data['author_main'] = array();
         $data['author_add'] = array();
-        $data['author_corp'] = array();
-        $data['author_conf'] = array();
 
         # title
-        $data['title'] = $record->titleInfo->title;
+        $data['title'] = (string)$record->titleInfo->title;
 
         if (isset($record->titleInfo->subTitle)) {
-            $data['title'] .= $record->titleInfo->subTitle;
+            $data['title'] .= (string)$record->titleInfo->subTitle;
         }
 
         # name/author (repeatable)
-        if (isset($record->name)) {
+        if (isset($record->name) AND $record->name) {
             foreach ($record->name as $value) {
+                $_author_type = $value['type'];
                 if ($value->role->roleTerm == 'Primary Author') {
-                    $data['author_main'] = array('name' => $value->namePart, 'authority_list' => $value['authority']);
+                    $data['author_main'][] = array('name' => (string)$value->namePart, 'authority_list' => (string)$value['authority'], 'author_type' => (string)$_author_type);
+                } else {
+                    $data['author_add'][] = array('name' => (string)$value->namePart, 'authority_list' => (string)$value['authority'], 'author_type' => (string)$_author_type);
                 }
             }
         }
 
         # mods->typeOfResource
-        $typeOfResource_pmanuscript = $record->typeOfResource['manuscript'];
-        $typeOfResource_pcollection = $record->typeOfResource['collection'];
-        $typeOfResource = $record->typeOfResource;
+        $data['manuscript'] = (boolean)$record->typeOfResource['manuscript'] == 'yes';
+        $data['collection'] = (boolean)$record->typeOfResource['collection'] == 'yes';
+        $data['resource_type'] = (string)$record->typeOfResource;
 
         # mods->genre
-        $genre_pauthority = $record->genre['authority'];
-        $genre = $record->genre;
+        $data['genre_authority'] = (string)$record->genre['authority'];
+        $data['genre'] = (string)$record->genre;
 
         # mods->originInfo
-        $originInfo->place->placeTerm_ptype = $record->originInfo->place->placeTerm['type'];
-        $originInfo->place->placeTerm = $record->originInfo->place->placeTerm;
-        $originInfo->publisher = $record->originInfo->publisher;
-        $originInfo->dateIssued = $record->originInfo->dateIssued;
-        $originInfo->issuance = $record->originInfo->issuance;
-        $originInfo->edition = $record->originInfo->edition;
+        $data['publish_place'] = isset($record->originInfo->place->placeTerm)?(string)$record->originInfo->place->placeTerm:'';
+        $data['publisher'] = (string)$record->originInfo->publisher;
+        $data['publish_year'] = (string)$record->originInfo->dateIssued;
+        $data['issuance'] = (string)$record->originInfo->issuance;
+        $data['edition'] = (string)$record->originInfo->edition;
 
         # mods->language
-        $language->languageTerm_ptype_pcode = $record->language->languageTerm['type']['type'];
-        $language->languageTerm_ptype_ptext = $record->language->languageTerm['type']['text'];
+        if (isset($record->language->languageTerm)) {
+            foreach ($record->language->languageTerm as $_langterm) {
+                if ($_langterm['type'] == 'code') {
+                    $data['language']['code'] = (string)$_langterm;
+                } else {
+                    $data['language']['name'] = (string)$_langterm;
+                }
+            }
+        }
 
         # mods->physicalDescription
-        $physicalDescription_form_pauthority = $record->physicalDescription->form['authority'];
-        $physicalDescription_form = $record->physicalDescription->form;
-        $physicalDescription_extent = $record->physicalDescription->extent;
+        $data['gmd'] = (string)$record->physicalDescription->form;
+        $data['collation'] = (string)$record->physicalDescription->extent;
 
         # mods->relatedItem
-        $relatedItem_ptype = $record->relatedItem['type'];
-        $relatedItem_titleInfo_title = $record->relatedItem->titleInfo->title;
+        if ($record->relatedItem['type'] == 'series') {
+            $data['series_title'] = (string)$record->relatedItem->titleInfo->title;
+        }
 
         # mods->note
-        $note = $record->note;
+        $data['notes'] = (string)$record->note;
 
         # mods->subject
-        foreach ($record->subject as $value) {
-            $subject_pauthority = $record->subject['authority'];
-            $subject_topic = $record->subject->topic;
-            $subject_geographic = $record->subject->geographic;
-            $subject_name = $record->subject->name;
-            $subject_temporal = $record->subject->temporal;
-            $subject_genre = $record->subject->genre;
-            $subject_occupation = $record->subject->occupation;
+        foreach ($record->subject as $_subj) {
+            $_authority = (string)$_subj['authority'];
+            if (isset($_subj->topic)) {
+                $_term_type = 'topical';
+                $_term = (string)$_subj->topic;
+            }
+            if (isset($_subj->geographic)) {
+                $_term_type = 'geographic';
+                $_term = (string)$_subj->geographic;
+            }
+            if (isset($_subj->name)) {
+                $_term_type = 'name';
+                $_term = (string)$_subj->name;
+            }
+            if (isset($_subj->temporal)) {
+                $_term_type = 'temporal';
+                $_term = (string)$_subj->temporal;
+            }
+            if (isset($_subj->genre)) {
+                $_term_type = 'genre';
+                $_term = (string)$_subj->genre;
+            }
+            if (isset($_subj->occupation)) {
+                $_term_type = 'occupation';
+                $_term = (string)$_subj->occupation;
+            }
+            $data['subject'][] = array('term' => $_term, 'term_type' => $_term_type, 'authority' => $_authority);
         }
 
         # mods->classification
-        $classification = $record->classification;
+        $data['classification'] = (string)$record->classification;
 
         # mods->identifier
-        $identifier_ptype = $record->identifier['type'];
-        $identifier = $record->identifier;
+        if ($record->identifier['type'] == 'isbn') {
+            $data['isbn_issn'] = (string)$record->identifier;
+        }
 
         # mods->location
-        $location_physicalLocation = $record->location->physicalLocation;
-        $location_shelfLocator = $record->location->shelfLocator;
+        $data['location'] = (string)$record->location->physicalLocation;
+        $data['call_number'] = (string)$record->location->shelfLocator;
 
         # mods->recordInfo
-        $recordInfo_recordIdentifier = $record->recordInfo->recordIdentifier;
-        $recordInfo_recordCreationDate_pencoding = $record->recordInfo->recordCreationDate['encoding'];
-        $recordInfo_recordCreationDate = $record->recordInfo->recordCreationDate;
-        $recordInfo_recordChangeDate_pencoding = $record->recordInfo->recordChangeDate['encoding'];
-        $recordInfo_recordChangeDate = $record->recordInfo->recordChangeDate;
-        $recordInfo_recordOrigin = $record->recordInfo->recordOrigin;
-
-        $data['gmd'] = (string)$gmd;
-        $data['edition'] = (string)$edition;
-        $data['isbn_issn'] = (string)$isbn_issn;
-        $data['publisher'] = (string)$publisher;
-        $data['publish_year'] = (integer)$publish_year;
-        $data['collation'] = (string)$physical;
-        $data['series_title'] = (string)$series;
-        $data['call_number'] = (string)$call_number;
-        $data['language'] = (string)$language;
-        $data['publish_place'] = (string)$publish_place;
-        $data['classification'] = (string)$classification;
-        $data['notes'] = (string)$notes;
-        $data['author_main'] = $main_author;
-        $data['authors_add'] = $authors;
-        $data['authors_corp'] = $corp_authors;
-        $data['authors_conf'] = $conf_authors;
-        $data['subjects'] = $topics;
-        $data['copies'] = $copies;
+        $data['id'] = (string)$record->recordInfo->recordIdentifier;
+        $data['create_date'] = (string)$record->recordInfo->recordCreationDate;
+        $data['modified_date'] = (string)$record->recordInfo->recordChangeDate;
+        $data['origin'] = (string)$record->recordInfo->recordOrigin;
 
         $_records[] = $data;
-
-        #var_dump($record);
         $record_num++;
     }
     return $_records;

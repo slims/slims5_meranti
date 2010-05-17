@@ -467,9 +467,11 @@ class biblio_list
         global $sysconf;
         // loop data
         $_buffer = '<modsCollection xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.loc.gov/mods/v3" xmlns:slims="http://senayan.diknas.go.id" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd">'."\n";
+        $_buffer .= '<slims:resultInfo>'."\n";
         $_buffer .= '<slims:modsResultNum>'.$this->num_rows.'</slims:modsResultNum>'."\n";
         $_buffer .= '<slims:modsResultPage>'.$this->current_page.'</slims:modsResultPage>'."\n";
         $_buffer .= '<slims:modsResultShowed>'.$this->num2show.'</slims:modsResultShowed>'."\n";
+        $_buffer .= '</slims:resultInfo>'."\n";
         while ($_biblio_d = $this->resultset->fetch_assoc()) {
             $_buffer .= '<mods ID="'.$_biblio_d['biblio_id'].'">'."\n";
             // parse title

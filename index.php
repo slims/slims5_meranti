@@ -56,7 +56,7 @@ if (isset($_GET['p'])) {
     // check if the file exists
     if (file_exists(LIB_DIR.'contents/'.$path.'.inc.php')) {
         include LIB_DIR.'contents/'.$path.'.inc.php';
-        if ($path != "show_detail") {
+        if ($path != 'show_detail') {
             $metadata = '<meta name="robots" content="noindex, follow">';
         }
     } else {

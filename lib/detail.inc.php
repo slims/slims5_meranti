@@ -217,6 +217,13 @@ class detail extends content_list
         // get global configuration vars array
         global $sysconf;
 
+        // convert to htmlentities
+        foreach ($this->record_detail as $_field => $_value) {
+            if (is_string($_value)) {
+                $this->record_detail[$_field] = htmlentities($_value);
+            }
+        }
+
         // set prefix and suffix
         $this->detail_prefix = '<modsCollection xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.loc.gov/mods/v3" xmlns:slims="http://senayan.diknas.go.id" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd">'."\n";
         $this->detail_suffix = '</modsCollection>';

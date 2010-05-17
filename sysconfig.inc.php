@@ -325,6 +325,10 @@ if (stripos($_SERVER['PHP_SELF'], '/admin') === false) {
     } else if (isset($_COOKIE['select_lang'])) {
         $sysconf['default_lang'] = trim(strip_tags($_COOKIE['select_lang']));
     }
+    // set back to en_US on XML
+    if (isset($_GET['resultXML']) OR isset($_GET['inXML'])) {
+        $sysconf['default_lang'] = 'en_US';
+    }
 }
 // Apply language settings
 require LANGUAGES_BASE_DIR.'localisation.php';
