@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `visitor_count` (
   KEY `member_id` (`member_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `senayandb`.`biblio_custom` (
+CREATE TABLE IF NOT EXISTS `biblio_custom` (
 `biblio_id` INT NOT NULL ,
 PRIMARY KEY ( `biblio_id` )
 ) ENGINE = MYISAM COMMENT = 'one to one relation with real biblio table';
