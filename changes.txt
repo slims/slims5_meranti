@@ -17,8 +17,10 @@ THANKS TO OUR USERS AND COMMUNITIES, YOU ARE DEVELOPERS TOO!
 SENAYAN 3 Stable 14 (Seulanga)
 ========================================================================
 - Fixed : Expiration date checking in membership management & circulation transaction.
+- Fixed : Print receipt in circulation transaction.
 - Added : Union Catalogue Server (more stable for production use)
 - Added : Custom fields for bibliographic data/Bibliography module (experimental)
+- Added : Custom fields for membership data/Membership module (experimental)
 - Added : New infrastructure for retrieval system for improving scalability & flexibility (experimental)
 
 

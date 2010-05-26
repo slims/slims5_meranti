@@ -73,10 +73,10 @@ table td {
     <div id="receiptInfo">
         <!-- LOAN -->
         <?php if (isset($_SESSION['receipt_record']['loan']) || isset($_SESSION['receipt_record']['extend'])) { ?>
-        <div class="receiptHeader">Type of Transaction: <?php echo __('Loan'); ?>/<?php echo __('Extended'); ?> (<?php echo mt_rand(000000000, 999999999); ?>)</div>
+        <div class="receiptHeader">Type of Transaction: <?php echo __('Loan'); ?> (<?php echo mt_rand(000000000, 999999999); ?>)</div>
         <hr size="1" noshade="noshade" />
         <table width="100%">
-        <tr><td>Code</td><td>Title</td><td>Loan</td><td>Due</td></tr>
+        <tr><td>Item Code</td><td>Title</td><td>Loan</td><td>Due</td></tr>
         <?php
         if (isset($_SESSION['receipt_record']['loan'])) {
             foreach ($_SESSION['receipt_record']['loan'] as $loan) {
@@ -104,7 +104,7 @@ table td {
                 if (strlen($ext['title']) > $receipt_titleLength) {
                     echo ' ...';
                 }
-                echo '. <strong>(Loan Extended)</strong></td>';
+                echo '.-- extended --</td>';
                 
                 echo '<td>'.$ext['loanDate'].'</td>';
                 echo '<td>'.$ext['dueDate'].'</td>';
@@ -114,25 +114,14 @@ table td {
         ?>
         </table>
         <?php } ?>
-        
-        <?php
-        # to remove extended items from return session list
-        if (isset($_SESSION['receipt_record']['return']) AND isset($_SESSION['receipt_record']['extend'])) {
-            foreach ($_SESSION['receipt_record']['extend'] as $key => $value) {
-                if ($_SESSION['receipt_record']['extend'][$key]['itemCode'] == $_SESSION['receipt_record']['return'][$key]['itemCode']) {
-                    unset($_SESSION['receipt_record']['return'][$key]);
-                }
-            }
-        }
-        ?>
 
         <!-- RETURN -->
-        <?php if (isset($_SESSION['receipt_record']['return']) AND (count($_SESSION['receipt_record']['return']) != 0)) { ?>
-        <div class="receiptHeader">Type of Transaction: <?php echo __('Return'); ?> (<?php echo mt_rand(000000000, 999999999); ?>)</div>
+        <?php if (isset($_SESSION['receipt_record']['return'])) { ?>
+        <div class="receiptHeader">Type of Transaction: <?php echo __('Return'); ?></div>
         <hr size="1" noshade="noshade" />
         <table width="100%">
         <tr><td>Code</td><td>Title</td><td>Return</td><td>Ovd.</td></tr>
-        <?php        
+        <?php
         foreach ($_SESSION['receipt_record']['return'] as $ret) {
             echo '<tr>';
             echo '<td>'.$ret['itemCode'].'</td>';
@@ -168,3 +157,44 @@ $content = ob_get_clean();
 // include the page template
 require SENAYAN_BASE_DIR.'/admin/'.$sysconf['admin_template']['dir'].'/notemplate_page_tpl.php';
 ?>
+
+<hr />
+DEBUGGING
+<hr />
+<?php 
+foreach ($_SESSION as $key => $value) {
+    echo $key.' --> '.$value.'<br />';
+}
+?>
+<hr />
+<?php 
+foreach ($_SESSION['receipt_record'] as $key => $value) {
+    echo $key.' --> '.$value.'<br />';
+}
+?>
+<hr />
+<?php 
+foreach ($_SESSION['receipt_record']['return'] as $key => $value) {
+    echo $key.' --> '.$value.'<br />';
+}
+?>
+<hr />
+<?php 
+foreach ($_SESSION['receipt_record']['extend'] as $key => $value) {
+    echo $key.' --> '.$value.'<br />';
+}
+?>
+<hr />
+<?php 
+foreach ($_SESSION['receipt_record']['return'][0] as $key => $value) {
+    echo $key.' --> '.$value.'<br />';
+}
+?>
+<hr />
+<?php 
+foreach ($_SESSION['receipt_record']['extend'][0] as $key => $value) {
+    echo $key.' --> '.$value.'<br />';
+}
+?>
+
+

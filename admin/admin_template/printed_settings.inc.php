@@ -70,4 +70,15 @@ $barcodegen_page_margin = 0.2;
 $barcodegen_items_margin = 0.05;
 $barcodegen_include_border = 0;
 
+/* Receipt Printing */
+$receipt_width = '15cm';
+$receipt_font = 'serif';
+$receipt_color = '#000';
+$receipt_margin = '5px';
+$receipt_padding = '5px';
+$receipt_border = '1px dashed #000';
+$receipt_fontSize = '7pt';
+$receipt_header_fontSize = '8pt';
+$receipt_titleLength = 100;
+
 ?>
