@@ -199,7 +199,7 @@ $sysconf['enable_xml_result'] = true;
 
 /* DATABASE BACKUP config */
 // specify the full path of mysqldump binary
-$sysconf['mysqldump'] = '/psenayan/mysql/bin/mysqldump.exe';
+$sysconf['mysqldump'] = '/usr/bin/mysqldump';
 // backup location (make sure it is accessible and rewritable to webserver!)
 $sysconf['temp_dir'] = '/tmp';
 $sysconf['backup_dir'] = FILES_UPLOAD_DIR.'backup'.DIRECTORY_SEPARATOR;
