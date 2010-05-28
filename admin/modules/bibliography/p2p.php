@@ -141,7 +141,11 @@ if (isset($_POST['saveResults']) && isset($_POST['p2precord']) && isset($_POST['
                     @$dbs->query("INSERT IGNORE INTO biblio_topic (biblio_id, topic_id, level) VALUES ($biblio_id, $subject_id, 1)");
                 }
             }
-            if ($biblio_id) { $r++; }
+            if ($biblio_id) {
+                // write to logs
+                utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'bibliography', $_SESSION['realname'].' insert bibliographic data from P2P service (server:'.$p2pserver.') with ('.$biblio['title'].') and biblio_id ('.$biblio_id.')');
+                $r++;
+            }
         }
     }
     utility::jsAlert($r.' records inserted to database.');
@@ -195,7 +199,7 @@ if (isset($_GET['keywords']) && $can_read && isset($_GET['p2pserver']))  {
         echo '<input type="hidden" name="p2pserver_save" value="'.$p2pserver.'" />';
         echo '</form>';
     } else {
-        echo '<div class="errorBox">'.__('Sorry, no result found from '.$p2pserver).'</div>';
+        echo '<div class="errorBox">'.sprintf(__('Sorry, no result found from %s OR maybe XML result and detail disabled.'), $p2pserver).'</div>';
     }
     exit();
 }

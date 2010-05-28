@@ -21,6 +21,8 @@
  *
  */
 
+define('MODS_XML_PARSE_ERROR', 199);
+
 /**
  * MODS XML parser for SENAYAN 3
  * @param   string  $str_modsxml
@@ -50,7 +52,8 @@ function modsXMLsenayan($str_modsxml, $str_xml_type = 'string')
                 $xml = new SimpleXMLElement($str_modsxml, LIBXML_NSCLEAN);
             }
         } catch (Exception $xmlerr) {
-            die($xmlerr->getMessage());
+            return MODS_XML_PARSE_ERROR;
+            // die($xmlerr->getMessage());
         }
     }
 
@@ -66,6 +69,10 @@ function modsXMLsenayan($str_modsxml, $str_xml_type = 'string')
             $_records['result_page'] = (integer)$_slims->modsResultPage;
             $_records['result_showed'] = (integer)$_slims->modsResultShowed;
         }
+    } else {
+        $_records['result_num'] = $xml->modsResultNum;
+        $_records['result_page'] = $xml->modsResultPage;
+        $_records['result_showed'] = $xml->modsResultShowed;
     }
 
     $record_num = 0;
