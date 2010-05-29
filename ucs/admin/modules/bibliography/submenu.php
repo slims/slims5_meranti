@@ -24,4 +24,5 @@ $menu[] = array('Header', __('Bibliographic'));
 $menu[] = array(__('Bibliographic List'), MODULES_WEB_ROOT_DIR.'bibliography/index.php', __('Show Existing Bibliographic Data'));
 $menu[] = array('Header', __('Tools'));
 $menu[] = array(__('Export Data'), MODULES_WEB_ROOT_DIR.'bibliography/export.php', __('Export Bibliographic Data To CSV format'));
+$menu[] = array(__('Nodes Data Removal'), MODULES_WEB_ROOT_DIR.'bibliography/nodes_removal.php', __('Mass Nodes Data Removal'));
 ?>

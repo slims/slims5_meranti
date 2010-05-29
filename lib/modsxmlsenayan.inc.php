@@ -25,7 +25,7 @@ define('MODS_XML_PARSE_ERROR', 199);
 
 /**
  * MODS XML parser for SENAYAN 3
- * @param   string  $str_modsxml
+ * @param   string  $str_modsxml: can be string, file or uri
  * @return  array
  **/
 function modsXMLsenayan($str_modsxml, $str_xml_type = 'string')
@@ -70,9 +70,9 @@ function modsXMLsenayan($str_modsxml, $str_xml_type = 'string')
             $_records['result_showed'] = (integer)$_slims->modsResultShowed;
         }
     } else {
-        $_records['result_num'] = $xml->modsResultNum;
-        $_records['result_page'] = $xml->modsResultPage;
-        $_records['result_showed'] = $xml->modsResultShowed;
+        $_records['result_num'] = isset($xml->modsResultNum)?$xml->modsResultNum:'';
+        $_records['result_page'] = isset($xml->modsResultPage)?$xml->modsResultPage:'';
+        $_records['result_showed'] = isset($xml->modsResultShowed)?$xml->modsResultShowed:'';
     }
 
     $record_num = 0;

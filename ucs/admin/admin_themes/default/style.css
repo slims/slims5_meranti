@@ -450,6 +450,10 @@ input:hover,textarea:hover,select:hover {
     background-image: url(media/modules/nodes.png);
 }
 
+.trashIcon {
+    background-image: url(media/trash-big.png);
+}
+
 .printIcon {
     background-image: url(media/printer.png);
 }
