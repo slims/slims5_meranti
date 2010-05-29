@@ -166,12 +166,19 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
             $updateRecordID = (integer)$_POST['updateRecordID'];
             // update data
             $update = $sql_op->update('biblio', $data, 'biblio_id='.$updateRecordID);
-            // update custom data
-            if (isset($custom_data)) {
-                $update2 = @$sql_op->update('biblio_custom', $custom_data, 'biblio_id='.$updateRecordID);
-            }
             // send an alert
             if ($update) {
+                // update custom data
+                if (isset($custom_data)) {
+                    // check if custom data for this record exists
+                    $check_custom_q = $dbs->query('SELECT biblio_id FROM biblio_custom WHERE biblio_id='.$updateRecordID);
+                    if ($check_custom_q->num_rows) {
+                        $update2 = @$sql_op->update('biblio_custom', $custom_data, 'biblio_id='.$updateRecordID);
+                    } else {
+                        $custom_data['biblio_id'] = $updateRecordID;
+                        @$sql_op->insert('biblio_custom', $custom_data);
+                    }
+                }
             	if ($sysconf['bibliography_update_notification']) {
                     utility::jsAlert(__('Bibliography Data Successfully Updated'));
 			    }
