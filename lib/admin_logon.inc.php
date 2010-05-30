@@ -50,14 +50,15 @@ class admin_logon
      */
     public function adminValid($obj_db)
     {
-        $_user_q = $obj_db->query("SELECT
+        $_sql_login = sprintf("SELECT
             u.user_id,
             u.username,
             u.realname,
             u.groups
             FROM user AS u
-            WHERE u.username='".$obj_db->escape_string(trim($this->username))."'
-                AND u.passwd=MD5('".$obj_db->escape_string(trim($this->password))."')");
+            WHERE u.username='%s'
+                AND u.passwd=MD5('%s')", $obj_db->escape_string(trim($this->username)), $obj_db->escape_string(trim($this->password)));
+        $_user_q = $obj_db->query($_sql_login);
 
         // error check
         if ($obj_db->error) {
