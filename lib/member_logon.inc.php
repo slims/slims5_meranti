@@ -47,12 +47,13 @@ class member_logon
      */
     public function valid($obj_db)
     {
-        $_member_q = $obj_db->query("SELECT m.member_id, m.member_name, m.inst_name,
+        $_sql_member_login = sprintf("SELECT m.member_id, m.member_name, m.inst_name,
             m.member_email, m.expire_date, m.register_date, m.is_pending,
             m.member_type_id, mt.member_type_name
             FROM member AS m LEFT JOIN mst_member_type AS mt ON m.member_type_id=mt.member_type_id
-            WHERE m.member_id='".$obj_db->escape_string(trim($this->username))."'
-                AND m.mpasswd=MD5('".$obj_db->escape_string(trim($this->password))."')");
+            WHERE m.member_id='%s'
+                AND m.mpasswd=MD5('%s')", $obj_db->escape_string(trim($this->username)), $obj_db->escape_string(trim($this->password)));
+        $_member_q = $obj_db->query($_sql_member_login);
 
         // error check
         if ($obj_db->error) {
