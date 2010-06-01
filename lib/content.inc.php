@@ -40,7 +40,8 @@ class content
             }
         }
         // query content
-        $_content_q = $obj_db->query('SELECT * FROM content WHERE content_path=\''.($obj_db->escape_string($_path)).'\'');
+        $_sql_content = sprintf('SELECT * FROM content WHERE content_path=\'%s\'', $obj_db->escape_string($_path));
+        $_content_q = $obj_db->query($_sql_content);
         // get content data
         $_content_d = $_content_q->fetch_assoc();
         if (!$_content_d['content_title'] OR !$_content_d['content_path']) {
