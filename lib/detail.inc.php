@@ -52,13 +52,13 @@ class detail extends content_list
 
         $this->obj_db = $obj_db;
         $this->detail_id = $int_detail_id;
-        $_sql = 'SELECT b.*, l.language_name, p.publisher_name, pl.place_name AS \'publish_place\', gmd.gmd_name, fr.frequency FROM biblio AS b
+        $_sql = sprintf('SELECT b.*, l.language_name, p.publisher_name, pl.place_name AS \'publish_place\', gmd.gmd_name, fr.frequency FROM biblio AS b
             LEFT JOIN mst_gmd AS gmd ON b.gmd_id=gmd.gmd_id
             LEFT JOIN mst_language AS l ON b.language_id=l.language_id
             LEFT JOIN mst_publisher AS p ON b.publisher_id=p.publisher_id
             LEFT JOIN mst_place AS pl ON b.publish_place_id=pl.place_id
             LEFT JOIN mst_frequency AS fr ON b.frequency_id=fr.frequency_id
-            WHERE biblio_id='.$int_detail_id;
+            WHERE biblio_id=%d', $int_detail_id);
         // for debugging purpose only
         // die($_sql);
         // query the data to database
