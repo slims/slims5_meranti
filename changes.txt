@@ -22,7 +22,6 @@ SENAYAN 3 Stable 14 (Seulanga)
 - Added : Peer-to-peer cataloging service
 - Added : Custom fields for bibliographic data/Bibliography module (experimental)
 - Added : Custom fields for membership data/Membership module (experimental)
-- Added : New infrastructure for retrieval system for improving scalability & flexibility (experimental)
 
 
 SENAYAN 3 Stable 13
