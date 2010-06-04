@@ -13,7 +13,8 @@ function getAuthorID($str_author_name, $str_author_type, &$arr_cache = false)
     }
 
     $str_value = $dbs->escape_string($str_value);
-    $id_q = $dbs->query('SELECT author_id FROM mst_author WHERE author_name=\''.$str_value.'\'');
+    $_sql_id_q = sprintf('SELECT author_id FROM mst_author WHERE author_name=\'%s\'', $str_value);
+    $id_q = $dbs->query($_sql_id_q);
     if ($id_q->num_rows > 0) {
         $id_d = $id_q->fetch_row();
         unset($id_q);
@@ -23,8 +24,9 @@ function getAuthorID($str_author_name, $str_author_type, &$arr_cache = false)
     } else {
         $_curr_date = date('Y-m-d');
         // if not found then we insert it as new value
-        $dbs->query('INSERT IGNORE INTO mst_author (author_name, authority_type, input_date, last_update)'
-            .' VALUES (\''.$str_value.'\', \''.$str_author_type.'\', \''.$_curr_date.'\', \''.$_curr_date.'\')');
+        $_sql_insert_author = sprintf('INSERT IGNORE INTO mst_author (author_name, authority_type, input_date, last_update)'
+            .' VALUES (\'%s\', \'%s\', \'%s\', \'%s\')', $str_value, $str_author_type, $_curr_date, $_curr_date);
+        $dbs->query($_sql_insert_author);
         if (!$dbs->error) {
             // cache
             if ($arr_cache) { $arr_cache[$str_value] = $dbs->insert_id; }
@@ -48,7 +50,8 @@ function getSubjectID($str_subject, $str_subject_type, &$arr_cache = false)
     }
 
     $str_value = $dbs->escape_string($str_value);
-    $id_q = $dbs->query('SELECT topic_id FROM mst_topic WHERE topic=\''.$str_value.'\'');
+    $_sql_id_q = sprintf('SELECT topic_id FROM mst_topic WHERE topic=\'%s\'', $str_value);
+    $id_q = $dbs->query($_sql_id_q);
     if ($id_q->num_rows > 0) {
         $id_d = $id_q->fetch_row();
         unset($id_q);
@@ -58,8 +61,9 @@ function getSubjectID($str_subject, $str_subject_type, &$arr_cache = false)
     } else {
         $_curr_date = date('Y-m-d');
         // if not found then we insert it as new value
-        $dbs->query('INSERT IGNORE INTO mst_topic (topic, topic_type, input_date, last_update)'
-            .' VALUES (\''.$str_value.'\', \''.$str_subject_type.'\', \''.$_curr_date.'\', \''.$_curr_date.'\')');
+        $_sql_insert_topic = sprintf('INSERT IGNORE INTO mst_topic (topic, topic_type, input_date, last_update)'
+            .' VALUES (\'%s\', \'%s\', \'%s\', \'%s\')', $str_value, $str_subject_type, $_curr_date, $_curr_date);
+        $dbs->query($_sql_insert_topic);
         if (!$dbs->error) {
             // cache
             if ($arr_cache) { $arr_cache[$str_value] = $dbs->insert_id; }

@@ -133,16 +133,18 @@ if (!$is_member_login) {
     {
         global $dbs;
         // current password checking
-        $_pass_check = $dbs->query('SELECT member_id FROM member
-            WHERE mpasswd=MD5(\''.$dbs->escape_string(trim($str_curr_pass)).'\') AND
-            member_id=\''.$dbs->escape_string(trim($_SESSION['mid'])).'\'');
+        $_sql_pass_check = sprintf('SELECT member_id FROM member
+            WHERE mpasswd=MD5(\'%s\') AND member_id=\'%s\'', 
+            $dbs->escape_string(trim($str_curr_pass)), $dbs->escape_string(trim($_SESSION['mid'])));
+        $_pass_check = $dbs->query($_sql_pass_check);
         if ($_pass_check->num_rows == 1) {
             $str_new_pass = trim($str_new_pass);
             $str_conf_new_pass = trim($str_conf_new_pass);
             // password confirmation check
             if ($str_new_pass && $str_conf_new_pass && ($str_new_pass === $str_conf_new_pass)) {
-                @$dbs->query('UPDATE member SET mpasswd=MD5(\''.$dbs->escape_string($str_conf_new_pass).'\')
-                    WHERE member_id=\''.$dbs->escape_string(trim($_SESSION['mid'])).'\'');
+                $_sql_update_mpasswd = sprintf('UPDATE member SET mpasswd=MD5(\'%s\')
+                    WHERE member_id=\'%s\'', $dbs->escape_string($str_conf_new_pass), $dbs->escape_string(trim($_SESSION['mid'])));
+                @$dbs->query($_sql_update_mpasswd);
                 if (!$dbs->error) {
                     return true;
                 } else {
@@ -241,7 +243,7 @@ if (!$is_member_login) {
             'l.loan_date AS \''.__('Loan Date').'\'',
             'l.due_date AS \''.__('Due Date').'\'');
         $_loan_list->setSQLorder('l.loan_date DESC');
-        $_criteria = 'm.member_id=\''.$_SESSION['mid'].'\' AND l.is_lent=1 AND is_return=0 ';
+        $_criteria = sprintf('m.member_id=\'%s\' AND l.is_lent=1 AND is_return=0 ', $_SESSION['mid']);
         $_loan_list->setSQLCriteria($_criteria);
 
         // modify column value

@@ -171,7 +171,8 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 // update custom data
                 if (isset($custom_data)) {
                     // check if custom data for this record exists
-                    $check_custom_q = $dbs->query('SELECT biblio_id FROM biblio_custom WHERE biblio_id='.$updateRecordID);
+                    $_sql_check_custom_q = sprintf('SELECT biblio_id FROM biblio_custom WHERE biblio_id=%d', $updateRecordID);
+                    $check_custom_q = $dbs->query($_sql_check_custom_q);
                     if ($check_custom_q->num_rows) {
                         $update2 = @$sql_op->update('biblio_custom', $custom_data, 'biblio_id='.$updateRecordID);
                     } else {
@@ -265,9 +266,10 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
     foreach ($_POST['itemID'] as $itemID) {
         $itemID = (integer)$itemID;
         // check if this biblio data still have an item
-        $biblio_item_q = $dbs->query('SELECT b.title, COUNT(item_id) FROM biblio AS b
+        $_sql_biblio_item_q = sprintf('SELECT b.title, COUNT(item_id) FROM biblio AS b
             LEFT JOIN item AS i ON b.biblio_id=i.biblio_id
-            WHERE b.biblio_id='.$itemID.' GROUP BY title');
+            WHERE b.biblio_id=%d GROUP BY title', $itemID);
+        $biblio_item_q = $dbs->query($_sql_biblio_item_q);        
         $biblio_item_d = $biblio_item_q->fetch_row();
         if ($biblio_item_d[1] < 1) {
             if (!$sql_op->delete('biblio', "biblio_id=$itemID")) {
@@ -347,10 +349,11 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     /* RECORD FORM */
     // try query
     $itemID = (integer)isset($_POST['itemID'])?$_POST['itemID']:0;
-    $rec_q = $dbs->query('SELECT b.*, p.publisher_name, pl.place_name FROM biblio AS b
+    $_sql_rec_q = sprintf('SELECT b.*, p.publisher_name, pl.place_name FROM biblio AS b
         LEFT JOIN mst_publisher AS p ON b.publisher_id=p.publisher_id
         LEFT JOIN mst_place AS pl ON b.publish_place_id=pl.place_id
-        WHERE biblio_id='.$itemID);
+        WHERE biblio_id=%d', $itemID);
+    $rec_q = $dbs->query($_sql_rec_q);
     $rec_d = $rec_q->fetch_assoc();
 
     // create new instance
@@ -382,7 +385,8 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         $visibility = 'makeHidden';
 
         // custom field data query
-        $rec_cust_q = $dbs->query('SELECT * FROM biblio_custom WHERE biblio_id='.$itemID);
+        $_sql_rec_cust_q = sprintf('SELECT * FROM biblio_custom WHERE biblio_id=%d', $itemID);
+        $rec_cust_q = $dbs->query($_sql_rec_cust_q);
         $rec_cust_d = $rec_cust_q->fetch_assoc();
     }
 
@@ -577,10 +581,15 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     function showTitleAuthors($obj_db, $array_data)
     {
         // biblio author detail
-        $_biblio_q = $obj_db->query('SELECT b.title, a.author_name, opac_hide, promoted FROM biblio AS b
+        #$_biblio_q = $obj_db->query('SELECT b.title, a.author_name, opac_hide, promoted FROM biblio AS b
+        #    LEFT JOIN biblio_author AS ba ON b.biblio_id=ba.biblio_id
+        #    LEFT JOIN mst_author AS a ON ba.author_id=a.author_id
+        #    WHERE b.biblio_id='.$array_data[0]);
+        $_sql_biblio_q = sprintf('SELECT b.title, a.author_name, opac_hide, promoted FROM biblio AS b
             LEFT JOIN biblio_author AS ba ON b.biblio_id=ba.biblio_id
             LEFT JOIN mst_author AS a ON ba.author_id=a.author_id
-            WHERE b.biblio_id='.$array_data[0]);
+            WHERE b.biblio_id=%d', $array_data[0]);
+        $_biblio_q = $obj_db->query($_sql_biblio_q);
         $_authors = '';
         while ($_biblio_d = $_biblio_q->fetch_row()) {
             $_title = $_biblio_d[0];
