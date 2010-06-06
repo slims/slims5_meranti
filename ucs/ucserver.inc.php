@@ -43,7 +43,7 @@ $sysconf['node']['slims-node'] = array(
     'id' => 'slims-node', // node id (must be UNIQUE, lowercase and not containing any spaces!)
     'name' => 'SLiMS Library', // node name
     'password' => '2325f677e21c1613909c953eb03c57352259cc5d', // this hash created with SHA1 algoritm
-    'baseurl' => 'http://localhost/senayan3-stable14', // node base URL
+    'baseurl' => 'http://localhost/senayan3-stable15', // node base URL
     'ip' => '' // IP address of node
     );
 
