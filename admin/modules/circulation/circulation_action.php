@@ -54,7 +54,7 @@ if (isset($_POST['finish'])) {
             echo 'alert(\''.__('Transaction finished').'\');';
         }
         // print receipt only if enabled and $_SESSION['receipt_record'] not empty
-        if ($sysconf['circulation_receipt'] && $_SESSION['receipt_record']) {
+        if ($sysconf['circulation_receipt'] && isset($_SESSION['receipt_record'])) {
             // open receipt windows
             echo 'parent.openWin(\''.MODULES_WEB_ROOT_DIR.'circulation/pop_loan_receipt.php\', \'popReceipt\', 350, 500, true);';
         }

@@ -402,11 +402,16 @@ class circulation extends member
     {
         // receipt
         if (isset($_SESSION['receipt_record'])) {
-            $_SESSION['receipt_record']['memberID'] = $this->member_id;
-            $_SESSION['receipt_record']['memberName'] = $this->member_name;
-            $_SESSION['receipt_record']['memberType'] = $this->member_type_name;
-            $_SESSION['receipt_record']['date'] = date('Y-m-d H:i:s');
+            if ($_SESSION['receipt_record']['return'] || $_SESSION['receipt_record']['extend'] || $_SESSION['temp_loan']) {
+                $_SESSION['receipt_record']['memberID'] = $this->member_id;
+                $_SESSION['receipt_record']['memberName'] = $this->member_name;
+                $_SESSION['receipt_record']['memberType'] = $this->member_type_name;
+                $_SESSION['receipt_record']['date'] = date('Y-m-d H:i:s');
+            } else {
+                unset($_SESSION['receipt_record']);
+            }
         }
+        // count number of loans
         if (count($_SESSION['temp_loan']) > 0) {
             $error_num = 0;
             foreach ($_SESSION['temp_loan'] as $loan_item) {

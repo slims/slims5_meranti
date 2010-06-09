@@ -3,7 +3,7 @@
  * module class
  * Application modules related class
  *
- * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com)
+ * Copyright (C) 2010 Arie Nugraha (dicarve@yahoo.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,8 +26,8 @@ class module extends simbio
     private $modules_dir = 'modules';
     private $module_table = 'mst_module';
     public $module_list = array();
-    public $appended_first = '<li><a class="menu" href="index.php">Home</a></li><li><a class="menu" href="../index.php" title="View OPAC in New Window" target="_blank">OPAC</a></li>';
-    public $appended_last = '<li><a class="menu" href="logout.php">LOGOUT</a></li>';
+    public $appended_first = '<li><a class="menu home" href="index.php">Home</a></li><li><a class="menu opac" href="../index.php" title="View OPAC in New Window" target="_blank">OPAC</a></li>';
+    public $appended_last = '<li><a class="menu logout" href="logout.php">LOGOUT</a></li>';
 
 
     /**
