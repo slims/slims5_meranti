@@ -135,38 +135,14 @@ $sysconf['ajaxsec_ip_allowed'] = '';
 /* Custom base URL */
 $sysconf['baseurl'] = '';
 
-/* DATABASE CONNECTION config */
-// database constant
-// change below setting according to your database configuration
-define('DB_HOST', 'localhost');
-define('DB_PORT', '3306');
-define('DB_NAME', 'senayandb');
-define('DB_USERNAME', 'senayanuser');
-define('DB_PASSWORD', 'password_senayanuser');
-// we prefer to use mysqli extensions if its available
-if (extension_loaded('mysqli')) {
-    /* MYSQLI */
-    $dbs = @new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME, DB_PORT);
-    if (mysqli_connect_error()) {
-        die('<div style="border: 1px dotted #FF0000; color: #FF0000; padding: 5px;">Error Connecting to Database. Please check your configuration</div>');
-    }
-} else {
-    /* MYSQL */
-    // require the simbio mysql class
-    include SIMBIO_BASE_DIR.'simbio_DB/mysql/simbio_mysql.inc.php';
-    // make a new connection object that will be used by all applications
-    $dbs = @new simbio_mysql(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME, DB_PORT);
-}
-
 /* session login timeout in second */
 $sysconf['session_timeout'] = 7200;
 
 /* default application language */
 $sysconf['default_lang'] = 'en_US';
 
-/* Force UTF-8 for MySQL connection and HTTP header */
+/* HTTP header */
 header('Content-type: text/html; charset=UTF-8');
-$dbs->query('SET NAMES \'utf8\'');
 
 /* GUI Template config */
 $sysconf['template']['dir'] = 'template';
@@ -308,9 +284,6 @@ $sysconf['https_port'] = 443;
 $sysconf['date_format'] = 'Y-m-d'; /* Produce 2009-12-31 */
 // $sysconf['date_format'] = 'd-M-Y'; /* Produce 31-Dec-2009 */
 
-// load global settings from database. Uncomment below lines if you dont want to load it
-utility::loadSettings($dbs);
-
 // check for user language selection if we are not in admin areas
 if (stripos($_SERVER['PHP_SELF'], '/admin') === false) {
     if (isset($_GET['select_lang'])) {
@@ -404,8 +377,37 @@ $sysconf['p2pserver'][1] = array('uri' => 'http://127.0.0.1/senayan3-stable15', 
 if ($is_auto = @ini_get('session.auto_start')) { define('SESSION_AUTO_STARTED', $is_auto); }
 if (defined('SESSION_AUTO_STARTED')) { @session_destroy(); }
 
-if (file_exists(SENAYAN_BASE_DIR."sysconfig.local.inc.php")) {
-    include SENAYAN_BASE_DIR."sysconfig.local.inc.php";
+// check for local sysconfig file
+if (file_exists(SENAYAN_BASE_DIR.'sysconfig.local.inc.php')) {
+    include SENAYAN_BASE_DIR.'sysconfig.local.inc.php';
 }
 
+/* DATABASE RELATED */
+define('DB_HOST', 'localhost');
+define('DB_PORT', '3306');
+// check if database connection constants are undefined
+if (!defined('DB_NAME')) { define('DB_NAME', 'senayandb'); }
+if (!defined('DB_USERNAME')) { define('DB_USERNAME', 'senayanuser'); }
+if (!defined('DB_PASSWORD')) { define('DB_PASSWORD', 'password_senayanuser'); }
+// database connection
+// we prefer to use mysqli extensions if its available
+if (extension_loaded('mysqli')) {
+    /* MYSQLI */
+    $dbs = @new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME, DB_PORT);
+    if (mysqli_connect_error()) {
+        die('<div style="border: 1px dotted #FF0000; color: #FF0000; padding: 5px;">Error Connecting to Database. Please check your configuration</div>');
+    }
+} else {
+    /* MYSQL */
+    // require the simbio mysql class
+    include SIMBIO_BASE_DIR.'simbio_DB/mysql/simbio_mysql.inc.php';
+    // make a new connection object that will be used by all applications
+    $dbs = @new simbio_mysql(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME, DB_PORT);
+}
+
+/* Force UTF-8 for MySQL connection */
+$dbs->query('SET NAMES \'utf8\'');
+
+// load global settings from database. Uncomment below lines if you dont want to load it
+utility::loadSettings($dbs);
 ?>
