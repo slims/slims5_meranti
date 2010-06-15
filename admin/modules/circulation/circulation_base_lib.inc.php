@@ -144,7 +144,8 @@ class circulation extends member
         if ($this->is_pending) {
             return LOAN_NOT_PERMITTED_PENDING;
         }
-        $_q = $this->obj_db->query("SELECT b.title, i.coll_type_id, b.gmd_id, ist.no_loan FROM biblio AS b
+        $_q = $this->obj_db->query("SELECT b.title, i.coll_type_id, 
+            b.gmd_id, ist.no_loan FROM biblio AS b
             LEFT JOIN item AS i ON b.biblio_id=i.biblio_id
             LEFT JOIN mst_item_status AS ist ON i.item_status_id=ist.item_status_id
             WHERE i.item_code='$str_item_code'");
