@@ -14,6 +14,13 @@ Jhon Urrego Felipe Mejia (ingenierofelipeurrego@gmail.com)
 
 THANKS TO OUR USERS AND COMMUNITIES, YOU ARE DEVELOPERS TOO!
 
+
+SENAYAN 3 Stable 15 (Matoa)
+========================================================================
+- Fixed: Loan receipt always pop even when there are no circulation transactions
+- Added: User no need to modify sysconfig.inc.php to make local customization. It is also not recommended. Use sysconfig.local.inc.php instead.
+
+
 SENAYAN 3 Stable 14 (Seulanga)
 ========================================================================
 - Fixed : Expiration date checking in membership management & circulation transaction.
