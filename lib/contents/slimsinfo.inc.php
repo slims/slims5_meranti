@@ -23,16 +23,16 @@
  *
  */
 
-$version = "0f4778cafd9442fabb94d070c3598063";
+$version = "c42bab9fd2925ceb03f7dd9cfb3b6342027c877b";
 
 ?>
 <div style="padding-left: 10px;">
-<h2>SLiMS Version 3 Stable 12</h2>
+<h2>SLiMS Version 3 Stable 15 (Matoa)</h2>
 <p>&nbsp;</p>
 <p>
 SLiMS (Senayan Library Management System)<br />
-Copyright (c) 2007-2009 Senayan Developer Community<br />
-Simbio Engine v2.0, Copyright (c) 2007-2009 Arie Nugraha
+Copyright (c) 2007-2010 Senayan Developer Community<br />
+Simbio Engine v2.0, Copyright (c) 2007-2010 Arie Nugraha
 </p>
 
 <p>
