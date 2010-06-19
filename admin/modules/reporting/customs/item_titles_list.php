@@ -73,6 +73,19 @@ if (!$reportView) {
             </div>
         </div>
         <div class="divRow">
+            <div class="divRowLabel"><?php echo __('GMD'); ?></div>
+            <div class="divRowContent">
+            <?php
+            $gmd_q = $dbs->query('SELECT gmd_id, gmd_name FROM mst_gmd');
+            $gmd_options[] = array('0', __('ALL'));
+            while ($gmd_d = $gmd_q->fetch_row()) {
+                $gmd_options[] = array($gmd_d[0], $gmd_d[1]);
+            }
+            echo simbio_form_element::selectList('gmd[]', $gmd_options, '','multiple="multiple" size="5"');
+            ?> <?php echo __('Press Ctrl and click to select multiple entries'); ?>
+            </div>
+        </div>
+        <div class="divRow">
             <div class="divRowLabel"><?php echo __('Collection Type'); ?></div>
             <div class="divRowContent">
             <?php
@@ -134,7 +147,7 @@ if (!$reportView) {
 } else {
     ob_start();
     // table spec
-    $table_spec = 'item AS i
+    $table_spec = 'item AS i 
         LEFT JOIN biblio AS b ON i.biblio_id=b.biblio_id
         LEFT JOIN mst_coll_type AS ct ON i.coll_type_id=ct.coll_type_id
         LEFT JOIN mst_item_status AS s ON i.item_status_id=s.item_status_id';
@@ -183,6 +196,19 @@ if (!$reportView) {
             $criteria .= " AND i.coll_type_id IN($coll_type_IDs)";
         }
     }
+    if (isset($_GET['gmd']) AND !empty($_GET['gmd'])) {
+        $gmd_IDs = '';
+        foreach ($_GET['gmd'] as $id) {
+            $id = (integer)$id;
+            if ($id) {
+                $gmd_IDs .= "$id,";
+            }
+        }
+        $gmd_IDs = substr_replace($gmd_IDs, '', -1);
+        if ($gmd_IDs) {
+            $criteria .= " AND b.gmd_id IN($gmd_IDs)";
+        }
+    }
     if (isset($_GET['status']) AND $_GET['status']!='0') {
         $status = $dbs->escape_string(trim($_GET['status']));
         $criteria .= ' AND i.item_status_id=\''.$status.'\'';
@@ -199,12 +225,15 @@ if (!$reportView) {
         $recsEachPage = (integer)$_GET['recsEachPage'];
         $num_recs_show = ($recsEachPage >= 20 && $recsEachPage <= 200)?$recsEachPage:$num_recs_show;
     }
-
+    
     $reportgrid->setSQLCriteria($criteria);
 
     // callback function to show title and authors
     function showTitleAuthors($obj_db, $array_data)
     {
+        if (!$array_data[5]) {
+            return;
+        }
         // author name query
         $_biblio_q = $obj_db->query('SELECT b.title, a.author_name FROM biblio AS b
             LEFT JOIN biblio_author AS ba ON b.biblio_id=ba.biblio_id

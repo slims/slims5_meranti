@@ -86,6 +86,20 @@ if (!$reportView) {
             </div>
         </div>
         <div class="divRow">
+            <div class="divRowLabel"><?php echo __('Collection Type'); ?></div>
+            <div class="divRowContent">
+            <?php
+            $coll_type_q = $dbs->query('SELECT coll_type_id, coll_type_name FROM mst_coll_type');
+            $coll_type_options = array();
+            $coll_type_options[] = array('0', __('ALL'));
+            while ($coll_type_d = $coll_type_q->fetch_row()) {
+                $coll_type_options[] = array($coll_type_d[0], $coll_type_d[1]);
+            }
+            echo simbio_form_element::selectList('collType[]', $coll_type_options, '', 'multiple="multiple" size="5"');
+            ?>
+            </div>
+        </div>
+        <div class="divRow">
             <div class="divRowLabel"><?php echo __('Language'); ?></div>
             <div class="divRowContent">
             <?php
@@ -178,6 +192,19 @@ if (!$reportView) {
         $gmd_IDs = substr_replace($gmd_IDs, '', -1);
         if ($gmd_IDs) {
             $outer_criteria .= " AND b.gmd_id IN($gmd_IDs)";
+        }
+    }
+    if (isset($_GET['collType'])) {
+        $coll_type_IDs = '';
+        foreach ($_GET['collType'] as $id) {
+            $id = (integer)$id;
+            if ($id) {
+                $coll_type_IDs .= "$id,";
+            }
+        }
+        $coll_type_IDs = substr_replace($coll_type_IDs, '', -1);
+        if ($coll_type_IDs) {
+            $outer_criteria .= " AND i.coll_type_id IN($coll_type_IDs)";
         }
     }
     if (isset($_GET['language']) AND !empty($_GET['language'])) {
