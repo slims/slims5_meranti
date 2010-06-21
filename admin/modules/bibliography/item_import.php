@@ -87,7 +87,7 @@ if (isset($_POST['doImport'])) {
         $stat_id_cache = array();
         $spl_id_cache = array();
         // read file line by line
-        $inserted_row = 0;
+        $updated_row = 0;
         $file = fopen($uploaded_file, 'r');
         while (!feof($file)) {
             // record count
@@ -111,28 +111,28 @@ if (isset($_POST['doImport'])) {
                     }
                     // strip leading field encloser if any
                     $item_code = '\''.$field[0].'\'';
-                    $call_number = '\''.$field[1].'\'';
-                    $coll_type = utility::getID($dbs, 'mst_coll_type', 'coll_type_id', 'coll_type_name', $field[2], $ct_id_cache);
-                    $inventory_code = '\''.$field[3].'\'';
-                    $received_date = '\''.$field[4].'\'';
-                    $supplier = utility::getID($dbs, 'mst_supplier', 'supplier_id', 'supplier_name', $field[5], $spl_id_cache);
-                    $order_no = '\''.$field[6].'\'';
+                    $call_number = $field[1]?'\''.$field[1].'\'':'NULL';
+                    $coll_type = (integer)utility::getID($dbs, 'mst_coll_type', 'coll_type_id', 'coll_type_name', $field[2], $ct_id_cache);
+                    $inventory_code = $field[3]?'\''.$field[3].'\'':'NULL';
+                    $received_date = $field[4]?'\''.$field[4].'\'':'NULL';
+                    $supplier = (integer)utility::getID($dbs, 'mst_supplier', 'supplier_id', 'supplier_name', $field[5], $spl_id_cache);
+                    $order_no = $field[6]?'\''.$field[6].'\'':'NULL';
                     $location = utility::getID($dbs, 'mst_location', 'location_id', 'location_name', $field[7], $loc_id_cache);
-                    $location = '\''.$location.'\'';
-                    $order_date = '\''.$field[8].'\'';
+                    $location = $location?'\''.$location.'\'':'NULL';
+                    $order_date = $field[8]?'\''.$field[8].'\'':'NULL';
                     $item_status = utility::getID($dbs, 'mst_item_status', 'item_status_id', 'item_status_name', $field[9], $stat_id_cache);
-                    $item_status = '\''.$item_status.'\'';
-                    $site = '\''.$field[10].'\'';
-                    $source = '\''.$field[11].'\'';
-                    $invoice = '\''.$field[12].'\'';
-                    $price = '\''.$field[13].'\'';
-                    $price_currency = '\''.$field[14].'\'';
-                    $invoice_date = '\''.$field[15].'\'';
+                    $item_status = $item_status?'\''.$item_status.'\'':'NULL';
+                    $site = $field[10]?'\''.$field[10].'\'':'NULL';
+                    $source = $field[11]?'\''.$field[11].'\'':'NULL';
+                    $invoice = $field[12]?'\''.$field[12].'\'':'NULL';
+                    $price = $field[13]?'\''.$field[13].'\'':'NULL';
+                    $price_currency = $field[14]?'\''.$field[14].'\'':'NULL';
+                    $invoice_date = $field[15]?'\''.$field[15].'\'':'NULL';
                     $input_date = '\''.$field[16].'\'';
                     $last_update = '\''.$field[17].'\'';
 
                     // sql insert string
-                    $sql_str = "REPLACE LOW_PRIORITY INTO item (item_code, call_number, coll_type_id,
+                    $sql_str = "INSERT INTO item (item_code, call_number, coll_type_id,
                         inventory_code, received_date, supplier_id,
                         order_no, location_id, order_date, item_status_id, site,
                         source, invoice, price, price_currency, invoice_date,
@@ -146,9 +146,19 @@ if (isset($_POST['doImport'])) {
                     // send query
                     // die($sql_str);
                     $dbs->query($sql_str);
-                    if (!$dbs->error) {
-                        $inserted_row++;
-                    }
+                    // case duplicate do update
+                    if ($dbs->errno && $dbs->errno == 1062) {
+						$sql_str = "UPDATE item SET call_number=$call_number, coll_type_id=$coll_type,
+							inventory_code=$inventory_code, received_date=$received_date, supplier_id=$supplier,
+							order_no=$order_no, location_id=$location, order_date=$order_date, item_status_id=$item_status, site=$site,
+							source=$source, invoice=$invoice, price=$price, price_currency=$price_currency, invoice_date=$invoice_date,
+							input_date=$input_date, last_update=$last_update WHERE item_code LIKE $item_code";
+						// update data
+						$dbs->query($sql_str);
+						if ($dbs->affected_rows > 0) { $updated_row++; }
+					} else {
+						if ($dbs->affected_rows > 0) { $updated_row++; }	
+					}
                 }
                 $row_count++;
             }
@@ -157,9 +167,9 @@ if (isset($_POST['doImport'])) {
         fclose($file);
         $end_time = time();
         $import_time_sec = $end_time-$start_time;
-        utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'bibliography', 'Importing '.$inserted_row.' item records from file : '.$_FILES['importFile']['name']);
+        utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'bibliography', 'Importing '.$updated_row.' item records from file : '.$_FILES['importFile']['name']);
         echo '<script type="text/javascript">'."\n";
-        echo 'parent.$(\'importInfo\').update(\'<strong>'.$inserted_row.'</strong> records inserted successfully to item database, from record <strong>'.$_POST['recordOffset'].' in '.$import_time_sec.' second(s)</strong>\');'."\n";
+        echo 'parent.$(\'importInfo\').update(\'<strong>'.$updated_row.'</strong> records updated successfully to item database, from record <strong>'.$_POST['recordOffset'].' in '.$import_time_sec.' second(s)</strong>\');'."\n";
         echo 'parent.$(\'importInfo\').setStyle( {display: \'block\'} );'."\n";
         echo '</script>';
         exit();
