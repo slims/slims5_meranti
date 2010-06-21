@@ -213,7 +213,7 @@ if (!$reportView) {
         $status = $dbs->escape_string(trim($_GET['status']));
         $criteria .= ' AND i.item_status_id=\''.$status.'\'';
     }
-    if (isset($_GET['class']) AND !empty($_GET['class'])) {
+    if (isset($_GET['class']) AND ($_GET['class'] != '')) {
         $class = $dbs->escape_string($_GET['class']);
         $criteria .= ' AND b.classification LIKE \''.$class.'%\'';
     }
