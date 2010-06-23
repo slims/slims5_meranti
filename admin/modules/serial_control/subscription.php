@@ -142,10 +142,11 @@ if (isset($_POST['saveData'])) {
 // start the output buffering
 ob_start();
 /* main content */
-if ($can_write AND ( isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'detail') )) {
+if ($can_write AND ( isset($_POST['detail']) OR (isset($_GET['detail']) AND $_GET['detail'] == 'true') )) {
     /* RECORD FORM */
-    $itemID = (integer)isset($_POST['itemID'])?$_POST['itemID']:0;
-    $rec_q = $dbs->query('SELECT * FROM serial WHERE serial_id='.$itemID);
+    $biblioID = (integer)isset($_GET['biblioID'])?$_GET['biblioID']:0;
+    $itemID = (integer)isset($_GET['itemID'])?$_GET['itemID']:0;
+    $rec_q = $dbs->query('SELECT * FROM serial WHERE biblio_id='.$biblioID.' AND serial_id='.$itemID);
     $rec_d = $rec_q->fetch_assoc();
 
     // create new instance

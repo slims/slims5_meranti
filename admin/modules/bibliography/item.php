@@ -262,7 +262,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // title
     if (!$in_pop_up) {
         $str_input = $b_title;
-        $str_input .= '<div class="makeHidden"><a title="Edit Bibliographic Data" class="notAJAX" style="font-weight: bold; color: #ff9900;" href="javascript: openWin(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_biblio.php?inPopUp=true&action=detail&itemID='.$rec_d['biblio_id'].'&itemCollID='.$rec_d['item_id'].'\', \'popBiblio\', 600, 400, true)">'.__('Edit Biblographic data').'</a></div>';
+        $str_input .= '<div class="makeHidden"><a title="Edit Bibliographic Data" class="notAJAX" style="font-weight: bold; color: #ff9900;" href="javascript: openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_biblio.php?inPopUp=true&action=detail&itemID='.$rec_d['biblio_id'].'&itemCollID='.$rec_d['item_id'].'\', 650, 500, \''.__('Edit Biblographic data').'\')">'.__('Edit Biblographic data').'</a></div>';
     } else { $str_input = $b_title; }
     $form->addAnything(__('Title'), $str_input);
     $form->addHidden('biblioTitle', $b_title);

@@ -27,8 +27,8 @@ require '../../../../sysconfig.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 // privileges checking
-$can_read = utility::havePrivilege('reporting', 'r');
-$can_write = utility::havePrivilege('reporting', 'w');
+$can_read = utility::havePrivilege('circulation', 'r') || utility::havePrivilege('reporting', 'r');
+$can_write = utility::havePrivilege('circulation', 'w') || utility::havePrivilege('reporting', 'w');
 
 if (!$can_read) {
     die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
@@ -189,4 +189,3 @@ if (!$reportView) {
     require SENAYAN_BASE_DIR.'/admin/'.$sysconf['admin_template']['dir'].'/printed_page_tpl.php';
 }
 ?>
-
