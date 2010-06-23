@@ -134,7 +134,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
     }
     /* RECORD FORM */
-    $itemID = $dbs->escape_string(trim(isset($_POST['itemID'])?$_POST['itemID']:''));
+    $itemID = $dbs->escape_string(trim(isset($_POST['itemID'])?$_POST['itemID']:0));
     $rec_q = $dbs->query("SELECT * FROM mst_language WHERE language_id='$itemID'");
     $rec_d = $rec_q->fetch_assoc();
 
