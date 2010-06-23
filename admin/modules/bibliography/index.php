@@ -192,10 +192,10 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 // close window OR redirect main page
                 if ($in_pop_up) {
                     $itemCollID = (integer)$_POST['itemCollID'];
-                    echo '<script type="text/javascript">parent.opener.setContent(\'mainContent\', parent.opener.getLatestAJAXurl(), \'post\', \''.( $itemCollID?'itemID='.$itemCollID.'&detail=true':'' ).'\');</script>';
-                    echo '<script type="text/javascript">parent.window.close();</script>';
+                    echo '<script type="text/javascript">top.setContent(\'mainContent\', top.getLatestAJAXurl(), \'post\', \''.( $itemCollID?'itemID='.$itemCollID.'&detail=true':'' ).'\');</script>';
+                    echo '<script type="text/javascript">top.closeHTMLpop();</script>';
                 } else {
-                    echo '<script type="text/javascript">parent.setContent(\'mainContent\', parent.getPreviousAJAXurl(), \'get\');</script>';
+                    echo '<script type="text/javascript">top.setContent(\'mainContent\', parent.getPreviousAJAXurl(), \'get\');</script>';
                 }
             } else { utility::jsAlert(__('Bibliography Data FAILED to Updated. Please Contact System Administrator')."\n".$sql_op->error); }
             exit();
@@ -269,7 +269,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         $_sql_biblio_item_q = sprintf('SELECT b.title, COUNT(item_id) FROM biblio AS b
             LEFT JOIN item AS i ON b.biblio_id=i.biblio_id
             WHERE b.biblio_id=%d GROUP BY title', $itemID);
-        $biblio_item_q = $dbs->query($_sql_biblio_item_q);        
+        $biblio_item_q = $dbs->query($_sql_biblio_item_q);
         $biblio_item_d = $biblio_item_q->fetch_row();
         if ($biblio_item_d[1] < 1) {
             if (!$sql_op->delete('biblio', "biblio_id=$itemID")) {
