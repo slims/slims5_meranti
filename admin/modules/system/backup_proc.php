@@ -22,11 +22,6 @@
 // main system configuration
 if (!defined('SENAYAN_BASE_DIR')) {
     require '../../../sysconfig.inc.php';
-}
-
-// if backup process is invoked
-if (isset($_POST['start'])) {
-    // start the session
     require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 }
 
@@ -121,6 +116,11 @@ $datagrid->delete_URL = $_SERVER['PHP_SELF'];
 
 // put the result into variables
 $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, false);
+
+if (isset($_GET['keywords']) AND $_GET['keywords']) {
+    $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
+    echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
+}
 
 echo $datagrid_result;
 ?>
