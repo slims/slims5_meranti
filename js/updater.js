@@ -39,6 +39,9 @@ Element.addMethods({
             var theForm = button.up('form');
             theForm.enable();
             theForm.select('.makeHidden').invoke('removeClassName', 'makeHidden');
+            // enable hidden delete form
+            var deleteForm = $('deleteForm');
+            if (deleteForm) { deleteForm.enable(); }
         });
 
         // change all search form submit behaviour to AJAX
