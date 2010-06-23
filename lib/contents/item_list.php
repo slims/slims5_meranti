@@ -40,7 +40,7 @@ if (($ajaxsec_user == $sysconf['ajaxsec_user']) AND ($ajaxsec_passwd == $sysconf
     }
     if (isset($_POST['id'])) {
         $id = intval($_POST['id']);
-        $copy_q = $dbs->query('SELECT i.item_code, stat.item_status_name, loc.location_name, stat.rules, i.site FROM item AS i
+        $copy_q = $dbs->query('SELECT i.item_code, loc.location_name, stat.*, i.site FROM item AS i
             LEFT JOIN mst_item_status AS stat ON i.item_status_id=stat.item_status_id
             LEFT JOIN mst_location AS loc ON i.location_id=loc.location_id
             WHERE i.biblio_id='.$id);
@@ -59,14 +59,16 @@ if (($ajaxsec_user == $sysconf['ajaxsec_user']) AND ($ajaxsec_passwd == $sysconf
                 }
                 echo '</td>';
                 echo '<td width="30%">';
+                /* DEPECRATED
                 $_rules = @unserialize($copy_d['rules']);
+                */
                 if ($loan_stat_q->num_rows > 0) {
                     $loan_stat_d = $loan_stat_q->fetch_row();
                     echo '<strong width="50%" style="color: red;">'.__('Currently On Loan (Due on').date($sysconf['date_format'], strtotime($loan_stat_d[0])).')</strong>'; //mfc
-                } else if (is_array($_rules) AND in_array(NO_LOAN_TRANSACTION, $_rules)) {
-                    echo '<strong width="50%" style="color: red;">'.__('Available but not for loan').'</strong>';
+                } else if ($copy_d['no_loan']) {
+                    echo '<strong width="50%" style="color: red;">'.__('Available but not for loan').' - '.$copy_d['item_status_name'].'</strong>';
                 } else {
-                    echo '<strong width="50%" style="color: navy;">'.__('Available').'</strong>';
+                    echo '<strong width="50%" style="color: navy;">'.__('Available').(trim($copy_d['item_status_name'])?' - '.$copy_d['item_status_name']:'').'</strong>';
                 }
                 $loan_stat_q->free_result();
                 echo '</td>';
