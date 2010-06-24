@@ -59,7 +59,7 @@ if ($stk_query->num_rows < 1) {
         <?php
         if ($view != 'm') {
           echo __('STOCK TAKE PROCCESS - Insert Item Code/Barcode with keyboard or barcode scanner').'<hr />
-              <form name="stockTakeForm" action="'.MODULES_WEB_ROOT_DIR.'stock_take/stock_take_action.php" target="stockTakeAction" method="post" style="display: inline;">
+              <form name="stockTakeForm" class="notAJAX" action="'.MODULES_WEB_ROOT_DIR.'stock_take/stock_take_action.php" target="stockTakeAction" method="post" style="display: inline;">
               <div><div style="width: 140px; float: left;">'.__('Item Code').':</div><input type="text" id="itemCode" name="itemCode" size="30" /> <input type="submit" value="'.__('Change Status').'" class="button" /></div>
               <div style="margin-top: 3px;"><div style="width: 140px; float: left;">'.__('List stocktakes by').':</div>
               <input type="radio" id="listShow" name="listShow" value="1" onclick="setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'stock_take/current.php?listShow=1\', \'get\')" '.( isset($show_only_current)?'checked="checked"':'' ).' /> '.__('Current User Only').'

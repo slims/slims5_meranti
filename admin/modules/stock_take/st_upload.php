@@ -73,9 +73,26 @@ if (isset($_POST['stUpload']) && isset($_FILES['stFile'])) {
             if (!$item_code) {
                 continue;
             }
-            $update = @$dbs->query("UPDATE LOW_PRIORITY stock_take_item SET status='e', checked_by='".$_SESSION['realname']."', last_update='".$curr_time."' WHERE item_code='$item_code'");
-            $update = @$dbs->query("UPDATE LOW_PRIORITY stock_take SET total_item_lost=total_item_lost-1 WHERE is_active=1");
-            $i++;
+
+            // check item status first
+            $item_check = $dbs->query("SELECT * FROM stock_take_item WHERE item_code='$item_code'");
+            $item_check_d = $item_check->fetch_assoc();
+            if ($item_check->num_rows > 0) {
+                if ($item_check_d['status'] == 'l') {
+                    // record to log
+                    utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'stock_take', 'Stock Take ERROR : Item '.$item_check_d['title'].' ('.$item_check_d['item_code'].') is currently ON LOAN (from uploaded file '.$upload->new_filename.')');
+                    continue;
+                } else if ($item_check_d['status'] == 'e') {
+                    continue;
+                } else {
+                    $update = @$dbs->query("UPDATE LOW_PRIORITY stock_take_item SET status='e', checked_by='".$_SESSION['realname']."', last_update='".$curr_time."' WHERE item_code='$item_code'");
+                    $update = @$dbs->query("UPDATE LOW_PRIORITY stock_take SET total_item_lost=total_item_lost-1 WHERE is_active=1");
+                    $i++;
+                }
+            } else {
+                // record to log
+                utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'stock_take', 'Stock Take ERROR : Item Code '.$item_code.' doesnt exists in stock take data. Invalid Item Code OR Maybe out of Stock Take range (from uploaded file '.$upload->new_filename.')');
+            }
         }
         fclose($stfile);
         // message
@@ -99,7 +116,7 @@ if (isset($_POST['stUpload']) && isset($_FILES['stFile'])) {
 <fieldset class="menuBox">
 <div class="menuBoxInner stockTakeIcon">
     <?php echo __('STOCK TAKE UPLOAD - Upload a plain text file (.txt) containing list of Item Code to stock take. Each Item Code separated by line.'); ?><hr />
-    <form name="uploadForm" method="post" enctype="multipart/form-data" action="<?php echo MODULES_WEB_ROOT_DIR.'stock_take/st_upload.php'; ?>" target="uploadAction" style="display: inline;">
+    <form name="uploadForm" class="notAJAX" method="post" enctype="multipart/form-data" action="<?php echo MODULES_WEB_ROOT_DIR.'stock_take/st_upload.php'; ?>" target="uploadAction" style="display: inline;">
     <?php echo __(' File'); //mfc ?>: <input type="file" name="stFile" id="stFile" /> Maximum <?php echo $sysconf['max_upload']; ?> KB
     <div style="margin: 3px;"><input type="submit" name="stUpload" id="stUpload" value="<?php echo __('Upload File'); ?>" class="button" />
     <iframe name="uploadAction" style="width: 0; height: 0; visibility: hidden;"></iframe>

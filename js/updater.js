@@ -46,8 +46,12 @@ Element.addMethods({
 
         // change all search form submit behaviour to AJAX
         element.select('.menuBox form:not(.notAJAX)').invoke('observe', 'submit', function(evt) {
-            evt.stop();
             var theForm = Event.element(evt);
+            if (theForm.readAttribute('target')) {
+                theForm.submit();
+                return;
+            }
+            evt.stop();
             var formAction = theForm.readAttribute('action');
             var formMethod = theForm.readAttribute('method');
             var formData = theForm.serialize();
