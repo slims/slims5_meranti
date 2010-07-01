@@ -27,6 +27,7 @@ class simbio_dbop extends simbio
     private $sql_string = '';
     public $insert_id = 0;
     public $affected_rows = 0;
+    public $error = '';
 
     /**
      * A Class Constructor

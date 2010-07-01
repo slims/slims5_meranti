@@ -26,6 +26,7 @@ require '../../../sysconfig.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/simbio_dbop.inc.php';
+require MODULES_BASE_DIR.'system/biblio_indexer.inc.php';
 
 // privileges checking
 $can_read = utility::havePrivilege('bibliography', 'r');
@@ -43,112 +44,28 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 
 	/* empty table */
 	if ($_GET['detail'] == 'empty') {
-		$rec_bib = $dbs->query('TRUNCATE TABLE `search_biblio`');
-		$message = __('Index table truncated!');
+		$indexer = new biblio_indexer($dbs);
+		$empty = $indexer->emptyingIndex();
+		if ($empty) {
+			$message = __('Index table truncated!');
+		} else {
+			$message = __('Index table FAILED to truncated, probably because of database query error!');
+		}
 		echo '<div class="infoBox">'.$message.'</div>'."\n";
-		/* echo 'Indeks tabel dihapus'; */
+		exit();
 	}
 
 	/* Update table */
 	if ($_GET['detail'] == 'update') {
 		set_time_limit(0);
-		/*	$rec_bib = $dbs->query('SELECT biblio_id FROM biblio'); /* to update */
-		$bib_sql = 'SELECT b.biblio_id, b.title, b.publish_year, b.notes, b.series_title, g.gmd_name AS `gmd`
-			FROM (biblio AS b LEFT JOIN mst_gmd AS g ON b.gmd_id = g.gmd_id) LEFT JOIN search_biblio as sb ON b.biblio_id = sb.biblio_id
-			WHERE sb.biblio_id is NULL';
-		$rec_bib = $dbs->query($bib_sql); /* to reindex from 0 */
-		$r = 0;
-		$success = 0;
-		$failed = array();
-		if ($rec_bib->num_rows > 0) {
-			while($rb_id = $rec_bib->fetch_assoc()) {
-
-				$data['biblio_id'] = $rb_id['biblio_id'];
-
-				/* GMD , Title, Year  */
-				$data['title'] = $rb_id['title'];
-				$data['gmd'] = $rb_id['gmd'];
-				$data['year'] = $rb_id['publish_year'];
-				if ($rb_id['notes'] != '') {
-					$data['notes'] = trim($dbs->escape_string(strip_tags($rb_id['notes'], '<br><p><div><span><i><em><strong><b><code>s')));
-				}
-				if ($rb_id['series_title'] != '') {
-					$data['series'] = $rb_id['series_title'];
-				}
-
-				/* author  */
-				$au_all = '';
-				$au_sql = 'SELECT ba.biblio_id, ba.level, au.author_name AS `name`, au.authority_type AS `type`
-					FROM biblio_author AS ba LEFT JOIN mst_author AS au ON ba.author_id = au.author_id
-					WHERE (ba.biblio_id ='. $rb_id['biblio_id'] . ')';
-				$au_id = $dbs->query($au_sql);
-				while($rs_au = $au_id->fetch_assoc()) {
-					$au_all .= $rs_au['name'] . '  ';
-				}
-				if ($au_all !='') {
-					$au_all = substr($au_all,0,strlen($au_all)-2);
-					$data['author'] = $au_all;
-				}
-
-				/* subject  */
-				$topic_all = '';
-				$topic_sql = 'SELECT bt.biblio_id, bt.level, tp.topic, tp.topic_type AS `type`
-					FROM biblio_topic AS bt LEFT JOIN mst_topic AS tp ON bt.topic_id = tp.topic_id
-					WHERE (bt.biblio_id ='. $rb_id['biblio_id'] . ')';
-				$topic_id = $dbs->query($topic_sql);
-				while ($rs_topic = $topic_id->fetch_assoc()) {
-					$topic_all .= $rs_topic['topic'] . '  ';
-				}
-				if ($topic_all != '') {
-					$topic_all = substr($topic_all,0,strlen($topic_all)-2);
-					$data['topic'] = $topic_all;
-				}
-
-				/* location  */
-				$loc_all = '';
-				$loc_sql = 'SELECT i.biblio_id, l.location_name AS `name`
-					FROM item AS i LEFT JOIN mst_location AS l ON i.location_id = l.location_id
-					WHERE (i.biblio_id ='. $rb_id['biblio_id'] . ')';
-				$loc_id = $dbs->query($loc_sql);
-				while ($rs_loc = $loc_id->fetch_assoc()) {
-					$loc_all .= $rs_loc['name'] . '  ';
-				}
-				if ($loc_all != '') {
-					$loc_all = substr($loc_all,0,strlen($loc_all)-2);
-					$data['location'] = $loc_all;
-				}
-
-				/*  Insert all variable  */
-				$sql_op = new simbio_dbop($dbs);
-
-				/* uncomment to update only */
-				/*
-					$update = $sql_op->update('search_biblio', $data, 'biblio_id='.$rb_id['biblio_id']);
-					if ($update) {
-						echo 'ID ' .$rb_id['biblio_id']. ' updated.<br />';
-					} else {
-						echo 'ID ' .$rb_id['biblio_id']. ' update FAILED.<br />';
-					}
-				*/
-
-				/* print_r ($data); /* debug submited update data */
-				if ($sql_op->insert('search_biblio', $data)) {
-					$success++;
-				} else {
-					$failed[] = $rb_id['biblio_id'];
-				}
-				$r++;
-			}
-			// message
-			$message = sprintf(__('<strong>%d</strong> index records (from total of <strong>%d</strong>) updated!'), $success, $r);
-			if ($failed) {
-				$message = 	'<div style="color: #f00;">'.sprintf(__('<strong>%d</strong> index records failed to update. The IDs are: %s'), count($failed), implode(',', $failed)).'</div>';
-			}
-			echo '<div class="infoBox">'.$message.'</div>'."\n";
-		} else {
-			$message = __('No records need to be updated');
-			echo '<div class="errorBox">'.$message.'</div>'."\n";
+		$indexer = new biblio_indexer($dbs);
+		$indexer->updateFullIndex();
+		// message
+		$message = sprintf(__('<strong>%d</strong> records (from total of <strong>%d</strong>) re-indexed!'), $indexer->indexed, $indexer->total_records);
+		if ($indexer->failed) {
+			$message = 	'<div style="color: #f00;">'.sprintf(__('<strong>%d</strong> index records failed to indexed. The IDs are: %s'), count($indexer->failed), implode(', ', $indexer->failed)).'</div>';
 		}
+		echo '<div class="infoBox">'.$message.'</div>'."\n";
 	}
 
 	/* re-create index table */
@@ -161,93 +78,12 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 			$message = __('Please empty the Index first before re-creating the Index');
 			echo '<div class="errorBox">'.$message.'</div>'."\n";
 		} else {
-			$bib_sql = 'SELECT b.biblio_id, b.title, b.publish_year, b.notes, b.series_title, g.gmd_name AS `gmd`
-				FROM biblio AS b LEFT JOIN mst_gmd AS g ON b.gmd_id = g.gmd_id';
-			$rec_bib = $dbs->query($bib_sql); /* to reindex from 0 */
-			$r = 0;
-			$success = 0;
-			$failed = array();
-			while($rb_id = $rec_bib->fetch_assoc()) {
-				$data['biblio_id'] = $rb_id['biblio_id'];
-
-				/* GMD , Title, Year  */
-				$data['title'] = $rb_id['title'];
-				$data['gmd'] = $rb_id['gmd'];
-				$data['year'] = $rb_id['publish_year'];
-				if ($rb_id['notes'] != '') {
-					$data['notes'] = trim($dbs->escape_string(strip_tags($rb_id['notes'], '<br><p><div><span><i><em><strong><b><code>s')));
-				}
-				if ($rb_id['series_title'] != '') {
-					$data['series'] = $rb_id['series_title'];
-				}
-
-				/* author  */
-				$au_all = '';
-				$au_sql = 'SELECT ba.biblio_id, ba.level, au.author_name AS `name`, au.authority_type AS `type`
-					FROM biblio_author AS ba LEFT JOIN mst_author AS au ON ba.author_id = au.author_id
-					WHERE (ba.biblio_id ='. $rb_id['biblio_id'] . ')';
-				$au_id = $dbs->query($au_sql);
-				while($rs_au = $au_id->fetch_assoc()) {
-					$au_all .= $rs_au['name'] . '  ';
-				}
-				if ($au_all !='') {
-					$au_all = substr($au_all,0,strlen($au_all)-2);
-					$data['author'] = $au_all;
-				}
-
-				/* subject  */
-				$topic_all = '';
-				$topic_sql = 'SELECT bt.biblio_id, bt.level, tp.topic, tp.topic_type AS `type`
-					FROM biblio_topic AS bt LEFT JOIN mst_topic AS tp ON bt.topic_id = tp.topic_id
-					WHERE (bt.biblio_id ='. $rb_id['biblio_id'] . ')';
-				$topic_id = $dbs->query($topic_sql);
-				while ($rs_topic = $topic_id->fetch_assoc()) {
-					$topic_all .= $rs_topic['topic'] . '  ';
-				}
-				if ($topic_all != '') {
-					$topic_all = substr($topic_all,0,strlen($topic_all)-2);
-					$data['topic'] = $topic_all;
-				}
-
-				/* location  */
-				$loc_all = '';
-				$loc_sql = 'SELECT i.biblio_id, l.location_name AS `name`
-					FROM item AS i LEFT JOIN mst_location AS l ON i.location_id = l.location_id
-					WHERE (i.biblio_id ='. $rb_id['biblio_id'] . ')';
-				$loc_id = $dbs->query($loc_sql);
-				while ($rs_loc = $loc_id->fetch_assoc()) {
-					$loc_all .= $rs_loc['name'] . '  ';
-				}
-				if ($loc_all != '') {
-					$loc_all = substr($loc_all,0,strlen($loc_all)-2);
-					$data['location'] = $loc_all;
-				}
-
-				/*  Insert all variable  */
-				$sql_op = new simbio_dbop($dbs);
-
-				/* uncomment to update only */
-				/*
-					$update = $sql_op->update('search_biblio', $data, 'biblio_id='.$rb_id['biblio_id']);
-					if ($update) {
-						echo 'ID ' .$rb_id['biblio_id']. ' updated.<br />';
-					} else {
-						echo 'ID ' .$rb_id['biblio_id']. ' update FAILED.<br />';
-					}
-				*/
-
-				/* print_r ($data); /* debug submited update data */
-				if ($sql_op->insert('search_biblio', $data)) {
-					$success++;
-				} else {
-					$failed[] = $rb_id['biblio_id'];
-				}
-				$r++;
-			}
+			$indexer = new biblio_indexer($dbs);
+			$indexer->createFullIndex(false);
 			// message
-			$message = sprintf(__('<strong>%d</strong> records (from total of <strong>%d</strong>) re-indexed!'), $success, $r);
-			if ($failed) {
-				$message = 	'<div style="color: #f00;">'.sprintf(__('<strong>%d</strong> index records failed to indexed. The IDs are: %s'), count($failed), implode(', ', $failed)).'</div>';
+			$message = sprintf(__('<strong>%d</strong> records (from total of <strong>%d</strong>) re-indexed!'), $indexer->indexed, $indexer->total_records);
+			if ($indexer->failed) {
+				$message = 	'<div style="color: #f00;">'.sprintf(__('<strong>%d</strong> index records failed to indexed. The IDs are: %s'), count($indexer->failed), implode(', ', $indexer->failed)).'</div>';
 			}
 			echo '<div class="infoBox">'.$message.'</div>'."\n";
 		}

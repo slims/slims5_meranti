@@ -42,8 +42,8 @@ ob_start();
 
 // if there is login action
 if (isset($_POST['logMeIn'])) {
-    $username = trim(strip_tags($_POST['userName']));
-    $password = trim(strip_tags($_POST['passWord']));
+    $username = strip_tags($_POST['userName']);
+    $password = strip_tags($_POST['passWord']);
     if (!$username OR !$password) {
         echo '<script type="text/javascript">alert(\''.__('Please supply valid username and password').'\');</script>';
     } else {
@@ -53,7 +53,10 @@ if (isset($_POST['logMeIn'])) {
         // regenerate session ID to prevent session hijacking
         session_regenerate_id(true);
         // create logon class instance
-        $logon = new admin_logon($username, $password);
+        $logon = new admin_logon($username, $password, $sysconf['auth']['user']['method']);
+        if ($sysconf['auth']['user']['method'] == 'ldap') {
+            $ldap_configs = $sysconf['auth']['user'];
+        }
         if ($logon->adminValid($dbs)) {
             // set cookie admin flag
             setcookie('admin_logged_in', true, time()+14400, SENAYAN_WEB_ROOT_DIR);
@@ -87,7 +90,7 @@ if (isset($_POST['logMeIn'])) {
     </noscript>
     <form action="index.php?p=login" method="post">
     <div class="heading1">Username</div>
-    <div><input type="text" name="userName" style="width: 80%;" /></div>
+    <div><input type="text" name="userName" id="userName" style="width: 80%;" /></div>
     <div class="heading1 marginTop">Password</div>
     <div><input type="password" name="passWord" style="width: 80%;" /></div>
     <div class="marginTop"><input type="submit" name="logMeIn" value="Logon" id="loginButton" />
@@ -95,6 +98,7 @@ if (isset($_POST['logMeIn'])) {
     </div>
     </form>
 </div>
+<script type="text/javascript">$('userName').activate();</script>
 
 <?php
 // main content

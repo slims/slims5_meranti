@@ -56,7 +56,10 @@ if (isset($_POST['logMeIn']) && !$is_member_login) {
         // regenerate session ID to prevent session hijacking
         session_regenerate_id(true);
         // create logon class instance
-        $logon = new member_logon($username, $password);
+        $logon = new member_logon($username, $password, $sysconf['auth']['member']['method']);
+        if ($sysconf['auth']['member']['method'] == 'ldap') {
+            $ldap_configs = $sysconf['auth']['member'];
+        }
         if ($logon->valid($dbs)) {
             // write log
             utility::writeLogs($dbs, 'member', $username, 'Login', 'Login success for member '.$username.' from address '.$_SERVER['REMOTE_ADDR']);
@@ -134,7 +137,7 @@ if (!$is_member_login) {
         global $dbs;
         // current password checking
         $_sql_pass_check = sprintf('SELECT member_id FROM member
-            WHERE mpasswd=MD5(\'%s\') AND member_id=\'%s\'', 
+            WHERE mpasswd=MD5(\'%s\') AND member_id=\'%s\'',
             $dbs->escape_string(trim($str_curr_pass)), $dbs->escape_string(trim($_SESSION['mid'])));
         $_pass_check = $dbs->query($_sql_pass_check);
         if ($_pass_check->num_rows == 1) {
@@ -259,7 +262,7 @@ if (!$is_member_login) {
     }
 
     // if there is change password request
-    if ($is_member_login && isset($_POST['changePass'])) {
+    if ($is_member_login && isset($_POST['changePass']) && $sysconf['auth']['member']['method'] == 'native') {
         $change_pass = procChangePassword($_POST['currPass'], $_POST['newPass'], $_POST['newPass2']);
         if ($change_pass === true) {
             $info = '<span style="font-size: 120%; font-weight: bold;">'.__('Your password have been changed successfully.').'</span>';
@@ -280,7 +283,10 @@ if (!$is_member_login) {
     echo showMemberDetail();
     echo '<h3 class="memberInfoHead">'.__('Your Current Loan').'</h3>'."\n";
     echo showLoanList();
-    echo '<h3 class="memberInfoHead">'.__('Change Password').'</h3>'."\n";
-    echo changePassword();
+    // change password only form NATIVE authentication, not for others such as LDAP
+    if ($sysconf['auth']['member']['method'] == 'native') {
+        echo '<h3 class="memberInfoHead">'.__('Change Password').'</h3>'."\n";
+        echo changePassword();
+    }
 }
 ?>

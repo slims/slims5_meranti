@@ -373,6 +373,36 @@ $sysconf['ucs']['auto_insert'] = false;
  */
 $sysconf['p2pserver'][1] = array('uri' => 'http://127.0.0.1/senayan3-stable15', 'name' => 'SLiMS Library');
 
+/**
+ * User and member login method
+ */
+$sysconf['auth']['user']['method'] = 'native'; // method can be 'native' or 'LDAP'
+$sysconf['auth']['member']['method'] = 'native'; // for library member, method can be 'native' or 'LDAP'
+/**
+ * LDAP Specific setting for User
+ */
+$sysconf['auth']['user']['ldap_server'] = '127.0.0.1'; // LDAP server
+$sysconf['auth']['user']['ldap_base_dn'] = 'ou=slims,dc=diknas,dc=go,dc=id'; // LDAP base DN
+$sysconf['auth']['user']['ldap_suffix'] = ''; // LDAP user suffix
+$sysconf['auth']['user']['ldap_bind_dn'] = 'uid=#loginUserName,'.$sysconf['auth']['user']['ldap_base_dn']; // Binding DN
+$sysconf['auth']['user']['ldap_port'] = null; // optional LDAP server connection port, use null or false for default
+$sysconf['auth']['user']['ldap_options'] = array(
+    array(LDAP_OPT_PROTOCOL_VERSION, 3),
+    array(LDAP_OPT_REFERRALS, 0)
+    ); // optional LDAP server options
+$sysconf['auth']['user']['ldap_search_filter'] = '(|(uid=#loginUserName)(cn=#loginUserName*))'; // LDAP search filter, #loginUserName will be replaced by the real login name
+/**
+ * LDAP Specific setting for member
+ * By default same as User
+ */
+$sysconf['auth']['member']['ldap_server'] = &$sysconf['auth']['user']['ldap_server']; // LDAP server
+$sysconf['auth']['member']['ldap_base_dn'] = &$sysconf['auth']['user']['ldap_base_dn']; // LDAP base DN
+$sysconf['auth']['member']['ldap_suffix'] = &$sysconf['auth']['user']['ldap_suffix']; // LDAP user suffix
+$sysconf['auth']['member']['ldap_bind_dn'] = &$sysconf['auth']['user']['ldap_bind_dn']; // Binding DN
+$sysconf['auth']['member']['ldap_port'] = &$sysconf['auth']['user']['ldap_port']; // optional LDAP server connection port, use null or false for default
+$sysconf['auth']['member']['ldap_options'] = &$sysconf['auth']['user']['ldap_options']; // optional LDAP server options
+$sysconf['auth']['member']['ldap_search_filter'] = &$sysconf['auth']['user']['ldap_search_filter']; // LDAP search filter, #loginUserName will be replaced by the real login name
+
 // check if session is auto started and then destroy it
 if ($is_auto = @ini_get('session.auto_start')) { define('SESSION_AUTO_STARTED', $is_auto); }
 if (defined('SESSION_AUTO_STARTED')) { @session_destroy(); }
