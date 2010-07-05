@@ -8,7 +8,7 @@
 <style type="text/css">
 body { background: #FFFFFF; }
 </style>
-<script type="text/javascript" src="<?php echo JS_WEB_ROOT_DIR; ?>prototype.js"></script>
+<script type="text/javascript" src="<?php echo JS_WEB_ROOT_DIR; ?>jquery.js"></script>
 <script type="text/javascript" src="<?php echo JS_WEB_ROOT_DIR; ?>updater.js"></script>
 <script type="text/javascript" src="<?php echo JS_WEB_ROOT_DIR; ?>form.js"></script>
 <script type="text/javascript" src="<?php echo JS_WEB_ROOT_DIR; ?>gui.js"></script>
@@ -22,10 +22,13 @@ body { background: #FFFFFF; }
 <!-- block if we inside iframe -->
 <script type="text/javascript">
 // if we are inside iframe
-if (self.parent && self.parent.$$('.editFormLink').length > 0) {
-  var enabler = self.parent.$$('.editFormLink');
-  $(document.body).insert('<div id="blocker" style="position: fixed; width: 100%; height: 100%; top: 0; left: 0; background: #ccc; opacity: 0.3">&nbsp;</div>');
-  enabler.invoke('observe', 'click', function(evt) { evt.stop(); self.parent.$$('form').invoke('enable'); self.$$('#blocker').invoke('remove'); self.parent.$$('.makeHidden').invoke('removeClassName', 'makeHidden'); });
+var parentWin = self.parent;
+if (parentWin && parentWin.jQuery('.editFormLink').length > 0) {
+  var enabler = parentWin.jQuery('.editFormLink');
+  jQuery(document.body).append('<div id="blocker" style="position: fixed; width: 100%; height: 100%; top: 0; left: 0; background: #ccc; opacity: 0.3">&nbsp;</div>');
+  enabler.click(function(evt) { evt.preventDefault(); self.parent.jQuery('form').enableForm();
+	self.jQuery('#blocker').remove();
+	self.parent.jQuery('.makeHidden').removeClass('makeHidden'); });
 }
 </script>
 <!-- block if we inside iframe -->

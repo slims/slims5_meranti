@@ -80,8 +80,10 @@ class simbio_table
     public $table_header_attr = '';
     public $table_content_attr = '';
     public $table_row = array();
+    public $row_attr = array();
     public $cell_attr = array();
     public $highlight_row = false;
+    private $have_header = false;
 
     /**
      * Class Constructor
@@ -106,6 +108,7 @@ class simbio_table
             // do nothing
             return;
         } else {
+            $this->have_header = true;
             $this->table_row[0] = new simbio_table_row($array_column_content);
         }
     }
@@ -192,7 +195,7 @@ class simbio_table
     public function setCellAttr($int_row = 0, $int_column = null, $str_column_attr)
     {
         if (is_null($int_column)) {
-            $this->table_row[$int_row]->all_cell_attr = $str_column_attr;
+            $this->row_attr[$int_row] = $str_column_attr;
         } else {
             $this->cell_attr[$int_row][$int_column] = $str_column_attr;
         }
@@ -221,17 +224,9 @@ class simbio_table
                 if (!$_row instanceof simbio_table_row) {
                     continue;
                 }
-                // check for row highlights
-                if ($this->highlight_row AND $_row_idx > 0) {
-                    // higlight row special attributes
-                    $_row->attr .= ' id="row'.$_record_row.'" onmouseover="highlightRow(\'row'.$_record_row.'\')" onmouseout="unHighlightRow(\'row'.$_record_row.'\')"';
-                }
                 // print out the row objects
-                $_buffer .= '<tr '.$_row->attr.'>';
+                $_buffer .= '<tr '.( isset($this->row_attr[$_row_idx])?$this->row_attr[$_row_idx]:'' ).'>';
                 foreach ($_row->fields as $_field_idx => $_field) {
-                    if ($_row->all_cell_attr) {
-                        $_field->attr = $_row->all_cell_attr;
-                    }
                     if (isset($this->cell_attr[$_row_idx][$_field_idx])) {
                         $_field->attr = $this->cell_attr[$_row_idx][$_field_idx];
                     }

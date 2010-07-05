@@ -103,7 +103,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                     echo '<script type="text/javascript">top.setIframeContent(\'itemIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_item_list.php?biblioID='.$data['biblio_id'].'\');</script>';
                     echo '<script type="text/javascript">top.closeHTMLpop();</script>';
                 } else {
-                    echo '<script type="text/javascript">parent.setContent(\'mainContent\', parent.getPreviousAJAXurl(), \'get\');</script>';
+                    echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(parent.jQuery.ajaxHistory[1].url, {method: \'get\'});</script>';
                 }
             } else { utility::jsAlert(__('Item Data FAILED to Save. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
@@ -119,7 +119,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                     echo '<script type="text/javascript">top.setIframeContent(\'itemIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_item_list.php?biblioID='.$data['biblio_id'].'\');</script>';
                     echo '<script type="text/javascript">top.closeHTMLpop();</script>';
                 } else {
-                    echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'\', \'post\');</script>';
+                    echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'\');</script>';
                 }
             } else { utility::jsAlert(__('Item Data FAILED to Save. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
@@ -169,16 +169,16 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
             $items .= $item."\n";
         }
         utility::jsAlert(__('Item data can not be deleted because still on hold by members')." : \n".$items);
-        echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
+        echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\');</script>';
         exit();
     }
     // error alerting
     if ($error_num == 0) {
         utility::jsAlert(__('Item succesfully removed!'));
-        echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
+        echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\');</script>';
     } else {
         utility::jsAlert(__('Item FAILED to removed!'));
-        echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
+        echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\');</script>';
     }
     exit();
 }
@@ -262,7 +262,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // title
     if (!$in_pop_up) {
         $str_input = $b_title;
-        $str_input .= '<div class="makeHidden"><a title="Edit Bibliographic Data" class="notAJAX" style="font-weight: bold; color: #ff9900;" href="javascript: openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_biblio.php?inPopUp=true&action=detail&itemID='.$rec_d['biblio_id'].'&itemCollID='.$rec_d['item_id'].'\', 650, 500, \''.__('Edit Biblographic data').'\')">'.__('Edit Biblographic data').'</a></div>';
+        $str_input .= '<div class="makeHidden"><a title="Edit Bibliographic Data" class="notAJAX" style="font-weight: bold; color: #f90;" href="javascript: openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_biblio.php?inPopUp=true&action=detail&itemID='.$rec_d['biblio_id'].'&itemCollID='.$rec_d['item_id'].'\', 650, 500, \''.__('Edit Biblographic data').'\')">'.__('Edit Biblographic data').'</a></div>';
     } else { $str_input = $b_title; }
     $form->addAnything(__('Title'), $str_input);
     $form->addHidden('biblioTitle', $b_title);

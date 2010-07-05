@@ -11,7 +11,7 @@ Ported to Senayan by Hendro Wicaksono (hendrowicaksono@yahoo.com)
 <!--<link href="css/style.css" rel="stylesheet" type="text/css" /> -->
 <link href="template/core.style.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo $sysconf['template']['css']; ?>" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="js/prototype.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/form.js"></script>
 <script type="text/javascript" src="js/gui.js"></script>
 <?php echo $metadata; ?>

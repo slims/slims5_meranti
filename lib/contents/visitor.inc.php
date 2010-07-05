@@ -91,7 +91,6 @@ if (isset($_POST['counter'])) {
 
 ?>
 
-<script type="text/javascript" src="js/prototype.js"></script>
 <fieldset id="visitorCounterWrap">
 <legend><?php echo __('Visitor Counter'); ?></legend>
 <div id="counterInfo"></div>
@@ -109,50 +108,48 @@ if (isset($_POST['counter'])) {
 
 <script type="text/javascript">
     // give focus to first field
-    $('memberID').focus();
+    jQuery('#memberID').focus();
+
+    var visitorCounterForm = jQuery('#visitorCounterForm');
 
     // AJAX counter error handler
     function counterError(ajax) {
         alert('Error inserting counter data to database!');
-        $('visitorCounterForm').enable().select('input[type=text]').invoke('clear');
-        $('memberID').focus();
+        visitorCounterForm.find('input[type=text]').val('');
+        jQuery('#memberID').focus();
     }
 
     // AJAX counter complete handler
     function counterComplete(ajax) {
-        $('visitorCounterForm').enable().select('input[type=text]').invoke('clear');
-        var memberImage = $('memberImage');
+        visitorCounterForm.find('input[type=text]').val('');
+        var memberImage = jQuery('#memberImage');
         if (memberImage) {
             // update visitor photo
-            var imageSRC = memberImage.readAttribute('src'); memberImage.remove();
-            $('visitorCounterPhoto').src = imageSRC;
+            var imageSRC = memberImage.attr('src'); memberImage.remove();
+            jQuery('#visitorCounterPhoto')[0].src = imageSRC;
         }
-        $('memberID').focus();
+        jQuery('#memberID').focus();
     }
 
     // register event
-    $('visitorCounterForm').observe('submit', function(evt) {
+    visitorCounterForm.submit(function(evt) {
         evt.preventDefault();
-        var theForm = Event.element(evt);
-        var formAction = theForm.readAttribute('action');
+        var theForm = jQuery(this);
+        var formAction = theForm.attr('action');
         var formData = theForm.serialize();
         // block the form
         theForm.disable();
-        $('counterInfo').setStyle({display: 'block'}).update('PLEASE WAIT...');
+        jQuery('#counterInfo').css({'display': 'block'}).html('PLEASE WAIT...');
         // create AJAX request for submitting form
-        var ajaxObj = new Ajax.Updater(
-            {success: 'counterInfo'},
-            formAction,
-            {
-                asynchronous: false,
-                method: 'post',
-                parameters: formData,
-                evalScripts: true,
-                onFailure: counterError,
-                onComplete: counterComplete,
-                requestHeaders: {'Pragma': 'no-cache',
-                    'Cache-Control': 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0',
-                    'Expires': 'Sat, 26 Jul 1997 05:00:00 GMT'}
+        jQuery.ajax(
+            { url: formAction,
+                type: 'POST',
+                async: false,
+                data: formData,
+                cache: false,
+                success: function(respond) {
+                    jQuery('#counterInfo').html(respond);
+                }
             });
     });
 </script>

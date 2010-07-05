@@ -192,10 +192,10 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 // close window OR redirect main page
                 if ($in_pop_up) {
                     $itemCollID = (integer)$_POST['itemCollID'];
-                    echo '<script type="text/javascript">top.setContent(\'mainContent\', top.getLatestAJAXurl(), \'post\', \''.( $itemCollID?'itemID='.$itemCollID.'&detail=true':'' ).'\');</script>';
+                    echo '<script type="text/javascript">top.$(\'#mainContent\').simbioAJAX(parent.jQuery.ajaxHistory[0].url, {method: \'post\', addData: \''.( $itemCollID?'itemID='.$itemCollID.'&detail=true':'' ).'\'});</script>';
                     echo '<script type="text/javascript">top.closeHTMLpop();</script>';
                 } else {
-                    echo '<script type="text/javascript">top.setContent(\'mainContent\', parent.getPreviousAJAXurl(), \'get\');</script>';
+                    echo '<script type="text/javascript">top.$(\'#mainContent\').simbioAJAX(parent.jQuery.ajaxHistory[1].url);</script>';
                 }
             } else { utility::jsAlert(__('Bibliography Data FAILED to Updated. Please Contact System Administrator')."\n".$sql_op->error); }
             exit();
@@ -241,7 +241,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 if ($sysconf['ucs']['enable'] && $sysconf['ucs']['auto_insert']) {
                     echo '<script type="text/javascript">parent.ucsUpload(\''.MODULES_WEB_ROOT_DIR.'bibliography/ucs_upload.php\', \'itemID[]='.$last_biblio_id.'\');</script>';
                 }
-                echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'bibliography/index.php\', \'post\', \'itemID='.$last_biblio_id.'&detail=true\');</script>';
+                echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(\''.MODULES_WEB_ROOT_DIR.'bibliography/index.php\', {method: \'post\', addData: \'itemID='.$last_biblio_id.'&detail=true\'});</script>';
             } else { utility::jsAlert(__('Bibliography Data FAILED to Save. Please Contact System Administrator')."\n".$sql_op->error); }
             exit();
         }
@@ -296,7 +296,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
             $titles .= $title."\n";
         }
         utility::jsAlert(__('Below data can not be deleted:')."\n".$titles);
-        echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
+        echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'\', {addData: \''.$_POST['lastQueryStr'].'\'});</script>';
         exit();
     }
     // auto delete data on UCS if enabled
@@ -306,10 +306,10 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
     // error alerting
     if ($error_num == 0) {
         utility::jsAlert(__('All Data Successfully Deleted'));
-        echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
+        echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'\', {addData: \''.$_POST['lastQueryStr'].'\'});</script>';
     } else {
         utility::jsAlert(__('Some or All Data NOT deleted successfully!\nPlease contact system administrator'));
-        echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
+        echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'\', {addData: \''.$_POST['lastQueryStr'].'\'});</script>';
     }
     exit();
 }
@@ -437,7 +437,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $form->addTextField('text', 'class', __('Classification'), $rec_d['classification'], 'style="width: 40%;"');
     // biblio publisher
         // AJAX expression
-        $ajax_exp = "ajaxFillSelect('".SENAYAN_WEB_ROOT_DIR."admin/AJAX_lookup_handler.php', 'mst_publisher', 'publisher_id:publisher_name', 'publisherID', $('publ_search_str').getValue())";
+        $ajax_exp = "ajaxFillSelect('".SENAYAN_WEB_ROOT_DIR."admin/AJAX_lookup_handler.php', 'mst_publisher', 'publisher_id:publisher_name', 'publisherID', $('publ_search_str').val())";
         if ($rec_d['publisher_name']) {
             $publ_options[] = array($rec_d['publisher_id'], $rec_d['publisher_name']);
         }
@@ -451,7 +451,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $form->addTextField('text', 'year', __('Publishing Year'), $rec_d['publish_year'], 'style="width: 40%;"');
     // biblio publish place
         // AJAX expression
-        $ajax_exp = "ajaxFillSelect('".SENAYAN_WEB_ROOT_DIR."admin/AJAX_lookup_handler.php', 'mst_place', 'place_id:place_name', 'placeID', $('plc_search_str').getValue())";
+        $ajax_exp = "ajaxFillSelect('".SENAYAN_WEB_ROOT_DIR."admin/AJAX_lookup_handler.php', 'mst_place', 'place_id:place_name', 'placeID', $('plc_search_str').val())";
         // string element
         if ($rec_d['place_name']) {
             $plc_options[] = array($rec_d['publish_place_id'], $rec_d['place_name']);
@@ -616,13 +616,13 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         $datagrid->setSQLColumn('biblio.biblio_id', 'biblio.biblio_id AS bid',
             'biblio.title AS \''.__('Title').'\'',
             'biblio.isbn_issn AS \''.__('ISBN/ISSN').'\'',
-            'IF(COUNT(item.item_id)>0, COUNT(item.item_id), \'<strong style="color: #FF0000;">'.__('None').'</strong>\') AS \''.__('Copies').'\'',
+            'IF(COUNT(item.item_id)>0, COUNT(item.item_id), \'<strong style="color: #f00;">'.__('None').'</strong>\') AS \''.__('Copies').'\'',
             'biblio.last_update AS \''.__('Last Update').'\'');
         $datagrid->modifyColumnContent(2, 'callback{showTitleAuthors}');
     } else {
         $datagrid->setSQLColumn('biblio.biblio_id AS bid', 'biblio.title AS \''.__('Title').'\'',
             'biblio.isbn_issn AS \''.__('ISBN/ISSN').'\'',
-            'IF(COUNT(item.item_id)>0, COUNT(item.item_id), \'<strong style="color: #FF0000;">'.__('None').'</strong>\') AS \''.__('Copies').'\'',
+            'IF(COUNT(item.item_id)>0, COUNT(item.item_id), \'<strong style="color: #f00;">'.__('None').'</strong>\') AS \''.__('Copies').'\'',
             'biblio.last_update AS \''.__('Last Update').'\'');
         // modify column value
         $datagrid->modifyColumnContent(1, 'callback{showTitleAuthors}');

@@ -105,7 +105,8 @@ $loan_report[__('Total Overdued Loans')] = $report_d[0];
 
 // table header
 $table->setHeader(array(__('Loan Data Summary')));
-$table->table_header_attr = 'class="dataListHeader" colspan="3"';
+$table->table_header_attr = 'class="dataListHeader"';
+$table->setCellAttr(0, 0, 'colspan="3"');
 // initial row count
 $row = 1;
 foreach ($loan_report as $headings=>$report_d) {

@@ -68,12 +68,11 @@ if (!$reportView) {
     </div>
     <div style="padding-top: 10px; clear: both;">
     <input type="submit" name="applyFilter" value="<?php echo __('Apply Filter'); ?>" />
-    <input type="button" name="moreFilter" value="<?php echo __('Show More Filter Options'); ?>" onclick="showHideTableRows('filterForm', 1, this, '<?php echo __('Show More Filter Options'); ?>', '<?php echo __('Hide Filter Options'); ?>')" />
+    <input type="button" name="moreFilter" value="<?php echo __('Show More Filter Options'); ?>" />
     <input type="hidden" name="reportView" value="true" />
     </div>
     </form>
     </fieldset>
-    <script type="text/javascript">hideRows('filterForm', 2);</script>
     <!-- filter end -->
     <div class="dataListHeader" style="padding: 3px;"><span id="pagingBox"></span></div>
     <iframe name="reportView" id="reportView" src="<?php echo $_SERVER['PHP_SELF'].'?reportView=true'; ?>" frameborder="0" style="width: 100%; height: 500px;"></iframe>
@@ -154,7 +153,7 @@ if (!$reportView) {
     echo $reportgrid->createDataGrid($dbs, $table_spec, 20);
 
     echo '<script type="text/javascript">'."\n";
-    echo 'parent.$(\'pagingBox\').update(\''.str_replace(array("\n", "\r", "\t"), '', $reportgrid->paging_set).'\');'."\n";
+    echo 'parent.$(\'#pagingBox\').html(\''.str_replace(array("\n", "\r", "\t"), '', $reportgrid->paging_set).'\');'."\n";
     echo '</script>';
 
     $content = ob_get_clean();

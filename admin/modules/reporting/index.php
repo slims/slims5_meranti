@@ -103,7 +103,8 @@ $collection_stat[__('10 Most Popular Titles')] = $stat_data;
 
 // table header
 $table->setHeader(array(__('Collection Statistic Summary')));
-$table->table_header_attr = 'class="dataListHeader" colspan="3"';
+$table->table_header_attr = 'class="dataListHeader"';
+$table->setCellAttr(0, 0, 'colspan="3"');
 // initial row count
 $row = 1;
 foreach ($collection_stat as $headings=>$stat_data) {

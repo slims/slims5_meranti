@@ -48,7 +48,7 @@ $zserver[] = 'z3950.loc.gov:7090/voyager';
 /* RECORD OPERATION */
 if (isset($_POST['saveZ']) AND isset($_SESSION['z3950result'])) {
     require MODULES_BASE_DIR.'bibliography/biblio_utils.inc.php';
-    
+
     $gmd_cache = array();
     $publ_cache = array();
     $place_cache = array();
@@ -155,7 +155,7 @@ if (isset($_POST['saveZ']) AND isset($_SESSION['z3950result'])) {
     // destroy result Z3950 session
     unset($_SESSION['z3950result']);
     utility::jsAlert($r.' records inserted to database.');
-    echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'\', \'get\');</script>';
+    echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'\');</script>';
     exit();
 }
 /* RECORD OPERATION END */

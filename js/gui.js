@@ -1,129 +1,294 @@
 /**
-* Arie Nugraha 2009
-* this file need prototype. js
-* library to works
-*
-* UI related functions
-*/
+ * Arie Nugraha 2009
+ * Simbio GUI related functions
+ *
+ * Require : jQuery library
+ */
 
-var registerAdminEvents = function()
-{
-    // register submenu event
-    $$('.subMenuItem').invoke('observe', 'click', function(evt) {
-        evt.stop();
-        var subMenu = Event.element(evt);
-        // remove other current link marker on non-active submenu
-        $$('.subMenuItem').invoke('removeClassName', 'curModuleLink');
-        var subMenuHREF = subMenu.addClassName('curModuleLink').readAttribute('href');
-        setContent('mainContent', subMenuHREF, 'get');
-    }).invoke('observe', 'mouseover', function(evt) { evt.stop(); } );
+
+/**
+ * jQuery Plugins function to set row event on datagrid table
+ *
+ * @param       object      an additional option for table
+ * @return      jQuery
+ *
+ * @example usage
+ * $('.datagrid').simbioTable();
+ * or
+ * $('.datagrid').simbioTable({ mouseoverCol: '#bcd4ec', highlightCol: 'yellow' });
+ */
+jQuery.fn.simbioTable = function(params) {
+    // set some options
+    var options = {
+        mouseoverCol: '#6dff77',
+        highlightCol: 'yellow'
+    };
+    jQuery.extend(options, params);
+
+    var tableRows = $(this).children('thead,tbody,tfoot').children('tr');
+    // try straight search to TR
+    if (tableRows.length < 1) { tableRows = $(this).children('tr'); }
+    // add non-standar 'row' attribute to indicate row position
+    tableRows.each(function(i) {
+            $(this).attr('row', i);
+        });
+
+    // event register
+    tableRows.mouseover(function() {
+        // on mouse over change background color
+        if (!this.highlighted) {
+            this.originColor = $(this).css('background-color');
+            $(this).css('background-color', options.mouseoverCol);
+        }
+    }).mouseout(function() {
+        // on mouse over revert background color to original
+        if (!this.highlighted) {
+            $(this).css('background-color', this.originColor);
+        }
+    }).click(function(evt) {
+        var currRow = $(this);
+        if (!this.originColor) {
+            this.originColor = currRow.css('background-color');
+        }
+        // on click highlight row with new background color
+        if (this.highlighted) {
+            this.highlighted = false;
+            currRow.removeClass('highlighted last-highlighted').css({'background-color': this.originColor}).find('td');
+            // uncheck the checkbox on row if exists
+            currRow.find('input:checkbox[name=itemID\[\]]').removeAttr('checked');
+        } else {
+            // set highlighted flag
+            this.highlighted = true;
+            // check the checkbox on row if exists
+            currRow.find('input:checkbox[name=itemID\[\]]').attr('checked', 'checked');
+            currRow.find('input:text,textarea,select').first().focus();
+
+            // get parent table of row
+            var parentTable = $( currRow.parents('table')[0] );
+
+            // get last highlighted row index
+            var lastRow = parseInt(parentTable.find('.last-highlighted').attr('row'));
+            // get current row index
+            var currentRow = parseInt(currRow.attr('row'));
+
+            if (evt.shiftKey) {
+                var start = Math.min(currentRow, lastRow);
+                var end = Math.max(currentRow, lastRow);
+                for (var r = start+1; r <= end-1; r++) {
+                    parentTable.find('tr[row=' + r + ']').trigger('click');
+                }
+            }
+
+            // remove all last-highlighted row class
+            parentTable.find('.last-highlighted').removeClass('last-highlighted');
+            // highlight current clicked row
+            currRow.addClass('highlighted last-highlighted').css({'background-color': options.highlightCol}).find('td');
+        }
+    });
+
+    return $(this);
+};
+
+
+/**
+ * jQuery Plugins function to make dynamic addition form field
+ *
+ *
+ * @return      jQuery
+ */
+jQuery.fn.dynamicField = function() {
+    var dynFieldClass = this.attr('class');
+    this.find('.add').click(function() {
+        // get div parent element
+        var currentField = $(this).parent();
+        var addField = currentField.clone(true);
+        // append remove button and remove ".add" button for additional field
+        addField.append(' <a href="#" class="remove-field">Remove</a>').children().remove('.add');
+        // add cloned field after
+        currentField.after(addField[0]);
+        // register event for remove button
+        $(document).ready(function() {
+            $('.remove-field', this).click(function() {
+                // remove field
+                var toRemove = $(this).parent().remove();
+            });
+        });
+    });
+
+    return $(this);
 }
 
-/* change the style of circulation tab */
-var setTabClass = function(objTab)
-{
-    var defaultClass = 'tab';
-    var tabSelectedClass = 'tabSelected';
-    // remove selected class from other tabs
-    $('mainContent').select('input.tab').invoke('removeClassName', tabSelectedClass);
-    // add class to current tab object
-    $(objTab).addClassName(tabSelectedClass);
+
+/**
+ * jQuery plugins to disable all input field inside form
+ *
+ *
+ * @return      jQuery
+ */
+jQuery.fn.disableForm = function() {
+    var disabledForm = $(this);
+    disabledForm.find('input,select,textarea').attr('disabled', 'disabled');
+    return disabledForm;
 }
 
-/* color of highlighted row */
-var strRowColor = '#64ff64';
-/* color of highlighted row based on checkbox */
-var strRowSelColor = '#ffb865';
-/* extending prototype's Element methods */
-Element.addMethods({
-    changeCellColor: function(element) {
-        element = $(element);
-        if (element.hasClassName('cbChecked')) return;
-        element.setStyle({backgroundColor: strRowColor});
-        return element;
+
+/**
+ * jQuery plugins to enable all input field inside form
+ *
+ *
+ * @return      jQuery
+ */
+jQuery.fn.enableForm = function() {
+    var enabledForm = $(this);
+    enabledForm.find('input,select,textarea').removeAttr('disabled');
+    return enabledForm;
+}
+
+
+/**
+ * JQuery method to unbind all related event on specified selector
+ */
+jQuery.fn.unRegisterEvents = function() {
+    var container = $(this);
+    // unbind all event handlers
+    container.find('a,table,tr,td,input,textarea,div').unbind();
+    return container;
+}
+
+
+/**
+ * Add some utilities function to jQuery namespace
+ */
+jQuery.extend({
+    unCheckAll: function(strSelector) {
+        $(strSelector).find('tr').each(function() {
+            if ($(this).hasClass('highlighted')) {
+                $(this).trigger('click');
+            }
+        });
     },
-
-    removeCellColor: function(element) {
-        element = $(element);
-        if (element.hasClassName('cbChecked')) return;
-        // reset the background color property
-        element.setStyle({ backgroundColor: '' });
-        return element;
+    checkAll: function(strSelector) {
+        $(strSelector).find('tr').each(function() {
+            if (!$(this).hasClass('highlighted')) {
+                $(this).trigger('click');
+            }
+        });
     }
 });
 
-/* highlight the selected row */
-var highlightRow = function(strRowID)
-{
-    // get the descendants TD of row
-    $(strRowID).select('td').invoke('changeCellColor');
-}
+/* AJAX plugins for SLiMS */
+jQuery.fn.registerAdminEvents = function(params) {
+    // set some options
+    var options = {
+        ajaxifyLink: true,
+        ajaxifyForm: true
+    };
+    jQuery.extend(options, params);
 
-/* unhighlight the selected row */
-var unHighlightRow = function(strRowID)
-{
-    // get the descendants TD of row
-    $(strRowID).select('td').invoke('removeCellColor');
-}
+    // cache AJAX container
+    var container = $(this);
 
-/* highlight the selected row based on checkbox */
-var firstChecked = 0;
-var secondChecked = 0;
-var cbHighlightRow = function(cbObj, strRowID, event)
-{
-    // color buffer
-    var clr = '';
-    // check is the checkbox is in checked state
-    isChecked = cbObj.checked;
-    // get the descendants TD of row
-    var descTD = $(strRowID).select('td');
-
-    if (isChecked) {
-        clr = strRowSelColor;
-        var isShift = event.shiftKey;
-        // get cbObj id string
-        var idStr = $(cbObj).readAttribute('id');
-        // get number from idStr
-        var chboxNum = idStr.replace(/[a-z]+/i, '');
-        chboxNum = parseInt(chboxNum);
-        if (!isShift) {
-            firstChecked = chboxNum;
-        } else {
-            if (firstChecked > 0) {
-                secondChecked = chboxNum;
+    if (options.ajaxifyLink) {
+        // change all anchor behaviour to AJAX in main content
+        container.find('a:not(.notAJAX)').click(function(evt) {
+            evt.preventDefault();
+            var anchor = $(this);
+            // get anchor href
+            var url = anchor.attr('href');
+            var postData = anchor.attr('postdata');
+            var loadContainer = anchor.attr('loadcontainer');
+            if (loadContainer) {
+                container = jQuery('#'+container);
             }
-        }
-        // check if shift key is pressed
-        if (isShift && (firstChecked > 0) && (secondChecked > 0)) {
-            var start = Math.min(firstChecked, secondChecked);
-            var end = Math.max(firstChecked, secondChecked);
-            for (c = start+1; c <= end-1; c++) {
-                $('cbRow' + c).click();
+            // set ajax
+            if (postData) {
+                container.simbioAJAX(url, {method: 'post', addData: postData});
+            } else {
+                container.simbioAJAX(url, {addData: {ajaxload: 1}});
             }
-            // reset
-            firstChecked = 0; secondChecked = 0;
-        }
-        // set style for each of TD
-        descTD.invoke('addClassName', 'cbChecked').invoke('setStyle', {backgroundColor: clr});
-    } else {
-        // set style for each of TD
-        descTD.invoke('removeClassName', 'cbChecked').invoke('setStyle', {backgroundColor: ''});
+        });
     }
+
+    // set all table with class datagrid
+    container.find('table.datagrid,#dataList').each(function() {
+        var datagrid = $(this);
+        datagrid.simbioTable();
+        // register uncheck click event
+        $('.uncheck-all').click(function() {
+            jQuery.unCheckAll('.datagrid,#dataList');
+        });
+        // register check click event
+        $('.check-all').click(function() {
+            jQuery.checkAll('.datagrid,#dataList');
+        });
+        // set all row to show detail when double clicked
+        datagrid.children('thead,tbody,tfoot').children('tr').each( function() {
+            var tRow = $(this);
+            var rowLink = tRow.css({'cursor' : 'pointer'}).find('.editLink');
+            if (rowLink[0] != undefined) {
+                tRow.dblclick(function() {$(rowLink[0]).trigger('click')});
+            }
+        });
+        // unregister event for table-header
+        $('.table-header', datagrid).parent().unbind();
+    });
+
+    // change all search form submit behaviour to AJAX
+    container.find('.editFormLink').click(function(evt) {
+        evt.preventDefault();
+        var theForm = $(this).parents('form').enableForm().find('input,textarea').not(':submit,:button').first().focus();
+        $('.makeHidden').removeClass('makeHidden');
+        // enable hidden delete form
+        container.find('#deleteForm').enableForm();
+    });
+
+    if (options.ajaxifyForm) {
+        // change all search form submit behaviour to AJAX
+        container.find('.menuBox form:not(.notAJAX)').submit(function(evt) {
+            var theForm = $(this);
+            if (theForm.attr('target')) {
+                theForm[0].submit();
+                return;
+            }
+            evt.preventDefault();
+            var formAction = theForm.attr('action');
+            var formMethod = theForm.attr('method');
+            var formData = theForm.serialize();
+            container.simbioAJAX(formAction, {method: formMethod, addData: formData});
+        });
+    }
+
+    // focus first element
+    container.find('input[type=text]:first').focus();
+    // focus first form element
+    var mainForm = container.find('#mainForm'); if (mainForm.length > 0) { mainForm.find('input,textarea').not(':submit,:button').first().focus(); }
+    // disable form marked with disabled attribute
+    container.find('form[disabled]').disableForm().find('.cancelButton').removeAttr('disabled').click(function() {
+        jQuery.ajaxPrevious(2);
+    });
+
+    container.find('input.tab').click(function() {
+        container.find('input.tab').removeClass('tabSelected');
+        var tabButton = $(this).addClass('tabSelected');
+        var tabSrc = tabButton.attr('src');
+        if (tabSrc) {
+            // set iframe content
+            setIframeContent('listsFrame', tabSrc);
+        }
+    });
+
+    return container;
 }
 
 /* Javasript function to open new window  */
-var openWin = function(strURL, strWinName, intWidth, intHeight, boolScroll)
-{
+var openWin = function(strURL, strWinName, intWidth, intHeight, boolScroll) {
     // variables to determine the center position of window
     var xPos = (screen.width - intWidth)/2;
     var yPos = (screen.height - intHeight)/2;
 
     var withScrollbar = 'no';
-
     // if scrollbar allowed
-    if (boolScroll) {
-        withScrollbar = 'yes';
-    }
+    if (boolScroll) { withScrollbar = 'yes'; }
 
     window.open(strURL, strWinName, "height=" + intHeight + ",width=" + intWidth +
     ",menubar=no, scrollbars=" + withScrollbar + ", location=no, toolbar=no," +
@@ -133,102 +298,64 @@ var openWin = function(strURL, strWinName, intWidth, intHeight, boolScroll)
 /* Javasript function to open pop-up window floating div  */
 var htmlPop = null;
 var blocker = null;
-var openHTMLpop = function(strURL, intWidth, intHeight, strPopTitle)
-{
-    // retrieve required dimensions
-    var browserDims = document.body.getDimensions();
-    // calculate the center of the page using the browser and element dimensions
+var openHTMLpop = function(strURL, intWidth, intHeight, strPopTitle) {
+    // calculate the center of the page
     var yPos = 30;
-    var xPos = (browserDims.width - intWidth)/2;
-    // set pop content
-    var popContent = '<iframe id="htmlPopFrame" src="' + strURL + '" frameborder="0"></iframe>';
-    // if the 5th argument is set then it is straight content not URL
-    if (arguments[4] != undefined) {
-        popContent = strURL;
+    var xPos = ($(window).width() - intWidth)/2;
+    htmlPop = $('#htmlPop');
+    blocker = $('#blocker');
+    var htmlPopFrame = $('iframe#htmlPopFrame');
+    if (htmlPop.length > 0 && blocker.length > 0) {
+        if (htmlPopFrame.length) {
+            htmlPopFrame[0].src = strURL;
+        } else {
+            $('#htmlPopContainer').html(strURL);
+        }
+        $('#htmlPopTitle', htmlPop).text(strPopTitle);
+        htmlPop.css({'left': xPos+'px', 'width': intWidth+'px'}).fadeIn();
+        blocker.fadeIn();
+    } else {
+        // set pop content
+        var popContent = '<iframe id="htmlPopFrame" src="' + strURL + '" frameborder="0"></iframe>';
+        // if the 5th argument is set then it is straight content not URL
+        if (arguments[4] != undefined) { popContent = strURL; }
+        // append content to pop window
+        var toAdded = $('<div id="blocker"></div>'
+            + '<div id="htmlPop">'
+            + '<div id="htmlPopTitle" style="float: left; width: 70%">' + strPopTitle + '</div>'
+            + '<div style="float: right; width: 20%; text-align: right;">'
+            + '<a href="#" id="closePop" style="color: red; font-weight: bold;">Close</a>'
+            + '</div>'
+            + '<div id="htmlPopContainer">' + popContent + '</div>'
+            + '</div>').hide().appendTo('body');
+        htmlPopFrame = $('iframe#htmlPopFrame');
+        htmlPop = $('#htmlPop').css({'position': 'fixed', 'top': yPos+'px', 'left': xPos+'px', 'margin': 'auto', 'width': intWidth+'px'}).fadeIn();
+        blocker = $('#blocker').css({'top': 0, 'left': 0, 'width': '100%', 'height': screen.height+'px', 'position': 'fixed', 'background-color': '#000', 'opacity': 0.5}).fadeIn();
     }
-
-    $(document.body).insert('<div id="blocker"></div>'
-        + '<div id="htmlPop">'
-        + '<div id="htmlPopTitle" style="float: left; width: 70%">' + strPopTitle + '</div>'
-        + '<div style="float: right; width: 20%; text-align: right;">'
-        + '<a href="#" id="closePop" style="color: red; font-weight: bold;">Close</a>'
-        + '</div>'
-        + '<div>' + popContent + '</div>'
-        + '</div>');
-    // set element
-    blocker = $('blocker');
-    htmlPop = $('htmlPop');
-    // set pop up styles property
-    blocker.setStyle({top: 0, left: 0, width: '100%', height: screen.height+'px', position: 'fixed', backgroundColor: '#000', opacity: 0.3});
-    if (arguments[4] == undefined) {
-        var htmlPopFrame = $('htmlPopFrame').setStyle({width: '100%', height: intHeight+'px'});
-    }
-    htmlPop.setStyle({position: 'fixed', top: yPos+'px', left: xPos+'px', margin: 'auto', width: intWidth+'px', opacity: 0.9});
+    if (htmlPopFrame.length) { htmlPopFrame.css({'width': '100%', 'height': intHeight+'px'}); }
     // register ESC button event handler
-    Event.observe('closePop', 'click', function(evt) {
-        evt.preventDefault(); closeHTMLpop();
-    });
+    $('#closePop').click(function(evt) { evt.preventDefault(); closeHTMLpop(); });
 }
 
-var closeHTMLpop = function()
-{
-    htmlPop.remove(); blocker.remove();
-}
+var closeHTMLpop = function() { htmlPop.fadeOut(); blocker.fadeOut(); }
 
 /* set iframe content */
-var setIframeContent = function(strIframeID, strUrl)
-{
-    var iframeObj = $(strIframeID);
-    if (iframeObj != undefined) { iframeObj.src = strUrl; }
-}
-
-/* register event for dragger */
-/* coding all night just to get this thing works :D */
-var resizedObj = new Object();
-var dragger = new Object();
-var resizedObjHeight = 0;
-var offSet = 0;
-var evtHandler = {
-    mouseMove: function(evt) {
-        resizedObj.setStyle( {height: Math.max(100, offSet + Event.pointerY(evt)) + 'px'} );
-        return false;
-    }
-}
-
-var registerDraggerEvent = function(str_dragger_id, str_resized_obj_id)
-{
-    resizedObj = $(str_resized_obj_id);
-    dragger = $(str_dragger_id);
-    Event.observe(dragger, 'mousedown', function(evt) {
-        offSet = resizedObj.getHeight()-Event.pointerY(evt);
-        mouseMoveHandler = evtHandler.mouseMove.bindAsEventListener(evtHandler);
-        // register the mouse up event handler
-        Event.observe(dragger, 'mouseup', function() {
-            // unregister mouse move event handler
-            Event.stopObserving(dragger, 'mousemove', mouseMoveHandler);
-        });
-        // register the mouse out event handler
-        Event.observe(dragger, 'mouseout', function() {
-            // unregister mouse move event handler
-            Event.stopObserving(dragger, 'mousemove', mouseMoveHandler);
-        });
-        // register the mouse move event handler
-        Event.observe(dragger, 'mousemove', mouseMoveHandler);
-    });
+var setIframeContent = function(strIframeID, strUrl) {
+    var iframeObj = $('#'+strIframeID);
+    if (iframeObj.length > 0) { iframeObj[0].src = strUrl; }
+    return iframeObj;
 }
 
 /* hide table rows */
 var hiddenTables = new Array();
-var hideRows = function(str_table_id, int_start_row)
-{
-    var rows = $(str_table_id).select('.divRow');
+var hideRows = function(str_table_id, int_start_row) {
+    var rows = $('#'+str_table_id).find('.divRow');
     var skip = 0;
-    rows.each(function(row_obj) {
+    rows.each(function() {
         if (skip < int_start_row) {
-            skip++;
-            return;
+            skip++; return;
         } else {
-            row_obj.setStyle({display: 'none'});
+            $(this).css('display','none');
         }
     });
     // add table id to hidden table array
@@ -236,21 +363,42 @@ var hideRows = function(str_table_id, int_start_row)
 }
 
 /* show table rows */
-var showRows = function(str_table_id)
-{
-    var rows = $(str_table_id).select('.divRow').invoke('setStyle', {display: 'block'});
+var showRows = function(str_table_id) {
+    $('#'+str_table_id).find('.divRow').slideDown();
 }
 
 /* toogle show/hide table rows */
-var showHideTableRows = function(str_table_id, int_start_row, obj_button, str_hide_text, str_show_text)
-{
+var showHideTableRows = function(str_table_id, int_start_row, obj_button, str_hide_text, str_show_text) {
     obj_button = $(obj_button);
-    if (hiddenTables.include(str_table_id)) {
-        showRows(str_table_id);
-        hiddenTables = hiddenTables.without(str_table_id);
-        obj_button.setValue(str_show_text);
-    } else {
+    if (obj_button.hasClass('hideButton')) {
         hideRows(str_table_id, int_start_row);
-        obj_button.setValue(str_hide_text)
+        obj_button.removeClass('hideButton').val(str_hide_text);
+    } else {
+        showRows(str_table_id);
+        obj_button.addClass('hideButton').val(str_show_text);
     }
 }
+
+/**
+ * Register all events
+ */
+$('document').ready(function() {
+    // register submenu event
+    $('.subMenuItem').click(function(evt) {
+        evt.preventDefault();
+        // remove other menu class
+        $('.subMenuItem').removeClass('curModuleLink');
+        var subMenu = $(this).addClass('curModuleLink');
+        var subMenuHREF = subMenu.attr('href');
+        $('#mainContent').simbioAJAX(subMenuHREF, {method: 'get'});
+    });
+
+    // Register admin event for AJAX event
+    $('#mainContent,#pageContent').bind('simbioAJAXloaded', function(evt) {
+        $(this).registerAdminEvents({ajaxifyLink: true, ajaxifyForm: true});
+        // report filter
+        $('#filterForm').children('.divRow:gt(0)').wrapAll('<div class="hiddenFilter"></div>');
+        var hiddenFilter = $('.hiddenFilter').hide();
+        $('[name=moreFilter]').toggle(function() { hiddenFilter.fadeIn(); }, function() { hiddenFilter.hide(); });
+    });
+});

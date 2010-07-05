@@ -46,56 +46,58 @@ ob_start();
 ?>
 <script type="text/javascript">
 /**
- * Function to change date text to input text
+ * Change date text to input text
  */
-var changeDateForm = function(intLoanID, strDateToChange, strDateElementID)
-{
-    var dateElement = $(strDateElementID);
-    var dateElementVal = dateElement.innerHTML.strip();
-    var inputDate = 'input' + strDateElementID;
-    var inputDateElement = '<input type="text" value="' + dateElementVal + '" name="' + inputDate + '" id="' + inputDate + '" maxlength="10" size="10" />';
-    dateElement.insert({before: inputDateElement}).hide();
-    $(inputDate).focus();
-    // utility function as an Event listener
-    var changeListener = {
-        changed: function(event) {
-            var inputDate = Event.element(event);
-            changeLoanDate(intLoanID, strDateToChange, strDateElementID, inputDate.getValue());
+$(document).ready(function() {
+    $('.dateChange').click(function(evt) {
+        evt.preventDefault();
+        var dateText = $(this);
+        var loanID = dateText.attr('data');
+        // check if it is due or loan date
+        var dateToChange = 'due';
+        var inputDateClass = 'dateChangeInput dueInput';
+        if (dateText.hasClass('loan')) {
+            dateToChange = 'loan';
+            inputDateClass = 'dateChangeInput loanInput';
         }
-    }
-    var evtListener = changeListener.changed.bindAsEventListener(changeListener);
-    $(inputDate).observe('blur', evtListener);
-}
+        var dateContent = dateText.text().trim();
+        var dateInputField = $('<input type="text" value="' + dateContent + '" class="' + inputDateClass + '" maxlength="10" size="10" />');
+        dateText.before(dateInputField).hide();
+        dateInputField.focus().blur(function() {
+                var dateInputField = $(this);
+                changeLoanDate(loanID, dateToChange, dateInputField, dateInputField.val());
+            } ).keyup(function(evt) {
+                    if (evt.keyCode == 13) {
+                        changeLoanDate(loanID, dateToChange, dateInputField, dateInputField.val());
+                    }
+                });
+    });
+});
 
 /**
  * Function to send AJAX request to change loan and due date
  */
-var changeLoanDate = function(intLoanID, strDateToChange, strDateElementID, strDate)
+var changeLoanDate = function(intLoanID, strDateToChange, dateElement, strDate)
 {
     var dateData = {newLoanDate: strDate, loanSessionID: intLoanID};
-    var dateElement = $(strDateElementID);
-    if (strDateToChange == 'due') {
-        dateData = {newDueDate: strDate, loanSessionID: intLoanID};
-    }
-    var ajaxJSON = new Ajax.Request('<?php echo MODULES_WEB_ROOT_DIR.'circulation/loan_date_AJAX_change.php'; ?>', {
-        method: 'post',
-        parameters: dateData,
-        onSuccess: function(ajaxTransport) {
-                // get AJAX response text
-                var respText = ajaxTransport.responseText.strip();
-                if (!respText) {
+    var dateText = $('.'+strDateToChange+'[data='+intLoanID+']');
+    if (strDateToChange == 'due') { dateData = {newDueDate: strDate, loanSessionID: intLoanID}; }
+    jQuery.ajax({url: '<?php echo MODULES_WEB_ROOT_DIR.'circulation/loan_date_AJAX_change.php'; ?>', type: 'POST',
+        data: dateData,
+        dataType: 'json',
+        success: function(ajaxRespond) {
+                if (!ajaxRespond) {
                     return;
                 }
-                noResult = false;
                 // evaluate json respons
-                var sessionDate = respText.evalJSON();
+                var sessionDate = ajaxRespond;
                 // update date element
-                dateElement.update(sessionDate.newDate);
+                dateText.html(sessionDate.newDate);
             }
         });
     // remove input date
-    $('input' + strDateElementID).remove();
-    dateElement.show();
+    dateElement.remove();
+    dateText.show();
 }
 </script>
 <?php
@@ -108,14 +110,14 @@ if (isset($_SESSION['memberID'])) {
     $memberID = trim($_SESSION['memberID']);
     ?>
     <!--item loan form-->
-    <div style="padding: 5px; background: #CCCCCC;">
+    <div style="padding: 5px; background: #ccc;">
         <form name="itemLoan" id="loanForm" action="circulation_action.php" method="post" style="display: inline;">
             <?php echo __('Insert Item Code/Barcode'); ?> :
             <input type="text" id="tempLoanID" name="tempLoanID" />
             <input type="submit" value="<?php echo __('Loan'); ?>" class="button" />
         </form>
     </div>
-    <script type="text/javascript">$('tempLoanID').focus();</script>
+    <script type="text/javascript">$('#tempLoanID').focus();</script>
     <!--item loan form end-->
     <?php
     // make a list of temporary loan if there is any
@@ -139,8 +141,8 @@ if (isset($_SESSION['memberID'])) {
 
             // check if manually changes loan and due date allowed
             if ($sysconf['allow_loan_date_change']) {
-                $loan_date = '<a href="#" title="'.__('Click To Change Loan Date').'" onclick="changeDateForm(\''.$_loan_ID.'\', \'loan\', \'loanDate'.$row.'\')" id="loanDate'.$row.'">'.$temp_loan_list_d['loan_date'].'</a>';
-                $due_date = '<a href="#" title="'.__('Click To Change Due Date').'" onclick="changeDateForm(\''.$_loan_ID.'\', \'due\', \'dueDate'.$row.'\')" id="dueDate'.$row.'">'.$temp_loan_list_d['due_date'].'</a>';
+                $loan_date = '<a href="#" title="'.__('Click To Change Loan Date').'" class="dateChange loan" data="'.$_loan_ID.'" id="loanDate'.$row.'">'.$temp_loan_list_d['loan_date'].'</a>';
+                $due_date = '<a href="#" title="'.__('Click To Change Due Date').'" class="dateChange due" data="'.$_loan_ID.'" id="dueDate'.$row.'">'.$temp_loan_list_d['due_date'].'</a>';
             } else {
                 $loan_date = $temp_loan_list_d['loan_date'];
                 $due_date = $temp_loan_list_d['due_date'];
@@ -154,10 +156,10 @@ if (isset($_SESSION['memberID'])) {
             // append data to table row
             $temp_loan_list->appendTableRow($fields);
             // set the HTML attributes
-            $temp_loan_list->setCellAttr($row, null, "valign='top' class='$row_class'");
-            $temp_loan_list->setCellAttr($row, 0, "valign='top' align='center' class='$row_class' style='width: 5%;'");
-            $temp_loan_list->setCellAttr($row, 1, "valign='top' class='$row_class' style='width: 10%;'");
-            $temp_loan_list->setCellAttr($row, 2, "valign='top' class='$row_class' style='width: 60%;'");
+            $temp_loan_list->setCellAttr($row, null, 'class="'.$row_class.'"');
+            $temp_loan_list->setCellAttr($row, 0, 'valign="top" align="center" style="width: 5%;"');
+            $temp_loan_list->setCellAttr($row, 1, 'valign="top" style="width: 10%;"');
+            $temp_loan_list->setCellAttr($row, 2, 'valign="top" style="width: 60%;"');
 
             $row++;
         }

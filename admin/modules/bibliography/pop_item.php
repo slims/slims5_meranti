@@ -33,9 +33,9 @@ $content = '<script type="text/javascript">'."\n";
 $biblioID = intval($_GET['biblioID']);
 if (isset($_GET['itemID']) AND isset($_GET['action'])) {
     $itemID = (integer)$_GET['itemID'];
-    $content .= 'setContent(\'pageContent\', \'item.php?inPopUp=true&action=detail&biblioID='.$biblioID.'\', \'post\', \'itemID='.$itemID.'&detail=true\', true);';
+    $content .= '$(document).ready( function() { $(\'#pageContent\').simbioAJAX(\'item.php?inPopUp=true&action=detail&biblioID='.$biblioID.'\', {method: \'POST\', addData: \'itemID='.$itemID.'&detail=true\'}) });';
 } else {
-    $content .= 'setContent(\'pageContent\', \'item.php?inPopUp=true&action=detail&biblioID='.$biblioID.'\', \'post\', \'\', true);';
+    $content .= '$(document).ready( function() { $(\'#pageContent\').simbioAJAX(\'item.php?inPopUp=true&action=detail&biblioID='.$biblioID.'\'); });';
 }
 $content .= '</script>';
 

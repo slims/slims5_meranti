@@ -173,11 +173,19 @@ class detail extends content_list
 
         // availability
         $this->record_detail['availability'] = '<div id="itemListLoad">LOADING LIST...</div>';
-        $this->record_detail['availability'] .= '<script type="text/javascript">new Ajax.Updater(\'itemListLoad\', \''.SENAYAN_WEB_ROOT_DIR.'lib/contents/item_list.php\', {method: \'post\', parameters: \'id='.$this->detail_id.'&ajaxsec_user='.$sysconf['ajaxsec_user'].'&ajaxsec_passwd='.$sysconf['ajaxsec_passwd'].'\'});</script>';
+        $this->record_detail['availability'] .= '<script type="text/javascript">'
+            .'jQuery(document).ready(function() { jQuery.ajax({url: \''.SENAYAN_WEB_ROOT_DIR.'lib/contents/item_list.php\',
+                type: \'POST\',
+                data: \'id='.$this->detail_id.'&ajaxsec_user='.$sysconf['ajaxsec_user'].'&ajaxsec_passwd='.$sysconf['ajaxsec_passwd'].'\',
+                success: function(ajaxRespond) { jQuery(\'#itemListLoad\').html(ajaxRespond); } }); });</script>';
 
         // attachments
         $this->record_detail['file_att'] = '<div id="attachListLoad">LOADING LIST...</div>';
-        $this->record_detail['file_att'] .= '<script type="text/javascript">new Ajax.Updater(\'attachListLoad\', \''.SENAYAN_WEB_ROOT_DIR.'lib/contents/attachment_list.php\', {method: \'post\', parameters: \'id='.$this->detail_id.'&ajaxsec_user='.$sysconf['ajaxsec_user'].'&ajaxsec_passwd='.$sysconf['ajaxsec_passwd'].'\'});</script>';
+        $this->record_detail['file_att'] .= '<script type="text/javascript">'
+            .'jQuery(document).ready(function() { jQuery.ajax({url: \''.SENAYAN_WEB_ROOT_DIR.'lib/contents/attachment_list.php\',
+                type: \'POST\',
+                data: \'id='.$this->detail_id.'&ajaxsec_user='.$sysconf['ajaxsec_user'].'&ajaxsec_passwd='.$sysconf['ajaxsec_passwd'].'\',
+                success: function(ajaxRespond) { jQuery(\'#attachListLoad\').html(ajaxRespond); } }); });</script>';
 
         // get location data
         /*

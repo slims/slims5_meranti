@@ -47,7 +47,7 @@ if (isset($_SESSION['memberID']) AND !empty($_SESSION['memberID'])) {
         <div class="menuBoxInner circulationIcon">
             <?php echo __('CIRCULATION - Insert a member ID to start transaction with keyboard or barcode reader'); ?>
             <hr />
-            <form id="startCirc" class="notAJAX" method="post" style="display: inline;" action="blank.html" target="blindSubmit" onsubmit="$('start').click();">
+            <form id="startCirc" action="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/circulation_action.php" method="post" style="display: inline;">
             <?php echo __('Member ID'); ?> :
             <?php
             // create AJAX drop down
@@ -57,7 +57,7 @@ if (isset($_SESSION['memberID']) AND !empty($_SESSION['memberID'])) {
             $ajaxDD->handler_URL = MODULES_WEB_ROOT_DIR.'membership/member_AJAX_response.php';
             echo $ajaxDD->out();
             ?>
-            <input type="button" value="<?php echo __('Start Transaction'); ?>" id="start" class="button" onclick="setContent('mainContent', '<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/circulation_action.php', 'post', $('startCirc').serialize(), true)" />
+            <input type="submit" value="<?php echo __('Start Transaction'); ?>" name="start" id="start" class="button" />
             </form>
         </div>
     </fieldset>

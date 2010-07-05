@@ -157,7 +157,7 @@ if (isset($_POST['doImport'])) {
 						$dbs->query($sql_str);
 						if ($dbs->affected_rows > 0) { $updated_row++; }
 					} else {
-						if ($dbs->affected_rows > 0) { $updated_row++; }	
+						if ($dbs->affected_rows > 0) { $updated_row++; }
 					}
                 }
                 $row_count++;
@@ -169,8 +169,8 @@ if (isset($_POST['doImport'])) {
         $import_time_sec = $end_time-$start_time;
         utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'bibliography', 'Importing '.$updated_row.' item records from file : '.$_FILES['importFile']['name']);
         echo '<script type="text/javascript">'."\n";
-        echo 'parent.$(\'importInfo\').update(\'<strong>'.$updated_row.'</strong> records updated successfully to item database, from record <strong>'.$_POST['recordOffset'].' in '.$import_time_sec.' second(s)</strong>\');'."\n";
-        echo 'parent.$(\'importInfo\').setStyle( {display: \'block\'} );'."\n";
+        echo 'parent.$(\'#importInfo\').html(\'<strong>'.$updated_row.'</strong> records updated successfully to item database, from record <strong>'.$_POST['recordOffset'].' in '.$import_time_sec.' second(s)</strong>\');'."\n";
+        echo 'parent.$(\'#importInfo\').css( {\'display\': \'block\'} );'."\n";
         echo '</script>';
         exit();
     }

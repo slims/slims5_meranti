@@ -98,7 +98,7 @@ if (isset($_POST['logMeIn'])) {
     </div>
     </form>
 </div>
-<script type="text/javascript">$('userName').activate();</script>
+<script type="text/javascript">jQuery('#userName').focus();</script>
 
 <?php
 // main content

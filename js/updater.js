@@ -1,144 +1,103 @@
 /**
 * Arie Nugraha 2009
-* this file need prototype. js
+* this file need jQuery library
 * library to works
 *
 * AJAX related functions
 */
 
-var lastAJAXcontainer = 'mainContent';
-var ajaxURLhistory = new Array();
-var urlNum = 0;
-var loadingImage = './admin_template/default/loader.gif';
-var defaultAJAXurl = '';
-
-/* register event after each AJAX call */
-Element.addMethods({
-    registerAJAXEvents: function(element) {
-        // change all anchor to AJAX behaviour
-        element.select('a:not(.notAJAX)').invoke('observe', 'click', function(evt) {
-            evt.stop();
-            var anchor = Event.element(evt);
-            var aHREF = anchor.readAttribute('href');
-            // check where to load AJAX content from loadcontainer attribute
-            var ajaxContainer = anchor.readAttribute('loadcontainer');
-            if (!ajaxContainer) { ajaxContainer = 'mainContent'; }
-            // check if link have postdata attribute
-            var postData = anchor.readAttribute('postdata');
-            if (postData) {
-                setContent(ajaxContainer, aHREF, 'post', postData);
-            } else {
-                setContent(ajaxContainer, aHREF, 'get');
-            }
-        });
-
-        // change all search form submit behaviour to AJAX
-        element.select('.editFormLink').invoke('observe', 'click', function(evt) {
-            evt.stop();
-            var button = Event.element(evt);
-            var theForm = button.up('form');
-            theForm.enable();
-            theForm.select('.makeHidden').invoke('removeClassName', 'makeHidden');
-            // enable hidden delete form
-            var deleteForm = $('deleteForm');
-            if (deleteForm) { deleteForm.enable(); }
-        });
-
-        // change all search form submit behaviour to AJAX
-        element.select('.menuBox form:not(.notAJAX)').invoke('observe', 'submit', function(evt) {
-            var theForm = Event.element(evt);
-            if (theForm.readAttribute('target')) {
-                theForm.submit();
-                return;
-            }
-            evt.stop();
-            var formAction = theForm.readAttribute('action');
-            var formMethod = theForm.readAttribute('method');
-            var formData = theForm.serialize();
-            setContent('mainContent', formAction, formMethod, formData);
-        });
-
-        return element;
+jQuery.extend({
+    ajaxHistory: new Array(),
+    addAjaxHistory: function(strURL, strElement) {
+        jQuery.ajaxHistory.unshift({url: strURL, elmt: strElement});
+        // delete the last element
+        if (jQuery.ajaxHistory.length > 5) {
+            jQuery.ajaxHistory.pop();
+        }
+    },
+    ajaxPrevious: function() {
+        if (jQuery.ajaxHistory.length < 1) {
+            return;
+        }
+        var moveBack = 1;
+        if (arguments[0] != undefined) {
+            moveBack = arguments[0];
+        }
+        if (moveBack >= jQuery.ajaxHistory.length) {
+            moveBack -= 1;
+        }
+        if (jQuery.ajaxHistory.length <= 1) {
+            top.location.href = location.pathname + location.search;
+            return;
+        }
+        $(jQuery.ajaxHistory[moveBack].elmt).simbioAJAX(jQuery.ajaxHistory[moveBack].url, {method: 'get'});
     }
 });
 
-/* set the content of layer */
-var setContent = function(strContainer, strURL, strMethod) {
-    // fill the lastAJAXcontainer global var
-    lastAJAXcontainer = strContainer;
-    // fill the lastAJAXurl global var
-    ajaxURLhistory[urlNum] = strURL
-    urlNum++;
+/**
+ * Function to Set AJAX content
+ *
+ * @param       string      strSelector : string of CSS and XPATH selector
+ * @param       string      strURL : URL of AJAX request
+ * @return      void
+ */
+jQuery.fn.simbioAJAX = function(strURL, params)
+{
+    var options = {
+        method: 'get',
+        insertMode: 'replace',
+        addData: '',
+        returnType: 'html',
+        loadingMessage: 'LOADING CONTENT... PLEASE WAIT' };
+    jQuery.extend(options, params);
 
-    var ajaxParams = '';
-    var isEvalScript = false;
-    if (arguments[3] != undefined) {
-        ajaxParams = arguments[3];
+    var ajaxContainer = $(this);
+
+    // callbacks set
+    if (ajaxContainer.find('#loader').length < 1) {
+        // create loading element dinamically
+        ajaxContainer.prepend('<div style="display: none; position: absolute: top: 0; left: 0; padding: 5px; background: #fc0; font-weight: bold;" id="loading"></div>');
     }
+    var currLoaderMessage = $(".loader").html();
+    $(".loader").html(options.loadingMessage);
+    $(".loader").ajaxStart(function(){ $(this).addClass('loadingImage'); });
+    $(".loader").ajaxSuccess(function(){
+        $(this).html(currLoaderMessage);
+        // no history on post AJAX request
+        if (options.method != 'post') {
+            var historyURL = strURL;
+            if (options.addData.length > 0) {
+                var addParam = options.addData;
+                if (Array.prototype.isPrototypeOf(options.addData)) {
+                    addParam = jQuery.param(options.addData);
+                }
+                if (historyURL.indexOf('?', 0) > -1) {
+                    historyURL += '&' + addParam;
+                } else {
+                    historyURL += '?' + addParam;
+                }
+            }
+            jQuery.addAjaxHistory(historyURL, ajaxContainer[0]);
+        }
+    });
+    $(".loader").ajaxStop(function(){ $(this).removeClass('loadingImage'); });
+    $(".loader").ajaxError(function(event, request, settings){ $(this).append("<div class=\"error\">Error requesting page : <strong>" + settings.url + "</strong></div>");})
 
-    if (arguments[4] != undefined) {
-        isEvalScript = arguments[4];
-    } else { isEvalScript = true; }
+    // send AJAX request
+    var ajaxResponse = $.ajax({
+        type : options.method, url : strURL,
+        data : options.addData, async: false }).responseText;
 
-    if (strURL) {
-        // escape single quotes chars
-        strURL = strURL.sub('\'', '\\\'');
+    // add to elements
+    if (options.insertMode == 'before') {
+        ajaxContainer.prepend(ajaxResponse);
+    } else if (options.insertMode == 'after') {
+        ajaxContainer.append(ajaxResponse);
+    } else { ajaxContainer.html(ajaxResponse).hide().fadeIn('fast'); }
 
-        // show loading
-        showLoading();
-        var ajaxObj = new Ajax.Updater(
-            {success: strContainer},
-            strURL,
-            {
-                asynchronous: false,
-                method: strMethod,
-                parameters: ajaxParams,
-                evalScripts: isEvalScript,
-                onFailure: errorReport,
-                onComplete: hideLoading,
-                requestHeaders: {'Pragma': 'no-cache',
-                    'Cache-Control': 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0',
-                    'Expires': 'Sat, 26 Jul 1997 05:00:00 GMT'}
-            });
-    }
-}
+    ajaxContainer.trigger('simbioAJAXloaded');
 
-/* show error when ajax updater failed */
-var errorReport = function(ajaxObj) {
-    alert('Error on AJAX request! Probably page you requested not found on server.');
-}
-
-/* show loading when ajax updater is in middle of requesting */
-var showLoading = function() {
-    $$('.loader').invoke('addClassName', 'loadingImage').invoke('update', 'LOADING CONTENT... PLEASE WAIT');
-}
-
-/* hide loading when ajax updater complete the request */
-var hideLoading = function(ajaxObj) {
-    var loaders = $$('.loader');
-    if (loaders.length > 0) { loaders.invoke('removeClassName', 'loadingImage').invoke('update', lastStr); }
-    // focus all first form input element
-    var inputEl = $$('input[type=text]'); if (inputEl.length > 0) {inputEl[0].focus();}
-    $(lastAJAXcontainer).registerAJAXEvents();
-}
-
-/* get previous AJAX url */
-var getPreviousAJAXurl = function() {
-    if (urlNum > 1) {
-        return ajaxURLhistory[urlNum-2];
-    } else {
-        ajaxURLhistory[0] = defaultAJAXurl;
-        return defaultAJAXurl;
-    }
-}
-
-/* get latest AJAX url */
-var getLatestAJAXurl = function() {
-    if (urlNum > 0) {
-        return ajaxURLhistory[urlNum-1];
-    } else {
-        return defaultAJAXurl;
-    }
+    return ajaxContainer;
 }
 
 /* invoke UCS upload catalog */
@@ -153,20 +112,17 @@ var ucsUpload = function(strUploadHandler, strData) {
     if (!confUpload) {
         return;
     }
-    var ajaxJSON = new Ajax.Request(strUploadHandler, {
-        method: 'post',
-        parameters: strData,
-        onSuccess: function(ajaxTransport) {
-                // get AJAX response text
-                var respText = ajaxTransport.responseText.strip();
-                // debugging purpose only
-                // alert(respText);
-                // evaluate json
-                var jsonObj = respText.evalJSON();
+    jQuery.ajax({
+        url: strUploadHandler,
+        type: 'POST',
+        data: strData,
+        dataType: 'json',
+        success: function(ajaxRespond) {
+                var jsonObj = ajaxRespond;
                 // alert(jsonObj.status + ': ' + jsonObj.message);
                 alert(jsonObj.message);
             },
-        onFailure: function() {
+        error: function() {
             alert('UCS Upload error!');
             }
         });
@@ -174,15 +130,9 @@ var ucsUpload = function(strUploadHandler, strData) {
 
 /* invoke UCS record update */
 var ucsUpdate = function(strURLHandler, strData) {
-    strData = strData.strip();
-    var ajaxJSON = new Ajax.Request(strURLHandler, {
-        method: 'post',
-        parameters: strData,
-            onSuccess: function(ajaxTransport) {
-            // get AJAX response text
-            // var respText = ajaxTransport.responseText.strip();
-            // debugging purpose only
-            // alert(respText);
-            }
+    strData = strData.trim();
+    jQuery.ajax(strURLHandler, {
+        type: 'POST',
+        data: strData
         });
 }

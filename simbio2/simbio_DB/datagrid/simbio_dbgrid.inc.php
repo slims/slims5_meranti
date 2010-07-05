@@ -269,7 +269,7 @@ class simbio_datagrid extends simbio_table
                 $_edit_fields = array();
                 // check if checkbox array is included
                 if ($this->chbox_property) {
-                    $_del_chbox = '<input type="checkbox" name="'.$this->chbox_property[0].'[]" value="'.$this->grid_result_rows[$_row][0].'" id="cbRow'.$_row.'" onclick="cbHighlightRow(this, \'row'.$_row.'\', event)" />';
+                    $_del_chbox = '<input type="checkbox" name="'.$this->chbox_property[0].'[]" value="'.$this->grid_result_rows[$_row][0].'" id="cbRow'.$_row.'" />';
                     $_edit_fields[] = $_del_chbox;
                 }
                 // check if edit link array is included
@@ -287,24 +287,26 @@ class simbio_datagrid extends simbio_table
             // editable field style and column width modification
             for ($f = 0; $f < $_field_cnt; $f++) {
                 if (($this->chbox_property AND $this->edit_property) AND ($f < 2) AND $this->editable) {
-                    $this->setCellAttr($_row, $f, 'align="center" valign="top" class="'.$_row_class.'" style="width: 5%;"');
+                    $this->setCellAttr($_row, $f, 'align="center" valign="top" style="width: 5%;"');
                 } else {
                     // checking for special field width value set by column_width property array
-                    $_row_attr = 'valign="top"';
+                    $_attr = 'valign="top"';
                     if ($this->editable) {
                         if (($this->chbox_property AND $this->edit_property) AND isset($this->column_width[$f-2])) {
-                            $_row_attr .= ' style="width: '.$this->column_width[$f-2].';"';
+                            $_attr .= ' style="width: '.$this->column_width[$f-2].';"';
                         } else if ( (($this->chbox_property AND !$this->edit_property) OR (!$this->chbox_property AND $this->edit_property)) AND isset($this->column_width[$f-1])) {
-                            $_row_attr .= ' style="width: '.$this->column_width[$f-1].';"';
+                            $_attr .= ' style="width: '.$this->column_width[$f-1].';"';
                         }
                     } else {
                         if (isset($this->column_width[$f])) {
-                            $_row_attr .= ' style="width: '.$this->column_width[$f].';"';
+                            $_attr .= ' style="width: '.$this->column_width[$f].';"';
                         }
                     }
-                    $this->setCellAttr($_row, $f, $_row_attr.' class="'.$_row_class.'"');
+                    $this->setCellAttr($_row, $f, $_attr);
                 }
             }
+            $this->setCellAttr($_row, null, 'class="'.$_row_class.'"');
+
             $_row++;
         }
 
@@ -364,8 +366,8 @@ class simbio_datagrid extends simbio_table
             // if checkbox is include then show button
             if ($this->chbox_property) {
                 $_button_grp .= '<td><input type="button" onclick="chboxFormSubmit(\''.$this->table_name.'\', \''.$this->chbox_confirm_msg.'\')" value="'.$this->chbox_action_button.'" class="button" /> '
-                    .'<input type="button" onclick="checkAll(\''.$this->table_name.'\', false)" value="'.$_check_all.'" class="button" /> '
-                    .'<input type="button" onclick="checkAll(\''.$this->table_name.'\', true)" value="'.$_uncheck_all.'" class="button" /> '
+                    .'<input type="button" value="'.$_check_all.'" class="check-all button" /> '
+                    .'<input type="button" value="'.$_uncheck_all.'" class="uncheck-all button" /> '
                     .'</td>';
             }
 

@@ -58,7 +58,7 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
     // barcode size
     $size = 2;
     // create AJAX request
-    echo '<script type="text/javascript" src="'.JS_WEB_ROOT_DIR.'prototype.js"></script>';
+    echo '<script type="text/javascript" src="'.JS_WEB_ROOT_DIR.'jquery.js"></script>';
     echo '<script type="text/javascript">';
     // loop array
     foreach ($_POST['itemID'] as $itemID) {
@@ -76,7 +76,7 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
             /* replace invalid characters */
             $barcode_text = str_replace(array(':', ',', '*', '@'), '', $barcode_text);
             // send ajax request
-            echo 'new Ajax.Request(\''.SENAYAN_WEB_ROOT_DIR.'lib/phpbarcode/barcode.php?code='.$itemID.'&encoding='.$sysconf['barcode_encoding'].'&scale='.$size.'&mode=png\', { method: \'get\', onFailure: function(sendAlert) { alert(\'Error creating barcode!\'); } });'."\n";
+            echo 'jQuery.ajax({ url: \''.SENAYAN_WEB_ROOT_DIR.'lib/phpbarcode/barcode.php?code='.$itemID.'&encoding='.$sysconf['barcode_encoding'].'&scale='.$size.'&mode=png\', type: \'GET\', error: function() { alert(\'Error creating barcode!\'); } });'."\n";
             // add to sessions
             $_SESSION['barcodes'][$itemID] = $itemID;
             $print_count++;
@@ -89,7 +89,7 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
         utility::jsAlert($msg);
     } else {
         // update print queue count object
-        echo '<script type="text/javascript">parent.$(\'queueCount\').update(\''.$print_count.'\');</script>';
+        echo '<script type="text/javascript">parent.$(\'#queueCount\').html(\''.$print_count.'\');</script>';
         utility::jsAlert(__('Selected items added to print queue'));
     }
     exit();
@@ -98,7 +98,7 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
 // clean print queue
 if (isset($_GET['action']) AND $_GET['action'] == 'clear') {
     // update print queue count object
-    echo '<script type="text/javascript">parent.$(\'queueCount\').update(\'0\');</script>';
+    echo '<script type="text/javascript">parent.$(\'#queueCount\').html(\'0\');</script>';
     utility::jsAlert(__('Print queue cleared!'));
     unset($_SESSION['barcodes']);
     exit();
@@ -186,7 +186,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     $file_write = @file_put_contents(FILES_UPLOAD_DIR.$print_file_name, $html_str);
     if ($file_write) {
         // update print queue count object
-        echo '<script type="text/javascript">parent.$(\'queueCount\').update(\'0\');</script>';
+        echo '<script type="text/javascript">parent.$(\'#queueCount\').html(\'0\');</script>';
         // open result in window
         echo '<script type="text/javascript">top.openHTMLpop(\''.SENAYAN_WEB_ROOT_DIR.FILES_DIR.'/'.$print_file_name.'\', 800, 500, \''.__('Item Barcodes Printing').'\')</script>';
     } else { utility::jsAlert('ERROR! Item barcodes failed to generate, possibly because '.SENAYAN_BASE_DIR.FILES_DIR.' directory is not writable'); }
@@ -197,7 +197,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 <fieldset class="menuBox">
 <div class="menuBoxInner printIcon">
     <?php echo __('Item Barcodes Printing'); ?> - <a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/item_barcode_generator.php?action=print" class="notAJAX headerText2"><?php echo __('Print Barcodes for Selected Data');?></a>
-    &nbsp; <a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/item_barcode_generator.php?action=clear" class="notAJAX headerText2" style="color: #FF0000;"><?php echo __('Clear Print Queue'); ?></a>
+    &nbsp; <a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/item_barcode_generator.php?action=clear" class="notAJAX headerText2" style="color: #f00;"><?php echo __('Clear Print Queue'); ?></a>
     <hr />
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/item_barcode_generator.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
@@ -205,10 +205,10 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     </form>
     <div style="margin-top: 3px;">
     <?php
-    echo __('Maximum').' <font style="color: #FF0000">'.$max_print.'</font> '.__('records can be printed at once. Currently there is').' '; //mfc
+    echo __('Maximum').' <font style="color: #f00">'.$max_print.'</font> '.__('records can be printed at once. Currently there is').' '; //mfc
     if (isset($_SESSION['barcodes'])) {
-        echo '<font id="queueCount" style="color: #FF0000">'.count($_SESSION['barcodes']).'</font>';
-    } else { echo '<font id="queueCount" style="color: #FF0000">0</font>'; }
+        echo '<font id="queueCount" style="color: #f00">'.count($_SESSION['barcodes']).'</font>';
+    } else { echo '<font id="queueCount" style="color: #f00">0</font>'; }
     echo ' '.__('in queue waiting to be printed.'); //mfc
     ?>
     </div>

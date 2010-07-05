@@ -83,7 +83,7 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
         utility::jsAlert($msg);
     } else {
         // update print queue count object
-        echo '<script type="text/javascript">parent.$(\'queueCount\').update(\''.$print_count.'\');</script>';
+        echo '<script type="text/javascript">parent.$(\'#queueCount\').html(\''.$print_count.'\');</script>';
         utility::jsAlert(__('Selected items added to print queue'));
     }
     exit();
@@ -92,7 +92,7 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
 // clean print queue
 if (isset($_GET['action']) AND $_GET['action'] == 'clear') {
     utility::jsAlert(__('Print queue cleared!'));
-    echo '<script type="text/javascript">parent.$(\'queueCount\').update(\'0\');</script>';
+    echo '<script type="text/javascript">parent.$(\'#queueCount\').html(\'0\');</script>';
     unset($_SESSION['labels']);
     exit();
 }
@@ -191,7 +191,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     $print_file_name = 'label_print_result_'.strtolower(str_replace(' ', '_', $_SESSION['uname'])).'.html';
     $file_write = @file_put_contents(FILES_UPLOAD_DIR.$print_file_name, $html_str);
     if ($file_write) {
-        echo '<script type="text/javascript">parent.$(\'queueCount\').update(\'0\');</script>';
+        echo '<script type="text/javascript">parent.$(\'#queueCount\').html(\'0\');</script>';
         // open result in new window
         echo '<script type="text/javascript">top.openHTMLpop(\''.SENAYAN_WEB_ROOT_DIR.FILES_DIR.'/'.$print_file_name.'\', 800, 500, \''.__('Labels Printing').'\')</script>';
     } else { utility::jsAlert('ERROR! Label failed to generate, possibly because '.SENAYAN_BASE_DIR.FILES_DIR.' directory is not writable'); }

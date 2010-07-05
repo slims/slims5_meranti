@@ -173,7 +173,7 @@ if (!$reportView) {
     echo $reportgrid->createDataGrid($dbs, $table_spec, 20);
 
     echo '<script type="text/javascript">'."\n";
-    echo 'parent.$(\'pagingBox\').update(\''.str_replace(array("\n", "\r", "\t"), '', $reportgrid->paging_set).'\');'."\n";
+    echo 'parent.$(\'#pagingBox\').html(\''.str_replace(array("\n", "\r", "\t"), '', $reportgrid->paging_set).'\');'."\n";
     echo '</script>';
 
     $content = ob_get_clean();

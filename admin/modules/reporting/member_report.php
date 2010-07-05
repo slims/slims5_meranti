@@ -81,7 +81,8 @@ $loan_report[__('10 most active members')] = $report_d;
 
 // table header
 $table->setHeader(array(__('Membership Data Summary')));
-$table->table_header_attr = 'class="dataListHeader" colspan="3"';
+$table->table_header_attr = 'class="dataListHeader"';
+$table->setCellAttr(0, 0, 'colspan="3"');
 // initial row count
 $row = 1;
 foreach ($loan_report as $headings=>$report_d) {
@@ -101,10 +102,10 @@ if (isset($_GET['print'])) {
     $html_str .= '<style type="text/css">'."\n";
     $html_str .= 'body {padding: 0.2cm}'."\n";
     $html_str .= 'body * {color: black; font-size: 11pt;}'."\n";
-    $html_str .= 'table {border: 1px solid #000000;}'."\n";
-    $html_str .= '.dataListHeader {background-color: #000000; color: white; font-weight: bold;}'."\n";
-    $html_str .= '.alterCell {border-bottom: 1px solid #666666; background-color: #CCCCCC;}'."\n";
-    $html_str .= '.alterCell2 {border-bottom: 1px solid #666666; background-color: #FFFFFF;}'."\n";
+    $html_str .= 'table {border: 1px solid #000;}'."\n";
+    $html_str .= '.dataListHeader {background-color: #000; color: white; font-weight: bold;}'."\n";
+    $html_str .= '.alterCell {border-bottom: 1px solid #666; background-color: #CCCCCC;}'."\n";
+    $html_str .= '.alterCell2 {border-bottom: 1px solid #666; background-color: #FFFFFF;}'."\n";
     $html_str .= '</style>'."\n";
     $html_str .= '</head>';
     $html_str .= '<body>'."\n";

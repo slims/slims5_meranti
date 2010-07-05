@@ -134,12 +134,11 @@ if (!$reportView) {
     </div>
     <div style="padding-top: 10px; clear: both;">
     <input type="submit" name="applyFilter" value="<?php echo __('Apply Filter'); ?>" />
-    <input type="button" name="moreFilter" value="<?php echo __('Show More Filter Options'); ?>" onclick="showHideTableRows('filterForm', 1, this, '<?php echo __('Show More Filter Options'); ?>', '<?php echo __('Hide Filter Options'); ?>')" />
+    <input type="button" name="moreFilter" value="<?php echo __('Show More Filter Options'); ?>" />
     <input type="hidden" name="reportView" value="true" />
     </div>
     </form>
     </fieldset>
-    <script type="text/javascript">hideRows('filterForm', 1);</script>
     <!-- filter end -->
     <div class="dataListHeader" style="padding: 3px;"><span id="pagingBox"></span></div>
     <iframe name="reportView" id="reportView" src="<?php echo $_SERVER['PHP_SELF'].'?reportView=true'; ?>" frameborder="0" style="width: 100%; height: 500px;"></iframe>
@@ -147,7 +146,7 @@ if (!$reportView) {
 } else {
     ob_start();
     // table spec
-    $table_spec = 'item AS i 
+    $table_spec = 'item AS i
         LEFT JOIN biblio AS b ON i.biblio_id=b.biblio_id
         LEFT JOIN mst_coll_type AS ct ON i.coll_type_id=ct.coll_type_id
         LEFT JOIN mst_item_status AS s ON i.item_status_id=s.item_status_id';
@@ -225,7 +224,7 @@ if (!$reportView) {
         $recsEachPage = (integer)$_GET['recsEachPage'];
         $num_recs_show = ($recsEachPage >= 20 && $recsEachPage <= 200)?$recsEachPage:$num_recs_show;
     }
-    
+
     $reportgrid->setSQLCriteria($criteria);
 
     // callback function to show title and authors
@@ -256,7 +255,7 @@ if (!$reportView) {
     echo $reportgrid->createDataGrid($dbs, $table_spec, $num_recs_show);
 
     echo '<script type="text/javascript">'."\n";
-    echo 'parent.$(\'pagingBox\').update(\''.str_replace(array("\n", "\r", "\t"), '', $reportgrid->paging_set).'\');'."\n";
+    echo 'parent.$(\'#pagingBox\').html(\''.str_replace(array("\n", "\r", "\t"), '', $reportgrid->paging_set).'\');'."\n";
     echo '</script>';
 
     $content = ob_get_clean();

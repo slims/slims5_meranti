@@ -13,6 +13,7 @@
 <meta name="description" content="" />
 <!--<link rel="stylesheet" type="text/css" href="style.css" />-->
 <link href="<?php echo $sysconf['template']['css']; ?>" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
 </head>
 <body>
 
@@ -28,9 +29,9 @@
 			<!-- <h2>by nodethirtythree & Hendro Wicaksono</h2> -->
 			<h2><?php echo $sysconf['library_subname']; ?></h2>
 		</div>
-	
+
 		<div id="splash"></div>
-	
+
 		<div id="menu">
 			<ul>
           <li class="first"><a href="index.php"><?php echo __('Home'); ?></a></li>
@@ -49,14 +50,14 @@
 
 		<div id="date">August 1, 2006</div>
 		</div>
-	
+
 
 		<div id="primarycontent">
-		
+
 			<!-- primary content start -->
 
 
-<!--		
+<!--
 			<div class="post">
 				<div class="header">
 					<h3>TerraFirma<sup>1.0</sup> by NodeThirtyThree</h3>
@@ -66,7 +67,7 @@
 					<img src="template/terrafirma/images/pic1.jpg" class="picA floatleft" alt="" />
 					<p><strong>TerraFirma</strong><sup>1.0</sup> is a free, lightweight, tableless, W3C-compliant website design by <a href="http://www.nodethirtythree.com/">NodeThirtyThree Design</a>. You're free to dissect, manipulate and use it to your heart's content. We only ask that you link back to our site in some way. If you find this design useful, feel free to let us know :)</p>
 					<p>This template has been ported for SLiMS (Senayan Library Management System) by <a href="mailto:hendrowicaksono@yahoo.com">Hendro Wicaksono</a>. Feel free to use and modify it, as long as you dont remove copyright statement.</p>
-				</div>			
+				</div>
 
 				<div class="footer">
 					<ul>
@@ -98,8 +99,9 @@
 					<div class="date">July 31, 2006</div>
 				</div>
 				<div class="content">
-					<p>Volutpat at varius sed sollicitudin et, arcu. Vivamus viverra. Nullam turpis. Vestibulum sed etiam. Lorem ipsum sit amet dolore. Nulla facilisi. Sed tortor. Aenean felis. Quisque eros. Cras lobortis commodo metus. Vestibulum vel purus. In eget odio in sapien adipiscing blandit. Quisque augue tortor, facilisis sit amet, aliquam, suscipit vitae, cursus sed, arcu lorem ipsum dolor sit amet.</p>					<p>Fermentum at, varius pretium, elit. Mauris egestas scelerisque nunc. Mauris non ligula quis wisi laoreet malesuada. In commodo. Maecenas lobortis cursus dolor.</p>
-				</div>			
+					<p>Volutpat at varius sed sollicitudin et, arcu. Vivamus viverra. Nullam turpis. Vestibulum sed etiam. Lorem ipsum sit amet dolore. Nulla facilisi. Sed tortor. Aenean felis. Quisque eros. Cras lobortis commodo metus. Vestibulum vel purus. In eget odio in sapien adipiscing blandit. Quisque augue tortor, facilisis sit amet, aliquam, suscipit vitae, cursus sed, arcu lorem ipsum dolor sit amet.</p>
+					<p>Fermentum at, varius pretium, elit. Mauris egestas scelerisque nunc. Mauris non ligula quis wisi laoreet malesuada. In commodo. Maecenas lobortis cursus dolor.</p>
+				</div>
 				<div class="footer">
 					<ul>
 						<li class="printerfriendly"><a href="#">Printer Friendly</a></li>
@@ -115,8 +117,9 @@
 					<div class="date">July 31, 2006</div>
 				</div>
 				<div class="content">
-					<p>Volutpat at varius sed sollicitudin et, arcu. Vivamus viverra. Nullam turpis. Vestibulum sed etiam. Lorem ipsum sit amet dolore. Nulla facilisi. Sed tortor. Aenean felis. Quisque eros. Cras lobortis commodo metus. Vestibulum vel purus. In eget odio in sapien adipiscing blandit. Quisque augue tortor, facilisis sit amet, aliquam, suscipit vitae, cursus sed, arcu lorem ipsum dolor sit amet.</p>					<p>Fermentum at, varius pretium, elit. Mauris egestas scelerisque nunc. Mauris non ligula quis wisi laoreet malesuada. In commodo. Maecenas lobortis cursus dolor.</p>
-				</div>			
+					<p>Volutpat at varius sed sollicitudin et, arcu. Vivamus viverra. Nullam turpis. Vestibulum sed etiam. Lorem ipsum sit amet dolore. Nulla facilisi. Sed tortor. Aenean felis. Quisque eros. Cras lobortis commodo metus. Vestibulum vel purus. In eget odio in sapien adipiscing blandit. Quisque augue tortor, facilisis sit amet, aliquam, suscipit vitae, cursus sed, arcu lorem ipsum dolor sit amet.</p>
+					<p>Fermentum at, varius pretium, elit. Mauris egestas scelerisque nunc. Mauris non ligula quis wisi laoreet malesuada. In commodo. Maecenas lobortis cursus dolor.</p>
+				</div>
 				<div class="footer">
 					<ul>
 						<li class="printerfriendly"><a href="#">Printer Friendly</a></li>
@@ -131,13 +134,13 @@
 
 
 			<!-- primary content end -->
-	
+
 		</div>
-		
+
 		<div id="secondarycontent">
 
 			<!-- secondary content start -->
-		
+
 			<h3>About SDC</h3>
 			<div class="content">
 				<img src="template/terrafirma/images/pic2.jpg" class="picB" alt="" />
@@ -207,11 +210,11 @@
 			<!-- secondary content end -->
 
 		</div>
-	
+
 		<div id="footer">
-		
+
 			&copy; My Website. All rights reserved. Design by <a href="http://www.nodethirtythree.com/">NodeThirtyThree</a>. Modified for SLiMS by <a href="mailto:hendrowicaksono@yahoo.com">Hendro Wicaksono</a>.
-		
+
 		</div>
 
 	</div>

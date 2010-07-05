@@ -54,6 +54,10 @@ class simbio_form_table_AJAX extends simbio_form_maker
         $_table = new simbio_table();
         // set the table attr
         $_table->table_attr = $this->table_attr;
+		if ($this->edit_mode) {
+			$this->disable = true;
+		}
+
         // initialize result buffer
         $_buffer = '';
 
@@ -84,8 +88,8 @@ class simbio_form_table_AJAX extends simbio_form_maker
         $_edit_link = '';
         $_delete_button = '';
         $_back_button = '';
-    $_del_value = __('Delete Record');
-    $_cancel_value = __('Cancel');
+        $_del_value = __('Delete Record');
+        $_cancel_value = __('Cancel');
 
         // check if we are on edit form mode
         if ($this->edit_mode) {
@@ -93,11 +97,11 @@ class simbio_form_table_AJAX extends simbio_form_maker
             // delete button exists if the record_id properties exists
             if ($this->record_id && $this->delete_button) {
                 // create delete button
-                $_delete_button = '<input type="button" value="'.$_del_value.'" class="button" onclick="confSubmit(\'deleteForm\', \'Are you sure to delete '.addslashes($this->record_title).'?\nOnce Deleted it cant be restored again\')" style="color: red; font-weight: bold;" />';
+                $_delete_button = '<input type="button" value="'.$_del_value.'" class="button confirmSubmit" onclick="confSubmit(\'deleteForm\', \'Are you sure to delete '.addslashes($this->record_title).'?\nOnce Deleted it cant be restored again\')" style="color: red; font-weight: bold;" />';
             }
             // back button
             if ($this->back_button) {
-                $_back_button = '<input type="button" class="cancelButton button" value="'.$_cancel_value.'" onclick="setContent(\'mainContent\', getPreviousAJAXurl(), \'post\')" />';
+                $_back_button = '<input type="button" class="cancelButton button" value="'.$_cancel_value.'" />';
             }
         }
 
@@ -132,8 +136,6 @@ class simbio_form_table_AJAX extends simbio_form_maker
             // hidden form for deleting records
             $_buffer .= '<form action="'.preg_replace('/\?.+/i', '', $this->form_action).'" id="deleteForm" target="submitExec" method="post" style="display: inline;">'
                 .'<input type="hidden" name="itemID" value="'.$this->record_id.'" /><input type="hidden" name="itemAction" value="true" /></form>';
-            // disabling form
-            $_buffer .= '<script type="text/javascript">$(\''.$this->form_name.'\').disable(); $(\'deleteForm\').disable(); $$(\'.cancelButton\').invoke(\'enable\');</script>';
         }
         // for debugging purpose only
         // $_buffer .= '<iframe name="submitExec" style="visibility: visible; width: 100%; height: 200px;"></iframe>';

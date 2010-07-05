@@ -58,7 +58,7 @@ if (isset($_POST['finish'])) {
             // open receipt windows
             echo 'parent.openWin(\''.MODULES_WEB_ROOT_DIR.'circulation/pop_loan_receipt.php\', \'popReceipt\', 350, 500, true);';
         }
-        echo 'parent.setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'circulation/index.php\', \'post\', \'finishID='.$memberID.'\');';
+        echo 'parent.$(\'#mainContent\').simbioAJAX(\''.MODULES_WEB_ROOT_DIR.'circulation/index.php\', {method: \'post\', addData: \'finishID='.$memberID.'\'});';
         echo '</script>';
     }
     exit();
@@ -479,16 +479,15 @@ if (isset($_POST['memberID']) OR isset($_SESSION['memberID'])) {
         }
         echo '</table>'."\n";
         // tab and iframe
-        echo '<input type="button" style="width: 19%;'.$add_style.'" class="tab" value="'.__('Loans').'" onclick="setIframeContent(\'listsFrame\', \''.MODULES_WEB_ROOT_DIR.'circulation/loan.php\'); setTabClass(this);" '.$disabled.' />';
-        echo '<input type="button" style="width: 19%;" class="tab tabSelected" value="'.__('Current Loans').'" onclick="setIframeContent(\'listsFrame\', \''.MODULES_WEB_ROOT_DIR.'circulation/loan_list.php\'); setTabClass(this);" />';
+        echo '<input type="button" style="width: 19%;'.$add_style.'" class="tab" value="'.__('Loans').'" src="'.MODULES_WEB_ROOT_DIR.'circulation/loan.php" '.$disabled.' />';
+        echo '<input type="button" style="width: 19%;" class="tab tabSelected" value="'.__('Current Loans').'" src="'.MODULES_WEB_ROOT_DIR.'circulation/loan_list.php" />';
         if ($member_type_d['enable_reserve']) {
-            echo '<input type="button" style="width: 19%;'.$add_style.'" class="tab" value="'.__('Reserve').'" onclick="setIframeContent(\'listsFrame\', \''.MODULES_WEB_ROOT_DIR.'circulation/reserve_list.php\'); setTabClass(this);" '.$disabled.' />';
+            echo '<input type="button" style="width: 19%;'.$add_style.'" class="tab" value="'.__('Reserve').'" src="'.MODULES_WEB_ROOT_DIR.'circulation/reserve_list.php" '.$disabled.' />';
         }
-        echo '<input type="button" style="width: 19%;" class="tab" value="'.__('Fines').'" onclick="setIframeContent(\'listsFrame\', \''.MODULES_WEB_ROOT_DIR.'circulation/fines_list.php\'); setTabClass(this);" />';
-        echo '<input type="button" style="width: 19%;" class="tab" value="'.__('Loan History').'" onclick="setIframeContent(\'listsFrame\', \''.MODULES_WEB_ROOT_DIR.'circulation/member_loan_hist.php\'); setTabClass(this);" /><br />'."\n";
+        echo '<input type="button" style="width: 19%;" class="tab" value="'.__('Fines').'" src="'.MODULES_WEB_ROOT_DIR.'circulation/fines_list.php" />';
+        echo '<input type="button" style="width: 19%;" class="tab" value="'.__('Loan History').'" src="'.MODULES_WEB_ROOT_DIR.'circulation/member_loan_hist.php" /><br />'."\n";
         echo '<iframe src="modules/circulation/loan_list.php" id="listsFrame" class="border" style="width: 100%; height: 300px;"></iframe>'."\n";
         echo '<div class="objectDragger" id="iframeDragger">&nbsp;</div>'."\n";
-        echo '<script type="text/javascript">registerDraggerEvent(\'iframeDragger\', \'listsFrame\');</script>'."\n";
     }
     exit();
 }

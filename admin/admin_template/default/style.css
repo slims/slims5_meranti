@@ -21,7 +21,7 @@ a {
 #header {
     width: 100%;
     height: 80px;
-    background: #FFFFFF url(media/header.jpg) no-repeat bottom right;
+    background: #fff url(media/header.jpg) no-repeat bottom right;
 }
 
 #mainMenu {
@@ -49,7 +49,7 @@ a {
     padding: 11px;
     font-size: 11px;
     font-weight: bold;
-    color: #FFFFFF;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -59,7 +59,7 @@ a {
 
 #sidepan {
     width: 210px;
-    background: #CCCCCC;
+    background: #ccc;
 }
 
 #mainContent {
@@ -67,7 +67,7 @@ a {
 }
 
 #footer {
-    color: #FFFFFF;
+    color: #fff;
     text-align: center;
     clear: both;
     height: 31px;
@@ -77,19 +77,19 @@ a {
 }
 
 #footer * {
-    color: #FFFFFF;
+    color: #fff;
 }
 
 #dataList {
     width: 100%;
     font-weight: bold;
-    border: 1px solid #999999;
-    background: #CCCCCC url(media/gradien_short.jpg) repeat-x bottom left;
+    border: 1px solid #999;
+    background: #ccc url(media/gradien_short.jpg) repeat-x bottom left;
     margin-bottom: 5px;
 }
 
 #dataList {
-    background: #CCCCCC;
+    background: #ccc;
     font-weight: normal;
     margin-bottom: 0;
 }
@@ -121,25 +121,25 @@ a {
     height: 29px;
     padding-top: 11px;
     padding-left: 10px;
-    background: #CCCCCC;
+    background: #ccc;
 }
 
 .objectDragger, .objectDragger:hover {
     height: 10px;
-    background: #999999 url(media/drag_button.png) no-repeat top center;
+    background: #999 url(media/drag_button.png) no-repeat top center;
     border: 1px solid #666666;
     border-top-width: 0;
 }
 
 .objectDragger:hover {
-    background: #CCCCCC no-repeat top center;
+    background: #ccc no-repeat top center;
     cursor: s-resize;
 }
 
 .subMenuHeader {
     font-weight: bold;
     font-size: 14px;
-    color: #FFFFFF;
+    color: #fff;
     background: url(media/section_bar_fill.png) no-repeat top left;
     padding-top: 9px;
     padding-left: 37px;
@@ -156,50 +156,50 @@ a {
 /* link for the currently selected module */
 .curModuleLink {
     background-image: url(media/bar_fill.png);
-    color: #FFFFFF;
+    color: #fff;
 }
 
 /* tabular data */
 .dataListHeader {
     font-weight: bold;
-    background: #FFFFFF url(media/bar_fill.png) top left repeat-x;
-    color: #FFFFFF;
+    background: #fff url(media/bar_fill.png) top left repeat-x;
+    color: #fff;
 }
 
 .dataListHeader a {
-    color: #FFFFFF;
+    color: #fff;
 }
 
 .dataListHeader a:hover {
-    color: #FFFFFF;
+    color: #fff;
     text-decoration: none;
 }
 
 /* printed tabular data styles */
 .alterCellPrinted, .alterCellPrinted2 {
-    color: #000000;
-    background: #CCCCCC;
+    color: #000;
+    background: #ccc;
 }
 
 .alterCellPrinted2 {
-    background: #FFFFFF;
+    background: #fff;
 }
 
 .dataListHeaderPrinted {
-    background: #000000;
-    color: #FFFFFF;
+    background: #000;
+    color: #fff;
 }
 
 .dataListHeaderPrinted * {
     font-weight: bold;
-    color: #FFFFFF;
+    color: #fff;
 }
 
 .printPageInfo {
     font-size: 120%;
     padding: 5px;
-    color: #000000;
-    background-color: #999999;
+    color: #000;
+    background-color: #999;
 }
 
 /* general box element class */
@@ -209,8 +209,8 @@ a {
 
 .menuBox {
     font-weight: bold;
-    border: 1px solid #999999;
-    background: #CCCCCC url(media/gradien_short.jpg) repeat-x bottom left;
+    border: 1px solid #999;
+    background: #ccc url(media/gradien_short.jpg) repeat-x bottom left;
     margin-bottom: 5px;
     padding: 0;
 }
@@ -223,7 +223,7 @@ a {
 
 .infoBox {
     margin: 3px;
-    border: 1px #999999 solid;
+    border: 1px #999 solid;
     padding: 5px;
     padding-left: 70px;
     min-height: 50px;
@@ -232,16 +232,16 @@ a {
 
 .errorBox {
     margin: 3px;
-    border: 1px #550000 dotted;
+    border: 1px #500 dotted;
     padding: 5px;
     padding-left: 70px;
     min-height: 50px;
-    color: #550000;
+    color: #500;
     background: url(media/error.png) no-repeat -5px -5px;
 }
 
 .border {
-    border: 1px solid #999999;
+    border: 1px solid #999;
 }
 
 .fullWidth {
@@ -257,16 +257,19 @@ a {
 }
 
 iframe {
-    border: 1px solid #999999;
+    border: 1px solid #999;
 }
 
 .alterCell, .alterCell2 {
-    background-color: #CCCCCC;
-    border-bottom: 1px solid #CCCCCC;
+    background-color: #ccc;
+}
+
+.alterCell > td, .alterCell2 > td {
+    border-bottom: 1px solid #ccc;
 }
 
 .alterCell2 {
-    background-color: #FFFFFF;
+    background-color: #fff;
 }
 
 /* module submenu hyperlink specific */
@@ -318,9 +321,9 @@ input:hover,textarea:hover,select:hover {
     padding: 1px;
     padding-left: 20px;
     padding-right: 20px;
-    border: 1px solid #000000;
+    border: 1px solid #000;
     text-decoration: none;
-    background-color: #CCCCCC;
+    background-color: #ccc;
     font-size: 12px;
     font-weight: bold;
     text-decoration: none;
@@ -329,11 +332,11 @@ input:hover,textarea:hover,select:hover {
 /* tab button class */
 .tab, .tabSelected {
     display: inline;
-    border: 1px solid #999999;
+    border: 1px solid #999;
     border-bottom-width: 0px;
-    font-size: 97%;
+    font-size: 110%;
     font-weight: bold;
-    background: #CCCCCC url(media/gradien_short.jpg) bottom;
+    background: #ccc url(media/gradien_short.jpg) bottom;
     height: 30px;
     margin-right: 1px;
 }
@@ -560,14 +563,14 @@ input:hover,textarea:hover,select:hover {
     width: 150px;
     float: left;
     padding: 2px;
-    background: #FFFFFF;
+    background: #fff;
 }
 
 .dateInput {
     border: 0;
     width: 110px;
     float: left;
-    background: #FFFFFF;
+    background: #fff;
 }
 
 .dateInput:hover {

@@ -3,7 +3,7 @@
 	default1.0 by Arie Nugraha & Senayan Developers Team
 	http://senayan.diknas.go.id
 	Do not remove this comment for appreciation reason.
-        If you modify this template for your own need, just add 
+        If you modify this template for your own need, just add
         "This template has been modified by your_name_here"
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><title><?php echo $page_title; ?></title><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,7 +11,7 @@
 <link rel="shortcut icon" href="webicon.ico" type="image/x-icon" />
 <link href="template/core.style.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo $sysconf['template']['css']; ?>" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="js/prototype.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/form.js"></script>
 <script type="text/javascript" src="js/gui.js"></script>
 <?php echo $metadata; ?>
