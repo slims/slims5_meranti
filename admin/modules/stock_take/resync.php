@@ -43,13 +43,13 @@ if (isset($_POST['resync'])) {
         // record to log
         utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'stock_take', 'Stock Take Re-Synchronization');
         echo '<script type="text/javascript">'."\n";
-        echo 'parent.$(\'resyncInfo\').update(\''.$aff_rows.' Stock Take\\\'s Item Data Successfully Synchronized!\');'."\n";
-        echo 'parent.$(\'resyncInfo\').setStyle( {display: \'block\'} );'."\n";
+        echo 'parent.$(\'#resyncInfo\').html(\''.$aff_rows.' Stock Take\\\'s Item Data Successfully Synchronized!\');'."\n";
+        echo 'parent.$(\'#resyncInfo\').css( {\'display\': \'block\'} );'."\n";
         echo '</script>';
     } else {
         echo '<script type="text/javascript">'."\n";
-        echo 'parent.$(\'resyncInfo\').update(\'Stock Take\\\'s Item Data FAILED to Synchronized!\');'."\n";
-        echo 'parent.$(\'resyncInfo\').setStyle( {color: \'red\', display: \'block\'} );'."\n";
+        echo 'parent.$(\'#resyncInfo\').html(\'Stock Take\\\'s Item Data FAILED to Synchronized!\');'."\n";
+        echo 'parent.$(\'#resyncInfo\').css( {\'color\': \'red\', \'display\': \'block\'} );'."\n";
         echo '</script>';
     }
     exit();
@@ -62,5 +62,5 @@ echo '<input type="submit" name="resync" value="'.__('Resynchronize Now').'" cla
 echo '</form>'."\n";
 echo '<iframe name="resyncSubmit" style="width: 0; height: 0; visibility: hidden;"></iframe>'."\n";
 echo '</div>';
-echo '<div id="resyncInfo" style="display: none; padding: 5px; font-weight: bold; border: 1px solid #999999;">&nbsp;</div>';
+echo '<div id="resyncInfo" style="display: none; padding: 5px; font-weight: bold; border: 1px solid #999;">&nbsp;</div>';
 ?>

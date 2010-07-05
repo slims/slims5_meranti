@@ -81,7 +81,7 @@ if ($stk_query->num_rows < 1) {
     // stock take total checked item
     $checked_count = $stk_data['total_item_stock_taked']-$stk_data['total_item_lost'];
     $checked_procent = floor(($checked_count/$stk_data['total_item_stock_taked'])*100);
-    $progress_bar = '<div style="height: 15px; border: 1px solid #999999; background-color: red;"><div style="height: 15px; width: '.$checked_procent.'%; background-color: #3161ff;">&nbsp;</div></div>';
+    $progress_bar = '<div style="height: 15px; border: 1px solid #999; background-color: red;"><div style="height: 15px; width: '.$checked_procent.'%; background-color: #3161ff;">&nbsp;</div></div>';
     $report_row[__('Total Checked/Scanned Items')] = $checked_count.' ('.$checked_procent.'%) '.$progress_bar;
     // stock take participants data
     $report_row[__('Stock Take Participants')] = '<ul>';
@@ -192,8 +192,8 @@ if ($stk_query->num_rows < 1) {
         $html_str .= 'body * {color: black; font-size: 11pt;}'."\n";
         $html_str .= 'table {border: 1px solid #000000;}'."\n";
         $html_str .= '.dataListHeader {background-color: #000000; color: white; font-weight: bold;}'."\n";
-        $html_str .= '.alterCell {border-bottom: 1px solid #666666; background-color: #CCCCCC;}'."\n";
-        $html_str .= '.alterCell2 {border-bottom: 1px solid #666666; background-color: #FFFFFF;}'."\n";
+        $html_str .= '.alterCell {border-bottom: 1px solid #666; background-color: #CCCCCC;}'."\n";
+        $html_str .= '.alterCell2 {border-bottom: 1px solid #666; background-color: #FFFFFF;}'."\n";
         $html_str .= '</style>'."\n";
         $html_str .= '</head>';
         $html_str .= '<body>'."\n";

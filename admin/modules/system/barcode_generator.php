@@ -95,7 +95,7 @@ if (isset($_POST['saveData']) AND $can_write) {
         foreach ($_POST['barcode'] as $barcode_text) {
             if (!empty($barcode_text)) {
                 $barcode_text = trim($barcode_text);
-                echo 'new Ajax.Request(\''.SENAYAN_WEB_ROOT_DIR.'lib/phpbarcode/barcode.php?code='.$barcode_text.'&encoding='.$sysconf['barcode_encoding'].'&scale='.$size.'&mode=png\', { method: \'get\', onFailure: function(sendAlert) { alert(\''.__('Error creating barcode!').'\'); } });'."\n";
+                echo '$.ajax({url: \''.SENAYAN_WEB_ROOT_DIR.'lib/phpbarcode/barcode.php?code='.$barcode_text.'&encoding='.$sysconf['barcode_encoding'].'&scale='.$size.'&mode=png\', type: \'GET\', error: function() { alert(\''.__('Error creating barcode!').'\'); } });'."\n";
                 // add to sessions
                 $_SESSION['barcodes'][] = $barcode_text;
             }

@@ -55,7 +55,7 @@ if (isset($_POST['saveLogs']) AND $can_write AND $_SESSION['uid'] == 1) {
 if (isset($_POST['clearLogs']) AND $can_write AND $_SESSION['uid'] == 1) {
     $dbs->query('TRUNCATE TABLE system_log');
     utility::jsAlert(__('System Log data completely cleared!'));
-    echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'system/sys_log.php\', \'get\');</script>';
+    echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(\''.MODULES_WEB_ROOT_DIR.'system/sys_log.php\');</script>';
     exit();
 }
 

@@ -55,7 +55,3 @@ if (!$sysconf['quick_return']) {
 </div>
 </fieldset>
 <div id="circulationLayer">&nbsp;</div>
-<script type="text/javascript">
-// focus item code/barcode text field
-$('quickReturnID').focus();
-</script>

@@ -104,7 +104,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
             $update = $sql_op->update('mst_label', $data, 'label_id='.$updateRecordID);
             if ($update) {
                 utility::jsAlert(__('Label Data Successfully Updated'));
-                echo '<script type="text/javascript">parent.setContent(\'mainContent\', parent.getPreviousAJAXurl(), \'post\');</script>';
+                echo '<script type="text/javascript">parent.jQuery(\'#mainContent\').simbioAJAX(parent.jQuery.ajaxHistory[1].url);</script>';
             } else { utility::jsAlert(__('Label Data FAILED to Updated. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
         } else {
@@ -112,7 +112,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
             // insert the data
             if ($sql_op->insert('mst_label', $data)) {
                 utility::jsAlert(__('New Label Data Successfully Saved'));
-                echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'\', \'post\');</script>';
+                echo '<script type="text/javascript">parent.jQuery(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'\');</script>';
             } else { utility::jsAlert(__('Label Data FAILED to Save. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
         }
@@ -141,10 +141,10 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
     // error alerting
     if ($error_num == 0) {
         utility::jsAlert(__('All Data Successfully Deleted'));
-        echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
+        echo '<script type="text/javascript">parent.jQuery(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\');</script>';
     } else {
         utility::jsAlert(__('Some or All Data NOT deleted successfully!\nPlease contact system administrator'));
-        echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
+        echo '<script type="text/javascript">parent.jQuery(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\');</script>';
     }
     exit();
 }

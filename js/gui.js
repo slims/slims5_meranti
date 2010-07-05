@@ -198,7 +198,7 @@ jQuery.fn.registerAdminEvents = function(params) {
             var postData = anchor.attr('postdata');
             var loadContainer = anchor.attr('loadcontainer');
             if (loadContainer) {
-                container = jQuery('#'+container);
+                container = jQuery('#'+loadContainer);
             }
             // set ajax
             if (postData) {
@@ -254,6 +254,10 @@ jQuery.fn.registerAdminEvents = function(params) {
             var formAction = theForm.attr('action');
             var formMethod = theForm.attr('method');
             var formData = theForm.serialize();
+            var loadContainer = theForm.attr('loadcontainer');
+            if (loadContainer) {
+                container = jQuery('#'+loadContainer);
+            }
             container.simbioAJAX(formAction, {method: formMethod, addData: formData});
         });
     }

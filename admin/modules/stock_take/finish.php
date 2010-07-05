@@ -70,8 +70,8 @@ if (isset($_POST['confirmFinish'])) {
         echo 'body * {color: black; font-size: 11pt;}'."\n";
         echo 'table {border: 1px solid #000000;}'."\n";
         echo '.dataListHeader {background-color: #000000; color: white; font-weight: bold;}'."\n";
-        echo '.alterCell {border-bottom: 1px solid #666666; background-color: #CCCCCC;}'."\n";
-        echo '.alterCell2 {border-bottom: 1px solid #666666; background-color: #FFFFFF;}'."\n";
+        echo '.alterCell {border-bottom: 1px solid #666; background-color: #CCCCCC;}'."\n";
+        echo '.alterCell2 {border-bottom: 1px solid #666; background-color: #FFFFFF;}'."\n";
         echo '</style>'."\n";
         echo '</head>';
         echo '<body>'."\n";
@@ -87,7 +87,7 @@ if (isset($_POST['confirmFinish'])) {
         if ($lost_item_q->num_rows > 0) {
             echo '<br />';
             echo '<h3>LOST Item list</h3><hr size="1" />';
-            echo '<table style="width: 100%; border: 1px solid #666666;" cellspacing="0">';
+            echo '<table style="width: 100%; border: 1px solid #666;" cellspacing="0">';
             echo '<tr>';
             echo '<th class="dataListHeader">Item Code</th>
                 <th class="dataListHeader">Document Title</th>
@@ -109,7 +109,7 @@ if (isset($_POST['confirmFinish'])) {
         if ($error_log_q->num_rows > 0) {
             echo '<br />';
             echo '<h3>Stock Take Error Logs</h3><hr size="1" />';
-            echo '<table style="width: 100%; border: 1px solid #666666;" cellspacing="0">';
+            echo '<table style="width: 100%; border: 1px solid #666;" cellspacing="0">';
             echo '<tr>';
             echo '<th class="dataListHeader">Time</th>
                 <th class="dataListHeader">Message</th>';
@@ -150,7 +150,7 @@ if (isset($_POST['confirmFinish'])) {
 ?>
     <fieldset class="menuBox">
     <div class="menuBoxInner errorIcon">
-    <strong style="color: #FF0000;"><?php echo strtoupper(__('Finish Stock Take')); ?><hr />
+    <strong style="color: #f00;"><?php echo strtoupper(__('Finish Stock Take')); ?><hr />
     <?php echo __('Are you sure to end current stock take proccess? Once it finished there is no way you can rollback this stock take'); ?>
     </strong>
     </div>
@@ -158,7 +158,7 @@ if (isset($_POST['confirmFinish'])) {
 <?php
     // create new instance
     $form = new simbio_form_table_AJAX('stockTakeForm', $_SERVER['PHP_SELF'], 'post');
-    $form->submit_button_attr = 'value="'.__('Finish Stock Take').'" class="button" style="color: #FF0000; border-color: #FF0000;"';
+    $form->submit_button_attr = 'value="'.__('Finish Stock Take').'" class="button" style="color: #f00; border-color: #f00;"';
 
     // form table attributes
     $form->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';

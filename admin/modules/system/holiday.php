@@ -64,7 +64,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 utility::jsAlert(__('Holiday Data Successfully updated'));
                 // update holiday_dayname session
                 $_SESSION['holiday_date'][$data['holiday_date']] = $data['holiday_date'];
-                echo '<script type="text/javascript">parent.setContent(\'mainContent\', parent.getPreviousAJAXurl(), \'post\');</script>';
+                echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(parent.$.ajaxHistory[1].url);</script>';
                 exit();
             } else {
                 utility::jsAlert(__('Holiday FAILED to update. Please Contact System Administrator')."\n".$sql_op->error);
@@ -97,7 +97,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                         }
                     }
                 }
-                echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?mode=special\', \'get\');</script>';
+                echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'?mode=special\');</script>';
                 exit();
             } else {
                 utility::jsAlert(__('Holiday FAILED to Save. Please Contact System Administrator')."\n".$sql_op->error);
@@ -134,10 +134,10 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
     // error alerting
     if ($error_num == 0) {
         utility::jsAlert(__('All Data Successfully Deleted'));
-        echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
+        echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\');</script>';
     } else {
         utility::jsAlert(__('Some or All Data NOT deleted successfully!\nPlease contact system administrator'));
-        echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
+        echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\');</script>';
     }
     exit();
 }

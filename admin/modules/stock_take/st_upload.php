@@ -58,9 +58,8 @@ if (isset($_POST['stUpload']) && isset($_FILES['stFile'])) {
         $stfile = @fopen(FILES_UPLOAD_DIR.$upload->new_filename, 'r');
         if (!$stfile) {
             echo '<script type="text/javascript">'."\n";
-            echo 'parent.$(\'stUploadMsg\').update(\'Failed to open stock take file '.$upload->new_filename.'. Please check permission for directory '.FILES_UPLOAD_DIR.'\');'."\n";
-            echo 'parent.$(\'stUploadMsg\').className = \'errorBox\';'."\n";
-            echo 'parent.$(\'stUploadMsg\').setStyle( {display: \'block\'} );'."\n";
+            echo 'parent.$(\'#stUploadMsg\').html(\'Failed to open stock take file '.$upload->new_filename.'. Please check permission for directory '.FILES_UPLOAD_DIR.'\')';
+            echo '.toggleClass(\'errorBox\').css( {\'display\': \'block\'} );'."\n";
             echo '</script>';
             exit();
         }
@@ -97,16 +96,15 @@ if (isset($_POST['stUpload']) && isset($_FILES['stFile'])) {
         fclose($stfile);
         // message
         echo '<script type="text/javascript">'."\n";
-        echo 'parent.$(\'stUploadMsg\').update(\''.__('Succesfully upload stock take file').$upload->new_filename.', <b>'.$i.'</b>'.__(' item codes scanned!').'\');'."\n"; //mfc
-        echo 'parent.$(\'stUploadMsg\').setStyle( {display: \'block\'} );'."\n";
+        echo 'parent.$(\'#stUploadMsg\').html(\''.__('Succesfully upload stock take file').$upload->new_filename.', <b>'.$i.'</b>'.__(' item codes scanned!').'\')'; //mfc
+        echo '.css( {\'display\': \'block\'} );'."\n";
         echo '</script>';
     } else {
         // write log
         utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'stock_take', 'ERROR : '.$_SESSION['realname'].' FAILED TO upload stock take file '.$upload->new_filename.', with error ('.$upload->error.')');
         echo '<script type="text/javascript">'."\n";
-        echo 'parent.$(\'stUploadMsg\').update(\'Failed to upload stock take file! <div>Error : '.$upload->error.'</div>\');'."\n";
-        echo 'parent.$(\'stUploadMsg\').className = \'errorBox\';'."\n";
-        echo 'parent.$(\'stUploadMsg\').setStyle( {display: \'block\'} );'."\n";
+        echo 'parent.$(\'#stUploadMsg\').html(\'Failed to upload stock take file! <div>Error : '.$upload->error.'</div>\')';
+        echo '.toggleClass(\'errorBox\').css( {\'display\': \'block\'} );'."\n";
         echo '</script>';
     }
     exit();

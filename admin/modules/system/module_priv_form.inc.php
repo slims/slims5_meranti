@@ -23,7 +23,7 @@
 ob_start();
 $table = new simbio_table();
 $table->table_attr = 'align="center" class="detailTable" style="width: 100%;" cellpadding="2" cellspacing="0"';
-$table->setHeader(array(__('Module Name'), __('Read'), __('Write')));
+$table->setHeader(array(__('Module Name'), '<a id="allRead" class="notAJAX" href="#">'.__('Read').'</a>', '<a id="allWrite" class="notAJAX" href="#">'.__('Write').'</a>'));
 $table->table_header_attr = 'class="dataListHeader" style="font-weight: bold;"';
 
 // initial row count
@@ -52,8 +52,8 @@ while ($module_data = $module_query->fetch_assoc()) {
         $write_checked = 'checked';
     }
 
-    $chbox_read = '<input type="checkbox" name="read[]" value="'.$module_data['module_id'].'" '.$read_checked.' />';
-    $chbox_write = '<input type="checkbox" name="write[]" value="'.$module_data['module_id'].'" '.$write_checked.' />';
+    $chbox_read = '<input type="checkbox" class="read" name="read[]" value="'.$module_data['module_id'].'" '.$read_checked.' />';
+    $chbox_write = '<input type="checkbox" class="write" name="write[]" value="'.$module_data['module_id'].'" '.$write_checked.' />';
 
     $table->appendTableRow(array(__( ucwords(str_replace('_', ' ', $module_data['module_name'])) ), $chbox_read, $chbox_write));
     $table->setCellAttr($row, 0, 'valign="top" class="'.$row_class.'" style="font-weight: bold;"');
@@ -64,5 +64,28 @@ while ($module_data = $module_query->fetch_assoc()) {
 }
 
 echo $table->printTable();
+ob_start();
+?>
+<script type="text/javascript">
+    $(document).ready(function() {
+       $('#allRead').toggle(function(evt) {
+            evt.preventDefault();
+            $('input:checkbox.read').attr('checked', 'checked');
+        }, function(evt) {
+            evt.preventDefault();
+            $('input:checkbox.read').removeAttr('checked');
+        });
+
+       $('#allWrite').toggle(function(evt) {
+            evt.preventDefault();
+            $('input:checkbox.write').attr('checked', 'checked');
+        }, function(evt) {
+            evt.preventDefault();
+            $('input:checkbox.write').removeAttr('checked');
+        });
+    });
+</script>
+<?php
+echo ob_get_clean();
 $priv_table = ob_get_clean();
 ?>

@@ -62,8 +62,8 @@ if ($stk_query->num_rows < 1) {
               <form name="stockTakeForm" class="notAJAX" action="'.MODULES_WEB_ROOT_DIR.'stock_take/stock_take_action.php" target="stockTakeAction" method="post" style="display: inline;">
               <div><div style="width: 140px; float: left;">'.__('Item Code').':</div><input type="text" id="itemCode" name="itemCode" size="30" /> <input type="submit" value="'.__('Change Status').'" class="button" /></div>
               <div style="margin-top: 3px;"><div style="width: 140px; float: left;">'.__('List stocktakes by').':</div>
-              <input type="radio" id="listShow" name="listShow" value="1" onclick="setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'stock_take/current.php?listShow=1\', \'get\')" '.( isset($show_only_current)?'checked="checked"':'' ).' /> '.__('Current User Only').'
-              <input type="radio" id="listShow2" name="listShow" value="0" onclick="setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'stock_take/current.php?listShow=0\', \'get\')" '.( isset($show_only_current)?'':'checked="checked"' ).' /> '.__('All User').'
+              <input type="radio" id="listShow" name="listShow" value="1" onclick="$(\'mainContent\').simbioAJAX(\''.MODULES_WEB_ROOT_DIR.'stock_take/current.php?listShow=1\')" '.( isset($show_only_current)?'checked="checked"':'' ).' /> '.__('Current User Only').'
+              <input type="radio" id="listShow2" name="listShow" value="0" onclick="$(\'mainContent\').simbioAJAX(\''.MODULES_WEB_ROOT_DIR.'stock_take/current.php?listShow=0\')" '.( isset($show_only_current)?'':'checked="checked"' ).' /> '.__('All User').'
               <iframe name="stockTakeAction" style="width: 0; height: 0; visibility: hidden;"></iframe></div>
               </form>';
         } else {

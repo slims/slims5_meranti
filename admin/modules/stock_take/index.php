@@ -82,7 +82,7 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID'])) {
             continue;
         } else if ($headings == __('Status')) {
             if ($stk_data == '1') {
-                $stk_data = '<b style="color: #FF0000;">'.__('Currently Active').'</b>';
+                $stk_data = '<b style="color: #f00;">'.__('Currently Active').'</b>';
             } else {
                 $stk_data = 'Finished';
             }

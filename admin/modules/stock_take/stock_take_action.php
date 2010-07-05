@@ -40,10 +40,9 @@ if (isset($_POST['itemCode'])) {
     $item_code = $dbs->escape_string(trim($_POST['itemCode']));
     if (!$item_code) {
         echo '<script type="text/javascript">'."\n";
-        echo 'parent.$(\'stError\').update(\'Please enter a valid item code/barcode. You enter a BLANK code!\');'."\n";
-        echo 'parent.$(\'stError\').setStyle( {display: \'block\'} );'."\n";
-        echo 'parent.$(\'itemCode\').value = \'\';'."\n";
-        echo 'parent.Form.Element.focus(\'itemCode\');'."\n";
+        echo 'parent.$(\'#stError\').html(\'Please enter a valid item code/barcode. You enter a BLANK code!\')';
+        echo '.css( {\'display\': \'block\'} );'."\n";
+        echo 'parent.$(\'#itemCode\').val(\'\').focus();'."\n";
         echo '</script>';
         echo '</body></html>';
         exit();
@@ -56,17 +55,15 @@ if (isset($_POST['itemCode'])) {
             // record to log
             utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'stock_take', 'Stock Take ERROR : Item '.$item_check_d['title'].' ('.$item_check_d['item_code'].') is currently ON LOAN');
             echo '<script type="text/javascript">'."\n";
-            echo 'parent.$(\'stError\').update(\'Item '.$item_code.' is currently ON LOAN\');'."\n";
-            echo 'parent.$(\'stError\').setStyle( {display: \'block\'} );'."\n";
-            echo 'parent.$(\'itemCode\').value = \'\';'."\n";
-            echo 'parent.Form.Element.focus(\'itemCode\');'."\n";
+            echo 'parent.$(\'#stError\').html(\'Item '.$item_code.' is currently ON LOAN\')';
+            echo '.css( {\'display\': \'block\'} );'."\n";
+            echo 'parent.$(\'#itemCode\').val(\'\').focus();'."\n";
             echo '</script>';
         } else if ($item_check_d['status'] == 'e') {
             echo '<script type="text/javascript">'."\n";
-            echo 'parent.$(\'stError\').update(\'Item '.$item_code.' is already SCANNED!\');'."\n";
-            echo 'parent.$(\'stError\').setStyle( {display: \'block\'} );'."\n";
-            echo 'parent.$(\'itemCode\').value = \'\';'."\n";
-            echo 'parent.Form.Element.focus(\'itemCode\');'."\n";
+            echo 'parent.$(\'#stError\').html(\'Item '.$item_code.' is already SCANNED!\')';
+            echo '.css( {\'display\': \'block\'} );'."\n";
+            echo 'parent.$(\'#itemCode\').val(\'\').focus();'."\n";
             echo '</script>';
         } else {
             $listShow = 0;
@@ -78,17 +75,16 @@ if (isset($_POST['itemCode'])) {
             $update = $dbs->query("UPDATE stock_take_item SET status='e', checked_by='".$_SESSION['realname']."', last_update='".$curr_time."' WHERE item_code='$item_code'");
             $update = $dbs->query("UPDATE stock_take SET total_item_lost=total_item_lost-1 WHERE is_active=1");
             echo '<script type="text/javascript">'."\n";
-            echo 'parent.setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.'stock_take/current.php?listShow='.$listShow.'\', \'get\');'."\n";
+            echo 'parent.$(\'#mainContent\').simbioAJAX(\''.MODULES_WEB_ROOT_DIR.'stock_take/current.php?listShow='.$listShow.'\');'."\n";
             echo '</script>';
         }
     } else {
         // record to log
         utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'stock_take', 'Stock Take ERROR : Item Code '.$item_code.' doesnt exists in stock take data. Invalid Item Code OR Maybe out of Stock Take range');
         echo '<script type="text/javascript">'."\n";
-        echo 'parent.$(\'stError\').update(\'Item Code '.$item_code.' doesnt exists in stock take data.\\nInvalid Item Code OR Maybe out of Stock Take range\');'."\n";
-        echo 'parent.$(\'stError\').setStyle( {display: \'block\'} );'."\n";
-        echo 'parent.$(\'itemCode\').value = \'\';'."\n";
-        echo 'parent.Form.Element.focus(\'itemCode\');'."\n";
+        echo 'parent.$(\'#stError\').html(\'Item Code '.$item_code.' doesnt exists in stock take data.\\nInvalid Item Code OR Maybe out of Stock Take range\')';
+        echo '.css( {\'display\': \'block\'} );'."\n";
+        echo 'parent.$(\'#itemCode\').val(\'\').focus();'."\n";
         echo '</script>';
     }
     echo '</body></html>';

@@ -72,11 +72,11 @@ function subscriptionDetail($obj_db, $array_data)
     global $can_read, $can_write, $count;
     $_output = '<div style="float: left;"><strong style="font-size: 120%;"><a href="#" class="notAJAX" title="Edit Bibliographic Data" onclick="openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_biblio.php?action=detail&inPopUp=true&itemID='.$array_data[0].'&itemCollID=0\', 650, 500, \''.__('Edit Bibliographic data').'\')">'.$array_data[1].'</a></strong> ('.$array_data[2].')</div>';
     if ($can_read AND $can_write) {
-        $_output .= ' <a href="#" class="addSubscription notAJAX" onclick="javascript: $(\'subscriptionListCont'.$count.'\').show(); setIframeContent(\'subscriptionList'.$count.'\', \''.MODULES_WEB_ROOT_DIR.'serial_control/subscription.php?biblioID='.$array_data[0].'&detail=true\');" title="'.__('Add New Subscription').'">&nbsp;</a> ';
+        $_output .= ' <a href="#" class="addSubscription notAJAX" onclick="javascript: $(\'#subscriptionListCont'.$count.'\').show(); setIframeContent(\'subscriptionList'.$count.'\', \''.MODULES_WEB_ROOT_DIR.'serial_control/subscription.php?biblioID='.$array_data[0].'&detail=true\');" title="'.__('Add New Subscription').'">&nbsp;</a> ';
     }
-    $_output .= ' <a href="#" class="viewSubscription notAJAX" onclick="$(\'subscriptionListCont'.$count.'\').show(); setIframeContent(\'subscriptionList'.$count.'\', \''.MODULES_WEB_ROOT_DIR.'serial_control/subscription.php?biblioID='.$array_data[0].'\');" title="'.__('View Subscriptions').'">&nbsp;</a> ';
+    $_output .= ' <a href="#" class="viewSubscription notAJAX" onclick="$(\'#subscriptionListCont'.$count.'\').show(); setIframeContent(\'subscriptionList'.$count.'\', \''.MODULES_WEB_ROOT_DIR.'serial_control/subscription.php?biblioID='.$array_data[0].'\');" title="'.__('View Subscriptions').'">&nbsp;</a> ';
     $_output .= '<div id="subscriptionListCont'.$count.'" style="clear: both; display: none;">';
-    $_output .= '<div><a href="#" class="notAJAX" style="font-weight: bold; color: red;" title="Close Box" onclick="$(\'subscriptionListCont'.$count.'\').hide()">'.__('CLOSE').'</a></div>';
+    $_output .= '<div><a href="#" class="notAJAX" style="font-weight: bold; color: red;" title="Close Box" onclick="$(\'#subscriptionListCont'.$count.'\').hide()">'.__('CLOSE').'</a></div>';
     $_output .= '<iframe id="subscriptionList'.$count.'" src="'.MODULES_WEB_ROOT_DIR.'serial_control/subscription.php?biblioID='.$array_data[0].'" style="width: 100%; height: 270px;"></iframe>';
     $_output .= '</div>';
     $count++;

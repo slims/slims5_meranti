@@ -103,7 +103,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                     echo '<script type="text/javascript">top.setIframeContent(\'itemIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_item_list.php?biblioID='.$data['biblio_id'].'\');</script>';
                     echo '<script type="text/javascript">top.closeHTMLpop();</script>';
                 } else {
-                    echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(parent.jQuery.ajaxHistory[1].url, {method: \'get\'});</script>';
+                    echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(parent.jQuery.ajaxHistory[1].url);</script>';
                 }
             } else { utility::jsAlert(__('Item Data FAILED to Save. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();

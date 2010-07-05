@@ -272,7 +272,7 @@ if (isset($_POST['quickReturnID']) AND $_POST['quickReturnID']) {
         $table->appendTableRow(array(__('Member Name'), $loan_d['member_name'], __('Member ID'), $loan_d['member_id']));
         $table->appendTableRow(array(__('Loan Date'), $loan_d['loan_date'], __('Due Date'), $loan_d['due_date']));
         // set the cell attributes
-        $table->setCellAttr(1, null, 'class="dataListHeader" style="color: #FFFFFF; font-weight: bold;" colspan="4"');
+        $table->setCellAttr(1, null, 'class="dataListHeader" style="color: #fff; font-weight: bold;" colspan="4"');
         $table->setCellAttr(2, 0, 'class="alterCell"');
         $table->setCellAttr(2, 1, 'class="alterCell2" colspan="3"');
         $table->setCellAttr(3, 0, 'class="alterCell" width="15%"');
@@ -429,7 +429,7 @@ if (isset($_POST['memberID']) OR isset($_SESSION['memberID'])) {
         // check for expire date and pending state
         if ($_SESSION['is_expire'] OR $_SESSION['is_pending']) {
             $disabled = ' disabled ';
-            $add_style = ' color: #999999; border-color: #CCCCCC;';
+            $add_style = ' color: #999; border-color: #ccc;';
         }
         // show the member information
         echo '<table width="100%" class="border" style="margin-bottom: 5px;" cellpadding="5" cellspacing="0">'."\n";
@@ -460,7 +460,7 @@ if (isset($_POST['memberID']) OR isset($_SESSION['memberID'])) {
         // give notification about expired membership and pending
         $expire_msg = '';
         if ($_SESSION['is_expire']) {
-            $expire_msg .= '<font style="color: #FF0000;">('.__('Membership Already Expired').')</font>';
+            $expire_msg .= '<font style="color: #f00;">('.__('Membership Already Expired').')</font>';
         }
         echo '<td class="alterCell" width="15%"><strong>'.__('Expiry Date').'</strong></td><td class="alterCell2" width="30%">'.$member->expire_date.' '.$expire_msg.'</td>';
         echo '</tr>'."\n";
@@ -472,7 +472,7 @@ if (isset($_POST['memberID']) OR isset($_SESSION['memberID'])) {
                 echo '<div>'.$member->member_notes.'</div>';
             }
             if ($_SESSION['is_pending']) {
-                echo '<div style="color: #FF0000;">('.__('Membership currently in pending state, loan transaction is locked.').')</div>';
+                echo '<div style="color: #f00;">('.__('Membership currently in pending state, loan transaction is locked.').')</div>';
             }
             echo '</td>';
             echo '</tr>'."\n";
