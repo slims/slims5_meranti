@@ -145,7 +145,7 @@ if (!$reportView) {
         $item_code = $dbs->escape_string(trim($_GET['itemCode']));
         $criteria .= ' AND item_code LIKE \'%'.$item_code.'%\'';
     }
-    if (isset($_GET['class']) AND !empty($_GET['class'])) {
+    if (isset($_GET['class']) AND ($_GET['class'] != '')) {
         $class = $dbs->escape_string($_GET['class']);
         $criteria .= ' AND classification LIKE \''.$class.'%\'';
     }
