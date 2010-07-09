@@ -89,6 +89,7 @@ if ($stk_query->num_rows < 1) {
     $datagrid = new simbio_datagrid();
     $datagrid->setSQLColumn('item_code AS \''.__('Item Code').'\'',
         'title AS \''.__('Title').'\'',
+        'call_number AS \''.__('Call Number').'\'',
         'coll_type_name AS \''.__('Collection Type').'\'',
         'classification AS \''.__('Classification').'\'',
         'IF(sti.status=\'e\', \''.__('Exists').'\', IF(sti.status=\'l\', \''.__('On Loan').'\', \''.__('Missing').'\')) AS \'Status\'');
