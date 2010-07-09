@@ -1,6 +1,7 @@
 <?php
 /**
  * Copyright (C) 2009  Arie Nugraha (dicarve@yahoo.com)
+ * Some patches: Hendro Wicaksono (hendrowicaksono@yahoo.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -70,6 +71,20 @@ if (!$reportView) {
         </div>
     </div>
     <div class="divRow">
+        <div class="divRowLabel"><?php echo __('GMD'); ?></div>
+        <div class="divRowContent">
+        <?php
+        $ct_q = $dbs->query('SELECT gmd_name FROM mst_gmd');
+        $ct_options = array();
+        $ct_options[] = array('0', __('ALL'));
+        while ($ct_d = $ct_q->fetch_row()) {
+            $ct_options[] = array($ct_d[0], $ct_d[0]);
+        }
+        echo simbio_form_element::selectList('gmd', $ct_options);
+        ?>
+        </div>
+    </div>
+    <div class="divRow">
         <div class="divRowLabel"><?php echo __('Collection Type'); ?></div>
         <div class="divRowContent">
         <?php
@@ -118,6 +133,7 @@ if (!$reportView) {
     $reportgrid = new report_datagrid();
     $reportgrid->setSQLColumn('item_code AS \''.__('Item Code').'\'',
         'title AS \''.__('Title').'\'',
+        'gmd_name AS \''.__('GMD').'\'',
         'classification AS \''.__('Classification').'\'',
         'coll_type_name AS \''.__('Collection Type').'\'',
         'call_number AS \''.__('Call Number').'\'');
@@ -148,6 +164,10 @@ if (!$reportView) {
     if (isset($_GET['class']) AND ($_GET['class'] != '')) {
         $class = $dbs->escape_string($_GET['class']);
         $criteria .= ' AND classification LIKE \''.$class.'%\'';
+    }
+    if (isset($_GET['gmd']) AND !empty($_GET['gmd'])) {
+        $gmd = $dbs->escape_string(trim($_GET['gmd']));
+        $criteria .= ' AND gmd_name=\''.$gmd.'\'';
     }
     if (isset($_GET['collType']) AND !empty($_GET['collType'])) {
         $collType = $dbs->escape_string(trim($_GET['collType']));
