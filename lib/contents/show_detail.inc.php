@@ -55,10 +55,6 @@ if (isset($_GET['inXML']) AND !empty($_GET['inXML'])) {
     if (isset($sysconf['enable_xml_detail']) && $sysconf['enable_xml_detail'] && !defined('LIGHTWEIGHT_MODE')) {
         $info .= '<a href="index.php?p=show_detail&inXML=true&id='.$detail_id.'" class="xmlDetailLink" target="_blank">XML Detail</a>';
     }
-    if (!defined('LIGHTWEIGHT_MODE')) {
-        // include Prototype javascript library
-        echo '<script type="text/javascript" src="'.JS_WEB_ROOT_DIR.'prototype.js"></script>';
-    }
     // output the record detail
     echo $detail->showDetail();
     $page_title = $detail->record_title;

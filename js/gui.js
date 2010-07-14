@@ -127,7 +127,9 @@ jQuery.fn.dynamicField = function() {
  */
 jQuery.fn.disableForm = function() {
     var disabledForm = $(this);
-    disabledForm.find('input,select,textarea').attr('disabled', 'disabled');
+    disabledForm.find('input,select,textarea').each(function() {
+        this.disabled = true;
+    });
     return disabledForm;
 }
 
@@ -140,7 +142,9 @@ jQuery.fn.disableForm = function() {
  */
 jQuery.fn.enableForm = function() {
     var enabledForm = $(this);
-    enabledForm.find('input,select,textarea').removeAttr('disabled');
+    enabledForm.find('input,select,textarea').each(function() {
+        this.disabled = false;
+    });
     return enabledForm;
 }
 
@@ -232,6 +236,9 @@ jQuery.fn.registerAdminEvents = function(params) {
         // unregister event for table-header
         $('.table-header', datagrid).parent().unbind();
     });
+
+    // change all search form submit behaviour to AJAX
+    container.find('form.disabled').disableForm();
 
     // change all search form submit behaviour to AJAX
     container.find('.editFormLink').click(function(evt) {
@@ -405,4 +412,7 @@ $('document').ready(function() {
         var hiddenFilter = $('.hiddenFilter').hide();
         $('[name=moreFilter]').toggle(function() { hiddenFilter.fadeIn(); }, function() { hiddenFilter.hide(); });
     });
+
+    // disable form with class "disabled"
+    $('form.disabled').disableForm();
 });

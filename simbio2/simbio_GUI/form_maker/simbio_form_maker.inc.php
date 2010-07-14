@@ -71,7 +71,7 @@ class simbio_form_maker
      */
     public function startForm()
     {
-        return '<form name="'.$this->form_name.'" id="'.$this->form_name.'" '.($this->disable?'disabled="disabled"':'')
+        return '<form name="'.$this->form_name.'" id="'.$this->form_name.'" '.($this->disable?'class="disabled"':'')
             .'method="'.$this->form_method.'" '
             .'action="'.$this->form_action.'" target="'.$this->submit_target.'"'.($this->enable_upload?' enctype="multipart/form-data"':'').'>';
     }
