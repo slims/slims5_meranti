@@ -116,7 +116,7 @@ if (isset($_POST['saveData'])) {
 
 /* header */
 ?>
-<div style="padding: 5px; background-color: #CCCCCC;">
+<div style="padding: 5px; background-color: #ccc;">
     <a href="fines_list.php?action=detail" class="headerText2" style="color: #FF0000;"><?php echo __('Add New Fines'); ?></a> &nbsp;
     <a href="fines_list.php" class="headerText2"><?php echo __('Fines List'); ?></a>&nbsp;
     <a href="fines_list.php?balance=true" class="headerText2"><?php echo __('View Balanced Overdue'); ?></a>

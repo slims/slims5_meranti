@@ -55,12 +55,12 @@ function confirmProcess(intReserveID, strTitle)
 <!--reserve specific javascript functions end-->
 
 <!--item loan form-->
-<div style="padding: 5px; background-color: #CCCCCC;">
+<div style="padding: 5px; background-color: #ccc;">
     <form name="reserveForm" id="search" action="circulation_action.php" method="post" style="display: inline;">
         <?php echo __('Search Collection'); ?> :<br />
         <?php
         // AJAX expression
-        $ajax_exp = "ajaxFillSelect('item_AJAX_lookup_handler.php', 'item', 'i.item_code:title', 'reserveItemID', $('bib_search_str').getValue())";
+        $ajax_exp = "ajaxFillSelect('item_AJAX_lookup_handler.php', 'item', 'i.item_code:title', 'reserveItemID', $('#bib_search_str').val())";
         $biblio_options[] = array('0', 'Title');
         echo simbio_form_element::textField('text', 'bib_search_str', '', 'style="width: 10%;" onkeyup="'.$ajax_exp.'"');
         echo simbio_form_element::selectList('reserveItemID', $biblio_options, '', 'class="marginTop" style="width: 70%;"');
