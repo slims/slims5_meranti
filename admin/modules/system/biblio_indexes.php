@@ -60,8 +60,10 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 		set_time_limit(0);
 		$indexer = new biblio_indexer($dbs);
 		$indexer->updateFullIndex();
+        $finish_minutes = $indexer->indexing_time/60;
+        $finish_sec = $indexer->indexing_time%60;
 		// message
-		$message = sprintf(__('<strong>%d</strong> records (from total of <strong>%d</strong>) re-indexed!'), $indexer->indexed, $indexer->total_records);
+		$message = sprintf(__('<strong>%d</strong> records (from total of <strong>%d</strong>) re-indexed. Finished in %d minutes %d second(s)'), $indexer->indexed, $indexer->total_records, $finish_minutes, $finish_sec);
 		if ($indexer->failed) {
 			$message = 	'<div style="color: #f00;">'.sprintf(__('<strong>%d</strong> index records failed to indexed. The IDs are: %s'), count($indexer->failed), implode(', ', $indexer->failed)).'</div>';
 		}
@@ -80,8 +82,10 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 		} else {
 			$indexer = new biblio_indexer($dbs);
 			$indexer->createFullIndex(false);
+			$finish_minutes = $indexer->indexing_time/60;
+			$finish_sec = $indexer->indexing_time%60;
 			// message
-			$message = sprintf(__('<strong>%d</strong> records (from total of <strong>%d</strong>) re-indexed!'), $indexer->indexed, $indexer->total_records);
+			$message = sprintf(__('<strong>%d</strong> records (from total of <strong>%d</strong>) re-indexed. Finished in %d second(s)'), $indexer->indexed, $indexer->total_records, $finish_minutes, $finish_sec);
 			if ($indexer->failed) {
 				$message = 	'<div style="color: #f00;">'.sprintf(__('<strong>%d</strong> index records failed to indexed. The IDs are: %s'), count($indexer->failed), implode(', ', $indexer->failed)).'</div>';
 			}

@@ -23,10 +23,10 @@
 // include required class class
 require SIMBIO_BASE_DIR.'simbio_UTILS/simbio_tokenizecql.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging.inc.php';
-require LIB_DIR.'biblio_list.inc.php';
+require LIB_DIR.'biblio_list_index.inc.php';
 
 // create biblio list object
-$biblio_list = new biblio_list($dbs);
+$biblio_list = new biblio_list_index($dbs);
 // no item data related search on UCS
 if (defined('UCS_BASE_DIR')) { $biblio_list->disable_item_data = true; }
 
