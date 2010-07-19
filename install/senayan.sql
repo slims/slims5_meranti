@@ -1040,6 +1040,7 @@ PRIMARY KEY ( `biblio_id` )
 CREATE TABLE IF NOT EXISTS `search_biblio` (
   `biblio_id` int(11) NOT NULL,
   `title` text COLLATE utf8_unicode_ci,
+  `isbn_issn` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `author` text COLLATE utf8_unicode_ci,
   `topic` text COLLATE utf8_unicode_ci,
   `gmd` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -1052,11 +1053,23 @@ CREATE TABLE IF NOT EXISTS `search_biblio` (
   `year` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `notes` text COLLATE utf8_unicode_ci,
   `series` text COLLATE utf8_unicode_ci,
-  `barcodes` text COLLATE utf8_unicode_ci,
+  `items` text COLLATE utf8_unicode_ci,
   `collection_types` text COLLATE utf8_unicode_ci,
+  `opac_hide` smallint(1) NOT NULL DEFAULT '0',
+  `promoted` smallint(1) NOT NULL DEFAULT '0',
+  `labels` text COLLATE utf8_unicode_ci,
+  `image` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `input_date` datetime NOT NULL,
+  `last_update` datetime NOT NULL,
   UNIQUE KEY `biblio_id` (`biblio_id`),
-  KEY `additional_indexes` (`gmd`,`publisher`,`publish_place`,`language`,`classification`,`year`),
-  FULLTEXT KEY `fulltext_indexes` (`title`,`series`,`author`,`topic`,`location`,`notes`,`barcodes`,`collection_types`,`spec_detail_info`)
+  KEY `additional_indexes` (`gmd`,`publisher`,`publish_place`,`language`,`classification`,`year`,`opac_hide`,`promoted`),
+  FULLTEXT KEY `title` (`title`),
+  FULLTEXT KEY `author` (`author`),
+  FULLTEXT KEY `topic` (`topic`),
+  FULLTEXT KEY `location` (`location`),
+  FULLTEXT KEY `items` (`items`),
+  FULLTEXT KEY `collection_types` (`collection_types`),
+  FULLTEXT KEY `labels` (`labels`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='index table for advance searching technique for SLiMS';
 
 --
