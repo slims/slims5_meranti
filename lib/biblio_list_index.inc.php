@@ -79,7 +79,6 @@ class biblio_list_index
         // defaults
         $_sql_criteria = '';
         $_searched_fields = array();
-        $_title_buffer = '';
         $_previous_field = '';
         $_boolean = '';
         // parse query
@@ -92,21 +91,25 @@ class biblio_list_index
         // loop each query
 		// echo '<pre>'; var_dump($_queries); echo '</pre>';
         foreach ($_queries as $_num => $_query) {
-            // searched field
+            // field
             $_field = $_query['f'];
             //  break the loop if we meet `cql_end` field
             if ($_field == 'cql_end') { break; }
-            // boolean mode
-            $_boolean = 'AND';
-            $_b = isset($_query['b'])?$_query['b']:'+';
-			if ($_b == '*') { $_boolean = 'OR'; }
-			// query value
-			if (isset($_query['q'])) {
-				$_sql_criteria .= " $_boolean ";
-				$_q = $this->obj_db->escape_string($_query['q']);
-			} else {
-				$_sql_criteria .= " $_boolean ";
+			// if field is boolean
+			if ($_field == 'boolean') {
+				if ($_query['b'] == '*') { $_boolean = 'OR'; } else { $_boolean = 'AND'; }
 				continue;
+			} else {
+				if ($_boolean) {
+					$_sql_criteria .= " $_boolean ";
+				} else {
+					if ($_query['b'] == '*') {
+						$_sql_criteria .= " OR ";
+					} else { $_sql_criteria .= " AND "; }
+					$_b = $_query['b'];
+				}
+				$_q = @$this->obj_db->escape_string($_query['q']);
+				$_boolean = '';
 			}
             // for debugging purpose only
             // echo "<p>$_num. $_field -> $_boolean -> $_sql_criteria</p><p>&nbsp;</p>";
