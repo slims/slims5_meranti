@@ -338,6 +338,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     echo $form->printOut();
 } else {
     require SIMBIO_BASE_DIR.'simbio_UTILS/simbio_tokenizecql.inc.php';
+    require LIB_DIR.'biblio_list_model.inc.php';
     require LIB_DIR.'biblio_list.inc.php';
     $title_field_idx = 1;
     // callback function to show title and authors in datagrid

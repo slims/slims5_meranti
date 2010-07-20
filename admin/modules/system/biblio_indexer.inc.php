@@ -84,9 +84,9 @@ class biblio_indexer
 	 * @return	boolean	false on Failed, true otherwise
 	 */
 	public function makeIndex($int_biblio_id) {
-		$bib_sql = 'SELECT b.biblio_id, b.title, b.publish_year, b.notes, b.series_title, b.classification, b.spec_detail_info,
+		$bib_sql = 'SELECT b.biblio_id, b.title, b.edition, b.publish_year, b.notes, b.series_title, b.classification, b.spec_detail_info,
 			g.gmd_name AS `gmd`, pb.publisher_name AS `publisher`, pl.place_name AS `publish_place`,
-			lg.language_name AS `language`, b.opac_hide, b.promoted, b.labels, b.image, b.input_date, b.last_update
+			lg.language_name AS `language`, b.call_number, b.opac_hide, b.promoted, b.labels, b.`collation`, b.image, b.input_date, b.last_update
 			FROM biblio AS b
 			LEFT JOIN mst_gmd AS g ON b.gmd_id = g.gmd_id
 			LEFT JOIN mst_publisher AS pb ON b.publisher_id = pb.publisher_id
@@ -106,6 +106,7 @@ class biblio_indexer
 
 		/* GMD , Title, Year  */
 		$data['title'] = $this->obj_db->escape_string($rb_id['title']);
+		$data['edition'] = $this->obj_db->escape_string($rb_id['edition']);
 		$data['gmd'] = $this->obj_db->escape_string($rb_id['gmd']);
 		$data['publisher'] = $this->obj_db->escape_string($rb_id['publisher']);
 		$data['publish_place'] = $this->obj_db->escape_string($rb_id['publish_place']);
@@ -113,6 +114,7 @@ class biblio_indexer
 		$data['year'] = $rb_id['publish_year'];
 		$data['classification'] = $this->obj_db->escape_string($rb_id['classification']);
 		$data['spec_detail_info'] = $this->obj_db->escape_string($rb_id['spec_detail_info']);
+		$data['call_number'] = $this->obj_db->escape_string($rb_id['call_number']);
 		$data['opac_hide'] = $rb_id['opac_hide'];
 		$data['promoted'] = $rb_id['promoted'];
 		if ($rb_id['labels']) {
@@ -125,6 +127,7 @@ class biblio_indexer
 		} else {
 			$data['labels'] = 'literal{NULL}';
 		}
+		$data['collation'] = $this->obj_db->escape_string($rb_id['collation']);
 		$data['image'] = $this->obj_db->escape_string($rb_id['image']);
 		$data['input_date'] = $rb_id['input_date'];
 		$data['last_update'] = $rb_id['last_update'];

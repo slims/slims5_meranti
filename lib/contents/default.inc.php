@@ -23,10 +23,19 @@
 // include required class class
 require SIMBIO_BASE_DIR.'simbio_UTILS/simbio_tokenizecql.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging.inc.php';
-require LIB_DIR.'biblio_list_index.inc.php';
+require LIB_DIR.'biblio_list_model.inc.php';
+// index choice
+if ($sysconf['index']['type'] == 'index') {
+    require LIB_DIR.'biblio_list_index.inc.php';
+} else if ($sysconf['index']['type'] == 'sphinx' && file_exists(LIB_DIR.'sphinx/sphinxapi.php')) {
+    require LIB_DIR.'sphinxapi/sphinxapi.php';
+    require LIB_DIR.'biblio_list_sphinx.inc.php';
+} else {
+    require LIB_DIR.'biblio_list.inc.php';
+}
 
 // create biblio list object
-$biblio_list = new biblio_list_index($dbs);
+$biblio_list = new biblio_list($dbs, $sysconf['opac_result_num']);
 // no item data related search on UCS
 if (defined('UCS_BASE_DIR')) { $biblio_list->disable_item_data = true; }
 
@@ -129,7 +138,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
 // check if we are on xml resultset mode
 if (isset($_GET['resultXML']) && $sysconf['enable_xml_result']) {
     // get document list but don't output the result
-    $biblio_list->getDocumentList($sysconf['opac_result_num'], false);
+    $biblio_list->getDocumentList(false);
     if ($biblio_list->num_rows > 0) {
         // send http header
         header('Content-Type: text/xml');
@@ -139,7 +148,7 @@ if (isset($_GET['resultXML']) && $sysconf['enable_xml_result']) {
     exit();
 } else {
     // show the list
-    echo $biblio_list->getDocumentList($sysconf['opac_result_num']);
+    echo $biblio_list->getDocumentList();
     echo '<br />'."\n";
     // set result number info
     $info = str_replace('{biblio_list->num_rows}', $biblio_list->num_rows, $info);

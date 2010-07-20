@@ -28,4 +28,5 @@ define('DB_USERNAME', 'senayanuser');
 define('DB_PASSWORD', 'password_senayanuser');
 
 // define any other sysconfig variables below
+$sysconf['index']['type'] = 'index';
 ?>

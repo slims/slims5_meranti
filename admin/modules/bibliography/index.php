@@ -575,60 +575,118 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     echo $form->printOut();
 } else {
     require SIMBIO_BASE_DIR.'simbio_UTILS/simbio_tokenizecql.inc.php';
-    require LIB_DIR.'biblio_list.inc.php';
-    /* BIBLIOGRAPHY LIST */
-    // callback function to show title and authors in datagrid
-    function showTitleAuthors($obj_db, $array_data)
-    {
-        // biblio author detail
-        #$_biblio_q = $obj_db->query('SELECT b.title, a.author_name, opac_hide, promoted FROM biblio AS b
-        #    LEFT JOIN biblio_author AS ba ON b.biblio_id=ba.biblio_id
-        #    LEFT JOIN mst_author AS a ON ba.author_id=a.author_id
-        #    WHERE b.biblio_id='.$array_data[0]);
-        $_sql_biblio_q = sprintf('SELECT b.title, a.author_name, opac_hide, promoted FROM biblio AS b
-            LEFT JOIN biblio_author AS ba ON b.biblio_id=ba.biblio_id
-            LEFT JOIN mst_author AS a ON ba.author_id=a.author_id
-            WHERE b.biblio_id=%d', $array_data[0]);
-        $_biblio_q = $obj_db->query($_sql_biblio_q);
-        $_authors = '';
-        while ($_biblio_d = $_biblio_q->fetch_row()) {
-            $_title = $_biblio_d[0];
-            $_authors .= $_biblio_d[1].' - ';
-            $_opac_hide = (integer)$_biblio_d[2];
-            $_promoted = (integer)$_biblio_d[3];
-        }
-        $_authors = substr_replace($_authors, '', -3);
-        $_output = '<div style="float: left;"><b>'.$_title.'</b><br /><i>'.$_authors.'</i></div>';
-        // check for opac hide flag
-        if ($_opac_hide) {
-            $_output .= '<div style="float: right; width: 20px; height: 20px;" class="lockFlagIcon" title="Hidden in OPAC">&nbsp;</div>';
-        }
-        // check for promoted flag
-        if ($_promoted) {
-            $_output .= '<div style="float: right; width: 20px; height: 20px;" class="homeFlagIcon" title="Promoted To Homepage">&nbsp;</div>';
-        }
-        return $_output;
-    }
+    require LIB_DIR.'biblio_list_model.inc.php';
+
+    // number of records to show in list
+    $biblio_result_num = ($sysconf['biblio_result_num']>100)?100:$sysconf['biblio_result_num'];
 
     // create datagrid
     $datagrid = new simbio_datagrid();
-    if ($can_read AND $can_write) {
-        $datagrid->setSQLColumn('biblio.biblio_id', 'biblio.biblio_id AS bid',
-            'biblio.title AS \''.__('Title').'\'',
-            'biblio.isbn_issn AS \''.__('ISBN/ISSN').'\'',
-            'IF(COUNT(item.item_id)>0, COUNT(item.item_id), \'<strong style="color: #f00;">'.__('None').'</strong>\') AS \''.__('Copies').'\'',
-            'biblio.last_update AS \''.__('Last Update').'\'');
-        $datagrid->modifyColumnContent(2, 'callback{showTitleAuthors}');
+
+    // index choice
+    if ($sysconf['index']['type'] == 'index') {
+        require LIB_DIR.'biblio_list_index.inc.php';
+
+        // table spec
+        $table_spec = 'search_biblio AS `index` LEFT JOIN item ON `index`.biblio_id=item.biblio_id';
+
+        // callback function to show title and authors in datagrid
+        function showTitleAuthors($obj_db, $array_data)
+        {
+            $_output = '<div style="float: left;"><span class="title">'.$array_data[1].'</span><div class="authors">'.$array_data[2].'</div></div>';
+            /*
+            // check for opac hide flag
+            if ($_opac_hide) { $_output .= '<div style="float: right; width: 20px; height: 20px;" class="lockFlagIcon" title="Hidden in OPAC">&nbsp;</div>'; }
+            // check for promoted flag
+            if ($_promoted) { $_output .= '<div style="float: right; width: 20px; height: 20px;" class="homeFlagIcon" title="Promoted To Homepage">&nbsp;</div>'; }
+            */
+            return $_output;
+        }
+
+        if ($can_read AND $can_write) {
+            $datagrid->setSQLColumn('index.biblio_id', 'index.title AS \''.__('Title').'\'',
+                'index.author',
+                'index.isbn_issn AS \''.__('ISBN/ISSN').'\'',
+                'IF(COUNT(item.item_id)>0, COUNT(item.item_id), \'<strong style="color: #f00;">'.__('None').'</strong>\') AS \''.__('Copies').'\'',
+                'index.last_update AS \''.__('Last Update').'\'');
+            $datagrid->modifyColumnContent(1, 'callback{showTitleAuthors}');
+        } else {
+            $datagrid->setSQLColumn('index.title AS \''.__('Title').'\'', 'index.author',
+                'index.isbn_issn AS \''.__('ISBN/ISSN').'\'',
+                'IF(COUNT(item.item_id)>0, COUNT(item.item_id), \'<strong style="color: #f00;">'.__('None').'</strong>\') AS \''.__('Copies').'\'',
+                'index.last_update AS \''.__('Last Update').'\'');
+            $datagrid->modifyColumnContent(1, 'callback{showTitleAuthors}');
+        }
+        $datagrid->invisible_fields = array(1);
+        $datagrid->setSQLorder('index.last_update DESC');
+
+        // set group by
+        $datagrid->sql_group_by = 'index.biblio_id';
+
+    } else if ($sysconf['index']['type'] == 'sphinx' && file_exists(LIB_DIR.'sphinx/sphinxapi.php')) {
+        require LIB_DIR.'sphinxapi/sphinxapi.php';
+        require LIB_DIR.'biblio_list_sphinx.inc.php';
     } else {
-        $datagrid->setSQLColumn('biblio.biblio_id AS bid', 'biblio.title AS \''.__('Title').'\'',
-            'biblio.isbn_issn AS \''.__('ISBN/ISSN').'\'',
-            'IF(COUNT(item.item_id)>0, COUNT(item.item_id), \'<strong style="color: #f00;">'.__('None').'</strong>\') AS \''.__('Copies').'\'',
-            'biblio.last_update AS \''.__('Last Update').'\'');
-        // modify column value
-        $datagrid->modifyColumnContent(1, 'callback{showTitleAuthors}');
+        require LIB_DIR.'biblio_list.inc.php';
+
+        // table spec
+        $table_spec = 'biblio LEFT JOIN item ON biblio.biblio_id=item.biblio_id';
+
+        /* BIBLIOGRAPHY LIST */
+        // callback function to show title and authors in datagrid
+        function showTitleAuthors($obj_db, $array_data)
+        {
+            // biblio author detail
+            #$_biblio_q = $obj_db->query('SELECT b.title, a.author_name, opac_hide, promoted FROM biblio AS b
+            #    LEFT JOIN biblio_author AS ba ON b.biblio_id=ba.biblio_id
+            #    LEFT JOIN mst_author AS a ON ba.author_id=a.author_id
+            #    WHERE b.biblio_id='.$array_data[0]);
+            $_sql_biblio_q = sprintf('SELECT b.title, a.author_name, opac_hide, promoted FROM biblio AS b
+                LEFT JOIN biblio_author AS ba ON b.biblio_id=ba.biblio_id
+                LEFT JOIN mst_author AS a ON ba.author_id=a.author_id
+                WHERE b.biblio_id=%d', $array_data[0]);
+            $_biblio_q = $obj_db->query($_sql_biblio_q);
+            $_authors = '';
+            while ($_biblio_d = $_biblio_q->fetch_row()) {
+                $_title = $_biblio_d[0];
+                $_authors .= $_biblio_d[1].' - ';
+                $_opac_hide = (integer)$_biblio_d[2];
+                $_promoted = (integer)$_biblio_d[3];
+            }
+            $_authors = substr_replace($_authors, '', -3);
+            $_output = '<div style="float: left;"><span class="title">'.$_title.'</span><div class="authors">'.$_authors.'</div></div>';
+            // check for opac hide flag
+            if ($_opac_hide) {
+                $_output .= '<div style="float: right; width: 20px; height: 20px;" class="lockFlagIcon" title="Hidden in OPAC">&nbsp;</div>';
+            }
+            // check for promoted flag
+            if ($_promoted) {
+                $_output .= '<div style="float: right; width: 20px; height: 20px;" class="homeFlagIcon" title="Promoted To Homepage">&nbsp;</div>';
+            }
+            return $_output;
+        }
+
+        if ($can_read AND $can_write) {
+            $datagrid->setSQLColumn('biblio.biblio_id', 'biblio.biblio_id AS bid',
+                'biblio.title AS \''.__('Title').'\'',
+                'biblio.isbn_issn AS \''.__('ISBN/ISSN').'\'',
+                'IF(COUNT(item.item_id)>0, COUNT(item.item_id), \'<strong style="color: #f00;">'.__('None').'</strong>\') AS \''.__('Copies').'\'',
+                'biblio.last_update AS \''.__('Last Update').'\'');
+            $datagrid->modifyColumnContent(2, 'callback{showTitleAuthors}');
+        } else {
+            $datagrid->setSQLColumn('biblio.biblio_id AS bid', 'biblio.title AS \''.__('Title').'\'',
+                'biblio.isbn_issn AS \''.__('ISBN/ISSN').'\'',
+                'IF(COUNT(item.item_id)>0, COUNT(item.item_id), \'<strong style="color: #f00;">'.__('None').'</strong>\') AS \''.__('Copies').'\'',
+                'biblio.last_update AS \''.__('Last Update').'\'');
+            // modify column value
+            $datagrid->modifyColumnContent(1, 'callback{showTitleAuthors}');
+        }
+        $datagrid->invisible_fields = array(0);
+        $datagrid->setSQLorder('biblio.last_update DESC');
+
+        // set group by
+        $datagrid->sql_group_by = 'biblio.biblio_id';
     }
-    $datagrid->invisible_fields = array(0);
-    $datagrid->setSQLorder('biblio.last_update DESC');
 
     // is there any search
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
@@ -645,18 +703,13 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
             $search_str = substr_replace($search_str, '', -4);
         }
 
-        $biblio_list = new biblio_list($dbs);
+        $biblio_list = new biblio_list($dbs, $biblio_result_num);
         $criteria = $biblio_list->setSQLcriteria($search_str);
     }
 
     if (isset($criteria)) {
         $datagrid->setSQLcriteria('('.$criteria['sql_criteria'].')');
     }
-    // table spec
-    $table_spec = 'biblio LEFT JOIN item ON biblio.biblio_id=item.biblio_id';
-
-    // set group by
-    $datagrid->sql_group_by = 'biblio.biblio_id';
 
     // set table and table header attributes
     $datagrid->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
@@ -665,7 +718,6 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $datagrid->chbox_form_URL = $_SERVER['PHP_SELF'];
     $datagrid->debug = true;
 
-    $biblio_result_num = ($sysconf['biblio_result_num']>100)?100:$sysconf['biblio_result_num'];
     // put the result into variables
     $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, $biblio_result_num, ($can_read AND $can_write));
     if (isset($_GET['keywords']) AND $_GET['keywords']) {

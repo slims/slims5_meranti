@@ -1033,13 +1033,13 @@ CREATE TABLE IF NOT EXISTS `biblio_custom` (
 PRIMARY KEY ( `biblio_id` )
 ) ENGINE = MYISAM COMMENT = 'one to one relation with real biblio table';
 
-
 --
 -- Table structure for table `search_biblio`
 --
 CREATE TABLE IF NOT EXISTS `search_biblio` (
   `biblio_id` int(11) NOT NULL,
   `title` text COLLATE utf8_unicode_ci,
+  `edition` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `isbn_issn` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `author` text COLLATE utf8_unicode_ci,
   `topic` text COLLATE utf8_unicode_ci,
@@ -1055,14 +1055,16 @@ CREATE TABLE IF NOT EXISTS `search_biblio` (
   `series` text COLLATE utf8_unicode_ci,
   `items` text COLLATE utf8_unicode_ci,
   `collection_types` text COLLATE utf8_unicode_ci,
+  `call_number` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `opac_hide` smallint(1) NOT NULL DEFAULT '0',
   `promoted` smallint(1) NOT NULL DEFAULT '0',
   `labels` text COLLATE utf8_unicode_ci,
+  `collation` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `image` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `input_date` datetime NOT NULL,
   `last_update` datetime NOT NULL,
   UNIQUE KEY `biblio_id` (`biblio_id`),
-  KEY `additional_indexes` (`gmd`,`publisher`,`publish_place`,`language`,`classification`,`year`,`opac_hide`,`promoted`),
+  KEY `additional_indexes` (`gmd`,`publisher`,`publish_place`,`language`,`classification`,`year`,`opac_hide`,`promoted`,`call_number`,`edition`),
   FULLTEXT KEY `title` (`title`),
   FULLTEXT KEY `author` (`author`),
   FULLTEXT KEY `topic` (`topic`),

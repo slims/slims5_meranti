@@ -159,7 +159,7 @@ $sysconf['admin_template']['css'] = $sysconf['admin_template']['dir'].'/'.$sysco
 $sysconf['opac_result_num'] = 10;
 
 /* Biblio module */
-$sysconf['biblio_result_num'] = 100;
+$sysconf['biblio_result_num'] = 30;
 
 /* Promote selected title(s) to homepage setting */
 $sysconf['enable_promote_titles'] = false;
@@ -404,6 +404,9 @@ if (($sysconf['auth']['user']['method'] === 'LDAP') OR ($sysconf['auth']['member
     $sysconf['auth']['member']['ldap_options'] = &$sysconf['auth']['user']['ldap_options']; // optional LDAP server options
     $sysconf['auth']['member']['ldap_search_filter'] = &$sysconf['auth']['user']['ldap_search_filter']; // LDAP search filter, #loginUserName will be replaced by the real login name
 }
+
+/* BIBLIO INDEXING */
+$sysconf['index']['type'] = 'default'; // value can be 'default', 'index' OR 'sphinx'
 
 // check if session is auto started and then destroy it
 if ($is_auto = @ini_get('session.auto_start')) { define('SESSION_AUTO_STARTED', $is_auto); }

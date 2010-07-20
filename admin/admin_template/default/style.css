@@ -601,3 +601,11 @@ input:hover,textarea:hover,select:hover {
     color: #ff5d00;
     border: 1px solid #ff5d00;
 }
+
+.title {
+    font-weight: bold;
+}
+
+.authors {
+    font-style: italic;
+}
