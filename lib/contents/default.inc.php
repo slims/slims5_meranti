@@ -30,12 +30,15 @@ if ($sysconf['index']['type'] == 'index') {
 } else if ($sysconf['index']['type'] == 'sphinx' && file_exists(LIB_DIR.'sphinx/sphinxapi.php')) {
     require LIB_DIR.'sphinx/sphinxapi.php';
     require LIB_DIR.'biblio_list_sphinx.inc.php';
+    $sysconf['opac_result_num'] = (int)$sysconf['opac_result_num'];
 } else {
     require LIB_DIR.'biblio_list.inc.php';
 }
 
 // create biblio list object
 $biblio_list = new biblio_list($dbs, $sysconf['opac_result_num']);
+// set options for sphinx
+// if ($sysconf['index']['type'] == 'sphinx') { $biblio_list->setOptions($sysconf['index']['sphinx_opts']); }
 // no item data related search on UCS
 if (defined('UCS_BASE_DIR')) { $biblio_list->disable_item_data = true; }
 

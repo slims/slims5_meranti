@@ -173,8 +173,8 @@ class biblio_list extends biblio_list_model
                     break;
                 case 'itemcode' :
 					if (!$this->disable_item_data) {
-						if ($_b == '-') { $_sql_criteria .= " NOT (MATCH (index.barcodes) AGAINST ('$_q' IN BOOLEAN MODE))";
-						} else { $_sql_criteria .= " MATCH (index.barcodes) AGAINST ('$_q' IN BOOLEAN MODE)"; }
+						if ($_b == '-') { $_sql_criteria .= " NOT (MATCH (index.items) AGAINST ('$_q' IN BOOLEAN MODE))";
+						} else { $_sql_criteria .= " MATCH (index.items) AGAINST ('$_q' IN BOOLEAN MODE)"; }
 					}
                     break;
                 case 'callnumber' :

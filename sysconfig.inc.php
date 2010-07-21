@@ -407,6 +407,16 @@ if (($sysconf['auth']['user']['method'] === 'LDAP') OR ($sysconf['auth']['member
 
 /* BIBLIO INDEXING */
 $sysconf['index']['type'] = 'default'; // value can be 'default', 'index' OR 'sphinx'
+$sysconf['index']['sphinx_opts'] = array(
+    'host' => '127.0.0.1',
+    'port' => 9312,
+    'index' => 'slims', // name of index in sphinx.conf
+	'mode' => null, 'timeout' => 0, 'filter' => '@last_update desc',
+	'filtervals' => array(), 'groupby' => null, 'groupsort' => null,
+	'sortby' => null, 'sortexpr' => null, 'distinct' => 'biblio_id',
+	'select' => null, 'limit' => 20,
+    'max_limit' => 100000, // must be less or same with max_matches in sphinx.conf
+	'ranker' => null);
 
 // check if session is auto started and then destroy it
 if ($is_auto = @ini_get('session.auto_start')) { define('SESSION_AUTO_STARTED', $is_auto); }
