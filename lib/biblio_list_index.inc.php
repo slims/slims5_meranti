@@ -137,6 +137,9 @@ class biblio_list extends biblio_list_model
 					$_b = $_query['b'];
 				}
 				$_q = @$this->obj_db->escape_string($_query['q']);
+				if (in_array($_field, array('title', 'author', 'topic', 'notes'))) {
+					$_q = isset($_query['is_phrase'])?'"'.$_q.'"':$_q;
+				}
 				$_boolean = '';
 			}
             // for debugging purpose only
@@ -145,6 +148,7 @@ class biblio_list extends biblio_list_model
 			// check fields
             switch ($_field) {
                 case 'author' :
+
 					if ($_b == '-') { $_sql_criteria .= " NOT (MATCH (index.author) AGAINST ('$_q' IN BOOLEAN MODE))";
 					} else { $_sql_criteria .= " (MATCH (index.author) AGAINST ('$_q' IN BOOLEAN MODE))"; }
                     break;

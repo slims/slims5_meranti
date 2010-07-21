@@ -34,6 +34,7 @@ require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/datagrid/simbio_dbgrid.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/simbio_dbop.inc.php';
 require SIMBIO_BASE_DIR.'simbio_FILE/simbio_file_upload.inc.php';
+require MODULES_BASE_DIR.'system/biblio_indexer.inc.php';
 
 // privileges checking
 $can_read = utility::havePrivilege('bibliography', 'r');
@@ -61,6 +62,9 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         if (file_exists(MODULES_BASE_DIR.'bibliography/custom_fields.inc.php')) {
             include MODULES_BASE_DIR.'bibliography/custom_fields.inc.php';
         }
+
+        // create biblio_indexer class instance
+        $indexer = new biblio_indexer($dbs);
 
         /**
          * Custom fields
@@ -197,6 +201,8 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 } else {
                     echo '<script type="text/javascript">top.$(\'#mainContent\').simbioAJAX(parent.jQuery.ajaxHistory[1].url);</script>';
                 }
+                // update index
+                $indexer->makeIndex($updateRecordID);
             } else { utility::jsAlert(__('Bibliography Data FAILED to Updated. Please Contact System Administrator')."\n".$sql_op->error); }
             exit();
         } else {
@@ -237,6 +243,8 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 $_SESSION['biblioAuthor'] = array();
                 $_SESSION['biblioTopic'] = array();
                 $_SESSION['biblioAttach'] = array();
+                // update index
+                $indexer->makeIndex($last_biblio_id);
                 // auto insert catalog to UCS if enabled
                 if ($sysconf['ucs']['enable'] && $sysconf['ucs']['auto_insert']) {
                     echo '<script type="text/javascript">parent.ucsUpload(\''.MODULES_WEB_ROOT_DIR.'bibliography/ucs_upload.php\', \'itemID[]='.$last_biblio_id.'\');</script>';
@@ -281,6 +289,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 $sql_op->delete('biblio_topic', "biblio_id=$itemID");
                 $sql_op->delete('biblio_author', "biblio_id=$itemID");
                 $sql_op->delete('biblio_attachment', "biblio_id=$itemID");
+                $sql_op->delete('search_biblio', "biblio_id=$itemID");
                 // add to http query for UCS delete
                 $http_query .= "itemID[]=$itemID&";
             }
@@ -624,7 +633,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         $datagrid->sql_group_by = 'index.biblio_id';
 
     } else if ($sysconf['index']['type'] == 'sphinx' && file_exists(LIB_DIR.'sphinx/sphinxapi.php')) {
-        require LIB_DIR.'sphinxapi/sphinxapi.php';
+        require LIB_DIR.'sphinx/sphinxapi.php';
         require LIB_DIR.'biblio_list_sphinx.inc.php';
     } else {
         require LIB_DIR.'biblio_list.inc.php';

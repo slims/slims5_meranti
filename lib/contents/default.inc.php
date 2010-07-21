@@ -28,7 +28,7 @@ require LIB_DIR.'biblio_list_model.inc.php';
 if ($sysconf['index']['type'] == 'index') {
     require LIB_DIR.'biblio_list_index.inc.php';
 } else if ($sysconf['index']['type'] == 'sphinx' && file_exists(LIB_DIR.'sphinx/sphinxapi.php')) {
-    require LIB_DIR.'sphinxapi/sphinxapi.php';
+    require LIB_DIR.'sphinx/sphinxapi.php';
     require LIB_DIR.'biblio_list_sphinx.inc.php';
 } else {
     require LIB_DIR.'biblio_list.inc.php';
@@ -115,7 +115,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
 
     // search result info construction
     if ($is_adv) {
-        $info .= '<div style="clear: both;">'.__('Found  <strong>{biblio_list->num_rows}</strong> from your keywords').' : </div>  '; //mfc
+        $info .= '<div style="clear: both;">'.__('Found  <strong>{biblio_list->num_rows}</strong> from your keywords').': <strong><cite>'.$keywords.'</cite></strong></div>  '; //mfc
         if ($title) { $info .= 'Title : <strong><cite>'.$title.'</cite></strong>, '; }
         if ($author) { $info .= 'Author : <strong><cite>'.$author.'</cite></strong>, '; }
         if ($subject) { $info .= 'Subject : <strong><cite>'.$subject.'</cite></strong>, '; }
