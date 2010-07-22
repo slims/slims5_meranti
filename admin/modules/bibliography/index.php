@@ -202,6 +202,8 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                     echo '<script type="text/javascript">top.$(\'#mainContent\').simbioAJAX(parent.jQuery.ajaxHistory[1].url);</script>';
                 }
                 // update index
+                // delete from index first
+                $sql_op->delete('search_biblio', "biblio_id=$updateRecordID");
                 $indexer->makeIndex($updateRecordID);
             } else { utility::jsAlert(__('Bibliography Data FAILED to Updated. Please Contact System Administrator')."\n".$sql_op->error); }
             exit();
@@ -593,8 +595,13 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $datagrid = new simbio_datagrid();
 
     // index choice
-    if ($sysconf['index']['type'] == 'index') {
-        require LIB_DIR.'biblio_list_index.inc.php';
+    if ($sysconf['index']['type'] == 'index' || ($sysconf['index']['type'] == 'sphinx' && file_exists(LIB_DIR.'sphinx/sphinxapi.php'))) {
+        if ($sysconf['index']['type'] == 'sphinx') {
+            require LIB_DIR.'sphinx/sphinxapi.php';
+            require LIB_DIR.'biblio_list_sphinx.inc.php';
+        } else {
+            require LIB_DIR.'biblio_list_index.inc.php';
+        }
 
         // table spec
         $table_spec = 'search_biblio AS `index` LEFT JOIN item ON `index`.biblio_id=item.biblio_id';
@@ -632,9 +639,6 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         // set group by
         $datagrid->sql_group_by = 'index.biblio_id';
 
-    } else if ($sysconf['index']['type'] == 'sphinx' && file_exists(LIB_DIR.'sphinx/sphinxapi.php')) {
-        require LIB_DIR.'sphinx/sphinxapi.php';
-        require LIB_DIR.'biblio_list_sphinx.inc.php';
     } else {
         require LIB_DIR.'biblio_list.inc.php';
 

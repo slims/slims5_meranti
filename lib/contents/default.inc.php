@@ -36,7 +36,12 @@ if ($sysconf['index']['type'] == 'index') {
 }
 
 // create biblio list object
-$biblio_list = new biblio_list($dbs, $sysconf['opac_result_num']);
+try {
+    $biblio_list = new biblio_list($dbs, $sysconf['opac_result_num']);
+} catch (Exception $err) {
+    die($err->getMessage());
+}
+
 // set options for sphinx
 // if ($sysconf['index']['type'] == 'sphinx') { $biblio_list->setOptions($sysconf['index']['sphinx_opts']); }
 // no item data related search on UCS

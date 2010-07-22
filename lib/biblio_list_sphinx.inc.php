@@ -49,6 +49,13 @@ class biblio_list extends biblio_list_model
 			throw new Exception('SPHINX API Library is not installed yet!');
 		} else {
 			$this->sphinx = new SphinxClient();
+			// check searchd status
+			$_sphinx_status = $this->sphinx->Status();
+			if (!$_sphinx_status) {
+				throw new Exception('SPHINX Server is not running! Please
+					check if it already configured correctly.');
+			}
+
 			// defaults
 			$this->options['mode'] = SPH_MATCH_EXTENDED2;
 			$this->options['ranker'] = SPH_RANK_PROXIMITY_BM25;
