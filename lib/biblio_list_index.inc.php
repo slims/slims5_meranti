@@ -27,7 +27,6 @@ class biblio_list extends biblio_list_model
     protected $searchable_fields = array('title', 'author', 'subject', 'isbn',
 		'publisher', 'gmd', 'notes', 'colltype', 'publishyear',
 		'location', 'itemcode', 'callnumber', 'itemcallnumber', 'notes');
-    protected $field_join_type = array('title' => 'OR', 'author' => 'OR', 'subject' => 'OR');
 
     /**
      * Class Constructor
@@ -148,11 +147,10 @@ class biblio_list extends biblio_list_model
 			// check fields
             switch ($_field) {
                 case 'author' :
-
 					if ($_b == '-') { $_sql_criteria .= " NOT (MATCH (index.author) AGAINST ('$_q' IN BOOLEAN MODE))";
 					} else { $_sql_criteria .= " (MATCH (index.author) AGAINST ('$_q' IN BOOLEAN MODE))"; }
                     break;
-                case 'topic' :
+                case 'subject' :
 					if ($_b == '-') { $_sql_criteria .= " NOT (MATCH (index.topic) AGAINST ('$_q' IN BOOLEAN MODE))";
 					} else { $_sql_criteria .= " (MATCH (index.topic) AGAINST ('$_q' IN BOOLEAN MODE))"; }
                     break;

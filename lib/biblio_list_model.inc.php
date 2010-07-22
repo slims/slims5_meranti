@@ -48,7 +48,9 @@ abstract class biblio_list_model
     protected $custom_fields = array();
     protected $enable_custom_frontpage = false;
     protected $orig_query;
-    protected $searchable_fields = array();
+    protected $searchable_fields = array('title', 'author', 'subject', 'isbn_issn',
+		'gmd', 'colltype', 'class', 'callnumber', 'notes',
+		'publisher', 'publish_year', 'itemcode', 'location');
     protected $field_join_type = array();
 
     /**

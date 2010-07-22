@@ -24,17 +24,17 @@
 
 class biblio_list extends biblio_list_model
 {
-    protected $searchable_fields = array('title', 'author', 'subject', 'isbn',
-		'publisher', 'gmd', 'notes', 'colltype', 'publishyear',
-		'location', 'itemcode', 'callnumber', 'itemcallnumber', 'notes');
-    protected $field_join_type = array('title' => 'OR', 'author' => 'OR', 'subject' => 'OR');
-	private $sphinx = null;
-	private $options = array('host' => '127.0.0.1', 'port' => 9312, 'index' => 'slims',
+	protected $options = array('host' => '127.0.0.1', 'port' => 9312, 'index' => 'slims',
 		'mode' => null, 'timeout' => 0, 'filter' => '@last_update desc',
 		'filtervals' => array(), 'groupby' => null, 'groupsort' => null,
 		'sortby' => null, 'sortexpr' => null, 'distinct' => 'biblio_id',
 		'select' => null, 'limit' => 20, 'max_limit' => 500000,
 		'ranker' => null);
+	protected $offset = 0;
+	private $sphinx = null;
+	private $sphinx_error = false;
+	private $no_query = false;
+	private $sphinx_no_result = false;
 
     /**
      * Class Constructor
@@ -52,6 +52,17 @@ class biblio_list extends biblio_list_model
 			// defaults
 			$this->options['mode'] = SPH_MATCH_EXTENDED2;
 			$this->options['ranker'] = SPH_RANK_PROXIMITY_BM25;
+
+			// get page number from http get var
+			if (!isset($_GET['page']) OR $_GET['page'] < 1){ $_page = 1; } else {
+				$_page = (integer)$_GET['page'];
+			}
+			$this->current_page = $_page;
+
+			// count the row offset
+			if ($this->current_page <= 1) { $_offset = 0; } else {
+				$this->offset = ($this->current_page*$this->num2show) - $this->num2show;
+			}
 		}
     }
 
@@ -63,68 +74,24 @@ class biblio_list extends biblio_list_model
      */
     public function compileSQL()
     {
-		// search string
-		$_query_str = isset($this->criteria['sql_criteria'])?trim($this->criteria['sql_criteria']):'';
-		if (!$_query_str) {
-			return '';
-		}
-
-        // get page number from http get var
-        if (!isset($_GET['page']) OR $_GET['page'] < 1){ $_page = 1; } else {
-            $_page = (integer)$_GET['page'];
-        }
-        $this->current_page = $_page;
-
-        // count the row offset
-        if ($this->current_page <= 1) { $_offset = 0; } else {
-            $_offset = ($this->current_page*$this->num2show) - $this->num2show;
-        }
-
-		// set options
-		$this->sphinx->SetServer ( $this->options['host'], $this->options['port'] );
-		$this->sphinx->SetConnectTimeout ( $this->options['timeout'] );
-		$this->sphinx->SetArrayResult ( true );
-		$this->sphinx->SetWeights ( array ( 100, 1 ) );
-		$this->sphinx->SetMatchMode ( $this->options['mode'] );
-		if (count($this->options['filtervals'])) { $this->sphinx->SetFilter ( $this->options['filter'], $this->options['filtervals'] ); }
-		if ($this->options['groupby']) { $this->sphinx->SetGroupBy ( $this->options['groupby'], SPH_GROUPBY_ATTR, $this->options['groupsort'] ); }
-		if ($this->options['sortby']) {
-			$this->sphinx->SetSortMode ( SPH_SORT_EXTENDED, $this->options['sortby'] );
-			$this->sphinx->SetSortMode ( SPH_SORT_EXPR, $this->options['sortexpr'] );
-		}
-		$this->sphinx->SetGroupDistinct ( $this->options['distinct'] );
-		if ($this->options['select']) { $this->sphinx->SetSelect ( $this->options['select'] ); }
-		$this->sphinx->SetLimits ( $_offset, $this->num2show?$this->num2show:$this->options['limit'], $this->options['max_limit'] );
-		$this->sphinx->SetRankingMode ( $this->options['ranker'] );
-
-		// ivoke sphinx query
-		$_search_result = $this->sphinx->Query( $_query_str, $this->options['index'] );
-		// echo '<pre>'; $_search_result; echo '</pre>'; die();
-		if ($_search_result === false) {
-			$this->query_error = $this->sphinx->GetLastError();
-			return;
-		}
-
-		$this->num_rows = $_search_result['total_found'];
-		$this->query_time = $_search_result['time'];
-
-		if (isset($_search_result['matches']) && is_array($_search_result['matches'])) {
-			$_matched_ids = '(';
-			foreach ($_search_result['matches'] as $_match) {
-				$_matched_ids .= $_match['id'].',';
-			}
-			// remove last comma
-			$_matched_ids = substr_replace($_matched_ids, '', -1);
-			$_matched_ids .= ')';
-
-			$_sql_str = "SELECT index.biblio_id, index.title,
-				index.author, index.topic, index.image,
-				index.isbn_issn, index.labels FROM `search_biblio` AS `index` WHERE biblio_id IN $_matched_ids";
-
-			return $_sql_str;
+		$_sql_str = 'SELECT SQL_CALC_FOUND_ROWS index.biblio_id, index.title,
+			index.author, index.image, index.isbn_issn, index.labels
+			FROM search_biblio AS `index`';
+		if (isset($this->criteria['sql_criteria'])) {
+			$_sql_str .= ' WHERE '.$this->criteria['sql_criteria'];
+		} else if ($this->sphinx_no_result) {
+			$_sql_str .= " WHERE index.biblio_id<0";
 		} else {
-			return false;
+			$this->no_query = true;
+			$_sql_str .= " WHERE index.biblio_id IS NOT NULL";
 		}
+		// ordering
+		$_sql_str .= ' ORDER BY index.last_update DESC ';
+		// set limit when query is empty
+		if (!isset($this->criteria['sql_criteria']) || $this->no_query) {
+			$_sql_str .= ' LIMIT '.$this->offset.','.$this->num2show;
+		}
+		return $_sql_str;
     }
 
 
@@ -138,25 +105,38 @@ class biblio_list extends biblio_list_model
      */
     public function getDocumentList($bool_return_output = true)
     {
-		$_sql_str = $this->compileSQL();
-		if ($_sql_str === false) {
-			$this->resultset = $this->obj_db->query("SELECT index.biblio_id, index.title,
-				index.author, index.topic, index.image,
-				index.isbn_issn, index.labels FROM `search_biblio` AS `index` WHERE biblio_id<1");
-		} else if ($_sql_str == '') {
-			$this->resultset = $this->obj_db->query("SELECT index.biblio_id, index.title,
-				index.author, index.topic, index.image,
-				index.isbn_issn, index.labels FROM `search_biblio` AS `index` WHERE biblio_id IS NOT NULL");
+		global $sysconf;
+		if ($this->sphinx_error) {
+			$this->resultset = false;
 		} else {
-			// execute query
-			$this->resultset = $this->obj_db->query($_sql_str);
+			$_sql_str = $this->compileSQL();
+			if ($this->no_query) {
+				// start time
+				$_start = function_exists('microtime')?microtime(true):time();
+				// execute query
+				$this->resultset = $this->obj_db->query($_sql_str);
+				if ($this->obj_db->error) {
+					$this->query_error = $this->obj_db->error;
+				}
+				// get total number of rows from query
+				$_total_q = $this->obj_db->query('SELECT FOUND_ROWS()');
+				$_total_d = $_total_q->fetch_row();
+				$this->num_rows = $_total_d[0];
+				// end time
+				$_end = function_exists('microtime')?microtime(true):time();
+				$this->query_time = round($_end-$_start, 5);
+			} else {
+				$this->resultset = $this->obj_db->query($_sql_str);
+			}
+
 			if ($this->obj_db->error) {
 				$this->query_error = $this->obj_db->error;
 			}
-			if ($bool_return_output) {
-				// return the html result
-				return $this->makeOutput();
-			}
+		}
+
+		if ($bool_return_output) {
+			// return the html result
+			return $this->makeOutput();
 		}
     }
 
@@ -184,7 +164,7 @@ class biblio_list extends biblio_list_model
         if (!$str_criteria)
             return null;
         // defaults
-        $_sql_criteria = '';
+        $_query_str = '';
         $_searched_fields = array();
         $_previous_field = '';
         $_boolean = '';
@@ -204,7 +184,7 @@ class biblio_list extends biblio_list_model
             if ($_field == 'cql_end') { break; }
 			// if field is boolean
 			if ($_field == 'boolean') {
-				if ($_query['b'] == '*') { $_sql_criteria .= ' | '; } else { $_sql_criteria .= ' & '; }
+				if ($_query['b'] == '*') { $_query_str .= ' | '; } else { $_query_str .= ' & '; }
 				continue;
 			} else {
 				if ($_query['b'] == '*') { $_b = ''; } else { $_b = $_query['b']; }
@@ -213,71 +193,123 @@ class biblio_list extends biblio_list_model
 				$_boolean = '';
 			}
             // for debugging purpose only
-            // echo "<p>$_num. $_field -> $_boolean -> $_sql_criteria</p><p>&nbsp;</p>";
+            // echo "<p>$_num. $_field -> $_boolean -> $_query_str</p><p>&nbsp;</p>";
 
 			// check fields
             switch ($_field) {
                 case 'author' :
 					$_q = $_b.$_q;
-					$_sql_criteria .= " @author $_q";
+					$_query_str .= " @author $_q";
                     break;
-                case 'topic' :
+                case 'subject' :
 					$_q = $_b.$_q;
-					$_sql_criteria .= " @topic $_q";
+					$_query_str .= " @topic $_q";
                     break;
                 case 'location' :
 					$_q = $_b.$_q;
-					$_sql_criteria .= " @location $_q";
+					$_query_str .= " @location $_q";
                     break;
                 case 'colltype' :
 					$_q = $_b.$_q;
-					$_sql_criteria .= " @collection_types $_q";
+					$_query_str .= " @collection_types $_q";
                     break;
                 case 'itemcode' :
 					$_q = $_b.$_q;
-					$_sql_criteria .= " @items $_q";
+					$_query_str .= " @items $_q";
                     break;
                 case 'callnumber' :
 					$_q = $_b.$_q;
-					$_sql_criteria .= " @call_number $_q";
+					$_query_str .= " @call_number $_q";
                     break;
                 case 'itemcallnumber' :
 					$_q = $_b.$_q;
-					$_sql_criteria .= " @item_call_number $_q";
+					$_query_str .= " @item_call_number $_q";
                     break;
                 case 'class' :
 					$_q = $_b.$_q;
-					$_sql_criteria .= " @classification $_q";
+					$_query_str .= " @classification $_q";
                     break;
                 case 'isbn' :
 					$_q = $_b.$_q;
-					$_sql_criteria .= " @isbn_issn $_q";
+					$_query_str .= " @isbn_issn $_q";
                     break;
                 case 'publisher' :
 					$_q = $_b.$_q;
-					$_sql_criteria .= " @publisher $_q";
+					$_query_str .= " @publisher $_q";
                     break;
                 case 'publishyear' :
 					$_q = $_b.$_q;
-					$_sql_criteria .= " @publish_year $_q";
+					$_query_str .= " @publish_year $_q";
                     break;
                 case 'gmd' :
 					$_q = $_b.$_q;
-					$_sql_criteria .= " @gmd $_q";
+					$_query_str .= " @gmd $_q";
                     break;
                 case 'notes' :
 					$_q = $_b.$_q;
-					$_sql_criteria .= " @notes $_q";
+					$_query_str .= " @notes $_q";
                     break;
                 default :
 					$_q = $_b.$_q;
-					$_sql_criteria .= " @(title,series) $_q";
+					$_query_str .= " @(title,series) $_q";
                     break;
             }
         }
 
-        $this->criteria = array('sql_criteria' => $_sql_criteria, 'searched_fields' => $_searched_fields);
-        return $this->criteria;
+		// check if query is empty
+		if (!$_query_str) {
+			$this->no_query = true;
+			$_sql_criteria = 'index.biblio_id IS NOT NULL';
+			$this->criteria = array('sql_criteria' => $_sql_criteria, 'searched_fields' => $_searched_fields);
+			return $this->criteria;
+		}
+
+		// set options
+		$this->sphinx->SetServer ( $this->options['host'], $this->options['port'] );
+		$this->sphinx->SetConnectTimeout ( $this->options['timeout'] );
+		$this->sphinx->SetArrayResult ( true );
+		$this->sphinx->SetWeights ( array ( 100, 1 ) );
+		$this->sphinx->SetMatchMode ( $this->options['mode'] );
+		if (count($this->options['filtervals'])) { $this->sphinx->SetFilter ( $this->options['filter'], $this->options['filtervals'] ); }
+		if ($this->options['groupby']) { $this->sphinx->SetGroupBy ( $this->options['groupby'], SPH_GROUPBY_ATTR, $this->options['groupsort'] ); }
+		if ($this->options['sortby']) {
+			$this->sphinx->SetSortMode ( SPH_SORT_EXTENDED, $this->options['sortby'] );
+			$this->sphinx->SetSortMode ( SPH_SORT_EXPR, $this->options['sortexpr'] );
+		}
+		$this->sphinx->SetGroupDistinct ( $this->options['distinct'] );
+		if ($this->options['select']) { $this->sphinx->SetSelect ( $this->options['select'] ); }
+		$this->sphinx->SetLimits ( $this->offset, $this->num2show?$this->num2show:$this->options['limit'], $this->options['max_limit'] );
+		$this->sphinx->SetRankingMode ( $this->options['ranker'] );
+
+		// invoke sphinx query
+		$_search_result = $this->sphinx->Query($_query_str, $this->options['index']);
+
+		// echo '<pre>'; var_dump($_search_result); echo '</pre>'; die();
+		if ($_search_result === false) {
+			$this->sphinx_error = true;
+			$this->query_error = $this->sphinx->GetLastError();
+			return false;
+		}
+
+		if (isset($_search_result['matches']) && is_array($_search_result['matches'])) {
+			$_matched_ids = '(';
+			foreach ($_search_result['matches'] as $_match) {
+				$_matched_ids .= $_match['id'].',';
+			}
+			// remove last comma
+			$_matched_ids = substr_replace($_matched_ids, '', -1);
+			$_matched_ids .= ')';
+			$_sql_criteria = "index.biblio_id IN $_matched_ids";
+
+			$this->num_rows = $_search_result['total_found'];
+			$this->query_time = $_search_result['time'];
+			$this->criteria = array('sql_criteria' => $_sql_criteria, 'searched_fields' => $_searched_fields);
+
+			return $this->criteria;
+		} else {
+			$this->sphinx_no_result = true;
+			return false;
+		}
     }
 }
 ?>
