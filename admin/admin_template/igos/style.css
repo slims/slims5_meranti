@@ -636,3 +636,12 @@ input:hover,textarea:hover,select:hover {
 .authors {
     font-style: italic;
 }
+
+.sendEmail {
+    display: block;
+    height: 22px;
+    padding-left: 30px;
+    font-weight: bold;
+    color: #f00;
+    background: url(media/email.png) left center no-repeat;
+}

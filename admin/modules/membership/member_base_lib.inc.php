@@ -141,5 +141,23 @@ class member
         return $_arr_on_loan;
     }
 
+
+    # get an array of member's overdue data
+    public static function getOverduedLoan($obj_db, $str_member_id)
+    {
+        $_overdues = array();
+        $_ovd_title_q = $obj_db->query('SELECT l.item_code, i.price, i.price_currency,
+            b.title, l.loan_date,
+            l.due_date, (TO_DAYS(DATE(NOW()))-TO_DAYS(due_date)) AS \'Overdue Days\'
+            FROM loan AS l
+            LEFT JOIN item AS i ON l.item_code=i.item_code
+            LEFT JOIN biblio AS b ON i.biblio_id=b.biblio_id
+            WHERE (l.is_lent=1 AND l.is_return=0 AND TO_DAYS(due_date) < TO_DAYS(\''.date('Y-m-d').'\')) AND l.member_id=\''.$str_member_id.'\'' );
+        while ($_ovd_title_d = $_ovd_title_q->fetch_assoc()) {
+            $_overdues[] = $_ovd_title_d;
+        }
+
+        return $_overdues;
+    }
 }
 ?>

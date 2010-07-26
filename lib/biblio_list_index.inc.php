@@ -24,10 +24,6 @@
 
 class biblio_list extends biblio_list_model
 {
-    protected $searchable_fields = array('title', 'author', 'subject', 'isbn',
-		'publisher', 'gmd', 'notes', 'colltype', 'publishyear',
-		'location', 'itemcode', 'callnumber', 'itemcallnumber', 'notes');
-
     /**
      * Class Constructor
      *
@@ -133,11 +129,12 @@ class biblio_list extends biblio_list_model
 					if ($_query['b'] == '*') {
 						$_sql_criteria .= " OR ";
 					} else { $_sql_criteria .= " AND "; }
-					$_b = $_query['b'];
 				}
-				$_q = @$this->obj_db->escape_string($_query['q']);
+				$_b = $_query['b'];
+				$_q = @$this->obj_db->escape_string(trim($_query['q']));
 				if (in_array($_field, array('title', 'author', 'topic', 'notes'))) {
-					$_q = isset($_query['is_phrase'])?'"'.$_q.'"':$_q;
+					$_q = '+'.$_q;
+					$_q = preg_replace('@\s+@i', ' +', $_q);
 				}
 				$_boolean = '';
 			}

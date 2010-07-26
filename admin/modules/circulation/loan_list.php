@@ -67,15 +67,15 @@ function confirmProcess(intLoanID, strItemCode, strProcess)
 if (isset($_SESSION['memberID'])) {
     $memberID = trim($_SESSION['memberID']);
     $circulation = new circulation($dbs, $memberID);
-    $loan_list_query = $dbs->query("SELECT L.loan_id, b.title, c.coll_type_name, 
-        i.item_code, L.loan_date, L.due_date, L.return_date, L.renewed 
+    $loan_list_query = $dbs->query(sprintf("SELECT L.loan_id, b.title, c.coll_type_name,
+        i.item_code, L.loan_date, L.due_date, L.return_date, L.renewed, m.member_email
         FROM loan AS L
         LEFT JOIN item AS i ON L.item_code=i.item_code
         LEFT JOIN mst_coll_type AS ct ON i.coll_type_id=ct.coll_type_id
         LEFT JOIN member AS m ON L.member_id=m.member_id
         LEFT JOIN biblio AS b ON i.biblio_id=b.biblio_id
-        LEFT JOIN mst_coll_type AS c ON i.coll_type_id=c.coll_type_id 
-        WHERE L.is_lent=1 AND L.is_return=0 AND L.member_id='$memberID'");
+        LEFT JOIN mst_coll_type AS c ON i.coll_type_id=c.coll_type_id
+        WHERE L.is_lent=1 AND L.is_return=0 AND L.member_id='%s'", $memberID));
 
     // create table object
     $loan_list = new simbio_table();
@@ -87,6 +87,7 @@ if (isset($_SESSION['memberID'])) {
     $loan_list->setHeader($headers);
     // row number init
     $row = 1;
+    $is_overdue = false;
     while ($loan_list_data = $loan_list_query->fetch_assoc()) {
         // alternate the row color
         $row_class = ($row%2 == 0)?'alterCell':'alterCell2';
@@ -115,6 +116,7 @@ if (isset($_SESSION['memberID'])) {
         $curr_date = date('Y-m-d');
         $overdue = $circulation->countOverdueValue($loan_list_data['loan_id'], $curr_date);
         if ($overdue) {
+            $is_overdue = true;
             $loan_list_data['title'] .= '<div style="color: red; font-weight: bold;">'.__('OVERDUED for').' '.$overdue['days'].' '.__('days(s) with fines value').' '.$overdue['value'].'</div>'; //mfc
         }
         // row colums array
@@ -154,9 +156,37 @@ if (isset($_SESSION['memberID'])) {
         $reserve_msg = str_replace(array('{itemCode}', '{member}'), array('<b>'.$reservedItem.'</b>', '<b>'.$member.'</b>'), __('Item {itemCode} is being reserved by member {member}')); //mfc
         echo '<div class="infoBox">'.$reserve_msg.'</div>';
     }
+
+    // create e-mail lin if there is overdue
+    if ($is_overdue) {
+        echo '<div id="emailStatus"></div>';
+        echo '<div style="padding: 5px; background: #ccc;"><a class="sendEmail usingAJAX" href="'.MODULES_WEB_ROOT_DIR.'/membership/overdue-mail.php'.'" postdata="member='.$memberID.'" loadcontainer="emailStatus">'.__('Send overdues notice e-mail').'</a></div>'."\n";
+    }
     echo $loan_list->printTable();
     // hidden form for return and extend process
     echo '<form name="loanHiddenForm" method="post" action="circulation_action.php"><input type="hidden" name="process" value="return" /><input type="hidden" name="loanID" value="" /></form>';
+?>
+<script type="text/javascript">
+    // registering event for send email button
+    $(document).ready(function() {
+        $('a.usingAJAX').click(function(evt) {
+            evt.preventDefault();
+            var anchor = $(this);
+            // get anchor href
+            var url = anchor.attr('href');
+            var postData = anchor.attr('postdata');
+            var loadContainer = anchor.attr('loadcontainer');
+            if (loadContainer) { container = jQuery('#'+loadContainer); }
+            // set ajax
+            if (postData) {
+                container.simbioAJAX(url, {method: 'post', addData: postData});
+            } else {
+                container.simbioAJAX(url, {addData: {ajaxload: 1}});
+            }
+        });
+    });
+</script>
+<?php
 }
 
 // get the buffered content

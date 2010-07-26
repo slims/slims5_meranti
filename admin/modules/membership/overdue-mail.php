@@ -1,8 +1,6 @@
 <?php
 /**
- * SENAYAN application local configuration file
- *
- * Copyright (C) 2010  Arie Nugraha (dicarve@yahoo.com), Hendro Wicaksono (hendrowicaksono@yahoo.com), Wardiyono (wynerst@gmail.com)
+ * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,13 +18,5 @@
  *
  */
 
-/* LOCAL DATABASE CONNECTION config */
-// database constant
-// change below setting according to your database configuration
-define('DB_NAME', 'senayandb');
-define('DB_USERNAME', 'senayanuser');
-define('DB_PASSWORD', 'password_senayanuser');
 
-// define any other sysconfig variables below
-$sysconf['index']['type'] = 'default';
 ?>
