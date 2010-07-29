@@ -222,16 +222,34 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 </fieldset>
 <?php
 /* search form end */
-/* BIBLIOGRAPHY LIST */
-require SIMBIO_BASE_DIR.'simbio_UTILS/simbio_tokenizecql.inc.php';
-require LIB_DIR.'biblio_list.inc.php';
-// table spec
-$table_spec = 'biblio LEFT JOIN item ON biblio.biblio_id=item.biblio_id';
+
 // create datagrid
 $datagrid = new simbio_datagrid();
-if ($can_read) {
-    $datagrid->setSQLColumn('IF(item.item_id IS NOT NULL, item.item_id, CONCAT(\'b\', biblio.biblio_id))', 'biblio.title AS `'.__('Title').'`',
-        'IF(item.call_number<>\'\', item.call_number, biblio.call_number) AS `'.__('Call Number').'`');
+/* BIBLIOGRAPHY LIST */
+require SIMBIO_BASE_DIR.'simbio_UTILS/simbio_tokenizecql.inc.php';
+require LIB_DIR.'biblio_list_model.inc.php';
+// index choice
+if ($sysconf['index']['type'] == 'index' || ($sysconf['index']['type'] == 'sphinx' && file_exists(LIB_DIR.'sphinx/sphinxapi.php'))) {
+    if ($sysconf['index']['type'] == 'sphinx') {
+        require LIB_DIR.'sphinx/sphinxapi.php';
+        require LIB_DIR.'biblio_list_sphinx.inc.php';
+    } else {
+        require LIB_DIR.'biblio_list_index.inc.php';
+    }
+    // table spec
+    $table_spec = 'search_biblio AS `index` LEFT JOIN `item` ON `index`.biblio_id=`item`.biblio_id';
+    if ($can_read) {
+        $datagrid->setSQLColumn('IF(item.item_id IS NOT NULL, item.item_id, CONCAT(\'b\', index.biblio_id))', 'index.title AS `'.__('Title').'`',
+            'IF(item.call_number<>\'\', item.call_number, index.call_number) AS `'.__('Call Number').'`');
+    }
+} else {
+    require LIB_DIR.'biblio_list.inc.php';
+    // table spec
+    $table_spec = 'biblio LEFT JOIN item ON biblio.biblio_id=item.biblio_id';
+    if ($can_read) {
+        $datagrid->setSQLColumn('IF(item.item_id IS NOT NULL, item.item_id, CONCAT(\'b\', biblio.biblio_id))', 'biblio.title AS `'.__('Title').'`',
+            'IF(item.call_number<>\'\', item.call_number, biblio.call_number) AS `'.__('Call Number').'`');
+    }
 }
 $datagrid->setSQLorder('item.last_update DESC');
 // is there any search
@@ -247,7 +265,7 @@ if (isset($_GET['keywords']) AND $_GET['keywords']) {
     } else {
         $search_str = $keywords;
     }
-    $biblio_list = new biblio_list($dbs);
+    $biblio_list = new biblio_list($dbs, 20);
     $criteria = $biblio_list->setSQLcriteria($search_str);
 }
 if (isset($criteria)) {

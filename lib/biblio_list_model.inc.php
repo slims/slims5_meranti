@@ -251,7 +251,9 @@ abstract class biblio_list_model
                 }
             }
 
-            $_buffer .= '<div class="subItem">'.$_biblio_d['detail_button'].' '.$_biblio_d['xml_button'].'</div>';
+			// checkbox for marking collection
+			$_check_mark = (isset($_SESSION['mid']) && isset($_SESSION['m_name']))?' <input type="checkbox" id="biblioCheck'.$_i.'" name="biblio[]" class="biblioCheck" value="'.$_biblio_d['biblio_id'].'" /> <label for="biblioCheck'.$_i.'">'.__('mark this').'</label>':'';
+            $_buffer .= '<div class="subItem">'.$_biblio_d['detail_button'].' '.$_biblio_d['xml_button'].$_check_mark.'</div>';
             $_buffer .= "</div>\n";
             $_i++;
         }

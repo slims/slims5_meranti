@@ -68,7 +68,7 @@ if (isset($_SESSION['memberID'])) {
     $memberID = trim($_SESSION['memberID']);
     $circulation = new circulation($dbs, $memberID);
     $loan_list_query = $dbs->query(sprintf("SELECT L.loan_id, b.title, c.coll_type_name,
-        i.item_code, L.loan_date, L.due_date, L.return_date, L.renewed, m.member_email
+        i.item_code, L.loan_date, L.due_date, L.return_date, L.renewed
         FROM loan AS L
         LEFT JOIN item AS i ON L.item_code=i.item_code
         LEFT JOIN mst_coll_type AS ct ON i.coll_type_id=ct.coll_type_id
@@ -145,12 +145,12 @@ if (isset($_SESSION['memberID'])) {
 
     // show reservation alert if any
     if (isset($_GET['reserveAlert']) AND !empty($_GET['reserveAlert'])) {
-        $reservedItem = trim($_GET['reserveAlert']);
+        $reservedItem = $dbs->escape_string(trim($_GET['reserveAlert']));
         // get reservation data
-        $reserve_q = $dbs->query('SELECT r.member_id, m.member_name
+        $reserve_q = $dbs->query(sprintf('SELECT r.member_id, m.member_name
             FROM reserve AS r
             LEFT JOIN member AS m ON r.member_id=m.member_id
-            WHERE item_code=\''.$reservedItem.'\' ORDER BY reserve_date DESC');
+            WHERE item_code=\'%s\' ORDER BY reserve_date DESC', $reservedItem));
         $reserve_d = $reserve_q->fetch_row();
         $member = $reserve_d[1].' ('.$reserve_d[0].')';
         $reserve_msg = str_replace(array('{itemCode}', '{member}'), array('<b>'.$reservedItem.'</b>', '<b>'.$member.'</b>'), __('Item {itemCode} is being reserved by member {member}')); //mfc
@@ -159,32 +159,31 @@ if (isset($_SESSION['memberID'])) {
 
     // create e-mail lin if there is overdue
     if ($is_overdue) {
-        echo '<div id="emailStatus"></div>';
-        echo '<div style="padding: 5px; background: #ccc;"><a class="sendEmail usingAJAX" href="'.MODULES_WEB_ROOT_DIR.'/membership/overdue-mail.php'.'" postdata="member='.$memberID.'" loadcontainer="emailStatus">'.__('Send overdues notice e-mail').'</a></div>'."\n";
+        echo '<div style="padding: 5px; background: #ccc;"><div id="emailStatus"></div><a class="sendEmail usingAJAX" href="'.MODULES_WEB_ROOT_DIR.'membership/overdue_mail.php'.'" postdata="memberID='.$memberID.'" loadcontainer="emailStatus">'.__('Send overdues notice e-mail').'</a></div>'."\n";
     }
     echo $loan_list->printTable();
     // hidden form for return and extend process
     echo '<form name="loanHiddenForm" method="post" action="circulation_action.php"><input type="hidden" name="process" value="return" /><input type="hidden" name="loanID" value="" /></form>';
 ?>
 <script type="text/javascript">
-    // registering event for send email button
-    $(document).ready(function() {
-        $('a.usingAJAX').click(function(evt) {
-            evt.preventDefault();
-            var anchor = $(this);
-            // get anchor href
-            var url = anchor.attr('href');
-            var postData = anchor.attr('postdata');
-            var loadContainer = anchor.attr('loadcontainer');
-            if (loadContainer) { container = jQuery('#'+loadContainer); }
-            // set ajax
-            if (postData) {
-                container.simbioAJAX(url, {method: 'post', addData: postData});
-            } else {
-                container.simbioAJAX(url, {addData: {ajaxload: 1}});
-            }
-        });
+// registering event for send email button
+$(document).ready(function() {
+    $('a.usingAJAX').click(function(evt) {
+        evt.preventDefault();
+        var anchor = $(this);
+        // get anchor href
+        var url = anchor.attr('href');
+        var postData = anchor.attr('postdata');
+        var loadContainer = anchor.attr('loadcontainer');
+        if (loadContainer) { container = jQuery('#'+loadContainer); }
+        // set ajax
+        if (postData) {
+            container.simbioAJAX(url, {method: 'post', addData: postData});
+        } else {
+            container.simbioAJAX(url, {addData: {ajaxload: 1}});
+        }
     });
+});
 </script>
 <?php
 }

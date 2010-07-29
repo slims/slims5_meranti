@@ -405,7 +405,9 @@ if (($sysconf['auth']['user']['method'] === 'LDAP') OR ($sysconf['auth']['member
     $sysconf['auth']['member']['ldap_search_filter'] = &$sysconf['auth']['user']['ldap_search_filter']; // LDAP search filter, #loginUserName will be replaced by the real login name
 }
 
-/* BIBLIO INDEXING */
+/**
+ * BIBLIO INDEXING
+ */
 $sysconf['index']['type'] = 'default'; // value can be 'default', 'index' OR 'sphinx'
 $sysconf['index']['sphinx_opts'] = array(
     'host' => '127.0.0.1',
@@ -417,6 +419,19 @@ $sysconf['index']['sphinx_opts'] = array(
 	'select' => null, 'limit' => 20,
     'max_limit' => 100000, // must be less or same with max_matches in sphinx.conf
 	'ranker' => null);
+
+/**
+ * Mailing Settings
+ */
+$sysconf['mail']['server'] = 'smtp.googlemail.com'; // SMTP server
+$sysconf['mail']['server_port'] = 465; // the SMTP port
+$sysconf['mail']['auth_enable'] = true; // enable SMTP authentication
+$sysconf['mail']['auth_username'] = 'admin'; // SMTP account username
+$sysconf['mail']['auth_password'] = 'admin'; // SMTP account password
+$sysconf['mail']['from'] = 'admin@localhost';
+$sysconf['mail']['from_name'] = 'SLiMS Administrator';
+$sysconf['mail']['reply_to'] = &$sysconf['mail']['from'];
+$sysconf['mail']['reply_to_name'] = &$sysconf['mail']['from_name'];
 
 // check if session is auto started and then destroy it
 if ($is_auto = @ini_get('session.auto_start')) { define('SESSION_AUTO_STARTED', $is_auto); }

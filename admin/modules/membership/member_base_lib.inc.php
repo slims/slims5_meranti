@@ -45,9 +45,9 @@ class member
         // assign simbio database object to property
         $this->obj_db = $obj_db;
         // get member data from database
-        $_member_q = $this->obj_db->query("SELECT m.*,mt.* FROM member AS m
+        $_member_q = $this->obj_db->query(sprintf("SELECT m.*,mt.* FROM member AS m
             LEFT JOIN mst_member_type AS mt ON m.member_type_id=mt.member_type_id
-            WHERE member_id='".$this->obj_db->escape_string($str_member_id)."'");
+            WHERE member_id='%s'", $str_member_id));
 
         if ($_member_q->num_rows > 0) {
             // set the is_member property flag to TRUE
@@ -146,18 +146,76 @@ class member
     public static function getOverduedLoan($obj_db, $str_member_id)
     {
         $_overdues = array();
-        $_ovd_title_q = $obj_db->query('SELECT l.item_code, i.price, i.price_currency,
+        $_ovd_title_q = $obj_db->query(sprintf('SELECT l.item_code, i.price, i.price_currency,
             b.title, l.loan_date,
             l.due_date, (TO_DAYS(DATE(NOW()))-TO_DAYS(due_date)) AS \'Overdue Days\'
             FROM loan AS l
             LEFT JOIN item AS i ON l.item_code=i.item_code
             LEFT JOIN biblio AS b ON i.biblio_id=b.biblio_id
-            WHERE (l.is_lent=1 AND l.is_return=0 AND TO_DAYS(due_date) < TO_DAYS(\''.date('Y-m-d').'\')) AND l.member_id=\''.$str_member_id.'\'' );
+            WHERE (l.is_lent=1 AND l.is_return=0 AND TO_DAYS(due_date) < TO_DAYS(\''.date('Y-m-d').'\')) AND l.member_id=\'%s\'', $str_member_id));
         while ($_ovd_title_d = $_ovd_title_q->fetch_assoc()) {
             $_overdues[] = $_ovd_title_d;
         }
 
         return $_overdues;
+    }
+
+
+    # send overdue notice e-mail
+    public function sendOverdueNotice()
+    {
+        global $sysconf;
+        if (!class_exists('PHPMailer')) {
+            return false;
+        }
+
+        $_mail = new PHPMailer(false);
+        $_mail->IsSMTP(); // telling the class to use SMTP
+
+        // get message template
+        $_msg_tpl = @file_get_contents(SENAYAN_BASE_DIR.'admin/admin_template/overdue-mail-tpl.html');
+
+        // date
+        $_curr_date = date('Y-m-d H:i:s');
+
+        // compile overdue data
+        $_overdue_data = '<table width="100%" border="1">'."\n";
+        $_overdue_data .= '<tr><th>Title</th><th>Item Code</th><th>Loan Date</th><th>Due Date</th><th>Overdue</th></tr>'."\n";
+        $_arr_overdued = self::getOverduedLoan($this->obj_db, $this->member_id);
+        foreach ($_arr_overdued as $_overdue) {
+            $_overdue_data .= '<tr>';
+            $_overdue_data .= '<td>'.$_overdue['title'].'</td><td>'.$_overdue['item_code'].'</td><td>'.$_overdue['loan_date'].'</td><td>'.$_overdue['due_date'].'</td><td>'.$_overdue['Overdue Days'].' days</td>'."\n";
+            $_overdue_data .= '</tr>';
+        }
+        $_overdue_data .= '</table>';
+
+
+        // message
+        $_message = str_ireplace(array('<!--MEMBER_ID-->', '<!--MEMBER_NAME-->', '<!--OVERDUE_DATA-->', '<!--DATE-->'),
+            array($this->member_id, $this->member_name, $_overdue_data, $_curr_date), $_msg_tpl);
+
+        // e-mail setting
+        // $_mail->SMTPDebug = 2;
+        $_mail->SMTPAuth = $sysconf['mail']['auth_enable'];
+        $_mail->Host = $sysconf['mail']['server'];
+        $_mail->Port = $sysconf['mail']['server_port'];
+        $_mail->Username = $sysconf['mail']['auth_username'];
+        $_mail->Password = $sysconf['mail']['auth_password'];
+        $_mail->SetFrom($sysconf['mail']['from'], $sysconf['mail']['from_name']);
+        $_mail->AddReplyTo($sysconf['mail']['reply_to'], $sysconf['mail']['reply_to_name']);
+        $_mail->AddAddress($this->member_email, $this->member_name);
+        $_mail->Subject = 'Overdue Notice for Member '.$this->member_name.' ('.$this->member_email.')';
+        $_mail->AltBody = strip_tags($_message);
+        $_mail->MsgHTML($_message);
+
+        $_sent = $_mail->Send();
+        if (!$_sent) {
+            return array('status' => 'ERROR', 'message' => $_mail->ErrorInfo);
+            utility::writeLogs($this->obj_db, 'staff', isset($_SESSION['uid'])?$_SESSION['uid']:'1', 'membership', 'FAILED to send overdue notification e-mail to '.$this->member_email.' ('.$_mail->ErrorInfo.')');
+        } else {
+            return array('status' => 'SENT', 'message' => 'Overdue notification E-Mail have been sent to '.$this->member_email);
+            utility::writeLogs($this->obj_db, 'staff', isset($_SESSION['uid'])?$_SESSION['uid']:'1', 'membership', 'Overdue notification e-mail sent to '.$this->member_email);
+        }
     }
 }
 ?>

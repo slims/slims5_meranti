@@ -200,6 +200,7 @@ class member_logon
         $_SESSION['m_register_date'] = $this->user_info['register_date'];
         $_SESSION['m_membership_pending'] = intval($this->user_info['is_pending'])?true:false;
         $_SESSION['m_is_expired'] = false;
+        $_SESSION['m_biblio'] = array();
         // check member expiry date
         require_once SIMBIO_BASE_DIR.'simbio_UTILS/simbio_date.inc.php';
         $_curr_date = date('Y-m-d');

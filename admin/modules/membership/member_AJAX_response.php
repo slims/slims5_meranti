@@ -20,19 +20,24 @@
 
 sleep(1);
 require '../../../sysconfig.inc.php';
+require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 
-header('Content-type: text/javascript');
+// privileges checking
+$can_read = utility::havePrivilege('membership', 'r');
+if (!$can_read) { die(); }
+
+header('Content-type: text/json');
 // get search value
 if (isset($_POST['inputSearchVal'])) {
-    $searchVal = $dbs->escape_string(urldecode(trim($_POST['inputSearchVal'])));
+    $searchVal = $dbs->escape_string(trim($_POST['inputSearchVal']));
 } else {
     exit();
 }
 // query to database
 $member_q = $dbs->query("SELECT member_id, member_name
-    FROM member WHERE member_id LIKE '%$searchVal%' OR member_name LIKE '%$searchVal%' LIMIT 5");
+    FROM member WHERE member_id LIKE '%$searchVal%' OR member_name LIKE '%$searchVal%' LIMIT 10");
 if ($member_q->num_rows < 1) {
-    exit('NO DATA FOUND');
+    exit();
 }
 $json_array = array();
 // loop data

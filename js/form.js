@@ -133,7 +133,7 @@ var setInputValue = function(strElmntID, strValue) {
 /* populate AJAX drop down list and show the list */
 var showDropDown = function(strURL, strElmntID, strAddParams) {
     var inputObj = $('#'+strElmntID);
-    var inputVal = inputObj.val();
+    var inputVal = inputObj.val().replace(/<[^<]+>/i, '');
     var inputObjWidth = inputObj.width();
     var inputObjXY = inputObj.offset();
     // List ID

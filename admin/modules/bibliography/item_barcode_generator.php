@@ -216,16 +216,33 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 </fieldset>
 <?php
 /* search form end */
-/* ITEM LIST */
-require SIMBIO_BASE_DIR.'simbio_UTILS/simbio_tokenizecql.inc.php';
-require LIB_DIR.'biblio_list.inc.php';
-// table spec
-$table_spec = 'item LEFT JOIN biblio ON item.biblio_id=biblio.biblio_id';
+
 // create datagrid
 $datagrid = new simbio_datagrid();
-$datagrid->setSQLColumn('item.item_code',
-    'item.item_code AS \''.__('Item Code').'\'',
-    'biblio.title AS \''.__('Title').'\'');
+/* ITEM LIST */
+require SIMBIO_BASE_DIR.'simbio_UTILS/simbio_tokenizecql.inc.php';
+require LIB_DIR.'biblio_list_model.inc.php';
+// index choice
+if ($sysconf['index']['type'] == 'index' || ($sysconf['index']['type'] == 'sphinx' && file_exists(LIB_DIR.'sphinx/sphinxapi.php'))) {
+    if ($sysconf['index']['type'] == 'sphinx') {
+        require LIB_DIR.'sphinx/sphinxapi.php';
+        require LIB_DIR.'biblio_list_sphinx.inc.php';
+    } else {
+        require LIB_DIR.'biblio_list_index.inc.php';
+    }
+    // table spec
+    $table_spec = 'item LEFT JOIN search_biblio AS `index` ON item.biblio_id=`index`.biblio_id';
+    $datagrid->setSQLColumn('item.item_code',
+        'item.item_code AS \''.__('Item Code').'\'',
+        'index.title AS \''.__('Title').'\'');
+} else {
+    require LIB_DIR.'biblio_list.inc.php';
+    // table spec
+    $table_spec = 'item LEFT JOIN biblio ON item.biblio_id=biblio.biblio_id';
+    $datagrid->setSQLColumn('item.item_code',
+        'item.item_code AS \''.__('Item Code').'\'',
+        'biblio.title AS \''.__('Title').'\'');
+}
 $datagrid->setSQLorder('item.last_update DESC');
 // is there any search
 if (isset($_GET['keywords']) AND $_GET['keywords']) {
@@ -240,7 +257,7 @@ if (isset($_GET['keywords']) AND $_GET['keywords']) {
     } else {
         $search_str = $keywords;
     }
-    $biblio_list = new biblio_list($dbs);
+    $biblio_list = new biblio_list($dbs, 20);
     $criteria = $biblio_list->setSQLcriteria($search_str);
 }
 if (isset($criteria)) {
