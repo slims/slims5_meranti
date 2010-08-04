@@ -187,8 +187,8 @@ class biblio_list extends biblio_list_model
                     } else { $_sql_criteria .= ' index.classification LIKE \''.$_q.'%\''; }
                     break;
                 case 'isbn' :
-                    if ($_b == '-') { $_sql_criteria .= ' AND biblio.isbn_issn!=\''.$_q.'%\'';
-                    } else { $_sql_criteria .= ' index.isbn_issn=\''.$_q.'%\''; }
+                    if ($_b == '-') { $_sql_criteria .= ' AND biblio.isbn_issn NOT LIKE \''.$_q.'%\'';
+                    } else { $_sql_criteria .= ' index.isbn_issn LIKE \''.$_q.'%\''; }
                     break;
                 case 'publisher' :
                     if ($_b == '-') { $_sql_criteria .= " index.publisher!='$_q'";

@@ -92,6 +92,7 @@ form.clock {
 
 /* Member Login/Area related style */
 #memberLogin {
+    padding: 5px;
     background: #CCCCCC;
     border: 1px solid #666;
 }
@@ -158,6 +159,14 @@ form.clock {
 
 .alterCell2 {
     background-color: #fff;
+}
+
+.biblioMarkForm .biblioMarkFormAction {
+    margin-left: 10px;
+}
+
+.biblioMarkForm .biblioMarkFormAction input.button {
+    font-weight: bold;
 }
 
 /* Visitor counter */

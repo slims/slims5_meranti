@@ -34,6 +34,7 @@ abstract class biblio_list_model
     public $stop_words = array('a', 'an', 'of', 'the', 'to', 'so', 'as', 'be');
     public $query_time = 0;
 	public $disable_item_data = false;
+	public $enable_mark = true;
 	public $query_error;
 	public $current_page = 1;
     /* Protected properties */
@@ -48,7 +49,7 @@ abstract class biblio_list_model
     protected $custom_fields = array();
     protected $enable_custom_frontpage = false;
     protected $orig_query;
-    protected $searchable_fields = array('title', 'author', 'subject', 'isbn_issn',
+    protected $searchable_fields = array('title', 'author', 'subject', 'isbn',
 		'gmd', 'colltype', 'class', 'callnumber', 'notes',
 		'publisher', 'publish_year', 'itemcode', 'location');
     protected $field_join_type = array();
@@ -252,7 +253,7 @@ abstract class biblio_list_model
             }
 
 			// checkbox for marking collection
-			$_check_mark = (isset($_SESSION['mid']) && isset($_SESSION['m_name']))?' <input type="checkbox" id="biblioCheck'.$_i.'" name="biblio[]" class="biblioCheck" value="'.$_biblio_d['biblio_id'].'" /> <label for="biblioCheck'.$_i.'">'.__('mark this').'</label>':'';
+			$_check_mark = (utility::isMemberLogin() && $this->enable_mark)?' <input type="checkbox" id="biblioCheck'.$_i.'" name="biblio[]" class="biblioCheck" value="'.$_biblio_d['biblio_id'].'" /> <label for="biblioCheck'.$_i.'">'.__('mark this').'</label>':'';
             $_buffer .= '<div class="subItem">'.$_biblio_d['detail_button'].' '.$_biblio_d['xml_button'].$_check_mark.'</div>';
             $_buffer .= "</div>\n";
             $_i++;
@@ -263,13 +264,33 @@ abstract class biblio_list_model
 
         // paging
         if (($this->num_rows > $this->num2show)) {
-            $_paging = '<hr width="97%" size="1" />'."\n";
-            $_paging .= '<div style="text-align: center;">'.simbio_paging::paging($this->num_rows, $this->num2show, 5).'</div>';
+            $_paging = '<div class="biblioPaging">'.simbio_paging::paging($this->num_rows, $this->num2show, 5).'</div>';
         } else {
             $_paging = '';
         }
 
-        return $_buffer.$_paging;
+		$_biblio_list = '';
+		$_is_member_logged_in = utility::isMemberLogin() && $this->enable_mark;
+		if ($_paging) {
+			$_biblio_list .= $_paging;
+			$_biblio_list .= '<hr width="98%" size="1" />';
+		}
+		if ($_is_member_logged_in) {
+			$_submit = '<div class="biblioMarkFormAction"><input type="submit" class="button markBiblio" name="markBiblio" value="'.__('Save selection to basket').'" /></div>';
+			$_biblio_list .= '<form class="biblioMarkForm" method="post" action="index.php?p=member">';
+			$_biblio_list .= $_submit;
+		}
+		$_biblio_list .= $_buffer;
+		if ($_is_member_logged_in) {
+			$_biblio_list .= $_submit;
+			$_biblio_list .= '</form>';
+		}
+		if ($_paging) {
+			$_biblio_list .= '<hr width="98%" size="1" />';
+			$_biblio_list .= $_paging;
+		}
+
+        return $_biblio_list;
     }
 
 

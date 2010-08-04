@@ -232,9 +232,11 @@ $sysconf['allowed_file_att'] = array('.pdf', '.rtf', '.txt',
     '.odt', '.odp', '.ods', '.doc', '.xls', '.ppt',
     '.avi', '.mpeg', '.mp4', '.flv', '.mvk',
     '.jpg', '.jpeg', '.png', '.gif',
+    '.docx', '.pptx', '.xlsx',
     '.ogg', '.mp3');
 
 /* FILE ATTACHMENT MIMETYPES */
+$sysconf['mimetype']['docx'] = 'application/msword';
 $sysconf['mimetype']['js'] = 'application/javascript';
 $sysconf['mimetype']['json'] = 'application/json';
 $sysconf['mimetype']['doc'] = 'application/msword';
@@ -371,7 +373,9 @@ $sysconf['ucs']['auto_insert'] = false;
 /**
  * Peer to peer server config
  */
-$sysconf['p2pserver'][1] = array('uri' => 'http://127.0.0.1/senayan3-stable15', 'name' => 'SLiMS Library');
+$sysconf['p2pserver'][1] = array('uri' => 'http://192.168.23.12/senayan3-stable14', 'name' => 'Perpustakaannya Hendro');
+$sysconf['p2pserver'][2] = array('uri' => 'http://192.168.23.1/unicat/ucs', 'name' => 'Union Catalog');
+$sysconf['p2pserver'][3] = array('uri' => 'http://127.0.0.1/senayan3-stable15-jquery', 'name' => 'Katalog Sendiri');
 
 /**
  * User and member login method
@@ -423,7 +427,7 @@ $sysconf['index']['sphinx_opts'] = array(
 /**
  * Mailing Settings
  */
-$sysconf['mail']['server'] = 'smtp.googlemail.com'; // SMTP server
+$sysconf['mail']['server'] = 'ssl://smtp.gmail.com:465'; // SMTP server
 $sysconf['mail']['server_port'] = 465; // the SMTP port
 $sysconf['mail']['auth_enable'] = true; // enable SMTP authentication
 $sysconf['mail']['auth_username'] = 'admin'; // SMTP account username
