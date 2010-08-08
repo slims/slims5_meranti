@@ -427,6 +427,7 @@ $sysconf['index']['sphinx_opts'] = array(
 /**
  * Mailing Settings
  */
+$sysconf['mail']['enable'] = true;
 $sysconf['mail']['server'] = 'ssl://smtp.gmail.com:465'; // SMTP server
 $sysconf['mail']['server_port'] = 465; // the SMTP port
 $sysconf['mail']['auth_enable'] = true; // enable SMTP authentication
@@ -436,6 +437,11 @@ $sysconf['mail']['from'] = 'admin@localhost';
 $sysconf['mail']['from_name'] = 'SLiMS Administrator';
 $sysconf['mail']['reply_to'] = &$sysconf['mail']['from'];
 $sysconf['mail']['reply_to_name'] = &$sysconf['mail']['from_name'];
+
+/**
+ * Maximum biblio mark for member
+ */
+$sysconf['max_biblio_mark'] = 20;
 
 // check if session is auto started and then destroy it
 if ($is_auto = @ini_get('session.auto_start')) { define('SESSION_AUTO_STARTED', $is_auto); }
@@ -447,9 +453,8 @@ if (file_exists(SENAYAN_BASE_DIR.'sysconfig.local.inc.php')) {
 }
 
 /* DATABASE RELATED */
-define('DB_HOST', 'localhost');
-define('DB_PORT', '3306');
-// check if database connection constants are undefined
+if (!defined('DB_HOST')) { define('DB_HOST', 'localhost'); }
+if (!defined('DB_PORT')) { define('DB_PORT', '3306'); }
 if (!defined('DB_NAME')) { define('DB_NAME', 'senayandb'); }
 if (!defined('DB_USERNAME')) { define('DB_USERNAME', 'senayanuser'); }
 if (!defined('DB_PASSWORD')) { define('DB_PASSWORD', 'password_senayanuser'); }

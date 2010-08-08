@@ -76,6 +76,7 @@ class simbio_table_row
 
 class simbio_table
 {
+    public $table_ID = 'datatable';
     public $table_attr = '';
     public $table_header_attr = '';
     public $table_content_attr = '';

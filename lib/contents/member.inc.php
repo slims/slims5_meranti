@@ -163,6 +163,129 @@ if (!$is_member_login) {
 
 
     /*
+     * Function to send reservation e-mail for titles in basket
+     *
+     * @return      array
+     */
+    function sendReserveMail()
+    {
+        if (count($_SESSION['m_mark_biblio']) > 0) {
+            $_ids = '(';
+            foreach ($_SESSION['m_mark_biblio'] as $_biblio) {
+                $_ids .= (integer)$_biblio.',';
+            }
+            $_ids = substr_replace($_ids, '', -1);
+            $_ids .= ')';
+        } else {
+            return array('status' => 'ERROR', 'message' => 'No Titles to reserve');
+        }
+
+        global $dbs, $sysconf;
+        require LIB_DIR.'phpmailer/class.phpmailer.php';
+
+        $_mail = new PHPMailer(false);
+        $_mail->IsSMTP();
+
+        // get message template
+        $_msg_tpl = @file_get_contents(SENAYAN_BASE_DIR.'template/reserve-mail-tpl.html');
+
+        // date
+        $_curr_date = date('Y-m-d H:i:s');
+
+        // query
+        $_biblio_q = $dbs->query("SELECT biblio_id, title FROM biblio WHERE biblio_id IN $_ids");
+
+        // compile reservation data
+        $_data = '<table width="100%" border="1">'."\n";
+        $_data .= '<tr><th>Titles to reserve</th></tr>'."\n";
+        while ($_title_d = $_biblio_q->fetch_assoc()) {
+            $_data .= '<tr>';
+            $_data .= '<td>'.$_title_d['title'].'</td>'."\n";
+            $_data .= '</tr>';
+        }
+        $_data .= '</table>';
+
+
+        // message
+        $_message = str_ireplace(array('<!--MEMBER_ID-->', '<!--MEMBER_NAME-->', '<!--DATA-->', '<!--DATE-->'),
+            array($_SESSION['mid'], $_SESSION['m_name'], $_data, $_curr_date), $_msg_tpl);
+
+        // e-mail setting
+        // $_mail->SMTPDebug = 2;
+        $_mail->SMTPAuth = $sysconf['mail']['auth_enable'];
+        $_mail->Host = $sysconf['mail']['server'];
+        $_mail->Port = $sysconf['mail']['server_port'];
+        $_mail->Username = $sysconf['mail']['auth_username'];
+        $_mail->Password = $sysconf['mail']['auth_password'];
+        $_mail->SetFrom($sysconf['mail']['from'], $sysconf['mail']['from_name']);
+        $_mail->AddReplyTo($sysconf['mail']['reply_to'], $sysconf['mail']['reply_to_name']);
+        $_mail->AddAddress($_SESSION['m_email'], $_SESSION['m_name']);
+        $_mail->Subject = 'Reservation request from Member '.$_SESSION['m_name'].' ('.$_SESSION['m_email'].')';
+        $_mail->AltBody = strip_tags($_message);
+        $_mail->MsgHTML($_message);
+
+        $_sent = $_mail->Send();
+        if (!$_sent) {
+            return array('status' => 'ERROR', 'message' => $_mail->ErrorInfo);
+            utility::writeLogs($this->obj_db, 'member', isset($_SESSION['mid'])?$_SESSION['mid']:'0', 'membership', 'FAILED to send reservation e-mail to '.$_SESSION['m_email'].' ('.$_mail->ErrorInfo.')');
+        } else {
+            return array('status' => 'SENT', 'message' => 'Overdue notification E-Mail have been sent to '.$_SESSION['m_email']);
+            utility::writeLogs($this->obj_db, 'member', isset($_SESSION['mid'])?$_SESSION['mid']:'0', 'membership', 'Reservation notification e-mail sent to '.$_SESSION['m_email']);
+        }
+    }
+
+
+    /*
+     * Function to show member collection basket
+     *
+     * @param       int         number of loan records to show
+     * @return      string
+     */
+    function showBasket($num_recs_show = 20)
+    {
+        global $dbs;
+
+        // table spec
+        $_table_spec = 'biblio AS b';
+
+        // create datagrid
+        $_loan_list = new simbio_datagrid();
+        $_loan_list->table_ID = 'basket';
+        $_loan_list->setSQLColumn('b.biblio_id AS \''.__('Remove').'\'', 'b.title AS \''.__('Title').'\'');
+        $_loan_list->setSQLorder('b.last_update DESC');
+        $_criteria = 'biblio_id = 0';
+        if (count($_SESSION['m_mark_biblio']) > 0) {
+            $_ids = '';
+            foreach ($_SESSION['m_mark_biblio'] as $_biblio) {
+                $_ids .= (integer)$_biblio.',';
+            }
+            $_ids = substr_replace($_ids, '', -1);
+            $_criteria = "b.biblio_id IN ($_ids)";
+        }
+        $_loan_list->setSQLCriteria($_criteria);
+        $_loan_list->column_width[0] = '5%';
+        $_loan_list->modifyColumnContent(0, '<input type="checkbox" name="basket[]" class="basketItem" value="{column_value}" />');
+
+        // set table and table header attributes
+        $_loan_list->table_attr = 'align="center" class="memberBasketList" cellpadding="5" cellspacing="0"';
+        $_loan_list->table_header_attr = 'class="dataListHeader" style="font-weight: bold;"';
+        $_loan_list->using_AJAX = false;
+        // return the result
+        $_result = $_loan_list->createDataGrid($dbs, $_table_spec, $num_recs_show);
+        if ($_loan_list->num_rows > 0) {
+            $_actions = '<div class="memberBasketAction">';
+            $_actions .= '<a href="index.php?p=member" class="basket reserve">'.__('Reserve title(s) on Basket').'</a> :: ';
+            $_actions .= '<a href="index.php?p=member" class="basket clearAll" postdata="clear_biblio=1">'.__('Clear Basket').'</a> :: ';
+            $_actions .= '<a href="index.php?p=member" class="basket clear">'.__('Remove selected title(s) from Basket').'</a>';
+            $_actions .= '</div>';
+            $_result = '<div class="memberBasketInfo">'.$_loan_list->num_rows.' '.__('title(s) on basket').$_actions.'</div>'."\n".$_result;
+        }
+
+        return $_result;
+    }
+
+
+    /*
      * Function to show membership detail of logged in member
      *
      * @return      string
@@ -241,6 +364,7 @@ if (!$is_member_login) {
 
         // create datagrid
         $_loan_list = new simbio_datagrid();
+        $_loan_list->table_ID = 'loanlist';
         $_loan_list->setSQLColumn('l.item_code AS \''.__('Item Code').'\'',
             'b.title AS \''.__('Title').'\'',
             'l.loan_date AS \''.__('Loan Date').'\'',
@@ -262,7 +386,7 @@ if (!$is_member_login) {
     }
 
     // if there is change password request
-    if ($is_member_login && isset($_POST['changePass']) && $sysconf['auth']['member']['method'] == 'native') {
+    if (isset($_POST['changePass']) && $sysconf['auth']['member']['method'] == 'native') {
         $change_pass = procChangePassword($_POST['currPass'], $_POST['newPass'], $_POST['newPass2']);
         if ($change_pass === true) {
             $info = '<span style="font-size: 120%; font-weight: bold;">'.__('Your password have been changed successfully.').'</span>';
@@ -278,15 +402,99 @@ if (!$is_member_login) {
         }
     }
 
+    // send reserve e-mail
+    if (isset($_POST['sendReserve'])) {
+        $mail = sendReserveMail();
+        // die();
+        if ($mail['status'] != 'ERROR') {
+            $info = __('Reservation e-mail sent successfully!');
+        } else {
+            $info = '<span style="font-size: 120%; font-weight: bold; color: red;">'.__(sprintf('Reservation e-mail FAILED to sent with error: %s Please contact administrator!', $mail['message'])).'</span>';
+        }
+    }
+
+    // biblio basket add process
+    if (isset($_POST['biblio'])) {
+        if (!is_array($_POST['biblio']) && is_scalar($_POST['biblio'])) {
+            $_tmp_biblio = $_POST['biblio']; unset($_POST['biblio']);
+            $_POST['biblio'][] = $_tmp_biblio;
+        }
+        // check reserve limit
+        if ( (count($_SESSION['m_mark_biblio'])+count($_POST['biblio'])) > $sysconf['max_biblio_mark'] ) {
+            $info = '<span style="font-size: 120%; font-weight: bold; color: red;">Maximum '.$sysconf['max_biblio_mark'].' titles can be added to basket!</span>';
+        } else {
+            foreach ($_POST['biblio'] as $biblio) {
+                $biblio = (integer)$biblio;
+                $_SESSION['m_mark_biblio'][$biblio] = $biblio;
+            }
+        }
+    }
+
+    // biblio basket remove process
+    if (isset($_GET['rm_biblio'])) {
+        if (!is_array($_GET['rm_biblio']) && is_scalar($_GET['rm_biblio'])) {
+            $_tmp_biblio = $_GET['rm_biblio']; unset($_GET['rm_biblio']);
+            $_GET['rm_biblio'][] = $_tmp_biblio;
+        }
+        foreach ($_GET['rm_biblio'] as $biblio) {
+            $biblio = (integer)$biblio;
+            unset($_SESSION['m_mark_biblio'][$biblio]);
+        }
+    }
+
+
+    // biblio basket clear process
+    if (isset($_POST['clear_biblio'])) {
+        $_SESSION['m_mark_biblio'] = array();
+    }
+
     // show all
     echo '<h3 class="memberInfoHead">'.__('Member Detail').'</h3>'."\n";
     echo showMemberDetail();
     echo '<h3 class="memberInfoHead">'.__('Your Current Loan').'</h3>'."\n";
     echo showLoanList();
+    echo '<h3 class="memberInfoHead">'.__('Your Title Basket').'</h3><a name="biblioBasket"></a>'."\n";
+    echo showBasket();
     // change password only form NATIVE authentication, not for others such as LDAP
     if ($sysconf['auth']['member']['method'] == 'native') {
         echo '<h3 class="memberInfoHead">'.__('Change Password').'</h3>'."\n";
         echo changePassword();
     }
+    ?>
+    <script type="text/javascript">
+    $(document).ready( function() {
+        $('.clearAll').click(function(evt) {
+            evt.preventDefault();
+            var anchor = $(this);
+            // get anchor href
+            var aHREF = anchor.attr('href');
+            var postData = anchor.attr('postdata');
+            if (confirm('Clear your title(s) basket?')) {
+                // send ajax
+                $.ajax({ type: 'POST',
+                  url: aHREF, cache: false, data: postData, async: false,
+                  success: function(ajaxRespond) {
+                    alert('Basket data cleared!');
+                    window.location.href = aHREF;
+                  }
+                });
+            }
+        });
+
+        $('.reserve').click(function(evt) {
+            evt.preventDefault();
+            var anchor = $(this);
+            // get anchor href
+            var aHREF = anchor.attr('href');
+            // send ajax
+            $.ajax({ type: 'POST',
+              url: aHREF, cache: false, data: 'sendReserve=1', async: false,
+                success: function(ajaxRespond) { alert('Reservation e-mail sent'); window.location.href = aHREF; }
+            });
+        });
+    }
+    );
+    </script>
+    <?php
 }
 ?>

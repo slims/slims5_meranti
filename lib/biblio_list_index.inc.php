@@ -204,8 +204,8 @@ class biblio_list extends biblio_list_model
                     break;
                 case 'notes' :
                     if ($_b == '-') {
-                        $_sql_criteria .= " NOT (MATCH (index.notes) AGAINST ('".$_q."', IN BOOLEAN MODE))";
-                    } else { $_sql_criteria .= " (MATCH (index.notes) AGAINST ('".$_q."', IN BOOLEAN MODE))"; }
+                        $_sql_criteria .= " NOT (MATCH (index.notes) AGAINST ('".$_q."' IN BOOLEAN MODE))";
+                    } else { $_sql_criteria .= " (MATCH (index.notes) AGAINST ('".$_q."' IN BOOLEAN MODE))"; }
                     break;
                 default :
 					if ($_b == '-') { $_sql_criteria .= " NOT (MATCH (index.title, index.series) AGAINST ('$_q' IN BOOLEAN MODE))";

@@ -137,13 +137,13 @@ form.clock {
     border: 1px solid #f00;
 }
 
-.memberLoanList, .memberDetail {
+.memberLoanList, .memberDetail, .memberBasketList {
     width: 99%;
     margin: 3px;
     border: 1px solid #999;
 }
 
-.memberLoanListInfo, .memberDetailInfo {
+.memberLoanListInfo, .memberDetailInfo, .memberBasketInfo {
     border: 0;
     padding: 3px;
 }
@@ -166,7 +166,16 @@ form.clock {
 }
 
 .biblioMarkForm .biblioMarkFormAction input.button {
+    display: block;
+    height: 25px;
+    padding-right: 25px;
+    cursor: pointer;
+    background: #003380 url(../images/default/basket.png) center right no-repeat;
     font-weight: bold;
+    color: #fff;
+    border: none;
+    -moz-border-radius: 5px;
+    -opera-border-radius: 5px;
 }
 
 /* Visitor counter */

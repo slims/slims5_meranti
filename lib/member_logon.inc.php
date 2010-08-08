@@ -104,7 +104,7 @@ class member_logon
             // check member in database
             $_check_q = $this->obj_db->query('SELECT m.member_id, m.member_name, m.inst_name,
                 m.member_email, m.expire_date, m.register_date, m.is_pending,
-                m.member_type_id, mt.member_type_name
+                m.member_type_id, mt.member_type_name, mt.enable_reserve, mt.reserve_limit
                 FROM member AS m LEFT JOIN mst_member_type AS mt ON m.member_type_id=mt.member_type_id
                 WHERE m.member_id=\''.$this->user_info['member_id'].'\'');
             if ($_check_q->num_rows < 1) {
@@ -152,7 +152,7 @@ class member_logon
     public function nativeLogin() {
         $_sql_member_login = sprintf("SELECT m.member_id, m.member_name, m.inst_name,
             m.member_email, m.expire_date, m.register_date, m.is_pending,
-            m.member_type_id, mt.member_type_name
+            m.member_type_id, mt.member_type_name, mt.enable_reserve, mt.reserve_limit
             FROM member AS m LEFT JOIN mst_member_type AS mt ON m.member_type_id=mt.member_type_id
             WHERE m.member_id='%s'
                 AND m.mpasswd=MD5('%s')", $this->obj_db->escape_string($this->username), $this->obj_db->escape_string($this->password));
@@ -200,7 +200,9 @@ class member_logon
         $_SESSION['m_register_date'] = $this->user_info['register_date'];
         $_SESSION['m_membership_pending'] = intval($this->user_info['is_pending'])?true:false;
         $_SESSION['m_is_expired'] = false;
-        $_SESSION['m_biblio'] = array();
+        $_SESSION['m_mark_biblio'] = array();
+        $_SESSION['m_can_reserve'] = $this->user_info['enable_reserve'];
+        $_SESSION['m_reserve_limit'] = $this->user_info['reserve_limit'];
         // check member expiry date
         require_once SIMBIO_BASE_DIR.'simbio_UTILS/simbio_date.inc.php';
         $_curr_date = date('Y-m-d');

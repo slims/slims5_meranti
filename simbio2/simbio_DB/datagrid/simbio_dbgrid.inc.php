@@ -103,6 +103,8 @@ class simbio_datagrid extends simbio_table
 
         $this->sql_table = $str_db_table;
         $this->highlight_row = true;
+        // sanitize table ID
+        $this->table_ID = strtolower(str_replace(array(' ', '-', ','), '', $this->table_ID));
 
         if (empty($this->sql_table)) {
             die('simbio_datagrid : Table not specified yet');
@@ -121,22 +123,23 @@ class simbio_datagrid extends simbio_table
         }
 
         // change the record sorting if there fld var in URL
+        $_fld_sort = $this->table_ID.'fld';
         $_dir = 'ASC';
         $_next_dir = 'DESC';
         $_sort_dir_info = __('ascendingly');
-        if (isset($_GET['fld']) AND !empty($_GET['fld'])) {
-            $this->sql_order = 'ORDER BY `'.urldecode($_GET['fld']).'` ';
-        }
-        // record order direction
-        if (isset($_GET['dir']) AND ($_dir = trim($_GET['dir']))) {
-            if ($_dir == 'DESC') {
-                $_next_dir = 'ASC';
-            } else {
-                $_next_dir = 'DESC';
-                $_sort_dir_info = __('descendingly');
+        if (isset($_GET[$_fld_sort]) AND !empty($_GET[$_fld_sort])) {
+            $this->sql_order = 'ORDER BY `'.urldecode($_GET[$_fld_sort]).'` ';
+            // record order direction
+            if (isset($_GET['dir']) AND ($_dir = trim($_GET['dir']))) {
+                if ($_dir == 'DESC') {
+                    $_next_dir = 'ASC';
+                } else {
+                    $_next_dir = 'DESC';
+                    $_sort_dir_info = __('descendingly');
+                }
+                // append sort direction
+                $this->sql_order .= $_dir;
             }
-            // append sort direction
-            $this->sql_order .= $_dir;
         }
 
         // check group by
@@ -188,7 +191,7 @@ class simbio_datagrid extends simbio_table
                     continue;
                 }
                 $varvalue = urlencode($varvalue);
-                if ($varname != 'fld' AND $varname != 'dir') {
+                if ($varname != $this->table_ID.'fld' AND $varname != 'dir') {
                     $_url_query_str .= $varname.'='.$varvalue.'&';
                 }
             }
@@ -200,7 +203,7 @@ class simbio_datagrid extends simbio_table
         foreach ($this->grid_real_q->fetch_fields() as $_fld) {
             // check if the column is not listed in no_sort_column array properties
             if (!in_array($_fld->name, $this->no_sort_column) AND isset($this->sort_column[$_fld->name])) {
-                $_order_by = 'fld='.urlencode($this->sort_column[$_fld->name]).'&dir='.$_next_dir;
+                $_order_by = $this->table_ID.'fld='.urlencode($this->sort_column[$_fld->name]).'&dir='.$_next_dir;
                 $this->grid_result_fields[] = '<a href="'.$_SERVER['PHP_SELF'].'?'.$_url_query_str.$_order_by.'" title="'.__('Order list by').' '.$_fld->name.' '.$_sort_dir_info.'">'.$_fld->name.'</a>';
             } else {
                 $this->grid_result_fields[] = $_fld->name;
@@ -358,8 +361,8 @@ class simbio_datagrid extends simbio_table
         if ($this->editable) {
             $_buffer .= '<form action="'.$this->chbox_form_URL.'" name="'.$this->table_name.'" id="'.$this->table_name.'" target="'.$_target.'" method="post" style="display: inline;">'."\n";
 
-	    $_check_all = __('Check All');
-	    $_uncheck_all = __('Uncheck All');
+            $_check_all = __('Check All');
+            $_uncheck_all = __('Uncheck All');
 
             // action buttons group
             $_button_grp = '<table cellspacing="0" cellpadding="5" style="background-color: #dcdcdc; width: 100%;"><tr>';

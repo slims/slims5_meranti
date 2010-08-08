@@ -200,8 +200,8 @@ class biblio_list extends biblio_list_model
                         break;
                     case 'notes' :
                         if ($_b == '-') {
-                            $_sql_criteria .= " NOT (MATCH (biblio.notes) AGAINST ('".$_q."', IN BOOLEAN MODE))";
-                        } else { $_sql_criteria .= " (MATCH (biblio.notes) AGAINST ('".$_q."', IN BOOLEAN MODE))"; }
+                            $_sql_criteria .= " NOT (MATCH (biblio.notes) AGAINST ('".$_q."' IN BOOLEAN MODE))";
+                        } else { $_sql_criteria .= " (MATCH (biblio.notes) AGAINST ('".$_q."' IN BOOLEAN MODE))"; }
                         break;
                 }
             }

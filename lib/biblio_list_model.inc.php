@@ -276,8 +276,8 @@ abstract class biblio_list_model
 			$_biblio_list .= '<hr width="98%" size="1" />';
 		}
 		if ($_is_member_logged_in) {
-			$_submit = '<div class="biblioMarkFormAction"><input type="submit" class="button markBiblio" name="markBiblio" value="'.__('Save selection to basket').'" /></div>';
-			$_biblio_list .= '<form class="biblioMarkForm" method="post" action="index.php?p=member">';
+			$_submit = '<div class="biblioMarkFormAction"><input type="submit" class="button markBiblio" name="markBiblio" value="'.__('Put marked selection into basket').'" /></div>';
+			$_biblio_list .= '<form class="biblioMarkForm" method="post" action="index.php?p=member#biblioBasket">';
 			$_biblio_list .= $_submit;
 		}
 		$_biblio_list .= $_buffer;
