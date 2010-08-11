@@ -21,8 +21,8 @@
  */
 
 // be sure that this file not accessed directly
-if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
-    die();
+if (OPAC_INDEX_AUTH != 1) { 
+    die("can not access this file directly");
 }
 
 // be sure that magic quote is off
