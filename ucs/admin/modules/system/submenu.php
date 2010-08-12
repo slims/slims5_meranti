@@ -28,6 +28,7 @@ if ($_SESSION['uid'] == 1) {
 $menu[] = array(__('Content'), MODULES_WEB_ROOT_DIR.'system/content.php', __('Content'));
 // only administrator have privileges for below menus
 if ($_SESSION['uid'] == 1) {
+    $menu[] = array(__('Biblio Indexes'), MODULES_WEB_ROOT_DIR.'system/biblio_indexes.php', __('Bibliographic Indexes management'));
     $menu[] = array(__('Modules'), MODULES_WEB_ROOT_DIR.'system/module.php', __('Configure Application Modules'));
     $menu[] = array(__('System Users'), MODULES_WEB_ROOT_DIR.'system/app_user.php', __('Manage Application User or Library Staff'));
     $menu[] = array(__('User Group'), MODULES_WEB_ROOT_DIR.'system/user_group.php', __('Manage Group of Application User'));

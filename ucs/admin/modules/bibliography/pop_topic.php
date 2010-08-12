@@ -128,7 +128,7 @@ if (isset($_POST['save']) AND (isset($_POST['topicID']) OR trim($_POST['search_s
     <hr />
     <form name="searchTopic" method="post" style="display: inline;">
     <?php
-    $ajax_exp = "ajaxFillSelect('../../AJAX_lookup_handler.php', 'mst_topic', 'topic_id:topic', 'topicID', $('search_str').getValue())";
+    $ajax_exp = "ajaxFillSelect('../../AJAX_lookup_handler.php', 'mst_topic', 'topic_id:topic', 'topicID', $('#search_str').val())";
     ?>
     <?php echo __('Keyword'); ?> : <input type="text" name="search_str" id="search_str" style="width: 30%;" onkeyup="<?php echo $ajax_exp; ?>" />
     <select name="type" style="width: 20%;"><?php

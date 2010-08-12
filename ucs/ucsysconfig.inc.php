@@ -281,6 +281,11 @@ if (defined('LIGHTWEIGHT_MODE') OR isset($_COOKIE['LIGHTWEIGHT_MODE'])) {
     $sysconf['enable_xml_result'] = false;
 }
 
+/**
+ * BIBLIO INDEXING
+ */
+$sysconf['index']['type'] = 'default'; // value can be 'default', 'index' OR 'sphinx'
+
 // Include server configuration
 require 'ucserver.inc.php';
 

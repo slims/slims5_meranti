@@ -86,7 +86,7 @@ if (isset($_POST['save']) AND (isset($_POST['authorID']) OR trim($_POST['search_
         if ($sql_op->insert('biblio_author', $data)) {
             echo '<script type="text/javascript">';
             echo 'alert(\''.__('Author succesfully updated!').'\');';
-            echo 'opener.setIframeContent(\'authorIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_author.php?biblioID='.$data['biblio_id'].'\');';
+            echo 'parent.setIframeContent(\'authorIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_author.php?biblioID='.$data['biblio_id'].'\');';
             echo '</script>';
         } else {
             utility::jsAlert(__('Author FAILED to Add. Please Contact System Administrator')."\n".$sql_op->error);
@@ -115,7 +115,7 @@ if (isset($_POST['save']) AND (isset($_POST['authorID']) OR trim($_POST['search_
 
         echo '<script type="text/javascript">';
         echo 'alert(\''.__('Author added!').'\');';
-        echo 'opener.setIframeContent(\'authorIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_author.php\');';
+        echo 'parent.setIframeContent(\'authorIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_author.php\');';
         echo '</script>';
     }
 }
@@ -129,7 +129,7 @@ if (isset($_POST['save']) AND (isset($_POST['authorID']) OR trim($_POST['search_
     <hr />
     <form name="searchAuthor" method="post" style="display: inline;">
     <?php
-    $ajax_exp = "ajaxFillSelect('../../AJAX_lookup_handler.php', 'mst_author', 'author_id:author_name', 'authorID', $('search_str').getValue())";
+    $ajax_exp = "ajaxFillSelect('../../AJAX_lookup_handler.php', 'mst_author', 'author_id:author_name', 'authorID', $('#search_str').val())";
     echo __('Author Name'); ?> : <input type="text" name="search_str" id="search_str" style="width: 30%;" onkeyup="<?php echo $ajax_exp; ?>" onchange="<?php echo $ajax_exp; ?>" />
     <select name="type" style="width: 20%;"><?php
     foreach ($sysconf['authority_type'] as $type_id => $type) {

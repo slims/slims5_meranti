@@ -3,7 +3,7 @@
 <link rel="icon" href="../webicon.ico" type="image/x-icon" />
 <link rel="shortcut icon" href="../webicon.ico" type="image/x-icon" />
 <link href="<?php echo ADMIN_WEB_ROOT_DIR.'admin_themes/default/style.css'; ?>" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<?php echo JS_WEB_ROOT_DIR; ?>prototype.js"></script>
+<script type="text/javascript" src="<?php echo JS_WEB_ROOT_DIR; ?>jquery.js"></script>
 <script type="text/javascript" src="<?php echo JS_WEB_ROOT_DIR; ?>updater.js"></script>
 <script type="text/javascript" src="<?php echo JS_WEB_ROOT_DIR; ?>gui.js"></script>
 <script type="text/javascript" src="<?php echo JS_WEB_ROOT_DIR; ?>form.js"></script>

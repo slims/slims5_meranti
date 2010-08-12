@@ -4,6 +4,8 @@
 <link rel="icon" href="webicon.ico" type="image/x-icon" />
 <link rel="shortcut icon" href="webicon.ico" type="image/x-icon" />
 <link href="<?php echo THEMES_WEB_ROOT_DIR; ?>default/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo JS_WEB_ROOT_DIR; ?>jquery.js"></script>
+<script type="text/javascript" src="<?php echo JS_WEB_ROOT_DIR; ?>form.js"></script>
 <?php echo $metadata; ?>
 </head>
 <body>

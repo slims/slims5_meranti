@@ -62,16 +62,19 @@ class simbio_fe_text extends abs_simbio_form_element
             }
         }
 
+        // sanitize name for ID
+        $_elID = str_replace(array('[', ']', ' '), '', $this->element_name);
+
         // checking element type
         if ($this->element_type == 'textarea') {
-            $_buffer .= '<textarea name="'.$this->element_name.'" id="'.$this->element_name.'" '.$this->element_attr.''.$_disabled.'>';
+            $_buffer .= '<textarea name="'.$this->element_name.'" id="'.$_elID.'" '.$this->element_attr.''.$_disabled.'>';
             $_buffer .= $this->element_value;
             $_buffer .= '</textarea>'."\n";
         } else if (stripos($this->element_type, 'date', 0) !== false) {
-            $_buffer .= '<div class="dateField"><input class="dateInput" type="'.$this->element_type.'" name="'.$this->element_name.'" id="'.$this->element_name.'" ';
-            $_buffer .= 'value="'.$this->element_value.'" '.$this->element_attr.''.$_disabled.' /><a class="calendarLink notAJAX" style="cursor: pointer;" onclick="javascript: dateType = \''.$this->element_type.'\'; openCalendar(\''.$this->element_name.'\');" title="Open Calendar"></a></div>'."\n";
+            $_buffer .= '<div class="dateField"><input class="dateInput" type="'.$this->element_type.'" name="'.$this->element_name.'" id="'.$_elID.'" ';
+            $_buffer .= 'value="'.$this->element_value.'" '.$this->element_attr.''.$_disabled.' /><a class="calendarLink notAJAX" style="cursor: pointer;" onclick="javascript: dateType = \''.$this->element_type.'\'; openCalendar(\''.$_elID.'\');" title="Open Calendar"></a></div>'."\n";
         } else {
-            $_buffer .= '<input type="'.$this->element_type.'" name="'.$this->element_name.'" id="'.$this->element_name.'" ';
+            $_buffer .= '<input type="'.$this->element_type.'" name="'.$this->element_name.'" id="'.$_elID.'" ';
             $_buffer .= 'value="'.$this->element_value.'" '.$this->element_attr.''.$_disabled.' />'."\n";
         }
 

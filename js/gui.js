@@ -340,8 +340,8 @@ var openHTMLpop = function(strURL, intWidth, intHeight, strPopTitle) {
             + '<div id="htmlPopContainer">' + popContent + '</div>'
             + '</div>').hide().appendTo('body');
         htmlPopFrame = $('iframe#htmlPopFrame');
-        htmlPop = $('#htmlPop').css({'position': 'fixed', 'top': yPos+'px', 'left': xPos+'px', 'margin': 'auto', 'width': intWidth+'px'}).fadeIn();
-        blocker = $('#blocker').css({'top': 0, 'left': 0, 'width': '100%', 'height': screen.height+'px', 'position': 'fixed', 'background-color': '#000', 'opacity': 0.5}).fadeIn();
+        htmlPop = $('#htmlPop').css({'position': 'fixed', 'top': yPos+'px', 'left': xPos+'px', 'margin': 'auto', 'width': intWidth+'px', 'z-index': 99}).fadeIn();
+        blocker = $('#blocker').css({'top': 0, 'left': 0, 'width': '100%', 'height': screen.height+'px', 'position': 'fixed', 'background-color': '#000', 'opacity': 0.5, 'z-index': 98}).fadeIn();
     }
     if (htmlPopFrame.length) { htmlPopFrame.css({'width': '100%', 'height': intHeight+'px'}); }
     // register ESC button event handler
@@ -415,4 +415,5 @@ $('document').ready(function() {
 
     // disable form with class "disabled"
     $('form.disabled').disableForm();
+    $(document).registerAdminEvents({ajaxifyLink: false, ajaxifyForm: false});
 });

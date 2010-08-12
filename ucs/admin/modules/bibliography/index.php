@@ -138,10 +138,10 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 // close window OR redirect main page
                 if ($in_pop_up) {
                     $itemCollID = (integer)$_POST['itemCollID'];
-                    echo '<script type="text/javascript">parent.opener.setContent(\'mainContent\', parent.opener.getLatestAJAXurl(), \'post\', \''.( $itemCollID?'itemID='.$itemCollID.'&detail=true':'' ).'\');</script>';
-                    echo '<script type="text/javascript">parent.window.close();</script>';
+                    echo '<script type="text/javascript">top.$(\'#mainContent\').simbioAJAX(parent.parent.getLatestAJAXurl(), \'post\', \''.( $itemCollID?'itemID='.$itemCollID.'&detail=true':'' ).'\');</script>';
+                    echo '<script type="text/javascript">top.closeHTMLpop();</script>';
                 } else {
-                    echo '<script type="text/javascript">parent.setContent(\'mainContent\', parent.getPreviousAJAXurl(), \'get\');</script>';
+                    echo '<script type="text/javascript">top.$(\'#mainContent\').simbioAJAX(parent.jQuery.ajaxHistory[1].url);</script>';
                 }
             } else { utility::jsAlert(__('Bibliography Data FAILED to Updated. Please Contact System Administrator')."\n".$sql_op->error); }
             exit();
@@ -180,10 +180,10 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
     // error alerting
     if ($error_num == 0) {
         utility::jsAlert(__('All Data Successfully Deleted'));
-        echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
+        echo '<script type="text/javascript">top.$(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\');</script>';
     } else {
         utility::jsAlert(__('Some or All Data NOT deleted successfully!\nPlease contact system administrator'));
-        echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
+        echo '<script type="text/javascript">top.$(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\');</script>';
     }
     exit();
 }
@@ -251,7 +251,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // biblio specific detail info/area
     $form->addTextField('textarea', 'specDetailInfo', __('Specific Detail Info'), $rec_d['spec_detail_info'], 'rows="2" style="width: 100%"');
     // biblio authors
-        $str_input = '<div class="'.$visibility.'"><a class="notAJAX" href="javascript: openWin(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_author.php?biblioID='.$rec_d['biblio_id'].'\', \'popAuthor\', 500, 200, true)">'.__('Add Author(s)').'</a></div>';
+        $str_input = '<div class="'.$visibility.'"><a class="notAJAX" href="javascript: openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_author.php?biblioID='.$rec_d['biblio_id'].'\', 500, 200, \''.__('Authors/Roles').'\')">'.__('Add Author(s)').'</a></div>';
         $str_input .= '<iframe name="authorIframe" id="authorIframe" class="borderAll" style="width: 100%; height: 70px;" src="'.MODULES_WEB_ROOT_DIR.'bibliography/iframe_author.php?biblioID='.$rec_d['biblio_id'].'&block=1"></iframe>';
     $form->addAnything(__('Author(s)'), $str_input);
     // biblio gmd
@@ -279,7 +279,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $form->addTextField('text', 'class', __('Classification'), $rec_d['classification'], 'style="width: 40%;"');
     // biblio publisher
         // AJAX expression
-        $ajax_exp = "ajaxFillSelect('".UCS_WEB_ROOT_DIR."admin/AJAX_lookup_handler.php', 'mst_publisher', 'publisher_id:publisher_name', 'publisherID', $('publ_search_str').getValue())";
+        $ajax_exp = "ajaxFillSelect('".UCS_WEB_ROOT_DIR."admin/AJAX_lookup_handler.php', 'mst_publisher', 'publisher_id:publisher_name', 'publisherID', $('#publ_search_str').val())";
         if ($rec_d['publisher_name']) {
             $publ_options[] = array($rec_d['publisher_id'], $rec_d['publisher_name']);
         }
@@ -293,7 +293,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $form->addTextField('text', 'year', __('Publishing Year'), $rec_d['publish_year'], 'style="width: 40%;"');
     // biblio publish place
         // AJAX expression
-        $ajax_exp = "ajaxFillSelect('".UCS_WEB_ROOT_DIR."admin/AJAX_lookup_handler.php', 'mst_place', 'place_id:place_name', 'placeID', $('plc_search_str').getValue())";
+        $ajax_exp = "ajaxFillSelect('".UCS_WEB_ROOT_DIR."admin/AJAX_lookup_handler.php', 'mst_place', 'place_id:place_name', 'placeID', $('#plc_search_str').val())";
         // string element
         if ($rec_d['place_name']) {
             $plc_options[] = array($rec_d['publish_place_id'], $rec_d['place_name']);
@@ -310,7 +310,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // biblio call_number
     $form->addTextField('text', 'callNumber', __('Call Number'), $rec_d['call_number'], 'style="width: 40%;"');
     // biblio topics
-        $str_input = '<div class="'.$visibility.'"><a class="notAJAX"  href="javascript: openWin(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_topic.php?biblioID='.$rec_d['biblio_id'].'\', \'popTopic\', 500, 200, true)">'.__('Add Subject(s)').'</a></div>';
+        $str_input = '<div class="'.$visibility.'"><a class="notAJAX" href="javascript: openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_topic.php?biblioID='.$rec_d['biblio_id'].'\', 500, 200, \''.__('Subjects/Topics').'\')">'.__('Add Subject(s)').'</a></div>';
         $str_input .= '<iframe name="topicIframe" id="topicIframe" class="borderAll" style="width: 100%; height: 70px;" src="'.MODULES_WEB_ROOT_DIR.'bibliography/iframe_topic.php?biblioID='.$rec_d['biblio_id'].'&block=1"></iframe>';
     $form->addAnything(__('Subject(s)'), $str_input);
     // biblio language
@@ -358,6 +358,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     echo $form->printOut();
 } else {
     require SIMBIO_BASE_DIR.'simbio_UTILS/simbio_tokenizecql.inc.php';
+    require LIB_DIR.'biblio_list_model.inc.php';
     require LIB_DIR.'biblio_list.inc.php';
     /* BIBLIOGRAPHY LIST */
     // callback function to show title and authors in datagrid
@@ -408,7 +409,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // is there any search
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
         $keywords = $dbs->escape_string(trim($_GET['keywords']));
-        $searchable_fields = array('title', 'author', 'subject', 'isbn', 'publisher');
+        $searchable_fields = array('title', 'author', 'subject', 'isbn', 'publisher', 'notes');
         if ($_GET['field'] != '0' AND in_array($_GET['field'], $searchable_fields)) {
             $field = $_GET['field'];
             $search_str = $field.'='.$keywords;

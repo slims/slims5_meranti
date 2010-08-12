@@ -31,7 +31,7 @@ $content = '<script type="text/javascript">'."\n";
 if (isset($_GET['itemID']) AND isset($_GET['action'])) {
     $itemID = (integer)$_GET['itemID'];
     $itemCollID = (integer)$_GET['itemCollID'];
-    $content .= 'Event.observe(window, \'load\', function() { setContent(\'pageContent\', \'index.php?inPopUp=true&action=detail\', \'post\', \'itemID='.$itemID.'&itemCollID='.$itemCollID.'&detail=true\', true); })';
+    $content .= '$(document).ready(function() { $(\'#pageContent\').simbioAJAX(\'index.php?inPopUp=true&action=detail\', {method: \'POST\', addData: \'itemID='.$itemID.'&itemCollID='.$itemCollID.'&detail=true\'}); })';
 }
 $content .= '</script>';
 

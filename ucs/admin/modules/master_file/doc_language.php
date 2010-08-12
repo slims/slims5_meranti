@@ -66,7 +66,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 utility::jsAlert(__('Language Data Successfully Updated'));
                 // update language ID in biblio table to keep data integrity
                 $sql_op->update('biblio', array('language_id' => $data['language_id']), 'language_id=\''.$updateRecordID.'\'');
-                echo '<script type="text/javascript">parent.setContent(\'mainContent\', parent.getPreviousAJAXurl(), \'post\');</script>';
+                echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(parent.jQuery.ajaxHistory[1].url);</script>';
             } else { utility::jsAlert(__('Language Data FAILED to Updated. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
         } else {
@@ -75,7 +75,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
             $insert = $sql_op->insert('mst_language', $data);
             if ($insert) {
                 utility::jsAlert(__('New Language Data Successfully Saved'));
-                echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'\', \'post\');</script>';
+                echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'\');</script>';
             } else { utility::jsAlert(__('Language Data FAILED to Save. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
         }
@@ -104,10 +104,10 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
     // error alerting
     if ($error_num == 0) {
         utility::jsAlert(__('All Data Successfully Deleted'));
-        echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
+        echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\');</script>';
     } else {
         utility::jsAlert(__('Some or All Data NOT deleted successfully!\nPlease contact system administrator'));
-        echo '<script type="text/javascript">parent.setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\', \'post\');</script>';
+        echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'?'.$_POST['lastQueryStr'].'\');</script>';
     }
     exit();
 }

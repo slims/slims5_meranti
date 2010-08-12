@@ -4,7 +4,7 @@
 <link rel="shortcut icon" href="webicon.ico" type="image/x-icon" />
 <link href="<?php echo THEMES_WEB_ROOT_DIR; ?>default/style.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo THEMES_WEB_ROOT_DIR; ?>default/960.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<?php echo JS_WEB_ROOT_DIR; ?>prototype.js"></script>
+<script type="text/javascript" src="<?php echo JS_WEB_ROOT_DIR; ?>jquery.js"></script>
 <script type="text/javascript" src="<?php echo JS_WEB_ROOT_DIR; ?>form.js"></script>
 <script type="text/javascript" src="<?php echo JS_WEB_ROOT_DIR; ?>gui.js"></script>
 <?php echo $metadata; ?>

@@ -55,25 +55,15 @@ $sub_menu = $module->generateSubMenu(($current_module AND $can_read)?$current_mo
 ob_start();
 // info
 $info = __('Union Catalog Server administration console. you are currently logged in as').' <strong>'.$_SESSION['realname'].'</strong>'; //mfc
-// set some javascript vars
-echo '<script type="text/javascript">';
-if ($current_module) {
-    echo 'defaultAJAXurl = \''.MODULES_WEB_ROOT_DIR.$current_module.'/index.php\';';
-} else {
-    echo 'defaultAJAXurl = \''.UCS_WEB_ROOT_DIR.'admin/default/home.php\';';
-}
-echo '</script>';
 
-if ($current_module && $can_read) {
+if ($current_module AND $can_read) {
     // get content of module default content with AJAX
     $sysconf['page_footer'] .= "\n"
         .'<script type="text/javascript">'
-        .'Event.observe(window, \'load\', function() { lastStr = \''.addslashes($info).'\'; registerAdminEvents(); setContent(\'mainContent\', \''.MODULES_WEB_ROOT_DIR.$current_module.'/index.php\', \'get\') });'
+        .'jQuery(document).ready(function() { jQuery(\'#mainContent\').simbioAJAX(\''.MODULES_WEB_ROOT_DIR.$current_module.'/index.php\', {method: \'get\'}); });'
         .'</script>';
 } else {
     include 'default/home.php';
-    $sysconf['page_footer'] .= "\n"
-        .'<script type="text/javascript">Event.observe(window, \'load\', function() { lastStr = \''.addslashes($info).'\'; registerAdminEvents(); });</script>';
 }
 // page content
 $main_content = ob_get_clean();

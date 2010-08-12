@@ -129,7 +129,7 @@ if (isset($_POST['upload']) AND trim(strip_tags($_POST['fileTitle'])) != '') {
             if ($update1) {
                 echo '<script type="text/javascript">';
                 echo 'alert(\''.__('File Attachment data updated!').'\');';
-                echo 'parent.location.href = \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_attach.php?biblioID='.$updateBiblioID.'\';';
+                echo 'parent.setIframeContent(\'attachIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_attach.php?biblioID='.$updateBiblioID.'\');';
                 echo '</script>';
             } else {
                 utility::jsAlert(''.__('File Attachment data FAILED to update!').''."\n".$sql_op->error);

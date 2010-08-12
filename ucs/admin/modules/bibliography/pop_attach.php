@@ -129,7 +129,7 @@ if (isset($_POST['upload']) AND trim(strip_tags($_POST['fileTitle'])) != '') {
             if ($update1) {
                 echo '<script type="text/javascript">';
                 echo 'alert(\''.__('File Attachment data updated!').'\');';
-                echo 'opener.location.href = \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_attach.php?biblioID='.$updateBiblioID.'\';';
+                echo 'parent.setIframeContent(\'attachIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_attach.php?biblioID='.$updateBiblioID.'\');';
                 echo '</script>';
             } else {
                 utility::jsAlert(''.__('File Attachment data FAILED to update!').''."\n".$sql_op->error);
@@ -138,7 +138,7 @@ if (isset($_POST['upload']) AND trim(strip_tags($_POST['fileTitle'])) != '') {
             if ($sql_op->insert('biblio_attachment', $data)) {
                 echo '<script type="text/javascript">';
                 echo 'alert(\''.__('File Attachment uploaded succesfully!').'\');';
-                echo 'opener.setIframeContent(\'attachIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_attach.php?biblioID='.$data['biblio_id'].'\');';
+                echo 'parent.setIframeContent(\'attachIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_attach.php?biblioID='.$data['biblio_id'].'\');';
                 echo '</script>';
             } else {
                 utility::jsAlert(''.__('File Attachment data FAILED to save!').''."\n".$sql_op->error);
@@ -153,7 +153,7 @@ if (isset($_POST['upload']) AND trim(strip_tags($_POST['fileTitle'])) != '') {
             $_SESSION['biblioAttach'][$uploaded_file_id] = $fdata;
             echo '<script type="text/javascript">';
             echo 'alert(\''.__('File Attachment uploaded succesfully!').'\');';
-            echo 'opener.setIframeContent(\'attachIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_attach.php\');';
+            echo 'parent.setIframeContent(\'attachIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_attach.php\');';
             echo '</script>';
         }
     }

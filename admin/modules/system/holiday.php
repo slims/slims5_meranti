@@ -300,7 +300,7 @@ if (isset($_GET['mode'])) {
     $table->setCellAttr(3, 0, 'colspan="3"');
 
     // submit button
-    $table->appendTableRow(array('<input type="button" name="saveDaynameData" value="'.__('Save Settings').'" onclick="setContent(\'mainContent\', \''.$_SERVER['PHP_SELF'].'\', \'post\', $(\'holidayForm\').serialize())" />'));
+    $table->appendTableRow(array('<input type="button" name="saveDaynameData" value="'.__('Save Settings').'" onclick="$(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'\', { method: \'POST\', addData: $(\'#holidayForm\').serialize() } )" />'));
     // set cell attribute
     $table->setCellAttr(4, 0, 'colspan="3" class="alterCell"');
 
