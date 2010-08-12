@@ -19,6 +19,11 @@
  *
  */
 
+// be sure that this file not accessed directly
+if (INDEX_AUTH != 1) { 
+    die("can not access this file directly");
+}
+
 // get file ID
 $fileID = isset($_GET['fid'])?(integer)$_GET['fid']:0;
 // get biblioID

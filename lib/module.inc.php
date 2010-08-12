@@ -21,6 +21,11 @@
  *
  */
 
+// be sure that this file not accessed directly
+if (INDEX_AUTH != 1) { 
+    die("can not access this file directly");
+}
+
 class module extends simbio
 {
     private $modules_dir = 'modules';

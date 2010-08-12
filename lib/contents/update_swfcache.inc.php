@@ -22,6 +22,11 @@
  * "php update_swfcache.php"
  */
 
+// be sure that this file not accessed directly
+if (INDEX_AUTH != 1) { 
+    die("can not access this file directly");
+}
+
 if ($_SERVER['SERVER_ADDR'] == '') {
 
     include ('../../sysconfig.inc.php');

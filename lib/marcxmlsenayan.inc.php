@@ -21,6 +21,11 @@
  *
  */
 
+// be sure that this file not accessed directly
+if (INDEX_AUTH != 1) { 
+    die("can not access this file directly");
+}
+
 /**
  * simple MARC XML parser for SENAYAN 3
  * @param   string  $str_marcxml

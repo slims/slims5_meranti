@@ -22,9 +22,10 @@
  */
 
 // be sure that this file not accessed directly
-if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
-    die();
+if (INDEX_AUTH != 1) { 
+    die("can not access this file directly");
 }
+
 
 // always use session cookies
 @ini_set('session.use_cookies', true);

@@ -20,6 +20,11 @@
  *
  */
 
+// be sure that this file not accessed directly
+if (INDEX_AUTH != 1) { 
+    die("can not access this file directly");
+}
+
 $allowed_counter_ip = array('127.0.0.1');
 $remote_addr = $_SERVER['REMOTE_ADDR'];
 $confirmation = 0;

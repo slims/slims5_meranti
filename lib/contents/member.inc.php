@@ -20,6 +20,11 @@
  *
  */
 
+// be sure that this file not accessed directly
+if (INDEX_AUTH != 1) { 
+    die("can not access this file directly");
+}
+
 // required file
 require LIB_DIR.'member_logon.inc.php';
 // check if member already logged in

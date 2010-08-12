@@ -23,6 +23,11 @@
  *
  */
 
+// be sure that this file not accessed directly
+if (INDEX_AUTH != 1) { 
+    die("can not access this file directly");
+}
+
 $version = "c42bab9fd2925ceb03f7dd9cfb3b6342027c877b";
 
 ?>
