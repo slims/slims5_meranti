@@ -18,6 +18,9 @@
  *
  */
 
+// key to authenticate
+define('INDEX_AUTH', '1');
+
 /* File Viewer */
 
 require '../sysconfig.inc.php';

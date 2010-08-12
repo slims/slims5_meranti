@@ -19,6 +19,9 @@
  *
  */
 
+// key to authenticate
+define('INDEX_AUTH', '1');
+
 // main system configuration
 if (!defined('SENAYAN_BASE_DIR')) {
     require '../../../sysconfig.inc.php';

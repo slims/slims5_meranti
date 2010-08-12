@@ -1,5 +1,8 @@
 <?php
 
+// key to authenticate
+define('INDEX_AUTH', '1');
+
 /*
 A Handler script for AJAX ID checking
 Arie Nugraha 2007

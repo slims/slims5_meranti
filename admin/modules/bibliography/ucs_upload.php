@@ -20,6 +20,9 @@
 
 /* Send Catalog data to UCS server */
 
+// key to authenticate
+define('INDEX_AUTH', '1');
+
 // main system configuration
 require '../../../sysconfig.inc.php';
 

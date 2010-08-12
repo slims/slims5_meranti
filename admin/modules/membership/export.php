@@ -20,6 +20,9 @@
 
 /* Member data export section */
 
+// key to authenticate
+define('INDEX_AUTH', '1');
+
 // main system configuration
 require '../../../sysconfig.inc.php';
 // start the session

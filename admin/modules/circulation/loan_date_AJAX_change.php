@@ -22,6 +22,9 @@
 A Handler script for Item data AJAX Lookup
 */
 
+// key to authenticate
+define('INDEX_AUTH', '1');
+
 require '../../../sysconfig.inc.php';
 // session checking
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';

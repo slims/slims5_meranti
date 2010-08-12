@@ -20,6 +20,9 @@
 
 /* circulation transaction process */
 
+// key to authenticate
+define('INDEX_AUTH', '1');
+
 if (!defined('DIRECT_INCLUDE')) {
     // main system configuration
     require '../../../sysconfig.inc.php';

@@ -21,7 +21,7 @@
  */
 
 // be sure that this file not accessed directly
-if (OPAC_INDEX_AUTH != 1) { 
+if (INDEX_AUTH != 1) { 
     die("can not access this file directly");
 }
 

@@ -18,6 +18,11 @@
  *
  */
 
+// be sure that this file not accessed directly
+if (INDEX_AUTH != 1) { 
+    die("can not access this file directly");
+}
+
 /* Custom reports list */
 
 $menu[] = array(__('Custom Recapitulations'), MODULES_WEB_ROOT_DIR.'reporting/customs/class_recap.php', __('Title and Collection recapitulation based on classification and others'));

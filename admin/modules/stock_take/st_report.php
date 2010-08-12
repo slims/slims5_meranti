@@ -20,6 +20,9 @@
 
 /* Stock Take */
 
+// key to authenticate
+define('INDEX_AUTH', '1');
+
 // check if this file included directly
 if (!defined('REPORT_DIRECT_INCLUDE')) {
     // main system configuration
