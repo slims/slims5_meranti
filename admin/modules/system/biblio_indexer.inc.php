@@ -28,6 +28,7 @@ class biblio_indexer
 	private $exclude = array();
 	private $obj_db = false;
 	private $verbose = false;
+	private $max_indexed = 1000000;
 
 	public function __construct($obj_db, $bool_verbose = false) {
 		$this->obj_db = $obj_db;
@@ -44,7 +45,7 @@ class biblio_indexer
 		if ($bool_empty_first) {
 			$this->emptyingIndex();
 		}
-		$bib_sql = 'SELECT biblio_id FROM biblio';
+		$bib_sql = 'SELECT biblio_id FROM biblio ORDER BY biblio_id ASC LIMIT '.$this->max_indexed;
 		// query
 		$rec_bib = $this->obj_db->query($bib_sql);
 		$r = 0;
@@ -239,7 +240,7 @@ class biblio_indexer
 	public function updateFullIndex() {
 		$bib_sql = 'SELECT b.biblio_id FROM biblio AS b
 			LEFT JOIN search_biblio AS sb ON b.biblio_id = sb.biblio_id
-			WHERE sb.biblio_id is NULL';
+			WHERE sb.biblio_id is NULL ORDER BY b.biblio_id LIMIT '.$this->max_indexed;
 		// query
 		$rec_bib = $this->obj_db->query($bib_sql);
 		$r = 0;
