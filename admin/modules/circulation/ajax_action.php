@@ -20,6 +20,9 @@
 
 /* Circulation AJAX Process */
 
+// key to authenticate
+define('INDEX_AUTH', '1');
+
 require '../../../sysconfig.inc.php';
 
 // quick return

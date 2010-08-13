@@ -18,6 +18,9 @@
  *
  */
 
+// key to authenticate
+define('INDEX_AUTH', '1');
+
 require '../../../sysconfig.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 

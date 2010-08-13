@@ -19,6 +19,11 @@
  *
  */
 
+// key to authenticate
+if (!defined('INDEX_AUTH')) {
+    define('INDEX_AUTH', '1');
+}
+
 if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
     include_once '../../sysconfig.inc.php';
 }

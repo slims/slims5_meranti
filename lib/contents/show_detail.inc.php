@@ -18,6 +18,11 @@
  *
  */
 
+// be sure that this file not accessed directly
+if (INDEX_AUTH != 1) { 
+    die("can not access this file directly");
+}
+
 /* Showing record detail in HTML and XML */
 
 if (isset($_GET['inXML']) AND !empty($_GET['inXML'])) {

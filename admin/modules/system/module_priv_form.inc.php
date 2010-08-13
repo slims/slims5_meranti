@@ -19,6 +19,11 @@
  *
  */
 
+// be sure that this file not accessed directly
+if (INDEX_AUTH != 1) { 
+    die("can not access this file directly");
+}
+
 // start the output buffer
 ob_start();
 $table = new simbio_table();

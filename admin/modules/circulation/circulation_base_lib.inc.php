@@ -20,6 +20,11 @@
 
 /* CIRCULATION BASE LIBRARY */
 
+// be sure that this file not accessed directly
+if (INDEX_AUTH != 1) { 
+    die("can not access this file directly");
+}
+
 // define some circulation/loan status
 define('LOAN_LIMIT_REACHED', 1);
 define('ITEM_NOT_FOUND', 2);

@@ -21,6 +21,9 @@
 
 /* Loan Circulation Receipt Pop Windows */
 
+// key to authenticate
+define('INDEX_AUTH', '1');
+
 // main system configuration
 require '../../../sysconfig.inc.php';
 // start the session
@@ -60,6 +63,7 @@ table td {
   vertical-align: top;
 }
 </style>
+<?php ob_start(); ?>
 <div id="receiptBody">
     <table width="100%">
     <tr>
@@ -161,6 +165,7 @@ table td {
         </tr>
     </table>
 </div>
+<?php $buffer_receipt = ob_get_contents(); ob_end_clean(); echo $buffer_receipt; ?>
 <script type="text/javascript">window.print()</script>
 <?php
 /* main content end */

@@ -20,6 +20,9 @@
 
 /* Peer-to-Peer Web Services section */
 
+// key to authenticate
+define('INDEX_AUTH', '1');
+
 // start the session
 require '../../../sysconfig.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';

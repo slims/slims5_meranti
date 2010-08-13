@@ -21,6 +21,9 @@
 
 /* Bibliographic attachment listing */
 
+// key to authenticate
+define('INDEX_AUTH', '1');
+
 // required file
 require '../../sysconfig.inc.php';
 require '../member_session.inc.php';

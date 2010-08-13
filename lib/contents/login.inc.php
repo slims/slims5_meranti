@@ -20,6 +20,11 @@
  *
  */
 
+// be sure that this file not accessed directly
+if (INDEX_AUTH != 1) { 
+    die("can not access this file directly");
+}
+
 if (defined('LIGHTWEIGHT_MODE')) {
     header('Location: index.php');
 }

@@ -20,6 +20,9 @@
 
 /* Stock Take */
 
+// key to authenticate
+define('INDEX_AUTH', '1');
+
 /* Stock Take Log Viewer */
 
 // main system configuration

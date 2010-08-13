@@ -21,6 +21,9 @@
  *
  */
 
+// key to authenticate
+define('INDEX_AUTH', '1');
+
 // required file
 require 'sysconfig.inc.php';
 // member session params

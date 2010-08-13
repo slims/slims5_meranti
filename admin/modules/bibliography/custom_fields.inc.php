@@ -20,6 +20,11 @@
  *
  */
 
+// be sure that this file not accessed directly
+if (INDEX_AUTH != 1) { 
+    die("can not access this file directly");
+}
+
 /**
  * Here you can add custom field to SLiMS Bibliographic database
  * The field you define here must also exists in 'biblio_custom' table in database

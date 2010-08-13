@@ -20,6 +20,9 @@
 
 /* Update or Delete Catalog data on UCS server */
 
+// key to authenticate
+define('INDEX_AUTH', '1');
+
 // main system configuration
 require '../../../sysconfig.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';

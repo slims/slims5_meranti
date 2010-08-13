@@ -21,6 +21,11 @@
  *
  */
 
+// be sure that this file not accessed directly
+if (INDEX_AUTH != 1) { 
+    die("can not access this file directly");
+}
+
 define('MODS_XML_PARSE_ERROR', 199);
 
 /**

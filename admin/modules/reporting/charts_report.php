@@ -21,6 +21,9 @@
 
 /* Chart/Plot Report section */
 
+// key to authenticate
+define('INDEX_AUTH', '1');
+
 if (!defined('SENAYAN_BASE_DIR')) {
     // main system configuration
     require '../../../sysconfig.inc.php';
