@@ -18,6 +18,11 @@
  *
  */
 
+// key to authenticate
+if (!defined('INDEX_AUTH')) {
+    define('INDEX_AUTH', '1');
+}
+
 // rest for a while
 sleep(1);
 require '../../sysconfig.inc.php';

@@ -21,6 +21,13 @@
  *
  */
 
+// be sure that this file not accessed directly
+if (!defined('INDEX_AUTH')) {
+    die("can not access this file directly");
+} elseif (INDEX_AUTH != 1) { 
+    die("can not access this file directly");
+}
+
 require_once 'simbio_pgsql_result.inc.php';
 
 class simbio_pgsql extends simbio

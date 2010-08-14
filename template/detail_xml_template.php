@@ -1,4 +1,10 @@
 <?php
+
+// key to authenticate
+if (!defined('INDEX_AUTH')) {
+    define('INDEX_AUTH', '1');
+}
+
 // XML detail template
 // output the buffer
 ob_start();

@@ -21,6 +21,11 @@
  *
  */
 
+// key to authenticate
+if (!defined('INDEX_AUTH')) {
+    define('INDEX_AUTH', '1');
+}
+
 require '../sysconfig.inc.php';
 // set cookie
 $cookie_path = preg_replace('@\/m\/*@i', '', SENAYAN_WEB_ROOT_DIR);

@@ -22,7 +22,9 @@
  */
 
 // key to authenticate
-define('INDEX_AUTH', '1');
+if (!defined('INDEX_AUTH')) {
+    define('INDEX_AUTH', '1');
+}
 
 // required file
 require 'sysconfig.inc.php';
