@@ -77,8 +77,13 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 foreach ($biblio_custom_fields as $fid => $cfield) {
                     // custom field data
                     $cf_dbfield = $cfield['dbfield'];
-                    if (isset($_POST[$cf_dbfield]) AND trim($_POST[$cf_dbfield]) != '') {
-                        $custom_data[$cf_dbfield] = trim($dbs->escape_string(strip_tags($_POST[$cf_dbfield], $sysconf['content']['allowable_tags'])));
+                    if (isset($_POST[$cf_dbfield])) {
+                        $cf_val = $dbs->escape_string(strip_tags(trim($_POST[$cf_dbfield]), $sysconf['content']['allowable_tags']));
+                        if ($cf_val) {
+                            $custom_data[$cf_dbfield] = $cf_val;
+                        } else {
+                            $custom_data[$cf_dbfield] = 'literal{\'\'}';
+                        }
                     }
                 }
             }

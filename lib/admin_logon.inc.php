@@ -22,7 +22,7 @@
  */
 
 // be sure that this file not accessed directly
-if (INDEX_AUTH != 1) { 
+if (INDEX_AUTH != 1) {
     die("can not access this file directly");
 }
 
@@ -185,7 +185,7 @@ class admin_logon
         // get query entry
         $_entries = @ldap_get_entries($_ds, $_search);
         if ($_entries) {
-            $_username = $_entries[0]['uid'][0];
+            $_username = $_entries[0][$ldap_configs['userid_field']][0];
             // check if User data exists in database
             $_check_q = $this->obj_db->query("SELECT u.user_id, u.username, u.realname, u.groups
                 FROM user AS u WHERE u.username='".$_username."'");

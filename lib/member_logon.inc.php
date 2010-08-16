@@ -22,7 +22,7 @@
  */
 
 // be sure that this file not accessed directly
-if (INDEX_AUTH != 1) { 
+if (INDEX_AUTH != 1) {
     die("can not access this file directly");
 }
 
@@ -105,7 +105,7 @@ class member_logon
         // get query entry
         $_entries = @ldap_get_entries($_ds, $_search);
         if ($_entries) {
-            $this->user_info['member_id'] = $_entries[0]['uid'][0];
+            $this->user_info['member_id'] = $_entries[0][$ldap_configs['userid_field']][0];
             // check member in database
             $_check_q = $this->obj_db->query('SELECT m.member_id, m.member_name, m.inst_name,
                 m.member_email, m.expire_date, m.register_date, m.is_pending,
@@ -115,11 +115,11 @@ class member_logon
             if ($_check_q->num_rows < 1) {
                 $_curr_date = date('Y-m-d H:i:s');
                 // insert member data to database
-                $this->user_info['member_id'] = $_entries[0]['uid'][0];
-                $this->user_info['member_name'] = $_entries[0]['cn'][0];
+                $this->user_info['member_id'] = $_entries[0][$ldap_configs['userid_field']][0];
+                $this->user_info['member_name'] = $_entries[0][$ldap_configs['fullname_field']][0];
                 $this->user_info['gender'] = '1';
                 $this->user_info['inst_name'] = 'New registered member';
-                $this->user_info['member_email'] = $_entries[0]['mail'][0];
+                $this->user_info['member_email'] = $_entries[0][$ldap_configs['mail_field']][0];
                 $this->user_info['expire_date'] = '0000-00-00';
                 $this->user_info['register_date'] = '0000-00-00';
                 $this->user_info['is_pending'] = '1';
