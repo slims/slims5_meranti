@@ -20,6 +20,9 @@
  *
  */
 
+// key to authenticate
+define('INDEX_AUTH', '1');
+
 require 'ucsysconfig.inc.php';
 // common files
 require INC_DIR.'common.inc.php';

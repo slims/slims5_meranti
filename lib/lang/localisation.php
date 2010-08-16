@@ -38,6 +38,11 @@
  *              Developers should use __('') and _ngettext in code!
  */
 
+// key to authenticate
+if (!defined('INDEX_AUTH')) {
+    define('INDEX_AUTH', '1');
+}
+
 // set php-gettext library
 require LANGUAGES_BASE_DIR.'php-gettext'.DIRECTORY_SEPARATOR.'gettext.inc';
 

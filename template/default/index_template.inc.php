@@ -1,3 +1,12 @@
+<?php
+// be sure that this file not accessed directly
+if (!defined('INDEX_AUTH')) {
+    die("can not access this file directly");
+} elseif (INDEX_AUTH != 1) { 
+    die("can not access this file directly");
+}
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--
 	default1.0 by Arie Nugraha & Senayan Developers Team
