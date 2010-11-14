@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `member_custom` (
 PRIMARY KEY ( `member_id` )
 ) ENGINE = MYISAM COMMENT = 'one to one relation with real member table';
 
--- content fiel
+-- content field
 ALTER TABLE `content` ADD `content_ownpage` ENUM( '1', '2' ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '1';
 
 INSERT INTO `content` (`content_id`, `content_title`, `content_desc`, `content_path`, `input_date`, `last_update`, `content_ownpage`) VALUES

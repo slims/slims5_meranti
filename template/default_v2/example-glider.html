@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Glider.js Example</title>
+	<link rel="stylesheet" href="stylesheets/glider.css" type="text/css" media="screen" charset="utf-8">
+	<script src="javascripts/prototype.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/effects.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/glider.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	
+	<div id="my-glider-horizontal">
+		<div class="controls">
+			<a href="#section1">Section 1</a> | 
+			<a href="#section2">Section 2</a> |
+			<a href="#section3">Section 3</a> |
+			<a href="#section4">Section 4</a>
+		</div>
+		
+		<div class="scroller">
+			<div class="content">
+				<div class="section" id="section1">
+					Section 1
+					<p>You can put any kind of HTML in here:</p>
+					<img src="../../../../../www.curbly.com/images/header_logo.html" />
+				</div>
+				<div class="section" id="section2">
+					Section 2
+					<p>Style the sections however you want</p>
+				</div>
+				<div class="section" id="section3">
+					Section 3
+					<p>I-frames? Yes, but only if scrollbars are hidden:</p>					
+					<iframe src="http://www.example.com/" style="overflow:hidden"></iframe>
+				</div>
+				<div class="section" id="section4">
+					Section 4
+					<p>Flash? Sort-of works:</p>					
+					<object width="200" height="150"><param name="movie" value="http://www.youtube.com/v/Ef-f7EeDpYI"></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/v/Ef-f7EeDpYI" type="application/x-shockwave-flash" wmode="transparent" width="200" height="150"></embed></object>					
+				</div>
+			</div>
+		</div>			
+	</div>
+	<a href="#" onclick="my_glider.previous();return false;">Previous</a> | <a href="#" onclick="my_glider.next();return false">Next</a>
+	<script type="text/javascript" charset="utf-8">
+		var my_glider = new Glider('my-glider-horizontal', {controlsEvent: 'mouseover',duration:0.5, autoGlide: true});
+	</script>
+	
+	
+	
+	
+<!--	
+	<h2>Download</h2>
+	Visit the <a href="http://code.google.com/p/missingmethod-projects/wiki/Glider">project page to download or check out the source via SVN</a>.
+	
+	<h2>Requirements</h2>
+	<p>This script uses the <a href="http://www.prototypejs.org/">Prototype</a> javascript framework and the effects.js library from <a href="http://script.aculo.us/">Scriptaculous</a>. You must include Prototype version 1.5+ in your pages before including this script. This library is known to work in recent versions of IE 6/7, FireFox, and Safari.</p>
+	
+	<h2>Notes</h2>
+	<p>You can create multiple gliders on one page. </p>
+	<p>You can determine which section will be scrolled to initially by using the initialSection option - i.e. {initialSection: 'section4'}}</p>
+	<p>You can make the Glider periodically update by using the autoGlide and frequency options - i.e. {autoGlide: true, frequency: 4}</p>
+-->
+    
+</body>
+
+</html>
