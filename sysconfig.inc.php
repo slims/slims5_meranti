@@ -288,53 +288,6 @@ $sysconf['https_port'] = 443;
 $sysconf['date_format'] = 'Y-m-d'; /* Produce 2009-12-31 */
 // $sysconf['date_format'] = 'd-M-Y'; /* Produce 31-Dec-2009 */
 
-// check for user language selection if we are not in admin areas
-if (stripos($_SERVER['PHP_SELF'], '/admin') === false) {
-    if (isset($_GET['select_lang'])) {
-        $select_lang = trim(strip_tags($_GET['select_lang']));
-        // delete previous language cookie
-        if (isset($_COOKIE['select_lang'])) {
-            @setcookie('select_lang', $select_lang, time()-14400, SENAYAN_WEB_ROOT_DIR);
-        }
-        // create language cookie
-        @setcookie('select_lang', $select_lang, time()+14400, SENAYAN_WEB_ROOT_DIR);
-        $sysconf['default_lang'] = $select_lang;
-    } else if (isset($_COOKIE['select_lang'])) {
-        $sysconf['default_lang'] = trim(strip_tags($_COOKIE['select_lang']));
-    }
-    // set back to en_US on XML
-    if (isset($_GET['resultXML']) OR isset($_GET['inXML'])) {
-        $sysconf['default_lang'] = 'en_US';
-    }
-}
-// Apply language settings
-require LANGUAGES_BASE_DIR.'localisation.php';
-
-/* AUTHORITY TYPE */
-$sysconf['authority_type']['p'] = __('Personal Name');
-$sysconf['authority_type']['o'] = __('Organizational Body');
-$sysconf['authority_type']['c'] = __('Conference');
-
-/* SUBJECT/AUTHORITY TYPE */
-$sysconf['subject_type']['t'] = __('Topic');
-$sysconf['subject_type']['g'] = __('Geographic');
-$sysconf['subject_type']['n'] = __('Name');
-$sysconf['subject_type']['tm'] = __('Temporal');
-$sysconf['subject_type']['gr'] = __('Genre');
-$sysconf['subject_type']['oc'] = __('Occupation');
-
-/* AUTHORITY LEVEL */
-$sysconf['authority_level'][1] = __('Primary Author');
-$sysconf['authority_level'][2] = __('Additional Author');
-$sysconf['authority_level'][3] = __('Editor');
-$sysconf['authority_level'][4] = __('Translator');
-$sysconf['authority_level'][5] = __('Director');
-$sysconf['authority_level'][6] = __('Producer');
-$sysconf['authority_level'][7] = __('Composer');
-$sysconf['authority_level'][8] = __('Illustrator');
-$sysconf['authority_level'][9] = __('Creator');
-$sysconf['authority_level'][10] = __('Contributor');
-
 // template info config
 if (!file_exists($sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/tinfo.inc.php')) {
     $sysconf['template']['base'] = 'php'; /* html OR php */
@@ -487,4 +440,52 @@ $dbs->query('SET NAMES \'utf8\'');
 
 // load global settings from database. Uncomment below lines if you dont want to load it
 utility::loadSettings($dbs);
+
+// check for user language selection if we are not in admin areas
+if (stripos($_SERVER['PHP_SELF'], '/admin') === false) {
+    if (isset($_GET['select_lang'])) {
+        $select_lang = trim(strip_tags($_GET['select_lang']));
+        // delete previous language cookie
+        if (isset($_COOKIE['select_lang'])) {
+            @setcookie('select_lang', $select_lang, time()-14400, SENAYAN_WEB_ROOT_DIR);
+        }
+        // create language cookie
+        @setcookie('select_lang', $select_lang, time()+14400, SENAYAN_WEB_ROOT_DIR);
+        $sysconf['default_lang'] = $select_lang;
+    } else if (isset($_COOKIE['select_lang'])) {
+        $sysconf['default_lang'] = trim(strip_tags($_COOKIE['select_lang']));
+    }
+    // set back to en_US on XML
+    if (isset($_GET['resultXML']) OR isset($_GET['inXML'])) {
+        $sysconf['default_lang'] = 'en_US';
+    }
+}
+
+// Apply language settings
+require LANGUAGES_BASE_DIR.'localisation.php';
+
+/* AUTHORITY TYPE */
+$sysconf['authority_type']['p'] = __('Personal Name');
+$sysconf['authority_type']['o'] = __('Organizational Body');
+$sysconf['authority_type']['c'] = __('Conference');
+
+/* SUBJECT/AUTHORITY TYPE */
+$sysconf['subject_type']['t'] = __('Topic');
+$sysconf['subject_type']['g'] = __('Geographic');
+$sysconf['subject_type']['n'] = __('Name');
+$sysconf['subject_type']['tm'] = __('Temporal');
+$sysconf['subject_type']['gr'] = __('Genre');
+$sysconf['subject_type']['oc'] = __('Occupation');
+
+/* AUTHORITY LEVEL */
+$sysconf['authority_level'][1] = __('Primary Author');
+$sysconf['authority_level'][2] = __('Additional Author');
+$sysconf['authority_level'][3] = __('Editor');
+$sysconf['authority_level'][4] = __('Translator');
+$sysconf['authority_level'][5] = __('Director');
+$sysconf['authority_level'][6] = __('Producer');
+$sysconf['authority_level'][7] = __('Composer');
+$sysconf['authority_level'][8] = __('Illustrator');
+$sysconf['authority_level'][9] = __('Creator');
+$sysconf['authority_level'][10] = __('Contributor');
 ?>

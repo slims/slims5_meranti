@@ -58,13 +58,13 @@ $gmd_list = ob_get_clean();
 ob_start();
 require_once(LANGUAGES_BASE_DIR.'localisation.php');
 foreach ($available_languages AS $lang_index) {
-            $selected = null;
-            $lang_code = $lang_index[0];
-            $lang_name = $lang_index[1];
-            if ($lang_code == $sysconf['default_lang']) {
-                $selected = 'selected';
-            }
-            echo '<option value="'.$lang_code.'" '.$selected.'>'.$lang_name.'</option>';
+    $selected = null;
+    $lang_code = $lang_index[0];
+    $lang_name = $lang_index[1];
+    if ($lang_code == $sysconf['default_lang']) {
+        $selected = 'selected';
+    }
+    echo '<option value="'.$lang_code.'" '.$selected.'>'.$lang_name.'</option>';
 }
 $language_select = ob_get_clean();
 
