@@ -223,7 +223,7 @@ if (isset($_GET['keywords']) AND $can_read) {
             // save it to session vars for retrieving later
             $_SESSION['z3950result'] = $xmlrec;
             // create list and form
-            echo '<form method="post" action="'.MODULES_WEB_ROOT_DIR.'bibliography/z3950.php" target="blindSubmit">';
+            echo '<form method="post" class="notAJAX" action="'.MODULES_WEB_ROOT_DIR.'bibliography/z3950.php" target="blindSubmit">';
             echo '<table align="center" id="dataList" cellpadding="5" cellspacing="0">';
             echo '<tr>';
             echo '<td colspan="3"><input type="submit" name="saveZ" value="Save Z3950 Records to Database" /></td>';
@@ -263,10 +263,10 @@ if (isset($_GET['keywords']) AND $can_read) {
 <div class="menuBoxInner biblioIcon">
     Z3950
     <hr />
-    <form name="search" class="notAJAX" action="blank.html" target="blindSubmit" onsubmit="$('doSearch').click();" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
+    <form name="search" id="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/z3950.php" loadcontainer="searchResult" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" id="keywords" size="30" />
     <select name="field"><option value="isbn"><?php echo __('ISBN/ISSN'); ?></option><option value="ti"><?php echo __('Title/Series Title'); ?></option><option value="au"><?php echo __('Authors'); ?></option></select>
-    <input type="button" id="doSearch" onclick="setContent('searchResult', '<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/z3950.php?' + $('search').serialize(), 'get')" value="<?php echo __('Search'); ?>" class="button" />
+    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
     <div><?php echo __('* Please make sure you have a working Internet connection.'); ?></div>
 </div>
