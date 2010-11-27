@@ -274,7 +274,7 @@ jQuery.fn.registerAdminEvents = function(params) {
     // focus first form element
     var mainForm = container.find('#mainForm'); if (mainForm.length > 0) { mainForm.find('input,textarea').not(':submit,:button').first().focus(); }
     // disable form marked with disabled attribute
-    container.find('form[disabled]').disableForm().find('.cancelButton').removeAttr('disabled').click(function() {
+    container.find('form.disabled').disableForm().find('.cancelButton').removeAttr('disabled').click(function() {
         jQuery.ajaxPrevious(2);
     });
 

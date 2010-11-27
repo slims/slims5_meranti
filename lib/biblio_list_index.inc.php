@@ -24,7 +24,7 @@
 // be sure that this file not accessed directly
 if (!defined('INDEX_AUTH')) {
     die("can not access this file directly");
-} elseif (INDEX_AUTH != 1) { 
+} elseif (INDEX_AUTH != 1) {
     die("can not access this file directly");
 }
 
@@ -122,6 +122,7 @@ class biblio_list extends biblio_list_model
         foreach ($_queries as $_num => $_query) {
             // field
             $_field = $_query['f'];
+			$_is_phrase = isset($_query['is_phrase']);
             //  break the loop if we meet `cql_end` field
             if ($_field == 'cql_end') { break; }
 			// if field is boolean
@@ -138,9 +139,11 @@ class biblio_list extends biblio_list_model
 				}
 				$_b = $_query['b'];
 				$_q = @$this->obj_db->escape_string(trim($_query['q']));
-				if (in_array($_field, array('title', 'author', 'topic', 'notes'))) {
-					$_q = '+'.$_q;
-					$_q = preg_replace('@\s+@i', ' +', $_q);
+				if (in_array($_field, array('title', 'author', 'subject', 'notes'))) {
+					$_q = '+'.( $_is_phrase?'"'.$_q.'"':$_q );
+					if (!$_is_phrase) {
+						$_q = preg_replace('@\s+@i', ' +', $_q);
+					}
 				}
 				$_boolean = '';
 			}
