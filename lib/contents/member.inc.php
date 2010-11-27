@@ -68,6 +68,29 @@ if (isset($_POST['logMeIn']) && !$is_member_login) {
             $ldap_configs = $sysconf['auth']['member'];
         }
         if ($logon->valid($dbs)) {
+
+            # <!-- Captcha form processing - start -->
+            if ($sysconf['captcha']['member']['enable']) {
+                if ($sysconf['captcha']['member']['type'] == 'recaptcha') {
+                    require_once LIB_DIR.$sysconf['captcha']['member']['folder'].'/'.$sysconf['captcha']['member']['incfile'];
+                    $privatekey = $sysconf['captcha']['member']['privatekey'];
+                    $resp = recaptcha_check_answer ($privatekey,
+                                          $_SERVER["REMOTE_ADDR"],
+                                          $_POST["recaptcha_challenge_field"],
+                                          $_POST["recaptcha_response_field"]);
+
+                    if (!$resp->is_valid) {
+                        // What happens when the CAPTCHA was entered incorrectly
+                        session_unset();
+                        header("location:index.php?p=member");
+                        die();
+                    }
+                } elseif ($sysconf['captcha']['member']['type'] == 'others') {
+                    # other captchas here
+                }
+            }
+            # <!-- Captcha form processing - end -->
+
             // write log
             utility::writeLogs($dbs, 'member', $username, 'Login', 'Login success for member '.$username.' from address '.$_SERVER['REMOTE_ADDR']);
             header('Location: index.php?p=member');
@@ -88,11 +111,57 @@ if (!$is_member_login) {
     <fieldset id="memberLogin">
     <legend><?php echo __('Library Member Login'); ?></legend>
     <div class="loginInfo"><?php echo __('Please insert your member ID and password given by library system administrator. If you are library\'s member and don\'t have a password yet, please contact library staff.'); ?></div>
+    <!-- Captcha preloaded javascript - start -->
+    <?php if ($sysconf['captcha']['member']['enable']) { ?>
+      <?php if ($sysconf['captcha']['member']['type'] == "recaptcha") { ?>
+      <script type="text/javascript">
+        var RecaptchaOptions = {
+          theme : '<?php echo$sysconf['captcha']['member']['recaptcha']['theme']; ?>',
+          lang : '<?php echo$sysconf['captcha']['member']['recaptcha']['lang']; ?>',
+          <?php if($sysconf['captcha']['member']['recaptcha']['customlang']['enable']) { ?>
+                custom_translations : {
+                        instructions_visual : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['instructions_visual']; ?>",
+                        instructions_audio : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['instructions_audio']; ?>",
+                        play_again : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['play_again']; ?>",
+                        cant_hear_this : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['cant_hear_this']; ?>",
+                        visual_challenge : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['visual_challenge']; ?>",
+                        audio_challenge : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['audio_challenge']; ?>",
+                        refresh_btn : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['refresh_btn']; ?>",
+                        help_btn : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['help_btn']; ?>",
+                        incorrect_try_again : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['incorrect_try_again']; ?>",
+                },
+          <?php } ?>
+        };
+      </script>
+      <?php } ?>
+    <?php } ?>
+    <!-- Captcha preloaded javascript - end -->
     <form action="index.php?p=member" method="post">
     <div class="fieldLabel"><?php echo __('Member ID'); ?></div>
         <div><input type="text" name="memberID" /></div>
     <div class="fieldLabel marginTop"><?php echo __('Password'); ?></div>
         <div><input type="password" name="memberPassWord" /></div>
+    <!-- Captcha in form - start -->
+    <div>
+    <?php if ($sysconf['captcha']['member']['enable']) { ?>
+      <?php if ($sysconf['captcha']['member']['type'] == "recaptcha") { ?>
+      <div style="margin-left:auto; margin-right:auto; margin-top:10px;">
+      <?php
+        require_once LIB_DIR.$sysconf['captcha']['member']['folder'].'/'.$sysconf['captcha']['member']['incfile'];
+        $publickey = $sysconf['captcha']['member']['publickey'];
+        echo recaptcha_get_html($publickey);
+      ?>
+      </div>
+      <!-- <div><input type="text" name="captcha_code" id="captcha-form" style="width: 80%;" /></div> -->
+    <?php 
+      } elseif ($sysconf['captcha']['member']['type'] == "others") {
+
+      }
+      #debugging
+      #echo SENAYAN_WEB_ROOT_DIR.'lib/'.$sysconf['captcha']['folder'].'/'.$sysconf['captcha']['webfile'];
+    } ?>
+    </div>        
+    <!-- Captcha in form - end -->    
     <div class="marginTop"><input type="submit" name="logMeIn" value="<?php echo __('Login'); ?>" />
     </div>
     </form>

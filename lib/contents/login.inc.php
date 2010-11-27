@@ -65,6 +65,29 @@ if (isset($_POST['logMeIn'])) {
             $ldap_configs = $sysconf['auth']['user'];
         }
         if ($logon->adminValid($dbs)) {
+
+            # <!-- Captcha form processing - start -->
+            if ($sysconf['captcha']['smc']['enable']) {
+                if ($sysconf['captcha']['smc']['type'] == 'recaptcha') {
+                    require_once LIB_DIR.$sysconf['captcha']['smc']['folder'].'/'.$sysconf['captcha']['smc']['incfile'];
+                    $privatekey = $sysconf['captcha']['smc']['privatekey'];
+                    $resp = recaptcha_check_answer ($privatekey,
+                                          $_SERVER["REMOTE_ADDR"],
+                                          $_POST["recaptcha_challenge_field"],
+                                          $_POST["recaptcha_response_field"]);
+
+                    if (!$resp->is_valid) {
+                        // What happens when the CAPTCHA was entered incorrectly
+                        session_unset();
+                        header("location:index.php?p=login");
+                        die();
+                    }
+                } elseif ($sysconf['captcha']['smc']['type'] == 'others') {
+                    # other captchas here
+                }
+            }
+            # <!-- Captcha form processing - end -->
+
             // set cookie admin flag
             setcookie('admin_logged_in', true, time()+14400, SENAYAN_WEB_ROOT_DIR);
             // write log
@@ -73,7 +96,8 @@ if (isset($_POST['logMeIn'])) {
             if ($sysconf['login_message']) {
                 echo 'alert(\''.__('Welcome to Library Automation, ').$logon->real_name.'\');';
             }
-            echo 'location.href = \'admin/index.php\';';
+            #echo 'location.href = \'admin/index.php\';';
+            echo 'location.href = \''.SENAYAN_WEB_ROOT_DIR.'admin/index.php\';';
             echo '</script>';
             exit();
         } else {
@@ -90,16 +114,61 @@ if (isset($_POST['logMeIn'])) {
     }
 }
 ?>
-
 <div id="loginForm">
     <noscript>
         <div style="font-weight: bold; color: #FF0000;"><?php echo __('Your browser does not support Javascript or Javascript is disabled. Application won\'t run without Javascript!'); ?><div>
     </noscript>
+    <!-- Captcha preloaded javascript - start -->
+    <?php if ($sysconf['captcha']['smc']['enable']) { ?>
+      <?php if ($sysconf['captcha']['smc']['type'] == "recaptcha") { ?>
+      <script type="text/javascript">
+        var RecaptchaOptions = {
+          theme : '<?php echo$sysconf['captcha']['smc']['recaptcha']['theme']; ?>',
+          lang : '<?php echo$sysconf['captcha']['smc']['recaptcha']['lang']; ?>',
+          <?php if($sysconf['captcha']['smc']['recaptcha']['customlang']['enable']) { ?>
+                custom_translations : {
+                        instructions_visual : "<?php echo $sysconf['captcha']['smc']['recaptcha']['customlang']['instructions_visual']; ?>",
+                        instructions_audio : "<?php echo $sysconf['captcha']['smc']['recaptcha']['customlang']['instructions_audio']; ?>",
+                        play_again : "<?php echo $sysconf['captcha']['smc']['recaptcha']['customlang']['play_again']; ?>",
+                        cant_hear_this : "<?php echo $sysconf['captcha']['smc']['recaptcha']['customlang']['cant_hear_this']; ?>",
+                        visual_challenge : "<?php echo $sysconf['captcha']['smc']['recaptcha']['customlang']['visual_challenge']; ?>",
+                        audio_challenge : "<?php echo $sysconf['captcha']['smc']['recaptcha']['customlang']['audio_challenge']; ?>",
+                        refresh_btn : "<?php echo $sysconf['captcha']['smc']['recaptcha']['customlang']['refresh_btn']; ?>",
+                        help_btn : "<?php echo $sysconf['captcha']['smc']['recaptcha']['customlang']['help_btn']; ?>",
+                        incorrect_try_again : "<?php echo $sysconf['captcha']['smc']['recaptcha']['customlang']['incorrect_try_again']; ?>",
+                },
+          <?php } ?>
+        };
+      </script>
+      <?php } ?>
+    <?php } ?>
+    <!-- Captcha preloaded javascript - end -->
+
     <form action="index.php?p=login" method="post">
     <div class="heading1">Username</div>
     <div><input type="text" name="userName" id="userName" style="width: 80%;" /></div>
     <div class="heading1 marginTop">Password</div>
     <div><input type="password" name="passWord" style="width: 80%;" /></div>
+    <!-- Captcha in form - start -->
+    <?php if ($sysconf['captcha']['smc']['enable']) { ?>
+      <?php if ($sysconf['captcha']['smc']['type'] == "recaptcha") { ?>
+      <div style="margin-left:40px; margin-right:auto; margin-top:10px;">
+      <?php
+        require_once LIB_DIR.$sysconf['captcha']['smc']['folder'].'/'.$sysconf['captcha']['smc']['incfile'];
+        $publickey = $sysconf['captcha']['smc']['publickey'];
+        echo recaptcha_get_html($publickey);
+      ?>
+      </div>
+      <!-- <div><input type="text" name="captcha_code" id="captcha-form" style="width: 80%;" /></div> -->
+    <?php 
+      } elseif ($sysconf['captcha']['smc']['type'] == "others") {
+
+      }
+      #debugging
+      #echo SENAYAN_WEB_ROOT_DIR.'lib/'.$sysconf['captcha']['folder'].'/'.$sysconf['captcha']['webfile'];
+    } ?>
+    <!-- Captcha in form - end -->
+
     <div class="marginTop"><input type="submit" name="logMeIn" value="Logon" id="loginButton" />
         <input type="button" value="Home" id="homeButton" onclick="javascript: location.href = 'index.php';" />
     </div>
