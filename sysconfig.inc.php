@@ -99,8 +99,10 @@ define('REPORT_FILE_BASE_DIR', FILES_UPLOAD_DIR.REPORT_DIR.DIRECTORY_SEPARATOR);
 define('LANGUAGES_BASE_DIR', LIB_DIR.'lang'.DIRECTORY_SEPARATOR);
 
 // senayan web doc root dir
+/* Custom base URL */
+$sysconf['baseurl'] = '';
 $temp_senayan_web_root_dir = preg_replace('@admin.*@i', '', dirname($_SERVER['PHP_SELF']));
-define('SENAYAN_WEB_ROOT_DIR', $temp_senayan_web_root_dir.(preg_match('@\/$@i', $temp_senayan_web_root_dir)?'':'/'));
+define('SENAYAN_WEB_ROOT_DIR', $sysconf['baseurl'].$temp_senayan_web_root_dir.(preg_match('@\/$@i', $temp_senayan_web_root_dir)?'':'/'));
 
 // javascript library web root dir
 define('JS_WEB_ROOT_DIR', SENAYAN_WEB_ROOT_DIR.'js/');
@@ -133,9 +135,6 @@ $sysconf['ajaxsec_user'] = 'ajax';
 $sysconf['ajaxsec_passwd'] = 'secure';
 $sysconf['ajaxsec_ip_enabled'] = 0;
 $sysconf['ajaxsec_ip_allowed'] = '';
-
-/* Custom base URL */
-$sysconf['baseurl'] = '';
 
 /* session login timeout in second */
 $sysconf['session_timeout'] = 7200;
@@ -431,6 +430,23 @@ $sysconf['index']['sphinx_opts'] = array(
 	'select' => null, 'limit' => 20,
     'max_limit' => 100000, // must be less or same with max_matches in sphinx.conf
 	'ranker' => null);
+
+/**
+ * Captcha Settings
+ */
+// Captcha settings for Senayan Management Console (aka Librarian Login)
+$sysconf['captcha']['smc']['enable'] = false; // value can be 'true' or 'false'
+$sysconf['captcha']['smc']['type'] = 'recaptcha'; // value can be 'recaptcha' (at this time)
+if ($sysconf['captcha']['smc']['enable']) {
+    include_once LIB_DIR.$sysconf['captcha']['smc']['type'].DIRECTORY_SEPARATOR.'smc_settings.inc.php';
+}
+
+// Captcha settings for Member Login
+$sysconf['captcha']['member']['enable'] = false; // value can be 'true' or 'false'
+$sysconf['captcha']['member']['type'] = 'recaptcha'; // value can be 'recaptcha' (at this time)
+if ($sysconf['captcha']['member']['enable']) {
+    include_once LIB_DIR.$sysconf['captcha']['member']['type'].DIRECTORY_SEPARATOR.'member_settings.inc.php';
+}
 
 /**
  * Mailing Settings
