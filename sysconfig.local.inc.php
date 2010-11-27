@@ -30,9 +30,9 @@ if (!defined('INDEX_AUTH')) {
 /* LOCAL DATABASE CONNECTION config */
 // database constant
 // change below setting according to your database configuration
-define('DB_NAME', 'senayandb_matoa');
-define('DB_USERNAME', 'slimsuser_matoa');
-define('DB_PASSWORD', 'password_slimsuser_matoa');
+define('DB_NAME', 'senayandb');
+define('DB_USERNAME', 'senayanuser');
+define('DB_PASSWORD', 'password_senayanuser');
 
 // define any other sysconfig variables below
 $sysconf['index']['type'] = 'index';
