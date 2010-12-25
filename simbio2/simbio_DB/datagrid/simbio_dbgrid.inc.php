@@ -24,7 +24,7 @@
 // be sure that this file not accessed directly
 if (!defined('INDEX_AUTH')) {
     die("can not access this file directly");
-} elseif (INDEX_AUTH != 1) { 
+} elseif (INDEX_AUTH != 1) {
     die("can not access this file directly");
 }
 
@@ -72,6 +72,7 @@ class simbio_datagrid extends simbio_table
     # are we using AJAX or not
     public $using_AJAX = true;
     public $invisible_fields = array();
+    public $disable_paging = false;
 
     /**
      * Method to create datagrid
@@ -351,7 +352,7 @@ class simbio_datagrid extends simbio_table
 
         // create paging
         $_paging =  null;
-        if ($this->num_rows > $int_num2show) {
+        if ($this->num_rows > $int_num2show && !$this->disable_paging) {
             $_paging = simbio_paging::paging($this->num_rows, $int_num2show, 5);
         }
         // iframe

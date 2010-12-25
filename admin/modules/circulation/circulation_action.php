@@ -275,7 +275,7 @@ if (isset($_POST['quickReturnID']) AND $_POST['quickReturnID']) {
         $table->appendTableRow(array(__('Member Name'), $loan_d['member_name'], __('Member ID'), $loan_d['member_id']));
         $table->appendTableRow(array(__('Loan Date'), $loan_d['loan_date'], __('Due Date'), $loan_d['due_date']));
         // set the cell attributes
-        $table->setCellAttr(1, null, 'class="dataListHeader" style="color: #fff; font-weight: bold;" colspan="4"');
+        $table->setCellAttr(1, 0, 'class="dataListHeader" style="color: #fff; font-weight: bold;" colspan="4"');
         $table->setCellAttr(2, 0, 'class="alterCell"');
         $table->setCellAttr(2, 1, 'class="alterCell2" colspan="3"');
         $table->setCellAttr(3, 0, 'class="alterCell" width="15%"');

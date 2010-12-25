@@ -14,6 +14,9 @@
 <!--<link rel="stylesheet" type="text/css" href="style.css" />-->
 <link href="<?php echo $sysconf['template']['css']; ?>" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/form.js"></script>
+<script type="text/javascript" src="js/gui.js"></script>
+<?php echo $metadata; ?>
 </head>
 <body>
 
@@ -48,7 +51,6 @@
                         -->
 			</ul>
 
-		<div id="date">August 1, 2006</div>
 		</div>
 
 
