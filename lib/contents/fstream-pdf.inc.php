@@ -58,7 +58,8 @@ if ($sysconf['allow_pdf_download']) {
                 }
             }
 
-            header('Content-Disposition: inline; filename="'.basename($file_loc).'"');
+            header("Content-Description: File Transfer");
+            header('Content-Disposition: attachment; filename="'.basename($file_loc).'"');
             header('Content-Type: '.$file_d['mime_type']);
             readfile($file_loc);
             exit();
