@@ -663,9 +663,12 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         $datagrid->sql_group_by = 'biblio.biblio_id';
     }
 
+	$stopwords= "@\sAnd\s|\sOr\s|\sNot\s|\sThe\s|\sDan\s|\sAtau\s|\sAn\s|\sA\s@i";
+
     // is there any search
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
         $keywords = $dbs->escape_string(trim($_GET['keywords']));
+		$keywords = preg_replace($stopwords,' ',$keywords);
         $searchable_fields = array('title', 'author', 'subject', 'isbn', 'publisher');
         if ($_GET['field'] != '0' AND in_array($_GET['field'], $searchable_fields)) {
             $field = $_GET['field'];
