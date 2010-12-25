@@ -96,6 +96,7 @@ if (!$reportView) {
     </div>
     <div style="padding-top: 10px; clear: both;">
     <input type="submit" name="applyFilter" value="<?php echo __('Apply Filter'); ?>" />
+    <input type="button" name="moreFilter" value="<?php echo __('Show More Filter Options'); ?>" />
     <input type="hidden" name="reportView" value="true" />
     </div>
     </form>
@@ -129,7 +130,7 @@ if (!$reportView) {
     $output = simbio_date::generateCalendar($selected_year, $selected_month, $fines_data);
 
     // print out
-    echo '<div class="printPageInfo">Fines Count Report for year <strong>'.$selected_year.'</strong> <a class="printReport" onclick="window.print()" href="#">['.__('Print Current Page').']</a></div>'."\n";
+    echo '<div class="printPageInfo">Fines Count Report for year <strong>'.$selected_year.'</strong>, month <strong>'.$selected_month.'</strong> <a class="printReport" onclick="window.print()" href="#">['.__('Print Current Page').']</a></div>'."\n";
     echo $output;
 
     $content = ob_get_clean();

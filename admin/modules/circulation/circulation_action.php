@@ -256,7 +256,7 @@ if (isset($_POST['quickReturnID']) AND $_POST['quickReturnID']) {
             $reserve_q = $dbs->query('SELECT r.member_id, m.member_name
                 FROM reserve AS r
                 LEFT JOIN member AS m ON r.member_id=m.member_id
-                WHERE item_code=\''.$loan_d['item_code'].'\' ORDER BY reserve_date DESC');
+                WHERE item_code=\''.$loan_d['item_code'].'\' ORDER BY reserve_date ASC LIMIT 1');
             $reserve_d = $reserve_q->fetch_row();
             $member = $reserve_d[1].' ('.$reserve_d[0].')';
             $reserve_msg = str_replace(array('{itemCode}', '{member}'), array($loan_d['item_code'], $member), __('Item {itemCode} is being reserved by member {member}')); //mfc

@@ -92,4 +92,41 @@ function getSubjectID($str_subject, $str_subject_type, &$arr_cache = false)
         }
     }
 }
+
+/**
+ * callback function to show title and authors in datagrid
+ **/
+function showTitleAuthors($obj_db, $array_data)
+{
+    // biblio author detail
+    #$_biblio_q = $obj_db->query('SELECT b.title, a.author_name, opac_hide, promoted FROM biblio AS b
+    #    LEFT JOIN biblio_author AS ba ON b.biblio_id=ba.biblio_id
+    #    LEFT JOIN mst_author AS a ON ba.author_id=a.author_id
+    #    WHERE b.biblio_id='.$array_data[0]);
+    $_sql_biblio_q = sprintf('SELECT b.title, a.author_name, opac_hide, promoted, b.labels FROM biblio AS b
+        LEFT JOIN biblio_author AS ba ON b.biblio_id=ba.biblio_id
+        LEFT JOIN mst_author AS a ON ba.author_id=a.author_id
+        WHERE b.biblio_id=%d', $array_data[0]);
+    $_biblio_q = $obj_db->query($_sql_biblio_q);
+    $_authors = '';
+    while ($_biblio_d = $_biblio_q->fetch_row()) {
+        $_title = $_biblio_d[0];
+        $_authors .= $_biblio_d[1].' - ';
+        $_opac_hide = (integer)$_biblio_d[2];
+        $_promoted = (integer)$_biblio_d[3];
+    }
+    $_authors = substr_replace($_authors, '', -3);
+    $_output = '<div style="float: left;"><span class="title">'.$_title.'</span><div class="authors">'.$_authors.'</div></div>';
+    // check for opac hide flag
+    if ($_opac_hide) {
+        $_output .= '<div style="float: right; width: 20px; height: 20px;" class="lockFlagIcon" title="Hidden in OPAC">&nbsp;</div>';
+    }
+    // check for promoted flag
+    if ($_promoted) {
+        $_output .= '<div style="float: right; width: 20px; height: 20px;" class="homeFlagIcon" title="Promoted To Homepage">&nbsp;</div>';
+    }
+    // labels
+
+    return $_output;
+}
 ?>

@@ -24,7 +24,7 @@
 // be sure that this file not accessed directly
 if (!defined('INDEX_AUTH')) {
     die("can not access this file directly");
-} elseif (INDEX_AUTH != 1) { 
+} elseif (INDEX_AUTH != 1) {
     die("can not access this file directly");
 }
 
@@ -39,10 +39,10 @@ abstract class biblio_list_model
     public $show_labels = true;
     public $stop_words = array('a', 'an', 'of', 'the', 'to', 'so', 'as', 'be');
     public $query_time = 0;
-	public $disable_item_data = false;
-	public $enable_mark = true;
-	public $query_error;
-	public $current_page = 1;
+    public $disable_item_data = false;
+    public $enable_mark = true;
+    public $query_error;
+    public $current_page = 1;
     /* Protected properties */
     protected $obj_db = false;
     protected $resultset = false;
@@ -56,8 +56,8 @@ abstract class biblio_list_model
     protected $enable_custom_frontpage = false;
     protected $orig_query;
     protected $searchable_fields = array('title', 'author', 'subject', 'isbn',
-		'gmd', 'colltype', 'class', 'callnumber', 'notes',
-		'publisher', 'publish_year', 'itemcode', 'location');
+	'gmd', 'colltype', 'class', 'callnumber', 'notes',
+	'publisher', 'publish_year', 'itemcode', 'location');
     protected $field_join_type = array();
 
     /**
@@ -66,10 +66,10 @@ abstract class biblio_list_model
      * @param   object  $obj_db
      * @param   integer	$int_num_show
      */
-	public function __construct($obj_db, $int_num_show = 20) {
-		$this->obj_db = $obj_db;
-		$this->num2show = $int_num_show;
-	}
+    public function __construct($obj_db, $int_num_show = 20) {
+	$this->obj_db = $obj_db;
+	$this->num2show = $int_num_show;
+    }
 
 
     /**
@@ -88,7 +88,7 @@ abstract class biblio_list_model
      * @param   string  $str_criteria
      * @return  void
      */
-	protected function compileSQL() { }
+    protected function compileSQL() { }
 
 
     /**
@@ -97,9 +97,9 @@ abstract class biblio_list_model
      * @param   integer	$int_biblio_id
      * @return  string
      */
-	public static function getAuthors($obj_db, $int_biblio_id) {
-		$_authors = '';
-		$_sql_str = 'SELECT a.author_name FROM biblio_author AS ba
+    public static function getAuthors($obj_db, $int_biblio_id) {
+	$_authors = '';
+	$_sql_str = 'SELECT a.author_name FROM biblio_author AS ba
             LEFT JOIN biblio AS b ON ba.biblio_id=b.biblio_id
             LEFT JOIN mst_author AS a ON ba.author_id=a.author_id WHERE ba.biblio_id='.$int_biblio_id;
         // query the author
@@ -108,8 +108,8 @@ abstract class biblio_list_model
         while ($_author_d = $_author_q->fetch_row()) {
             $_authors .= $_author_d[0].' - ';
         }
-		return $_authors;
-	}
+	return $_authors;
+    }
 
 
     /**
@@ -136,8 +136,8 @@ abstract class biblio_list_model
      */
     public function getDocumentList($bool_return_output = true)
     {
-		global $sysconf;
-		$_sql_str = $this->compileSQL();
+	global $sysconf;
+	$_sql_str = $this->compileSQL();
         // start time
         $_start = function_exists('microtime')?microtime(true):time();
         // execute query
@@ -181,20 +181,20 @@ abstract class biblio_list_model
             if ($this->show_labels AND !empty($_biblio_d['labels'])) {
                 $arr_labels = @unserialize($_biblio_d['labels']);
                 if ($arr_labels !== false) {
-	                foreach ($arr_labels as $label) {
-	                    if (!isset($this->label_cache[$label[0]]['name'])) {
-	                        $_label_q = $this->obj_db->query('SELECT label_name, label_desc, label_image FROM mst_label AS lb
-	                            WHERE lb.label_name=\''.$label[0].'\'');
-	                        $_label_d = $_label_q->fetch_row();
-	                        $this->label_cache[$label[0]] = array('name' => $_label_d[0], 'desc' => $_label_d[1], 'image' => $_label_d[2]);
-	                    }
-	                    if (isset($label[1]) && $label[1]) {
-	                        $_biblio_d['title'] .= ' <a href="'.$label[1].'" target="_blank"><img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" border="0" /></a>';
-	                    } else {
-	                        $_biblio_d['title'] .= ' <img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" />';
-	                    }
+	            foreach ($arr_labels as $label) {
+	                if (!isset($this->label_cache[$label[0]]['name'])) {
+	                    $_label_q = $this->obj_db->query('SELECT label_name, label_desc, label_image FROM mst_label AS lb
+	                        WHERE lb.label_name=\''.$label[0].'\'');
+	                    $_label_d = $_label_q->fetch_row();
+	                    $this->label_cache[$label[0]] = array('name' => $_label_d[0], 'desc' => $_label_d[1], 'image' => $_label_d[2]);
 	                }
-				}
+	                if (isset($label[1]) && $label[1]) {
+	                    $_biblio_d['title'] .= ' <a href="'.$label[1].'" target="_blank"><img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" border="0" /></a>';
+	                } else {
+	                    $_biblio_d['title'] .= ' <img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" />';
+	                }
+	            }
+		}
             }
             // button
             $_biblio_d['detail_button'] = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" class="detailLink" title="'.__('Record Detail').'">'.__('Record Detail').'</a>';

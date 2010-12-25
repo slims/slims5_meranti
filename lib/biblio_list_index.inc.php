@@ -83,8 +83,8 @@ class biblio_list extends biblio_list_model
         if ($this->criteria) {
             $_add_sql_str .= ' ('.$this->criteria['sql_criteria'].') ';
         } else {
-			$_add_sql_str .= ' `index`.`opac_hide`=0';
-		}
+            $_add_sql_str .= ' `index`.`opac_hide`=0';
+	}
         // promoted flag
         if ($this->only_promoted) { $_add_sql_str .= ' AND promoted=1'; }
 
@@ -122,74 +122,74 @@ class biblio_list extends biblio_list_model
         foreach ($_queries as $_num => $_query) {
             // field
             $_field = $_query['f'];
-			$_is_phrase = isset($_query['is_phrase']);
+	    $_is_phrase = isset($_query['is_phrase']);
             //  break the loop if we meet `cql_end` field
             if ($_field == 'cql_end') { break; }
-			// if field is boolean
-			if ($_field == 'boolean') {
-				if ($_query['b'] == '*') { $_boolean = 'OR'; } else { $_boolean = 'AND'; }
-				continue;
-			} else {
-				if ($_boolean) {
-					$_sql_criteria .= " $_boolean ";
-				} else {
-					if ($_query['b'] == '*') {
-						$_sql_criteria .= " OR ";
-					} else { $_sql_criteria .= " AND "; }
-				}
-				$_b = $_query['b'];
-				$_q = @$this->obj_db->escape_string(trim($_query['q']));
-				if (in_array($_field, array('title', 'author', 'subject', 'notes'))) {
-					$_q = '+'.( $_is_phrase?'"'.$_q.'"':$_q );
-					if (!$_is_phrase) {
-						$_q = preg_replace('@\s+@i', ' +', $_q);
-					}
-				}
-				$_boolean = '';
-			}
+		// if field is boolean
+		if ($_field == 'boolean') {
+			if ($_query['b'] == '*') { $_boolean = 'OR'; } else { $_boolean = 'AND'; }
+			continue;
+		} else {
+                    if ($_boolean) {
+                        $_sql_criteria .= " $_boolean ";
+                    } else {
+                        if ($_query['b'] == '*') {
+                            $_sql_criteria .= " OR ";
+                        } else { $_sql_criteria .= " AND "; }
+                    }
+                    $_b = $_query['b'];
+                    $_q = @$this->obj_db->escape_string(trim($_query['q']));
+                    if (in_array($_field, array('title', 'author', 'subject', 'notes'))) {
+                        $_q = '+'.( $_is_phrase?'"'.$_q.'"':$_q );
+                        if (!$_is_phrase) {
+                                $_q = preg_replace('@\s+@i', ' +', $_q);
+                        }
+                    }
+                    $_boolean = '';
+		}
             // for debugging purpose only
             // echo "<p>$_num. $_field -> $_boolean -> $_sql_criteria</p><p>&nbsp;</p>";
 
-			// check fields
+	    // check fields
             switch ($_field) {
                 case 'author' :
-					if ($_b == '-') { $_sql_criteria .= " NOT (MATCH (index.author) AGAINST ('$_q' IN BOOLEAN MODE))";
-					} else { $_sql_criteria .= " (MATCH (index.author) AGAINST ('$_q' IN BOOLEAN MODE))"; }
+		    if ($_b == '-') { $_sql_criteria .= " NOT (MATCH (index.author) AGAINST ('$_q' IN BOOLEAN MODE))";
+		    } else { $_sql_criteria .= " (MATCH (index.author) AGAINST ('$_q' IN BOOLEAN MODE))"; }
                     break;
                 case 'subject' :
-					if ($_b == '-') { $_sql_criteria .= " NOT (MATCH (index.topic) AGAINST ('$_q' IN BOOLEAN MODE))";
-					} else { $_sql_criteria .= " (MATCH (index.topic) AGAINST ('$_q' IN BOOLEAN MODE))"; }
+		    if ($_b == '-') { $_sql_criteria .= " NOT (MATCH (index.topic) AGAINST ('$_q' IN BOOLEAN MODE))";
+		    } else { $_sql_criteria .= " (MATCH (index.topic) AGAINST ('$_q' IN BOOLEAN MODE))"; }
                     break;
                 case 'location' :
-					if (!$this->disable_item_data) {
-						if ($_b == '-') { $_sql_criteria .= " NOT (MATCH (index.location) AGAINST ('$_q' IN BOOLEAN MODE))";
-						} else { $_sql_criteria .= " (MATCH (index.location) AGAINST ('$_q' IN BOOLEAN MODE))"; }
-					} else {
-						if ($_b == '-') { $_sql_criteria .= " index.node !='$_q'";
-						} else { $_sql_criteria .= " index.node = '$_q'"; }
-					}
+		    if (!$this->disable_item_data) {
+			if ($_b == '-') { $_sql_criteria .= " NOT (MATCH (index.location) AGAINST ('$_q' IN BOOLEAN MODE))";
+			} else { $_sql_criteria .= " (MATCH (index.location) AGAINST ('$_q' IN BOOLEAN MODE))"; }
+		    } else {
+			if ($_b == '-') { $_sql_criteria .= " index.node !='$_q'";
+			} else { $_sql_criteria .= " index.node = '$_q'"; }
+		    }
                     break;
                 case 'colltype' :
-					if (!$this->disable_item_data) {
-						if ($_b == '-') { $_sql_criteria .= " NOT (MATCH (index.collection_types) AGAINST ('$_q' IN BOOLEAN MODE))";
-						} else { $_sql_criteria .= " MATCH (index.collection_types) AGAINST ('$_q' IN BOOLEAN MODE)"; }
-					}
+                    if (!$this->disable_item_data) {
+			if ($_b == '-') { $_sql_criteria .= " NOT (MATCH (index.collection_types) AGAINST ('$_q' IN BOOLEAN MODE))";
+			} else { $_sql_criteria .= " MATCH (index.collection_types) AGAINST ('$_q' IN BOOLEAN MODE)"; }
+                    }
                     break;
                 case 'itemcode' :
-					if (!$this->disable_item_data) {
-						if ($_b == '-') { $_sql_criteria .= " NOT (MATCH (index.items) AGAINST ('$_q' IN BOOLEAN MODE))";
-						} else { $_sql_criteria .= " MATCH (index.items) AGAINST ('$_q' IN BOOLEAN MODE)"; }
-					}
+                    if (!$this->disable_item_data) {
+			if ($_b == '-') { $_sql_criteria .= " NOT (MATCH (index.items) AGAINST ('$_q' IN BOOLEAN MODE))";
+			} else { $_sql_criteria .= " MATCH (index.items) AGAINST ('$_q' IN BOOLEAN MODE)"; }
+		    }
                     break;
                 case 'callnumber' :
                     if ($_b == '-') { $_sql_criteria .= ' AND biblio.call_number NOT LIKE \''.$_q.'%\'';
                     } else { $_sql_criteria .= ' index.call_number LIKE \''.$_q.'%\''; }
                     break;
                 case 'itemcallnumber' :
-					if (!$this->disable_item_data) {
-						if ($_b == '-') { $_sql_criteria .= ' AND item.call_number NOT LIKE \''.$_q.'%\'';
-						} else { $_sql_criteria .= ' item.call_number LIKE \''.$_q.'%\''; }
-					}
+		    if (!$this->disable_item_data) {
+			if ($_b == '-') { $_sql_criteria .= ' AND item.call_number NOT LIKE \''.$_q.'%\'';
+			} else { $_sql_criteria .= ' item.call_number LIKE \''.$_q.'%\''; }
+		    }
                     break;
                 case 'class' :
                     if ($_b == '-') { $_sql_criteria .= ' AND index.classification NOT LIKE \''.$_q.'%\'';
@@ -217,8 +217,8 @@ class biblio_list extends biblio_list_model
                     } else { $_sql_criteria .= " (MATCH (index.notes) AGAINST ('".$_q."' IN BOOLEAN MODE))"; }
                     break;
                 default :
-					if ($_b == '-') { $_sql_criteria .= " NOT (MATCH (index.title, index.series) AGAINST ('$_q' IN BOOLEAN MODE))";
-					} else { $_sql_criteria .= " (MATCH (index.title, index.series) AGAINST ('$_q' IN BOOLEAN MODE))"; }
+                    if ($_b == '-') { $_sql_criteria .= " NOT (MATCH (index.title, index.series) AGAINST ('$_q' IN BOOLEAN MODE))";
+                    } else { $_sql_criteria .= " (MATCH (index.title, index.series) AGAINST ('$_q' IN BOOLEAN MODE))"; }
                     break;
             }
         }
