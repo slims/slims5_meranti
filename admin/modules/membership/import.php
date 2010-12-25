@@ -125,7 +125,8 @@ if (isset($_POST['doImport'])) {
                     $member_since_date = '\''.$field[13].'\'';
                     $register_date = '\''.$field[14].'\'';
                     $expire_date = '\''.$field[15].'\'';
-                    $member_notes = preg_replace('@\\\s*'.$field_enc.'$@i', '', $field[16]);
+                    $birth_date = $field[16]?'\''.$field[16].'\'':'NULL';
+                    $member_notes = preg_replace('@\\\s*'.$field_enc.'$@i', '', $field[17]);
                     $member_notes = $member_notes?'\''.$member_notes.'\'':'NULL';
                     // sql insert string
                     $sql_str = "INSERT IGNORE INTO member
@@ -133,14 +134,14 @@ if (isset($_POST['doImport'])) {
                         member_type_id, member_email, member_address, postal_code,
                         inst_name, is_new, member_image, pin, member_phone,
                         member_fax, member_since_date, register_date,
-                        expire_date, member_notes,
+                        expire_date, birth_date, member_notes,
                         input_date, last_update)
                             VALUES ($member_id, $member_name, $gender,
                             $member_type_id, $member_email, $member_address, $postal_code,
                             $inst_name, $is_new,
                             $member_image, $pin, $member_phone,
                             $member_fax, $member_since_date, $register_date,
-                            $expire_date, $member_notes,
+                            $expire_date, $birth_date, $member_notes,
                             $curr_datetime, $curr_datetime)";
                     // send query
                     @$dbs->query($sql_str);
