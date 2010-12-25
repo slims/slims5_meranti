@@ -30,7 +30,7 @@ if (!defined('INDEX_AUTH')) {
 /* LOCAL DATABASE CONNECTION config */
 // database constant
 // change below setting according to your database configuration
-define('DB_NAME', 'senayandb15jquery');
+define('DB_NAME', 'senayandb');
 define('DB_USERNAME', 'senayanuser');
 define('DB_PASSWORD', 'password_senayanuser');
 
