@@ -66,7 +66,7 @@ if (isset($_POST['doExport'])) {
             m.postal_code, m.inst_name, m.is_new,
             m.member_image, m.pin, m.member_phone,
             m.member_fax, m.member_since_date, m.register_date,
-            m.expire_date, m.member_notes
+            m.expire_date, m.birth_date, m.member_notes
             FROM member AS m
             LEFT JOIN mst_member_type AS mt ON m.member_type_id=mt.member_type_id ";
         if ($limit > 0) { $sql .= ' LIMIT '.$limit; }

@@ -19,7 +19,7 @@
  */
 
 // be sure that this file not accessed directly
-if (INDEX_AUTH != 1) { 
+if (INDEX_AUTH != 1) {
     die("can not access this file directly");
 }
 
@@ -125,24 +125,19 @@ class biblio_indexer
 		$data['opac_hide'] = $rb_id['opac_hide'];
 		$data['promoted'] = $rb_id['promoted'];
 		if ($rb_id['labels']) {
-			$_labels = unserialize($rb_id['labels']);
-			if (is_array($_labels) && count($_labels) > 0) {
-				$data['labels'] = @implode(' - ', $_labels);
-			} else {
-				$data['labels'] = 'literal{NULL}';
-			}
+		    $data['labels'] = $rb_id['labels'];
 		} else {
-			$data['labels'] = 'literal{NULL}';
+		    $data['labels'] = 'literal{NULL}';
 		}
 		$data['collation'] = $this->obj_db->escape_string($rb_id['collation']);
 		$data['image'] = $this->obj_db->escape_string($rb_id['image']);
 		$data['input_date'] = $rb_id['input_date'];
 		$data['last_update'] = $rb_id['last_update'];
 		if ($rb_id['notes'] != '') {
-			$data['notes'] = trim($this->obj_db->escape_string(strip_tags($rb_id['notes'], '<br><p><div><span><i><em><strong><b><code>')));
+		    $data['notes'] = trim($this->obj_db->escape_string(strip_tags($rb_id['notes'], '<br><p><div><span><i><em><strong><b><code>')));
 		}
 		if ($rb_id['series_title'] != '') {
-			$data['series'] = $this->obj_db->escape_string($rb_id['series_title']);
+		    $data['series'] = $this->obj_db->escape_string($rb_id['series_title']);
 		}
 
 		/* author  */

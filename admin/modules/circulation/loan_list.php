@@ -153,10 +153,10 @@ if (isset($_SESSION['memberID'])) {
         $reserve_q = $dbs->query(sprintf('SELECT r.member_id, m.member_name
             FROM reserve AS r
             LEFT JOIN member AS m ON r.member_id=m.member_id
-            WHERE item_code=\'%s\' ORDER BY reserve_date DESC', $reservedItem));
+            WHERE item_code=\'%s\' ORDER BY reserve_date ASC LIMIT 1', $reservedItem));
         $reserve_d = $reserve_q->fetch_row();
         $member = $reserve_d[1].' ('.$reserve_d[0].')';
-        $reserve_msg = str_replace(array('{itemCode}', '{member}'), array('<b>'.$reservedItem.'</b>', '<b>'.$member.'</b>'), __('Item {itemCode} is being reserved by member {member}')); //mfc
+        $reserve_msg = str_replace(array('{itemCode}', '{member}'), array('<b>'.$reservedItem.'</b>', '<b>'.$member.'</b>'), __('Item {itemCode} is being reserved by member {member}'));
         echo '<div class="infoBox">'.$reserve_msg.'</div>';
     }
 

@@ -594,6 +594,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     echo $form->printOut();
 } else {
     require SIMBIO_BASE_DIR.'simbio_UTILS/simbio_tokenizecql.inc.php';
+    require MODULES_BASE_DIR.'bibliography/biblio_utils.inc.php';
     require LIB_DIR.'biblio_list_model.inc.php';
 
     // number of records to show in list
@@ -603,7 +604,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $datagrid = new simbio_datagrid();
 
     // index choice
-    if ($sysconf['index']['type'] == 'index' || ($sysconf['index']['type'] == 'sphinx' && file_exists(LIB_DIR.'sphinx/sphinxapi.php'))) {
+    if ($sysconf['index']['type'] == 'index' ||  $sysconf['index']['type'] == 'sphinx' ) {
         if ($sysconf['index']['type'] == 'sphinx') {
             require LIB_DIR.'sphinx/sphinxapi.php';
             require LIB_DIR.'biblio_list_sphinx.inc.php';
@@ -614,34 +615,21 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         // table spec
         $table_spec = 'search_biblio AS `index` LEFT JOIN item ON `index`.biblio_id=item.biblio_id';
 
-        // callback function to show title and authors in datagrid
-        function showTitleAuthors($obj_db, $array_data)
-        {
-            $_output = '<div style="float: left;"><span class="title">'.$array_data[1].'</span><div class="authors">'.$array_data[2].'</div></div>';
-            /*
-            // check for opac hide flag
-            if ($_opac_hide) { $_output .= '<div style="float: right; width: 20px; height: 20px;" class="lockFlagIcon" title="Hidden in OPAC">&nbsp;</div>'; }
-            // check for promoted flag
-            if ($_promoted) { $_output .= '<div style="float: right; width: 20px; height: 20px;" class="homeFlagIcon" title="Promoted To Homepage">&nbsp;</div>'; }
-            */
-            return $_output;
-        }
-
         if ($can_read AND $can_write) {
-            $datagrid->setSQLColumn('index.biblio_id', 'index.title AS \''.__('Title').'\'',
+            $datagrid->setSQLColumn('index.biblio_id', 'index.title AS \''.__('Title').'\'', 'index.labels',
                 'index.author',
                 'index.isbn_issn AS \''.__('ISBN/ISSN').'\'',
                 'IF(COUNT(item.item_id)>0, COUNT(item.item_id), \'<strong style="color: #f00;">'.__('None').'</strong>\') AS \''.__('Copies').'\'',
                 'index.last_update AS \''.__('Last Update').'\'');
             $datagrid->modifyColumnContent(1, 'callback{showTitleAuthors}');
         } else {
-            $datagrid->setSQLColumn('index.title AS \''.__('Title').'\'', 'index.author',
+            $datagrid->setSQLColumn('index.title AS \''.__('Title').'\'', 'index.author', 'index.labels',
                 'index.isbn_issn AS \''.__('ISBN/ISSN').'\'',
                 'IF(COUNT(item.item_id)>0, COUNT(item.item_id), \'<strong style="color: #f00;">'.__('None').'</strong>\') AS \''.__('Copies').'\'',
                 'index.last_update AS \''.__('Last Update').'\'');
             $datagrid->modifyColumnContent(1, 'callback{showTitleAuthors}');
         }
-        $datagrid->invisible_fields = array(1);
+        $datagrid->invisible_fields = array(1,2);
         $datagrid->setSQLorder('index.last_update DESC');
 
         // set group by
@@ -652,40 +640,6 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 
         // table spec
         $table_spec = 'biblio LEFT JOIN item ON biblio.biblio_id=item.biblio_id';
-
-        /* BIBLIOGRAPHY LIST */
-        // callback function to show title and authors in datagrid
-        function showTitleAuthors($obj_db, $array_data)
-        {
-            // biblio author detail
-            #$_biblio_q = $obj_db->query('SELECT b.title, a.author_name, opac_hide, promoted FROM biblio AS b
-            #    LEFT JOIN biblio_author AS ba ON b.biblio_id=ba.biblio_id
-            #    LEFT JOIN mst_author AS a ON ba.author_id=a.author_id
-            #    WHERE b.biblio_id='.$array_data[0]);
-            $_sql_biblio_q = sprintf('SELECT b.title, a.author_name, opac_hide, promoted FROM biblio AS b
-                LEFT JOIN biblio_author AS ba ON b.biblio_id=ba.biblio_id
-                LEFT JOIN mst_author AS a ON ba.author_id=a.author_id
-                WHERE b.biblio_id=%d', $array_data[0]);
-            $_biblio_q = $obj_db->query($_sql_biblio_q);
-            $_authors = '';
-            while ($_biblio_d = $_biblio_q->fetch_row()) {
-                $_title = $_biblio_d[0];
-                $_authors .= $_biblio_d[1].' - ';
-                $_opac_hide = (integer)$_biblio_d[2];
-                $_promoted = (integer)$_biblio_d[3];
-            }
-            $_authors = substr_replace($_authors, '', -3);
-            $_output = '<div style="float: left;"><span class="title">'.$_title.'</span><div class="authors">'.$_authors.'</div></div>';
-            // check for opac hide flag
-            if ($_opac_hide) {
-                $_output .= '<div style="float: right; width: 20px; height: 20px;" class="lockFlagIcon" title="Hidden in OPAC">&nbsp;</div>';
-            }
-            // check for promoted flag
-            if ($_promoted) {
-                $_output .= '<div style="float: right; width: 20px; height: 20px;" class="homeFlagIcon" title="Promoted To Homepage">&nbsp;</div>';
-            }
-            return $_output;
-        }
 
         if ($can_read AND $can_write) {
             $datagrid->setSQLColumn('biblio.biblio_id', 'biblio.biblio_id AS bid',
@@ -709,9 +663,12 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         $datagrid->sql_group_by = 'biblio.biblio_id';
     }
 
+	$stopwords= "@\sAnd\s|\sOr\s|\sNot\s|\sThe\s|\sDan\s|\sAtau\s|\sAn\s|\sA\s@i";
+
     // is there any search
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
         $keywords = $dbs->escape_string(trim($_GET['keywords']));
+		$keywords = preg_replace($stopwords,' ',$keywords);
         $searchable_fields = array('title', 'author', 'subject', 'isbn', 'publisher');
         if ($_GET['field'] != '0' AND in_array($_GET['field'], $searchable_fields)) {
             $field = $_GET['field'];

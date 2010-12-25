@@ -610,6 +610,10 @@ input:hover,textarea:hover,select:hover {
     font-style: italic;
 }
 
+.labels {
+    clear: both;
+}
+
 .sendEmail {
     display: block;
     height: 22px;
