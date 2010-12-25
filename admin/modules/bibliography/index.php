@@ -594,14 +594,11 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     echo $form->printOut();
 } else {
     require SIMBIO_BASE_DIR.'simbio_UTILS/simbio_tokenizecql.inc.php';
-    require MODULES_BASE_DIR_BASE_DIR.'bibliography/biblio_utils.inc.php';
+    require MODULES_BASE_DIR.'bibliography/biblio_utils.inc.php';
     require LIB_DIR.'biblio_list_model.inc.php';
 
     // number of records to show in list
     $biblio_result_num = ($sysconf['biblio_result_num']>100)?100:$sysconf['biblio_result_num'];
-
-    // label cache
-    $label_cache = array();
 
     // create datagrid
     $datagrid = new simbio_datagrid();
@@ -619,20 +616,20 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         $table_spec = 'search_biblio AS `index` LEFT JOIN item ON `index`.biblio_id=item.biblio_id';
 
         if ($can_read AND $can_write) {
-            $datagrid->setSQLColumn('index.biblio_id', 'index.title AS \''.__('Title').'\'',
+            $datagrid->setSQLColumn('index.biblio_id', 'index.title AS \''.__('Title').'\'', 'index.labels',
                 'index.author',
                 'index.isbn_issn AS \''.__('ISBN/ISSN').'\'',
                 'IF(COUNT(item.item_id)>0, COUNT(item.item_id), \'<strong style="color: #f00;">'.__('None').'</strong>\') AS \''.__('Copies').'\'',
                 'index.last_update AS \''.__('Last Update').'\'');
             $datagrid->modifyColumnContent(1, 'callback{showTitleAuthors}');
         } else {
-            $datagrid->setSQLColumn('index.title AS \''.__('Title').'\'', 'index.author',
+            $datagrid->setSQLColumn('index.title AS \''.__('Title').'\'', 'index.author', 'index.labels',
                 'index.isbn_issn AS \''.__('ISBN/ISSN').'\'',
                 'IF(COUNT(item.item_id)>0, COUNT(item.item_id), \'<strong style="color: #f00;">'.__('None').'</strong>\') AS \''.__('Copies').'\'',
                 'index.last_update AS \''.__('Last Update').'\'');
             $datagrid->modifyColumnContent(1, 'callback{showTitleAuthors}');
         }
-        $datagrid->invisible_fields = array(1);
+        $datagrid->invisible_fields = array(1,2);
         $datagrid->setSQLorder('index.last_update DESC');
 
         // set group by
