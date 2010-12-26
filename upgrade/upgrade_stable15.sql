@@ -42,6 +42,8 @@ CREATE TABLE IF NOT EXISTS `search_biblio` (
   FULLTEXT KEY `labels` (`labels`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='index table for advance searching technique for SLiMS';
 
+ALTER TABLE `member` ADD `member_mail_address` varchar(255) collate utf8_unicode_ci default NULL AFTER `member_address`;
+
 -- member custom fields
 CREATE TABLE IF NOT EXISTS `member_custom` (
 `member_id` VARCHAR(20) NOT NULL ,
