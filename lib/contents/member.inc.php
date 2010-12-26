@@ -3,6 +3,7 @@
  *
  * Member Area/Information
  * Copyright (C) 2009  Arie Nugraha (dicarve@yahoo.com)
+ * Patched by Hendro Wicaksono (hendrowicaksono@yahoo.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -440,6 +441,7 @@ if (!$is_member_login) {
 
         // create datagrid
         $_loan_list = new simbio_datagrid();
+        $_loan_list->disable_paging = true;
         $_loan_list->table_ID = 'loanlist';
         $_loan_list->setSQLColumn('l.item_code AS \''.__('Item Code').'\'',
             'b.title AS \''.__('Title').'\'',
@@ -457,7 +459,7 @@ if (!$is_member_login) {
         $_loan_list->using_AJAX = false;
         // return the result
         $_result = $_loan_list->createDataGrid($dbs, $_table_spec, $num_recs_show);
-        $_result = '<div class="memberLoanListInfo">'.$_loan_list->num_rows.' '.__('item(s) currently on loan').'</div>'."\n".$_result;
+        $_result = '<div class="memberLoanListInfo">'.$_loan_list->num_rows.' '.__('item(s) currently on loan').' | <a href="?p=download_current_loan">Download All Current Loan</a></div>'."\n".$_result;
         return $_result;
     }
 
@@ -474,6 +476,7 @@ if (!$is_member_login) {
 
         // create datagrid
         $_loan_hist = new simbio_datagrid();
+        $_loan_hist->disable_paging = true;
         $_loan_hist->table_ID = 'loanhist';
         $_loan_hist->setSQLColumn('l.item_code AS \''.__('Item Code').'\'',
             'b.title AS \''.__('Title').'\'',
@@ -484,14 +487,14 @@ if (!$is_member_login) {
         $_loan_hist->setSQLCriteria($_criteria);
 
         // modify column value
-        $_loan_hist->modifyColumnContent(3, 'callback{showOverdue}');
+        #$_loan_hist->modifyColumnContent(3, 'callback{showOverdue}');
         // set table and table header attributes
         $_loan_hist->table_attr = 'align="center" class="memberLoanList" cellpadding="5" cellspacing="0"';
         $_loan_hist->table_header_attr = 'class="dataListHeader" style="font-weight: bold;"';
         $_loan_hist->using_AJAX = false;
         // return the result
         $_result = $_loan_hist->createDataGrid($dbs, $_table_spec, $num_recs_show);
-        $_result = '<div class="memberLoanHistInfo">'.$_loan_hist->num_rows.' '.__('item(s) loan history').' | <a href="?p=download_loan_history">Download</a></div>'."\n".$_result;
+        $_result = '<div class="memberLoanHistInfo"> &nbsp;'.$_loan_hist->num_rows.' '.__('item(s) loan history').' | <a href="?p=download_loan_history">Download All Loan History</a></div>'."\n".$_result;
         return $_result;
     }
     /* Experimental Loan History - end */

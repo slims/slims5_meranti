@@ -40,7 +40,7 @@ if (!$is_member_login) {
 } else {
 
     /* Experimental Loan History - start */
-    function showLoanHist($num_recs_show = 1000000)
+    function showLoanList($num_recs_show = 1000000)
     {
         global $dbs;
         require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
@@ -55,16 +55,16 @@ if (!$is_member_login) {
             LEFT JOIN biblio AS b ON i.biblio_id=b.biblio_id';
 
         // create datagrid
-        $_loan_hist = new simbio_datagrid();
-        $_loan_hist->disable_paging = true;
-        $_loan_hist->table_ID = 'loanhist';
-        $_loan_hist->setSQLColumn('l.item_code AS \''.__('Item Code').'\'',
+        $_loan_list = new simbio_datagrid();
+        $_loan_list->disable_paging = true;
+        $_loan_list->table_ID = 'loanlist';
+        $_loan_list->setSQLColumn('l.item_code AS \''.__('Item Code').'\'',
             'b.title AS \''.__('Title').'\'',
             'l.loan_date AS \''.__('Loan Date').'\'',
-            'l.return_date AS \''.__('Return Date').'\'');
-        $_loan_hist->setSQLorder('l.loan_date DESC');
-        $_criteria = sprintf('m.member_id=\'%s\' AND l.is_lent=1 AND is_return=1 ', $_SESSION['mid']);
-        $_loan_hist->setSQLCriteria($_criteria);
+            'l.due_date AS \''.__('Due Date').'\'');
+        $_loan_list->setSQLorder('l.loan_date DESC');
+        $_criteria = sprintf('m.member_id=\'%s\' AND l.is_lent=1 AND is_return=0 ', $_SESSION['mid']);
+        $_loan_list->setSQLCriteria($_criteria);
 
     /* callback function to show overdue */
     function showOverdue($obj_db, $array_data)
@@ -78,27 +78,27 @@ if (!$is_member_login) {
     }
 
         // modify column value
-        #$_loan_hist->modifyColumnContent(3, 'callback{showOverdue}');
+        $_loan_list->modifyColumnContent(3, 'callback{showOverdue}');
         // set table and table header attributes
-        $_loan_hist->table_attr = 'align="center" class="memberLoanList" cellpadding="5" cellspacing="0"';
-        $_loan_hist->table_header_attr = 'class="dataListHeader" style="font-weight: bold;"';
-        $_loan_hist->using_AJAX = false;
+        $_loan_list->table_attr = 'align="center" class="memberLoanList" cellpadding="5" cellspacing="0"';
+        $_loan_list->table_header_attr = 'class="dataListHeader" style="font-weight: bold;"';
+        $_loan_list->using_AJAX = false;
         // return the result
-        $_result = $_loan_hist->createDataGrid($dbs, $_table_spec, $num_recs_show);
-        $_result = '<div class="memberLoanHistInfo">'.$_loan_hist->num_rows.' '.__('item(s) loan history').'</div>'."\n".$_result;
+        $_result = $_loan_list->createDataGrid($dbs, $_table_spec, $num_recs_show);
+        $_result = '<div class="memberLoanListInfo">'.$_loan_list->num_rows.' '.__('Current Loan item(s)').'</div>'."\n".$_result;
         return $_result;
     }
     /* Experimental Loan History - end */
 
 
     // show all
-    #echo '<h3 class="memberInfoHead">'.__('Your Loan History').'</h3>'."\n";
-    #echo showLoanHist();
-    $download = '<h3 class="memberInfoHead">'.__('Your Loan History').'</h3>'."\n";
-    $download .= showLoanHist();
+    #echo '<h3 class="memberInfoHead">'.__('Your Current Loan').'</h3>'."\n";
+    #echo showLoanList();
+    $download = '<h3 class="memberInfoHead">'.__('Your Current Loan').'</h3>'."\n";
+    $download .= showLoanList();
 
     header("Content-Description: File Transfer");
-    header("Content-Disposition: attachment; filename=loan_history.html");
+    header("Content-Disposition: attachment; filename=current_loan.html");
     header("Content-Type: text/html");
     #header("Content-Transfer-Encoding: binary");
     echo $download;
