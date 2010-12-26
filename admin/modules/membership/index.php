@@ -112,6 +112,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         }
         $data['pin'] = trim($dbs->escape_string(strip_tags($_POST['memberPIN'])));
         $data['member_address'] = trim($dbs->escape_string(strip_tags($_POST['memberAddress'])));
+        $data['member_mail_address'] = trim($dbs->escape_string(strip_tags($_POST['memberMailAddress'])));
         $data['member_phone'] = trim($dbs->escape_string(strip_tags($_POST['memberPhone'])));
         $data['member_fax'] = trim($dbs->escape_string(strip_tags($_POST['memberFax'])));
         $data['postal_code'] = trim($dbs->escape_string(strip_tags($_POST['memberPostal'])));
@@ -376,6 +377,8 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $form->addTextField('textarea', 'memberAddress', __('Address'), $rec_d['member_address'], 'rows="2" style="width: 100%;"');
     // member postal
     $form->addTextField('text', 'memberPostal', __('Postal Code'), $rec_d['postal_code'], 'style="width: 60%;"');
+    // member mail address
+    $form->addTextField('textarea', 'memberMailAddress', __('Mail Address'), $rec_d['member_mail_address'], 'rows="2" style="width: 100%;"');
     // member phone
     $form->addTextField('text', 'memberPhone', __('Phone Number'), $rec_d['member_phone'], 'style="width: 60%;"');
     // member fax
