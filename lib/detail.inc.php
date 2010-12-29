@@ -25,7 +25,7 @@
 // be sure that this file not accessed directly
 if (!defined('INDEX_AUTH')) {
     die("can not access this file directly");
-} elseif (INDEX_AUTH != 1) { 
+} elseif (INDEX_AUTH != 1) {
     die("can not access this file directly");
 }
 
@@ -194,30 +194,6 @@ class detail extends content_list
                 data: \'id='.$this->detail_id.'&ajaxsec_user='.$sysconf['ajaxsec_user'].'&ajaxsec_passwd='.$sysconf['ajaxsec_passwd'].'\',
                 success: function(ajaxRespond) { jQuery(\'#attachListLoad\').html(ajaxRespond); } }); });</script>';
 
-        // get location data
-        /*
-        $_item_loc_q = $this->obj_db->query('SELECT loc.location_name, COUNT(i.location_id) AS item_num FROM item AS i
-            LEFT JOIN mst_location AS loc ON i.location_id=loc.location_id
-            WHERE i.biblio_id='.$this->detail_id.' GROUP BY i.location_id');
-        if ($_item_loc_q->num_rows < 1) {
-            $this->record_detail['location'] = '<strong style="color: red; font-weight: bold;">'.__('There is no item/copy for this title yet').'</strong>';
-        } else {
-            $this->record_detail['location'] = '';
-            while ($_item_loc_d = $_item_loc_q->fetch_row()) {
-                $this->record_detail['location'] .= '<strong>'.$_item_loc_d[1].' </strong> '.__('copies at').' <strong>'.$_item_loc_d[0].'</strong><br />'; //mfc
-            }
-        }
-        */
-        // show location on UCS
-        if (isset($this->record_detail['node_id']) && isset($sysconf['node'][$this->record_detail['node_id']])) {
-            $_node = $sysconf['node'][$this->record_detail['node_id']];
-            $_node_name = isset($_node['name'])?$_node['name']:'UNKNOWN';
-            $this->record_detail['location'] = $_node['baseurl']?'<a href="'.$_node['baseurl'].'" target="_blank">'.$_node_name.'</a>':$_node_name;
-            // node detail link
-            $node_detail_id = str_ireplace($_node['id'], '', $this->record_detail['orig_biblio_id']);
-            $this->record_detail['title'] .= ($_node['baseurl'] && $node_detail_id)?'<div class="nodeDetail"><a href="'.$_node['baseurl'].'/index.php?p=show_detail&id='.$node_detail_id.'" title="'.__('View node catalog data').'" target="_blank">'.__('View node catalog data').'</a></div>':'';
-        }
-
         return $this->record_detail;
     }
 
@@ -338,28 +314,27 @@ class detail extends content_list
         // ISBN/ISSN
         $_xml_output .= '<identifier type="isbn">'.str_replace(array('-', ' '), '', $this->record_detail['isbn_issn']).'</identifier>';
 
-        if (!defined('UCS_BASE_DIR')) {
-            // Location and Copies information
-            $_xml_output .= '<location>'."\n";
-            $_xml_output .= '<physicalLocation>'.$sysconf['library_name'].' '.$sysconf['library_subname'].'</physicalLocation>'."\n";
-            $_xml_output .= '<shelfLocator>'.$this->record_detail['call_number'].'</shelfLocator>'."\n";
-            $_copy_q = $this->obj_db->query('SELECT i.item_code, i.call_number, stat.item_status_name, loc.location_name, stat.rules, i.site FROM item AS i '
-                .'LEFT JOIN mst_item_status AS stat ON i.item_status_id=stat.item_status_id '
-                .'LEFT JOIN mst_location AS loc ON i.location_id=loc.location_id '
-                .'WHERE i.biblio_id='.$this->detail_id);
-            if ($_copy_q->num_rows > 0) {
-                $_xml_output .= '<holdingSimple>'."\n";
-                while ($_copy_d = $_copy_q->fetch_assoc()) {
-                    $_xml_output .= '<copyInformation>'."\n";
-                    $_xml_output .= '<numerationAndChronology type="1">'.$_copy_d['item_code'].'</numerationAndChronology>'."\n";
-                    $_xml_output .= '<sublocation>'.$_copy_d['location_name'].( $_copy_d['site']?' ('.$_copy_d['site'].')':'' ).'</sublocation>'."\n";
-                    $_xml_output .= '<shelfLocator>'.$_copy_d['call_number'].'</shelfLocator>'."\n";
-                    $_xml_output .= '</copyInformation>'."\n";
-                }
-                $_xml_output .= '</holdingSimple>'."\n";
+
+        // Location and Copies information
+        $_xml_output .= '<location>'."\n";
+        $_xml_output .= '<physicalLocation>'.$sysconf['library_name'].' '.$sysconf['library_subname'].'</physicalLocation>'."\n";
+        $_xml_output .= '<shelfLocator>'.$this->record_detail['call_number'].'</shelfLocator>'."\n";
+        $_copy_q = $this->obj_db->query('SELECT i.item_code, i.call_number, stat.item_status_name, loc.location_name, stat.rules, i.site FROM item AS i '
+            .'LEFT JOIN mst_item_status AS stat ON i.item_status_id=stat.item_status_id '
+            .'LEFT JOIN mst_location AS loc ON i.location_id=loc.location_id '
+            .'WHERE i.biblio_id='.$this->detail_id);
+        if ($_copy_q->num_rows > 0) {
+            $_xml_output .= '<holdingSimple>'."\n";
+            while ($_copy_d = $_copy_q->fetch_assoc()) {
+                $_xml_output .= '<copyInformation>'."\n";
+                $_xml_output .= '<numerationAndChronology type="1">'.$_copy_d['item_code'].'</numerationAndChronology>'."\n";
+                $_xml_output .= '<sublocation>'.$_copy_d['location_name'].( $_copy_d['site']?' ('.$_copy_d['site'].')':'' ).'</sublocation>'."\n";
+                $_xml_output .= '<shelfLocator>'.$_copy_d['call_number'].'</shelfLocator>'."\n";
+                $_xml_output .= '</copyInformation>'."\n";
             }
-            $_xml_output .= '</location>'."\n";
+            $_xml_output .= '</holdingSimple>'."\n";
         }
+        $_xml_output .= '</location>'."\n";
 
         // record info
         $_xml_output .= '<recordInfo>'."\n";

@@ -100,6 +100,8 @@ function showTitleAuthors($obj_db, $array_data)
 {
     global $sysconf;
     global $label_cache;
+    $_opac_hide = false;
+    $_promoted = false;
     $_labels = '';
     // biblio author detail
     if ($sysconf['index']['type'] == 'default') {

@@ -21,7 +21,7 @@
 // be sure that this file not accessed directly
 if (!defined('INDEX_AUTH')) {
     die("can not access this file directly");
-} elseif (INDEX_AUTH != 1) { 
+} elseif (INDEX_AUTH != 1) {
     die("can not access this file directly");
 }
 
@@ -48,11 +48,6 @@ try {
 } catch (Exception $err) {
     die($err->getMessage());
 }
-
-// set options for sphinx
-// if ($sysconf['index']['type'] == 'sphinx') { $biblio_list->setOptions($sysconf['index']['sphinx_opts']); }
-// no item data related search on UCS
-if (defined('UCS_BASE_DIR')) { $biblio_list->disable_item_data = true; }
 
 if (isset($sysconf['enable_xml_detail']) && !$sysconf['enable_xml_detail']) {
     $biblio_list->xml_detail = false;
@@ -107,11 +102,6 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
         if (isset($_GET['location'])) {
             $location = trim(strip_tags(urldecode($_GET['location'])));
         }
-        // UCS only
-        $node = '';
-        if (isset($_GET['node'])) {
-            $node = trim(strip_tags(urldecode($_GET['node'])));
-        }
         // don't do search if all search field is empty
         if ($title || $author || $subject || $isbn || $gmd || $colltype || $location || $node) {
             $criteria = '';
@@ -122,7 +112,6 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
             if ($gmd) { $criteria .= ' gmd="'.$gmd.'"'; }
             if ($colltype) { $criteria .= ' colltype="'.$colltype.'"'; }
             if ($location) { $criteria .= ' location="'.$location.'"'; }
-            if ($node && defined('UCS_BASE_DIR')) { $criteria .= ' location="'.$node.'"'; }
             $criteria = trim($criteria);
             $biblio_list->setSQLcriteria($criteria);
         }

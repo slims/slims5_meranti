@@ -48,7 +48,7 @@ class biblio_list extends biblio_list_model
      * @param   string  $str_criteria
      * @return  void
      */
-	protected function compileSQL() {
+    protected function compileSQL() {
         global $sysconf;
         // get page number from http get var
         if (!isset($_GET['page']) OR $_GET['page'] < 1){ $_page = 1; } else {
@@ -65,7 +65,7 @@ class biblio_list extends biblio_list_model
         $_sql_str = 'SELECT SQL_CALC_FOUND_ROWS index.biblio_id, index.title, index.author, index.topic, index.image, index.isbn_issn, index.labels';
 
         // checking custom frontpage fields file
-        $custom_frontpage_record_file = (defined('UCS_BASE_DIR')?UCS_BASE_DIR:SENAYAN_BASE_DIR).$sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/custom_frontpage_record.inc.php';
+        $custom_frontpage_record_file = SENAYAN_BASE_DIR.$sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/custom_frontpage_record.inc.php';
         if (file_exists($custom_frontpage_record_file)) {
             include $custom_frontpage_record_file;
             $this->enable_custom_frontpage = true;
@@ -92,7 +92,7 @@ class biblio_list extends biblio_list_model
         // for debugging purpose only
         // echo "<div style=\"border: 1px solid navy; padding: 5px; color: navy; margin: 5px;\">$_sql_str</div>";
 		return $_sql_str;
-	}
+    }
 
 
     /**
@@ -101,8 +101,7 @@ class biblio_list extends biblio_list_model
      * @param   string  $str_criteria
      * @return  void
      */
-    public function setSQLcriteria($str_criteria)
-    {
+    public function setSQLcriteria($str_criteria) {
         if (!$str_criteria)
             return null;
         // defaults

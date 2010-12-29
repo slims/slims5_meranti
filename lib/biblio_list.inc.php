@@ -139,31 +139,31 @@ class biblio_list extends biblio_list_model
             } else {
                 switch ($_field) {
                     case 'location' :
-						if (!$this->disable_item_data) {
-							$_subquery = 'SELECT location_id FROM mst_location WHERE location_name=\''.$_q.'\'';
-							if ($_b == '-') {
-								$_sql_criteria .= " item.location_id NOT IN ($_subquery)";
-							} else { $_sql_criteria .= " item.location_id IN ($_subquery)"; }
-						} else {
-							if ($_b == '-') {
-								$_sql_criteria .= " biblio.node_id !='$_q'";
-							} else { $_sql_criteria .= " biblio.node_id = '$_q'"; }
-						}
+			if (!$this->disable_item_data) {
+			    $_subquery = 'SELECT location_id FROM mst_location WHERE location_name=\''.$_q.'\'';
+			    if ($_b == '-') {
+				    $_sql_criteria .= " item.location_id NOT IN ($_subquery)";
+			    } else { $_sql_criteria .= " item.location_id IN ($_subquery)"; }
+			} else {
+			    if ($_b == '-') {
+				    $_sql_criteria .= " biblio.node_id !='$_q'";
+			    } else { $_sql_criteria .= " biblio.node_id = '$_q'"; }
+			}
                         break;
                     case 'colltype' :
-						if (!$this->disable_item_data) {
-							$_subquery = 'SELECT coll_type_id FROM mst_coll_type WHERE coll_type_name=\''.$_q.'\'';
-							if ($_b == '-') {
-								$_sql_criteria .= " item.coll_type_id NOT IN ($_subquery)";
-							} else { $_sql_criteria .= " item.coll_type_id IN ($_subquery)"; }
-						}
+			if (!$this->disable_item_data) {
+			    $_subquery = 'SELECT coll_type_id FROM mst_coll_type WHERE coll_type_name=\''.$_q.'\'';
+			    if ($_b == '-') {
+				    $_sql_criteria .= " item.coll_type_id NOT IN ($_subquery)";
+			    } else { $_sql_criteria .= " item.coll_type_id IN ($_subquery)"; }
+			}
                         break;
                     case 'itemcode' :
-						if (!$this->disable_item_data) {
-							if ($_b == '-') {
-								$_sql_criteria .= " item.item_code != '$_q'";
-							} else { $_sql_criteria .= " item.item_code LIKE '$_q%'"; }
-						}
+			if (!$this->disable_item_data) {
+			    if ($_b == '-') {
+				$_sql_criteria .= " item.item_code != '$_q'";
+			    } else { $_sql_criteria .= " item.item_code LIKE '$_q%'"; }
+			}
                         break;
                     case 'callnumber' :
                         if ($_b == '-') {
@@ -171,11 +171,11 @@ class biblio_list extends biblio_list_model
                         } else { $_sql_criteria .= ' biblio.call_number LIKE \''.$_q.'%\''; }
                         break;
                     case 'itemcallnumber' :
-						if (!$this->disable_item_data) {
-							if ($_b == '-') {
-								$_sql_criteria .= ' AND item.call_number NOT LIKE \''.$_q.'%\'';
-							} else { $_sql_criteria .= ' item.call_number LIKE \''.$_q.'%\''; }
-						}
+			if (!$this->disable_item_data) {
+			    if ($_b == '-') {
+				    $_sql_criteria .= ' AND item.call_number NOT LIKE \''.$_q.'%\'';
+			    } else { $_sql_criteria .= ' item.call_number LIKE \''.$_q.'%\''; }
+			}
                         break;
                     case 'class' :
                         if ($_b == '-') {
@@ -205,7 +205,7 @@ class biblio_list extends biblio_list_model
                         } else { $_sql_criteria .= " biblio.gmd_id IN ($_subquery)"; }
                         break;
                     case 'notes' :
-						$_q = $_query['is_phrase']?'"'.$_q.'"':$_q;
+			$_q = $_query['is_phrase']?'"'.$_q.'"':$_q;
                         if ($_b == '-') {
                             $_sql_criteria .= " NOT (MATCH (biblio.notes) AGAINST ('".$_q."' IN BOOLEAN MODE))";
                         } else { $_sql_criteria .= " (MATCH (biblio.notes) AGAINST ('".$_q."' IN BOOLEAN MODE))"; }
@@ -254,7 +254,7 @@ class biblio_list extends biblio_list_model
         $_sql_str = 'SELECT SQL_CALC_FOUND_ROWS biblio.biblio_id, biblio.title, biblio.image, biblio.isbn_issn, biblio.labels';
 
         // checking custom frontpage fields file
-        $custom_frontpage_record_file = (defined('UCS_BASE_DIR')?UCS_BASE_DIR:SENAYAN_BASE_DIR).$sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/custom_frontpage_record.inc.php';
+        $custom_frontpage_record_file = SENAYAN_BASE_DIR.$sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/custom_frontpage_record.inc.php';
         if (file_exists($custom_frontpage_record_file)) {
             include $custom_frontpage_record_file;
             $this->enable_custom_frontpage = true;
