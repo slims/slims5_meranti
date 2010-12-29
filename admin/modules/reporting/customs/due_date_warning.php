@@ -129,9 +129,10 @@ if (!$reportView) {
         global $date_criteria;
 
         // member name
-        $member_q = $obj_db->query('SELECT member_name, member_email, member_phone FROM member WHERE member_id=\''.$array_data[0].'\'');
+        $member_q = $obj_db->query('SELECT member_name, member_email, member_phone, member_mail_address FROM member WHERE member_id=\''.$array_data[0].'\'');
         $member_d = $member_q->fetch_row();
         $member_name = $member_d[0];
+        $member_mail_address = $member_d[3];
         unset($member_q);
 
         $_title_q = $obj_db->query('SELECT l.item_code, b.title, l.loan_date,
@@ -141,6 +142,7 @@ if (!$reportView) {
                 LEFT JOIN biblio AS b ON i.biblio_id=b.biblio_id
             WHERE (l.is_lent=1 AND l.is_return=0 AND ( (TO_DAYS(\''.date('Y-m-d').'\')-TO_DAYS(due_date)) BETWEEN 0 AND 3) AND l.member_id=\''.$array_data[0].'\')');
         $_buffer = '<div style="font-weight: bold; color: black; font-size: 10pt; margin-bottom: 3px;">'.$member_name.' ('.$array_data[0].')</div>';
+        $_buffer .= '<div style="color: black; font-size: 10pt; margin-bottom: 3px;">'.$member_mail_address.'</div>';
         $_buffer .= '<div style="font-size: 10pt; margin-bottom: 3px;">'.__('E-mail').': <a href="mailto:'.$member_d[1].'">'.$member_d[1].'</a> - '.__('Phone Number').': '.$member_d[2].'</div>';
         $_buffer .= '<table width="100%" cellspacing="0">';
         while ($_title_d = $_title_q->fetch_assoc()) {
