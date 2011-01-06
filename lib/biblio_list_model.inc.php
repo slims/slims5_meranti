@@ -209,9 +209,7 @@ abstract class biblio_list_model
             if (!empty($_biblio_d['image']) && !defined('LIGHTWEIGHT_MODE')) {
                 $_biblio_d['image'] = urlencode($_biblio_d['image']);
                 $images_loc = 'images/docs/'.$_biblio_d['image'];
-                if (file_exists($images_loc)) {
-                    $_image_cover = 'style="background-image: url(./lib/phpthumb/phpThumb.php?src=../../'.urlencode($images_loc).'&w=42); background-repeat: no-repeat;"';
-                }
+                $_image_cover = 'style="background-image: url(./lib/phpthumb/phpThumb.php?src=../../'.$images_loc.'&w=42); background-repeat: no-repeat;"';
             }
 
             $_alt_list = ($_i%2 == 0)?'alterList':'alterList2';
