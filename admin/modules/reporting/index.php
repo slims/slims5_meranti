@@ -49,12 +49,17 @@ $table->table_attr = 'align="center" class="border" cellpadding="5" cellspacing=
 // total number of titles
 $stat_query = $dbs->query('SELECT COUNT(biblio_id) FROM biblio');
 $stat_data = $stat_query->fetch_row();
-$collection_stat[__('Total Titles')] = $stat_data[0];
+$collection_stat[__('Total Titles')] = $stat_data[0].' (including titles that still don\'t have items yet)';
+
+// total number of titles
+$stat_query = $dbs->query('SELECT biblio.biblio_id FROM biblio INNER JOIN item where biblio.biblio_id = item.biblio_id group by biblio.biblio_id');
+$stat_data = $stat_query->num_rows;
+$collection_stat[__('Total Titles with items')] = $stat_data.' (only titles that have items)';
 
 // total number of items
-$stat_query = $dbs->query('SELECT COUNT(item_id) FROM item');
-$stat_data = $stat_query->fetch_row();
-$collection_stat[__('Total Items/Copies')] = $stat_data[0];
+$stat_query = $dbs->query('SELECT item.item_code FROM item,biblio WHERE item.biblio_id=biblio.biblio_id');
+$stat_data = $stat_query->num_rows;
+$collection_stat[__('Total Items/Copies')] = $stat_data;
 
 // total number of checkout items
 $stat_query = $dbs->query('SELECT COUNT(item_id) FROM item AS i
