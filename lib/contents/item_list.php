@@ -45,7 +45,6 @@ if (($ajaxsec_user == $sysconf['ajaxsec_user']) AND ($ajaxsec_passwd == $sysconf
     }
     if (isset($_POST['id'])) {
         $id = intval($_POST['id']);
-        #$copy_q = $dbs->query('SELECT i.item_code, loc.location_name, stat.*, i.site FROM item AS i
         $copy_q = $dbs->query('SELECT i.item_code, i.call_number, loc.location_name, stat.*, i.site FROM item AS i
             LEFT JOIN mst_item_status AS stat ON i.item_status_id=stat.item_status_id
             LEFT JOIN mst_location AS loc ON i.location_id=loc.location_id
@@ -59,7 +58,6 @@ if (($ajaxsec_user == $sysconf['ajaxsec_user']) AND ($ajaxsec_passwd == $sysconf
                 $loan_stat_q = $dbs->query('SELECT due_date FROM loan AS l
                     LEFT JOIN item AS i ON l.item_code=i.item_code
                     WHERE l.item_code=\''.$copy_d['item_code'].'\' AND is_lent=1 AND is_return=0');
-                #echo '<tr><td width="10%"><strong>'.$copy_d['item_code'].'</strong></td><td width="60%">'.$copy_d['location_name'];
                 echo '<tr>';
                 echo '<td width="10%"><strong>'.$copy_d['item_code'].'</strong></td>';
                 echo '<td width="20%">'.$copy_d['call_number'].'</td>';
