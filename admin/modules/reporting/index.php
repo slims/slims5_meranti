@@ -52,7 +52,7 @@ $stat_data = $stat_query->fetch_row();
 $collection_stat[__('Total Titles')] = $stat_data[0].' (including titles that still don\'t have items yet)';
 
 // total number of titles
-$stat_query = $dbs->query('SELECT biblio.biblio_id FROM biblio INNER JOIN item where biblio.biblio_id = item.biblio_id group by biblio.biblio_id');
+$stat_query = $dbs->query('SELECT DISTINCT biblio.biblio_id FROM biblio INNER JOIN item ON biblio.biblio_id = item.biblio_id');
 $stat_data = $stat_query->num_rows;
 $collection_stat[__('Total Titles with items')] = $stat_data.' (only titles that have items)';
 
