@@ -93,7 +93,7 @@ if (isset($_POST['saveData'])) {
                 utility::jsAlert(__('Item Status Data Successfully Updated'));
                 // update item status ID in item table to keep data integrity
                 $sql_op->update('item', array('item_status_id' => $data['item_status_id']), 'item_status_id=\''.$updateRecordID.'\'');
-                echo '<script type="text/javascript">parent.jQuery(\'#mainContent\').simbioAJAX(parent.jQuery.ajaxHistory[1].url);</script>';
+                echo '<script type="text/javascript">parent.jQuery(\'#mainContent\').simbioAJAX(parent.jQuery.ajaxHistory[0].url);</script>';
             } else { utility::jsAlert(__('Item Status Data FAILED to Updated. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
         } else {

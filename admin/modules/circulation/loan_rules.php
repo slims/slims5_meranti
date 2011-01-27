@@ -67,7 +67,7 @@ if (isset($_POST['saveData'])) {
         $update = $sql_op->update('mst_loan_rules', $data, 'loan_rules_id='.$updateRecordID);
         if ($update) {
             utility::jsAlert(__('Loan Rules Successfully Updated'));
-            echo '<script language="Javascript">parent.jQuery(\'#mainContent\').simbioAJAX(parent.jQuery.ajaxHistory[1].url);</script>';
+            echo '<script language="Javascript">parent.jQuery(\'#mainContent\').simbioAJAX(parent.jQuery.ajaxHistory[0].url);</script>';
         } else { utility::jsAlert(__('Loan Rules FAILED to Updated. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
         exit();
     } else {

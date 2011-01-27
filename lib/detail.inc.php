@@ -146,7 +146,7 @@ class detail extends content_list
         if (!empty($this->record_detail['image'])) {
             $this->record_detail['image'] = '<img src="./lib/phpthumb/phpThumb.php?src=../../images/docs/'.urlencode($this->record_detail['image']).'&w=200" border="0" />';
         } else {
-            $this->record_detail['image'] = '<img src="./'.$sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/image.png" border="0" />';
+            $this->record_detail['image'] = '<img src="./images/default/image.png" border="0" />';
         }
 
         // get the authors data

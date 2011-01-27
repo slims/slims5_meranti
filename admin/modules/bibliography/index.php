@@ -207,7 +207,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                     echo '<script type="text/javascript">top.$(\'#mainContent\').simbioAJAX(parent.jQuery.ajaxHistory[0].url, {method: \'post\', addData: \''.( $itemCollID?'itemID='.$itemCollID.'&detail=true':'' ).'\'});</script>';
                     echo '<script type="text/javascript">top.closeHTMLpop();</script>';
                 } else {
-                    echo '<script type="text/javascript">top.$(\'#mainContent\').simbioAJAX(parent.jQuery.ajaxHistory[1].url);</script>';
+                    echo '<script type="text/javascript">top.$(\'#mainContent\').simbioAJAX(parent.jQuery.ajaxHistory[0].url);</script>';
                 }
                 // update index
                 // delete from index first

@@ -45,22 +45,22 @@ if (isset($_POST['itemID']) && !empty($_POST['itemID']) && isset($_POST['nodeOpe
     $biblioIDS = '';
     // concat all ID
 	if (is_array($_POST['itemID'])) {
-		foreach ($_POST['itemID'] as $itemID) {
-			$biblioID = (integer)$itemID;
-			$biblioIDS .= $biblioID.',';
-		}
-		// remove last comma
-		$biblioIDS = substr_replace($biblioIDS, '', -1);
+	    foreach ($_POST['itemID'] as $itemID) {
+		    $biblioID = (integer)$itemID;
+		    $biblioIDS .= $biblioID.',';
+	    }
+	    // remove last comma
+	    $biblioIDS = substr_replace($biblioIDS, '', -1);
 	} else {
-		$biblioIDS = (integer)$_POST['itemID'];
+	    $biblioIDS = (integer)$_POST['itemID'];
 	}
 
 	// node data
 	if ($_POST['nodeOperation'] == 'delete') {
-		$data = array(
-			'operation' => 'delete',
-			'biblio' => $biblioIDS
-		);
+	    $data = array(
+		    'operation' => 'delete',
+		    'biblio' => $biblioIDS
+	    );
 	}
 
     // encode array to json format
@@ -71,12 +71,12 @@ if (isset($_POST['itemID']) && !empty($_POST['itemID']) && isset($_POST['nodeOpe
     // send HTTP POST request
     $http_request->send_http_request($ucs['serveraddr'].'/uc-ops.php', $_SERVER['SERVER_ADDR'], $to_sent, 'POST', 'text/json');
     // below is for debugging purpose only
-	// die(json_encode(array('status' => 'RAW', 'message' => $http_request->body())));
+    // die(json_encode(array('status' => 'RAW', 'message' => $http_request->body())));
 
-	// check for http request error
-	if ($req_error = $http_request->error()) {
-		die(json_encode(array('status' => 'HTTP_REQUEST_ERROR', 'message' => $req_error['message'])));
-	}
+    // check for http request error
+    if ($req_error = $http_request->error()) {
+	    die(json_encode(array('status' => 'HTTP_REQUEST_ERROR', 'message' => $req_error['message'])));
+    }
 
     // print out body of request result
     echo $http_request->body();

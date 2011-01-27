@@ -181,21 +181,21 @@ class biblio_list extends biblio_list_model
 		    }
                     break;
                 case 'callnumber' :
-                    if ($_b == '-') { $_sql_criteria .= ' AND biblio.call_number NOT LIKE \''.$_q.'%\'';
+                    if ($_b == '-') { $_sql_criteria .= ' biblio.call_number NOT LIKE \''.$_q.'%\'';
                     } else { $_sql_criteria .= ' index.call_number LIKE \''.$_q.'%\''; }
                     break;
                 case 'itemcallnumber' :
 		    if (!$this->disable_item_data) {
-			if ($_b == '-') { $_sql_criteria .= ' AND item.call_number NOT LIKE \''.$_q.'%\'';
+			if ($_b == '-') { $_sql_criteria .= ' item.call_number NOT LIKE \''.$_q.'%\'';
 			} else { $_sql_criteria .= ' item.call_number LIKE \''.$_q.'%\''; }
 		    }
                     break;
                 case 'class' :
-                    if ($_b == '-') { $_sql_criteria .= ' AND index.classification NOT LIKE \''.$_q.'%\'';
+                    if ($_b == '-') { $_sql_criteria .= ' index.classification NOT LIKE \''.$_q.'%\'';
                     } else { $_sql_criteria .= ' index.classification LIKE \''.$_q.'%\''; }
                     break;
                 case 'isbn' :
-                    if ($_b == '-') { $_sql_criteria .= ' AND biblio.isbn_issn NOT LIKE \''.$_q.'%\'';
+                    if ($_b == '-') { $_sql_criteria .= ' biblio.isbn_issn NOT LIKE \''.$_q.'%\'';
                     } else { $_sql_criteria .= ' index.isbn_issn LIKE \''.$_q.'%\''; }
                     break;
                 case 'publisher' :
@@ -203,7 +203,7 @@ class biblio_list extends biblio_list_model
                     } else { $_sql_criteria .= " index.publisher='$_q%'"; }
                     break;
                 case 'publishyear' :
-                    if ($_b == '-') { $_sql_criteria .= ' AND index.publish_year!=\''.$_q.'\'';
+                    if ($_b == '-') { $_sql_criteria .= ' index.publish_year!=\''.$_q.'\'';
                     } else { $_sql_criteria .= ' index.publish_year=\''.$_q.'\''; }
                     break;
                 case 'gmd' :

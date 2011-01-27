@@ -167,24 +167,24 @@ class biblio_list extends biblio_list_model
                         break;
                     case 'callnumber' :
                         if ($_b == '-') {
-                            $_sql_criteria .= ' AND biblio.call_number NOT LIKE \''.$_q.'%\'';
+                            $_sql_criteria .= ' biblio.call_number NOT LIKE \''.$_q.'%\'';
                         } else { $_sql_criteria .= ' biblio.call_number LIKE \''.$_q.'%\''; }
                         break;
                     case 'itemcallnumber' :
 			if (!$this->disable_item_data) {
 			    if ($_b == '-') {
-				    $_sql_criteria .= ' AND item.call_number NOT LIKE \''.$_q.'%\'';
+				    $_sql_criteria .= ' item.call_number NOT LIKE \''.$_q.'%\'';
 			    } else { $_sql_criteria .= ' item.call_number LIKE \''.$_q.'%\''; }
 			}
                         break;
                     case 'class' :
                         if ($_b == '-') {
-                            $_sql_criteria .= ' AND biblio.classification NOT LIKE \''.$_q.'%\'';
+                            $_sql_criteria .= ' biblio.classification NOT LIKE \''.$_q.'%\'';
                         } else { $_sql_criteria .= ' biblio.classification LIKE \''.$_q.'%\''; }
                         break;
                     case 'isbn' :
                         if ($_b == '-') {
-                            $_sql_criteria .= ' AND biblio.isbn_issn!=\''.$_q.'\'';
+                            $_sql_criteria .= ' biblio.isbn_issn!=\''.$_q.'\'';
                         } else { $_sql_criteria .= ' biblio.isbn_issn=\''.$_q.'\''; }
                         break;
                     case 'publisher' :
@@ -195,7 +195,7 @@ class biblio_list extends biblio_list_model
                         break;
                     case 'publishyear' :
                         if ($_b == '-') {
-                            $_sql_criteria .= ' AND biblio.publish_year!=\''.$_q.'\'';
+                            $_sql_criteria .= ' biblio.publish_year!=\''.$_q.'\'';
                         } else { $_sql_criteria .= ' biblio.publish_year=\''.$_q.'\''; }
                         break;
                     case 'gmd' :
