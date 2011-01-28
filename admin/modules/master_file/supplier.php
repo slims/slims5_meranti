@@ -72,7 +72,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
             $update = $sql_op->update('mst_supplier', $data, 'supplier_id='.$updateRecordID);
             if ($update) {
                 utility::jsAlert(__('Supplier Data Successfully Updated'));
-                echo '<script type="text/javascript">parent.jQuery(\'#mainContent\').simbioAJAX(parent.jQuery.ajaxHistory[1].url);</script>';
+                echo '<script type="text/javascript">parent.jQuery(\'#mainContent\').simbioAJAX(parent.jQuery.ajaxHistory[0].url);</script>';
             } else { utility::jsAlert(__('Supplier Data FAILED to Updated. Please Contact System Administrator')."\nDEBUG : ".$error); }
             exit();
         } else {

@@ -48,7 +48,7 @@ class biblio_list extends biblio_list_model
      * @param   string  $str_criteria
      * @return  void
      */
-	protected function compileSQL() {
+    protected function compileSQL() {
         global $sysconf;
         // get page number from http get var
         if (!isset($_GET['page']) OR $_GET['page'] < 1){ $_page = 1; } else {
@@ -65,13 +65,13 @@ class biblio_list extends biblio_list_model
         $_sql_str = 'SELECT SQL_CALC_FOUND_ROWS index.biblio_id, index.title, index.author, index.topic, index.image, index.isbn_issn, index.labels';
 
         // checking custom frontpage fields file
-        $custom_frontpage_record_file = (defined('UCS_BASE_DIR')?UCS_BASE_DIR:SENAYAN_BASE_DIR).$sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/custom_frontpage_record.inc.php';
+        $custom_frontpage_record_file = SENAYAN_BASE_DIR.$sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/custom_frontpage_record.inc.php';
         if (file_exists($custom_frontpage_record_file)) {
             include $custom_frontpage_record_file;
             $this->enable_custom_frontpage = true;
             $this->custom_fields = $custom_fields;
             foreach ($this->custom_fields as $_field => $_field_opts) {
-                if ($_field_opts[0] == 1 && !in_array($_field, array('availability'))) {
+                if ($_field_opts[0] == 1 && !in_array($_field, array('availability', 'isbn_issn'))) {
                     $_sql_str .= ", index.$_field";
                 }
             }
@@ -92,7 +92,7 @@ class biblio_list extends biblio_list_model
         // for debugging purpose only
         // echo "<div style=\"border: 1px solid navy; padding: 5px; color: navy; margin: 5px;\">$_sql_str</div>";
 		return $_sql_str;
-	}
+    }
 
 
     /**
@@ -101,8 +101,7 @@ class biblio_list extends biblio_list_model
      * @param   string  $str_criteria
      * @return  void
      */
-    public function setSQLcriteria($str_criteria)
-    {
+    public function setSQLcriteria($str_criteria) {
         if (!$str_criteria)
             return null;
         // defaults
@@ -182,21 +181,21 @@ class biblio_list extends biblio_list_model
 		    }
                     break;
                 case 'callnumber' :
-                    if ($_b == '-') { $_sql_criteria .= ' AND biblio.call_number NOT LIKE \''.$_q.'%\'';
+                    if ($_b == '-') { $_sql_criteria .= ' biblio.call_number NOT LIKE \''.$_q.'%\'';
                     } else { $_sql_criteria .= ' index.call_number LIKE \''.$_q.'%\''; }
                     break;
                 case 'itemcallnumber' :
 		    if (!$this->disable_item_data) {
-			if ($_b == '-') { $_sql_criteria .= ' AND item.call_number NOT LIKE \''.$_q.'%\'';
+			if ($_b == '-') { $_sql_criteria .= ' item.call_number NOT LIKE \''.$_q.'%\'';
 			} else { $_sql_criteria .= ' item.call_number LIKE \''.$_q.'%\''; }
 		    }
                     break;
                 case 'class' :
-                    if ($_b == '-') { $_sql_criteria .= ' AND index.classification NOT LIKE \''.$_q.'%\'';
+                    if ($_b == '-') { $_sql_criteria .= ' index.classification NOT LIKE \''.$_q.'%\'';
                     } else { $_sql_criteria .= ' index.classification LIKE \''.$_q.'%\''; }
                     break;
                 case 'isbn' :
-                    if ($_b == '-') { $_sql_criteria .= ' AND biblio.isbn_issn NOT LIKE \''.$_q.'%\'';
+                    if ($_b == '-') { $_sql_criteria .= ' biblio.isbn_issn NOT LIKE \''.$_q.'%\'';
                     } else { $_sql_criteria .= ' index.isbn_issn LIKE \''.$_q.'%\''; }
                     break;
                 case 'publisher' :
@@ -204,7 +203,7 @@ class biblio_list extends biblio_list_model
                     } else { $_sql_criteria .= " index.publisher='$_q%'"; }
                     break;
                 case 'publishyear' :
-                    if ($_b == '-') { $_sql_criteria .= ' AND index.publish_year!=\''.$_q.'\'';
+                    if ($_b == '-') { $_sql_criteria .= ' index.publish_year!=\''.$_q.'\'';
                     } else { $_sql_criteria .= ' index.publish_year=\''.$_q.'\''; }
                     break;
                 case 'gmd' :

@@ -100,6 +100,8 @@ function showTitleAuthors($obj_db, $array_data)
 {
     global $sysconf;
     global $label_cache;
+    $_opac_hide = false;
+    $_promoted = false;
     $_labels = '';
     // biblio author detail
     if ($sysconf['index']['type'] == 'default') {
@@ -119,17 +121,6 @@ function showTitleAuthors($obj_db, $array_data)
         $_authors = substr_replace($_authors, '', -3);
         $_output = '<div style="float: left;"><span class="title">'.$_title.'</span><div class="authors">'.$_authors.'</div></div>';
     } else {
-        $_sql_biblio_q = sprintf('SELECT title, author, opac_hide, promoted, labels FROM search_biblio
-            WHERE biblio_id=%d', $array_data[0]);
-        $_biblio_q = $obj_db->query($_sql_biblio_q);
-        $_authors = '';
-        while ($_biblio_d = $_biblio_q->fetch_row()) {
-            $_title = $_biblio_d[0];
-            $_authors .= $_biblio_d[1];
-            $_opac_hide = (integer)$_biblio_d[2];
-            $_promoted = (integer)$_biblio_d[3];
-            $_labels = $_biblio_d[4];
-        }
         $_output = '<div style="float: left;"><span class="title">'.$array_data[1].'</span><div class="authors">'.$array_data[3].'</div></div>';
         $_labels = $array_data[2];
     }
@@ -141,7 +132,6 @@ function showTitleAuthors($obj_db, $array_data)
     if ($_promoted) {
         $_output .= '<div style="float: right; width: 20px; height: 20px;" class="homeFlagIcon" title="Promoted To Homepage">&nbsp;</div>';
     }
-    #$_output .= '<div style="float: right; width: 50px; height: 20px;" title="Promoted To Homepage">'.$_title.'</div>';
     // labels
     if ($_labels) {
         $_output .= '<div class="labels">';

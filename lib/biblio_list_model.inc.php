@@ -210,9 +210,7 @@ abstract class biblio_list_model
             if (!empty($_biblio_d['image']) && !defined('LIGHTWEIGHT_MODE')) {
                 $_biblio_d['image'] = urlencode($_biblio_d['image']);
                 $images_loc = 'images/docs/'.$_biblio_d['image'];
-                if (file_exists($images_loc)) {
-                    $_image_cover = 'style="background-image: url(./lib/phpthumb/phpThumb.php?src=../../'.urlencode($images_loc).'&w=42); background-repeat: no-repeat;"';
-                }
+                $_image_cover = 'style="background-image: url(./lib/phpthumb/phpThumb.php?src=../../'.$images_loc.'&w=42); background-repeat: no-repeat;"';
             }
 
             $_alt_list = ($_i%2 == 0)?'alterList':'alterList2';
@@ -254,14 +252,14 @@ abstract class biblio_list_model
                                 $_buffer .= '<div class="customField availabilityField"><b>'.$_field_opts[1].'</b> : '.$this->item_availability_message.'</div>';
                             }
                         } else if ($_field == 'node_id' && $this->disable_item_data) {
-							$_buffer .= '<div class="customField locationField"><b>'.$_field_opts[1].'</b> : '.$sysconf['node'][$_biblio_d['node_id']]['name'].'</div>';
-						}
+			    $_buffer .= '<div class="customField locationField"><b>'.$_field_opts[1].'</b> : '.$sysconf['node'][$_biblio_d['node_id']]['name'].'</div>';
+			}
                     }
                 }
             }
 
-			// checkbox for marking collection
-			$_check_mark = (utility::isMemberLogin() && $this->enable_mark)?' <input type="checkbox" id="biblioCheck'.$_i.'" name="biblio[]" class="biblioCheck" value="'.$_biblio_d['biblio_id'].'" /> <label for="biblioCheck'.$_i.'">'.__('mark this').'</label>':'';
+	    // checkbox for marking collection
+	    $_check_mark = (utility::isMemberLogin() && $this->enable_mark)?' <input type="checkbox" id="biblioCheck'.$_i.'" name="biblio[]" class="biblioCheck" value="'.$_biblio_d['biblio_id'].'" /> <label for="biblioCheck'.$_i.'">'.__('mark this').'</label>':'';
             $_buffer .= '<div class="subItem">'.$_biblio_d['detail_button'].' '.$_biblio_d['xml_button'].$_check_mark.'</div>';
             $_buffer .= "</div>\n";
             $_i++;
@@ -339,7 +337,7 @@ abstract class biblio_list_model
             $_biblio_authors_q = $this->obj_db->query('SELECT a.*,ba.level FROM mst_author AS a'
                 .' LEFT JOIN biblio_author AS ba ON a.author_id=ba.author_id WHERE ba.biblio_id='.$_biblio_d['biblio_id']);
             while ($_auth_d = $_biblio_authors_q->fetch_assoc()) {
-                # some rules to set name type in mods standard
+                // some rules to set name type in mods standard
                 if ($sysconf['authority_type'][$_auth_d['authority_type']] == 'Personal Name') {
                     $sysconf['authority_type'][$_auth_d['authority_type']] = 'personal';
                 } elseif ($sysconf['authority_type'][$_auth_d['authority_type']] == 'Organizational Body') {
@@ -351,7 +349,6 @@ abstract class biblio_list_model
                 }
                 $_buffer .= '<name type="'.$sysconf['authority_type'][$_auth_d['authority_type']].'" authority="'.$_auth_d['auth_list'].'">'."\n"
                   .'<namePart>'.$_auth_d['author_name'].'</namePart>'."\n"
-                  .'<displayForm>'.$_auth_d['author_name'].'</displayForm>'."\n"
                   .'<role><roleTerm type="text">'.$sysconf['authority_level'][$_auth_d['level']].'</roleTerm></role>'."\n"
                 .'</name>'."\n";
             }
@@ -360,25 +357,6 @@ abstract class biblio_list_model
 
 			// ISBN
 			$_buffer .= '<identifier type="isbn">'.str_replace(array('-', ' '), '', $_biblio_d['isbn_issn']).'</identifier>'."\n";
-            /* ujicoba start */
-            foreach ($this->custom_fields as $key => $value) {
-                if (($key == 'edition') AND ($value[0] == 1)) {
-                    $_buffer .= '<originInfo>'."\n";
-                    $_buffer .= '<edition>'.$_biblio_d['edition'].'</edition>'."\n";
-                    $_buffer .= '</originInfo>'."\n";
-                }
-                if (($key == 'collation') AND ($value[0] == 1)) {
-                    $_buffer .= '<physicalDescription>'."\n";
-                    $_buffer .= '<extent>'.$_biblio_d['collation'].'</extent>'."\n";
-                    $_buffer .= '</physicalDescription>'."\n";
-                }
-                if (($key == 'call_number') AND ($value[0] == 1)) {
-                    $_buffer .= '<location>'."\n";
-                    $_buffer .= '<shelfLocator>'.$_biblio_d['call_number'].'</shelfLocator>'."\n";
-                    $_buffer .= '</location>'."\n";
-                }
-            }
-            /* ujicoba end */
             $_buffer .= '</mods>'."\n";
         }
         $_buffer .= '</modsCollection>';
@@ -389,3 +367,4 @@ abstract class biblio_list_model
         return $_buffer;
     }
 }
+?>

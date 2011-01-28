@@ -151,17 +151,17 @@ if (isset($_POST['doImport'])) {
                     $dbs->query($sql_str);
                     // case duplicate do update
                     if ($dbs->errno && $dbs->errno == 1062) {
-						$sql_str = "UPDATE item SET call_number=$call_number, coll_type_id=$coll_type,
-							inventory_code=$inventory_code, received_date=$received_date, supplier_id=$supplier,
-							order_no=$order_no, location_id=$location, order_date=$order_date, item_status_id=$item_status, site=$site,
-							source=$source, invoice=$invoice, price=$price, price_currency=$price_currency, invoice_date=$invoice_date,
-							input_date=$input_date, last_update=$last_update WHERE item_code LIKE $item_code";
-						// update data
-						$dbs->query($sql_str);
-						if ($dbs->affected_rows > 0) { $updated_row++; }
-					} else {
-						if ($dbs->affected_rows > 0) { $updated_row++; }
-					}
+                        $sql_str = "UPDATE item SET call_number=$call_number, coll_type_id=$coll_type,
+                                inventory_code=$inventory_code, received_date=$received_date, supplier_id=$supplier,
+                                order_no=$order_no, location_id=$location, order_date=$order_date, item_status_id=$item_status, site=$site,
+                                source=$source, invoice=$invoice, price=$price, price_currency=$price_currency, invoice_date=$invoice_date,
+                                input_date=$input_date, last_update=$last_update WHERE item_code LIKE $item_code";
+                        // update data
+                        $dbs->query($sql_str);
+                        if ($dbs->affected_rows > 0) { $updated_row++; }
+                    } else {
+                            if ($dbs->affected_rows > 0) { $updated_row++; }
+                    }
                 }
                 $row_count++;
             }
