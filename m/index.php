@@ -21,7 +21,7 @@
  *
  */
 
-// key to authenticate
+ // key to authenticate
 if (!defined('INDEX_AUTH')) {
     define('INDEX_AUTH', '1');
 }

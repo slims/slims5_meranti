@@ -43,6 +43,7 @@ abstract class biblio_list_model
     public $enable_mark = true;
     public $query_error;
     public $current_page = 1;
+    public $item_availability_message = 'none copy available';
     /* Protected properties */
     protected $obj_db = false;
     protected $resultset = false;
@@ -247,9 +248,10 @@ abstract class biblio_list_model
                             // total available
                             $_total_avail = $_item_c[0]-$_borrowed_c[0];
                             if ($_total_avail < 1) {
-                                $_buffer .= '<div class="customField availabilityField"><b>'.$_field_opts[1].'</b> : <strong style="color: #f00;">none copy available</strong></div>';
+                                $_buffer .= '<div class="customField availabilityField"><b>'.$_field_opts[1].'</b> : <strong style="color: #f00;">'.$this->item_availability_message.'</strong></div>';
                             } else {
-                                $_buffer .= '<div class="customField availabilityField"><b>'.$_field_opts[1].'</b> : '.$_total_avail.' copies available for loan</div>';
+                                $this->item_availability_message = $_total_avail.' copies available for loan';
+                                $_buffer .= '<div class="customField availabilityField"><b>'.$_field_opts[1].'</b> : '.$this->item_availability_message.'</div>';
                             }
                         } else if ($_field == 'node_id' && $this->disable_item_data) {
 							$_buffer .= '<div class="customField locationField"><b>'.$_field_opts[1].'</b> : '.$sysconf['node'][$_biblio_d['node_id']]['name'].'</div>';
@@ -317,7 +319,7 @@ abstract class biblio_list_model
         $_buffer .= '<slims:modsResultShowed>'.$this->num2show.'</slims:modsResultShowed>'."\n";
         $_buffer .= '</slims:resultInfo>'."\n";
         while ($_biblio_d = $this->resultset->fetch_assoc()) {
-            $_buffer .= '<mods ID="'.$_biblio_d['biblio_id'].'">'."\n";
+            $_buffer .= '<mods version="3.3" ID="'.$_biblio_d['biblio_id'].'">'."\n";
             // parse title
             $_title_sub = '';
             if (stripos($_biblio_d['title'], ':') !== false) {
@@ -337,8 +339,19 @@ abstract class biblio_list_model
             $_biblio_authors_q = $this->obj_db->query('SELECT a.*,ba.level FROM mst_author AS a'
                 .' LEFT JOIN biblio_author AS ba ON a.author_id=ba.author_id WHERE ba.biblio_id='.$_biblio_d['biblio_id']);
             while ($_auth_d = $_biblio_authors_q->fetch_assoc()) {
+                # some rules to set name type in mods standard
+                if ($sysconf['authority_type'][$_auth_d['authority_type']] == 'Personal Name') {
+                    $sysconf['authority_type'][$_auth_d['authority_type']] = 'personal';
+                } elseif ($sysconf['authority_type'][$_auth_d['authority_type']] == 'Organizational Body') {
+                    $sysconf['authority_type'][$_auth_d['authority_type']] = 'corporate';
+                } elseif ($sysconf['authority_type'][$_auth_d['authority_type']] == 'Conference') {
+                    $sysconf['authority_type'][$_auth_d['authority_type']] = 'conference';
+                } else {
+                    $sysconf['authority_type'][$_auth_d['authority_type']] = 'personal';
+                }
                 $_buffer .= '<name type="'.$sysconf['authority_type'][$_auth_d['authority_type']].'" authority="'.$_auth_d['auth_list'].'">'."\n"
                   .'<namePart>'.$_auth_d['author_name'].'</namePart>'."\n"
+                  .'<displayForm>'.$_auth_d['author_name'].'</displayForm>'."\n"
                   .'<role><roleTerm type="text">'.$sysconf['authority_level'][$_auth_d['level']].'</roleTerm></role>'."\n"
                 .'</name>'."\n";
             }
@@ -347,6 +360,25 @@ abstract class biblio_list_model
 
 			// ISBN
 			$_buffer .= '<identifier type="isbn">'.str_replace(array('-', ' '), '', $_biblio_d['isbn_issn']).'</identifier>'."\n";
+            /* ujicoba start */
+            foreach ($this->custom_fields as $key => $value) {
+                if (($key == 'edition') AND ($value[0] == 1)) {
+                    $_buffer .= '<originInfo>'."\n";
+                    $_buffer .= '<edition>'.$_biblio_d['edition'].'</edition>'."\n";
+                    $_buffer .= '</originInfo>'."\n";
+                }
+                if (($key == 'collation') AND ($value[0] == 1)) {
+                    $_buffer .= '<physicalDescription>'."\n";
+                    $_buffer .= '<extent>'.$_biblio_d['collation'].'</extent>'."\n";
+                    $_buffer .= '</physicalDescription>'."\n";
+                }
+                if (($key == 'call_number') AND ($value[0] == 1)) {
+                    $_buffer .= '<location>'."\n";
+                    $_buffer .= '<shelfLocator>'.$_biblio_d['call_number'].'</shelfLocator>'."\n";
+                    $_buffer .= '</location>'."\n";
+                }
+            }
+            /* ujicoba end */
             $_buffer .= '</mods>'."\n";
         }
         $_buffer .= '</modsCollection>';
