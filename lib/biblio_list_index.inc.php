@@ -71,7 +71,7 @@ class biblio_list extends biblio_list_model
             $this->enable_custom_frontpage = true;
             $this->custom_fields = $custom_fields;
             foreach ($this->custom_fields as $_field => $_field_opts) {
-                if ($_field_opts[0] == 1 && !in_array($_field, array('availability', 'isbn_issn'))) {
+                if ($_field_opts[0] == 1 && !in_array($_field, array('availability'))) {
                     $_sql_str .= ", index.$_field";
                 }
             }

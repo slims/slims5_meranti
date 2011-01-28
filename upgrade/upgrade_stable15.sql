@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `search_biblio` (
   `location` text COLLATE utf8_unicode_ci,
   `year` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `notes` text COLLATE utf8_unicode_ci,
-  `series` text COLLATE utf8_unicode_ci,
+  `series_title` text COLLATE utf8_unicode_ci,
   `items` text COLLATE utf8_unicode_ci,
   `collection_types` text COLLATE utf8_unicode_ci,
   `call_number` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
