@@ -137,7 +137,7 @@ class biblio_indexer
 		    $data['notes'] = trim($this->obj_db->escape_string(strip_tags($rb_id['notes'], '<br><p><div><span><i><em><strong><b><code>')));
 		}
 		if ($rb_id['series_title'] != '') {
-		    $data['series'] = $this->obj_db->escape_string($rb_id['series_title']);
+		    $data['series_title'] = $this->obj_db->escape_string($rb_id['series_title']);
 		}
 
 		/* author  */

@@ -35,6 +35,6 @@ $menu[] = array(__('Doc. Language'), MODULES_WEB_ROOT_DIR.'master_file/doc_langu
 $menu[] = array(__('Label'), MODULES_WEB_ROOT_DIR.'master_file/label.php', __('Special Labels for Titles to Show Up On Homepage'));
 $menu[] = array(__('Frequency'), MODULES_WEB_ROOT_DIR.'master_file/frequency.php', __('Frequency'));
 $menu[] = array('Header', __('Tools'));
-$menu[] = array(__('Orphaned Author'), MODULES_WEB_ROOT_DIR.'master_file/orphaned_author.php', __('Orphaned Authors'));
-$menu[] = array(__('Orphaned Subject'), MODULES_WEB_ROOT_DIR.'master_file/orphaned_topic.php', __('Orphaned Subject'));
+$menu[] = array(__('Orphaned Author'), MODULES_WEB_ROOT_DIR.'master_file/author.php?type=orphaned', __('Orphaned Authors'));
+$menu[] = array(__('Orphaned Subject'), MODULES_WEB_ROOT_DIR.'master_file/topic.php?type=orphaned', __('Orphaned Subject'));
 ?>

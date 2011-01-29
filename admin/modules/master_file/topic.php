@@ -181,7 +181,13 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 } else {
     /* TOPIC LIST */
     // table spec
-    $table_spec = 'mst_topic AS t';
+    $sql_criteria = 't.topic_id > 1';
+    if (isset($_GET['type']) && $_GET['type'] == 'orphaned') {
+        $table_spec = 'mst_topic AS t LEFT JOIN biblio_topic AS bt ON t.topic_id=bt.topic_id';
+        $sql_criteria = 'bt.biblio_id IS NULL OR bt.topic_id IS NULL';
+    } else {
+        $table_spec = 'mst_topic AS t';
+    }
 
     $subj_type_fld = 1;
     // create datagrid
@@ -206,18 +212,19 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         $keyword = $dbs->escape_string(trim($_GET['keywords']));
         $words = explode(' ', $keyword);
         if (count($words) > 1) {
-            $concat_sql = ' (';
+            $concat_sql = ' AND (';
             foreach ($words as $word) {
                 $concat_sql .= " t.topic LIKE '%$word%' AND";
             }
             // remove the last AND
             $concat_sql = substr_replace($concat_sql, '', -3);
             $concat_sql .= ') ';
-            $datagrid->setSQLCriteria($concat_sql);
+            $sql_criteria .= $concat_sql;
         } else {
-            $datagrid->setSQLCriteria("t.topic LIKE '%$keyword%'");
+            $sql_criteria .= " AND t.topic LIKE '%$keyword%'";
         }
     }
+    $datagrid->setSQLCriteria($sql_criteria);
 
     // set table and table header attributes
     $datagrid->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';

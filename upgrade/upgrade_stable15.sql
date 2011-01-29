@@ -44,6 +44,10 @@ CREATE TABLE IF NOT EXISTS `search_biblio` (
 
 ALTER TABLE `member` ADD `member_mail_address` varchar(255) collate utf8_unicode_ci default NULL AFTER `member_address`;
 
+ALTER TABLE `mst_author` DROP INDEX `author_name`;
+ALTER TABLE `mst_author` ADD `author_year` VARCHAR( 20 ) NULL DEFAULT NULL AFTER `author_name`;
+ALTER TABLE `mst_author` ADD UNIQUE (`author_name` ,`author_year`);
+
 -- member custom fields
 CREATE TABLE IF NOT EXISTS `member_custom` (
 `member_id` VARCHAR(20) NOT NULL ,

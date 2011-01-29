@@ -51,6 +51,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         exit();
     } else {
         $data['author_name'] = $dbs->escape_string($authorName);
+        $data['author_year'] = $dbs->escape_string(trim($_POST['authorYear']));
         $data['authority_type'] = trim($dbs->escape_string(strip_tags($_POST['authorityType'])));
         $data['auth_list'] = trim($dbs->escape_string(strip_tags($_POST['authList'])));
         $data['input_date'] = date('Y-m-d');
@@ -163,6 +164,8 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     /* Form Element(s) */
     // author name
     $form->addTextField('text', 'authorName', __('Author Name').'*', $rec_d['author_name'], 'style="width: 60%;"');
+    // author year
+    $form->addTextField('text', 'authorYear', __('Author Year'), $rec_d['author_year'], 'style="width: 60%;"');
     // authority type
     foreach ($sysconf['authority_type'] as $auth_type_id => $auth_type) {
         $auth_type_options[] = array($auth_type_id, $auth_type);
@@ -180,7 +183,14 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 } else {
     /* AUTHOR LIST */
     // table spec
-    $table_spec = 'mst_author AS a';
+    $sql_criteria = 'a.author_id > 1';
+    if (isset($_GET['type']) && $_GET['type'] == 'orphaned') {
+        $table_spec = 'mst_author AS a LEFT JOIN biblio_author AS ba ON a.author_id=ba.author_id';
+        $sql_criteria = 'ba.biblio_id IS NULL OR ba.author_id IS NULL';
+    } else {
+        $table_spec = 'mst_author AS a';
+    }
+
 
     // authority field num
     $auth_type_fld = 1;
@@ -189,11 +199,13 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     if ($can_read AND $can_write) {
         $auth_type_fld = 2;
         $datagrid->setSQLColumn('a.author_id', 'a.author_name AS \''.__('Author Name').'\'',
+            'a.author_year AS \''.__('Author Year').'\'',
             'a.authority_type AS \''.__('Authority Type').'\'',
             'a.auth_list AS \''.__('Authority Files').'\'',
             'a.last_update AS \''.__('Last Update').'\'');
     } else {
         $datagrid->setSQLColumn('a.author_name AS \''.__('Author Name').'\'',
+            'a.author_year AS \''.__('Author Year').'\'',
             'a.authority_type AS \''.__('Authority Type').'\'',
             'a.auth_list AS \''.__('Authority Files').'\'',
             'a.last_update AS \''.__('Last Update').'\'');
@@ -208,8 +220,9 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // is there any search
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
        $keywords = $dbs->escape_string($_GET['keywords']);
-       $datagrid->setSQLCriteria("a.author_name LIKE '%$keywords%'");
+       $sql_criteria .= " AND a.author_name LIKE '%$keywords%'";
     }
+    $datagrid->setSQLCriteria($sql_criteria);
 
     // set table and table header attributes
     $datagrid->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
