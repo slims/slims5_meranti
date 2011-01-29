@@ -49,7 +49,7 @@ ALTER TABLE `member` ADD `member_mail_address` varchar(255) collate utf8_unicode
 
 ALTER TABLE `mst_author` DROP INDEX `author_name`;
 ALTER TABLE `mst_author` ADD `author_year` VARCHAR( 20 ) NULL DEFAULT NULL AFTER `author_name`;
-ALTER TABLE `mst_author` ADD UNIQUE (`author_name` ,`author_year`);
+ALTER TABLE `mst_author` ADD UNIQUE (`author_name` ,`authority_type`);
 
 ALTER TABLE `mst_topic` DROP INDEX `topic`;
 ALTER TABLE `mst_topic` ADD UNIQUE (`topic` ,`topic_type`);

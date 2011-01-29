@@ -51,7 +51,8 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         exit();
     } else {
         $data['author_name'] = $dbs->escape_string($authorName);
-        $data['author_year'] = $dbs->escape_string(trim($_POST['authorYear']));
+        $author_year = $dbs->escape_string(trim($_POST['authorYear']));
+        if ($author_year) { $data['author_year'] = $author_year; }
         $data['authority_type'] = trim($dbs->escape_string(strip_tags($_POST['authorityType'])));
         $data['auth_list'] = trim($dbs->escape_string(strip_tags($_POST['authList'])));
         $data['input_date'] = date('Y-m-d');
