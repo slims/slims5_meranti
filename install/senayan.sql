@@ -547,9 +547,9 @@ CREATE TABLE IF NOT EXISTS `mst_item_status` (
 -- Dumping data for table `mst_item_status`
 --
 
-INSERT INTO `mst_item_status` (`item_status_id`, `item_status_name`, `rules`, `input_date`, `last_update`) VALUES
-('R', 'Repair', 'a:1:{i:0;s:1:"1";}', DATE(NOW()), DATE(NOW())),
-('NL', 'No Loan', 'a:1:{i:0;s:1:"1";}', DATE(NOW()), DATE(NOW()));
+INSERT INTO `mst_item_status` (`item_status_id`, `item_status_name`, `rules`, `input_date`, `last_update`, `no_loan`) VALUES
+('R', 'Repair', 'a:1:{i:0;s:1:"1";}', DATE(NOW()), DATE(NOW()), '1'),
+('NL', 'No Loan', 'a:1:{i:0;s:1:"1";}', DATE(NOW()), DATE(NOW()), '1');
 
 -- --------------------------------------------------------
 
