@@ -51,6 +51,9 @@ ALTER TABLE `mst_author` DROP INDEX `author_name`;
 ALTER TABLE `mst_author` ADD `author_year` VARCHAR( 20 ) NULL DEFAULT NULL AFTER `author_name`;
 ALTER TABLE `mst_author` ADD UNIQUE (`author_name` ,`author_year`);
 
+ALTER TABLE `mst_topic` DROP INDEX `topic`;
+ALTER TABLE `mst_topic` ADD UNIQUE (`topic` ,`topic_type`);
+
 -- member custom fields
 CREATE TABLE IF NOT EXISTS `member_custom` (
 `member_id` VARCHAR(20) NOT NULL ,

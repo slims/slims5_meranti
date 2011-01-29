@@ -196,6 +196,7 @@ if (!$in_pop_up) {
     <hr />
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/item.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" id="keywords" size="30" />
+    <select name="searchby"><option value="item">Item</option><option value="others"><?php echo __('Others'); ?> </option></select>
     <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
 </div>
@@ -343,7 +344,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     require SIMBIO_BASE_DIR.'simbio_UTILS/simbio_tokenizecql.inc.php';
     require LIB_DIR.'biblio_list_model.inc.php';
 
-    if ($sysconf['index']['type'] == 'default') {
+    if ($sysconf['index']['type'] == 'default' || (isset($_GET['searchby']) && $_GET['searchby'] == 'item')) {
         require LIB_DIR.'biblio_list.inc.php';
         $title_field_idx = 1;
         // callback function to show title and authors in datagrid
@@ -446,7 +447,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 
 
     // is there any search
-    if (isset($_GET['keywords']) AND $_GET['keywords']) {
+    if (isset($_GET['keywords']) && $_GET['keywords']) {
         $keywords = $dbs->escape_string(trim($_GET['keywords']));
         $searchable_fields = array('title', 'author', 'subject', 'itemcode');
         $search_str = '';

@@ -86,7 +86,7 @@ if ($biblioID) {
     $table->table_attr = 'align="center" style="width: 100%;" cellpadding="2" cellspacing="0"';
 
     // database list
-    $biblio_topic_q = $dbs->query("SELECT bt.*, t.topic FROM biblio_topic AS bt
+    $biblio_topic_q = $dbs->query("SELECT bt.*, t.topic, t.topic_type FROM biblio_topic AS bt
         LEFT JOIN mst_topic AS t ON bt.topic_id=t.topic_id
         WHERE bt.biblio_id=$biblioID ORDER BY level ASC");
 
@@ -99,11 +99,13 @@ if ($biblioID) {
         $remove_link = '<a href="#" onclick="confirmProcess('.$biblioID.', '.$biblio_topic_d['topic_id'].')"
             style="color: #FF0000; text-decoration: underline;">Delete</a>';
         $topic = $biblio_topic_d['topic'];
+        $topic_type = $sysconf['subject_type'][$biblio_topic_d['topic_type']];
 
-        $table->appendTableRow(array($remove_link, $topic, $sysconf['subject_level'][$biblio_topic_d['level']]));
+        $table->appendTableRow(array($remove_link, $topic, $topic_type, $sysconf['subject_level'][$biblio_topic_d['level']]));
         $table->setCellAttr($row, 0, 'valign="top" class="'.$row_class.'" style="font-weight: bold; width: 10%;"');
-        $table->setCellAttr($row, 1, 'valign="top" class="'.$row_class.'" style="font-weight: bold; width: 70%;"');
-        $table->setCellAttr($row, 2, 'valign="top" class="'.$row_class.'" style="width: 20%;"');
+        $table->setCellAttr($row, 1, 'valign="top" class="'.$row_class.'" style="font-weight: bold; width: 50%;"');
+        $table->setCellAttr($row, 2, 'valign="top" class="'.$row_class.'" style="font-weight: bold; width: 20%;"');
+        $table->setCellAttr($row, 3, 'valign="top" class="'.$row_class.'" style="width: 20%;"');
 
         $row++;
     }
@@ -124,15 +126,17 @@ if ($biblioID) {
                 style="color: #000000; text-decoration: underline;">Remove</a>';
 
             if ($biblio_session) {
-                $topic_q = $dbs->query("SELECT topic FROM mst_topic WHERE topic_id=".$biblio_session[0]);
+                $topic_q = $dbs->query("SELECT topic, topic_type FROM mst_topic WHERE topic_id=".$biblio_session[0]);
                 $topic_d = $topic_q->fetch_row();
                 $topic = $topic_d[0];
+                $topic_type = $sysconf['subject_type'][$topic_d[1]];
             }
 
-            $table->appendTableRow(array($remove_link, $topic, $sysconf['subject_level'][$biblio_session[1]]));
+            $table->appendTableRow(array($remove_link, $topic, $topic_type, $sysconf['subject_level'][$biblio_session[1]]));
             $table->setCellAttr($row, 0, 'valign="top" class="'.$row_class.'" style="font-weight: bold; background-color: #ffc466; width: 10%;"');
-            $table->setCellAttr($row, 1, 'valign="top" class="'.$row_class.'" style="background-color: #ffc466; width: 70%;"');
+            $table->setCellAttr($row, 1, 'valign="top" class="'.$row_class.'" style="background-color: #ffc466; width: 50%;"');
             $table->setCellAttr($row, 2, 'valign="top" class="'.$row_class.'" style="background-color: #ffc466; width: 20%;"');
+            $table->setCellAttr($row, 3, 'valign="top" class="'.$row_class.'" style="background-color: #ffc466; width: 20%;"');
 
             $row++;
         }

@@ -42,10 +42,10 @@ if (isset($_GET['biblioID']) AND $_GET['biblioID']) {
 }
 
 // utility function to check author name
-function checkAuthor($str_author_name)
+function checkAuthor($str_author_name, $str_author_type = 'p')
 {
     global $dbs;
-    $_q = $dbs->query('SELECT author_id FROM mst_author WHERE author_name=\''.$str_author_name.'\'');
+    $_q = $dbs->query('SELECT author_id FROM mst_author WHERE author_name=\''.$str_author_name.'\' AND authority_type=\''.$str_author_type.'\'');
     if ($_q->num_rows > 0) {
         $_d = $_q->fetch_row();
         // return the author ID
@@ -70,7 +70,7 @@ if (isset($_POST['save']) AND (isset($_POST['authorID']) OR trim($_POST['search_
             $data['author_id'] = $_POST['authorID'];
         } else if ($author_name AND empty($_POST['authorID'])) {
             // check author
-            $author_id = checkAuthor($author_name);
+            $author_id = checkAuthor($author_name, $_POST['type']);
             if ($author_id !== false) {
                 $data['author_id'] = $author_id;
             } else {
@@ -132,7 +132,7 @@ if (isset($_POST['save']) AND (isset($_POST['authorID']) OR trim($_POST['search_
     <hr />
     <form name="searchAuthor" method="post" style="display: inline;">
     <?php
-    $ajax_exp = "ajaxFillSelect('../../AJAX_lookup_handler.php', 'mst_author', 'author_id:author_name', 'authorID', $('#search_str').val())";
+    $ajax_exp = "ajaxFillSelect('../../AJAX_lookup_handler.php', 'mst_author', 'author_id:author_name:author_year:authority_type', 'authorID', $('#search_str').val())";
     echo __('Author Name'); ?> : <input type="text" name="search_str" id="search_str" style="width: 30%;" onkeyup="<?php echo $ajax_exp; ?>" onchange="<?php echo $ajax_exp; ?>" />
     <select name="type" style="width: 20%;"><?php
     foreach ($sysconf['authority_type'] as $type_id => $type) {

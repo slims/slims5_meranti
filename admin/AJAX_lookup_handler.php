@@ -71,7 +71,7 @@ if ($error) {
 
 if ($query->num_rows > 0) {
     while ($row = $query->fetch_row()) {
-        echo '<option value="'.$row[0].'">'.$row[1].'</option>'."\n";
+        echo '<option value="'.$row[0].'">'.$row[1].(isset($row[2])?' - '.$row[2]:'').(isset($row[3])?' - '.$row[3]:'').'</option>'."\n";
     }
     echo '<option value="0">NONE</option>'."\n";
 } else {

@@ -40,10 +40,10 @@ if (isset($_GET['biblioID']) AND $_GET['biblioID']) {
 }
 
 // utility function to check subject/topic
-function checkSubject($str_subject)
+function checkSubject($str_subject, $str_subject_type = 't')
 {
     global $dbs;
-    $_q = $dbs->query('SELECT topic_id FROM mst_topic WHERE topic=\''.$str_subject.'\'');
+    $_q = $dbs->query('SELECT topic_id FROM mst_topic WHERE topic=\''.$str_subject.'\' AND topic_type=\''.$str_subject_type.'\'');
     if ($_q->num_rows > 0) {
         $_d = $_q->fetch_row();
         // return the subject/topic ID
@@ -68,7 +68,7 @@ if (isset($_POST['save']) AND (isset($_POST['topicID']) OR trim($_POST['search_s
             $data['topic_id'] = $_POST['topicID'];
         } else if ($subject AND empty($_POST['topicID'])) {
             // check subject
-            $subject_id = checkSubject($subject);
+            $subject_id = checkSubject($subject, $_POST['type']);
             if ($subject_id !== false) {
                 $data['topic_id'] = $subject_id;
             } else {
@@ -131,7 +131,7 @@ if (isset($_POST['save']) AND (isset($_POST['topicID']) OR trim($_POST['search_s
     <hr />
     <form name="searchTopic" method="post" style="display: inline;">
     <?php
-    $ajax_exp = "ajaxFillSelect('../../AJAX_lookup_handler.php', 'mst_topic', 'topic_id:topic', 'topicID', $('#search_str').val())";
+    $ajax_exp = "ajaxFillSelect('../../AJAX_lookup_handler.php', 'mst_topic', 'topic_id:topic:topic_type', 'topicID', $('#search_str').val())";
     ?>
     <?php echo __('Keyword'); ?> : <input type="text" name="search_str" id="search_str" style="width: 30%;" onkeyup="<?php echo $ajax_exp; ?>" />
     <select name="type" style="width: 20%;"><?php

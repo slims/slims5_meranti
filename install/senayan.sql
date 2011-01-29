@@ -788,7 +788,7 @@ CREATE TABLE IF NOT EXISTS `mst_topic` (
   `input_date` date default NULL,
   `last_update` date default NULL,
   PRIMARY KEY  (`topic_id`),
-  UNIQUE KEY `topic` (`topic`)
+  UNIQUE KEY `topic` (`topic`, `topic_type`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
