@@ -150,13 +150,20 @@ class detail extends content_list
         }
 
         // get the authors data
-        $_biblio_authors_q = $this->obj_db->query('SELECT author_name FROM mst_author AS a'
+        $_biblio_authors_q = $this->obj_db->query('SELECT author_name, authority_type FROM mst_author AS a'
             .' LEFT JOIN biblio_author AS ba ON a.author_id=ba.author_id WHERE ba.biblio_id='.$this->detail_id);
         $authors = '';
         // authors for metadata
         $this->metadata .= '<meta name="Authors" content="';
         while ($data = $_biblio_authors_q->fetch_row()) {
-            $authors .= '<a href="?author='.urlencode('"'.$data[0].'"').'&search=Search" title="'.__('Click to view others documents with this author').'">'.$data[0]."</a><br />";
+            if ($data[1] == 'p') {
+                $data[1] = "Personal Name";
+            } elseif ($data[1] == 'o') {
+                $data[1] = "Organizational Body";
+            } elseif ($data[1] == 'c') {
+                $data[1] = "Conference";
+            }
+            $authors .= '<a href="?author='.urlencode('"'.$data[0].'"').'&search=Search" title="'.__('Click to view others documents with this author').'">'.$data[0]."</a> - ".$data[1]."<br />";
             $this->metadata .= $data[0].'; ';
         }
         $this->metadata .= '" />';
