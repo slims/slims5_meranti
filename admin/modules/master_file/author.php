@@ -193,11 +193,11 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 
 
     // authority field num
-    $auth_type_fld = 1;
+    $auth_type_fld = 2;
     // create datagrid
     $datagrid = new simbio_datagrid();
     if ($can_read AND $can_write) {
-        $auth_type_fld = 2;
+        $auth_type_fld = 3;
         $datagrid->setSQLColumn('a.author_id', 'a.author_name AS \''.__('Author Name').'\'',
             'a.author_year AS \''.__('Author Year').'\'',
             'a.authority_type AS \''.__('Authority Type').'\'',

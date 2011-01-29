@@ -83,7 +83,7 @@ if ($biblioID) {
     $table->table_attr = 'align="center" style="width: 100%;" cellpadding="2" cellspacing="0"';
 
     // database list
-    $biblio_author_q = $dbs->query("SELECT ba.*, a.author_name FROM biblio_author AS ba
+    $biblio_author_q = $dbs->query("SELECT ba.*, a.author_name, a.author_year, a.authority_type FROM biblio_author AS ba
         LEFT JOIN mst_author AS a ON ba.author_id=a.author_id
         WHERE ba.biblio_id=$biblioID ORDER BY level ASC");
 
@@ -96,11 +96,15 @@ if ($biblioID) {
         $remove_link = '<a href="#" onclick="confirmProcess('.$biblioID.', '.$biblio_author_d['author_id'].')"
             style="color: #FF0000; text-decoration: underline;">Delete</a>';
         $author = $biblio_author_d['author_name'];
+        $author_year = $biblio_author_d['author_year'];
+        $authority_type = $sysconf['authority_type'][$biblio_author_d['authority_type']];
 
-        $table->appendTableRow(array($remove_link, $author, $sysconf['authority_level'][$biblio_author_d['level']]));
+        $table->appendTableRow(array($remove_link, $author, $author_year, $authority_type, $sysconf['authority_level'][$biblio_author_d['level']]));
         $table->setCellAttr($row, 0, 'valign="top" class="'.$row_class.'" style="font-weight: bold; width: 10%;"');
-        $table->setCellAttr($row, 1, 'valign="top" class="'.$row_class.'" style="font-weight: bold; width: 70%;"');
+        $table->setCellAttr($row, 1, 'valign="top" class="'.$row_class.'" style="width: 30%;"');
         $table->setCellAttr($row, 2, 'valign="top" class="'.$row_class.'" style="width: 20%;"');
+        $table->setCellAttr($row, 3, 'valign="top" class="'.$row_class.'" style="width: 20%;"');
+        $table->setCellAttr($row, 4, 'valign="top" class="'.$row_class.'" style="width: 20%;"');
         $row++;
     }
 
@@ -120,17 +124,20 @@ if ($biblioID) {
                 style="color: #000000; text-decoration: underline;">Remove</a>';
 
             if ($biblio_session) {
-                $author_q = $dbs->query("SELECT author_name FROM mst_author
+                $author_q = $dbs->query("SELECT author_name, author_year, authority_type FROM mst_author
                     WHERE author_id=".$biblio_session[0]);
                 $author_d = $author_q->fetch_row();
                 $author = $author_d[0];
+                $author_year = $author_d[1];
+                $authority_type = $author_d[2];
             }
 
-            $table->appendTableRow(array($remove_link, $author, $sysconf['authority_level'][$biblio_session[1]]));
+            $table->appendTableRow(array($remove_link, $author, $author_year, $authority_type, $sysconf['authority_level'][$biblio_session[1]]));
             $table->setCellAttr($row, 0, 'valign="top" class="'.$row_class.'" style="font-weight: bold; background-color: #ffc466; width: 10%;"');
-            $table->setCellAttr($row, 1, 'valign="top" class="'.$row_class.'" style="background-color: #ffc466; width: 70%;"');
+            $table->setCellAttr($row, 1, 'valign="top" class="'.$row_class.'" style="background-color: #ffc466; width: 30%;"');
             $table->setCellAttr($row, 2, 'valign="top" class="'.$row_class.'" style="background-color: #ffc466; width: 20%;"');
-
+            $table->setCellAttr($row, 3, 'valign="top" class="'.$row_class.'" style="background-color: #ffc466; width: 20%;"');
+            $table->setCellAttr($row, 4, 'valign="top" class="'.$row_class.'" style="background-color: #ffc466; width: 20%;"');
             $row++;
         }
 

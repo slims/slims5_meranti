@@ -216,8 +216,8 @@ class biblio_list extends biblio_list_model
                     } else { $_sql_criteria .= " (MATCH (index.notes) AGAINST ('".$_q."' IN BOOLEAN MODE))"; }
                     break;
                 default :
-                    if ($_b == '-') { $_sql_criteria .= " NOT (MATCH (index.title, index.series) AGAINST ('$_q' IN BOOLEAN MODE))";
-                    } else { $_sql_criteria .= " (MATCH (index.title, index.series) AGAINST ('$_q' IN BOOLEAN MODE))"; }
+                    if ($_b == '-') { $_sql_criteria .= " NOT (MATCH (index.title, index.series_title) AGAINST ('$_q' IN BOOLEAN MODE))";
+                    } else { $_sql_criteria .= " (MATCH (index.title, index.series_title) AGAINST ('$_q' IN BOOLEAN MODE))"; }
                     break;
             }
         }
