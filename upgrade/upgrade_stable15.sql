@@ -32,14 +32,15 @@ CREATE TABLE IF NOT EXISTS `search_biblio` (
   `input_date` datetime DEFAULT NULL,
   `last_update` datetime DEFAULT NULL,
   UNIQUE KEY `biblio_id` (`biblio_id`),
-  KEY `additional_indexes` (`gmd`,`publisher`,`publish_place`,`language`,`classification`,`year`,`opac_hide`,`promoted`,`call_number`,`edition`),
-  FULLTEXT KEY `title` (`title`),
-  FULLTEXT KEY `author` (`author`),
-  FULLTEXT KEY `topic` (`topic`),
-  FULLTEXT KEY `location` (`location`),
-  FULLTEXT KEY `items` (`items`),
-  FULLTEXT KEY `collection_types` (`collection_types`),
-  FULLTEXT KEY `labels` (`labels`)
+  KEY `add_indexes` (`gmd`,`publisher`,`publish_place`,`language`,`classification`,`publish_year`,`call_number`),
+  KEY `add_indexes2` (`opac_hide`,`promoted`),
+  FULLTEXT `title` (`title`),
+  FULLTEXT `author` (`author`),
+  FULLTEXT `topic` (`topic`),
+  FULLTEXT `location` (`location`),
+  FULLTEXT `items` (`items`),
+  FULLTEXT `collection_types` (`collection_types`),
+  FULLTEXT `labels` (`labels`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='index table for advance searching technique for SLiMS';
 
 ALTER TABLE `biblio` CHANGE `publish_year` `publish_year` VARCHAR( 20 ) NULL DEFAULT NULL;
