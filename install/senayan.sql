@@ -1050,7 +1050,7 @@ CREATE TABLE IF NOT EXISTS `search_biblio` (
   `classification` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `spec_detail_info` text COLLATE utf8_unicode_ci,
   `location` text COLLATE utf8_unicode_ci,
-  `year` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `publish_year` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `notes` text COLLATE utf8_unicode_ci,
   `series_title` text COLLATE utf8_unicode_ci,
   `items` text COLLATE utf8_unicode_ci,
