@@ -91,7 +91,7 @@ class biblio_list extends biblio_list_model
         $_sql_str .= ' FROM `search_biblio` AS `index` '.$_add_sql_str.' ORDER BY `index`.`last_update` DESC LIMIT '.$_offset.', '.$this->num2show;
         // for debugging purpose only
         // echo "<div style=\"border: 1px solid navy; padding: 5px; color: navy; margin: 5px;\">$_sql_str</div>";
-		return $_sql_str;
+	return $_sql_str;
     }
 
 
@@ -195,16 +195,16 @@ class biblio_list extends biblio_list_model
                     } else { $_sql_criteria .= ' index.classification LIKE \''.$_q.'%\''; }
                     break;
                 case 'isbn' :
-                    if ($_b == '-') { $_sql_criteria .= ' biblio.isbn_issn NOT LIKE \''.$_q.'%\'';
+                    if ($_b == '-') { $_sql_criteria .= ' index.isbn_issn NOT LIKE \''.$_q.'%\'';
                     } else { $_sql_criteria .= ' index.isbn_issn LIKE \''.$_q.'%\''; }
                     break;
                 case 'publisher' :
                     if ($_b == '-') { $_sql_criteria .= " index.publisher!='$_q'";
-                    } else { $_sql_criteria .= " index.publisher='$_q%'"; }
+                    } else { $_sql_criteria .= " index.publisher LIKE '$_q%'"; }
                     break;
                 case 'publishyear' :
                     if ($_b == '-') { $_sql_criteria .= ' index.publish_year!=\''.$_q.'\'';
-                    } else { $_sql_criteria .= ' index.publish_year=\''.$_q.'\''; }
+                    } else { $_sql_criteria .= ' index.publish_year LIKE \''.$_q.'\''; }
                     break;
                 case 'gmd' :
                     if ($_b == '-') { $_sql_criteria .= " index.gmd!='$_q'";
