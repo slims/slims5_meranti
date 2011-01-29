@@ -401,6 +401,7 @@ CREATE TABLE IF NOT EXISTS `member` (
 CREATE TABLE IF NOT EXISTS `mst_author` (
   `author_id` int(11) NOT NULL auto_increment,
   `author_name` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `author_year` varchar(20) collate utf8_unicode_ci NOT NULL,
   `authority_type` enum('p','o','c') collate utf8_unicode_ci default 'p',
   `auth_list` varchar(20) collate utf8_unicode_ci default NULL,
   `input_date` date NOT NULL,
