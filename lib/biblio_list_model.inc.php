@@ -100,14 +100,16 @@ abstract class biblio_list_model
      */
     public static function getAuthors($obj_db, $int_biblio_id) {
 	$_authors = '';
-	$_sql_str = 'SELECT a.author_name FROM biblio_author AS ba
+	$_sql_str = 'SELECT a.author_name, a.author_id FROM biblio_author AS ba
             LEFT JOIN biblio AS b ON ba.biblio_id=b.biblio_id
             LEFT JOIN mst_author AS a ON ba.author_id=a.author_id WHERE ba.biblio_id='.$int_biblio_id;
         // query the author
         $_author_q = $obj_db->query($_sql_str);
         // concat author data
         while ($_author_d = $_author_q->fetch_row()) {
-            $_authors .= $_author_d[0].' - ';
+            $counter = count ($_author_d);
+            $_authors .= $_author_d[0];
+            $_authors .= ' - ';
         }
 	return $_authors;
     }
