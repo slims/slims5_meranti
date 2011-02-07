@@ -111,7 +111,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
             $callnumber = trim(strip_tags(urldecode($_GET['callnumber'])));
         }
         // don't do search if all search field is empty
-        if ($title || $author || $subject || $isbn || $gmd || $colltype || $location || $node || $publisher || $callnumber) {
+        if ($title || $author || $subject || $isbn || $gmd || $colltype || $location || $publisher || $callnumber) {
             $criteria = '';
             if ($title) { $criteria .= ' title='.$title; }
             if ($author) { $criteria .= ' author='.$author; }
