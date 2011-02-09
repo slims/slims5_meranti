@@ -212,10 +212,11 @@ abstract class biblio_list_model
             if (!empty($_biblio_d['image']) && !defined('LIGHTWEIGHT_MODE')) {
                 $_biblio_d['image'] = urlencode($_biblio_d['image']);
                 $images_loc = 'images/docs/'.$_biblio_d['image'];
+                #$cache_images_loc = 'images/cache/'.$_biblio_d['image'];
                 if ($sysconf['tg']['type'] == 'phpthumb') {
                     $_image_cover = 'style="background-image: url(./lib/phpthumb/phpThumb.php?src=../../'.$images_loc.'&w=42); background-repeat: no-repeat;"';
                 } elseif ($sysconf['tg']['type'] == 'minigalnano') {
-                    $_image_cover = 'style="background-image: url(./lib/minigalnano/createthumb.php?filename=../../'.$images_loc.'&size=45); background-repeat: no-repeat;"';
+                    $_image_cover = 'style="background-image: url(./lib/minigalnano/createthumb.php?filename=../../'.$images_loc.'&width=42); background-repeat: no-repeat;"';
                 } else {
                     $_image_cover = 'style="background-image: url(./lib/phpthumb/phpThumb.php?src=../../'.$images_loc.'&w=42); background-repeat: no-repeat;"';
                 }
