@@ -206,7 +206,7 @@ abstract class biblio_list_model
             } else {
                 $_biblio_d['xml_button'] = '';
             }
-
+ 
             // cover images var
             $_image_cover = '';
             if (!empty($_biblio_d['image']) && !defined('LIGHTWEIGHT_MODE')) {

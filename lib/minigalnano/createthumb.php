@@ -28,7 +28,6 @@ $yoord = 0;
 $default_res_width = 42;
 $cache['enable'] = false;
 $cache['folder'] = '../../images/cache/'; # try absolutely in case of error about safe mode in PHP
-#$cache['prefix'] = '_slims_img_cache_';
 $cache['exist'] = false;
 $cache['handle'] = '';
 

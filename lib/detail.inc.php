@@ -144,7 +144,13 @@ class detail extends content_list
 
         // check image
         if (!empty($this->record_detail['image'])) {
-            $this->record_detail['image'] = '<img src="./lib/phpthumb/phpThumb.php?src=../../images/docs/'.urlencode($this->record_detail['image']).'&w=200" border="0" />';
+            if ($sysconf['tg']['type'] == 'phpthumb') {
+                $this->record_detail['image'] = '<img src="./lib/phpthumb/phpThumb.php?src=../../images/docs/'.urlencode($this->record_detail['image']).'&w=200" border="0" />';
+            } elseif ($sysconf['tg']['type'] == 'minigalnano') {
+                $this->record_detail['image'] = '<img src="./lib/minigalnano/createthumb.php?filename=../../images/docs/'.urlencode($this->record_detail['image']).'&width=200" border="0" />';
+            } else {
+                $this->record_detail['image'] = '<img src="./lib/phpthumb/phpThumb.php?src=../../images/docs/'.urlencode($this->record_detail['image']).'&w=200" border="0" />';
+            }
         } else {
             $this->record_detail['image'] = '<img src="./images/default/image.png" border="0" />';
         }

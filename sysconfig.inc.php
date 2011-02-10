@@ -306,7 +306,7 @@ if (defined('LIGHTWEIGHT_MODE') OR isset($_COOKIE['LIGHTWEIGHT_MODE'])) {
 $sysconf['allow_pdf_download'] = true;
 
 # Image watermarking
-$sysconf['watermark']['enable'] = true;
+$sysconf['watermark']['enable'] = false;
 $sysconf['watermark']['type'] = 'image'; # text or image, but image is not yet implemented
 $sysconf['watermark']['text'] = 'Senayan Library Management System';
 $sysconf['watermark']['image'] = '../../images/default/watermark.png';
