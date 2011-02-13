@@ -205,7 +205,7 @@ class biblio_list extends biblio_list_model
                         } else { $_sql_criteria .= " biblio.gmd_id IN ($_subquery)"; }
                         break;
                     case 'notes' :
-			$_q = $_query['is_phrase']?'"'.$_q.'"':$_q;
+			$_q = isset($_query['is_phrase'])?'"'.$_q.'"':$_q;
                         if ($_b == '-') {
                             $_sql_criteria .= " NOT (MATCH (biblio.notes) AGAINST ('".$_q."' IN BOOLEAN MODE))";
                         } else { $_sql_criteria .= " (MATCH (biblio.notes) AGAINST ('".$_q."' IN BOOLEAN MODE))"; }
