@@ -192,6 +192,9 @@ jQuery.fn.registerAdminEvents = function(params) {
     // cache AJAX container
     var container = $(this);
 
+    // avoid conflict with tinyMCE
+    container.find('.mceEditor a').addClass('notAJAX');
+
     if (options.ajaxifyLink) {
         // change all anchor behaviour to AJAX in main content
         container.find('a:not(.notAJAX)').click(function(evt) {
