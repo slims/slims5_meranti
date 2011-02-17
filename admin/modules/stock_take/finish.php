@@ -63,6 +63,7 @@ if (isset($_POST['confirmFinish'])) {
             // purge data in loan table
             $purge_loan_q = $dbs->query('DELETE FROM loan WHERE item_code IN (SELECT item_code FROM stock_take_item WHERE status=\'m\')');
         }
+        $update_item_status_to_missing = $dbs->query('UPDATE item SET item_status_id=\'MIS\' WHERE item_code IN (SELECT item_code FROM stock_take_item WHERE status=\'m\')');
         // start output buffering content for report generation
         ob_start();
         echo '<html><head><title>'.$stk_take_d[0].' Report</title>';
