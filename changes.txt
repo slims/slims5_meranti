@@ -47,6 +47,7 @@ SENAYAN 3 Stable 15 (Matoa)
 - Fixed: AJAX circuation error on circulation transaction.
 - Fixed: birthdate exp on membership.
 - Added: update security.
+- Added: set item status to missing when finishing stocktake.
 
 
 SENAYAN 3 Stable 14 (Seulanga)
