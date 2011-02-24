@@ -78,6 +78,22 @@ if (($ajaxsec_user == $sysconf['ajaxsec_user']) AND ($ajaxsec_passwd == $sysconf
                     echo '</li>';
                 } else if ($attachment_d['mime_type'] == 'text/uri-list') {
                     echo '<li style="list-style-image: url(images/labels/url.png)"><strong><a href="'.trim($attachment_d['file_url']).'" title="Click to open link" target="_blank">'.$attachment_d['file_title'].'</a><div>'.$attachment_d['file_desc'].'</div></strong></li>';
+                } else if (preg_match('@(image)/.+@i', $attachment_d['mime_type'])) {
+                    #echo '<li style="list-style-image: url(images/labels/ebooks.png)"><strong><a title="Click To View File" href="index.php?p=fstream&fid='.$attachment_d['file_id'].'&bid='.$attachment_d['biblio_id'].'" target="_blank">'.$attachment_d['file_title'].'</a></strong>';
+                    $file_loc = REPO_BASE_DIR.'/'.$attachment_d['file_dir'].'/'.$attachment_d['file_name'];
+                    $imgsize = GetImageSize($file_loc);
+                    $imgwidth = $imgsize[0] + 16;
+                    if ($imgwidth > 600) {
+                        $imgwidth = 600;
+                    }
+                    $imgheight = $imgsize[1] + 16;
+                    if ($imgheight > 400) {
+                        $imgheight = 400;
+                    }
+                    #echo '<li style="list-style-image: url(images/labels/ebooks.png)"><strong><a href="#" title="Click To View File" onclick="openHTMLpop(\'index.php?p=fstream&fid='.$attachment_d['file_id'].'&bid='.$attachment_d['biblio_id'].'\', 600, 400, \''.$attachment_d['file_title'].'\')">'.$attachment_d['file_title'].'</a></strong>';
+                    echo '<li style="list-style-image: url(images/labels/ebooks.png)"><strong><a href="#" title="Click To View File" onclick="openHTMLpop(\'index.php?p=fstream&fid='.$attachment_d['file_id'].'&bid='.$attachment_d['biblio_id'].'\', '.$imgwidth.', '.$imgheight.', \''.$attachment_d['file_title'].'\')">'.$attachment_d['file_title'].'</a></strong>';
+                    if (trim($attachment_d['file_url']) != '') { echo ' [<a href="'.trim($attachment_d['file_url']).'" title="Other Resource related to this file" target="_blank" style="font-size: 90%;">Other Resource Link</a>]'; }
+                    echo '<div><i>'.$attachment_d['file_desc'].'</i></div></li>';
                 } else {
                     echo '<li style="list-style-image: url(images/labels/ebooks.png)"><strong><a title="Click To View File" href="index.php?p=fstream&fid='.$attachment_d['file_id'].'&bid='.$attachment_d['biblio_id'].'" target="_blank">'.$attachment_d['file_title'].'</a></strong>';
                     if (trim($attachment_d['file_url']) != '') { echo ' [<a href="'.trim($attachment_d['file_url']).'" title="Other Resource related to this file" target="_blank" style="font-size: 90%;">Other Resource Link</a>]'; }

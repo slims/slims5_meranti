@@ -144,19 +144,32 @@ class detail extends content_list
 
         // check image
         if (!empty($this->record_detail['image'])) {
-            $this->record_detail['image'] = '<img src="./lib/phpthumb/phpThumb.php?src=../../images/docs/'.urlencode($this->record_detail['image']).'&w=200" border="0" />';
+            if ($sysconf['tg']['type'] == 'phpthumb') {
+                $this->record_detail['image'] = '<img src="./lib/phpthumb/phpThumb.php?src=../../images/docs/'.urlencode($this->record_detail['image']).'&w=200" border="0" />';
+            } elseif ($sysconf['tg']['type'] == 'minigalnano') {
+                $this->record_detail['image'] = '<img src="./lib/minigalnano/createthumb.php?filename=../../images/docs/'.urlencode($this->record_detail['image']).'&width=200" border="0" />';
+            } else {
+                $this->record_detail['image'] = '<img src="./lib/phpthumb/phpThumb.php?src=../../images/docs/'.urlencode($this->record_detail['image']).'&w=200" border="0" />';
+            }
         } else {
             $this->record_detail['image'] = '<img src="./images/default/image.png" border="0" />';
         }
 
         // get the authors data
-        $_biblio_authors_q = $this->obj_db->query('SELECT author_name FROM mst_author AS a'
+        $_biblio_authors_q = $this->obj_db->query('SELECT author_name, authority_type FROM mst_author AS a'
             .' LEFT JOIN biblio_author AS ba ON a.author_id=ba.author_id WHERE ba.biblio_id='.$this->detail_id);
         $authors = '';
         // authors for metadata
         $this->metadata .= '<meta name="Authors" content="';
         while ($data = $_biblio_authors_q->fetch_row()) {
-            $authors .= '<a href="?author='.urlencode('"'.$data[0].'"').'&search=Search" title="'.__('Click to view others documents with this author').'">'.$data[0]."</a><br />";
+            if ($data[1] == 'p') {
+                $data[1] = "Personal Name";
+            } elseif ($data[1] == 'o') {
+                $data[1] = "Organizational Body";
+            } elseif ($data[1] == 'c') {
+                $data[1] = "Conference";
+            }
+            $authors .= '<a href="?author='.urlencode('"'.$data[0].'"').'&search=Search" title="'.__('Click to view others documents with this author').'">'.$data[0]."</a> - ".$data[1]."<br />";
             $this->metadata .= $data[0].'; ';
         }
         $this->metadata .= '" />';

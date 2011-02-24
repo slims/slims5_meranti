@@ -19,6 +19,35 @@ SENAYAN 3 Stable 15 (Matoa)
 ========================================================================
 - Fixed: Loan receipt always pop even when there are no circulation transactions
 - Added: User no need to modify sysconfig.inc.php to make local customization. It is also not recommended. Use sysconfig.local.inc.php instead.
+- Added: Download Loan History and current loan for member (in member login).
+- Fixed: improve image viewer handling using OpenHTMLpop.
+- Added: lib/minigalnano/createthumb.php for alternative in thumbnail generating to phpThumb. Including modify it to meet slims need: flexible width/height resize and caching.
+- Added: UCS is now separated package from SLiMS distribution.
+- Fixed: remove UCS variables from SLiMS distribution.
+- Added: Author and Topic/Subject structure changes.
+- Fixed: change unique key for master topic table.
+- Fixed: add author year field for author master table in SQL install script.
+- Fixed: install and upgrade script fix.
+- Fixed: change classification to call number in item list.
+- Fixed: update SQL statement in biblio for publish_year and year in search_biblio.
+- Fixed: change 'series' to series_title in install/senayan/sql for search_biblio Table.
+- Fixed: biblio index error on series title search.
+- Fixed: upgrade script for stable15.
+- Fixed: search error on publisher.
+- Fixed: ajax history error after saving data and causing wrong page to display.
+- Fixed: error on system backup because of already defined constant.
+- Fixed: removing urlencode function usage.
+- Fixed: bugs fixing for series_title in custom frontpage.
+- Added: improve XML mods based support in SLiMS.
+- Added: Add tools for searching orphaned topic/author in masterfile module.
+- Added: Add Email support for sending notification in due date warning and overdue list (using PHPMailer Library).
+- Added: Thai language.
+- Added: 74% arabic translation.
+- Fixed: terrafirma template and language file (id_ID).
+- Fixed: AJAX circuation error on circulation transaction.
+- Fixed: birthdate exp on membership.
+- Added: update security.
+- Added: set item status to missing when finishing stocktake.
 
 
 SENAYAN 3 Stable 14 (Seulanga)

@@ -100,14 +100,16 @@ abstract class biblio_list_model
      */
     public static function getAuthors($obj_db, $int_biblio_id) {
 	$_authors = '';
-	$_sql_str = 'SELECT a.author_name FROM biblio_author AS ba
+	$_sql_str = 'SELECT a.author_name, a.author_id FROM biblio_author AS ba
             LEFT JOIN biblio AS b ON ba.biblio_id=b.biblio_id
             LEFT JOIN mst_author AS a ON ba.author_id=a.author_id WHERE ba.biblio_id='.$int_biblio_id;
         // query the author
         $_author_q = $obj_db->query($_sql_str);
         // concat author data
         while ($_author_d = $_author_q->fetch_row()) {
-            $_authors .= $_author_d[0].' - ';
+            $counter = count ($_author_d);
+            $_authors .= $_author_d[0];
+            $_authors .= ' - ';
         }
 	return $_authors;
     }
@@ -204,13 +206,20 @@ abstract class biblio_list_model
             } else {
                 $_biblio_d['xml_button'] = '';
             }
-
+ 
             // cover images var
             $_image_cover = '';
             if (!empty($_biblio_d['image']) && !defined('LIGHTWEIGHT_MODE')) {
                 $_biblio_d['image'] = urlencode($_biblio_d['image']);
                 $images_loc = 'images/docs/'.$_biblio_d['image'];
-                $_image_cover = 'style="background-image: url(./lib/phpthumb/phpThumb.php?src=../../'.$images_loc.'&w=42); background-repeat: no-repeat;"';
+                #$cache_images_loc = 'images/cache/'.$_biblio_d['image'];
+                if ($sysconf['tg']['type'] == 'phpthumb') {
+                    $_image_cover = 'style="background-image: url(./lib/phpthumb/phpThumb.php?src=../../'.$images_loc.'&w=42); background-repeat: no-repeat;"';
+                } elseif ($sysconf['tg']['type'] == 'minigalnano') {
+                    $_image_cover = 'style="background-image: url(./lib/minigalnano/createthumb.php?filename=../../'.$images_loc.'&width=42); background-repeat: no-repeat;"';
+                } else {
+                    $_image_cover = 'style="background-image: url(./lib/phpthumb/phpThumb.php?src=../../'.$images_loc.'&w=42); background-repeat: no-repeat;"';
+                }
             }
 
             $_alt_list = ($_i%2 == 0)?'alterList':'alterList2';

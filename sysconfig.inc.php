@@ -306,7 +306,7 @@ if (defined('LIGHTWEIGHT_MODE') OR isset($_COOKIE['LIGHTWEIGHT_MODE'])) {
 $sysconf['allow_pdf_download'] = true;
 
 # Image watermarking
-$sysconf['watermark']['enable'] = true;
+$sysconf['watermark']['enable'] = false;
 $sysconf['watermark']['type'] = 'image'; # text or image, but image is not yet implemented
 $sysconf['watermark']['text'] = 'Senayan Library Management System';
 $sysconf['watermark']['image'] = '../../images/default/watermark.png';
@@ -417,6 +417,9 @@ $sysconf['mail']['reply_to_name'] = &$sysconf['mail']['from_name'];
  * Maximum biblio mark for member
  */
 $sysconf['max_biblio_mark'] = 20;
+
+// Thumbnail Generator
+$sysconf['tg']['type'] = 'phpthumb'; # phpthumb | minigalnano
 
 // check if session is auto started and then destroy it
 if ($is_auto = @ini_get('session.auto_start')) { define('SESSION_AUTO_STARTED', $is_auto); }
