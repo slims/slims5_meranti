@@ -251,7 +251,8 @@ class biblio_list extends biblio_list_model
         }
 
         // init sql string
-        $_sql_str = 'SELECT SQL_CALC_FOUND_ROWS biblio.biblio_id, biblio.title, biblio.image, biblio.isbn_issn, biblio.labels';
+        $_sql_str = 'SELECT SQL_CALC_FOUND_ROWS biblio.biblio_id, biblio.title, biblio.image, biblio.isbn_issn,
+			biblio.publish_year, pbl.publisher_name AS `publisher`, pplc.place_name AS `publish_place`, biblio.labels';
 
         // checking custom frontpage fields file
         $custom_frontpage_record_file = SENAYAN_BASE_DIR.$sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/custom_frontpage_record.inc.php';
@@ -267,14 +268,15 @@ class biblio_list extends biblio_list_model
         }
 
         // additional SQL string
-        $_add_sql_str = '';
+        $_add_sql_str = ' LEFT JOIN mst_publisher AS pbl ON biblio.publisher_id=pbl.publisher_id ';
+        $_add_sql_str .= ' LEFT JOIN mst_place AS pplc ON biblio.publish_place_id=pplc.place_id ';
 
         // location
         if ($this->criteria) {
             if (isset($this->criteria['searched_fields']['location']) || isset($this->criteria['searched_fields']['colltype'])) {
                 if (!$this->disable_item_data) {
-		    $_add_sql_str .= ' LEFT JOIN item ON biblio.biblio_id=item.biblio_id ';
-		}
+				$_add_sql_str .= ' LEFT JOIN item ON biblio.biblio_id=item.biblio_id ';
+				}
             }
         }
 

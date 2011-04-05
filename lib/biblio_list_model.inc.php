@@ -206,7 +206,7 @@ abstract class biblio_list_model
             } else {
                 $_biblio_d['xml_button'] = '';
             }
- 
+
             // cover images var
             $_image_cover = '';
             if (!empty($_biblio_d['image']) && !defined('LIGHTWEIGHT_MODE')) {
@@ -336,9 +336,9 @@ abstract class biblio_list_model
                 $_title_main = trim($_biblio_d['title']);
             }
 
-            $_buffer .= '<titleInfo>'."\n".'<title>'.$_title_main.'</title>'."\n";
+            $_buffer .= '<titleInfo>'."\n".'<title>'.htmlentities($_title_main).'</title>'."\n";
             if ($_title_sub) {
-                $_buffer .= '<subTitle>'.$_title_sub.'</subTitle>'."\n";
+                $_buffer .= '<subTitle>'.htmlentities($_title_sub).'</subTitle>'."\n";
             }
             $_buffer .= '</titleInfo>'."\n";
 
@@ -366,6 +366,21 @@ abstract class biblio_list_model
 
 			// ISBN
 			$_buffer .= '<identifier type="isbn">'.str_replace(array('-', ' '), '', $_biblio_d['isbn_issn']).'</identifier>'."\n";
+
+			// imprint/publication data
+			$_buffer .= '<originInfo>'."\n";
+			$_buffer .= '<place><placeTerm type="text">'.htmlentities($_biblio_d['publish_place']).'</placeTerm></place>'."\n"
+			  .'<publisher>'.htmlentities($_biblio_d['publisher']).'</publisher>'."\n"
+			  .'<dateIssued>'.htmlentities($_biblio_d['publish_year']).'</dateIssued>'."\n";
+			$_buffer .= '</originInfo>'."\n";
+
+			// doc images
+            $_image = '';
+            if (!empty($_biblio_d['image'])) {
+                $_image = urlencode($_biblio_d['image']);
+				$_buffer .= '<slims:image>'.$_image.'</slims:image>'."\n";
+            }
+
             $_buffer .= '</mods>'."\n";
         }
         $_buffer .= '</modsCollection>';

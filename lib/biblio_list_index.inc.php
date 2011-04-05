@@ -62,7 +62,7 @@ class biblio_list extends biblio_list_model
         }
 
         // init sql string
-        $_sql_str = 'SELECT SQL_CALC_FOUND_ROWS index.biblio_id, index.title, index.author, index.topic, index.image, index.isbn_issn, index.labels';
+        $_sql_str = 'SELECT SQL_CALC_FOUND_ROWS index.biblio_id, index.title, index.author, index.topic, index.image, index.isbn_issn, index.publisher, index.publish_place, index.publish_year, index.labels';
 
         // checking custom frontpage fields file
         $custom_frontpage_record_file = SENAYAN_BASE_DIR.$sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/custom_frontpage_record.inc.php';

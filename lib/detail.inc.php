@@ -349,6 +349,28 @@ class detail extends content_list
         }
         $_xml_output .= '</location>'."\n";
 
+        // digital files
+        $attachment_q = $this->obj_db->query('SELECT att.*, f.* FROM biblio_attachment AS att
+            LEFT JOIN files AS f ON att.file_id=f.file_id WHERE att.biblio_id='.$this->detail_id.' AND att.access_type=\'public\' LIMIT 20');
+        if ($attachment_q->num_rows > 0) {
+            $_xml_output .= '<slims:digitals>'."\n";
+            while ($attachment_d = $attachment_q->fetch_assoc()) {
+                // check member type privileges
+                if ($attachment_d['access_limit']) { continue; }
+                $_xml_output .= '<slims:digital_item id="'.$attachment_d['file_id'].'" url="'.trim($attachment_d['file_url']).'" '
+                    .'path="'.htmlentities($attachment_d['file_dir'].'/'.$attachment_d['file_name']).'" mimetype="'.$attachment_d['mime_type'].'">';
+                $_xml_output .= htmlentities($attachment_d['file_title']);
+                $_xml_output .= '</slims:digital_item>'."\n";
+            }
+            $_xml_output .= '</slims:digitals>';
+        }
+
+        // image
+        if (!empty($this->record_detail['image'])) {
+            $_image = urlencode($this->record_detail['image']);
+			$_xml_output .= '<slims:image>'.htmlentities($_image).'</slims:image>'."\n";
+        }
+
         // record info
         $_xml_output .= '<recordInfo>'."\n";
         $_xml_output .= '<recordIdentifier>'.$this->detail_id.'</recordIdentifier>'."\n";
