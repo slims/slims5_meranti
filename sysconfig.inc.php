@@ -294,15 +294,6 @@ if (!file_exists($sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'
     require $sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/tinfo.inc.php';
 }
 
-#require $sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/tinfo.inc.php';
-// redirect to mobile template on mobile mode
-if (defined('LIGHTWEIGHT_MODE') OR isset($_COOKIE['LIGHTWEIGHT_MODE'])) {
-    $sysconf['template']['theme'] = 'lightweight';
-    $sysconf['template']['css'] = $sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/style.css';
-    $sysconf['enable_xml_detail'] = false;
-    $sysconf['enable_xml_result'] = false;
-}
-
 $sysconf['allow_pdf_download'] = true;
 
 # Image watermarking
@@ -505,4 +496,12 @@ $sysconf['authority_level'][7] = __('Composer');
 $sysconf['authority_level'][8] = __('Illustrator');
 $sysconf['authority_level'][9] = __('Creator');
 $sysconf['authority_level'][10] = __('Contributor');
+
+// redirect to mobile template on mobile mode
+if (defined('LIGHTWEIGHT_MODE') OR isset($_COOKIE['LIGHTWEIGHT_MODE'])) {
+    $sysconf['template']['theme'] = 'lightweight';
+    $sysconf['template']['css'] = $sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/style.css';
+    $sysconf['enable_xml_detail'] = false;
+    $sysconf['enable_xml_result'] = false;
+}
 ?>
