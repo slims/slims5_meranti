@@ -24,7 +24,7 @@
 // be sure that this file not accessed directly
 if (!defined('INDEX_AUTH')) {
     die("can not access this file directly");
-} elseif (INDEX_AUTH != 1) { 
+} elseif (INDEX_AUTH != 1) {
     die("can not access this file directly");
 }
 
@@ -254,6 +254,43 @@ class utility
         $_logged_in = false;
         $_logged_in = isset($_SESSION['mid']) && isset($_SESSION['m_name']) && isset($_SESSION['m_email']);
         return $_logged_in;
+    }
+
+
+    /**
+     * Static method to filter data
+     *
+     * @param   mixed   $mix_input: input data
+     * @param   string  $str_input_type: input type
+     * @param   boolean $bool_trim: are input string trimmed
+     *
+     * @return  mixed
+     **/
+    public static function filterData($mix_input, $str_input_type = 'get', $bool_escape_sql = true, $bool_trim = true, $bool_strip_html = false) {
+        global $dbs;
+
+        if (extension_loaded('filter')) {
+            if ($str_input_type == 'var') {
+                $mix_input = filter_var($mix_input, FILTER_SANITIZE_STRING);
+            } else if ($str_input_type == 'post') {
+                $mix_input = filter_input(INPUT_POST, $mix_input);
+            } else if ($str_input_type == 'cookie') {
+                $mix_input = filter_input(INPUT_COOKIE, $mix_input);
+            } else if ($str_input_type == 'session') {
+                $mix_input = filter_input(INPUT_SESSION, $mix_input);
+            } else {
+                $mix_input = filter_input(INPUT_GET, $mix_input);
+            }
+        }
+        
+        // trim whitespace on string
+        if ($bool_trim) { $mix_input = trim($mix_input); }
+        // strip html
+        if ($bool_strip_html) { $mix_input = strip_tags($mix_input); }
+        // escape SQL string
+        if ($bool_escape_sql) { $mix_input = $dbs->escape_string($mix_input); }
+
+        return $mix_input;
     }
 }
 ?>

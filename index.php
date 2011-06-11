@@ -53,7 +53,7 @@ if (utility::isMemberLogin()) {
 ob_start();
 require LIB_DIR.'contents/common.inc.php';
 if (isset($_GET['p'])) {
-    $path = trim($_GET['p']);
+    $path = utility::filterData('p', 'get', false, true, true);
     // some extra checking
     $path = preg_replace('@^(http|https|ftp|sftp|file|smb):@i', '', $path);
     // check if the file exists
