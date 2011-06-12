@@ -157,7 +157,7 @@ class detail extends content_list
 
         // get the authors data
         $_biblio_authors_q = $this->obj_db->query('SELECT author_name, authority_type FROM mst_author AS a'
-            .' LEFT JOIN biblio_author AS ba ON a.author_id=ba.author_id WHERE ba.biblio_id='.$this->detail_id);
+            .' LEFT JOIN biblio_author AS ba ON a.author_id=ba.author_id WHERE ba.biblio_id='.$this->detail_id.' ORDER BY level ASC');
         $authors = '';
         // authors for metadata
         $this->metadata .= '<meta name="Authors" content="';
