@@ -86,7 +86,6 @@ if ($biblioID) {
     $biblio_author_q = $dbs->query("SELECT ba.*, a.author_name, a.author_year, a.authority_type FROM biblio_author AS ba
         LEFT JOIN mst_author AS a ON ba.author_id=a.author_id
         WHERE ba.biblio_id=$biblioID ORDER BY level ASC");
-
     $row = 1;
     while ($biblio_author_d = $biblio_author_q->fetch_assoc()) {
         // alternate the row color
