@@ -61,6 +61,28 @@ if (isset($_POST['logMeIn']) && !$is_member_login) {
     if (!$username OR !$password) {
         echo '<div class="errorBox">'.__('Please fill your Username and Password to Login!').'</div>';
     } else {
+        # <!-- Captcha form processing - start -->
+        if ($sysconf['captcha']['member']['enable']) {
+            if ($sysconf['captcha']['member']['type'] == 'recaptcha') {
+                require_once LIB_DIR.$sysconf['captcha']['member']['folder'].'/'.$sysconf['captcha']['member']['incfile'];
+                $privatekey = $sysconf['captcha']['member']['privatekey'];
+                $resp = recaptcha_check_answer ($privatekey,
+                    $_SERVER["REMOTE_ADDR"],
+                    $_POST["recaptcha_challenge_field"],
+                    $_POST["recaptcha_response_field"]);
+
+                if (!$resp->is_valid) {
+                    // What happens when the CAPTCHA was entered incorrectly
+                    session_unset();
+                    header("location:index.php?p=member&captchaInvalid=true");
+                    die();
+                }
+            } else if ($sysconf['captcha']['member']['type'] == 'others') {
+                # other captchas here
+            }
+        }
+        # <!-- Captcha form processing - end -->
+			
         // regenerate session ID to prevent session hijacking
         session_regenerate_id(true);
         // create logon class instance
@@ -69,29 +91,6 @@ if (isset($_POST['logMeIn']) && !$is_member_login) {
             $ldap_configs = $sysconf['auth']['member'];
         }
         if ($logon->valid($dbs)) {
-
-            # <!-- Captcha form processing - start -->
-            if ($sysconf['captcha']['member']['enable']) {
-                if ($sysconf['captcha']['member']['type'] == 'recaptcha') {
-                    require_once LIB_DIR.$sysconf['captcha']['member']['folder'].'/'.$sysconf['captcha']['member']['incfile'];
-                    $privatekey = $sysconf['captcha']['member']['privatekey'];
-                    $resp = recaptcha_check_answer ($privatekey,
-                                          $_SERVER["REMOTE_ADDR"],
-                                          $_POST["recaptcha_challenge_field"],
-                                          $_POST["recaptcha_response_field"]);
-
-                    if (!$resp->is_valid) {
-                        // What happens when the CAPTCHA was entered incorrectly
-                        session_unset();
-                        header("location:index.php?p=member");
-                        die();
-                    }
-                } elseif ($sysconf['captcha']['member']['type'] == 'others') {
-                    # other captchas here
-                }
-            }
-            # <!-- Captcha form processing - end -->
-
             // write log
             utility::writeLogs($dbs, 'member', $username, 'Login', 'Login success for member '.$username.' from address '.$_SERVER['REMOTE_ADDR']);
             header('Location: index.php?p=member');
@@ -111,6 +110,12 @@ if (!$is_member_login) {
 ?>
     <fieldset id="memberLogin">
     <legend><?php echo __('Library Member Login'); ?></legend>
+	<?php
+	// captcha invalid warning
+	if (isset($_GET['captchaInvalid']) && $_GET['captchaInvalid'] === 'true') {
+		echo '<div class="errorBox">'.__('Wrong Captcha Code entered, Please write the right code!').'</div>';	
+	}
+	?>
     <div class="loginInfo"><?php echo __('Please insert your member ID and password given by library system administrator. If you are library\'s member and don\'t have a password yet, please contact library staff.'); ?></div>
     <!-- Captcha preloaded javascript - start -->
     <?php if ($sysconf['captcha']['member']['enable']) { ?>
