@@ -76,7 +76,7 @@ var chboxFormSubmit = function(strFormID, strMessage) {
 /* function to serialize all checkbox element in form */
 var serializeChbox = function(strParentID) {
     var serialized = '';
-    $('#'+strParentID).find('input[type=checkbox]').each(function() {
+    $('#'+strParentID).find('input[type=checkbox]:checked').each(function() {
         var cbData = this.value;
         if (cbData) { serialized += 'itemID[]='+cbData+'&'; }
     })
