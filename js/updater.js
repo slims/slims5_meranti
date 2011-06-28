@@ -103,7 +103,8 @@ jQuery.fn.simbioAJAX = function(strURL, params)
 /* invoke UCS upload catalog */
 var ucsUpload = function(strUploadHandler, strData) {
     var confUpload = false;
-    if (strData.trim()) {
+    strData = jQuery.trim(strData);
+    if (strData) {
         confUpload = confirm('Are you sure to upload selected data to Union Catalog Server?');
     } else {
         alert('Please select bibliographic data to upload!');

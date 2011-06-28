@@ -23,11 +23,11 @@
 // be sure that this file not accessed directly
 if (!defined('INDEX_AUTH')) {
     die("can not access this file directly");
-} elseif (INDEX_AUTH != 1) { 
+} elseif (INDEX_AUTH != 1) {
     die("can not access this file directly");
 }
 
-$allowed_counter_ip = array('127.0.0.1');
+$allowed_counter_ip = array('127.0.0.1', 'localhost');
 $remote_addr = $_SERVER['REMOTE_ADDR'];
 $confirmation = 0;
 
@@ -38,7 +38,7 @@ foreach ($allowed_counter_ip as $ip) {
 }
 
 if (!$confirmation) {
-    header ("location:index.php");
+    header ("location: index.php");
 }
 
 // start the output buffering for main content
@@ -120,15 +120,15 @@ if (isset($_POST['counter'])) {
     var visitorCounterForm = jQuery('#visitorCounterForm');
 
     // AJAX counter error handler
-    function counterError(ajax) {
+    visitorCounterForm.ajaxError( function() {
         alert('Error inserting counter data to database!');
-        visitorCounterForm.find('input[type=text]').val('');
+        jQuery(this).enableForm().find('input[type=text]').val('');
         jQuery('#memberID').focus();
-    }
+    });
 
     // AJAX counter complete handler
-    function counterComplete(ajax) {
-        visitorCounterForm.find('input[type=text]').val('');
+    visitorCounterForm.ajaxComplete( function() {
+        jQuery(this).enableForm().find('input[type=text]').val('');
         var memberImage = jQuery('#memberImage');
         if (memberImage) {
             // update visitor photo
@@ -136,7 +136,7 @@ if (isset($_POST['counter'])) {
             jQuery('#visitorCounterPhoto')[0].src = imageSRC;
         }
         jQuery('#memberID').focus();
-    }
+    });
 
     // register event
     visitorCounterForm.submit(function(evt) {
@@ -144,8 +144,9 @@ if (isset($_POST['counter'])) {
         var theForm = jQuery(this);
         var formAction = theForm.attr('action');
         var formData = theForm.serialize();
+        formData += '&counter=true';
         // block the form
-        theForm.disable();
+        theForm.disableForm();
         jQuery('#counterInfo').css({'display': 'block'}).html('PLEASE WAIT...');
         // create AJAX request for submitting form
         jQuery.ajax(
