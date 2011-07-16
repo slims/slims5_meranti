@@ -316,6 +316,11 @@ $sysconf['ucs']['auto_delete'] = true;
 $sysconf['ucs']['auto_insert'] = false;
 
 /**
+ * Z39.50 copy cataloguing sources
+ */
+$sysconf['z3950_source'][1] = array('uri' => 'z3950.loc.gov:7090/voyager', 'name' => 'Library of Congress Voyager');
+
+/**
  * Peer to peer server config
  */
 $sysconf['p2pserver'][1] = array('uri' => 'http://127.0.0.1/s3st15_matoa', 'name' => 'SLiMS Library');

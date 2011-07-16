@@ -46,7 +46,12 @@ if (!extension_loaded('yaz')) {
         .' on how to setup/install YAZ extension library in PHP.</div>');
 }
 
-$zserver[] = 'z3950.loc.gov:7090/voyager';
+if (isset($_GET['z3950_source'])) {
+    $zserver[] = trim(urldecode($_GET['z3950_source']));
+} else {
+    $zserver[] = 'z3950.loc.gov:7090/voyager';
+}
+
 
 /* RECORD OPERATION */
 if (isset($_POST['saveZ']) AND isset($_SESSION['z3950result'])) {
@@ -266,6 +271,7 @@ if (isset($_GET['keywords']) AND $can_read) {
     <form name="search" id="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/z3950.php" loadcontainer="searchResult" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" id="keywords" size="30" />
     <select name="field"><option value="isbn"><?php echo __('ISBN/ISSN'); ?></option><option value="ti"><?php echo __('Title/Series Title'); ?></option><option value="au"><?php echo __('Authors'); ?></option></select>
+    <?php echo __('Server'); ?>: <select name="z3950_source" style="width: 20%;"><?php foreach ($sysconf['z3950_source'] as $serverid => $z3950_source) { echo '<option value="'.$serverid.'">'.$z3950_source['name'].'</option>';  } ?></select>
     <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
     <div><?php echo __('* Please make sure you have a working Internet connection.'); ?></div>

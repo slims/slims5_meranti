@@ -216,7 +216,7 @@ if (isset($_GET['keywords']) && $can_read && isset($_GET['p2pserver']))  {
     <hr />
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/p2p.php" loadcontainer="searchResult" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" id="keywords" size="30" />
-    Server: <select name="p2pserver" style="width: 20%;"><?php foreach ($sysconf['p2pserver'] as $serverid => $p2pserver) { echo '<option value="'.$serverid.'">'.$p2pserver['name'].'</option>';  } ?></select>
+    <?php echo __('Server'); ?>: <select name="p2pserver" style="width: 20%;"><?php foreach ($sysconf['p2pserver'] as $serverid => $p2pserver) { echo '<option value="'.$serverid.'">'.$p2pserver['name'].'</option>';  } ?></select>
     <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
     <div><?php echo __('* Please make sure you have a working Internet connection.'); ?></div>
