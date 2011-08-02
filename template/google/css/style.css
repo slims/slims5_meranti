@@ -1,0 +1,432 @@
+/*
+ *      style.css
+ *      
+ *      Copyright 2011 Indra Sutriadi Pipii <indra@sutriadi.web.id>
+ *      
+ */
+
+* {
+	font-family: arial,sans-serif;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+a,
+a:link,
+a:visited,
+a:active {
+	font-size: 80%;
+	color: #0000CC;
+}
+
+a:hover {
+	color: #000;
+	text-decoration: none;
+}
+
+#menu-bar {
+	border-bottom: 1px #C9D7F1 solid;
+	padding: 3px 0;
+	color: #0000CC;
+}
+
+#menu-bar a {
+	margin: 0 5px;
+}
+
+#menu-bar #user-bar {
+	float: right;
+}
+
+#user-bar span {
+	font-size: 80%;
+	font-weight: bold;
+	color: #000;
+}
+
+#header-wrapper {
+	width: 100%;
+	padding: 20px 0;
+}
+
+#header {
+	width: 480px;
+	margin: 0 auto;
+}
+
+#header #logo-img {
+	float: left;
+	margin-right: 20px;
+}
+
+#header #name {
+	color: #3C3C3C;
+	padding-top: 20px;
+	margin-bottom: 0;
+}
+
+#header #subname {
+	color: #777;
+	font-size: 100%;
+}
+
+#header-bar {
+	float: left;
+	width: 220px;
+	text-align: left;
+	margin-right: 10px;
+	padding: 5px 10px;
+	background: #FFF;
+}
+
+#header-bar #image {
+	float: right;
+}
+
+#header-bar #title {
+	float: right;
+	text-align: left;
+	padding-left: 10px;
+}
+
+#title-bar div {
+	border-top: 1px solid #3366CC;
+	background: #D5DDF3;
+	padding: 6px;
+	height: 100%;
+	margin-top: 14px;
+	margin-bottom: 4px;
+	font-weight: bold;
+}
+
+#search-bar {
+}
+
+#content-wrapper {
+	width: 100%;
+}
+
+#content-wrapper #side-bar {
+	float: left;
+	display: block;
+	width: 220px;
+	padding-left: 10px;
+}
+
+#side-bar {
+	border-right: 1px solid #C9D7F1;
+}
+
+#side-bar #language,
+#side-bar #advanced {
+	font-size: 80%;
+	margin: 5px 10px;
+}
+
+#side-bar #advSearchForm select {
+	max-width: 200px;
+}
+
+#search-box {
+	margin: 50px auto;
+	width: 60%;
+	text-align: center;
+}
+
+#content {
+	position: relative;
+	float: left;
+	padding: 10px;
+	width: 50%;
+	display: block;
+}
+
+#content div.item {
+	padding: 5px;
+	padding-left: 55px;
+	margin: 10px 0;
+	width: auto;
+}
+
+#content div.item a {
+	font-size: 100%;
+}
+
+#content div.item div.subItem a {
+	font-size: 80%;
+	text-decoration: none;
+}
+
+#content div.item div.subItem a.detailLink {
+	color: #0E774A;
+}
+
+#content div.item div.subItem a.detailLink:after {
+	content: " - ";
+}
+
+#content div.item div.subItem a.xmlDetailLink {
+	color: #3366CC;
+}
+
+#content td.tblContent a {
+	font-size: 100%;
+}
+
+#content #content-info,
+#content .contentDesc
+{
+	font-size: 80%;
+}
+
+#content .contentDesc {
+	margin: 0;
+}
+
+#content .contentDesc h3 {
+	margin: 0;
+}
+
+#content #content-info div a {
+	font-weight: bold;
+	color: #0E7549;
+}
+
+#content div.errorBox {
+	background: #FFFFD4;
+	color: #FF0000;
+	border: 1px solid #EEEE00;
+	padding: 10px;
+	font-size: 80%;
+	margin: 0 0 10px;
+}
+
+#content fieldset {
+	border: 1px solid #8B0000;
+	margin: 0;
+	font-size: 80%;
+	background: #FFEAC0;
+}
+
+#content legend {
+	font-weight: bold;
+	font-size: 120%;
+	padding: 5px;
+	border: 1px solid #8B0000;
+	background: #FFF;
+}
+
+#content fieldset div {
+	margin: 5px 0;
+}
+
+#login-box, #advanced-box {
+	margin: 0 auto;
+}
+
+#advanced-box {
+	padding: 0px;
+	width: 70%;
+	margin: 30px auto;
+	border: 3px solid #A9B9E8;
+	font-size: 80%;
+}
+
+#advanced-box p {
+	width: 90%;
+	display: block;
+}
+
+#advanced-box p label {
+	display: inline;
+	width: 20%;
+	float: left;
+	padding: 10px;
+	height: 20px;
+	overflow: hidden;
+}
+
+#advanced-box p input {
+	padding: 5px;
+}
+
+#advanced-box p input.text,
+#advanced-box select {
+	margin: 0;
+}
+
+#advanced-box select {
+	width: 75%;
+}
+
+#advanced-box p input.text {
+	width: 70%;
+}
+
+#advanced-box p input.button {
+	
+}
+
+#login-box {
+	padding: 20px;
+	background: #E8EEFA;
+	width: 300px;
+	border: 3px solid #6280BF;
+}
+
+#login-box label {
+	display: block;
+	width: 100px;
+	float: left;
+	font-size: 90%;
+}
+
+#login-box span#info {
+	font-size: 80%;
+	margin: 0;
+}
+
+#login-box h3, #login-box h5 {
+	margin: 0;
+}
+
+#footer-wrapper {
+	float: left;
+	width: 100%;
+	margin: 5px 0;
+	font-size: 80%;
+	text-align: center;
+}
+
+#footer-wrapper #badges {
+	width: 300px;
+	margin: 0 auto;
+}
+
+#footer-wrapper #copyright {
+	width: 100%;
+	margin: 0 auto;
+}
+
+#footer-wrapper #copyright a {
+	font-size: 100%;
+	color: #3366CC;
+	text-decoration: none;
+}
+
+input.text {
+	padding: 5px;
+	border: 1px solid #838383;
+}
+
+input.front {
+	height: 25px;
+	width: 100%;
+	-moz-box-sizing: content-box;
+	background: #fff;
+	border-width: 1 1 1 2px;
+	color: #000;
+	font: 17px arial,sans-serif;
+	padding-left: 6px;
+	padding-right: 10px;
+	vertical-align: top;
+}
+
+input.front:focus,
+input.back:focus
+{outline:none}
+
+input.back {
+	height: 18px;
+	width: 45%;
+	-moz-box-sizing: content-box;
+	background: #fff;
+	border-width: 1 1 1 2px;
+	color: #000;
+	font: 17px arial,sans-serif;
+	padding-left: 6px;
+	padding-right: 10px;
+	vertical-align: top;	
+	margin-right: 0;
+}
+
+input.button {
+	background:url(../img/nav_logo40.png) bottom;
+	border:none;
+	color:#000;
+	cursor:pointer;
+	height:30px;
+	margin:0;
+	outline:0;
+	font:15px arial,sans-serif;
+	vertical-align:top;
+	border:solid 1px;
+	border-color:#ccc #999 #999 #ccc;
+	height:30px;
+}
+
+input.button:active {background:#ccc}
+
+input.button:focus{outline:none}
+
+input.button-back {margin-right:0;}
+
+.left {
+	float: left;
+}
+
+.block {
+	display: block;
+}
+
+.inline {
+	display: inline;
+}
+
+input.keyword,
+select
+{
+	padding-left: 6px;
+	padding-right: 10px;
+	font: 15px arial,sans-serif;
+	vertical-align: top;
+	border: 1px solid #838383;
+}
+
+select {
+	padding: 5px;
+}
+
+hr { margin: 0 auto; }
+
+table {
+	font-size: 80%;
+}
+
+.tblHead {
+	font-weight: bold;
+}
+
+td a {
+	font-weight: bold;
+	color: #000;
+}
+
+.fieldLabel {
+	font-weight: bold;
+}
+
+.ui-autocomplete-loading { background: white url('../img/images/ui-anim_basic_16x16.gif') right center no-repeat; }
+
+#fileviewer #framehtml {
+	border: none;
+	width: 100%;
+	height: 100%;
+}
+
+label {
+	cursor: pointer;
+}
