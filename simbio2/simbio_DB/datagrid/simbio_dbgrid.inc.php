@@ -389,6 +389,9 @@ class simbio_datagrid extends simbio_table
             $_button_grp .= '</tr></table>'."\n";
 
             // table grid
+            if (!isset($_SERVER['QUERY_STRING'])) {
+                $_SERVER['QUERY_STRING'] = '';
+            }
             $_buffer .= $_button_grp.$this->printTable().$_button_grp
                 .'<input type="hidden" name="itemAction" value="true" />'
                 .'<input type="hidden" name="lastQueryStr" value="'.$_SERVER['QUERY_STRING'].'" />'."\n"
