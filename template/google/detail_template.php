@@ -74,11 +74,11 @@ ob_start(); /* <- DONT REMOVE THIS COMMAND */
 </tr>
 <tr>
 <td class="tblHead" style="width: 20%;" valign="top"><?php print __('File Attachment'); ?></td>
-<td class="tblContent" style="width: 80%;" valign="top"><div id="attachListLoad">LOADING LIST...</div></td>
+<td class="tblContent" style="width: 80%;" valign="top">{file_att}</td>
 </tr>
 <tr>
 <td class="tblHead" style="width: 20%;" valign="top"><?php print __('Availability'); ?></td>
-<td class="tblContent" style="width: 80%;" valign="top"><div id="itemListLoad">LOADING LIST...</div></td>
+<td class="tblContent" style="width: 80%;" valign="top">{availability}</td>
 </tr>
 <!-- insert custom field here
 <tr>

@@ -121,6 +121,7 @@ function getTextBetweenTags($tag, $html, $strict=0)
 				data: '<?php echo $data;?>',
 				success: function(data) {
 					$('#attachListLoad').html(data);
+					$( "a[href='#']" ).attr('href', '#refviewer');
 				},
 			});
 
@@ -130,6 +131,7 @@ function getTextBetweenTags($tag, $html, $strict=0)
 				data: '<?php echo $data;?>',
 				success: function(data) {
 					$('#itemListLoad').html(data);
+					$( "a[href='#']" ).attr('href', '#refviewer');
 				}
 			});
 			loadjsfile("<?php echo $js . "/custom.js";?>");
