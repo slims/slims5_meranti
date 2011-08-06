@@ -415,6 +415,8 @@ $sysconf['mail']['reply_to_name'] = &$sysconf['mail']['from_name'];
 $sysconf['max_biblio_mark'] = 20;
 
 // Thumbnail Generator
+$sysconf['tg']['relative_url'] = '../../';
+$sysconf['tg']['docroot'] = ''; #usually use this in a virtual or alias based hosting
 $sysconf['tg']['type'] = 'phpthumb'; # phpthumb | minigalnano
 
 // check if session is auto started and then destroy it
