@@ -27,12 +27,14 @@ if (!defined('INDEX_AUTH')) {
     die("can not access this file directly");
 }
 
-$allowed_counter_ip = array('127.0.0.1', 'localhost');
+$allowed_counter_ip = array('127.0.0.1');
 $remote_addr = $_SERVER['REMOTE_ADDR'];
 $confirmation = 0;
 
 foreach ($allowed_counter_ip as $ip) {
-    if ($ip == $remote_addr) {
+	// change wildcard
+	$ip = preg_replace('@\*$@i', '.', $ip);
+    if ($ip == $remote_addr || $_SERVER['HTTP_HOST'] == 'localhost' || preg_match("@$ip@i", $ip)) {
         $confirmation = 1;
     }
 }
