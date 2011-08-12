@@ -5,8 +5,13 @@
 //////////////////////////////////////////////////////////////
 ///                                                         //
 // See: phpthumb.readme.txt for usage instructions          //
+// patched for slims by Hendro Wicaksono                    //
 //                                                         ///
 //////////////////////////////////////////////////////////////
+
+// key to authenticate
+define('INDEX_AUTH', '1');
+require '../../sysconfig.inc.php';
 
 ob_start();
 if (!file_exists('phpthumb.functions.php') || !include_once('phpthumb.functions.php')) {
@@ -27,7 +32,10 @@ ob_end_clean();
 //echo realpath('.').'/'.basename($_SERVER['PHP_SELF']).' = '.phpthumb_functions::md5_file_safe(realpath('.').'/'.basename($_SERVER['PHP_SELF'])).'<br />';
 //exit;
 $PHPTHUMB_CONFIG['document_root'] = ((@$_SERVER['DOCUMENT_ROOT'] && file_exists(@$_SERVER['DOCUMENT_ROOT'].$_SERVER['PHP_SELF']) && (@phpthumb_functions::md5_file_safe(@$_SERVER['DOCUMENT_ROOT'].$_SERVER['PHP_SELF']) == @phpthumb_functions::md5_file_safe(realpath('.').'/'.basename($_SERVER['PHP_SELF'])))) ? $_SERVER['DOCUMENT_ROOT'] : str_replace(dirname(@$_SERVER['PHP_SELF']), '', str_replace('\\', '/', realpath('.'))));
-
+# patch for slims
+if ($sysconf['tg']['docroot'] != '') {
+    $PHPTHUMB_CONFIG['document_root'] = $sysconf['tg']['docroot'];
+}
 
 // * Cache directory configuration (choose only one of these - leave the other lines commented-out):
 // Note: this directory must be writable (usually chmod 777 is neccesary) for caching to work.

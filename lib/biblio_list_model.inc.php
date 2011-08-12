@@ -214,11 +214,11 @@ abstract class biblio_list_model
                 $images_loc = 'images/docs/'.$_biblio_d['image'];
                 #$cache_images_loc = 'images/cache/'.$_biblio_d['image'];
                 if ($sysconf['tg']['type'] == 'phpthumb') {
-                    $_image_cover = 'style="background-image: url(./lib/phpthumb/phpThumb.php?src=../../'.$images_loc.'&w=42); background-repeat: no-repeat;"';
+                    $_image_cover = 'style="background-image: url(./lib/phpthumb/phpThumb.php?src='.$sysconf['tg']['relative_url'].''.$images_loc.'&w=42); background-repeat: no-repeat;"';
                 } elseif ($sysconf['tg']['type'] == 'minigalnano') {
-                    $_image_cover = 'style="background-image: url(./lib/minigalnano/createthumb.php?filename=../../'.$images_loc.'&width=42); background-repeat: no-repeat;"';
+                    $_image_cover = 'style="background-image: url(./lib/minigalnano/createthumb.php?filename='.$sysconf['tg']['relative_url'].''.$images_loc.'&width=42); background-repeat: no-repeat;"';
                 } else {
-                    $_image_cover = 'style="background-image: url(./lib/phpthumb/phpThumb.php?src=../../'.$images_loc.'&w=42); background-repeat: no-repeat;"';
+                    $_image_cover = 'style="background-image: url(./lib/phpthumb/phpThumb.php?src='.$sysconf['tg']['relative_url'].''.$images_loc.'&w=42); background-repeat: no-repeat;"';
                 }
             }
 
