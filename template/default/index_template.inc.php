@@ -85,15 +85,15 @@ if (!defined('INDEX_AUTH')) {
         <?php echo __('ISBN/ISSN'); ?> :
         <input type="text" name="isbn" class="ajaxInputField" /><br />
         <?php echo __('GMD'); ?> :
-        <select name="gmd" class="ajaxInputField" />
+        <select name="gmd" class="ajaxInputField">
         <?php echo $gmd_list; ?>
         </select>
         <?php echo __('Collection Type'); ?> :
-        <select name="colltype" class="ajaxInputField" />
+        <select name="colltype" class="ajaxInputField">
         <?php echo $colltype_list; ?>
         </select>
         <?php echo __('Location'); ?> :
-        <select name="location" class="ajaxInputField" />
+        <select name="location" class="ajaxInputField">
         <?php echo $location_list; ?>
         </select>
         <br />

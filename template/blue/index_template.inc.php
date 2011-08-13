@@ -76,15 +76,15 @@
         <?php echo __('ISBN/ISSN'); ?> :<br />
         <input type="text" name="isbn" class="search" /><br />
         <?php echo __('GMD'); ?> :<br />
-        <select name="gmd" style="width: 99%;" class="marginTop" />
+        <select name="gmd" style="width: 99%;" class="marginTop">
         <?php echo $gmd_list; ?>
         </select><br /><br />
         <?php echo __('Collection Type'); ?> :<br />
-        <select name="colltype" style="width: 99%;" class="marginTop" />
+        <select name="colltype" style="width: 99%;" class="marginTop">
         <?php echo $colltype_list; ?>
         </select><br /><br />
         <?php echo __('Location'); ?> :<br />
-        <select name="location" style="width: 99%;" class="marginTop" />
+        <select name="location" style="width: 99%;" class="marginTop">
         <?php echo $location_list; ?>
         </select><br />
         <br />

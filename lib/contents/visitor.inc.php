@@ -49,6 +49,9 @@ ob_start();
 define('INSTITUTION_EMPTY', 11);
 
 if (isset($_POST['counter'])) {
+	if (trim($_POST['memberID']) == '') {
+	    die();
+	}
     $member_name = 'Guest';
     $photo = 'person.png';
     // sleep for a while
@@ -143,6 +146,11 @@ if (isset($_POST['counter'])) {
     // register event
     visitorCounterForm.submit(function(evt) {
         evt.preventDefault();
+		// check member ID or name
+		if (jQuery.trim(jQuery('#memberID').val()) == '') {
+			jQuery('#counterInfo').html('Please fill your member ID or name');
+			return false;
+		}
         var theForm = jQuery(this);
         var formAction = theForm.attr('action');
         var formData = theForm.serialize();

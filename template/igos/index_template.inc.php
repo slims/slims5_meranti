@@ -68,15 +68,15 @@
             <?php echo __('ISBN/ISSN'); ?> :
             <input type="text" name="isbn" />
             <?php echo __('GMD'); ?> :
-            <select name="gmd" />
+            <select name="gmd">
             <?php echo $gmd_list; ?>
             </select>
             <?php echo __('Collection Type'); ?> :
-            <select name="colltype" />
+            <select name="colltype">
             <?php echo $colltype_list; ?>
             </select>
             <?php echo __('Location'); ?> :
-            <select name="location" />
+            <select name="location">
             <?php echo $location_list; ?>
             </select>
 

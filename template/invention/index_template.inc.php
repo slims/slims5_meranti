@@ -75,15 +75,15 @@ Ported to Senayan by Hendro Wicaksono (hendrowicaksono@yahoo.com)
         <span class="orangetext"><?php echo __('ISBN/ISSN'); ?></span> :
         <input type="text" name="isbn" class="ajaxInputField" /><br />
         <span class="orangetext"><?php echo __('GMD'); ?></span> :
-        <select name="gmd" class="ajaxInputField" />
+        <select name="gmd" class="ajaxInputField">
         <?php echo $gmd_list; ?>
         </select>
         <span class="orangetext"><?php echo __('Collection Type'); ?></span> :
-        <select name="colltype" class="ajaxInputField" />
+        <select name="colltype" class="ajaxInputField">
         <?php echo $colltype_list; ?>
         </select>
         <span class="orangetext"><?php echo __('Location'); ?></span> :
-        <select name="location" class="ajaxInputField" />
+        <select name="location" class="ajaxInputField">
         <?php echo $location_list; ?>
         </select>
         <br />
