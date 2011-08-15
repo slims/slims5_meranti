@@ -126,15 +126,15 @@ if (!$is_member_login) {
           lang : '<?php echo$sysconf['captcha']['member']['recaptcha']['lang']; ?>',
           <?php if($sysconf['captcha']['member']['recaptcha']['customlang']['enable']) { ?>
                 custom_translations : {
-                        instructions_visual : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['instructions_visual']; ?>",
-                        instructions_audio : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['instructions_audio']; ?>",
-                        play_again : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['play_again']; ?>",
-                        cant_hear_this : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['cant_hear_this']; ?>",
-                        visual_challenge : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['visual_challenge']; ?>",
-                        audio_challenge : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['audio_challenge']; ?>",
-                        refresh_btn : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['refresh_btn']; ?>",
-                        help_btn : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['help_btn']; ?>",
-                        incorrect_try_again : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['incorrect_try_again']; ?>",
+                instructions_visual : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['instructions_visual']; ?>",
+                instructions_audio : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['instructions_audio']; ?>",
+                play_again : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['play_again']; ?>",
+                cant_hear_this : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['cant_hear_this']; ?>",
+                visual_challenge : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['visual_challenge']; ?>",
+                audio_challenge : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['audio_challenge']; ?>",
+                refresh_btn : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['refresh_btn']; ?>",
+                help_btn : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['help_btn']; ?>",
+                incorrect_try_again : "<?php echo $sysconf['captcha']['member']['recaptcha']['customlang']['incorrect_try_again']; ?>",
                 },
           <?php } ?>
         };
