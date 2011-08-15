@@ -28,7 +28,7 @@
             <li><a class="menu" href="index.php?p=peta"><span>Show map</span></a></li>
             <li><a class="menu" href="index.php?p=help"><span><?php echo __('Help on Search'); ?></span></a></li>
             <li><a class="menu" href="http://www.igos.web.id"><span>IGOS</span></a></li>
-            <li><a class="menu" href="http://senayan.diknas.go.id"><span>SENAYAN</span></a></li>
+            <li><a class="menu" href="http://slims.web.id"><span>SLiMS</span></a></li>
             <li><a class="menu" href="index.php?p=login"><span><?php echo __('Librarian LOGIN'); ?></span></a></li>
         </ul>
     </div>

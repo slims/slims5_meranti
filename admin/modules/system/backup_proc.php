@@ -57,7 +57,7 @@ if (isset($_POST['start'])) {
             // execute the backup process
             exec($sysconf['mysqldump'].' -B '.DB_NAME.' --no-create-db --quick --user='.DB_USERNAME.' --password='.DB_PASSWORD.' > '.$sysconf['backup_dir'].DIRECTORY_SEPARATOR.'backup_'.$time2append.'.sql', $outputs, $status);
             if ($status == COMMAND_SUCCESS) {
-                $data['user_id'] = 1;
+                $data['user_id'] = $_SESSION['uid'];
                 $data['backup_time'] = date('Y-m-d H:i"s');
                 $data['backup_file'] = $dbs->escape_string($sysconf['backup_dir'].'backup_'.$time2append.'.sql');
                 $output = 'Backup SUCCESSFUL, backup files saved to '.$sysconf['backup_dir'].'!'."<br />\n";
