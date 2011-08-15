@@ -301,7 +301,16 @@ if (!$is_member_login) {
         $_mail->Password = $sysconf['mail']['auth_password'];
         $_mail->SetFrom($sysconf['mail']['from'], $sysconf['mail']['from_name']);
         $_mail->AddReplyTo($sysconf['mail']['reply_to'], $sysconf['mail']['reply_to_name']);
-        $_mail->AddAddress($_SESSION['m_email'], $_SESSION['m_name']);
+        // send carbon copy off reserve e-mail to member/requester
+		$_mail->AddCC($_SESSION['m_email'], $_SESSION['m_name']);
+		// send reservation e-mail to librarian
+        $_mail->AddAddress($sysconf['mail']['from'], $sysconf['mail']['from_name']);
+		// additional recipient
+		if (isset($sysconf['mail']['add_recipients'])) {
+			foreach ($sysconf['mail']['add_recipients'] as $_recps) {
+				$_mail->AddAddress($_recps['from'], $_recps['from_name']);				
+			}
+		}
         $_mail->Subject = 'Reservation request from Member '.$_SESSION['m_name'].' ('.$_SESSION['m_email'].')';
         $_mail->AltBody = strip_tags($_message);
         $_mail->MsgHTML($_message);

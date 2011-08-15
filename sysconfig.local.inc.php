@@ -36,4 +36,10 @@ define('DB_PASSWORD', 'password_senayanuser');
 
 // define any other sysconfig variables below
 $sysconf['index']['type'] = 'default';
+
+// additional e-mail recipients for library administrator
+/*
+$sysconf['mail']['add_recipients'][] = array('from' => 'senayan.slims@slims.web.id', 'from_name' => 'Librarian 2');
+$sysconf['mail']['add_recipients'][] = array('from' => 'wynerst@gmail.com', 'from_name' => 'Librarian 3');
+*/
 ?>
