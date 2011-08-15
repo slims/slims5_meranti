@@ -1,0 +1,4279 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ALAS2010\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-23 23:10+0600\n"
+"PO-Revision-Date: 2011-07-05 03:30+0600\n"
+"Last-Translator: A.K.M. NURUL ALAM (APU) <nalam_apu@yahoo.com>\n"
+"Language-Team: Nurul Alam <nalam_apu@yahoo.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-Basepath: ../../../../../\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Bengali\n"
+"X-Poedit-Country: BANGLADESH\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Bookmarks: 98,745,744,150,142,-1,-1,-1,-1,-1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: index.php:37
+msgid "Web Online Public Access Catalog - Use the search options to find documents quickly"
+msgstr "ওয়েব অনলাইন পাবলিক এ্যকসেস ক্যাটালগ, দ্রুত তথ্য পেতে সার্চ অপশন বাবহার করুন"
+
+#: index.php:46
+msgid "You are currently Logged on as member"
+msgstr "আপনি সিস্টেম সদস্য হিসেবে প্রবেশ করেছেন"
+
+#: index.php:46
+msgid "LOGOUT"
+msgstr "প্রস্থান"
+
+#: sysconfig.inc.php:337
+msgid "Personal Name"
+msgstr "ব্যক্তিগত নাম"
+
+#: sysconfig.inc.php:338
+msgid "Organizational Body"
+msgstr "প্রাতিষ্ঠানিক লেখক"
+
+#: sysconfig.inc.php:339
+msgid "Conference"
+msgstr "কনফারেন্স"
+
+#: sysconfig.inc.php:342
+msgid "Topic"
+msgstr ""
+
+#: sysconfig.inc.php:343
+msgid "Geographic"
+msgstr "ভৌগলিক"
+
+#: sysconfig.inc.php:344
+msgid "Name"
+msgstr "নাম"
+
+#: sysconfig.inc.php:345
+msgid "Temporal"
+msgstr ""
+
+#: sysconfig.inc.php:346
+msgid "Genre"
+msgstr ""
+
+#: sysconfig.inc.php:347
+msgid "Occupation"
+msgstr "পেশা"
+
+#: sysconfig.inc.php:350
+msgid "Primary Author"
+msgstr "প্রধন লেখক"
+
+#: sysconfig.inc.php:351
+msgid "Additional Author"
+msgstr "অতিরিক্ত লেখক"
+
+#: sysconfig.inc.php:352
+msgid "Editor"
+msgstr "সংকলক"
+
+#: sysconfig.inc.php:353
+msgid "Translator"
+msgstr "অনুবাদক"
+
+#: sysconfig.inc.php:354
+msgid "Director"
+msgstr "পরিচালক"
+
+#: sysconfig.inc.php:355
+msgid "Producer"
+msgstr "উত্পাদক"
+
+#: sysconfig.inc.php:356
+msgid "Composer"
+msgstr "রচয়িতা"
+
+#: sysconfig.inc.php:357
+msgid "Illustrator"
+msgstr "চিত্রকার"
+
+#: sysconfig.inc.php:358
+msgid "Creator"
+msgstr ""
+
+#: sysconfig.inc.php:359
+msgid "Contributor"
+msgstr "অবদানকারী"
+
+#: admin/index.php:60
+msgid "Welcome To The Library Automation System, you are currently logged in as"
+msgstr "লাইব্রেরী অটোমেশন সিস্টেমে আপনাকে স্বাগতম, সিস্টেমে আপনার নাম"
+
+#: admin/logout.php:33
+msgid "You Have Been Logged Out From Library Automation System"
+msgstr "আপনি সিস্টেম থেকে বের হয়েছেন"
+
+#: admin/default/home.php:30
+msgid "<strong>PHP GD</strong> extension is not installed. Please install it or application won't be able to create image thumbnail and barcode."
+msgstr ""
+
+#: admin/default/home.php:34
+msgid "<strong>Freetype</strong> support is not enabled in PHP GD extension. Rebuild PHP GD extension with Freetype support or application won't be able to create barcode."
+msgstr ""
+
+#: admin/default/home.php:41
+msgid "There is currently <strong>{num_overdue}</strong> library members having overdue. Please check at <b>Circulation</b> module at <b>Overdues</b> section for more detail"
+msgstr "বর্তমানে <strong>{num_overdue}</strong> সদস্যের ওভারডিউ রয়েছে।  দয়া করে <b>Circulation</b> মডিউলের <b>Overdues</b> অংশ চেক করুন।"
+
+#: admin/default/home.php:46
+msgid "<strong>Images</strong> directory and directories under it is not writable. Make sure it is writable by changing its permission or you won't be able to upload any images and create barcodes"
+msgstr "<strong>ছবির</strong> ডিরেক্টরিতে লেখা সম্ভব নয়। লেখার অনুমতি সচল করুন অন্যথায় কোন ছবি আপলোড এবং বারকোড তৈরী করতে পারবেন না।"
+
+#: admin/default/home.php:50
+msgid "<strong>Repository</strong> directory is not writable. Make sure it is writable (and all directories under it) by changing its permission or you won't be able to upload any bibliographic attachments."
+msgstr ""
+
+#: admin/default/home.php:54
+msgid "<strong>File upload</strong> directory is not writable. Make sure it is writable (and all directories under it) by changing its permission or you won't be able to upload any file, create report files and create database backups."
+msgstr ""
+
+#: admin/default/home.php:58
+msgid "The PATH for <strong>mysqldump</strong> program is not right! Please check configuration file or you won't be able to do any database backups."
+msgstr ""
+
+#: admin/default/session_check.inc.php:32
+#: admin/default/session_check.inc.php:44
+msgid "You are not authorized to view this section"
+msgstr "আপনার এই অংশ দেখার অনুমতি নেই"
+
+#: admin/default/session_check.inc.php:56
+msgid "Your Login Session has already timeout!"
+msgstr "আপনার লগইন সেশন উত্তির্ণ হয়েছে"
+
+#: admin/default/submenu.php:21
+msgid "Panel"
+msgstr "প্যানেল"
+
+#: admin/default/submenu.php:22
+msgid "Change User Profiles"
+msgstr "তথ্য পরিবর্তন"
+
+#: admin/default/submenu.php:22
+msgid "Change Current User Profiles and Password"
+msgstr "নাম ও পাসওয়ার্ড পরিবর্তন"
+
+#: admin/default/submenu.php:24
+msgid "Add New Bibliography"
+msgstr "নতুন বই যোগ"
+
+#: admin/default/submenu.php:24
+msgid "Add New Bibliographic Data/Catalog"
+msgstr "নতুন ক্যাটালগ/বইয়ের তথ্য যোগ"
+
+#: admin/default/submenu.php:27
+msgid "Start Transaction"
+msgstr "বিনিময় শুরু"
+
+#: admin/default/submenu.php:27
+msgid "Start Circulation Transaction Proccess"
+msgstr "বই ধার বিনিময় প্রক্রিয়া শুরু"
+
+#: admin/default/submenu.php:30
+msgid "Quick Return"
+msgstr "দ্রুত ফেরত"
+
+#: admin/default/submenu.php:30
+msgid "Quick Return Collection"
+msgstr "দ্রুত বই ফেরত"
+
+#: admin/default/submenu.php:33
+msgid "Add New Member"
+msgstr "নতুন সদস্য যোগ করুন"
+
+#: admin/default/submenu.php:33
+msgid "Add New Library Member Data"
+msgstr "নতুন সদস্যের তথ্য যোগ"
+
+#: admin/modules/bibliography/checkout_item.php:43
+msgid "Checkout Items"
+msgstr "আইটেম চেকআউট"
+
+#: admin/modules/bibliography/checkout_item.php:45
+#: admin/modules/bibliography/dl_print.php:208
+#: admin/modules/bibliography/dl_print.php:210
+#: admin/modules/bibliography/index.php:334
+#: admin/modules/bibliography/index.php:337
+#: admin/modules/bibliography/item.php:194
+#: admin/modules/bibliography/item.php:196
+#: admin/modules/bibliography/item_barcode_generator.php:202
+#: admin/modules/bibliography/item_barcode_generator.php:204
+#: admin/modules/bibliography/p2p.php:214
+#: admin/modules/bibliography/p2p.php:217
+msgid "Search"
+msgstr "খোজ করুন"
+
+#: admin/modules/bibliography/checkout_item.php:61
+#: admin/modules/bibliography/item.php:273
+#: admin/modules/bibliography/item.php:374
+#: admin/modules/bibliography/item.php:383
+#: admin/modules/bibliography/item_barcode_generator.php:227
+msgid "Item Code"
+msgstr "আইটেম কোড"
+
+#: admin/modules/bibliography/checkout_item.php:62
+msgid "Member ID"
+msgstr "সদস্য আইডি"
+
+#: admin/modules/bibliography/checkout_item.php:63
+#: admin/modules/bibliography/dl_print.php:233
+#: admin/modules/bibliography/index.php:400
+#: admin/modules/bibliography/index.php:617
+#: admin/modules/bibliography/index.php:623
+#: admin/modules/bibliography/item.php:267
+#: admin/modules/bibliography/item.php:375
+#: admin/modules/bibliography/item.php:384
+#: admin/modules/bibliography/item_barcode_generator.php:228
+msgid "Title"
+msgstr "শিরোনাম"
+
+#: admin/modules/bibliography/checkout_item.php:64
+msgid "Loan Date"
+msgstr "ধারের তারিখ"
+
+#: admin/modules/bibliography/checkout_item.php:65
+msgid "Due Date"
+msgstr "ফেরতের তারিখ"
+
+#: admin/modules/bibliography/checkout_item.php:106
+#: admin/modules/bibliography/dl_print.php:270
+#: admin/modules/bibliography/index.php:672
+#: admin/modules/bibliography/item.php:422
+#: admin/modules/bibliography/item_barcode_generator.php:263
+msgid "Found <strong>{result->num_rows}</strong> from your keywords"
+msgstr "আপনার কীওয়ার্ড থেকে <strong>{result->num_rows}</strong> টি পাওয়া গেছে"
+
+#: admin/modules/bibliography/dl_print.php:82
+#: admin/modules/bibliography/item_barcode_generator.php:88
+msgid "Selected items NOT ADDED to print queue. Only {max_print} can be printed at once"
+msgstr "নির্বাচন সমূহ প্রিন্ট সারিতে যোগ করা হয়নি। সর্ব্বোচ্চ {max_print} টি একসাথে প্রিন্ট করা যেতে পারে।"
+
+#: admin/modules/bibliography/dl_print.php:87
+#: admin/modules/bibliography/item_barcode_generator.php:93
+msgid "Selected items added to print queue"
+msgstr "নির্বাচন সমূহ প্রিন্ট সারিতে যোগ হয়েছে"
+
+#: admin/modules/bibliography/dl_print.php:94
+#: admin/modules/bibliography/item_barcode_generator.php:102
+msgid "Print queue cleared!"
+msgstr "প্রিন্ট সারি খালি করা হয়েছে!"
+
+#: admin/modules/bibliography/dl_print.php:104
+#: admin/modules/bibliography/item_barcode_generator.php:111
+#: admin/modules/bibliography/item_barcode_generator.php:115
+msgid "There is no data to print!"
+msgstr "প্রিন্ট এর জন্য কোন তথ্য নেই!"
+
+#: admin/modules/bibliography/dl_print.php:196
+#: admin/modules/bibliography/dl_print.php:205
+msgid "Labels Printing"
+msgstr "লেবেল প্রিন্টিং"
+
+#: admin/modules/bibliography/dl_print.php:205
+msgid "Print Labels for Selected Data"
+msgstr "নির্বাচিত তথ্যের লেবেল প্রিন্ট করুন"
+
+#: admin/modules/bibliography/dl_print.php:206
+#: admin/modules/bibliography/item_barcode_generator.php:200
+msgid "Clear Print Queue"
+msgstr "প্রিন্ট সারি খালি করুন"
+
+#: admin/modules/bibliography/dl_print.php:214
+#: admin/modules/bibliography/item_barcode_generator.php:208
+msgid "Maximum"
+msgstr "সর্বোচ্চ"
+
+#: admin/modules/bibliography/dl_print.php:214
+#: admin/modules/bibliography/item_barcode_generator.php:208
+msgid "records can be printed at once. Currently there is"
+msgstr "রেকর্ডসমূহ একবারই প্রিন্ট করা যেতে পারে। বর্তমানে রয়েছে"
+
+#: admin/modules/bibliography/dl_print.php:218
+#: admin/modules/bibliography/item_barcode_generator.php:212
+msgid "in queue waiting to be printed."
+msgstr "টি প্রিন্ট সারিতে অপেক্ষমান।"
+
+#: admin/modules/bibliography/dl_print.php:234
+#: admin/modules/bibliography/index.php:469
+#: admin/modules/bibliography/item.php:275
+msgid "Call Number"
+msgstr "কল নং"
+
+#: admin/modules/bibliography/dl_print.php:261
+#: admin/modules/bibliography/item_barcode_generator.php:254
+msgid "Add"
+msgstr "যোগ করুন"
+
+#: admin/modules/bibliography/dl_print.php:262
+#: admin/modules/bibliography/item_barcode_generator.php:255
+msgid "Add To Print Queue"
+msgstr "প্রিন্ট সাড়িতে যোগ করুন"
+
+#: admin/modules/bibliography/dl_print.php:263
+#: admin/modules/bibliography/item_barcode_generator.php:256
+msgid "Add to print queue?"
+msgstr "প্রিন্ট সাড়িতে যোগ করবেন?"
+
+#: admin/modules/bibliography/dl_print.php:271
+#: admin/modules/bibliography/index.php:673
+#: admin/modules/bibliography/item.php:423
+#: admin/modules/bibliography/item_barcode_generator.php:264
+msgid "Query took"
+msgstr "অনুসন্ধানে লেগেছে"
+
+#: admin/modules/bibliography/dl_print.php:271
+#: admin/modules/bibliography/index.php:673
+#: admin/modules/bibliography/item.php:423
+#: admin/modules/bibliography/item_barcode_generator.php:264
+msgid "second(s) to complete"
+msgstr "সেকেন্ড"
+
+#: admin/modules/bibliography/export.php:43
+#: admin/modules/bibliography/import.php:48
+#: admin/modules/bibliography/item_export.php:43
+#: admin/modules/bibliography/item_import.php:48
+msgid "Required fields (*)  must be filled correctly!"
+msgstr ""
+
+#: admin/modules/bibliography/export.php:102
+#: admin/modules/bibliography/item_export.php:104
+msgid "Error on query to database, Export FAILED!"
+msgstr ""
+
+#: admin/modules/bibliography/export.php:140
+msgid "There is no record in bibliographic database yet, Export FAILED!"
+msgstr ""
+
+#: admin/modules/bibliography/export.php:149
+msgid "EXPORT TOOL"
+msgstr ""
+
+#: admin/modules/bibliography/export.php:151
+msgid "Export bibliographics data to CSV file"
+msgstr ""
+
+#: admin/modules/bibliography/export.php:158
+#: admin/modules/bibliography/item_export.php:141
+msgid "Export Now"
+msgstr ""
+
+#: admin/modules/bibliography/export.php:167
+#: admin/modules/bibliography/import.php:238
+#: admin/modules/bibliography/item_export.php:150
+#: admin/modules/bibliography/item_import.php:202
+msgid "Field Separator"
+msgstr ""
+
+#: admin/modules/bibliography/export.php:169
+#: admin/modules/bibliography/import.php:240
+#: admin/modules/bibliography/item_export.php:152
+#: admin/modules/bibliography/item_import.php:204
+msgid "Field Enclosed With"
+msgstr ""
+
+#: admin/modules/bibliography/export.php:173
+#: admin/modules/bibliography/item_export.php:156
+msgid "Record Separator"
+msgstr ""
+
+#: admin/modules/bibliography/export.php:175
+#: admin/modules/bibliography/import.php:242
+#: admin/modules/bibliography/item_export.php:158
+#: admin/modules/bibliography/item_import.php:206
+msgid "Number of Records To Export (0 for all records)"
+msgstr ""
+
+#: admin/modules/bibliography/export.php:177
+#: admin/modules/bibliography/import.php:244
+#: admin/modules/bibliography/item_export.php:160
+#: admin/modules/bibliography/item_import.php:208
+msgid "Start From Record"
+msgstr ""
+
+#: admin/modules/bibliography/iframe_attach.php:67
+msgid "Attachment removed!"
+msgstr "এটাচ্‌মেন্ট মুছে ফেলা হয়েছে!"
+
+#: admin/modules/bibliography/iframe_attach.php:112
+#: admin/modules/bibliography/index.php:496
+msgid "File Attachments"
+msgstr "ফাইল এটাচম্নেট"
+
+#: admin/modules/bibliography/iframe_author.php:61
+msgid "Author succesfully removed!"
+msgstr "লেখক সফলভাবে মুছে ফেলা হয়েছে"
+
+#: admin/modules/bibliography/iframe_author.php:72
+msgid "Author removed!"
+msgstr "লেখক মুছে ফেলা হয়েছে"
+
+#: admin/modules/bibliography/iframe_item_list.php:70
+#: admin/modules/bibliography/item.php:171
+msgid "Item data can not be deleted because still on hold by members"
+msgstr ""
+
+#: admin/modules/bibliography/iframe_item_list.php:76
+#: admin/modules/bibliography/item.php:177
+msgid "Item succesfully removed!"
+msgstr "আইটেম সফলভাবে মুছে ফেলা হয়েছে!"
+
+#: admin/modules/bibliography/iframe_item_list.php:81
+#: admin/modules/bibliography/item.php:180
+msgid "Item FAILED to removed!"
+msgstr "আইটেম মুছতে ব্যর্থ হয়েছে!"
+
+#: admin/modules/bibliography/iframe_item_list.php:107
+#: admin/modules/bibliography/index.php:407
+msgid "Items/Copies"
+msgstr "সংখ্যা"
+
+#: admin/modules/bibliography/import.php:45
+#: admin/modules/bibliography/item_import.php:45
+msgid "Please select the file to import!"
+msgstr ""
+
+#: admin/modules/bibliography/import.php:69
+#: admin/modules/bibliography/item_import.php:69
+msgid "Upload failed! File type not allowed or the size is more than"
+msgstr ""
+
+#: admin/modules/bibliography/import.php:215
+msgid "IMPORT TOOL"
+msgstr ""
+
+#: admin/modules/bibliography/import.php:217
+msgid "Import for bibliographics data from CSV file. For guide on CVS fields order and format please refer to documentation or visit <a href=\"http://senayan.diknas.go.id\" target=\"_blank\">Official Website</a>"
+msgstr ""
+
+#: admin/modules/bibliography/import.php:225
+#: admin/modules/bibliography/item_import.php:190
+msgid "Import Now"
+msgstr ""
+
+#: admin/modules/bibliography/import.php:236
+#: admin/modules/bibliography/item_import.php:200
+msgid "File To Import"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:57
+msgid "Title can not be empty"
+msgstr "শিরোনাম নাম খালি হতে পারবেনা"
+
+#: admin/modules/bibliography/index.php:151
+#: admin/modules/bibliography/index.php:155
+msgid "Image Uploaded Successfully"
+msgstr "ছবি সফলভাবে আপলোড হয়েছে"
+
+#: admin/modules/bibliography/index.php:184
+msgid "Bibliography Data Successfully Updated"
+msgstr "বইয়ের তথ্য সফলভাবে যোগ হোয়েছে"
+
+#: admin/modules/bibliography/index.php:200
+msgid "Bibliography Data FAILED to Updated. Please Contact System Administrator"
+msgstr "বইয়ের তথ্য পরিবর্তন করতে ব্যর্থ! দয়া করে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/bibliography/index.php:233
+msgid "New Bibliography Data Successfully Saved"
+msgstr "নতুন বইয়ের তথ্য সফলভাবে সেভ হোয়েছে"
+
+#: admin/modules/bibliography/index.php:245
+msgid "Bibliography Data FAILED to Save. Please Contact System Administrator"
+msgstr "বইয়ের তথ্য সেভ করতে ব্যর্থ! সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/bibliography/index.php:298
+msgid "Below data can not be deleted:"
+msgstr "নিচের তথ্য মুছা যাবে না"
+
+#: admin/modules/bibliography/index.php:308
+msgid "All Data Successfully Deleted"
+msgstr "সকল তথ্য সফলভাবে মুছে ফেলা হয়েছে"
+
+#: admin/modules/bibliography/index.php:311
+msgid ""
+"Some or All Data NOT deleted successfully!\\n"
+"Please contact system administrator"
+msgstr ""
+"সকল/কিছু তথ্য মুছে ফেলা সম্ভব হয়নি! \\n"
+"দয়া করে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/bibliography/index.php:323
+msgid "Bibliographic"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:324
+msgid "Bibliographic List"
+msgstr "বইয়ের তালিকা"
+
+#: admin/modules/bibliography/index.php:329
+msgid "Upload Selected Bibliographic data to Union Catalog Server*"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:336
+msgid "All Fields"
+msgstr "সকল ফিল্ড"
+
+#: admin/modules/bibliography/index.php:336
+msgid "Title/Series Title"
+msgstr "সিরিজ শিরোনাম"
+
+#: admin/modules/bibliography/index.php:336
+msgid "Topics"
+msgstr "আলচ্য বিষয়"
+
+#: admin/modules/bibliography/index.php:336
+msgid "Authors"
+msgstr "লেখক"
+
+#: admin/modules/bibliography/index.php:336
+#: admin/modules/bibliography/index.php:435
+#: admin/modules/bibliography/index.php:618
+#: admin/modules/bibliography/index.php:624
+msgid "ISBN/ISSN"
+msgstr "আইএসবিএন/আইএসএসএন"
+
+#: admin/modules/bibliography/index.php:336
+#: admin/modules/bibliography/index.php:444
+#: admin/modules/bibliography/index.php:449
+msgid "Publisher"
+msgstr "প্রকাশক"
+
+#: admin/modules/bibliography/index.php:361
+#: admin/modules/bibliography/item.php:220
+msgid "Save"
+msgstr "সেভ"
+
+#: admin/modules/bibliography/index.php:383
+#: admin/modules/bibliography/item.php:239
+msgid "Update"
+msgstr "পরিবর্তন করুন"
+
+#: admin/modules/bibliography/index.php:402
+msgid "Edition"
+msgstr "সংস্করণ"
+
+#: admin/modules/bibliography/index.php:404
+msgid "Specific Detail Info"
+msgstr "নির্দিষ্ট তথ্যের বিবরণ"
+
+#: admin/modules/bibliography/index.php:407
+msgid "Add New Items"
+msgstr "নতুন আইটেম েযাগ"
+
+#: admin/modules/bibliography/index.php:412
+msgid "Authors/Roles"
+msgstr "লেখক/অবদানকারী"
+
+#: admin/modules/bibliography/index.php:412
+msgid "Add Author(s)"
+msgstr "লেখক যোগ"
+
+#: admin/modules/bibliography/index.php:414
+msgid "Author(s)"
+msgstr "লেখক"
+
+#: admin/modules/bibliography/index.php:422
+msgid "GMD"
+msgstr "মাধ্যম"
+
+#: admin/modules/bibliography/index.php:426
+#: admin/modules/bibliography/item.php:313
+msgid "Not Applicable"
+msgstr "প্রযোজ্য নয়"
+
+#: admin/modules/bibliography/index.php:432
+msgid "Use this for Serial publication"
+msgstr "সাময়িকীর ক্ষেত্রে ব্যাবহার করুন"
+
+#: admin/modules/bibliography/index.php:433
+msgid "Frequency"
+msgstr ""
+
+#: admin/modules/bibliography/index.php:437
+#: admin/modules/bibliography/item.php:378
+#: admin/modules/bibliography/item.php:387
+msgid "Classification"
+msgstr "শ্রেনীকরণ"
+
+#: admin/modules/bibliography/index.php:451
+msgid "Publishing Year"
+msgstr "প্রকাশনার বছর"
+
+#: admin/modules/bibliography/index.php:459
+#: admin/modules/bibliography/index.php:463
+msgid "Publishing Place"
+msgstr "প্রকাশনার স্থান"
+
+#: admin/modules/bibliography/index.php:465
+msgid "Collation"
+msgstr "কোলেশন"
+
+#: admin/modules/bibliography/index.php:467
+msgid "Series Title"
+msgstr "সিরিজ শিরোনাম"
+
+#: admin/modules/bibliography/index.php:471
+msgid "Subjects/Topics"
+msgstr "বিষয়/শিরোনাম"
+
+#: admin/modules/bibliography/index.php:471
+msgid "Add Subject(s)"
+msgstr "বিষয় যোগ"
+
+#: admin/modules/bibliography/index.php:473
+msgid "Subject(s)"
+msgstr "বিষয় সমূহ"
+
+#: admin/modules/bibliography/index.php:481
+msgid "Language"
+msgstr "ভাষা"
+
+#: admin/modules/bibliography/index.php:483
+msgid "Abstract/Notes"
+msgstr "সংক্ষিপ্তসার/সংক্ষিপ্ত বিবরণ"
+
+#: admin/modules/bibliography/index.php:488
+#: admin/modules/bibliography/index.php:493
+msgid "Image"
+msgstr "ছবি"
+
+#: admin/modules/bibliography/index.php:496
+msgid "Add Attachment"
+msgstr "সংযোজনা যোগ করুন"
+
+#: admin/modules/bibliography/index.php:498
+msgid "File Attachment"
+msgstr "ফাইল সংযোজনা"
+
+#: admin/modules/bibliography/index.php:532
+msgid "Show"
+msgstr "দেখাবে"
+
+#: admin/modules/bibliography/index.php:533
+msgid "Hide"
+msgstr "লুকাবে"
+
+#: admin/modules/bibliography/index.php:534
+msgid "Hide in OPAC"
+msgstr "ওপ্যাকে লুকাবে"
+
+#: admin/modules/bibliography/index.php:536
+msgid "Don't Promote"
+msgstr "অগ্রগতি করবেন না"
+
+#: admin/modules/bibliography/index.php:537
+msgid "Promote"
+msgstr "অগ্রগতি করবেন"
+
+#: admin/modules/bibliography/index.php:538
+msgid "Promote To Homepage"
+msgstr "হোমপেজে অগ্রগতি করবেন"
+
+#: admin/modules/bibliography/index.php:562
+msgid "You are going to edit biblio data"
+msgstr "আপনি বইয়ের তথ্য সম্পাদন করতে যাচ্ছেন"
+
+#: admin/modules/bibliography/index.php:562
+#: admin/modules/bibliography/item.php:334
+#: admin/modules/bibliography/item.php:379
+#: admin/modules/bibliography/item.php:388
+msgid "Last Updated"
+msgstr "সর্বশেষ পরিবর্তন"
+
+#: admin/modules/bibliography/index.php:619
+#: admin/modules/bibliography/index.php:625
+msgid "None"
+msgstr "কিছুই নয়"
+
+#: admin/modules/bibliography/index.php:619
+#: admin/modules/bibliography/index.php:625
+msgid "Copies"
+msgstr "সংখ্যা"
+
+#: admin/modules/bibliography/index.php:620
+#: admin/modules/bibliography/index.php:626
+msgid "Last Update"
+msgstr "সর্বশেষ পরিবর্তন"
+
+#: admin/modules/bibliography/item.php:53
+msgid "Item Code can't be empty!"
+msgstr "আইটেম কোড খালি হতে পারবেনা"
+
+#: admin/modules/bibliography/item.php:100
+msgid "Item Data Successfully Updated"
+msgstr "আইটেম  তথ্য সফলভাবে পরিবর্তন হয়েছে"
+
+#: admin/modules/bibliography/item.php:108
+#: admin/modules/bibliography/item.php:124
+msgid "Item Data FAILED to Save. Please Contact System Administrator"
+msgstr "আইটেম  তথ্য সেভ করতে ব্যর্থ! সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/bibliography/item.php:117
+msgid "New Item Data Successfully Saved"
+msgstr "নতুন আইটেম  তথ্য সফলভাবে সেভ হয়েছে"
+
+#: admin/modules/bibliography/item.php:192
+msgid "Items"
+msgstr "আইটেম"
+
+#: admin/modules/bibliography/item.php:265
+msgid "Edit Biblographic data"
+msgstr "বই সংক্রান্ত তথ্য সম্পাদন করুন"
+
+#: admin/modules/bibliography/item.php:277
+msgid "Inventory Code"
+msgstr "ইনভেন্টরি কোড"
+
+#: admin/modules/bibliography/item.php:285
+#: admin/modules/bibliography/item.php:377
+#: admin/modules/bibliography/item.php:386
+msgid "Location"
+msgstr "অবস্থান"
+
+#: admin/modules/bibliography/item.php:287
+msgid "Shelf Location"
+msgstr "তাকে অবস্থান"
+
+#: admin/modules/bibliography/item.php:295
+#: admin/modules/bibliography/item.php:376
+#: admin/modules/bibliography/item.php:385
+msgid "Collection Type"
+msgstr "সংগ্রহের ধরন"
+
+#: admin/modules/bibliography/item.php:299
+msgid "Available"
+msgstr "প্রাপ্তিসাধ্য"
+
+#: admin/modules/bibliography/item.php:303
+msgid "Item Status"
+msgstr "আইটেম-এর অবস্থা"
+
+#: admin/modules/bibliography/item.php:305
+msgid "Order Number"
+msgstr "অর্ডার সংখ্যা"
+
+#: admin/modules/bibliography/item.php:307
+msgid "Order Date"
+msgstr "অর্ডারের তারিখ"
+
+#: admin/modules/bibliography/item.php:309
+msgid "Receiving Date"
+msgstr "গ্রহনের তারিখ"
+
+#: admin/modules/bibliography/item.php:317
+msgid "Supplier"
+msgstr "যোগানদাতা"
+
+#: admin/modules/bibliography/item.php:319
+msgid "Buy"
+msgstr "কেনা"
+
+#: admin/modules/bibliography/item.php:320
+msgid "Prize/Grant"
+msgstr "পুরস্কার/প্রদত্ত"
+
+#: admin/modules/bibliography/item.php:321
+msgid "Source"
+msgstr "উৎস্য"
+
+#: admin/modules/bibliography/item.php:323
+msgid "Invoice"
+msgstr "চালান"
+
+#: admin/modules/bibliography/item.php:325
+msgid "Invoice Date"
+msgstr "চালানের তারিখ"
+
+#: admin/modules/bibliography/item.php:329
+msgid "Price"
+msgstr "মূল্য"
+
+#: admin/modules/bibliography/item.php:333
+msgid "You are going to edit Item data"
+msgstr "আপনি আইটেম তথ্য সম্পাদন করতে যাচ্ছেন"
+
+#: admin/modules/bibliography/item_barcode_generator.php:191
+#: admin/modules/bibliography/item_barcode_generator.php:199
+msgid "Item Barcodes Printing"
+msgstr "আইটেম বারকোড প্রিন্ট"
+
+#: admin/modules/bibliography/item_barcode_generator.php:199
+msgid "Print Barcodes for Selected Data"
+msgstr "নির্বাচিত তথ্যের বারকোড প্রিন্ট"
+
+#: admin/modules/bibliography/item_export.php:123
+msgid "There is no record in item database yet, Export FAILED!"
+msgstr ""
+
+#: admin/modules/bibliography/item_export.php:132
+msgid "ITEM EXPORT TOOL"
+msgstr ""
+
+#: admin/modules/bibliography/item_export.php:134
+msgid "Export item data to CSV file"
+msgstr ""
+
+#: admin/modules/bibliography/item_import.php:181
+msgid "ITEM IMPORT TOOL"
+msgstr ""
+
+#: admin/modules/bibliography/item_import.php:183
+msgid "Import for item data from CSV file"
+msgstr ""
+
+#: admin/modules/bibliography/p2p.php:202
+#, php-format
+msgid "Sorry, no result found from %s OR maybe XML result and detail disabled."
+msgstr ""
+
+#: admin/modules/bibliography/p2p.php:219
+msgid "* Please make sure you have a working Internet connection."
+msgstr ""
+
+#: admin/modules/bibliography/pop_attach.php:82
+msgid "Upload FAILED! Forbidden file type or file size too big!"
+msgstr ""
+
+#: admin/modules/bibliography/pop_attach.php:131
+msgid "File Attachment data updated!"
+msgstr "ফাইল এটাচ্‌মেন্ট ডাটা পরিবর্তিত!"
+
+#: admin/modules/bibliography/pop_attach.php:135
+msgid "File Attachment data FAILED to update!"
+msgstr "ফাইল এটাচ্‌মেন্ট ডাটা পরিবর্তনে ব্যার্থ"
+
+#: admin/modules/bibliography/pop_attach.php:140
+#: admin/modules/bibliography/pop_attach.php:155
+msgid "File Attachment uploaded succesfully!"
+msgstr "ফাইল এটাচ্‌মেন্ট সফলভাবে আপলোড হয়েছে!"
+
+#: admin/modules/bibliography/pop_attach.php:144
+msgid "File Attachment data FAILED to save!"
+msgstr "ফাইল এটাচমেন্ট তথ্য সেভ করতে ব্যার্থ হয়েছে!"
+
+#: admin/modules/bibliography/pop_attach.php:164
+msgid "Upload Now"
+msgstr "আপলোড করুন"
+
+#: admin/modules/bibliography/pop_attach.php:194
+msgid "Repository ROOT"
+msgstr ""
+
+#: admin/modules/bibliography/pop_attach.php:204
+msgid "Repo. Directory"
+msgstr ""
+
+#: admin/modules/bibliography/pop_attach.php:208
+msgid "File To Attach"
+msgstr "ফাইল সংযোজন করুন"
+
+#: admin/modules/bibliography/pop_attach.php:211
+msgid "URL"
+msgstr ""
+
+#: admin/modules/bibliography/pop_attach.php:213
+msgid "Description"
+msgstr "বর্ণনা"
+
+#: admin/modules/bibliography/pop_attach.php:215
+msgid "Public"
+msgstr "পাবলিক"
+
+#: admin/modules/bibliography/pop_attach.php:216
+msgid "Private"
+msgstr "ব্যাক্তিগত"
+
+#: admin/modules/bibliography/pop_attach.php:217
+msgid "Access"
+msgstr "প্রবেশ"
+
+#: admin/modules/bibliography/pop_attach.php:224
+msgid "Access Limit by Member Type"
+msgstr "সদস্যতার ধরণ অনযায়ী প্রবেশ সংরক্ষিত"
+
+#: admin/modules/bibliography/pop_author.php:88
+msgid "Author succesfully updated!"
+msgstr "লেখক সফলভাবে পরিবর্তিত!"
+
+#: admin/modules/bibliography/pop_author.php:92
+msgid "Author FAILED to Add. Please Contact System Administrator"
+msgstr "লেখক যোগ করতে ব্যর্থ হয়েছে। দয়া করে সিস্টেম ব্যাবস্থাপকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/bibliography/pop_author.php:117
+msgid "Author added!"
+msgstr "লেখক যোগ হয়েছে"
+
+#: admin/modules/bibliography/pop_author.php:128
+msgid "Add Author"
+msgstr "নতুন লেখক যোগ"
+
+#: admin/modules/bibliography/pop_author.php:133
+msgid "Author Name"
+msgstr "লেখকের নাম"
+
+#: admin/modules/bibliography/pop_author.php:146
+msgid "Type to search for existing authors or to add a new one"
+msgstr "লেখকসমূহ খোজ করতে অথবা নতুন যোগ করতে টাইপ করুন"
+
+#: admin/modules/bibliography/pop_author.php:148
+#: admin/modules/bibliography/pop_topic.php:149
+msgid "Insert To Bibliography"
+msgstr "বইয়ের তথ্যে যোগ করুন"
+
+#: admin/modules/bibliography/pop_topic.php:91
+msgid "Subject FAILED to Add. Please Contact System Administrator"
+msgstr "বিষয় যোগ করতে ব্যর্থ হয়েছে। দয়া করে সিস্টেম ব্যাবস্থাপকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/bibliography/pop_topic.php:116
+msgid "Subject added!"
+msgstr "বিষয় যোগ হয়েছে"
+
+#: admin/modules/bibliography/pop_topic.php:127
+msgid "Add Subject"
+msgstr "বিষয় যোগ"
+
+#: admin/modules/bibliography/pop_topic.php:133
+msgid "Keyword"
+msgstr "কীওয়ার্ড"
+
+#: admin/modules/bibliography/pop_topic.php:147
+msgid "Type to search for existing topics or to add a new one"
+msgstr "টপিকসমূহ খোজ করতে অথবা নতুন যোগ করতে টাইপ করুন"
+
+#: admin/modules/bibliography/submenu.php:24
+msgid "Show Existing Bibliographic Data"
+msgstr "বর্তমান বইয়ের তথ্য দেখান"
+
+#: admin/modules/bibliography/submenu.php:27
+msgid "Item List"
+msgstr "আইটেম তালিকা"
+
+#: admin/modules/bibliography/submenu.php:27
+msgid "Show List of Library Items"
+msgstr "লাইব্রেরী আইটেম সমূহের তালিকা দেখান"
+
+#: admin/modules/bibliography/submenu.php:28
+msgid "Show List of Checkout Items"
+msgstr "চেকআউট আইটেম সমূহের তালিকা দেখান"
+
+#: admin/modules/bibliography/submenu.php:29
+msgid "Tools"
+msgstr "টুলস"
+
+#: admin/modules/bibliography/submenu.php:30
+msgid "Z3950 Service"
+msgstr "জে৩ি৯.৫০ সেবা"
+
+#: admin/modules/bibliography/submenu.php:30
+msgid "Grab Bibliographic Data from Z3950 Web Services"
+msgstr "জেড৩৯.৫০ ওয়েব সেবা থেকে বইয়ের তথ্য সংগ্রহ করুন"
+
+#: admin/modules/bibliography/submenu.php:31
+msgid "P2P Service"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:31
+msgid "Grab Bibliographic Data from Other SLiMS Web Services"
+msgstr "অন্যান্য SLiMS ওয়েব সেবা থেকে বইয়ের তথ্য সংগ্রহ করুন"
+
+#: admin/modules/bibliography/submenu.php:32
+msgid "Print Document Labels"
+msgstr "লেবেল প্রিন্ট করুন"
+
+#: admin/modules/bibliography/submenu.php:33
+msgid "Print Item Barcodes"
+msgstr "বারকোড প্রিন্ট করুন"
+
+#: admin/modules/bibliography/submenu.php:34
+msgid "Import Data"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:34
+msgid "Import Data to Bibliographic Database from CSV file"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:35
+msgid "Export Data"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:35
+msgid "Export Bibliographic Data To CSV format"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:36
+msgid "Item Import"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:36
+msgid "Import Data to Item/Copies database from CSV file"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:37
+msgid "Item Export"
+msgstr ""
+
+#: admin/modules/bibliography/submenu.php:37
+msgid "Export Item/Copies data To CSV format"
+msgstr ""
+
+#: admin/modules/bibliography/ucs_upload.php:28
+msgid "UCS is not enabled! Change global system configuration to enable UCS"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:46
+msgid "ERROR! Loan data can't be saved to database"
+msgstr "সমন্যা! ধারের তথ্য ডাটাবেজে সেভ করা যাচ্ছে না"
+
+#: admin/modules/circulation/circulation_action.php:54
+msgid "Transaction finished"
+msgstr "বিনিময় সমাপ্ত"
+
+#: admin/modules/circulation/circulation_action.php:82
+#: admin/modules/circulation/circulation_action.php:104
+msgid "Overdue fines inserted to fines database"
+msgstr "সময়োত্তির্ণের জরিমানা ডাটাবেজকে জানানো হয়েছে"
+
+#: admin/modules/circulation/circulation_action.php:95
+msgid "Item CANNOT BE Extended! This Item is being reserved by other member"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:102
+msgid "Loan Extended"
+msgstr "ধারের মেয়াদ বাড়ানো হয়েছে"
+
+#: admin/modules/circulation/circulation_action.php:130
+#: admin/modules/circulation/circulation_action.php:137
+msgid "Loan Limit Reached!"
+msgstr "ধারের সীমা শেষ"
+
+#: admin/modules/circulation/circulation_action.php:130
+#: admin/modules/circulation/circulation_action.php:151
+msgid "Do You Want To Overide This?"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:151
+msgid "WARNING! This Item is reserved by another member"
+msgstr "সতর্কবার্তা! এই আইটেমটি অন্য সদস্য দারা সংরক্ষিত"
+
+#: admin/modules/circulation/circulation_action.php:161
+msgid "This Item is not registered in database"
+msgstr "এই আইটেমটি ডাটাবেজে নিবন্ধিত নয়"
+
+#: admin/modules/circulation/circulation_action.php:166
+msgid "This Item is currently not available"
+msgstr "এই আইটেমটি বর্তমানে পাওয়া যাবে না"
+
+#: admin/modules/circulation/circulation_action.php:171
+msgid "Loan NOT PERMITTED! Membership already EXPIRED!"
+msgstr "ধার অনুমোদিত নয়! সদস্যতার মেয়াদ শেষ!"
+
+#: admin/modules/circulation/circulation_action.php:176
+msgid "Loan NOT PERMITTED! Membership under PENDING State!"
+msgstr "ধারের অনুমতি নেই! সদস্যতা এখনও অনিষ্পন্ন!"
+
+#: admin/modules/circulation/circulation_action.php:181
+msgid "Loan Forbidden for this Item!"
+msgstr "এই আইটেমটির জন্য ধার নিষিদ্ধ!"
+
+#: admin/modules/circulation/circulation_action.php:218
+msgid "Item {removeID} removed from session"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:235
+msgid "This is item already returned or not exists in loan database"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:246
+msgid "OVERDUED for {overdueDays} days(s) with fines value of"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:259
+msgid "Item {itemCode} is being reserved by member {member}"
+msgstr "আইটেম {itemCode} সদস্য {member} দ্বরা সংরক্ষিত"
+
+#: admin/modules/circulation/circulation_action.php:270
+msgid " successfully returned on"
+msgstr "সফলভাবে ফেরতের তারিখ"
+
+#: admin/modules/circulation/circulation_action.php:272
+#: admin/modules/circulation/circulation_action.php:443
+msgid "Member Name"
+msgstr "সদস্যের নাম"
+
+#: admin/modules/circulation/circulation_action.php:298
+msgid "NO DATA Selected to reserve!"
+msgstr "সংরক্ষনের জন্য কোন তথ্য নির্বাচন করা হয়নি!"
+
+#: admin/modules/circulation/circulation_action.php:311
+msgid "Can not add more reservation. Maximum limit reached"
+msgstr "সংরক্ষণ-এ আর যোগ করা যাবে না। আপনি সর্ব্বোচ্চ সীমায় পৌছেছেন"
+
+#: admin/modules/circulation/circulation_action.php:329
+msgid "Can't reserve this Item. Loan Forbidden!"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:347
+msgid "Reservation added"
+msgstr "সংরক্ষণ যুক্ত হয়েছে"
+
+#: admin/modules/circulation/circulation_action.php:352
+msgid "Item for this title is already available or already on hold by this member!"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:371
+msgid "Reservation removed"
+msgstr "সংরক্ষণ খালি করা হয়েছে"
+
+#: admin/modules/circulation/circulation_action.php:386
+msgid "Fines data removed"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:410
+msgid " not valid (unregistered in database)"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:439
+msgid "Finish Transaction"
+msgstr "বিনিময় সমাপ্ত"
+
+#: admin/modules/circulation/circulation_action.php:439
+msgid "Are you sure want to finish current transaction?"
+msgstr "আপনি কি বর্তমান বিনিময় সমাপ্ত করতে নিশ্চিত?"
+
+#: admin/modules/circulation/circulation_action.php:455
+msgid "Member Email"
+msgstr "সদস্য ই-মেইল"
+
+#: admin/modules/circulation/circulation_action.php:456
+msgid "Member Type"
+msgstr "সদস্য ধরন"
+
+#: admin/modules/circulation/circulation_action.php:459
+msgid "Register Date"
+msgstr "নিবন্ধনের তারিখ"
+
+#: admin/modules/circulation/circulation_action.php:463
+msgid "Membership Already Expired"
+msgstr "সদস্যতা ইতোমধে মেয়াদ উত্তির্ণ হয়েছে"
+
+#: admin/modules/circulation/circulation_action.php:465
+msgid "Expiry Date"
+msgstr "মেয়াদ উত্তির্ণের তারিখ"
+
+#: admin/modules/circulation/circulation_action.php:475
+msgid "Membership currently in pending state, loan transaction is locked."
+msgstr "বর্তমানে সদস্যতা অনিষ্পন্ন অবস্থায়, ধার প্রক্রিয়া বন্ধ।"
+
+#: admin/modules/circulation/circulation_action.php:482
+msgid "Loans"
+msgstr "ধার"
+
+#: admin/modules/circulation/circulation_action.php:483
+msgid "Current Loans"
+msgstr "বর্তমান ধার"
+
+#: admin/modules/circulation/circulation_action.php:485
+msgid "Reserve"
+msgstr ""
+
+#: admin/modules/circulation/circulation_action.php:487
+msgid "Fines"
+msgstr "জরিমানা"
+
+#: admin/modules/circulation/circulation_action.php:488
+msgid "Loan History"
+msgstr "ধার ইতিহাস"
+
+#: admin/modules/circulation/fines_list.php:56
+msgid "Fines Description and Debet value can't be empty"
+msgstr ""
+
+#: admin/modules/circulation/fines_list.php:58
+msgid "Value of Credit can not be higher that Debet Value"
+msgstr ""
+
+#: admin/modules/circulation/fines_list.php:76
+msgid "Fines Data Successfully Updated"
+msgstr "জরিমানার তথ্য সফলভাবে পরিবর্তিত!"
+
+#: admin/modules/circulation/fines_list.php:77
+msgid "Fines Data FAILED to Updated. Please Contact System Administrator"
+msgstr "জরিমানার তথ্য পরিবর্তন করতে ব্যর্থ! দয়াকরে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/circulation/fines_list.php:83
+msgid "New Fines Data Successfully Saved"
+msgstr "নতুন জরিমানার তথ্য সফলভাবে নেভ হয়েছে"
+
+#: admin/modules/circulation/fines_list.php:84
+msgid "Fines Data FAILED to Save. Please Contact System Administrator"
+msgstr "জরিমানার তথ্য সেভ করতে ব্যর্থ! দয়াকরে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/circulation/fines_list.php:120
+msgid "Add New Fines"
+msgstr "নতুন জরিমানা জরিমানা যোগ করুন"
+
+#: admin/modules/circulation/fines_list.php:121
+msgid "Fines List"
+msgstr "জরিমানা তালিকা"
+
+#: admin/modules/circulation/fines_list.php:122
+msgid "View Balanced Overdue"
+msgstr ""
+
+#: admin/modules/circulation/fines_list.php:159
+#: admin/modules/circulation/fines_list.php:183
+msgid "Fines Date"
+msgstr "জরিমানার তারিখ"
+
+#: admin/modules/circulation/fines_list.php:161
+#: admin/modules/circulation/fines_list.php:182
+msgid "Description/Name"
+msgstr "বর্ণনা/নাম"
+
+#: admin/modules/circulation/fines_list.php:163
+#: admin/modules/circulation/fines_list.php:184
+msgid "Debit"
+msgstr ""
+
+#: admin/modules/circulation/fines_list.php:165
+#: admin/modules/circulation/fines_list.php:185
+msgid "Credit"
+msgstr ""
+
+#: admin/modules/circulation/fines_list.php:169
+msgid "You are going to edit fines data"
+msgstr "আপনি জরিমানার তথ্য সম্পাদন করতে যাচ্ছেন"
+
+#: admin/modules/circulation/index.php:38
+#: admin/modules/circulation/loan.php:34
+msgid "You don't have enough privileges to view this section"
+msgstr "আপনার এই অংশ দেখার অনুমোদন নেই"
+
+#: admin/modules/circulation/index.php:48
+msgid "CIRCULATION - Insert a member ID to start transaction with keyboard or barcode reader"
+msgstr "সার্কুলেশন - কী বোর্ড বা বারকোড রিডারের সাহায্যে সদস্য আইডি প্রবেশ করান"
+
+#: admin/modules/circulation/index.php:66
+msgid "Transaction with member {member_id} is completed"
+msgstr "সদস্য {member_id} এর ধার সম্পন্ন"
+
+#: admin/modules/circulation/loan.php:113
+msgid "Insert Item Code/Barcode"
+msgstr "আইটেম কোড/বারকোড দিন"
+
+#: admin/modules/circulation/loan.php:115
+msgid "Loan"
+msgstr "ধার"
+
+#: admin/modules/circulation/loan.php:129
+msgid "Remove"
+msgstr "সরিয়ে ফেলুন"
+
+#: admin/modules/circulation/loan.php:142
+msgid "Click To Change Loan Date"
+msgstr ""
+
+#: admin/modules/circulation/loan.php:143
+msgid "Click To Change Due Date"
+msgstr ""
+
+#: admin/modules/circulation/loan_list.php:50
+msgid "Are you sure you want to return the item"
+msgstr "আপনি কি আইটেমটি ফেরত দিতে নিশ্চিত?"
+
+#: admin/modules/circulation/loan_list.php:52
+msgid "Are you sure to extend loan for"
+msgstr "আপনি কি ধার-এর মেয়াদ বাড়াতে নিশ্চিত?"
+
+#: admin/modules/circulation/loan_list.php:83
+#: admin/modules/circulation/pop_loan_receipt.php:131
+#: admin/modules/circulation/quick_return.php:52
+msgid "Return"
+msgstr "ফেরত"
+
+#: admin/modules/circulation/loan_list.php:83
+msgid "Extend"
+msgstr "বাড়ান"
+
+#: admin/modules/circulation/loan_list.php:92
+msgid "Return this item"
+msgstr "এই আইটেম ফেরত দিন"
+
+#: admin/modules/circulation/loan_list.php:96
+#: admin/modules/circulation/loan_list.php:100
+#: admin/modules/circulation/loan_list.php:102
+msgid "No Extend"
+msgstr "বাড়ানা যাবেনা"
+
+#: admin/modules/circulation/loan_list.php:104
+msgid "Extend loan for this item"
+msgstr ""
+
+#: admin/modules/circulation/loan_list.php:109
+#: admin/modules/circulation/pop_loan_receipt.php:76
+msgid "Extended"
+msgstr "বর্ধিত"
+
+#: admin/modules/circulation/loan_list.php:115
+msgid "OVERDUED for"
+msgstr ""
+
+#: admin/modules/circulation/loan_list.php:115
+msgid "days(s) with fines value"
+msgstr ""
+
+#: admin/modules/circulation/loan_rules.php:66
+msgid "Loan Rules Successfully Updated"
+msgstr "ধারের আইন সফলভাবে আপডেট হয়েছে"
+
+#: admin/modules/circulation/loan_rules.php:68
+msgid "Loan Rules FAILED to Updated. Please Contact System Administrator"
+msgstr "ধার আইন তথ্য সেভ করতে ব্যর্থ! দয়াকরে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/circulation/loan_rules.php:74
+msgid "New Loan Rules Successfully Saved"
+msgstr "নতুন ধারের আইন সফলভাবে সেভ হয়েছে"
+
+#: admin/modules/circulation/loan_rules.php:76
+msgid "Loan Rules FAILED to Save. Please Contact System Administrator"
+msgstr "ধারের আইন সেভ করতে ব্যর্থ হয়েছে। দয়া করে সিস্টেম ব্যাবস্থাপকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/circulation/loan_rules.php:117
+#: admin/modules/circulation/submenu.php:26
+msgid "Loan Rules"
+msgstr "ধারের আইনসমূহ"
+
+#: admin/modules/circulation/loan_rules.php:117
+msgid "Add New Loan Rules"
+msgstr "নতুন ধারের আইন যোগ করুন "
+
+#: admin/modules/circulation/loan_rules.php:118
+msgid "Loan Rules List"
+msgstr "ধারের আইন সমূহের তালিকা"
+
+#: admin/modules/circulation/loan_rules.php:176
+#: admin/modules/circulation/loan_rules.php:181
+msgid "ALL"
+msgstr "সকল"
+
+#: admin/modules/circulation/loan_rules.php:187
+#: admin/modules/circulation/loan_rules.php:218
+#: admin/modules/circulation/loan_rules.php:225
+msgid "Loan Limit"
+msgstr "ধার সীমা"
+
+#: admin/modules/circulation/loan_rules.php:189
+#: admin/modules/circulation/loan_rules.php:219
+#: admin/modules/circulation/loan_rules.php:226
+msgid "Loan Period"
+msgstr "ধারের সময়"
+
+#: admin/modules/circulation/loan_rules.php:191
+msgid "Reborrow Limit"
+msgstr "পুনরায় ধারের সীমা"
+
+#: admin/modules/circulation/loan_rules.php:193
+msgid "Fines Each Day"
+msgstr "প্রতিদিনের জরিমানা"
+
+#: admin/modules/circulation/loan_rules.php:195
+msgid "Overdue Grace Periode"
+msgstr ""
+
+#: admin/modules/circulation/loan_rules.php:199
+msgid "You are going to edit loan rules"
+msgstr "আপনি ধার আইন সম্পাদন করতে যাচ্ছেন"
+
+#: admin/modules/circulation/member_loan_hist.php:55
+msgid "Not Returned Yet"
+msgstr "এখনও ফেরত আসেনি"
+
+#: admin/modules/circulation/member_loan_hist.php:55
+msgid "Returned Date"
+msgstr ""
+
+#: admin/modules/circulation/quick_return.php:41
+msgid "Quick Return is disabled"
+msgstr ""
+
+#: admin/modules/circulation/quick_return.php:47
+msgid "Insert an item ID to return collection with keyboard or barcode reader"
+msgstr "ফেরত দিতে কিবোর্ড/বারকোড রিডার দিয়ে আইটেম আইডি প্রবেশ করান"
+
+#: admin/modules/circulation/quick_return.php:50
+msgid "Item ID"
+msgstr "আইটেম আইডি"
+
+#: admin/modules/circulation/reserve_list.php:46
+msgid "Are you sure to remove reservation for"
+msgstr "আপনি কি সংরক্ষণ খালি করতে নিশ্চিত"
+
+#: admin/modules/circulation/reserve_list.php:60
+msgid "Search Collection"
+msgstr "সংগ্রহ খোজ করুন"
+
+#: admin/modules/circulation/reserve_list.php:67
+msgid "Add Reserve"
+msgstr "সংরক্ষণ করুন"
+
+#: admin/modules/circulation/reserve_list.php:87
+msgid "Reserve Date"
+msgstr ""
+
+#: admin/modules/circulation/reserve_list.php:105
+msgid "ALREADY EXPIRED"
+msgstr ""
+
+#: admin/modules/circulation/submenu.php:23
+msgid "Circulation"
+msgstr "সার্কুলেশন"
+
+#: admin/modules/circulation/submenu.php:26
+msgid "View and Modify Circulation Loan Rules"
+msgstr "সার্কুলেশন ধার আইন দেখুন এবং পরিবর্তন করুন"
+
+#: admin/modules/circulation/submenu.php:27
+msgid "Loan History Overview"
+msgstr ""
+
+#: admin/modules/circulation/submenu.php:28
+msgid "Overdued List"
+msgstr "মেয়াদোত্তির্ণের তালিকা"
+
+#: admin/modules/circulation/submenu.php:28
+msgid "View Members Having Overdues"
+msgstr "যে সকল সদন্যের কাছে মেয়াদোত্তির্ণ বই আছে"
+
+#: admin/modules/circulation/submenu.php:29
+msgid "Reservation"
+msgstr "সংরক্ষণ"
+
+#: admin/modules/master_file/author.php:39
+#: admin/modules/master_file/author.php:133
+#: admin/modules/master_file/doc_language.php:38
+#: admin/modules/master_file/doc_language.php:134
+#: admin/modules/master_file/item_status.php:39
+#: admin/modules/master_file/item_status.php:158
+#: admin/modules/master_file/location.php:39
+#: admin/modules/master_file/location.php:155
+msgid "You don't have enough privileges to access this area!"
+msgstr "আপনার এই পাতা দেকার অনুমোতি নেই"
+
+#: admin/modules/master_file/author.php:47
+msgid "Author name can't be empty"
+msgstr "লেখকের নাম খালি হতে পারবেনা"
+
+#: admin/modules/master_file/author.php:67
+msgid "Author Data Successfully Updated"
+msgstr "লেখকের তথ্য সফলভাবে পরিবর্তন হয়েছে"
+
+#: admin/modules/master_file/author.php:69
+msgid "Author Data FAILED to Updated. Please Contact System Administrator"
+msgstr "লেখকের তথ্য পরিবর্তন করতে ব্যর্থ! সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/author.php:76
+msgid "New Author Data Successfully Saved"
+msgstr "নতুন লেখকের তথ্য সফলভাবে সেভ হয়েছে"
+
+#: admin/modules/master_file/author.php:78
+#: admin/modules/master_file/coll_type.php:76
+msgid "Author Data FAILED to Save. Please Contact System Administrator"
+msgstr "লেখকের তথ্য সেভ করতে ব্যর্থ! সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/author.php:119
+msgid "Author"
+msgstr "লেখক"
+
+#: admin/modules/master_file/author.php:119
+msgid "Add New Author"
+msgstr "নতুন লেখক যোগ"
+
+#: admin/modules/master_file/author.php:120
+msgid "Author List"
+msgstr "লেখক তালিকা"
+
+#: admin/modules/master_file/author.php:167
+#: admin/modules/master_file/author.php:189
+#: admin/modules/master_file/author.php:194
+msgid "Authority Type"
+msgstr ""
+
+#: admin/modules/master_file/author.php:169
+#: admin/modules/master_file/author.php:190
+#: admin/modules/master_file/author.php:195
+msgid "Authority Files"
+msgstr ""
+
+#: admin/modules/master_file/author.php:173
+msgid "You are going to edit author data"
+msgstr "আপনি লেখকের তথ্য সম্পাদন করতে যাচ্ছেন"
+
+#: admin/modules/master_file/coll_type.php:47
+msgid "Collection type name can't be empty"
+msgstr "সংগ্রহ ধরণ নাম খালি হতে পারবেনা"
+
+#: admin/modules/master_file/coll_type.php:65
+msgid "Colllection Type Data Successfully Updated"
+msgstr "সংগ্রহ ধরণ তথ্যসফলভাবে পরিবর্তিত!"
+
+#: admin/modules/master_file/coll_type.php:67
+msgid "Colllection Type Data FAILED to Updated. Please Contact System Administrator"
+msgstr "সংগ্রহ ধরণ তথ্য পরিবর্তন করতে ব্যর্থ! দয়াকরে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/coll_type.php:74
+msgid "New Colllection Type Data Successfully Saved"
+msgstr "নতুন সংগ্রেহ ধরণ তথ্য সফলভাবে নেভ হয়েছে"
+
+#: admin/modules/master_file/coll_type.php:106
+#: admin/modules/master_file/location.php:110
+msgid "Location ({item_name}) still used by {number_items} item(s)"
+msgstr ""
+
+#: admin/modules/master_file/coll_type.php:137
+msgid "Add New Collection Type"
+msgstr "নতুন সংগ্রহ ধরণ যোগ করুন"
+
+#: admin/modules/master_file/coll_type.php:138
+msgid "Collection Type List"
+msgstr "সংগ্রহ ধরণের তালিকা"
+
+#: admin/modules/master_file/coll_type.php:183
+msgid "You are going to edit collection type data"
+msgstr "আপনি সংগ্রহ ধরণ তথ্য সম্পাদন করতে যাচ্ছেন"
+
+#: admin/modules/master_file/doc_language.php:47
+msgid "Language ID or Name can't be empty"
+msgstr "ভাষা আইডি/নাম খালি হতে পারবে না"
+
+#: admin/modules/master_file/doc_language.php:66
+msgid "Language Data Successfully Updated"
+msgstr "ভাষার তথ্য সফলভাবে পরিবর্তিত!"
+
+#: admin/modules/master_file/doc_language.php:70
+msgid "Language Data FAILED to Updated. Please Contact System Administrator"
+msgstr "ভাষার তথ্য পরিবর্তন করতে ব্যর্থ! দয়াকরে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/doc_language.php:77
+msgid "New Language Data Successfully Saved"
+msgstr "নতুন ভাষার তথ্য সফলভাবে নেভ হয়েছে"
+
+#: admin/modules/master_file/doc_language.php:79
+msgid "Language Data FAILED to Save. Please Contact System Administrator"
+msgstr "ভাষার তথ্য সেভ করতে ব্যর্থ! দয়াকরে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/doc_language.php:120
+msgid "Doc. Language"
+msgstr "ডকুমেন্টের ভাষা"
+
+#: admin/modules/master_file/doc_language.php:120
+msgid "Add New Language"
+msgstr "নতুন ভাষা যোগ করুন"
+
+#: admin/modules/master_file/doc_language.php:121
+msgid "Language List"
+msgstr "ভাষার তালিকা"
+
+#: admin/modules/master_file/doc_language.php:163
+msgid "Language Code"
+msgstr "ভাষা সংকেত"
+
+#: admin/modules/master_file/doc_language.php:168
+msgid "You are going to edit language data"
+msgstr "আপনি ভাষার তথ্য সম্পাদন করতে যাচ্ছেন"
+
+#: admin/modules/master_file/frequency.php:67
+msgid "Frequency Data Successfully Updated"
+msgstr "Frequency সফলভাবে পরিবর্তিত!"
+
+#: admin/modules/master_file/frequency.php:69
+msgid "Frequency Data FAILED to Updated. Please Contact System Administrator"
+msgstr "Frequency তথ্য পরিবর্তন করতে ব্যর্থ! দয়াকরে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/frequency.php:75
+msgid "New Frequency Data Successfully Saved"
+msgstr "নতুন Frequency তথ্য সফলভাবে নেভ হয়েছে"
+
+#: admin/modules/master_file/frequency.php:77
+msgid "Frequency Data FAILED to Save. Please Contact System Administrator"
+msgstr "Frequency তথ্য সেভ করতে ব্যর্থ! দয়াকরে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/frequency.php:118
+msgid "Add New Frequency"
+msgstr "নতুন Frequency যোগ করুন"
+
+#: admin/modules/master_file/frequency.php:119
+msgid "Frequency Available"
+msgstr ""
+
+#: admin/modules/master_file/frequency.php:171
+#: admin/modules/master_file/frequency.php:197
+#: admin/modules/master_file/frequency.php:203
+msgid "Time Increment"
+msgstr ""
+
+#: admin/modules/master_file/frequency.php:173
+msgid "Day"
+msgstr "দিন"
+
+#: admin/modules/master_file/frequency.php:174
+msgid "Week"
+msgstr "সপ্তাহ"
+
+#: admin/modules/master_file/frequency.php:175
+msgid "Month"
+msgstr "মাস"
+
+#: admin/modules/master_file/frequency.php:176
+msgid "Year"
+msgstr "বছর"
+
+#: admin/modules/master_file/frequency.php:177
+#: admin/modules/master_file/frequency.php:198
+#: admin/modules/master_file/frequency.php:204
+msgid "Time Unit"
+msgstr ""
+
+#: admin/modules/master_file/frequency.php:181
+msgid "You are going to edit Frequency data"
+msgstr "আপনি Frequency তথ্য সম্পাদন করতে যাচ্ছেন"
+
+#: admin/modules/master_file/index.php:51
+msgid "GMD Code And Name can't be empty"
+msgstr "GMD সংকেত এবং নাম খালি হতে পারবে না"
+
+#: admin/modules/master_file/index.php:70
+msgid "GMD Data Successfully Updated"
+msgstr "GMD সফলভাবে পরিবর্তিত!"
+
+#: admin/modules/master_file/index.php:72
+msgid "GMD Data FAILED to Updated. Please Contact System Administrator"
+msgstr "GMD তথ্য পরিবর্তন করতে ব্যর্থ! দয়াকরে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/index.php:78
+msgid "New GMD Data Successfully Saved"
+msgstr "নতুন GMD তথ্য সফলভাবে নেভ হয়েছে"
+
+#: admin/modules/master_file/index.php:80
+msgid "GMD Data FAILED to Save. Please Contact System Administrator"
+msgstr "GMD তথ্য সেভ করতে ব্যর্থ! দয়াকরে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/index.php:121
+msgid "Add New GMD"
+msgstr "নতুন GMD যোগ করুন"
+
+#: admin/modules/master_file/index.php:122
+msgid "GMD List"
+msgstr "GMD  তালিকা"
+
+#: admin/modules/master_file/index.php:164
+#: admin/modules/master_file/index.php:183
+#: admin/modules/master_file/index.php:187
+msgid "GMD Code"
+msgstr "GMD সংকেত"
+
+#: admin/modules/master_file/index.php:166
+#: admin/modules/master_file/index.php:184
+#: admin/modules/master_file/index.php:188
+msgid "GMD Name"
+msgstr "GMD নাম"
+
+#: admin/modules/master_file/index.php:170
+msgid "You are going to edit gmd data"
+msgstr "আপনি GMD তথ্য সম্পাদন করতে যাচ্ছেন"
+
+#: admin/modules/master_file/item_status.php:43
+msgid "No Loan Transaction"
+msgstr "ধার বিনিময় সম্ভব না"
+
+#: admin/modules/master_file/item_status.php:44
+msgid "Skipped By Stock Take"
+msgstr ""
+
+#: admin/modules/master_file/item_status.php:52
+msgid "Item Status ID and Name can't be empty"
+msgstr "আইটেম অবস্থার আইডি এবং নাম খালি হতে পারবে না"
+
+#: admin/modules/master_file/item_status.php:90
+msgid "Item Status Data Successfully Updated"
+msgstr "আইটেম অবস্থা সফলভাবে পরিবর্তিত!"
+
+#: admin/modules/master_file/item_status.php:94
+msgid "Item Status Data FAILED to Updated. Please Contact System Administrator"
+msgstr "আইটেম অবস্থা তথ্য পরিবর্তন করতে ব্যর্থ! দয়াকরে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/item_status.php:101
+msgid "New Item Status Data Successfully Saved"
+msgstr "নতুন আইটেম অবস্থা তথ্য সফলভাবে নেভ হয়েছে"
+
+#: admin/modules/master_file/item_status.php:103
+msgid "Item Status Data FAILED to Save. Please Contact System Administrator"
+msgstr "আইটেম অবস্থা তথ্য সেভ করতে ব্যর্থ! দয়াকরে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/item_status.php:144
+msgid "Add New Item Status"
+msgstr "নতুন আইটেম অবস্থা যোগ করুন"
+
+#: admin/modules/master_file/item_status.php:187
+#: admin/modules/master_file/item_status.php:215
+#: admin/modules/master_file/item_status.php:219
+msgid "Item Status Code"
+msgstr ""
+
+#: admin/modules/master_file/item_status.php:189
+#: admin/modules/master_file/item_status.php:216
+#: admin/modules/master_file/item_status.php:220
+msgid "Item Status Name"
+msgstr ""
+
+#: admin/modules/master_file/item_status.php:198
+msgid "Rules"
+msgstr "আইন"
+
+#: admin/modules/master_file/item_status.php:202
+msgid "You are going to edit Item Status data"
+msgstr "আপনি আইটেম অবস্থার তথ্য সম্পাদন করতে যাচ্ছেন"
+
+#: admin/modules/master_file/label.php:106
+msgid "Label Data Successfully Updated"
+msgstr "লেবেল সফলভাবে পরিবর্তিত!"
+
+#: admin/modules/master_file/label.php:108
+msgid "Label Data FAILED to Updated. Please Contact System Administrator"
+msgstr "লেবেল অবস্থা তথ্য পরিবর্তন করতে ব্যর্থ! দয়াকরে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/label.php:114
+msgid "New Label Data Successfully Saved"
+msgstr "নতুন লেবেল তথ্য সফলভাবে নেভ হয়েছে"
+
+#: admin/modules/master_file/label.php:116
+msgid "Label Data FAILED to Save. Please Contact System Administrator"
+msgstr "লেবেল অবস্থা তথ্য সেভ করতে ব্যর্থ! দয়াকরে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/label.php:157
+msgid "Label"
+msgstr "লেবেল"
+
+#: admin/modules/master_file/label.php:157
+msgid "Add New Label"
+msgstr "নতুন লেবেল যোগ করুন"
+
+#: admin/modules/master_file/label.php:158
+msgid "Label List"
+msgstr "লেবেল তালিকা"
+
+#: admin/modules/master_file/label.php:200
+#: admin/modules/master_file/label.php:231
+#: admin/modules/master_file/label.php:235
+msgid "Label Name"
+msgstr "লেবেল নাম"
+
+#: admin/modules/master_file/label.php:213
+#: admin/modules/master_file/label.php:230
+#: admin/modules/master_file/label.php:234
+msgid "Label Description"
+msgstr "লেবেল বর্ণনা"
+
+#: admin/modules/master_file/label.php:217
+msgid "You are going to edit Label data"
+msgstr "আপনি লেবেল তথ্য সম্পাদন করতে যাচ্ছেন"
+
+#: admin/modules/master_file/location.php:48
+msgid "Location ID and Name can't be empty"
+msgstr "লোকেশন আইডি এবং নাম খালি হতে পারবেনা"
+
+#: admin/modules/master_file/location.php:67
+msgid "Location Data Successfully Updated"
+msgstr "লোকেশন এর তথ্য সফলভাবে আপডেট হয়েছে"
+
+#: admin/modules/master_file/location.php:71
+msgid "Location Data FAILED to Updated. Please Contact System Administrator"
+msgstr "লেবেল তথ্য পরিবর্তন করতে ব্যর্থ! দয়াকরে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/location.php:78
+msgid "New Location Data Successfully Saved"
+msgstr "নতুন অবস্থান তথ্য সফলভাবে নেভ হয়েছে"
+
+#: admin/modules/master_file/location.php:80
+msgid "Location Data FAILED to Save. Please Contact System Administrator"
+msgstr "অবস্থান তথ্য সেভ করতে ব্যর্থ! দয়া করে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/location.php:141
+msgid "Add New Location"
+msgstr "নতুন অবস্থান যোগ করুন"
+
+#: admin/modules/master_file/location.php:142
+msgid "Location List"
+msgstr "অবস্থান তালিকা"
+
+#: admin/modules/master_file/location.php:184
+#: admin/modules/master_file/location.php:203
+#: admin/modules/master_file/location.php:207
+msgid "Location Code"
+msgstr "অবস্থান কোড"
+
+#: admin/modules/master_file/location.php:186
+#: admin/modules/master_file/location.php:204
+#: admin/modules/master_file/location.php:208
+msgid "Location Name"
+msgstr "অবস্থান নাম"
+
+#: admin/modules/master_file/location.php:190
+msgid "You are going to edit location data"
+msgstr "আপনি অবস্থান তথ্য সম্পাদন করতে যাচেছন"
+
+#: admin/modules/master_file/place.php:47
+msgid "Place Name can't be empty"
+msgstr "স্থানের নাম খালি হতে পারবেনা"
+
+#: admin/modules/master_file/place.php:65
+msgid "Place Data Successfully Updated"
+msgstr "স্থান সফলভাবে পরিবর্তিত!"
+
+#: admin/modules/master_file/place.php:67
+msgid "Place Data FAILED to Updated. Please Contact System Administrator"
+msgstr "স্থান তথ্য পরিবর্তন করতে ব্যর্থ! দয়া করে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/place.php:74
+msgid "New Place Data Successfully Saved"
+msgstr "নতুন স্থান তথ্য সফলভাবে নেভ হয়েছে"
+
+#: admin/modules/master_file/place.php:76
+msgid "Place Data FAILED to Save. Please Contact System Administrator"
+msgstr "স্থান তথ্য সেভ করতে ব্যর্থ! দয়া করে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/place.php:117
+#: admin/modules/master_file/submenu.php:31
+msgid "Place"
+msgstr "স্থান"
+
+#: admin/modules/master_file/place.php:117
+msgid "Add New Place"
+msgstr "নতুন স্থান যোগ করুন"
+
+#: admin/modules/master_file/place.php:118
+msgid "Place List"
+msgstr "স্থানের তালিকা"
+
+#: admin/modules/master_file/place.php:160
+#: admin/modules/master_file/place.php:177
+#: admin/modules/master_file/place.php:180
+#: admin/modules/master_file/submenu.php:31
+msgid "Place Name"
+msgstr "স্থানের নাম"
+
+#: admin/modules/master_file/place.php:164
+msgid "You are going to edit place data"
+msgstr "আপনি স্থান তথ্য সম্পাদন করতে যাচ্ছেন"
+
+#: admin/modules/master_file/publisher.php:47
+msgid "Publisher Name can't be empty"
+msgstr "প্রকাশকের নাম খালি হতে পারবেনা"
+
+#: admin/modules/master_file/publisher.php:65
+msgid "Publisher Data Successfully Updated"
+msgstr "প্রকাশক সফলভাবে পরিবর্তিত!"
+
+#: admin/modules/master_file/publisher.php:67
+msgid "PUBLISHER Data FAILED to Updated. Please Contact System Administrator"
+msgstr "প্রকাশক তথ্য পরিবর্তন করতে ব্যর্থ! দয়া করে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/publisher.php:74
+msgid "New Publisher Data Successfully Saved"
+msgstr "নতুন প্রকাশক তথ্য সফলভাবে নেভ হয়েছে"
+
+#: admin/modules/master_file/publisher.php:76
+msgid "Publisher Data FAILED to Save. Please Contact System Administrator"
+msgstr "প্রকাশক তথ্য সেভ করতে ব্যর্থ! দয়া করে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/publisher.php:117
+msgid "Add New Publisher"
+msgstr "নতুন প্রকাশক যোগ করুন"
+
+#: admin/modules/master_file/publisher.php:118
+msgid "Publisher List"
+msgstr "প্রকাশক তালিকা"
+
+#: admin/modules/master_file/publisher.php:160
+#: admin/modules/master_file/publisher.php:178
+#: admin/modules/master_file/publisher.php:182
+msgid "Publisher Name"
+msgstr "প্রকাশকের নাম"
+
+#: admin/modules/master_file/publisher.php:164
+msgid "You are going to edit publisher data"
+msgstr "আপনি প্রকাশক তথ্য সম্পাদন করতে যাচ্ছেন"
+
+#: admin/modules/master_file/submenu.php:24
+msgid "General Material Designation"
+msgstr ""
+
+#: admin/modules/master_file/submenu.php:25
+msgid "Document Publisher"
+msgstr "প্রকাশক"
+
+#: admin/modules/master_file/submenu.php:26
+msgid "Item Supplier"
+msgstr "সরবরাহকারী"
+
+#: admin/modules/master_file/submenu.php:27
+msgid "Document Authors"
+msgstr "লেখকেরা"
+
+#: admin/modules/master_file/submenu.php:28
+#: admin/modules/master_file/topic.php:120
+#: admin/modules/master_file/topic.php:163
+#: admin/modules/master_file/topic.php:189
+#: admin/modules/master_file/topic.php:194
+msgid "Subject"
+msgstr "বিষয়"
+
+#: admin/modules/master_file/submenu.php:29
+msgid "Item Location"
+msgstr "অবস্থান"
+
+#: admin/modules/master_file/submenu.php:30
+msgid "Lookup Files"
+msgstr ""
+
+#: admin/modules/master_file/submenu.php:34
+msgid "Document Content Language"
+msgstr ""
+
+#: admin/modules/master_file/submenu.php:35
+msgid "Special Labels for Titles to Show Up On Homepage"
+msgstr ""
+
+#: admin/modules/master_file/supplier.php:47
+msgid "Supplier Name can't be empty"
+msgstr "সরবরাহকারীর নাম খালি হতে পারবেনা"
+
+#: admin/modules/master_file/supplier.php:71
+msgid "Supplier Data Successfully Updated"
+msgstr "সরবরাহকারী সফলভাবে পরিবর্তিত!"
+
+#: admin/modules/master_file/supplier.php:73
+msgid "Supplier Data FAILED to Updated. Please Contact System Administrator"
+msgstr "সরবাহকারীর তথ্য পরিবর্তন করতে ব্যর্থ! দয়া করে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/supplier.php:80
+msgid "New Supplier Data Successfully Saved"
+msgstr "নতুন সরবরাহকারীর তথ্য সফলভাবে নেভ হয়েছে"
+
+#: admin/modules/master_file/supplier.php:83
+msgid "Supplier Data FAILED to Save. Please Contact System Administrator"
+msgstr "সরবাহকারীর তথ্য সেভ করতে ব্যর্থ! দয়া করে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/supplier.php:125
+msgid "Add New Supplier"
+msgstr "নতুন সরবরাহকারী যোগ করুন"
+
+#: admin/modules/master_file/supplier.php:126
+msgid "Supplier List"
+msgstr "সরবরাহকারীর তালিকা"
+
+#: admin/modules/master_file/supplier.php:168
+#: admin/modules/master_file/supplier.php:195
+#: admin/modules/master_file/supplier.php:201
+msgid "Supplier Name"
+msgstr "সরবরাহকারীর নাম"
+
+#: admin/modules/master_file/supplier.php:170
+#: admin/modules/membership/index.php:373
+msgid "Address"
+msgstr "ঠিকানা"
+
+#: admin/modules/master_file/supplier.php:172
+#: admin/modules/master_file/supplier.php:196
+#: admin/modules/master_file/supplier.php:202
+msgid "Contact"
+msgstr "যোগাযোগ"
+
+#: admin/modules/master_file/supplier.php:174
+#: admin/modules/master_file/supplier.php:197
+#: admin/modules/master_file/supplier.php:203
+#: admin/modules/membership/index.php:377
+msgid "Phone Number"
+msgstr "ফোন নম্বর"
+
+#: admin/modules/master_file/supplier.php:176
+#: admin/modules/master_file/supplier.php:198
+#: admin/modules/master_file/supplier.php:204
+#: admin/modules/membership/index.php:379
+msgid "Fax Number"
+msgstr "ফ্যাক্স নম্বর"
+
+#: admin/modules/master_file/supplier.php:178
+msgid "Account Number"
+msgstr "্্রকাউন্ট নম্বর"
+
+#: admin/modules/master_file/supplier.php:182
+msgid "You are going to edit Supplier data"
+msgstr ""
+
+#: admin/modules/master_file/topic.php:47
+msgid "Subject can't be empty"
+msgstr "বিষয়ের নাম খালি হতে পারবেনা"
+
+#: admin/modules/master_file/topic.php:67
+msgid "Subject Data Successfully Updated"
+msgstr "বিষয় সফলভাবে পরিবর্তিত!"
+
+#: admin/modules/master_file/topic.php:69
+msgid "Subject Data FAILED to Updated. Please Contact System Administrator"
+msgstr "বিষয় তথ্য পরিবর্তন করতে ব্যর্থ! দয়া করে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/topic.php:76
+msgid "New Subject Data Successfully Saved"
+msgstr "নতুন বিষয় তথ্য সফলভাবে নেভ হয়েছে"
+
+#: admin/modules/master_file/topic.php:78
+msgid "Subject Data FAILED to Save. Please Contact System Administrator"
+msgstr "বিষয় তথ্য সেভ করতে ব্যর্থ! দয়া করে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/master_file/topic.php:120
+msgid "Add New Subject"
+msgstr "নতুন বিষয় যোগ করুন"
+
+#: admin/modules/master_file/topic.php:121
+msgid "Subject List"
+msgstr "বিষয় তালিকা"
+
+#: admin/modules/master_file/topic.php:168
+#: admin/modules/master_file/topic.php:190
+#: admin/modules/master_file/topic.php:195
+msgid "Subject Type"
+msgstr "বিষয় ধরণ"
+
+#: admin/modules/master_file/topic.php:174
+msgid "You are going to edit Subject data"
+msgstr "আপনি বিষয় তথ্য সম্পাদন করতে যাচ্ছেন"
+
+#: admin/modules/membership/export.php:102
+msgid "There is no record in membership database yet, Export FAILED!"
+msgstr ""
+
+#: admin/modules/membership/export.php:112
+msgid "Export member(s) data to CSV file"
+msgstr ""
+
+#: admin/modules/membership/import.php:158
+msgid "records inserted successfully to members database, from record"
+msgstr ""
+
+#: admin/modules/membership/import.php:168
+msgid "Import for members data from CSV file"
+msgstr ""
+
+#: admin/modules/membership/index.php:55
+msgid "Member ID and Name can't be empty"
+msgstr "সদস্য আইডি ও নাম খালি হতে পারবেনা"
+
+#: admin/modules/membership/index.php:58
+msgid "Password confirmation does not match. See if your Caps Lock key is on!"
+msgstr ""
+
+#: admin/modules/membership/index.php:153
+msgid "Member Data Successfully Updated"
+msgstr "সদস্য তথ্য সফলভাবে পরিবর্তিত!"
+
+#: admin/modules/membership/index.php:163
+#: admin/modules/membership/index.php:187
+msgid "Image FAILED to upload"
+msgstr "ছবি আপলোডে ব্যার্থ"
+
+#: admin/modules/membership/index.php:169
+#: admin/modules/membership/index.php:193
+msgid "Member Data FAILED to Save/Update. Please Contact System Administrator"
+msgstr "সদস্য তথ্য পরিবর্তন/সেভ করতে ব্যর্থ! দয়া করে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/membership/index.php:177
+msgid "New Member Data Successfully Saved"
+msgstr "নতুন সদস্য তথ্য সফলভাবে নেভ হয়েছে"
+
+#: admin/modules/membership/index.php:256
+msgid "Below member data can't be deleted because still have unreturned item(s)"
+msgstr ""
+
+#: admin/modules/membership/index.php:275
+#: admin/modules/membership/submenu.php:23
+msgid "Membership"
+msgstr "সদস্যতা"
+
+#: admin/modules/membership/index.php:276
+msgid "Member List"
+msgstr "সদস্য তালিকা"
+
+#: admin/modules/membership/index.php:277
+msgid "View Expired Member"
+msgstr "মেয়দোত্তির্ণ সদস্য দেখুন"
+
+#: admin/modules/membership/index.php:279
+msgid "Member Search"
+msgstr "সদস্য খোজ করুন"
+
+#: admin/modules/membership/index.php:327
+msgid "Extend Membership"
+msgstr "সদস্যতার মেয়াদ বাড়ান"
+
+#: admin/modules/membership/index.php:344
+msgid "Birth Date"
+msgstr "জন্ম তারিখ"
+
+#: admin/modules/membership/index.php:346
+msgid "Member Since"
+msgstr "সদস্য হওয়ার তারিখ"
+
+#: admin/modules/membership/index.php:353
+msgid "Auto Set"
+msgstr ""
+
+#: admin/modules/membership/index.php:359
+msgid "Institution"
+msgstr "প্রতিষ্ঠান"
+
+#: admin/modules/membership/index.php:367
+#: admin/modules/membership/index.php:463
+#: admin/modules/membership/index.php:469
+#: admin/modules/membership/member_card_generator.php:169
+#: admin/modules/membership/member_card_generator.php:226
+#: admin/modules/membership/member_type.php:205
+#: admin/modules/membership/member_type.php:211
+msgid "Membership Type"
+msgstr "সদস্যতার ধরণ"
+
+#: admin/modules/membership/index.php:369
+msgid "Male"
+msgstr "পুরুষ"
+
+#: admin/modules/membership/index.php:370
+msgid "Female"
+msgstr "মহিলা"
+
+#: admin/modules/membership/index.php:371
+msgid "Gender"
+msgstr "লিঙ্গ"
+
+#: admin/modules/membership/index.php:375
+msgid "Postal Code"
+msgstr "ডাক কোড"
+
+#: admin/modules/membership/index.php:381
+msgid "Personal ID Number"
+msgstr "ব্যক্তিগত আইডি নম্বর"
+
+#: admin/modules/membership/index.php:383
+msgid "Notes"
+msgstr "সংক্ষিপ্ত বর্ণনা"
+
+#: admin/modules/membership/index.php:417
+msgid "Pending Membership"
+msgstr "সদস্যতা অনিষ্পন্ন"
+
+#: admin/modules/membership/index.php:417
+msgid "Yes"
+msgstr "হ্যা"
+
+#: admin/modules/membership/index.php:423
+#: admin/modules/membership/index.php:427
+msgid "Photo"
+msgstr "ছবি"
+
+#: admin/modules/membership/index.php:430
+#: admin/modules/membership/index.php:464
+#: admin/modules/membership/index.php:470
+msgid "E-mail"
+msgstr "ই-মেইল"
+
+#: admin/modules/membership/index.php:432
+msgid "New Password"
+msgstr "নতুন পাসওয়ার্ড"
+
+#: admin/modules/membership/index.php:434
+msgid "Confirm New Password"
+msgstr "নতুন পাসওয়ার্ড নিশ্চিত"
+
+#: admin/modules/membership/index.php:439
+#: admin/modules/membership/member_type.php:192
+msgid "You are going to edit member data"
+msgstr "আপনি সদস্য তথ্য সম্পাদন করতে যাচ্ছেন"
+
+#: admin/modules/membership/index.php:440
+msgid "Leave Password field blank if you don't want to change the password"
+msgstr "পাসওয়ার্ড পরিবর্তন করতে না চাইলে পাসওয়ার্ড ঘর খালি রাখুন"
+
+#: admin/modules/membership/index.php:499
+msgid "Expired Member List"
+msgstr "মেয়দোত্তির্ণ সদস্য তালিকা"
+
+#: admin/modules/membership/index.php:500
+msgid "Extend Selected Member(s)"
+msgstr ""
+
+#: admin/modules/membership/index.php:500
+msgid "Are you sure to EXTEND membership for selected members?"
+msgstr ""
+
+#: admin/modules/membership/index.php:502
+msgid "members extended!"
+msgstr ""
+
+#: admin/modules/membership/index.php:506
+#: admin/modules/membership/member_card_generator.php:259
+msgid "Found"
+msgstr "পাওয়া গেছে"
+
+#: admin/modules/membership/index.php:506
+#: admin/modules/membership/member_card_generator.php:259
+msgid "from your search with keyword"
+msgstr ""
+
+#: admin/modules/membership/member_card_generator.php:189
+#: admin/modules/membership/member_card_generator.php:197
+#: admin/modules/membership/submenu.php:28
+msgid "Member Card Printing"
+msgstr "সদস্য কার্ড প্রিন্ট"
+
+#: admin/modules/membership/member_card_generator.php:197
+msgid "Print Member Cards for Selected Data"
+msgstr "নির্বাচিত তথ্যের সদস্য কার্ড প্রিন্ট করুন"
+
+#: admin/modules/membership/member_type.php:47
+msgid "Member Type Name can't be empty"
+msgstr "সদস্যতার ধরণের নাম খালি হতে পারবেনা"
+
+#: admin/modules/membership/member_type.php:73
+msgid "Member Type Successfully Updated"
+msgstr "সদস্যতার ধরণ সফলভাবে পরিবর্তিত"
+
+#: admin/modules/membership/member_type.php:78
+#: admin/modules/membership/member_type.php:86
+msgid "Member Type Data FAILED to Save/Update. Please Contact System Administrator"
+msgstr "সদস্যতা ধরণ তথ্য পরিবর্তন/সেভ করতে ব্যর্থ! দয়া করে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/membership/member_type.php:84
+msgid "New Member Type Successfully Saved"
+msgstr "নতুন সদস্যতার ধরণ সফলভাবে সেভ হয়েছে"
+
+#: admin/modules/membership/member_type.php:127
+msgid "Add New Member Type"
+msgstr "নতুন সদস্যতা ধরণ যোগ করুন"
+
+#: admin/modules/membership/member_type.php:128
+msgid "Member Type List"
+msgstr "সদস্যতা ধরণের তালিকা"
+
+#: admin/modules/membership/member_type.php:170
+msgid "Member Type Name"
+msgstr "সদস্যতা ধরণের নাম"
+
+#: admin/modules/membership/member_type.php:174
+msgid "Loan Periode (In Days)"
+msgstr "ধার-এর সময় (দিন)"
+
+#: admin/modules/membership/member_type.php:176
+msgid "Enable"
+msgstr "সক্ষম"
+
+#: admin/modules/membership/member_type.php:177
+msgid "Disable"
+msgstr "অক্ষম"
+
+#: admin/modules/membership/member_type.php:180
+msgid "Reserve Limit"
+msgstr ""
+
+#: admin/modules/membership/member_type.php:182
+#: admin/modules/membership/member_type.php:207
+#: admin/modules/membership/member_type.php:213
+msgid "Membership Periode (In Days)"
+msgstr "সদস্যতার মেয়াদ (দিন)"
+
+#: admin/modules/membership/member_type.php:186
+msgid "Fine Each Day"
+msgstr "প্রতি দিনের জরিমানা"
+
+#: admin/modules/membership/submenu.php:24
+msgid "View Member List"
+msgstr "সদস্য তালিকা দেখুন"
+
+#: admin/modules/membership/submenu.php:24
+msgid "View Library Member List"
+msgstr "লাইব্রেরী সদস্য তালিকা দেখুন"
+
+#: admin/modules/membership/submenu.php:26
+msgid "View and modify member type"
+msgstr "সদস্য তালিকা দেখুন ও পরিবর্তন করুন"
+
+#: admin/modules/membership/submenu.php:28
+msgid "Print Member Card"
+msgstr "সদস্য কার্ড প্রিন্ট"
+
+#: admin/modules/membership/submenu.php:29
+msgid "Import Members Data From CSV File"
+msgstr ""
+
+#: admin/modules/membership/submenu.php:30
+msgid "Export Members Data To CSV File"
+msgstr ""
+
+#: admin/modules/reporting/charts_report.php:65
+#: admin/modules/reporting/index.php:71
+#: admin/modules/reporting/index.php:76
+msgid "Total Titles By Medium/GMD"
+msgstr ""
+
+#: admin/modules/reporting/charts_report.php:77
+#: admin/modules/reporting/index.php:85
+#: admin/modules/reporting/index.php:90
+msgid "Total Items By Collection Type"
+msgstr ""
+
+#: admin/modules/reporting/charts_report.php:91
+msgid "Total Members By Membership Type"
+msgstr ""
+
+#: admin/modules/reporting/charts_report.php:103
+msgid "Total Loan By GMD/Medium"
+msgstr ""
+
+#: admin/modules/reporting/charts_report.php:116
+msgid "Total Loan By Collection Type"
+msgstr ""
+
+#: admin/modules/reporting/index.php:49
+msgid "Total Titles"
+msgstr "মোট শিরোনাম"
+
+#: admin/modules/reporting/index.php:54
+#: admin/modules/reporting/index.php:64
+msgid "Total Items/Copies"
+msgstr "মোট শিরোনাম/সংখ্যা"
+
+#: admin/modules/reporting/index.php:61
+#: admin/modules/reporting/index.php:64
+msgid "Total Checkout Items"
+msgstr ""
+
+#: admin/modules/reporting/index.php:64
+msgid "Total Items In Library"
+msgstr ""
+
+#: admin/modules/reporting/index.php:71
+#: admin/modules/reporting/index.php:85
+msgid "Show in chart/plot"
+msgstr ""
+
+#: admin/modules/reporting/index.php:102
+msgid "10 Most Popular Titles"
+msgstr "১০ টি জনপ্রিয় শিরোনাম"
+
+#: admin/modules/reporting/index.php:105
+msgid "Collection Statistic Summary"
+msgstr "সংগ্রহ পরিসংখ্যান সংক্ষেপ"
+
+#: admin/modules/reporting/index.php:133
+msgid "Collection Statistic Report"
+msgstr "সংগ্রহ পরিসংখ্যান রিপোর্ট"
+
+#: admin/modules/reporting/index.php:150
+msgid "Collection Statistic"
+msgstr "সংগ্রহ পরিসংখ্যান"
+
+#: admin/modules/reporting/index.php:153
+msgid "Download Report"
+msgstr ""
+
+#: admin/modules/reporting/loan_report.php:46
+msgid "Total Loan"
+msgstr "মোট ধার"
+
+#: admin/modules/reporting/loan_report.php:77
+#: admin/modules/reporting/loan_report.php:83
+msgid "Total Loan Transactions"
+msgstr "মোট ধার বিনিময়"
+
+#: admin/modules/reporting/loan_report.php:83
+msgid "Transaction Average (Per Day)"
+msgstr "গড় বিনিময় (প্রতি দিন)"
+
+#: admin/modules/reporting/loan_report.php:86
+msgid "Total Peak Transaction"
+msgstr ""
+
+#: admin/modules/reporting/loan_report.php:91
+#: admin/modules/reporting/loan_report.php:98
+msgid "Members Already Had Loans"
+msgstr ""
+
+#: admin/modules/reporting/loan_report.php:98
+msgid "Members Never Have Loans Yet"
+msgstr ""
+
+#: admin/modules/reporting/loan_report.php:104
+msgid "Total Overdued Loans"
+msgstr ""
+
+#: admin/modules/reporting/loan_report.php:107
+msgid "Loan Data Summary"
+msgstr ""
+
+#: admin/modules/reporting/loan_report.php:135
+#: admin/modules/reporting/loan_report.php:152
+#: admin/modules/reporting/submenu.php:25
+msgid "Loan Report"
+msgstr ""
+
+#: admin/modules/reporting/member_report.php:46
+msgid "Total Registered Members"
+msgstr ""
+
+#: admin/modules/reporting/member_report.php:52
+msgid "Total Active Member"
+msgstr ""
+
+#: admin/modules/reporting/member_report.php:69
+msgid "Total Expired Member"
+msgstr ""
+
+#: admin/modules/reporting/member_report.php:80
+msgid "10 most active members"
+msgstr ""
+
+#: admin/modules/reporting/member_report.php:83
+msgid "Membership Data Summary"
+msgstr ""
+
+#: admin/modules/reporting/member_report.php:111
+#: admin/modules/reporting/member_report.php:128
+#: admin/modules/reporting/submenu.php:26
+msgid "Membership Report"
+msgstr ""
+
+#: admin/modules/reporting/report_dbgrid.inc.php:83
+msgid "record(s) found. Currently displaying page"
+msgstr ""
+
+#: admin/modules/reporting/report_dbgrid.inc.php:83
+msgid "record each page"
+msgstr ""
+
+#: admin/modules/reporting/report_dbgrid.inc.php:83
+#: admin/modules/reporting/customs/class_recap.php:255
+#: admin/modules/reporting/customs/fines_report.php:129
+#: admin/modules/reporting/customs/loan_by_class.php:218
+msgid "Print Current Page"
+msgstr "বর্তমান পৃষ্ঠা প্রিন্ট করুন"
+
+#: admin/modules/reporting/submenu.php:23
+msgid "Reporting"
+msgstr ""
+
+#: admin/modules/reporting/submenu.php:24
+msgid "View Library Collection Statistic"
+msgstr "লাইব্রেরী সংগ্রহের পরিসংখ্যান দেখুন"
+
+#: admin/modules/reporting/submenu.php:25
+msgid "View Library Loan Report"
+msgstr ""
+
+#: admin/modules/reporting/submenu.php:26
+msgid "View Membership Report"
+msgstr ""
+
+#: admin/modules/reporting/submenu.php:27
+msgid "Other Reports"
+msgstr ""
+
+#: admin/modules/reporting/customs/class_recap.php:53
+#: admin/modules/reporting/customs/customs_report_list.inc.php:23
+msgid "Custom Recapitulations"
+msgstr ""
+
+#: admin/modules/reporting/customs/class_recap.php:53
+#: admin/modules/reporting/customs/due_date_warning.php:54
+#: admin/modules/reporting/customs/fines_report.php:64
+#: admin/modules/reporting/customs/item_titles_list.php:54
+#: admin/modules/reporting/customs/item_usage.php:53
+#: admin/modules/reporting/customs/loan_by_class.php:49
+#: admin/modules/reporting/customs/loan_history.php:53
+#: admin/modules/reporting/customs/member_list.php:55
+#: admin/modules/reporting/customs/member_loan_list.php:54
+#: admin/modules/reporting/customs/overdued_list.php:54
+#: admin/modules/reporting/customs/reserve_list.php:53
+msgid "Report Filter"
+msgstr ""
+
+#: admin/modules/reporting/customs/class_recap.php:57
+msgid "Recap By"
+msgstr ""
+
+#: admin/modules/reporting/customs/class_recap.php:70
+#: admin/modules/reporting/customs/due_date_warning.php:72
+#: admin/modules/reporting/customs/fines_report.php:95
+#: admin/modules/reporting/customs/item_titles_list.php:123
+#: admin/modules/reporting/customs/item_usage.php:83
+#: admin/modules/reporting/customs/loan_by_class.php:101
+#: admin/modules/reporting/customs/loan_history.php:108
+#: admin/modules/reporting/customs/member_list.php:113
+#: admin/modules/reporting/customs/member_loan_list.php:87
+#: admin/modules/reporting/customs/overdued_list.php:87
+#: admin/modules/reporting/customs/reserve_list.php:92
+msgid "Apply Filter"
+msgstr ""
+
+#: admin/modules/reporting/customs/class_recap.php:72
+#: admin/modules/reporting/customs/due_date_warning.php:73
+#: admin/modules/reporting/customs/item_titles_list.php:124
+#: admin/modules/reporting/customs/loan_history.php:109
+#: admin/modules/reporting/customs/member_list.php:114
+#: admin/modules/reporting/customs/member_loan_list.php:88
+#: admin/modules/reporting/customs/overdued_list.php:88
+#: admin/modules/reporting/customs/reserve_list.php:93
+msgid "Show More Filter Options"
+msgstr ""
+
+#: admin/modules/reporting/customs/class_recap.php:72
+#: admin/modules/reporting/customs/due_date_warning.php:73
+#: admin/modules/reporting/customs/item_titles_list.php:124
+#: admin/modules/reporting/customs/loan_history.php:109
+#: admin/modules/reporting/customs/member_list.php:114
+#: admin/modules/reporting/customs/member_loan_list.php:88
+#: admin/modules/reporting/customs/overdued_list.php:88
+#: admin/modules/reporting/customs/reserve_list.php:93
+msgid "Hide Filter Options"
+msgstr ""
+
+#: admin/modules/reporting/customs/class_recap.php:255
+msgid "Title and Collection Recap by"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:23
+msgid "Title and Collection recapitulation based on classification and others"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:24
+msgid "Title List"
+msgstr "শিরোনামের তালিকা"
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:24
+msgid "List of bibliographic titles"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:25
+#: admin/modules/reporting/customs/item_titles_list.php:54
+msgid "Items Title List"
+msgstr "আইটেম শিরোনামের তালিকা"
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:25
+msgid "List of collection/items"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:26
+#: admin/modules/reporting/customs/item_usage.php:53
+msgid "Items Usage Statistics"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:26
+msgid "List of Collection/items usage statistic"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:27
+#: admin/modules/reporting/customs/loan_by_class.php:49
+msgid "Loans by Classification"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:27
+msgid "Loan statistic by classification"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:28
+msgid "List of library member/patron"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:29
+#: admin/modules/reporting/customs/member_loan_list.php:54
+msgid "Loan List by Member"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:29
+msgid "List of loan by each member"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:31
+#: admin/modules/reporting/customs/due_date_warning.php:54
+msgid "Due Date Warning"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:31
+msgid "Loan Due Date Warnings"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:33
+msgid "Staff Activity"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:33
+msgid "Staff activity log recapitulation"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:34
+msgid "Visitor Statistic"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:35
+msgid "Visitor Statistic (by Day)"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:36
+msgid "Visitor List"
+msgstr ""
+
+#: admin/modules/reporting/customs/customs_report_list.inc.php:37
+#: admin/modules/reporting/customs/fines_report.php:64
+msgid "Fines Report"
+msgstr ""
+
+#: admin/modules/reporting/customs/due_date_warning.php:55
+msgid "This report loan items which will due in 3 to 0 days"
+msgstr ""
+
+#: admin/modules/reporting/customs/due_date_warning.php:67
+#: admin/modules/reporting/customs/item_titles_list.php:118
+#: admin/modules/reporting/customs/loan_history.php:103
+#: admin/modules/reporting/customs/member_list.php:108
+#: admin/modules/reporting/customs/member_loan_list.php:82
+#: admin/modules/reporting/customs/overdued_list.php:82
+msgid "Record each page"
+msgstr ""
+
+#: admin/modules/reporting/customs/due_date_warning.php:68
+#: admin/modules/reporting/customs/item_titles_list.php:119
+#: admin/modules/reporting/customs/loan_history.php:104
+#: admin/modules/reporting/customs/member_list.php:109
+#: admin/modules/reporting/customs/member_loan_list.php:83
+#: admin/modules/reporting/customs/overdued_list.php:83
+msgid "Set between 20 and 200"
+msgstr ""
+
+#: admin/modules/reporting/customs/fines_report.php:41
+#: admin/modules/reporting/customs/item_usage.php:102
+#: admin/modules/reporting/customs/item_usage.php:170
+#: admin/modules/reporting/customs/loan_by_class.php:112
+msgid "Jan"
+msgstr "জানু"
+
+#: admin/modules/reporting/customs/fines_report.php:42
+#: admin/modules/reporting/customs/item_usage.php:103
+#: admin/modules/reporting/customs/item_usage.php:170
+#: admin/modules/reporting/customs/loan_by_class.php:113
+msgid "Feb"
+msgstr "ফেব"
+
+#: admin/modules/reporting/customs/fines_report.php:43
+#: admin/modules/reporting/customs/item_usage.php:104
+#: admin/modules/reporting/customs/item_usage.php:170
+#: admin/modules/reporting/customs/loan_by_class.php:114
+msgid "Mar"
+msgstr "মার্চ"
+
+#: admin/modules/reporting/customs/fines_report.php:44
+#: admin/modules/reporting/customs/item_usage.php:105
+#: admin/modules/reporting/customs/item_usage.php:170
+#: admin/modules/reporting/customs/loan_by_class.php:115
+msgid "Apr"
+msgstr "এপ্রিল"
+
+#: admin/modules/reporting/customs/fines_report.php:45
+#: admin/modules/reporting/customs/item_usage.php:106
+#: admin/modules/reporting/customs/item_usage.php:170
+#: admin/modules/reporting/customs/loan_by_class.php:116
+msgid "May"
+msgstr "মে"
+
+#: admin/modules/reporting/customs/fines_report.php:46
+#: admin/modules/reporting/customs/item_usage.php:107
+#: admin/modules/reporting/customs/item_usage.php:170
+#: admin/modules/reporting/customs/loan_by_class.php:117
+msgid "Jun"
+msgstr "জুন"
+
+#: admin/modules/reporting/customs/fines_report.php:47
+#: admin/modules/reporting/customs/item_usage.php:108
+#: admin/modules/reporting/customs/item_usage.php:170
+#: admin/modules/reporting/customs/loan_by_class.php:118
+msgid "Jul"
+msgstr "জুলা"
+
+#: admin/modules/reporting/customs/fines_report.php:48
+#: admin/modules/reporting/customs/item_usage.php:109
+#: admin/modules/reporting/customs/item_usage.php:170
+#: admin/modules/reporting/customs/loan_by_class.php:119
+msgid "Aug"
+msgstr "আগ"
+
+#: admin/modules/reporting/customs/fines_report.php:49
+#: admin/modules/reporting/customs/item_usage.php:110
+#: admin/modules/reporting/customs/item_usage.php:170
+#: admin/modules/reporting/customs/loan_by_class.php:120
+msgid "Sep"
+msgstr "সেপ্টে"
+
+#: admin/modules/reporting/customs/fines_report.php:50
+#: admin/modules/reporting/customs/item_usage.php:111
+#: admin/modules/reporting/customs/item_usage.php:170
+#: admin/modules/reporting/customs/loan_by_class.php:121
+msgid "Oct"
+msgstr "অক্টো"
+
+#: admin/modules/reporting/customs/fines_report.php:51
+#: admin/modules/reporting/customs/item_usage.php:112
+#: admin/modules/reporting/customs/item_usage.php:170
+#: admin/modules/reporting/customs/loan_by_class.php:122
+msgid "Nov"
+msgstr "নভে"
+
+#: admin/modules/reporting/customs/fines_report.php:52
+#: admin/modules/reporting/customs/item_usage.php:113
+#: admin/modules/reporting/customs/item_usage.php:170
+#: admin/modules/reporting/customs/loan_by_class.php:123
+msgid "Dec"
+msgstr "ডিসে"
+
+#: admin/modules/reporting/customs/item_titles_list.php:58
+#: admin/modules/reporting/customs/item_usage.php:57
+#: admin/modules/reporting/customs/reserve_list.php:63
+msgid "Title/ISBN"
+msgstr "শিরোনাম/ISBN"
+
+#: admin/modules/reporting/customs/loan_by_class.php:56
+msgid "0 Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:57
+msgid "1 Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:58
+msgid "2 Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:59
+msgid "2X Classes (Islamic Related)"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:60
+msgid "3 Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:61
+msgid "4 Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:62
+msgid "5 Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:63
+msgid "6 Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:64
+msgid "7 Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:65
+msgid "8 Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:66
+msgid "9 Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_by_class.php:67
+msgid "NON Decimal Classes"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_history.php:81
+#: admin/modules/reporting/customs/member_loan_list.php:66
+#: admin/modules/reporting/customs/overdued_list.php:66
+msgid "Loan Date From"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_history.php:89
+#: admin/modules/reporting/customs/member_loan_list.php:74
+#: admin/modules/reporting/customs/overdued_list.php:74
+msgid "Loan Date Until"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_history.php:97
+#: admin/modules/reporting/customs/loan_history.php:134
+msgid "Loan Status"
+msgstr ""
+
+#: admin/modules/reporting/customs/loan_history.php:99
+#: admin/modules/reporting/customs/loan_history.php:182
+msgid "On Loan"
+msgstr "ধার-এ"
+
+#: admin/modules/reporting/customs/loan_history.php:99
+#: admin/modules/reporting/customs/loan_history.php:184
+msgid "Returned"
+msgstr "ফেরত দেয়া হয়েছে"
+
+#: admin/modules/reporting/customs/member_list.php:96
+msgid "Register Date From"
+msgstr ""
+
+#: admin/modules/reporting/customs/member_list.php:102
+msgid "Register Date Until"
+msgstr ""
+
+#: admin/modules/reporting/customs/overdued_list.php:170
+msgid "Overdue"
+msgstr "মেয়াদোত্তির্ণ"
+
+#: admin/modules/reporting/customs/overdued_list.php:170
+msgid "day(s)"
+msgstr "দিন"
+
+#: admin/modules/reporting/customs/reserve_list.php:75
+msgid "Reserve Date From"
+msgstr ""
+
+#: admin/modules/reporting/customs/reserve_list.php:83
+msgid "Reserve Date Until"
+msgstr ""
+
+#: admin/modules/reporting/customs/staff_act.php:57
+msgid "Activity Date From"
+msgstr ""
+
+#: admin/modules/reporting/customs/staff_act.php:63
+msgid "Activity Date Until"
+msgstr ""
+
+#: admin/modules/reporting/customs/staff_act.php:88
+msgid "Real Name"
+msgstr "আসল নাম"
+
+#: admin/modules/reporting/customs/staff_act.php:89
+msgid "Login Username"
+msgstr "প্রবেশের সদস্য নাম"
+
+#: admin/modules/reporting/customs/staff_act.php:90
+msgid "Bibliography Data Entry"
+msgstr "বইয়ের তথ্য যোগ"
+
+#: admin/modules/reporting/customs/staff_act.php:91
+msgid "Item Data Entry"
+msgstr "আইটেম তথ্য যোগ করা"
+
+#: admin/modules/reporting/customs/staff_act.php:92
+msgid "Member Data Entry"
+msgstr "সদস্য তথ্য যোগ করা"
+
+#: admin/modules/reporting/customs/staff_act.php:93
+msgid "Circulation Tasks"
+msgstr "সার্কুলেমনের কাজ"
+
+#: admin/modules/reporting/customs/titles_list.php:85
+msgid "Press Ctrl and click to select multiple entries"
+msgstr ""
+
+#: admin/modules/reporting/customs/visitor_list.php:65
+msgid "NON-Member visitor"
+msgstr ""
+
+#: admin/modules/reporting/customs/visitor_list.php:74
+msgid "Visitor ID"
+msgstr ""
+
+#: admin/modules/reporting/customs/visitor_list.php:74
+#: admin/modules/reporting/customs/visitor_list.php:124
+msgid "Visitor Name"
+msgstr ""
+
+#: admin/modules/reporting/customs/visitor_list.php:86
+msgid "Visit Date From"
+msgstr ""
+
+#: admin/modules/reporting/customs/visitor_list.php:92
+msgid "Visit Date Until"
+msgstr ""
+
+#: admin/modules/reporting/customs/visitor_list.php:127
+msgid "Visit Date"
+msgstr ""
+
+#: admin/modules/reporting/customs/visitor_report.php:49
+msgid "Library Visitor Report"
+msgstr ""
+
+#: admin/modules/reporting/customs/visitor_report.php:141
+msgid "NON-Member Visitor"
+msgstr ""
+
+#: admin/modules/reporting/customs/visitor_report.php:158
+msgid "Total visit/month"
+msgstr ""
+
+#: admin/modules/reporting/customs/visitor_report_day.php:64
+msgid "Visitor Report"
+msgstr ""
+
+#: admin/modules/serial_control/index.php:50
+#: admin/modules/serial_control/submenu.php:23
+msgid "Serial Control"
+msgstr ""
+
+#: admin/modules/serial_control/index.php:73
+msgid "Edit Bibliographic data"
+msgstr ""
+
+#: admin/modules/serial_control/index.php:75
+msgid "Add New Subscription"
+msgstr "নতুন Subscription যোগ করুন"
+
+#: admin/modules/serial_control/index.php:77
+msgid "View Subscriptions"
+msgstr "সাবস্ক্রিপশন দেখুন"
+
+#: admin/modules/serial_control/index.php:79
+msgid "CLOSE"
+msgstr "বন্ধ"
+
+#: admin/modules/serial_control/index.php:87
+msgid "Serial Title"
+msgstr ""
+
+#: admin/modules/serial_control/kardex.php:58
+msgid "Kardex data updated!"
+msgstr ""
+
+#: admin/modules/serial_control/kardex.php:64
+msgid "Kardex data deleted!"
+msgstr ""
+
+#: admin/modules/serial_control/serial_base_lib.inc.php:146
+msgid "Date Expected"
+msgstr ""
+
+#: admin/modules/serial_control/serial_base_lib.inc.php:147
+msgid "Date Received"
+msgstr ""
+
+#: admin/modules/serial_control/serial_base_lib.inc.php:147
+msgid "Seq. Number"
+msgstr ""
+
+#: admin/modules/serial_control/serial_base_lib.inc.php:148
+msgid "Note"
+msgstr ""
+
+#: admin/modules/serial_control/serial_base_lib.inc.php:196
+msgid "Kardex Detail for subscription"
+msgstr "সাবস্ক্রিপশন এর বিস্তারিত Kardex "
+
+#: admin/modules/serial_control/submenu.php:24
+msgid "Subscription"
+msgstr "সাবস্ক্রিপশন"
+
+#: admin/modules/serial_control/submenu.php:24
+msgid "Manage Subscription"
+msgstr "সাবস্ক্রিপশন পরিচালনা"
+
+#: admin/modules/serial_control/subscription.php:61
+msgid "Error inserting subscription data, Subscription Date must be filled!"
+msgstr ""
+
+#: admin/modules/serial_control/subscription.php:81
+msgid "Subscription Data Successfully Updated"
+msgstr "সাবস্ক্রিপশন তথ্য সফলভাবে পরিবর্তিত!"
+
+#: admin/modules/serial_control/subscription.php:83
+msgid "Subscription Data FAILED to Updated. Please Contact System Administrator"
+msgstr "সাবস্ক্রিপশন তথ্য পরিবর্তনকরতে ব্যর্থ! দয়া করে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/serial_control/subscription.php:97
+msgid "New Subscription Data Successfully Saved"
+msgstr "নতুন সাবস্ক্রিপশন তথ্য সফলভাবে নেভ হয়েছে"
+
+#: admin/modules/serial_control/subscription.php:99
+msgid "Subscription Data FAILED to Save. Please Contact System Administrator"
+msgstr "সাবস্ক্রিপশন তথ্য সেভ করতে ব্যর্থ! দয়া করে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/serial_control/subscription.php:135
+msgid "Subscription data successfully deleted"
+msgstr ""
+
+#: admin/modules/serial_control/subscription.php:137
+msgid "Subscription data FAILED to deleted!"
+msgstr ""
+
+#: admin/modules/serial_control/subscription.php:174
+#: admin/modules/serial_control/subscription.php:217
+msgid "Subscription Start"
+msgstr "সাবস্ক্রিপশন শুরু"
+
+#: admin/modules/serial_control/subscription.php:177
+msgid "Total Exemplar Expected"
+msgstr ""
+
+#: admin/modules/serial_control/subscription.php:180
+#: admin/modules/serial_control/subscription.php:216
+msgid "Period Name"
+msgstr ""
+
+#: admin/modules/serial_control/subscription.php:182
+#: admin/modules/serial_control/subscription.php:218
+msgid "Subscription Notes"
+msgstr ""
+
+#: admin/modules/serial_control/subscription.php:196
+msgid "You are going to edit Subscription data"
+msgstr "আপনি সাবস্ক্রিপশন তথ্য সম্পাদন করতে যাচ্ছেন"
+
+#: admin/modules/serial_control/subscription.php:206
+msgid "View/Edit Kardex Detail"
+msgstr ""
+
+#: admin/modules/stock_take/current.php:49
+msgid "NO stock taking proccess initialized yet!"
+msgstr ""
+
+#: admin/modules/stock_take/current.php:61
+msgid "STOCK TAKE PROCCESS - Insert Item Code/Barcode with keyboard or barcode scanner"
+msgstr ""
+
+#: admin/modules/stock_take/current.php:63
+msgid "Change Status"
+msgstr "অবস্থা পরিবর্তন করুন"
+
+#: admin/modules/stock_take/current.php:64
+msgid "List stocktakes by"
+msgstr ""
+
+#: admin/modules/stock_take/current.php:65
+msgid "Current User Only"
+msgstr "শুধু বর্তমান সদস্য"
+
+#: admin/modules/stock_take/current.php:66
+msgid "All User"
+msgstr "সকল সদস্য"
+
+#: admin/modules/stock_take/current.php:70
+msgid "Current Missing/Lost Items"
+msgstr ""
+
+#: admin/modules/stock_take/current.php:94
+msgid "Exists"
+msgstr "আছে"
+
+#: admin/modules/stock_take/current.php:94
+msgid "Missing"
+msgstr "নেই"
+
+#: admin/modules/stock_take/finish.php:43
+msgid "NO stock taking proccess running!"
+msgstr ""
+
+#: admin/modules/stock_take/finish.php:144
+msgid "Stock Take Proccess Finished!"
+msgstr ""
+
+#: admin/modules/stock_take/finish.php:153
+#: admin/modules/stock_take/finish.php:161
+msgid "Finish Stock Take"
+msgstr ""
+
+#: admin/modules/stock_take/finish.php:154
+msgid "Are you sure to end current stock take proccess? Once it finished there is no way you can rollback this stock take"
+msgstr ""
+
+#: admin/modules/stock_take/finish.php:171
+msgid "Purge Lost Item"
+msgstr ""
+
+#: admin/modules/stock_take/index.php:47
+msgid "Stock Take"
+msgstr ""
+
+#: admin/modules/stock_take/index.php:59
+#: admin/modules/stock_take/index.php:76
+#: admin/modules/stock_take/index.php:108
+#: admin/modules/stock_take/init.php:148
+msgid "Stock Take Name"
+msgstr ""
+
+#: admin/modules/stock_take/index.php:60
+#: admin/modules/stock_take/index.php:109
+msgid "Start Date"
+msgstr "শুরুর  তারিখ"
+
+#: admin/modules/stock_take/index.php:61
+#: admin/modules/stock_take/index.php:110
+msgid "End Date"
+msgstr "সমাপ্তির তারিখ"
+
+#: admin/modules/stock_take/index.php:62
+msgid "Initializer"
+msgstr "শুরু কারী"
+
+#: admin/modules/stock_take/index.php:63
+msgid "Total Item Stock Taked"
+msgstr ""
+
+#: admin/modules/stock_take/index.php:64
+msgid "Total Item Lost"
+msgstr ""
+
+#: admin/modules/stock_take/index.php:65
+msgid "Total Item Exists"
+msgstr ""
+
+#: admin/modules/stock_take/index.php:66
+msgid "Total Item On Loan"
+msgstr ""
+
+#: admin/modules/stock_take/index.php:67
+msgid "Stock Take Participants"
+msgstr ""
+
+#: admin/modules/stock_take/index.php:68
+#: admin/modules/stock_take/index.php:83
+msgid "Status"
+msgstr "অবস্থা"
+
+#: admin/modules/stock_take/index.php:69
+#: admin/modules/stock_take/index.php:111
+msgid "Report"
+msgstr "রিপোর্ট"
+
+#: admin/modules/stock_take/index.php:85
+msgid "Currently Active"
+msgstr "বর্তমানে সক্রিয়"
+
+#: admin/modules/stock_take/init.php:43
+msgid "There is already stock taking proccess running!"
+msgstr ""
+
+#: admin/modules/stock_take/init.php:47
+msgid "Stock Take Name must be filled!"
+msgstr ""
+
+#: admin/modules/stock_take/init.php:126
+msgid "Stock Taking Initialized"
+msgstr ""
+
+#: admin/modules/stock_take/init.php:131
+msgid ""
+"Stock Taking FAILED to Initialized.\\n"
+"No item to stock take!"
+msgstr ""
+
+#: admin/modules/stock_take/init.php:139
+msgid "Initialize Stock Take"
+msgstr ""
+
+#: admin/modules/stock_take/init.php:177
+msgid "Separate each class comma sign. Use * for wildcard"
+msgstr ""
+
+#: admin/modules/stock_take/lost_item_list.php:45
+msgid "Current Lost Item"
+msgstr ""
+
+#: admin/modules/stock_take/resync.php:58
+msgid "Re-synchronize will only update current stock take's item data. It won't update any new bibliographic or item data that were inserted in the middle of stock take proccess"
+msgstr ""
+
+#: admin/modules/stock_take/resync.php:61
+msgid "Resynchronize Now"
+msgstr ""
+
+#: admin/modules/stock_take/st_log.php:48
+#: admin/modules/stock_take/submenu.php:32
+msgid "Stock Take Log"
+msgstr ""
+
+#: admin/modules/stock_take/st_report.php:55
+msgid "CURRENT STOCK TAKE REPORT"
+msgstr ""
+
+#: admin/modules/stock_take/st_report.php:85
+msgid "Total Checked/Scanned Items"
+msgstr ""
+
+#: admin/modules/stock_take/st_report.php:92
+msgid "items already checked"
+msgstr ""
+
+#: admin/modules/stock_take/st_report.php:122
+#: admin/modules/stock_take/st_report.php:160
+msgid "Lost Items"
+msgstr "হারানো বিষয়গুলো"
+
+#: admin/modules/stock_take/st_report.php:123
+#: admin/modules/stock_take/st_report.php:161
+msgid "Existing Items"
+msgstr "অবস্থিত বিষয়গুলো"
+
+#: admin/modules/stock_take/st_report.php:124
+#: admin/modules/stock_take/st_report.php:162
+msgid "On Loan Items"
+msgstr "ধারের বিষয়গুলো"
+
+#: admin/modules/stock_take/st_report.php:127
+msgid " classes"
+msgstr "শ্রেনী সমূহ"
+
+#: admin/modules/stock_take/st_upload.php:100
+msgid "Succesfully upload stock take file"
+msgstr ""
+
+#: admin/modules/stock_take/st_upload.php:100
+msgid " item codes scanned!"
+msgstr ""
+
+#: admin/modules/stock_take/st_upload.php:118
+msgid "STOCK TAKE UPLOAD - Upload a plain text file (.txt) containing list of Item Code to stock take. Each Item Code separated by line."
+msgstr ""
+
+#: admin/modules/stock_take/st_upload.php:120
+msgid " File"
+msgstr " ফাইল"
+
+#: admin/modules/stock_take/st_upload.php:121
+msgid "Upload File"
+msgstr "ফাইল আপলোড করুন"
+
+#: admin/modules/stock_take/submenu.php:24
+msgid "Stock Take History"
+msgstr "স্টক টেকিং ইতিহাস"
+
+#: admin/modules/stock_take/submenu.php:24
+msgid "View Stock Take History"
+msgstr "স্টক টেকিং ইতিহাস দেখুন"
+
+#: admin/modules/stock_take/submenu.php:28
+msgid "Current Stock Take"
+msgstr "বর্তমান স্টক টেকিং"
+
+#: admin/modules/stock_take/submenu.php:28
+msgid "View Current Stock Take Process"
+msgstr "বর্তমান স্টক টেকিং প্রক্রিয় দেখুন"
+
+#: admin/modules/stock_take/submenu.php:29
+msgid "Stock Take Report"
+msgstr "স্টক টেকিং রিপোর্ট"
+
+#: admin/modules/stock_take/submenu.php:29
+msgid "View Current Stock Take Report"
+msgstr "স্টক টেকিং রিপোর্ট দেখুন"
+
+#: admin/modules/stock_take/submenu.php:30
+msgid "Finish Current Stock Take Proccess"
+msgstr "স্টক টেকিং শেষ করুন"
+
+#: admin/modules/stock_take/submenu.php:31
+msgid "View Lost Item in Current Stock Take Proccess"
+msgstr "বর্তমান স্টক টেকিং প্রক্রিয়ায় হারানো আইটেম দেখুন"
+
+#: admin/modules/stock_take/submenu.php:32
+msgid "View Log of Current Stock Take Proccess"
+msgstr "বর্তমান স্টক টেকিং প্রক্রিয়ার লগ দেখুন"
+
+#: admin/modules/stock_take/submenu.php:33
+msgid "Resynchronize"
+msgstr ""
+
+#: admin/modules/stock_take/submenu.php:33
+msgid "Resynchronize bibliographic data with current stock take"
+msgstr ""
+
+#: admin/modules/stock_take/submenu.php:34
+msgid "Upload List"
+msgstr "তালিকা আপলোড করুন"
+
+#: admin/modules/stock_take/submenu.php:34
+msgid "Upload List in text file"
+msgstr "তালিকা টেক্সট ফাইলে লোড করুন"
+
+#: admin/modules/stock_take/submenu.php:36
+msgid "Initialize"
+msgstr "শুরু করুন"
+
+#: admin/modules/stock_take/submenu.php:36
+msgid "Initialize New Stock Take Proccess"
+msgstr "স্টক টেকিং শুরু করুন"
+
+#: admin/modules/system/app_user.php:59
+msgid "User Name or Real Name can't be empty"
+msgstr "সদস্যনাম বা প্রকৃত নাম খালি থাকতে পারবেনা"
+
+#: admin/modules/system/app_user.php:62
+msgid "Login username or Real Name is probihited!"
+msgstr "প্রবেশের সদস্যনাম বা প্রকৃত নাম নিষিদ্ধ"
+
+#: admin/modules/system/app_user.php:99
+msgid "User Data Successfully Updated"
+msgstr "ব্যবহারকারীর তথ্য সফলভাবে পরিবর্তন হয়েছে"
+
+#: admin/modules/system/app_user.php:101
+msgid "User Data FAILED to Updated. Please Contact System Administrator"
+msgstr "ব্যবহারকারীর তথ্য পরিবর্তন করতে ব্যর্থ! সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/system/app_user.php:109
+msgid "New User Data Successfully Saved"
+msgstr "ব্যবহারকারীর তথ্য সফলভাবে সেভ হয়েছে"
+
+#: admin/modules/system/app_user.php:111
+msgid "User Data FAILED to Save. Please Contact System Administrator"
+msgstr "ব্যবহারকারীর তথ্য সেভ করতে ব্যর্থ! সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/system/app_user.php:159
+#: admin/modules/system/submenu.php:32
+msgid "System Users"
+msgstr "সিস্টেম ব্যবহারকারীগণ"
+
+#: admin/modules/system/app_user.php:159
+msgid "Add New User"
+msgstr "নতুন ব্যবহারকারী"
+
+#: admin/modules/system/app_user.php:160
+msgid "User List"
+msgstr "সিস্টেম ব্যবহারকারীর তালিকা"
+
+#: admin/modules/system/app_user.php:230
+msgid "Group(s)"
+msgstr "গ্রুপ (সমূহ)"
+
+#: admin/modules/system/app_user.php:239
+msgid "You are going to edit user profile"
+msgstr "আপনি সদস্য তথ্য সম্পাদন করতে যাচ্ছেন"
+
+#: admin/modules/system/app_user.php:260
+#: admin/modules/system/app_user.php:265
+msgid "Last Login"
+msgstr "সর্বশেষ প্রবেশ"
+
+#: admin/modules/system/backup.php:41
+#: admin/modules/system/submenu.php:38
+msgid "Database Backup"
+msgstr "ডাটাবেজ সংরক্ষণ"
+
+#: admin/modules/system/backup.php:41
+msgid "Start New Backup"
+msgstr "নতুন ব্যকআপ মুরু করুন"
+
+#: admin/modules/system/barcode_generator.php:83
+#: admin/modules/system/barcode_generator.php:113
+#: admin/modules/system/submenu.php:36
+msgid "Barcode Generator"
+msgstr "বরকোড প্রস্তুতকারক"
+
+#: admin/modules/system/barcode_generator.php:98
+msgid "Error creating barcode!"
+msgstr "বারকোড তৈরি করতে সমস্যা"
+
+#: admin/modules/system/barcode_generator.php:103
+msgid "Barcode generation finished"
+msgstr "বারকোড তৈরি করা শেষ"
+
+#: admin/modules/system/barcode_generator.php:113
+msgid "Type barcodes text to one or more text field below and click"
+msgstr "নিচের এক বা একাধিক ঘড়ে বারকোড তথ্য টাইপ করে ক্লিক করুন"
+
+#: admin/modules/system/barcode_generator.php:113
+#: admin/modules/system/barcode_generator.php:143
+msgid "Generate Barcodes"
+msgstr "বারকোড তৈরি করুন"
+
+#: admin/modules/system/barcode_generator.php:127
+msgid "Barcode Size"
+msgstr "বারকোড সাইজ"
+
+#: admin/modules/system/barcode_generator.php:127
+msgid "Small"
+msgstr "ছোট"
+
+#: admin/modules/system/barcode_generator.php:128
+msgid "Medium"
+msgstr "মধ্যম"
+
+#: admin/modules/system/barcode_generator.php:129
+msgid "Big"
+msgstr "বড়"
+
+#: admin/modules/system/content.php:50
+msgid "Title or Path can't be empty!"
+msgstr "শিরোনাম বা পথ খালি হতে পারবেনা"
+
+#: admin/modules/system/content.php:72
+msgid "Content data updated"
+msgstr "অভ্যন্তরস্থ তথ্য পরিবর্তন করা হয়েছে"
+
+#: admin/modules/system/content.php:74
+msgid "Content data FAILED to update!"
+msgstr "অভ্যন্তরস্থ তথ্য পরিবর্তন করতে ব্যর্থ"
+
+#: admin/modules/system/content.php:82
+msgid "Content data saved"
+msgstr "অভ্যন্তরস্থ তথ্য সেভ হয়েছে"
+
+#: admin/modules/system/content.php:84
+msgid "Content data FAILED to save!"
+msgstr "অভ্যন্তরস্থ তথ্য সেভ করতে ব্যর্থ"
+
+#: admin/modules/system/content.php:131
+#: admin/modules/system/submenu.php:28
+msgid "Content"
+msgstr "সূচীপত্র"
+
+#: admin/modules/system/content.php:131
+msgid "Add New Content"
+msgstr "নতুন অভ্যন্তরস্থ তথ্য যোগ করুন"
+
+#: admin/modules/system/content.php:132
+msgid "Content List"
+msgstr "অভ্যন্তরস্থ তথ্যের তালিকা"
+
+#: admin/modules/system/content.php:175
+#: admin/modules/system/content.php:208
+#: admin/modules/system/content.php:212
+msgid "Content Title"
+msgstr "অভ্যন্তরস্থ তথ্যের শিরোনাম"
+
+#: admin/modules/system/content.php:177
+#: admin/modules/system/content.php:209
+#: admin/modules/system/content.php:213
+msgid "Path (Must be unique)"
+msgstr "পথ (অবশ্যই একক হতে হবে)"
+
+#: admin/modules/system/content.php:179
+msgid "Content Description"
+msgstr "অভ্যন্তরস্থ তথ্যের বর্ণনা"
+
+#: admin/modules/system/content.php:183
+msgid "You are going to update Content data"
+msgstr "আপনি অভ্যন্তরস্থ তথ্য পরিবর্তন করতে যাচ্ছেন"
+
+#: admin/modules/system/holiday.php:64
+msgid "Holiday Data Successfully updated"
+msgstr "ছুটির তথ্য সফলভাবে পরিবর্তন হয়েছে"
+
+#: admin/modules/system/holiday.php:70
+msgid "Holiday FAILED to update. Please Contact System Administrator"
+msgstr "ছুটির তথ্য পরিবর্তন করতে ব্যর্থ! সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/system/holiday.php:76
+msgid "New Holiday Successfully Saved"
+msgstr "নতুন ছুটি সফলভাবে সেভ হয়েছে"
+
+#: admin/modules/system/holiday.php:103
+msgid "Holiday FAILED to Save. Please Contact System Administrator"
+msgstr "ছুটির তথ্য সেভ করতে ব্যর্থ! সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/system/holiday.php:149
+#: admin/modules/system/submenu.php:35
+msgid "Holiday Setting"
+msgstr "ছুটির সেটিংস "
+
+#: admin/modules/system/holiday.php:151
+msgid "Set holiday"
+msgstr "ছুটি নির্ধারণ করুন"
+
+#: admin/modules/system/holiday.php:152
+msgid "Special holiday"
+msgstr "িবশেষ ছুটি"
+
+#: admin/modules/system/holiday.php:153
+msgid "Add Special holiday"
+msgstr "বিশেষ ছুটি যোগ করুন"
+
+#: admin/modules/system/holiday.php:186
+#: admin/modules/system/holiday.php:210
+#: admin/modules/system/holiday.php:214
+msgid "Holiday Date Start"
+msgstr "ছুটির তারিখ শুরু"
+
+#: admin/modules/system/holiday.php:189
+msgid "Holiday Date End"
+msgstr "ছুটির তারিখ শেষ"
+
+#: admin/modules/system/holiday.php:192
+#: admin/modules/system/holiday.php:211
+#: admin/modules/system/holiday.php:215
+msgid "Holiday Description"
+msgstr "ছুটির বিবরণ"
+
+#: admin/modules/system/holiday.php:196
+msgid "You are going to edit holiday data"
+msgstr "আপনি ছুটির তথ্য সম্পাদন করতে যাচ্ছেন"
+
+#: admin/modules/system/holiday.php:209
+#: admin/modules/system/holiday.php:213
+msgid "Day name"
+msgstr "দিনের নাম"
+
+#: admin/modules/system/holiday.php:248
+msgid "Maximum 6 day can be set as holiday!"
+msgstr "সর্বোচ্চ ৬ দিন ছুটি নির্ধারণ করা যেতে পারে!"
+
+#: admin/modules/system/holiday.php:261
+msgid "Holiday settings saved"
+msgstr "ছুটির সেটিংস সেভ হয়েছে"
+
+#: admin/modules/system/holiday.php:290
+msgid "Monday"
+msgstr "সোম বার"
+
+#: admin/modules/system/holiday.php:291
+msgid "Tuesday"
+msgstr "মঙ্গল বার"
+
+#: admin/modules/system/holiday.php:292
+msgid "Wednesday"
+msgstr "বুধ বার"
+
+#: admin/modules/system/holiday.php:294
+msgid "Thursday"
+msgstr "বৃহঃপতি বার"
+
+#: admin/modules/system/holiday.php:295
+msgid "Friday"
+msgstr "শুক্রবার"
+
+#: admin/modules/system/holiday.php:296
+msgid "Saturday"
+msgstr "শনি বার"
+
+#: admin/modules/system/holiday.php:298
+msgid "Sunday"
+msgstr "রবি বার"
+
+#: admin/modules/system/holiday.php:303
+#: admin/modules/system/index.php:135
+msgid "Save Settings"
+msgstr "সেটিংস সেভ করুন"
+
+#: admin/modules/system/index.php:46
+#: admin/modules/system/submenu.php:26
+msgid "System Configuration"
+msgstr "সিস্টেম কনফিগারেশন"
+
+#: admin/modules/system/index.php:46
+msgid "Modify global application preferences"
+msgstr ""
+
+#: admin/modules/system/index.php:128
+msgid "Settings saved. Refreshing page"
+msgstr "সেটিংস সেভড। রিফ্রেশ করা হচ্ছে..."
+
+#: admin/modules/system/index.php:149
+msgid "Library Name"
+msgstr "গ্রন্থাগারের নাম"
+
+#: admin/modules/system/index.php:152
+msgid "Library Subname"
+msgstr "গ্রন্থাগারের উপ-নাম"
+
+#: admin/modules/system/index.php:166
+msgid "Public Template"
+msgstr "ওপ্যাক পাতা'র ধরণ"
+
+#: admin/modules/system/index.php:179
+msgid "Admin Template"
+msgstr "প্রষাসকের পাতা'র ধরণ"
+
+#: admin/modules/system/index.php:183
+msgid "Default App. Language"
+msgstr "সিস্টেমে নির্ধারিত ভাষা"
+
+#: admin/modules/system/index.php:191
+msgid "Number Of Collections To Show In OPAC Result List"
+msgstr "ওপ্যাক ফলাফল তালিকায় দেখানোর সংখ্যা"
+
+#: admin/modules/system/index.php:195
+msgid "Show Promoted Titles at Homepage"
+msgstr ""
+
+#: admin/modules/system/index.php:205
+msgid "Don't Print"
+msgstr "প্রিন্ট করোনা"
+
+#: admin/modules/system/index.php:206
+msgid "Print"
+msgstr "প্রিন্ট"
+
+#: admin/modules/system/index.php:207
+msgid "Print Circulation Receipt"
+msgstr "সার্কুলেশন রশিদ প্রিন্ট"
+
+#: admin/modules/system/index.php:213
+msgid "Loan and Due Date Manual Change"
+msgstr "ধার ও ফেরতের তারিখ পরিবর্তন"
+
+#: admin/modules/system/index.php:219
+msgid "Loan Limit Override"
+msgstr "ধার সিমাবদ্ধতা পূনঃলেখন"
+
+#: admin/modules/system/index.php:225
+msgid "OPAC XML Detail"
+msgstr "ওপ্যাক  XML বিস্তারিত"
+
+#: admin/modules/system/index.php:231
+msgid "OPAC XML Result"
+msgstr "ওপ্যাক  XML ফলাফল"
+
+#: admin/modules/system/index.php:235
+msgid "Forbid"
+msgstr "নিষিদ্ধ"
+
+#: admin/modules/system/index.php:236
+msgid "Allow"
+msgstr "অনুমোদিত"
+
+#: admin/modules/system/index.php:237
+msgid "Allow OPAC File Download"
+msgstr "ওপ্যাক ফাইল ডাউনলোড অনুমোদিত"
+
+#: admin/modules/system/index.php:240
+msgid "Session Login Timeout"
+msgstr "সিস্টেমে অবস্থানের সময় শেষ"
+
+#: admin/modules/system/index.php:243
+msgid "Barcode Encoding"
+msgstr "বারকোড সংকেতায়ন"
+
+#: admin/modules/system/module.php:47
+msgid "Module name and path can't be empty"
+msgstr "মডিউল নাম ও পাথ খালি হতে পারবেনা"
+
+#: admin/modules/system/module.php:70
+msgid "Module Data Successfully Updated"
+msgstr "মডিউল তথ্য সফলভাবে পরিবর্তিত!"
+
+#: admin/modules/system/module.php:72
+msgid "Module Data FAILED to Updated. Please Contact System Administrator"
+msgstr "মডিউল তথ্য পরিবর্তনকরতে ব্যর্থ! দয়া করে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/system/module.php:83
+msgid "New Module Data Successfully Saved"
+msgstr "নতুন মডিউল তথ্য সফলভাবে নেভ হয়েছে"
+
+#: admin/modules/system/module.php:85
+msgid "Module Data FAILED to Save. Please Contact System Administrator"
+msgstr "মডিউল তথ্য সেভ করতে ব্যর্থ! দয়া করে সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/system/module.php:135
+#: admin/modules/system/submenu.php:31
+msgid "Modules"
+msgstr "মডিউল "
+
+#: admin/modules/system/module.php:135
+msgid "Add New Modules"
+msgstr "নতুন মডিউল যোগ করুন"
+
+#: admin/modules/system/module.php:136
+msgid "Modules List"
+msgstr "মডিউলের তালিকা"
+
+#: admin/modules/system/module.php:175
+#: admin/modules/system/module.php:195
+#: admin/modules/system/module_priv_form.inc.php:26
+msgid "Module Name"
+msgstr "মডিউলের নাম"
+
+#: admin/modules/system/module.php:177
+msgid "Module Path"
+msgstr "মডিউলের পাথ"
+
+#: admin/modules/system/module.php:179
+#: admin/modules/system/module.php:196
+msgid "Module Description"
+msgstr "মডিউলের বর্ণনা"
+
+#: admin/modules/system/module.php:183
+msgid "You are going to edit data"
+msgstr "আপনি তথ্য সম্পাদন করতে যাচ্চেন"
+
+#: admin/modules/system/module_priv_form.inc.php:26
+msgid "Read"
+msgstr "পড়া"
+
+#: admin/modules/system/module_priv_form.inc.php:26
+msgid "Write"
+msgstr "লেখা"
+
+#: admin/modules/system/submenu.php:23
+msgid "System"
+msgstr "সিস্টেম"
+
+#: admin/modules/system/submenu.php:26
+msgid "Configure Global System Preferences"
+msgstr ""
+
+#: admin/modules/system/submenu.php:31
+msgid "Configure Application Modules"
+msgstr ""
+
+#: admin/modules/system/submenu.php:32
+msgid "Manage Application User or Library Staff"
+msgstr "সিস্টেম ব্যবহারকারী/গ্রন্থাগার কর্মী ব্যবস্থাপনা"
+
+#: admin/modules/system/submenu.php:33
+msgid "User Group"
+msgstr "ব্যবহারকারী গ্রুপ"
+
+#: admin/modules/system/submenu.php:33
+msgid "Manage Group of Application User"
+msgstr "সিস্টেম ব্যবহারকারী গ্রুপ ব্যবস্থাপনা"
+
+#: admin/modules/system/submenu.php:35
+msgid "Configure Holiday Setting"
+msgstr "ছুটি নির্ধারণী সেটিংস"
+
+#: admin/modules/system/submenu.php:37
+#: admin/modules/system/sys_log.php:66
+msgid "System Log"
+msgstr "সিস্টেম লগ"
+
+#: admin/modules/system/submenu.php:37
+msgid "View Application System Log"
+msgstr ""
+
+#: admin/modules/system/submenu.php:38
+msgid "Backup Application Database"
+msgstr "ডাটাবেজ এ্যপ্লিকেশন ব্যাকআপ"
+
+#: admin/modules/system/sys_log.php:57
+msgid "System Log data completely cleared!"
+msgstr ""
+
+#: admin/modules/system/sys_log.php:68
+msgid "Are you SURE to completely clear system log data? This action cannot be undo!"
+msgstr ""
+
+#: admin/modules/system/sys_log.php:68
+msgid "CLEAR LOGS"
+msgstr ""
+
+#: admin/modules/system/sys_log.php:69
+msgid "Save Logs record to file?"
+msgstr ""
+
+#: admin/modules/system/sys_log.php:69
+msgid "Save Logs To File"
+msgstr ""
+
+#: admin/modules/system/sys_log.php:93
+msgid "Time"
+msgstr "সময়"
+
+#: admin/modules/system/sys_log.php:95
+msgid "Message"
+msgstr "বার্তা"
+
+#: admin/modules/system/user_group.php:46
+msgid "Group name can't be empty"
+msgstr "গ্রুপ নাম থালি হতে পারবেনা"
+
+#: admin/modules/system/user_group.php:81
+msgid "Group Data Successfully Updated"
+msgstr "নতুন গ্রুপ তথ্য সফলভাবে পরিবর্তন হয়েছে"
+
+#: admin/modules/system/user_group.php:83
+msgid "Group Data FAILED to Updated. Please Contact System Administrator"
+msgstr "গ্রুপ তথ্য পরিবর্তন করতে ব্যর্থ! সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/system/user_group.php:109
+msgid "New Group Data Successfully Saved"
+msgstr "নতুন গ্রুপ তথ্য সফলভাবে সেভ হয়েছে"
+
+#: admin/modules/system/user_group.php:111
+msgid "Group Data FAILED to Save. Please Contact System Administrator"
+msgstr "গ্রুপ তথ্য সেভ করতে ব্যর্থ! সিস্টেম প্রশাসকের সাথে যোগাযোগ করুন"
+
+#: admin/modules/system/user_group.php:158
+msgid "Add New Group"
+msgstr "নতুন গ্রুপ যোগ করুন"
+
+#: admin/modules/system/user_group.php:159
+msgid "Group List"
+msgstr "গ্রুপ লিস্ট"
+
+#: admin/modules/system/user_group.php:198
+#: admin/modules/system/user_group.php:225
+msgid "Group Name"
+msgstr "গ্রুপ নাম"
+
+#: admin/modules/system/user_group.php:209
+msgid "Privileges"
+msgstr "সুবিধা সমূহ"
+
+#: admin/modules/system/user_group.php:214
+msgid "You are going to edit Group data"
+msgstr "আপনি গ্রুপ তথ্য সম্পাদন করতে যাচ্ছেন"
+
+#: lib/admin_logon.inc.php:65
+msgid "Error authenticating user and password to database"
+msgstr "সদস্য নাম ও পাসওয়ার্ড প্রমাণে ডাটাবেজে সমস্যা"
+
+#: lib/biblio_list.inc.php:348
+#: lib/biblio_list.inc.php:369
+msgid "Record Detail"
+msgstr "বিস্তারিত তথ্য"
+
+#: lib/detail.inc.php:152
+msgid "Click to view others documents with this author"
+msgstr "এই লেখকের অন্য রচনা দেখতে ক্লিক করুন"
+
+#: lib/detail.inc.php:166
+msgid "Click to view others documents with this subject"
+msgstr "এই বিষয়ে অন্য রচনা দেখতে ক্লিক করুন"
+
+#: lib/detail.inc.php:203
+msgid "View node catalog data"
+msgstr ""
+
+#: lib/contents/attachment_list.php:48
+msgid "No Attachment"
+msgstr "কোন সংযোজন নেই"
+
+#: lib/contents/common.inc.php:25
+msgid "All Locations"
+msgstr "সকল অবস্থান"
+
+#: lib/contents/common.inc.php:34
+msgid "All Collections"
+msgstr "সকল সংগ্রহ"
+
+#: lib/contents/common.inc.php:43
+msgid "All GMD/Media"
+msgstr "সকল মাধ্যম"
+
+#: lib/contents/default.inc.php:109
+#: lib/contents/default.inc.php:120
+msgid "Found  <strong>{biblio_list->num_rows}</strong> from your keywords"
+msgstr "আপনার কীওয়ার্ড থেকে  <strong>{biblio_list->num_rows}</strong> টি পাওয়া গেছে"
+
+#: lib/contents/default.inc.php:153
+msgid "You currently on page <strong>{page}</strong> of <strong>{total_pages}</strong> page(s)"
+msgstr "আপনি বর্তমানে রয়ছেন <strong>{page}</strong> পাতায় মোট <strong>{total_pages}</strong> পাতার"
+
+#: lib/contents/item_list.php:48
+msgid "There is no item/copy for this title yet"
+msgstr "এই শিরোনাম-এ এখনো কোন অন্তর্ভুক্তি নেই"
+
+#: lib/contents/item_list.php:67
+msgid "Currently On Loan (Due on"
+msgstr "বর্তমানে ধার-এ আছে (ফেরতের তারিখঃ "
+
+#: lib/contents/item_list.php:69
+msgid "Available but not for loan"
+msgstr "প্রাপ্তিসাধ্য কিন্তু ধারযোগ্য নয়"
+
+#: lib/contents/login.inc.php:48
+msgid "Please supply valid username and password"
+msgstr "দয়া করে সঠিক নাম এবং পাসওয়ার্ড দিন"
+
+#: lib/contents/login.inc.php:64
+msgid "Welcome to Library Automation, "
+msgstr "ইচ্ছাকথা লাইব্রেরী অটোমেশন সিস্টেমে আপনাকে স্বাগতম"
+
+#: lib/contents/login.inc.php:74
+msgid "Wrong Username or Password. ACCESS DENIED"
+msgstr "নাম অথবা পাসওয়ার্ড ভুল ! প্রবেশ অস্বীকৃত"
+
+#: lib/contents/login.inc.php:86
+msgid "Your browser does not support Javascript or Javascript is disabled. Application won't run without Javascript!"
+msgstr ""
+
+#: lib/contents/member.inc.php:28
+msgid "Welcome to Member's Area where you can view your current loan information and view your membership status."
+msgstr "সদস্য এলাকায় স্বাগতম! এখানে আপনি আপনার বর্তমান ধার ও সদস্যতার অবস্থা দেখতে পারবেন।"
+
+#: lib/contents/member.inc.php:54
+msgid "Please fill your Username and Password to Login!"
+msgstr "সিস্টেমে প্রবেশ করতে নাম এবং পাসওয়ার্ড দিন"
+
+#: lib/contents/member.inc.php:69
+msgid "Login FAILED! Wrong username or password!"
+msgstr "প্রবেশ ব্যার্থ ! নাম অথবা পাসওয়ার্ড ভুল"
+
+#: lib/contents/member.inc.php:79
+msgid "Library Member Login"
+msgstr "গ্রন্থাগার সদস্য হিসেবে প্রবেশ"
+
+#: lib/contents/member.inc.php:80
+msgid "Please insert your member ID and password given by library system administrator. If you are library's member and don't have a password yet, please contact library staff."
+msgstr "দয়া করে আপনার সদস্য আইডি এবং পাসওয়ার্ড দিন! গ্রন্থাগার সদস্য হওয়া সত্তেও পাসওয়ার্ড না থাকলে গ্রন্থাগারের সংশ্লিস্ট বিভাগে যোগাযোগ করুন"
+
+#: lib/contents/member.inc.php:84
+msgid "Password"
+msgstr "পাসওয়ার্ড"
+
+#: lib/contents/member.inc.php:86
+msgid "Login"
+msgstr "প্রবেশ"
+
+#: lib/contents/member.inc.php:103
+msgid "Current Password"
+msgstr "বর্তমান পাসওয়ার্ড"
+
+#: lib/contents/member.inc.php:111
+msgid "Confirm Password"
+msgstr "পাসওয়ার্ড নিশ্চিত"
+
+#: lib/contents/member.inc.php:115
+#: lib/contents/member.inc.php:283
+msgid "Change Password"
+msgstr "পাসওয়ার্ড পরিবর্তন করুন"
+
+#: lib/contents/member.inc.php:176
+msgid "Your Membership Already EXPIRED! Please extend your membership."
+msgstr "আপনার সদস্যতার মেয়াদ ইতঃপূর্বে শেষ হয়েছে, দয়া করে মেয়াদ বাড়ান"
+
+#: lib/contents/member.inc.php:179
+msgid "Membership currently in pending state, no loan transaction can be made yet."
+msgstr "আপনার সদস্যতা এখনো অমিমাংসীত। ধার সম্ভব নয়"
+
+#: lib/contents/member.inc.php:212
+msgid "OVERDUED"
+msgstr "পরিশোধের তারিখ অতিক্রান্ত"
+
+#: lib/contents/member.inc.php:257
+msgid "item(s) currently on loan"
+msgstr "বর্তমান ধার দেয়া বিষয় (সমূহ)"
+
+#: lib/contents/member.inc.php:265
+msgid "Your password have been changed successfully."
+msgstr "আপনার পাসওয়ার্ড সঠিকভাবে পরিবর্তন হয়েছে"
+
+#: lib/contents/member.inc.php:268
+msgid "Current password entered WRONG! Please insert the right password!"
+msgstr "ভুল পাসওয়ার্ড! দয়া করে সঠিক পাসওয়ার্ড প্রবেশ করান"
+
+#: lib/contents/member.inc.php:270
+msgid "Password confirmation FAILED! Make sure to check undercase or uppercase letters!"
+msgstr "পাসওয়ার্ড নিশ্চিতকরন ব্যার্থ ! আপারকেস অথবা লোয়ারকেস চেক করে নিশ্চিত করুন"
+
+#: lib/contents/member.inc.php:272
+msgid "Password update FAILED! ERROR ON DATABASE!"
+msgstr "পাসওয়ার্ড পরিবর্তনে ব্যার্থ! ডাটাবেজে সমস্যা"
+
+#: lib/contents/member.inc.php:279
+msgid "Member Detail"
+msgstr "বিস্তারিত সদস্য তথ্য"
+
+#: lib/contents/member.inc.php:281
+msgid "Your Current Loan"
+msgstr "আপনার বর্তমান ধার"
+
+#: lib/contents/show_detail.inc.php:53
+msgid "Back To Previous"
+msgstr "পিছনে যান"
+
+#: lib/contents/visitor.inc.php:83
+msgid ", thank you for inserting your data to our visitor log"
+msgstr ""
+
+#: lib/contents/visitor.inc.php:85
+msgid "Sorry, Please fill institution field if you are not library member"
+msgstr ""
+
+#: lib/contents/visitor.inc.php:87
+msgid "Error inserting counter data to database!"
+msgstr ""
+
+#: lib/contents/visitor.inc.php:96
+msgid "Visitor Counter"
+msgstr "অতিথি গণনা"
+
+#: lib/contents/visitor.inc.php:98
+msgid "Please insert your library member ID otherwise your full name instead"
+msgstr "গ্রন্থাগার সদস্য আই ডি অথবা সম্পূর্ণ নাম প্রবেশ করান"
+
+#: lib/lang/localisation.php:60
+msgid "Arabic"
+msgstr "আরবী"
+
+#: lib/lang/localisation.php:61
+msgid "Bengali"
+msgstr "বাংলা"
+
+#: lib/lang/localisation.php:62
+msgid "German"
+msgstr "জার্মান"
+
+#: lib/lang/localisation.php:63
+msgid "English"
+msgstr "ইংরেজি"
+
+#: lib/lang/localisation.php:64
+msgid "Espanol"
+msgstr "স্প্যানিশ"
+
+#: lib/lang/localisation.php:65
+msgid "Indonesian"
+msgstr "ইন্দোনেশিয়ান"
+
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:81
+msgid "DELETE"
+msgstr "মুছুন"
+
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:82
+msgid "EDIT"
+msgstr "সম্পাদন করুন"
+
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:97
+msgid "Are You Sure Want to DELETE Selected Data?"
+msgstr "আপনি কি নির্বাচিত তথ্য মুছতে নিশ্চিত?"
+
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:101
+msgid "Delete Selected Data"
+msgstr "নির্বাচিত তথ্য মুছুন"
+
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:126
+msgid "ascendingly"
+msgstr "উর্দ্ধক্রমে"
+
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:136
+msgid "descendingly"
+msgstr "নিম্নক্রমে"
+
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:204
+msgid "Order list by"
+msgstr "ক্রমঃ "
+
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:359
+msgid "Check All"
+msgstr "সব টিক দিন"
+
+#: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:360
+msgid "Uncheck All"
+msgstr "সব টিক উঠান"
+
+#: simbio2/simbio_GUI/form_maker/simbio_form_element.inc.php:257
+msgid "Date"
+msgstr "তারিখ"
+
+#: simbio2/simbio_GUI/form_maker/simbio_form_table.inc.php:95
+#: simbio2/simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php:87
+msgid "Delete Record"
+msgstr "রেকর্ড মুছুন"
+
+#: simbio2/simbio_GUI/form_maker/simbio_form_table.inc.php:96
+#: simbio2/simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php:88
+msgid "Cancel"
+msgstr "বাতিল"
+
+#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:111
+msgid "First Page"
+msgstr "প্রথম পাতা"
+
+#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:113
+msgid "Previous"
+msgstr "আগের পাতা"
+
+#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:134
+msgid "Next"
+msgstr "পরের পাতা"
+
+#: simbio2/simbio_GUI/paging/simbio_paging.inc.php:142
+msgid "Last Page"
+msgstr "শেষ পাতা"
+
+#: simbio2/simbio_GUI/table/simbio_table.inc.php:213
+msgid "No Data"
+msgstr "কোন তথ্য নেই"
+
+#: template/blue/detail_template.php:80
+msgid "Availability"
+msgstr "প্রাপ্তিসাধ্যতা"
+
+#: template/blue/index_template.inc.php:36
+msgid "Home"
+msgstr "হোম"
+
+#: template/blue/index_template.inc.php:37
+msgid "Library Information"
+msgstr "গ্রন্থাগার তথ্য"
+
+#: template/blue/index_template.inc.php:38
+msgid "Help on Search"
+msgstr "খুজে পেতে সাহায্য নিন"
+
+#: template/blue/index_template.inc.php:39
+msgid "Member Area"
+msgstr "সদস্য এলাকা"
+
+#: template/blue/index_template.inc.php:40
+msgid "Librarian LOGIN"
+msgstr "গ্রন্থাগারিকের প্রবেশ"
+
+#: template/blue/index_template.inc.php:52
+msgid "Select Language"
+msgstr "ভাষা নির্ধারণ করুন"
+
+#: template/blue/index_template.inc.php:61
+msgid "Simple Search"
+msgstr "সহজে খোজ করুন"
+
+#: template/blue/index_template.inc.php:68
+msgid "Advanced Search"
+msgstr "বিষেশভাবে খোজ করুন"
+
+#: template/default/detail_template.php:85
+msgid "Custom Field 1"
+msgstr ""
+
+#: template/default/detail_template.php:89
+msgid "Custom Field 2"
+msgstr ""
+
+#: ucs/admin/index.php:57
+msgid "Union Catalog Server administration console. you are currently logged in as"
+msgstr ""
+
+#: ucs/admin/logout.php:32
+msgid "You Have Been Logged Out From Union Catalog Server console"
+msgstr ""
+
+#: ucs/admin/default/home.php:30
+msgid "<strong>PHP GD</strong> extension is not installed. Please install it or application won't be able to create image thumbnail."
+msgstr ""
+
+#: ucs/admin/default/submenu.php:24
+msgid "Bibliography List"
+msgstr "বইয়ের তালিকা"
+
+#: ucs/admin/default/submenu.php:24
+msgid "View existing Union Server Catalog data"
+msgstr "বর্তমান সমন্বিত ক্যাটালগ তথ্য দেখুন"
+
+#: ucs/admin/modules/bibliography/index.php:392
+#: ucs/admin/modules/bibliography/index.php:399
+msgid "Node"
+msgstr ""
+
+#: ucs/admin/modules/bibliography/nodes_removal.php:32
+msgid "ERROR ON PROCESSING DATA REMOVAL REQUEST"
+msgstr ""
+
+#: ucs/admin/modules/bibliography/nodes_removal.php:44
+#, php-format
+msgid "%d records of %s removed succesfully from database"
+msgstr ""
+
+#: ucs/admin/modules/bibliography/nodes_removal.php:57
+#: ucs/admin/modules/bibliography/submenu.php:27
+msgid "Nodes Data Removal"
+msgstr ""
+
+#: ucs/admin/modules/bibliography/nodes_removal.php:59
+#: ucs/admin/modules/bibliography/nodes_removal.php:60
+msgid "Select Node"
+msgstr ""
+
+#: ucs/admin/modules/bibliography/nodes_removal.php:67
+msgid "Remove All Selected Node's Data"
+msgstr ""
+
+#: ucs/admin/modules/bibliography/nodes_removal.php:89
+#, php-format
+msgid "There is %d records found.<br /> Are you sure to REMOVE ALL DATA of %s node? Once it done there is no way you can undo this action!"
+msgstr ""
+
+#: ucs/admin/modules/bibliography/nodes_removal.php:94
+msgid "I'm Very Sure to Remove ALL DATA"
+msgstr ""
+
+#: ucs/admin/modules/bibliography/nodes_removal.php:95
+msgid "CANCEL"
+msgstr "বাতিল"
+
+#: ucs/admin/modules/bibliography/nodes_removal.php:102
+#, php-format
+msgid "Node %s doesn't have any record to remove!"
+msgstr ""
+
+#: ucs/admin/modules/bibliography/nodes_removal.php:105
+msgid "Node Undefined on server!"
+msgstr ""
+
+#: ucs/admin/modules/bibliography/submenu.php:27
+msgid "Mass Nodes Data Removal"
+msgstr ""
+
+#: ucs/admin/modules/system/index.php:128
+msgid "OPAC Template"
+msgstr "ওপ্যাক টেমপ্লেট"
+
+#: ucs/admin/modules/system/nodes_poll.php:46
+msgid "Nodes poll cleared!"
+msgstr ""
+
+#: ucs/admin/modules/system/nodes_poll.php:55
+msgid "NODES POLL"
+msgstr ""
+
+#: ucs/admin/modules/system/nodes_poll.php:57
+msgid "Are you SURE to completely clear nodes poll!"
+msgstr ""
+
+#: ucs/admin/modules/system/nodes_poll.php:57
+msgid "CLEAR ALL NODES POLL"
+msgstr ""
+
+#: ucs/admin/modules/system/nodes_poll.php:87
+msgid "IP Address"
+msgstr "আই পি এ্যড্রেস"
+
+#: ucs/admin/modules/system/nodes_poll.php:88
+msgid "Request Start"
+msgstr "অনুরোধ শুরু"
+
+#: ucs/admin/modules/system/nodes_poll.php:89
+msgid "Request End"
+msgstr "অনুরোধ সম্পন্ন"
+
+#: ucs/admin/modules/system/submenu.php:34
+msgid "Nodes Poll"
+msgstr ""
+
+#: ucs/admin/modules/system/submenu.php:34
+msgid "View Nodes Poll/Request"
+msgstr ""
+
+#: ucs/includes/contents/login.inc.php:61
+msgid "Welcome to Union Catalog Server administration,"
+msgstr "সমন্বিত ক্যাটালগ সার্ভার প্রসাশনে স্বাগতম"
+
+#: ucs/themes/default/custom_frontpage_record.inc.php:12
+#: ucs/themes/default/detail_template.php:12
+msgid "Collection Location"
+msgstr "আবস্থান"
+
+#: ucs/themes/default/index_template.inc.php:25
+msgid "Union Catalog Information"
+msgstr "সমন্বিত ক্যাটালগ তথ্য"
+
+#: ucs/themes/default/index_template.inc.php:26
+msgid "Help"
+msgstr "সাহায্য নিন"
+
+#: ucs/themes/default/index_template.inc.php:88
+msgid "Quick Search"
+msgstr "দ্রুত খোজ করুন"
+
