@@ -54,19 +54,23 @@ if (isset($_POST['counter'])) {
 	}
     $member_name = 'Guest';
     $photo = 'person.png';
+    $expire = 0;
     // sleep for a while
-    sleep(1);
+    sleep(2);
     /**
      * Insert counter data to database
      */
     function setCounter($str_member_ID) {
-        global $dbs, $member_name, $photo;
+        global $dbs, $member_name, $photo, $expire;
         // check if ID exists
         $str_member_ID = $dbs->escape_string($str_member_ID);
-        $_q = $dbs->query("SELECT * FROM member WHERE member_id='$str_member_ID'");
+        $_q = $dbs->query("SELECT member_id,member_name,member_image,inst_name, IF(TO_DAYS('".date('Y-m-d')."')>TO_DAYS(expire_date), 1, 0) AS is_expire FROM member WHERE member_id='$str_member_ID'");
         // if member is already registered
         if ($_q->num_rows > 0) {
             $_d = $_q->fetch_assoc();
+			if ($_d['is_expire'] == 1) {
+				$expire = 1;
+			}
             $member_id = $_d['member_id'];
             $member_name = $_d['member_name'];
             $photo = trim($_d['member_image'])?trim($_d['member_image']):'person.png';
@@ -93,6 +97,9 @@ if (isset($_POST['counter'])) {
     $counter = setCounter($memberID);
     if ($counter === true) {
         echo __($member_name.', thank you for inserting your data to our visitor log').'<span id="memberImage" src="images/persons/'.urlencode($photo).'"></span>';
+		if ($expire) {
+			echo __('<div style="color: #f00;">Your membership already EXPIRED, please renew/extend your membership immediately</div>');
+		}
     } else if ($counter === INSTITUTION_EMPTY) {
         echo __('Sorry, Please fill institution field if you are not library member');
     } else {
