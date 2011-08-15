@@ -98,7 +98,7 @@ if (isset($_POST['counter'])) {
     if ($counter === true) {
         echo __($member_name.', thank you for inserting your data to our visitor log').'<span id="memberImage" src="images/persons/'.urlencode($photo).'"></span>';
 		if ($expire) {
-			echo __('<div style="color: #f00;">Your membership already EXPIRED, please renew/extend your membership immediately</div>');
+			echo '<div style="color: #f00;">'.__('Your membership already EXPIRED, please renew/extend your membership immediately').'</div>';
 		}
     } else if ($counter === INSTITUTION_EMPTY) {
         echo __('Sorry, Please fill institution field if you are not library member');
