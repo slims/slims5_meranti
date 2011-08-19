@@ -21,7 +21,9 @@
 /* RESERVATION LIST IFRAME CONTENT */
 
 // key to authenticate
-define('INDEX_AUTH', '1');
+if (!defined('INDEX_AUTH')) {
+    define('INDEX_AUTH', '1');
+}
 
 // main system configuration
 require '../../../sysconfig.inc.php';
