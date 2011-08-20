@@ -322,7 +322,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 #email a{
     font-family:"Trebuchet MS";
-    font-size:13px;
+    font-size:11px;
     color:#fff;
     font-weight:normal;
     text-decoration:underline;
@@ -349,7 +349,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 #validtext p{
     font-family:"Trebuchet MS";
-    font-size:13px;
+    font-size:11px;
     color:#fff;
     font-weight:normal;
     text-decoration:none;
@@ -359,7 +359,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 #validtext a{
     font-family:"Trebuchet MS";
-    font-size:13px;
+    font-size:11px;
     color:#fff;
     font-weight:normal;
     text-decoration:underline;

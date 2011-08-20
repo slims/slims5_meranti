@@ -21,7 +21,9 @@
 /* Quick Return page */
 
 // key to authenticate
-define('INDEX_AUTH', '1');
+if (!defined('INDEX_AUTH')) {
+    define('INDEX_AUTH', '1');
+}
 
 require '../../../sysconfig.inc.php';
 // start the session
