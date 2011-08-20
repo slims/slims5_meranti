@@ -59,7 +59,7 @@ a {
 
 #sidepan {
     width: 210px;
-    background: #ccc;
+    background: #E7F1FF;
 }
 
 #mainContent {
@@ -121,7 +121,7 @@ a {
     height: 29px;
     padding-top: 11px;
     padding-left: 10px;
-    background: #ccc;
+    background: #E7F1FF;
 }
 
 .objectDragger, .objectDragger:hover {
