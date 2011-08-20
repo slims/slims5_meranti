@@ -1,0 +1,206 @@
+html, body {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font: 12px Helvetica, Arial, tahoma, sans-serif;
+}
+
+/***** Headings *****/
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+h1 {
+    padding: 10px 0 25px 0;
+    font-size: 2em;
+}
+
+h2 {
+    padding: 6px 0;
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/***** Common Formatting *****/
+p{
+	margin:15px 0;
+	
+}
+
+ul, ol {
+    margin: 10px 0;
+	padding: 0.5em 0 .5em 2.5em;
+}
+
+ul li , ol li{
+	list-style-type: circle;
+}
+
+blockquote {
+    margin: 1.25em;
+    padding: 1.25em 1.25em 0 1.25em;
+}
+
+small {
+    font-size: 0.85em;
+}
+
+img {
+    border: 0;
+}
+
+sup {
+    position: relative;
+    bottom: 0.3em;
+    vertical-align: baseline;
+}
+
+sub {
+    position: relative;
+    bottom: -0.2em;
+    vertical-align: baseline;
+}
+
+acronym, abbr {
+    cursor: help;
+    letter-spacing: 1px;
+    border-bottom: 1px dashed;
+}
+
+/***** Links *****/
+a, a:link, a:visited, a:hover {
+    text-decoration: none;
+}
+
+/***** Forms *****/
+form {
+    margin: 0;
+    padding: 0;
+}
+
+input, select, textarea {
+    font: 1em Calibri, Helvetica, tahoma, sans-serif;
+    border: 1px solid #ddd;
+}
+
+textarea {
+    width: 100%;
+    line-height: 1.25;
+}
+
+label {
+    cursor: pointer;
+}
+
+/***** Tables *****/
+table {
+    border: 0;
+    margin: 0 0 1.25em 0;
+    padding: 0;
+}
+
+table tr td {
+    padding: 2px;
+}
+
+/***** Wrapper *****/
+#wrap {
+    margin: 0 auto;
+}
+
+/***** Global Classes *****/
+.clear {
+    clear: both;
+}
+
+.clear-float {
+    clear: both;
+    font-size: 1px;
+    line-height: 1px;
+    overflow: hidden;
+    height: 1px;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.underline {
+    border-bottom: 1px solid;
+}
+
+.highlight {
+    background: #ffc;
+}
+
+.wrap {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.img-left {
+    float: left;
+    margin: 4px 10px 4px 0;
+}
+
+.img-right {
+    float: right;
+    margin: 4px 0 4px 10px;
+}
+
+.nopadding {
+    padding: 0;
+}
+
+.message{
+	background:#e7edf2;
+	padding:10px;
+	border-left:2px solid #88a2b5;
+}
+
+.noindent {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.nobullet {
+    list-style: none;
+    list-style-image: none;
+}

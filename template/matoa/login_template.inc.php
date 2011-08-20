@@ -18,7 +18,7 @@ if (!defined('INDEX_AUTH')) {
 <script type="text/javascript" src="js/updater.js"></script>
 <script type="text/javascript" src="js/gui.js"></script>
 </head>
-<body id="login-page">
+<body id="mainbody">
 <?php echo $main_content; ?>
 </body>
 </html>

@@ -170,7 +170,7 @@ if (isset($_POST['logMeIn'])) {
     <!-- Captcha in form - end -->
 
     <div class="marginTop"><input type="submit" name="logMeIn" value="Logon" id="loginButton" />
-        <input type="button" value="Home" id="homeButton" onclick="javascript: location.href = 'index.php';" />
+        <input type="button" value="Home" id="homeButton" class="button" onclick="javascript: location.href = 'index.php';" />
     </div>
     </form>
 </div>

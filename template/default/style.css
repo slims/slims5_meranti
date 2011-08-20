@@ -7,7 +7,14 @@ body {
   color: #333;
   background:url('images/page-bg.png') #FFF repeat-x 0 257px;
   margin:0 0 15px;
- }
+}
+
+body#login-page {
+  font: 12px Arial;
+  color: #333;
+  background:url('images/page-bg.png') #fff repeat-x;
+  margin:0 0 15px;
+}
 
 h1, h2, h3, h4 {
   font-family: Helvetica, Arial, "Lucida Grande", Verdana, sans-serif; 
@@ -15,7 +22,7 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-  font-size: 200%; 
+  font-size: 150%; 
 }
 
 h2 {
@@ -676,4 +683,6 @@ div.admin-panel h3 {
   background: #003380 url(images/login-bg.png) top left no-repeat;
   width: 400px;
   margin: 0 auto;
+  text-align: center;
+  color: #fff;
 }
