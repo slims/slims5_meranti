@@ -362,15 +362,17 @@ if (!$is_member_login) {
         $_loan_list->table_header_attr = 'class="dataListHeader" style="font-weight: bold;"';
         $_loan_list->using_AJAX = false;
         // return the result
-        $_result = $_loan_list->createDataGrid($dbs, $_table_spec, $num_recs_show);
+        $_result = '<form name="memberBasketListForm" id="memberBasketListForm" action="index.php?p=member" method="post">'."\n";
+        $_datagrid .= $_loan_list->createDataGrid($dbs, $_table_spec, $num_recs_show);
         if ($_loan_list->num_rows > 0) {
             $_actions = '<div class="memberBasketAction">';
             $_actions .= '<a href="index.php?p=member" class="basket reserve">'.__('Reserve title(s) on Basket').'</a> :: ';
             $_actions .= '<a href="index.php?p=member" class="basket clearAll" postdata="clear_biblio=1">'.__('Clear Basket').'</a> :: ';
             $_actions .= '<a href="index.php?p=member" class="basket clear">'.__('Remove selected title(s) from Basket').'</a>';
             $_actions .= '</div>';
-            $_result = '<div class="memberBasketInfo">'.$_loan_list->num_rows.' '.__('title(s) on basket').$_actions.'</div>'."\n".$_result;
+            $_result .= '<div class="memberBasketInfo">'.$_loan_list->num_rows.' '.__('title(s) on basket').$_actions.'</div>'."\n".$_datagrid;
         }
+		$_result .= "\n</form>";
 
         return $_result;
     }
@@ -570,7 +572,13 @@ if (!$is_member_login) {
         }
     }
 
-
+    // biblio basket item removal process
+    if (isset($_POST['basketRemove']) && isset($_POST['basket']) && count($_POST['basket']) > 0) {
+        foreach ($_POST['basket'] as $basket_item) {
+			unset($_SESSION['m_mark_biblio'][$basket_item]);
+		}
+    }
+	
     // biblio basket clear process
     if (isset($_POST['clear_biblio'])) {
         $_SESSION['m_mark_biblio'] = array();
@@ -611,6 +619,24 @@ if (!$is_member_login) {
                 });
             }
         });
+		
+		$('.clear').click(function(evt) {
+            evt.preventDefault();
+			var basketForm = $('#memberBasketListForm');
+			var basketData = basketForm.serialize() + '&basketRemove=1';
+            // get anchor href
+            var basketAction = basketForm.attr('action');
+            if (confirm('Remove selected title(s) from basket?')) {
+                // send ajax
+                $.ajax({ type: 'POST',
+                  url: basketAction, cache: false, data: basketData, async: false,
+                  success: function(ajaxRespond) {
+                    alert('Selected basket data removed!');
+                    window.location.href = 'index.php?p=member';
+                  }
+                });
+            }
+		});
 
         $('.reserve').click(function(evt) {
             evt.preventDefault();
