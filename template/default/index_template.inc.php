@@ -32,13 +32,31 @@ if (!defined('INDEX_AUTH')) {
 </head>
 
 <body class="not-front logged-in page-node node-type-page one-sidebar sidebar-left">
+
+<?php
+if (!isset($_GET['p'])) {
+    $p = 'home';
+} else {
+    if ($_GET['p'] == 'libinfo') {
+        $p = 'libinfo';
+    } elseif ($_GET['p'] == 'help') {
+        $p = 'help';
+    } elseif ($_GET['p'] == 'member') {
+        $p = 'member';
+    } elseif ($_GET['p'] == 'login') {
+        $p = 'login';
+    } else {
+        $p = 'home';
+    }
+}
+?>
 <div id="primary">
     <ul class="links" id="navlist">
-	<li class="active-trail first last active"><a href="index.php" title="Homepage" class="active"><span><?php echo __('Home'); ?></span></a></li>
-    <li><a href="index.php?p=libinfo"><span><?php echo __('Library Information'); ?></span></a></li>
-    <li><a href="index.php?p=help"><span><?php echo __('Help on Search'); ?></span></a></li>
-    <li><a href="index.php?p=member"><span><?php echo __('Member Area'); ?></span></a></li>
-    <li><a href="index.php?p=login"><span><?php echo __('Librarian LOGIN'); ?></span></a></li>
+	<li <?php if ($p == 'home') {echo 'class="active-trail first last active"';} ?> ><a href="index.php" title="Homepage" <?php if ($p == 'home') {echo ' class="active"';} ?> ><span><?php echo __('Home'); ?></span></a></li>
+    <li <?php if ($p == 'libinfo') {echo 'class="active-trail first last active"';} ?> ><a href="index.php?p=libinfo" <?php if ($p == 'libinfo') {echo ' class="active"';} ?> ><span><?php echo __('Library Information'); ?></span></a></li>
+    <li <?php if ($p == 'help') {echo 'class="active-trail first last active"';} ?> ><a href="index.php?p=help" <?php if ($p == 'help') {echo ' class="active"';} ?> ><span><?php echo __('Help on Search'); ?></span></a></li>
+    <li <?php if ($p == 'member') {echo 'class="active-trail first last active"';} ?> ><a href="index.php?p=member" <?php if ($p == 'member') {echo ' class="active"';} ?> ><span><?php echo __('Member Area'); ?></span></a></li>
+    <li <?php if ($p == 'login') {echo 'class="active-trail first last active"';} ?> ><a href="index.php?p=login" <?php if ($p == 'login') {echo ' class="active"';} ?> ><span><?php echo __('Librarian LOGIN'); ?></span></a></li>
 	</ul>
 </div>
 
