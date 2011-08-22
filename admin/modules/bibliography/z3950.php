@@ -52,7 +52,6 @@ if (isset($_GET['z3950_source'])) {
     $zserver[] = 'z3950.loc.gov:7090/voyager';
 }
 
-
 /* RECORD OPERATION */
 if (isset($_POST['saveZ']) AND isset($_SESSION['z3950result'])) {
     require MODULES_BASE_DIR.'bibliography/biblio_utils.inc.php';
@@ -192,7 +191,7 @@ if (isset($_GET['keywords']) AND $can_read) {
         for ($h = 0; $h < $num_hosts; $h++) {
             $id[] = yaz_connect($zserver[$h]);
             yaz_syntax($id[$h], 'usmarc');
-            yaz_range($id[$h], 1, 20);
+            yaz_range($id[$h], 1, $sysconf['z3950_max_result']);
             yaz_search($id[$h], 'rpn', $query);
         }
         yaz_wait();
@@ -210,7 +209,7 @@ if (isset($_GET['keywords']) AND $can_read) {
                 // number of results
                 $hits = yaz_hits($id[$h]);
             }
-            for ($rnum = 1; $rnum <= 20; $rnum++) {
+            for ($rnum = 1; $rnum <= $sysconf['z3950_max_result']; $rnum++) {
                 $rec = yaz_record($id[$h], $rnum, 'xml; charset=marc-8,utf-8');
                 if (empty($rec)) continue;
                 echo $rec;
@@ -222,7 +221,7 @@ if (isset($_GET['keywords']) AND $can_read) {
         // echo htmlentities($xml_result_string);
 
         if ($hits > 0) {
-            echo '<div class="infoBox">Found '.$hits.' records from Z3950 Server, only 20 listed.</div>';
+            echo '<div class="infoBox">Found '.$hits.' records from Z3950 Server, '.$sysconf['z3950_max_result'].' listed.</div>';
             // parse XML
             $xmlrec = marcXMLsenayan($xml_result_string);
             // save it to session vars for retrieving later
@@ -271,7 +270,7 @@ if (isset($_GET['keywords']) AND $can_read) {
     <form name="search" id="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/z3950.php" loadcontainer="searchResult" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" id="keywords" size="30" />
     <select name="field"><option value="isbn"><?php echo __('ISBN/ISSN'); ?></option><option value="ti"><?php echo __('Title/Series Title'); ?></option><option value="au"><?php echo __('Authors'); ?></option></select>
-    <?php echo __('Server'); ?>: <select name="z3950_source" style="width: 20%;"><?php foreach ($sysconf['z3950_source'] as $serverid => $z3950_source) { echo '<option value="'.$serverid.'">'.$z3950_source['name'].'</option>';  } ?></select>
+    <?php echo __('Server'); ?>: <select name="z3950_source" style="width: 20%;"><?php foreach ($sysconf['z3950_source'] as $serverid => $z3950_source) { echo '<option value="'.$z3950_source['uri'].'">'.$z3950_source['name'].'</option>';  } ?></select>
     <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
     <div><?php echo __('* Please make sure you have a working Internet connection.'); ?></div>

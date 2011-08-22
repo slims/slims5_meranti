@@ -318,6 +318,7 @@ $sysconf['ucs']['auto_insert'] = false;
 /**
  * Z39.50 copy cataloguing sources
  */
+$sysconf['z3950_max_result'] = 50;
 $sysconf['z3950_source'][1] = array('uri' => 'z3950.loc.gov:7090/voyager', 'name' => 'Library of Congress Voyager');
 
 /**
