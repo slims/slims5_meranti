@@ -199,6 +199,11 @@ a {
   background: url(media/data-list-hover.png) center center;
 }
 
+.dataListHeader .pagingList a {
+  display: inline;
+  text-decoration: underline;
+}
+
 /* printed tabular data styles */
 .alterCellPrinted, .alterCellPrinted2 {
   color: #000;
