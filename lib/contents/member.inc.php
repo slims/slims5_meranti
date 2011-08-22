@@ -24,7 +24,7 @@
 // be sure that this file not accessed directly
 if (!defined('INDEX_AUTH')) {
     die("can not access this file directly");
-} elseif (INDEX_AUTH != 1) { 
+} elseif (INDEX_AUTH != 1) {
     die("can not access this file directly");
 }
 
@@ -82,7 +82,7 @@ if (isset($_POST['logMeIn']) && !$is_member_login) {
             }
         }
         # <!-- Captcha form processing - end -->
-			
+
         // regenerate session ID to prevent session hijacking
         session_regenerate_id(true);
         // create logon class instance
@@ -113,7 +113,7 @@ if (!$is_member_login) {
 	<?php
 	// captcha invalid warning
 	if (isset($_GET['captchaInvalid']) && $_GET['captchaInvalid'] === 'true') {
-		echo '<div class="errorBox">'.__('Wrong Captcha Code entered, Please write the right code!').'</div>';	
+		echo '<div class="errorBox">'.__('Wrong Captcha Code entered, Please write the right code!').'</div>';
 	}
 	?>
     <div class="loginInfo"><?php echo __('Please insert your member ID and password given by library system administrator. If you are library\'s member and don\'t have a password yet, please contact library staff.'); ?></div>
@@ -159,15 +159,15 @@ if (!$is_member_login) {
       ?>
       </div>
       <!-- <div><input type="text" name="captcha_code" id="captcha-form" style="width: 80%;" /></div> -->
-    <?php 
+    <?php
       } elseif ($sysconf['captcha']['member']['type'] == "others") {
 
       }
       #debugging
       #echo SENAYAN_WEB_ROOT_DIR.'lib/'.$sysconf['captcha']['folder'].'/'.$sysconf['captcha']['webfile'];
     } ?>
-    </div>        
-    <!-- Captcha in form - end -->    
+    </div>
+    <!-- Captcha in form - end -->
     <div class="marginTop"><input type="submit" name="logMeIn" value="<?php echo __('Login'); ?>" />
     </div>
     </form>
@@ -308,7 +308,7 @@ if (!$is_member_login) {
 		// additional recipient
 		if (isset($sysconf['mail']['add_recipients'])) {
 			foreach ($sysconf['mail']['add_recipients'] as $_recps) {
-				$_mail->AddAddress($_recps['from'], $_recps['from_name']);				
+				$_mail->AddAddress($_recps['from'], $_recps['from_name']);
 			}
 		}
         $_mail->Subject = 'Reservation request from Member '.$_SESSION['m_name'].' ('.$_SESSION['m_email'].')';
@@ -363,7 +363,7 @@ if (!$is_member_login) {
         $_loan_list->using_AJAX = false;
         // return the result
         $_result = '<form name="memberBasketListForm" id="memberBasketListForm" action="index.php?p=member" method="post">'."\n";
-        $_datagrid .= $_loan_list->createDataGrid($dbs, $_table_spec, $num_recs_show);
+        $_datagrid = $_loan_list->createDataGrid($dbs, $_table_spec, $num_recs_show);
         if ($_loan_list->num_rows > 0) {
             $_actions = '<div class="memberBasketAction">';
             $_actions .= '<a href="index.php?p=member" class="basket reserve">'.__('Reserve title(s) on Basket').'</a> :: ';
@@ -578,7 +578,7 @@ if (!$is_member_login) {
 			unset($_SESSION['m_mark_biblio'][$basket_item]);
 		}
     }
-	
+
     // biblio basket clear process
     if (isset($_POST['clear_biblio'])) {
         $_SESSION['m_mark_biblio'] = array();
@@ -619,7 +619,7 @@ if (!$is_member_login) {
                 });
             }
         });
-		
+
 		$('.clear').click(function(evt) {
             evt.preventDefault();
 			var basketForm = $('#memberBasketListForm');
