@@ -33,8 +33,8 @@ class module extends simbio
     private $modules_dir = 'modules';
     private $module_table = 'mst_module';
     public $module_list = array();
-    public $appended_first = '<li><a class="menu home" href="index.php">Home</a></li><li><a class="menu opac" href="../index.php" title="View OPAC in New Window" target="_blank">OPAC</a></li>';
-    public $appended_last = '<li><a class="menu logout" href="logout.php">LOGOUT</a></li>';
+    public $appended_first = '<li><a class="menu home" href="index.php"><span>Home</a></li><li><a class="menu opac" href="../index.php" title="View OPAC in New Window" target="_blank"><span>OPAC</span></a></li>';
+    public $appended_last = '<li><a class="menu logout" href="logout.php"><span>LOGOUT</span></a></li>';
 
 
     /**
@@ -72,7 +72,7 @@ class module extends simbio
                 $_formated_module_name = ucwords(str_replace('_', ' ', $_module['name']));
                 $_mod_dir = $_module['path'];
                 if (isset($_SESSION['priv'][$_module['path']]['r']) && $_SESSION['priv'][$_module['path']]['r'] && file_exists($this->modules_dir.$_mod_dir)) {
-                    $_menu .= '<li><a class="menu '.$_module['name'].( (isset($_GET['mod']) && $_GET['mod']==$_module['path'])?' menuCurrent':'' ).'" title="'.$_module['desc'].'" href="index.php?mod='.$_mod_dir.'">'.__($_formated_module_name).'</a></li>';
+                    $_menu .= '<li><a class="menu '.$_module['name'].( (isset($_GET['mod']) && $_GET['mod']==$_module['path'])?' menuCurrent':'' ).'" title="'.$_module['desc'].'" href="index.php?mod='.$_mod_dir.'"><span>'.__($_formated_module_name).'</span></a></li>';
                 }
             }
         }
@@ -106,7 +106,7 @@ class module extends simbio
             } else {
                 $_submenu .= '<a class="subMenuItem" '
                     .' href="'.$_list[1].'"'
-                    .' title="'.( isset($_list[2])?$_list[2]:$_list[0] ).'" href="#">'.$_list[0].'</a>';
+                    .' title="'.( isset($_list[2])?$_list[2]:$_list[0] ).'" href="#"><span>'.$_list[0].'</span></a>';
             }
         }
         $_submenu .= '&nbsp;';
