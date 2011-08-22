@@ -139,6 +139,16 @@ Version 3.
 </div>
 </div>
 
+<div class="block block-user" id="block-user-1">
+<h2 class="title">Award</h2>
+<div class="content">
+The Winner in the Category of OSS<br />
+  <img src="template/matoa/images/logo-inaicta.png"
+            alt="Indonesia ICT Award 2009" border="0" /></div>
+</div>
+
+
+
 </div><!--sidebars-->
 
 </div><!-- end sidearea -->

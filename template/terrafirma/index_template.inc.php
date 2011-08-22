@@ -193,7 +193,7 @@
         <h3>Award</h3>
         <p align="center">
         The Winner in the Category of OSS
-        <img src="template/default/media/logo-inaicta.png"
+        <img src="template/terrafirma/images/logo-inaicta.png"
             alt="Indonesia ICT Award 2009" border="0" />
         </p>
     <!-- award -->

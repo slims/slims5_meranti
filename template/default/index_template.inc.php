@@ -119,6 +119,15 @@ if (!defined('INDEX_AUTH')) {
   <div class="content">This software and this template are released Under <a href="http://www.gnu.org/copyleft/gpl.html" title="GNU GPL License" target="_blank">GNU GPL License</a> Version 3.</div>
 </div><!-- end block -->
 
+<div class="block block-user">
+  <h2>Award</h2>
+
+  <div class="content">The Winner in the Category of OSS<br />
+  <img src="template/default/images/logo-inaicta.png"
+            alt="Indonesia ICT Award 2009" border="0" /></div>
+</div><!-- end block -->
+
+
 </div><!-- end sidebar-left -->
 
 <div id="main" class="clearfix">
