@@ -34,29 +34,34 @@ if (!defined('INDEX_AUTH')) {
 <body class="not-front logged-in page-node node-type-page one-sidebar sidebar-left">
 
 <?php
-if (!isset($_GET['p'])) {
-    $p = 'home';
-} else {
-    if ($_GET['p'] == 'libinfo') {
-        $p = 'libinfo';
-    } elseif ($_GET['p'] == 'help') {
-        $p = 'help';
-    } elseif ($_GET['p'] == 'member') {
-        $p = 'member';
-    } elseif ($_GET['p'] == 'login') {
-        $p = 'login';
-    } else {
-        $p = 'home';
-    }
+$p = 'home';
+if (isset($_GET['p'])) {
+	if ($_GET['p'] == 'libinfo') {
+		$p = 'libinfo';
+	} elseif ($_GET['p'] == 'help') {
+		$p = 'help';
+	} elseif ($_GET['p'] == 'member') {
+		$p = 'member';
+	} elseif ($_GET['p'] == 'login') {
+		$p = 'login';
+	}
 }
+// menu list
+// if you want to add some menu, add array item below
+$menus['home'] = array('url' => 'index.php', 'text' => __('Home'));
+$menus['libinfo'] = array('url' => 'index.php?p=libinfo', 'text' => __('Library Information'));
+$menus['help'] = array('url' => 'index.php?p=help', 'text' => __('Help on Search'));
+$menus['member'] = array('url' => 'index.php?p=member', 'text' => __('Member Area'));
+$menus['login'] = array('url' => 'index.php?p=login', 'text' => __('Librarian LOGIN'));
 ?>
 <div id="primary">
     <ul class="links" id="navlist">
-	<li <?php if ($p == 'home') {echo 'class="active-trail first last active"';} ?> ><a href="index.php" title="Homepage" <?php if ($p == 'home') {echo ' class="active"';} ?> ><span><?php echo __('Home'); ?></span></a></li>
-    <li <?php if ($p == 'libinfo') {echo 'class="active-trail first last active"';} ?> ><a href="index.php?p=libinfo" <?php if ($p == 'libinfo') {echo ' class="active"';} ?> ><span><?php echo __('Library Information'); ?></span></a></li>
-    <li <?php if ($p == 'help') {echo 'class="active-trail first last active"';} ?> ><a href="index.php?p=help" <?php if ($p == 'help') {echo ' class="active"';} ?> ><span><?php echo __('Help on Search'); ?></span></a></li>
-    <li <?php if ($p == 'member') {echo 'class="active-trail first last active"';} ?> ><a href="index.php?p=member" <?php if ($p == 'member') {echo ' class="active"';} ?> ><span><?php echo __('Member Area'); ?></span></a></li>
-    <li <?php if ($p == 'login') {echo 'class="active-trail first last active"';} ?> ><a href="index.php?p=login" <?php if ($p == 'login') {echo ' class="active"';} ?> ><span><?php echo __('Librarian LOGIN'); ?></span></a></li>
+	<?php foreach ($menus as $path => $menu) {
+	?>
+		<li><a href="<?php echo $menu['url']; ?>" title="<?php echo $menu['text']; ?>" <?php if ($p == $path) {echo ' class="active"';} ?>><span><?php echo $menu['text']; ?></span></a></li>
+	<?php
+	}
+	?>
 	</ul>
 </div>
 
