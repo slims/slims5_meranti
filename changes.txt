@@ -41,13 +41,14 @@ SENAYAN 3 Stable 15 (Matoa)
 - Added: improve XML mods based support in SLiMS.
 - Added: Add tools for searching orphaned topic/author in masterfile module.
 - Added: Add Email support for sending notification in due date warning and overdue list (using PHPMailer Library).
-- Added: Thai language.
+- Added: Thai language support (Prasitichai เรารักในหลวง).
 - Added: 74% arabic translation.
 - Fixed: terrafirma template and language file (id_ID).
 - Fixed: AJAX circuation error on circulation transaction.
 - Fixed: birthdate exp on membership.
 - Added: update security.
 - Added: set item status to missing when finishing stocktake.
+- Added: Bengali language support (A. K. M. Nurul Alam).
 
 
 SENAYAN 3 Stable 14 (Seulanga)
