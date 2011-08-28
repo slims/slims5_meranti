@@ -139,10 +139,12 @@ CREATE TABLE IF NOT EXISTS `content` (
   `last_update` datetime NOT NULL,
   `content_ownpage` enum('1','2') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
   PRIMARY KEY  (`content_id`),
-  KEY `content_path` (`content_path`),
+  UNIQUE KEY `content_path` (`content_path`),
   FULLTEXT KEY `content_title` (`content_title`),
   FULLTEXT KEY `content_desc` (`content_desc`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+
+-- ALTER TABLE `content` ADD UNIQUE (`content_path`);
 
 --
 -- Dumping data for table `content`
