@@ -77,7 +77,7 @@ if ($file_q->num_rows > 0) {
 
         } else if (preg_match('@(image)/.+@i', $file_d['mime_type'])) {
             if ($sysconf['watermark']['enable']) {
-                $imgurl = 'lib/phpthumb/phpThumb.php?src=../../repository/'.$file_d['file_dir'].'/'.basename($file_loc);
+                $imgurl = 'lib/watermark/phpThumb.php?src=../../repository/'.$file_d['file_dir'].'/'.basename($file_loc);
                 if ($sysconf['watermark']['type'] == 'text') {
                     $imgurl .= '&fltr[]=wmt|';
                     $imgurl .= $sysconf['watermark']['text'].'|';
