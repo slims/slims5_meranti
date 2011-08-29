@@ -298,7 +298,7 @@ $sysconf['allow_pdf_download'] = true;
 
 # Image watermarking
 $sysconf['watermark']['enable'] = false;
-$sysconf['watermark']['type'] = 'image'; # text or image, but image is not yet implemented
+$sysconf['watermark']['type'] = 'image'; # 'text' or 'image'
 $sysconf['watermark']['text'] = 'Senayan Library Management System';
 $sysconf['watermark']['image'] = '../../images/default/watermark.png';
 $sysconf['watermark']['sizeoftext'] = '5'; # range 1 - 5
