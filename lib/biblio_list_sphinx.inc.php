@@ -264,7 +264,7 @@ class biblio_list extends biblio_list_model
                     break;
                 default :
 		    $_q = $_b.$_q;
-		    $_query_str .= " @(title,series) $_q";
+		    $_query_str .= " @(title,series_title) $_q";
                     break;
             }
         }
