@@ -325,6 +325,7 @@ $sysconf['z3950_source'][1] = array('uri' => 'z3950.loc.gov:7090/voyager', 'name
  * Peer to peer server config
  */
 $sysconf['p2pserver'][1] = array('uri' => 'http://127.0.0.1/s3st15_matoa', 'name' => 'SLiMS Library');
+$sysconf['p2pserver'][2] = array('uri' => 'http://krakatau.web:8080/slims/s3st15_matoa_staging', 'name' => 'SLiMS Library Staging');
 
 /**
  * User and member login method
@@ -425,8 +426,28 @@ if ($is_auto = @ini_get('session.auto_start')) { define('SESSION_AUTO_STARTED', 
 if (defined('SESSION_AUTO_STARTED')) { @session_destroy(); }
 
 // check for local sysconfig file
-if (file_exists(SENAYAN_BASE_DIR.'sysconfig.local.inc.php')) {
-    include SENAYAN_BASE_DIR.'sysconfig.local.inc.php';
+#if (file_exists(SENAYAN_BASE_DIR.'sysconfig.local.inc.php')) {
+#    include SENAYAN_BASE_DIR.'sysconfig.local.inc.php';
+#}
+
+if (defined('DB_ACCESS')) {
+    if (DB_ACCESS == 'fa') {
+        if (file_exists(SENAYAN_BASE_DIR.'sysconfig.local.fa.inc.php')) {
+            include SENAYAN_BASE_DIR.'sysconfig.local.fa.inc.php';
+        }        
+    } elseif(DB_ACCESS == 'lm') {
+        if (file_exists(SENAYAN_BASE_DIR.'sysconfig.local.inc.php')) {
+            include SENAYAN_BASE_DIR.'sysconfig.local.inc.php';
+        }
+    } else {
+        if (file_exists(SENAYAN_BASE_DIR.'sysconfig.local.inc.php')) {
+            include SENAYAN_BASE_DIR.'sysconfig.local.inc.php';
+        }
+    }
+} else {
+    if (file_exists(SENAYAN_BASE_DIR.'sysconfig.local.inc.php')) {
+        include SENAYAN_BASE_DIR.'sysconfig.local.inc.php';
+    }
 }
 
 /* DATABASE RELATED */

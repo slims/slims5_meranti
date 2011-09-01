@@ -24,6 +24,8 @@
 if (!defined('INDEX_AUTH')) {
     define('INDEX_AUTH', '1');
 }
+// key to get full database access
+define('DB_ACCESS', 'fa');
 
 require '../../../sysconfig.inc.php';
 // start the session

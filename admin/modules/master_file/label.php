@@ -22,6 +22,8 @@
 
 // key to authenticate
 define('INDEX_AUTH', '1');
+// key to get full database access
+define('DB_ACCESS', 'fa');
 
 //  main system configuration
 require '../../../sysconfig.inc.php';
