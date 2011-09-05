@@ -33,6 +33,10 @@ if (!defined('REPORT_DIRECT_INCLUDE')) {
     include SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
     include SIMBIO_BASE_DIR.'simbio_DB/simbio_dbop.inc.php';
 }
+// IP based access limitation
+require LIB_DIR.'ip_based_access.inc.php';
+do_checkIP('smc');
+do_checkIP('smc-stocktake');
 
 // privileges checking
 $can_read = utility::havePrivilege('stock_take', 'r');

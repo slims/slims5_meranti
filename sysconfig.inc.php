@@ -420,6 +420,20 @@ $sysconf['tg']['relative_url'] = '../../';
 $sysconf['tg']['docroot'] = ''; #usually use this in a virtual or alias based hosting
 $sysconf['tg']['type'] = 'phpthumb'; # phpthumb | minigalnano
 
+// IP based access limitation
+$sysconf['ipaccess']['general'] = 'all'; // donot change this unless you know what you are doing
+$sysconf['ipaccess']['opac'] = 'all'; // donot change this unless you know what you are doing
+$sysconf['ipaccess']['opac-member'] = 'all'; // donot change this unless you know what you are doing
+$sysconf['ipaccess']['smc'] = 'all';
+$sysconf['ipaccess']['smc-bibliography'] = 'all';
+$sysconf['ipaccess']['smc-circulation'] = 'all';
+$sysconf['ipaccess']['smc-membership'] = 'all';
+$sysconf['ipaccess']['smc-masterfile'] = 'all';
+$sysconf['ipaccess']['smc-stocktake'] = 'all';
+$sysconf['ipaccess']['smc-system'] = 'all';
+$sysconf['ipaccess']['smc-reporting'] = 'all';
+$sysconf['ipaccess']['smc-serialcontrol'] = 'all';
+
 // check if session is auto started and then destroy it
 if ($is_auto = @ini_get('session.auto_start')) { define('SESSION_AUTO_STARTED', $is_auto); }
 if (defined('SESSION_AUTO_STARTED')) { @session_destroy(); }

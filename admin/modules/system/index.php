@@ -32,6 +32,10 @@ if (!defined('SENAYAN_BASE_DIR')) {
     // start the session
     require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 }
+// IP based access limitation
+require LIB_DIR.'ip_based_access.inc.php';
+do_checkIP('smc');
+do_checkIP('smc-system');
 
 // only administrator have privileges to change global settings
 if ($_SESSION['uid'] != 1) {

@@ -25,6 +25,10 @@ define('INDEX_AUTH', '1');
 
 // main system configuration
 require '../../../sysconfig.inc.php';
+// IP based access limitation
+require LIB_DIR.'ip_based_access.inc.php';
+do_checkIP('smc');
+do_checkIP('smc-bibliography');
 
 // check if UCS is enabled or not
 if (!$sysconf['ucs']['enable']) {

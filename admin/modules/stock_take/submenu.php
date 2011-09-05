@@ -19,6 +19,9 @@
  */
 
 /* Stock Take module submenu items */
+// IP based access limitation
+do_checkIP('smc');
+do_checkIP('smc-stocktake');
 
 $menu[] = array('Header', __('Stock Take'));
 $menu[] = array(__('Stock Take History'), MODULES_WEB_ROOT_DIR.'stock_take/index.php', __('View Stock Take History'));

@@ -19,6 +19,9 @@
  */
 
 /* Membership module submenu items */
+// IP based access limitation
+do_checkIP('smc');
+do_checkIP('smc-membership');
 
 $menu[] = array('Header', __('Membership'));
 $menu[] = array(__('View Member List'), MODULES_WEB_ROOT_DIR.'membership/index.php', __('View Library Member List'));

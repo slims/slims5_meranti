@@ -28,6 +28,9 @@ if (!defined('INDEX_AUTH')) {
     die("can not access this file directly");
 }
 
+// IP based access limitation
+do_checkIP('opac');
+do_checkIP('opac-member');
 // required file
 require LIB_DIR.'member_logon.inc.php';
 // check if member already logged in

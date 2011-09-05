@@ -19,6 +19,9 @@
  */
 
 /* Circulation module submenu items */
+// IP based access limitation
+do_checkIP('smc');
+do_checkIP('smc-circulation');
 
 $menu[] = array('Header', __('Circulation'));
 $menu[] = array(__('Start Transaction'), MODULES_WEB_ROOT_DIR.'circulation/index.php?action=start', __('Start Circulation Transaction Proccess'));

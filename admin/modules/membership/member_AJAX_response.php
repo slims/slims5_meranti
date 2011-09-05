@@ -23,6 +23,10 @@ define('INDEX_AUTH', '1');
 
 sleep(1);
 require '../../../sysconfig.inc.php';
+// IP based access limitation
+require LIB_DIR.'ip_based_access.inc.php';
+do_checkIP('smc');
+do_checkIP('smc-membership');
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 
 // privileges checking

@@ -19,6 +19,9 @@
  */
 
 /* Membership module submenu items */
+// IP based access limitation
+do_checkIP('smc');
+do_checkIP('smc-system');
 
 $menu[] = array('Header', __('System'));
 // only administrator have privileges for below menus

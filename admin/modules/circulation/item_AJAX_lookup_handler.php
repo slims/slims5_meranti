@@ -26,6 +26,10 @@ A Handler script for Item data AJAX Lookup
 define('INDEX_AUTH', '1');
 
 require '../../../sysconfig.inc.php';
+// IP based access limitation
+require LIB_DIR.'ip_based_access.inc.php';
+do_checkIP('smc');
+do_checkIP('smc-circulation');
 // session checking
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';

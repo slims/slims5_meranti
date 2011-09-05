@@ -19,6 +19,9 @@
  */
 
 /* Master File module submenu items */
+// IP based access limitation
+do_checkIP('smc');
+do_checkIP('smc-masterfile');
 
 $menu[] = array('Header', __('Authority Files'));
 $menu[] = array(__('GMD'), MODULES_WEB_ROOT_DIR.'master_file/index.php', __('General Material Designation'));

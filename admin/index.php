@@ -25,6 +25,9 @@ define('INDEX_AUTH', '1');
 
 // required file
 require '../sysconfig.inc.php';
+// IP based access limitation
+require LIB_DIR.'ip_based_access.inc.php';
+do_checkIP('smc');
 // start the session
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 // session checking

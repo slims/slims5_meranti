@@ -19,6 +19,9 @@
  */
 
 /* Bibliographic module submenu items */
+// IP based access limitation
+do_checkIP('smc');
+do_checkIP('smc-bibliography');
 
 $menu[] = array('Header', __('Bibliographic'));
 $menu[] = array(__('Bibliographic List'), MODULES_WEB_ROOT_DIR.'bibliography/index.php', __('Show Existing Bibliographic Data'));

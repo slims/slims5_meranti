@@ -26,6 +26,10 @@ if (!defined('INDEX_AUTH')) {
 }
 
 require '../../../sysconfig.inc.php';
+// IP based access limitation
+require LIB_DIR.'ip_based_access.inc.php';
+do_checkIP('smc');
+do_checkIP('smc-circulation');
 
 // quick return
 if (isset($_POST['quickReturnID'])) {

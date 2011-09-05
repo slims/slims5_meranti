@@ -28,6 +28,10 @@ if (!defined('SENAYAN_BASE_DIR')) {
     require '../../../sysconfig.inc.php';
     require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 }
+// IP based access limitation
+require LIB_DIR.'ip_based_access.inc.php';
+do_checkIP('smc');
+do_checkIP('smc-system');
 
 require SIMBIO_BASE_DIR.'simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/template_parser/simbio_template_parser.inc.php';

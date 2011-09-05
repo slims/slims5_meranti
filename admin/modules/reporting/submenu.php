@@ -19,7 +19,9 @@
  */
 
 /* Reporting module submenu items */
-
+// IP based access limitation
+do_checkIP('smc');
+do_checkIP('smc-reporting');
 $menu[] = array('Header', __('Reporting'));
 $menu[] = array(__('Collection Statistic'), MODULES_WEB_ROOT_DIR.'reporting/index.php', __('View Library Collection Statistic'));
 $menu[] = array(__('Loan Report'), MODULES_WEB_ROOT_DIR.'reporting/loan_report.php', __('View Library Loan Report'));
