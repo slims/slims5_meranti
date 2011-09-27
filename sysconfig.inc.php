@@ -438,11 +438,15 @@ $sysconf['ipaccess']['smc-serialcontrol'] = 'all';
 if ($is_auto = @ini_get('session.auto_start')) { define('SESSION_AUTO_STARTED', $is_auto); }
 if (defined('SESSION_AUTO_STARTED')) { @session_destroy(); }
 
-// check for local sysconfig file
-if (file_exists(SENAYAN_BASE_DIR.'sysconfig.local.inc.php')) { include SENAYAN_BASE_DIR.'sysconfig.local.inc.php'; }
+
 // check for local sysconfig For Admin (fa) file
-if (defined('DB_ACCESS')) {
-    if (DB_ACCESS == 'fa' && file_exists(SENAYAN_BASE_DIR.'sysconfig.local.fa.inc.php')) { include SENAYAN_BASE_DIR.'sysconfig.local.fa.inc.php'; }
+if (defined('DB_ACCESS') && DB_ACCESS == 'fa' && file_exists(SENAYAN_BASE_DIR.'sysconfig.local.fa.inc.php')) {
+  include SENAYAN_BASE_DIR.'sysconfig.local.fa.inc.php';
+} else {
+  // check for local sysconfig file
+  if (file_exists(SENAYAN_BASE_DIR.'sysconfig.local.inc.php')) {
+    include SENAYAN_BASE_DIR.'sysconfig.local.inc.php';
+  }
 }
 
 /* DATABASE RELATED */
