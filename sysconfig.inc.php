@@ -439,24 +439,10 @@ if ($is_auto = @ini_get('session.auto_start')) { define('SESSION_AUTO_STARTED', 
 if (defined('SESSION_AUTO_STARTED')) { @session_destroy(); }
 
 // check for local sysconfig file
+if (file_exists(SENAYAN_BASE_DIR.'sysconfig.local.inc.php')) { include SENAYAN_BASE_DIR.'sysconfig.local.inc.php'; }
+// check for local sysconfig For Admin (fa) file
 if (defined('DB_ACCESS')) {
-    if (DB_ACCESS == 'fa') {
-        if (file_exists(SENAYAN_BASE_DIR.'sysconfig.local.fa.inc.php')) {
-            include SENAYAN_BASE_DIR.'sysconfig.local.fa.inc.php';
-        }        
-    } elseif(DB_ACCESS == 'lm') {
-        if (file_exists(SENAYAN_BASE_DIR.'sysconfig.local.inc.php')) {
-            include SENAYAN_BASE_DIR.'sysconfig.local.inc.php';
-        }
-    } else {
-        if (file_exists(SENAYAN_BASE_DIR.'sysconfig.local.inc.php')) {
-            include SENAYAN_BASE_DIR.'sysconfig.local.inc.php';
-        }
-    }
-} else {
-    if (file_exists(SENAYAN_BASE_DIR.'sysconfig.local.inc.php')) {
-        include SENAYAN_BASE_DIR.'sysconfig.local.inc.php';
-    }
+    if (DB_ACCESS == 'fa' && file_exists(SENAYAN_BASE_DIR.'sysconfig.local.fa.inc.php')) { include SENAYAN_BASE_DIR.'sysconfig.local.fa.inc.php'; }
 }
 
 /* DATABASE RELATED */

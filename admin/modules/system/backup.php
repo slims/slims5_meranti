@@ -33,6 +33,12 @@ do_checkIP('smc-system');
 // start the session
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
+require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
+require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging.inc.php';
+require SIMBIO_BASE_DIR.'simbio_DB/datagrid/simbio_dbgrid.inc.php';
+
+// create token in session
+$_SESSION['token'] = utility::createRandomString(32);
 
 // privileges checking
 $can_read = utility::havePrivilege('system', 'r');
@@ -45,14 +51,47 @@ if (!($can_read AND $can_write)) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner backupIcon">
-    <?php echo strtoupper(__('Database Backup')); ?> - <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>/system/backup_proc.php" postdata="start=true" loadcontainer="backupStat" class="headerText2"><?php echo __('Start New Backup'); ?></a>
+    <?php echo strtoupper(__('Database Backup')); ?> - <input type="button" onclick="$('#createBackup').submit()" class="button notAJAX" value="<?php echo __('Start New Backup'); ?>" />
     <hr />
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>system/backup_proc.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
     <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
+    <form name="createBackup" id="createBackup" target="blindSubmit" action="<?php echo MODULES_WEB_ROOT_DIR; ?>system/backup_proc.php" method="post" style="display: inline; visibility: hidden;">
+    <input type="hidden" name="start" value="true" />
+    <input type="hidden" name="tkn" value="<?php echo $_SESSION['token']; ?>" />
+    </form>
 </div>
 </fieldset>
-<div id="backupStat">
-<?php require 'backup_proc.php'; ?>
-</div>
+<?php
+/* BACKUP LOG LIST */
+// table spec
+$table_spec = 'backup_log AS bl LEFT JOIN user AS u ON bl.user_id=u.user_id';
+
+// create datagrid
+$datagrid = new simbio_datagrid();
+$datagrid->setSQLColumn('u.realname AS \'Backup Executor\'', 'bl.backup_time AS \'Backup Time\'', 'bl.backup_file AS \'Backup File Location\'');
+$datagrid->setSQLorder('backup_time DESC');
+
+// is there any search
+if (isset($_GET['keywords']) AND $_GET['keywords']) {
+   $keywords = $dbs->escape_string($_GET['keywords']);
+   $datagrid->setSQLCriteria("bl.backup_time LIKE '%$keywords%' OR bl.backup_file LIKE '%$keywords%'");
+}
+
+// set table and table header attributes
+$datagrid->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
+$datagrid->table_header_attr = 'class="dataListHeader" style="font-weight: bold;"';
+// set delete proccess URL
+$datagrid->delete_URL = $_SERVER['PHP_SELF'];
+
+// put the result into variables
+$datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, false);
+
+if (isset($_GET['keywords']) AND $_GET['keywords']) {
+    $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
+    echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
+}
+
+echo $datagrid_result;
+?>
