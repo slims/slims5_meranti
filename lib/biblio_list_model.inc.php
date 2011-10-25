@@ -255,7 +255,7 @@ abstract class biblio_list_model
                             // total available
                             $_total_avail = $_item_c[0]-$_borrowed_c[0];
                             if ($_total_avail < 1) {
-                                $_buffer .= '<div class="customField availabilityField"><b>'.$_field_opts[1].'</b> : <strong style="color: #f00;">'.$this->item_availability_message.'</strong></div>';
+                                $_buffer .= '<div class="customField availabilityField"><b>'.$_field_opts[1].'</b> : <strong style="color: #f00;">'.__('none copy available').'</strong></div>';
                             } else {
                                 $this->item_availability_message = $_total_avail.' copies available for loan';
                                 $_buffer .= '<div class="customField availabilityField"><b>'.$_field_opts[1].'</b> : '.$this->item_availability_message.'</div>';
