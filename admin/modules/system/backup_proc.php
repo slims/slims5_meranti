@@ -47,15 +47,22 @@ $can_write = utility::havePrivilege('system', 'w');
 if (!($can_read AND $can_write)) {
     die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
 }
+
+$mysqldump_status = file_exists($sysconf['mysqldump']);
+if (!$mysqldump_status) {
+    die('<div class="errorBox">'.__('The PATH for mysqldump program is NOT RIGHT!<br />Please check your configuration file again for mysqldump path var').'</div>');
+}
+
 // if backup process is invoked
 if (isset($_POST['start'])) {
+    sleep(2);
     $output = '';
     // turn on implicit flush
     ob_implicit_flush();
     // checking if the binary can be executed
     exec($sysconf['mysqldump'], $outputs, $status);
     if ($status == BINARY_NOT_FOUND) {
-        $output = 'The PATH for mysqldump program is NOT RIGHT!<br />Please check your configuration file again for mysqldump path vars';
+        $output = 'The PATH for mysqldump program is NOT RIGHT!<br />Please check your configuration file again for mysqldump path var';
     } else {
         // checking are the backup directory is exists and writable
         if (file_exists($sysconf['backup_dir']) AND is_writable($sysconf['backup_dir'])) {
@@ -63,7 +70,7 @@ if (isset($_POST['start'])) {
             $time2append = (date('Ymd_His'));
             // execute the backup process
             exec($sysconf['mysqldump'].' -B '.DB_NAME.' --no-create-db --quick --user='.DB_USERNAME.' --password='.DB_PASSWORD.' > '.$sysconf['backup_dir'].DIRECTORY_SEPARATOR.'backup_'.$time2append.'.sql', $outputs, $status);
-            if ($status == COMMAND_SUCCESS) {
+			if ($status == COMMAND_SUCCESS || $status == 1) {
                 $data['user_id'] = $_SESSION['uid'];
                 $data['backup_time'] = date('Y-m-d H:i"s');
                 $data['backup_file'] = $dbs->escape_string($sysconf['backup_dir'].'backup_'.$time2append.'.sql');
@@ -99,6 +106,9 @@ if (isset($_POST['start'])) {
     }
 
     echo '<div class="infoBox">'.$output.'</div>';
+	
+	// prevent from multiple backup execution
+	unset($_POST['start']);
 }
 
 /* BACKUP LOG LIST */

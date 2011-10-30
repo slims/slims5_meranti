@@ -41,6 +41,10 @@ $can_write = utility::havePrivilege('system', 'w');
 if (!($can_read AND $can_write)) {
     die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
 }
+
+// prevent from multiple backup execution
+if (isset($_POST['start'])) { unset($_POST['start']); }
+
 /* search form */
 ?>
 <fieldset class="menuBox">
