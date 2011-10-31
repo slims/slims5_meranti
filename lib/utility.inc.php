@@ -31,6 +31,23 @@ if (!defined('INDEX_AUTH')) {
 class utility
 {
     /**
+     * Static Method to create random string
+     *
+     * @param   int     length of random string to produce
+     * @return  string
+     */
+    public static function createRandomString($int_string_length = 10) {
+        $_str = '';
+        $_chars = '_abcdefghijklmnopqrstuvxyz0123456789ABCDEFGHIJKLMNOPQRSTUVXYZ_';
+
+        for($i = 0; $i <= $int_string_length; $i++) {
+          $_str .= $_chars[mt_rand(0,61)];
+        }
+        return $_str;
+    }
+
+
+    /**
      * Static Method to send out javascript alert
      *
      * @param   string  $str_message
@@ -282,7 +299,7 @@ class utility
                 $mix_input = filter_input(INPUT_GET, $mix_input);
             }
         }
-        
+
         // trim whitespace on string
         if ($bool_trim) { $mix_input = trim($mix_input); }
         // strip html

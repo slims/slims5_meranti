@@ -22,22 +22,19 @@
 // key to get full database access
 define('DB_ACCESS', 'fa');
 
+// key to authenticate
+define('INDEX_AUTH', '1');
+
 // main system configuration
-if (!defined('SENAYAN_BASE_DIR')) {
-    define('INDEX_AUTH', '1');
-    require '../../../sysconfig.inc.php';
-    require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
-}
+require '../../../sysconfig.inc.php';
+
 // IP based access limitation
 require LIB_DIR.'ip_based_access.inc.php';
 do_checkIP('smc');
 do_checkIP('smc-system');
 
-require SIMBIO_BASE_DIR.'simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php';
-require SIMBIO_BASE_DIR.'simbio_GUI/template_parser/simbio_template_parser.inc.php';
-require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
-require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging.inc.php';
-require SIMBIO_BASE_DIR.'simbio_DB/datagrid/simbio_dbgrid.inc.php';
+require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
+require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/simbio_dbop.inc.php';
 
 // privileges checking
@@ -48,21 +45,16 @@ if (!($can_read AND $can_write)) {
     die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
 }
 
-$mysqldump_status = file_exists($sysconf['mysqldump']);
-if (!$mysqldump_status) {
-    die('<div class="errorBox">'.__('The PATH for mysqldump program is NOT RIGHT!<br />Please check your configuration file again for mysqldump path var').'</div>');
-}
-
 // if backup process is invoked
-if (isset($_POST['start'])) {
-    sleep(2);
+if (isset($_POST['start']) && isset($_POST['tkn']) && $_POST['tkn'] === $_SESSION['token']) {
+	sleep(2);
     $output = '';
     // turn on implicit flush
     ob_implicit_flush();
     // checking if the binary can be executed
     exec($sysconf['mysqldump'], $outputs, $status);
     if ($status == BINARY_NOT_FOUND) {
-        $output = 'The PATH for mysqldump program is NOT RIGHT!<br />Please check your configuration file again for mysqldump path var';
+        $output = 'The PATH for mysqldump program is NOT RIGHT! Please check your configuration file again for mysqldump path vars';
     } else {
         // checking are the backup directory is exists and writable
         if (file_exists($sysconf['backup_dir']) AND is_writable($sysconf['backup_dir'])) {
@@ -74,7 +66,7 @@ if (isset($_POST['start'])) {
                 $data['user_id'] = $_SESSION['uid'];
                 $data['backup_time'] = date('Y-m-d H:i"s');
                 $data['backup_file'] = $dbs->escape_string($sysconf['backup_dir'].'backup_'.$time2append.'.sql');
-                $output = 'Backup SUCCESSFUL, backup files saved to '.$sysconf['backup_dir'].'!'."<br />\n";
+                $output = 'Backup SUCCESSFUL, backup files saved to '.$sysconf['backup_dir'].'!';
 
                 if (!preg_match('@^WIN.*@i', PHP_OS)) {
                     // get current directory path
@@ -86,7 +78,7 @@ if (isset($_POST['start'])) {
                     if ($status == COMMAND_SUCCESS) {
                         // delete the original file
                         @unlink($data['backup_file']);
-                        $output .= "File is compressed using tar gz archive format <br />\n";
+                        $output .= "File is compressed using tar gz archive format";
                         $data['backup_file'] = $dbs->escape_string($sysconf['backup_dir'].'backup_'.$time2append.'.sql.tar.gz');
                     }
                     // return to previous PHP working dir
@@ -97,48 +89,18 @@ if (isset($_POST['start'])) {
                 $sql_op = new simbio_dbop($dbs);
                 $sql_op->insert('backup_log', $data);
             } else if ($status == COMMAND_FAILED) {
-                $output = 'Backup FAILED! Wrong user or password to connect to database server!'."\n";
+                $output = 'Backup FAILED! Wrong user or password to connect to database server!';
             }
         } else {
-            $output = "Backup FAILED! The Backup directory is not exists or not writeable<br />\n";
-            $output .= "Contact System Administrator for the right path of backup directory\n";
+            $output = "Backup FAILED! The Backup directory is not exists or not writeable";
+            $output .= "Contact System Administrator for the right path of backup directory";
         }
     }
 
-    echo '<div class="infoBox">'.$output.'</div>';
-	
-	// prevent from multiple backup execution
-	unset($_POST['start']);
+    // remove token
+    unset($_SESSION['token']);
+    echo '<script type="text/javascript">top.alert(\''.$output.'\');</script>';
+    echo '<script type="text/javascript">top.$(\'#mainContent\').simbioAJAX(\''.MODULES_WEB_ROOT_DIR.'system/backup.php\');</script>';
+    exit();
 }
-
-/* BACKUP LOG LIST */
-// table spec
-$table_spec = 'backup_log AS bl LEFT JOIN user AS u ON bl.user_id=u.user_id';
-
-// create datagrid
-$datagrid = new simbio_datagrid();
-$datagrid->setSQLColumn('u.realname AS \'Backup Executor\'', 'bl.backup_time AS \'Backup Time\'', 'bl.backup_file AS \'Backup File Location\'');
-$datagrid->setSQLorder('backup_time DESC');
-
-// is there any search
-if (isset($_GET['keywords']) AND $_GET['keywords']) {
-   $keywords = $dbs->escape_string($_GET['keywords']);
-   $datagrid->setSQLCriteria("bl.backup_time LIKE '%$keywords%' OR bl.backup_file LIKE '%$keywords%'");
-}
-
-// set table and table header attributes
-$datagrid->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
-$datagrid->table_header_attr = 'class="dataListHeader" style="font-weight: bold;"';
-// set delete proccess URL
-$datagrid->delete_URL = $_SERVER['PHP_SELF'];
-
-// put the result into variables
-$datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, false);
-
-if (isset($_GET['keywords']) AND $_GET['keywords']) {
-    $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
-    echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
-}
-
-echo $datagrid_result;
 ?>

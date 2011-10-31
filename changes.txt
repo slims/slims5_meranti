@@ -49,6 +49,9 @@ SENAYAN 3 Stable 15 (Matoa)
 - Added: update security.
 - Added: set item status to missing when finishing stocktake.
 - Added: Bengali language support (A. K. M. Nurul Alam).
+- Added: two database connection (security. least privilege for database connection)
+- Added: Integrated IP based access limitation
+- Added: Security patch from Indra Sutriadi (sutriadi.web.id) to avoid barcode.php exploitation.
 
 
 SENAYAN 3 Stable 14 (Seulanga)
