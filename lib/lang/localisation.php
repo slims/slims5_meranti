@@ -68,5 +68,6 @@ $available_languages[] = array('de_DE', __('German'), 'Deutsch');
 $available_languages[] = array('en_US', __('English'), 'English');
 $available_languages[] = array('es_ES', __('Espanol'), 'Espanol');
 $available_languages[] = array('id_ID', __('Indonesian'), 'Indonesia');
+$available_languages[] = array('pt_BR', __('Brazilian Portuguese'), 'Brazilian Portuguese');
 $available_languages[] = array('th_TH', __('Thai'), 'Thai');
 ?>

@@ -29,7 +29,8 @@ require '../../../../sysconfig.inc.php';
 // IP based access limitation
 require LIB_DIR.'ip_based_access.inc.php';
 do_checkIP('smc');
-do_checkIP('smc-reporting');// start the session
+do_checkIP('smc-reporting');
+// start the session
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 // privileges checking
@@ -154,6 +155,8 @@ if (!$reportView) {
     // create datagrid
     $reportgrid = new report_datagrid();
     $reportgrid->setSQLColumn('b.biblio_id', 'b.title AS \''.__('Title').'\'', 'COUNT(item_id) AS '.__('Copies').'',
+		'pl.place_name AS \'Tempat terbit\'',
+		'pb.publisher_name AS \'Penerbit\'',
         'b.isbn_issn AS \''.__('ISBN/ISSN').'\'',
         'b.call_number AS \''.__('Call Number').'\'');
     $reportgrid->setSQLorder('b.title ASC');
@@ -226,7 +229,8 @@ if (!$reportView) {
     }
 
     // subquery/view string
-    $subquery_str = '(SELECT DISTINCT bsub.biblio_id, bsub.gmd_id, bsub.title, bsub.isbn_issn, bsub.call_number, bsub.classification, bsub.language_id
+    $subquery_str = '(SELECT DISTINCT bsub.biblio_id, bsub.gmd_id, bsub.title, bsub.isbn_issn, bsub.call_number, bsub.classification, bsub.language_id, 
+		bsub.publish_place_id, bsub.publisher_id
         FROM biblio AS bsub
         LEFT JOIN biblio_author AS ba ON bsub.biblio_id = ba.biblio_id
         LEFT JOIN mst_author AS ma ON ba.author_id = ma.author_id
@@ -235,7 +239,9 @@ if (!$reportView) {
 
     // table spec
     $table_spec = $subquery_str.' AS b
-        LEFT JOIN item AS i ON b.biblio_id=i.biblio_id';
+        LEFT JOIN item AS i ON b.biblio_id=i.biblio_id
+		LEFT JOIN mst_place AS pl ON b.publish_place_id=pl.place_id
+		LEFT JOIN mst_publisher AS pb ON b.publisher_id=pb.publisher_id';
 
     // set group by
     $reportgrid->sql_group_by = 'b.biblio_id';

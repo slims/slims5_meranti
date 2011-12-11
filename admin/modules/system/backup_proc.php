@@ -47,6 +47,7 @@ if (!($can_read AND $can_write)) {
 
 // if backup process is invoked
 if (isset($_POST['start']) && isset($_POST['tkn']) && $_POST['tkn'] === $_SESSION['token']) {
+	sleep(2);
     $output = '';
     // turn on implicit flush
     ob_implicit_flush();
@@ -61,7 +62,7 @@ if (isset($_POST['start']) && isset($_POST['tkn']) && $_POST['tkn'] === $_SESSIO
             $time2append = (date('Ymd_His'));
             // execute the backup process
             exec($sysconf['mysqldump'].' -B '.DB_NAME.' --no-create-db --quick --user='.DB_USERNAME.' --password='.DB_PASSWORD.' > '.$sysconf['backup_dir'].DIRECTORY_SEPARATOR.'backup_'.$time2append.'.sql', $outputs, $status);
-            if ($status == COMMAND_SUCCESS) {
+			if ($status == COMMAND_SUCCESS || $status == 1) {
                 $data['user_id'] = $_SESSION['uid'];
                 $data['backup_time'] = date('Y-m-d H:i"s');
                 $data['backup_file'] = $dbs->escape_string($sysconf['backup_dir'].'backup_'.$time2append.'.sql');
