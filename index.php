@@ -59,6 +59,7 @@ if (isset($_GET['p'])) {
     $path = utility::filterData('p', 'get', false, true, true);
     // some extra checking
     $path = preg_replace('@^(http|https|ftp|sftp|file|smb):@i', '', $path);
+    $path = preg_replace('@\/@i','',$path);
     // check if the file exists
     if (file_exists(LIB_DIR.'contents/'.$path.'.inc.php')) {
         include LIB_DIR.'contents/'.$path.'.inc.php';

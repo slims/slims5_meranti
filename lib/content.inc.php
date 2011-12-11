@@ -24,7 +24,7 @@
 // be sure that this file not accessed directly
 if (!defined('INDEX_AUTH')) {
     die("can not access this file directly");
-} elseif (INDEX_AUTH != 1) { 
+} elseif (INDEX_AUTH != 1) {
     die("can not access this file directly");
 }
 
@@ -35,6 +35,7 @@ class content
 
     public function get($obj_db, $str_path = '')
     {
+        global $sysconf;
         $_path = strtolower(trim($str_path));
         if (!$_path) {
             return;
@@ -46,6 +47,19 @@ class content
                 return;
             }
         }
+
+        // language
+        $_lang = strtolower($sysconf['default_lang']);
+        $_path_lang = $_path.'_'.$_lang;
+
+        // check for language
+        $_sql_check = sprintf('SELECT COUNT(*) FROM content WHERE content_path=\'%s\'', $obj_db->escape_string($_path_lang));
+        $_check_q = $obj_db->query($_sql_check);
+        $_check_d = $_check_q->fetch_row();
+        if ($_check_d[0] > 0) {
+          $_path = $_path_lang;
+        }
+
         // query content
         $_sql_content = sprintf('SELECT * FROM content WHERE content_path=\'%s\'', $obj_db->escape_string($_path));
         $_content_q = $obj_db->query($_sql_content);
