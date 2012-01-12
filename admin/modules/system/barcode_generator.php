@@ -97,7 +97,7 @@ if (isset($_POST['saveData']) AND $can_write) {
     if (count($_POST['barcode']) > 0) {
         $size = intval($_POST['size']);
         // create AJAX request
-        echo '<script type="text/javascript" src="'.JS_WEB_ROOT_DIR.'prototype.js"></script>';
+        echo '<script type="text/javascript" src="'.JS_WEB_ROOT_DIR.'jquery.js"></script>';
         echo '<script type="text/javascript">';
         foreach ($_POST['barcode'] as $barcode_text) {
             if (!empty($barcode_text)) {

@@ -61,6 +61,7 @@ function checkref($mode = 'module')
 		$ref_url = $_SERVER['HTTP_REFERER'];
 		$ref_part = (object) parse_url($ref_url);
 		$ref_host = isset($ref_part->host) ? $ref_part->host : '';
+		$ref_host .= isset($ref_part->port) ? ':' . $ref_part->port : '';
 		$ref_ip = isset($ref_part->host) ? gethostbyname($ref_host) : '';
 		$ref_path = isset($ref_part->path) ? $ref_part->path : '/';
 		$ref_dir = explode('/', $ref_path);
@@ -106,7 +107,7 @@ function checkref($mode = 'module')
 			$ref = true;
 	}
 	if ($ref !== true)
-		die(sprintf('<div>%s!</div>', 'Invalid referer'));
+		die(sprintf('<div>%s %s!</div>', $ref_admin, $dest_admin));
 	else
 		return;
 }
@@ -122,6 +123,9 @@ require "php-barcode.php";
 
 // http vars
 $code = isset($get->code) ? trim($get->code) : '1234567890';
+if (get_magic_quotes_gpc())
+	$code=stripslashes($code);
+
 $encoding = isset($get->encoding) ? trim($get->encoding) : '128';
 $scale = isset($get->scale) ? trim($get->scale) : '2';
 $mode = isset($get->mode) ? trim($get->mode) : 'png';
