@@ -25,10 +25,6 @@ define('INDEX_AUTH', '1');
 
 // main system configuration
 require '../../../sysconfig.inc.php';
-// IP based access limitation
-require LIB_DIR.'ip_based_access.inc.php';
-do_checkIP('smc');
-do_checkIP('smc-bibliography');
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 require SENAYAN_BASE_DIR.'ucnode.inc.php';
@@ -73,7 +69,8 @@ if (isset($_POST['itemID']) && !empty($_POST['itemID']) && isset($_POST['nodeOpe
     // create HTTP request
     $http_request = new http_request();
     // send HTTP POST request
-    $http_request->send_http_request($ucs['serveraddr'].'/uc-ops.php', $_SERVER['SERVER_ADDR'], $to_sent, 'POST', 'text/json');
+    $server_addr = isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : $_SERVER['LOCAL_ADDR'];
+    $http_request->send_http_request($ucs['serveraddr'].'/uc-ops.php', $server_addr, $to_sent, 'POST', 'text/json');
     // below is for debugging purpose only
     // die(json_encode(array('status' => 'RAW', 'message' => $http_request->body())));
 

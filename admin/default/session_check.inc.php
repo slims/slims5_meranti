@@ -38,7 +38,8 @@ if ($unauthorized) {
 }
 
 // checking session checksum
-$unauthorized = $_SESSION['checksum'] != md5($_SERVER['SERVER_ADDR'].SENAYAN_BASE_DIR.'admin');
+$server_addr = isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : $_SERVER['LOCAL_ADDR'];
+$unauthorized = $_SESSION['checksum'] != md5($server_addr.SENAYAN_BASE_DIR.'admin');
 if ($unauthorized) {
     $msg = '<div style="padding: 5px; border: 1px dotted #FF0000; color: #FF0000;">';
     $msg .= __('You are not authorized to view this section');

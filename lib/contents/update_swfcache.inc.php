@@ -29,7 +29,8 @@ if (!defined('INDEX_AUTH')) {
     die("can not access this file directly");
 }
 
-if ($_SERVER['SERVER_ADDR'] == '') {
+$server_addr = isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : $_SERVER['LOCAL_ADDR'];
+if ($server_addr == '') {
 
     include ('../../sysconfig.inc.php');
     mysql_connect(DB_HOST, DB_USERNAME, DB_PASSWORD);

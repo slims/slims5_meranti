@@ -39,7 +39,8 @@ if (isset($_POST['ajaxsec_passwd'])) {
 
 if (($ajaxsec_user == $sysconf['ajaxsec_user']) AND ($ajaxsec_passwd == $sysconf['ajaxsec_passwd'])) {
     if ($sysconf['ajaxsec_ip_enabled'] == '1') {
-        if ($_SERVER['SERVER_ADDR'] == $sysconf['ajaxsec_ip_allowed']) {
+		$server_addr = isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : $_SERVER['LOCAL_ADDR'];
+        if ($server_addr == $sysconf['ajaxsec_ip_allowed']) {
             die();
         }
     }

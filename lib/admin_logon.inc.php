@@ -126,7 +126,8 @@ class admin_logon
         }
 
         // save md5sum of  current application path
-        $_SESSION['checksum'] = defined('UCS_BASE_DIR')?md5($_SERVER['SERVER_ADDR'].UCS_BASE_DIR.'admin'):md5($_SERVER['SERVER_ADDR'].SENAYAN_BASE_DIR.'admin');
+        $server_addr = isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : $_SERVER['LOCAL_ADDR'];
+        $_SESSION['checksum'] = defined('UCS_BASE_DIR')?md5($server_addr.UCS_BASE_DIR.'admin'):md5($server_addr.SENAYAN_BASE_DIR.'admin');
 
         // update the last login time
         $obj_db->query("UPDATE user SET last_login='".date("Y-m-d H:i:s")."',

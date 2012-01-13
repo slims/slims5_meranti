@@ -25,10 +25,6 @@ define('INDEX_AUTH', '1');
 
 // main system configuration
 require '../../../sysconfig.inc.php';
-// IP based access limitation
-require LIB_DIR.'ip_based_access.inc.php';
-do_checkIP('smc');
-do_checkIP('smc-bibliography');
 
 // check if UCS is enabled or not
 if (!$sysconf['ucs']['enable']) {
@@ -107,7 +103,8 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID'])) {
         // create HTTP request
         $http_request = new http_request();
         // send HTTP POST request
-        $http_request->send_http_request($ucs['serveraddr'].'/ucpoll.php', $_SERVER['SERVER_ADDR'], $to_sent, 'POST', 'text/json');
+        $server_addr = isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : $_SERVER['LOCAL_ADDR'];
+        $http_request->send_http_request($ucs['serveraddr'].'/ucpoll.php', $server_addr, $to_sent, 'POST', 'text/json');
         // below is for debugging purpose only
 	// die(json_encode(array('status' => 'RAW', 'message' => $http_request->body())));
 
