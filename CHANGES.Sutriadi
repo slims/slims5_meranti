@@ -1,9 +1,0 @@
- 
-# 14.01.2012
-- menambahkan opsi $_SERVER['LOCAL_ADDR'] selain $_SERVER['SERVER_ADDR']
-  untuk kompatibilitas dengan IIS
-- membuat README.Sutriadi dan CHANGES.Sutriadi
-
-# 13.01.2012
-- mengubah semua kata prototype menjadi jQuery
-- penambahan referensi port pada fungsi checkref di library phpbarcode
