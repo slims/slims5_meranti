@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -440,7 +440,7 @@ if (isset($_POST['memberID']) OR isset($_SESSION['memberID'])) {
         // check for expire date and pending state
         if ($_SESSION['is_expire'] OR $_SESSION['is_pending']) {
             $disabled = ' disabled ';
-            $add_style = ' color: #999; border-color: #ccc;';
+            $add_style = ' disabled';
         }
         // show the member information
         echo '<table width="100%" class="border" style="margin-bottom: 5px;" cellpadding="5" cellspacing="0">'."\n";
@@ -455,11 +455,11 @@ if (isset($_POST['memberID']) OR isset($_SESSION['memberID'])) {
         echo '<td class="alterCell" width="15%"><strong>'.__('Member ID').'</strong></td><td class="alterCell2" width="30%">'.$member->member_id.'</td>';
         // member photo
         if ($member->member_image) {
-            if (file_exists(IMAGES_BASE_DIR.'persons/'.$member->member_image)) {
-                echo '<td class="alterCell2" valign="top" rowspan="3">';
-                echo '<img src="'.SENAYAN_WEB_ROOT_DIR.'lib/phpthumb/phpThumb.php?src=../../images/persons/'.urlencode($member->member_image).'&w=90" style="border: 1px solid #999999" />';
-                echo '</td>';
-            }
+          if (file_exists(IMAGES_BASE_DIR.'persons/'.$member->member_image)) {
+            echo '<td class="alterCell2" valign="top" rowspan="3">';
+            echo '<img src="'.SENAYAN_WEB_ROOT_DIR.'lib/phpthumb/phpThumb.php?src=../../images/persons/'.urlencode($member->member_image).'&w=90" style="border: 1px solid #999999" />';
+            echo '</td>';
+          }
         }
         echo '</tr>'."\n";
         echo '<tr>'."\n";
@@ -471,34 +471,33 @@ if (isset($_POST['memberID']) OR isset($_SESSION['memberID'])) {
         // give notification about expired membership and pending
         $expire_msg = '';
         if ($_SESSION['is_expire']) {
-            $expire_msg .= '<font style="color: #f00;">('.__('Membership Already Expired').')</font>';
+            $expire_msg .= '<span class="error">('.__('Membership Already Expired').')</span>';
         }
         echo '<td class="alterCell" width="15%"><strong>'.__('Expiry Date').'</strong></td><td class="alterCell2" width="30%">'.$member->expire_date.' '.$expire_msg.'</td>';
         echo '</tr>'."\n";
         // member notes and pending information
         if (!empty($member->member_notes) OR $_SESSION['is_pending']) {
-            echo '<tr>'."\n";
-            echo '<td class="alterCell" width="15%"><strong>Notes</strong></td><td class="alterCell2" colspan="4">';
-            if ($member->member_notes) {
-                echo '<div>'.$member->member_notes.'</div>';
-            }
-            if ($_SESSION['is_pending']) {
-                echo '<div style="color: #f00;">('.__('Membership currently in pending state, loan transaction is locked.').')</div>';
-            }
-            echo '</td>';
-            echo '</tr>'."\n";
+          echo '<tr>'."\n";
+          echo '<td class="alterCell" width="15%"><strong>Notes</strong></td><td class="alterCell2" colspan="4">';
+          if ($member->member_notes) {
+              echo '<div>'.$member->member_notes.'</div>';
+          }
+          if ($_SESSION['is_pending']) {
+              echo '<div class="error">('.__('Membership currently in pending state, loan transaction is locked.').')</div>';
+          }
+          echo '</td>';
+          echo '</tr>'."\n";
         }
         echo '</table>'."\n";
         // tab and iframe
-        echo '<input type="button" style="width: 19%;'.$add_style.'" class="tab" value="'.__('Loans').'" src="'.MODULES_WEB_ROOT_DIR.'circulation/loan.php" '.$disabled.' />';
+        echo '<input type="button" style="width: 19%;" class="tab'.$add_style.'" value="'.__('Loans').'" src="'.MODULES_WEB_ROOT_DIR.'circulation/loan.php" '.$disabled.' />';
         echo '<input type="button" style="width: 19%;" class="tab tabSelected" value="'.__('Current Loans').'" src="'.MODULES_WEB_ROOT_DIR.'circulation/loan_list.php" />';
         if ($member_type_d['enable_reserve']) {
-            echo '<input type="button" style="width: 19%;'.$add_style.'" class="tab" value="'.__('Reserve').'" src="'.MODULES_WEB_ROOT_DIR.'circulation/reserve_list.php" '.$disabled.' />';
+          echo '<input type="button" style="width: 19%;" class="tab'.$add_style.'" value="'.__('Reserve').'" src="'.MODULES_WEB_ROOT_DIR.'circulation/reserve_list.php" '.$disabled.' />';
         }
         echo '<input type="button" style="width: 19%;" class="tab" value="'.__('Fines').'" src="'.MODULES_WEB_ROOT_DIR.'circulation/fines_list.php" />';
         echo '<input type="button" style="width: 19%;" class="tab" value="'.__('Loan History').'" src="'.MODULES_WEB_ROOT_DIR.'circulation/member_loan_hist.php" /><br />'."\n";
-        echo '<iframe src="modules/circulation/loan_list.php" id="listsFrame" class="border" style="width: 100%; height: 300px;"></iframe>'."\n";
-        echo '<div class="objectDragger" id="iframeDragger">&nbsp;</div>'."\n";
+        echo '<iframe src="modules/circulation/loan_list.php" id="listsFrame" class="expandable border"></iframe>'."\n";
     }
     exit();
 }

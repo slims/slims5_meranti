@@ -1,12 +1,12 @@
 /*---------------------------------------------
-http://meyerweb.com/eric/tools/css/reset/ 
+http://meyerweb.com/eric/tools/css/reset/
 v2.0 | 20110126
 License: none (public domain)
 ----------------------------------------------*/
 a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,dialog,div,dl,dt,em,embed,fieldset,figcaption,figure,font,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,hr,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,meter,nav,object,ol,output,p,pre,progress,q,rp,rt,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video,xmp{border:0;margin:0;padding:0;font-size:100%}html,body{height:100%}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}b,strong{font-weight:bold}img{color:transparent;font-size:0;vertical-align:middle;-ms-interpolation-mode:bicubic}ol,ul{list-style:none}li{display:list-item}table{border-collapse:collapse;border-spacing:0}th,td,caption{font-weight:normal;vertical-align:top;text-align:left}q{quotes:none}q:before,q:after{content:'';content:none}sub,sup,small{font-size:75%}sub,sup{line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg{overflow:hidden}
 
 /*------------------
-Local Reset 
+Local Reset
 --------------------*/
 body {
 	font: 10pt/1.8 Calibri, Arial, sans-serif;
@@ -78,7 +78,7 @@ div.clear {
 
 
 /*---------
-	menu 
+	menu
 -----------*/
 #mainMenu {
 	position:fixed;
@@ -101,7 +101,7 @@ div.clear {
 }
 
 .menuCurrent {
-	color:#fff;	
+	color:#fff;
 	cursor: pointer;
 	display: inline-block;
 	background-color: #30c0fb;
@@ -169,7 +169,7 @@ header
 -----------*/
 
 #header {
-	background-color:#bbd5f9;	
+	background-color:#bbd5f9;
 	padding:60px 0px 25px;
 	box-shadow: inset 0px 0px 10px #a6a6a6;
 }
@@ -248,7 +248,7 @@ submenu
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b3b3b3', endColorstr='#a6a6a6', GradientType=0);
 	border-bottom-color: rgba(0, 0, 0, 0.25) !important;
 	border-left-color-ltr-source: physical !important;
-	border-left-color-rtl-source: physical !important; 
+	border-left-color-rtl-source: physical !important;
 	border-left-color-value: rgba(0, 0, 0, 0.1) !important;
 	border-right-color-ltr-source: physical !important;
 	border-right-color-rtl-source: physical !important;
@@ -261,7 +261,7 @@ submenu
 
 .subMenuItem {
 	display:block;
-	color:#4d4d4d;		
+	color:#4d4d4d;
 	clear:both;
 	padding:6px 10px;
 	background: transparent url(media/arrow.png) 175px center no-repeat;
@@ -283,12 +283,12 @@ submenu
 	height:100%;
 }
 
-.button, 
-.headerText2, 
-input[type="submit"], 
-input[type="button"], 
+.button,
+.headerText2,
+input[type="submit"],
+input[type="button"],
 a.printReport {
-	color:#fff !important;	
+	color:#fff !important;
 	cursor: pointer;
 	display: inline-block;
 	background-color: #30c0fb;
@@ -311,10 +311,10 @@ a.printReport {
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
-.button:active, 
-.headerText2:active, 
-input[type="submit"]:active, 
-input[type="button"]:active, 
+.button:active,
+.headerText2:active,
+input[type="submit"]:active,
+input[type="button"]:active,
 a.printReport:active {
 	-webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.05);
 	-moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -333,7 +333,7 @@ a.printReport:active {
 
 .editFormLink, .confirmSubmit, #finishForm input[type="button"]  {
 	color:#fff !important;
-	font-weight:normal !important;	
+	font-weight:normal !important;
 	cursor: pointer;
 	display: inline-block;
 	background-color: #30c0fb;
@@ -361,7 +361,7 @@ a.printReport:active {
 }
 
 #htmlPopFrame {
-	border-top: 1px dotted #ddd; 
+	border-top: 1px dotted #ddd;
 }
 
 /*-----------------------------------
@@ -505,8 +505,8 @@ table, tr, td, th {
 	margin:5px 0px 10px 5px;
 }
 
-.dataListHeader td, 
-.dataListHeader td a, 
+.dataListHeader td,
+.dataListHeader td a,
 .dataListHeaderPrinted,
 .dataListHeaderPrinted td a,
 .printPageInfo {
@@ -602,7 +602,7 @@ contentdisk
 	height:0px;
 	margin:0;
 	padding:0;
-	
+
 }
 
 #htmlPopTitle {
@@ -839,8 +839,8 @@ icon
 }
 
 .editLink {
-	margin-left: auto;	
-	margin-right: auto;	
+	margin-left: auto;
+	margin-right: auto;
 	display: block;
 	width: 32px;
 	height: 32px;
@@ -864,11 +864,11 @@ icon
 	color: #808080;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
-	border-radius: 3px;	
+	border-radius: 3px;
 	width: 150px;
 	padding:2px 2px 1px;
 	display: inline-block;
-	
+
 }
 
 .dateInput {
@@ -936,6 +936,16 @@ icon
   font-weight: bold;
   color: #f00;
   background: url(media/email.png) left center no-repeat;
+}
+
+.disabled {
+	color: #999;
+	background: #ccc;
+}
+
+#listsFrame {
+	width: 100%;
+	height: 100%;
 }
 
 #iframeDragger {

@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -40,4 +40,3 @@ $menu[] = array(__('Frequency'), MODULES_WEB_ROOT_DIR.'master_file/frequency.php
 $menu[] = array('Header', __('Tools'));
 $menu[] = array(__('Orphaned Author'), MODULES_WEB_ROOT_DIR.'master_file/author.php?type=orphaned', __('Orphaned Authors'));
 $menu[] = array(__('Orphaned Subject'), MODULES_WEB_ROOT_DIR.'master_file/topic.php?type=orphaned', __('Orphaned Subject'));
-?>

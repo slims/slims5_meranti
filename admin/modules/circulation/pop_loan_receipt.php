@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -78,7 +78,7 @@ table td {
         <div id="receiptDate"><?php echo $_SESSION['receipt_record']['date'] ?></div></td>
     </tr>
     </table>
-    
+
     <hr />
     <div id="receiptInfo">
         <!-- LOAN -->
@@ -101,21 +101,21 @@ table td {
                 echo '<td>'.$loan['dueDate'].'</td>';
                 echo '</tr>';
             }
-        }        
-        
+        }
+
         // loan extend
         if (isset($_SESSION['receipt_record']['extend'])) {
             foreach ($_SESSION['receipt_record']['extend'] as $ext) {
                 echo '<tr>';
                 echo '<td>'.$ext['itemCode'].'</td>';
                 #echo '<td>'.substr($ext['title'], 0, 50).'...<br />-- extended --</td>';
-                
+
                 echo '<td>'.substr($ext['title'], 0, $receipt_titleLength);
                 if (strlen($ext['title']) > $receipt_titleLength) {
                     echo ' ...';
                 }
                 echo '. <strong>(Loan Extended)</strong></td>';
-                
+
                 echo '<td>'.$ext['loanDate'].'</td>';
                 echo '<td>'.$ext['dueDate'].'</td>';
                 echo '</tr>';
@@ -124,7 +124,7 @@ table td {
         ?>
         </table>
         <?php } ?>
-        
+
         <?php
         # to remove extended items from return session list
         if (isset($_SESSION['receipt_record']['return']) AND isset($_SESSION['receipt_record']['extend'])) {
@@ -142,7 +142,7 @@ table td {
         <hr size="1" noshade="noshade" />
         <table width="100%">
         <tr><td>Code</td><td>Title</td><td>Return</td><td>Ovd.</td></tr>
-        <?php        
+        <?php
         foreach ($_SESSION['receipt_record']['return'] as $ret) {
             echo '<tr>';
             echo '<td>'.$ret['itemCode'].'</td>';
@@ -178,4 +178,3 @@ table td {
 $content = ob_get_clean();
 // include the page template
 require SENAYAN_BASE_DIR.'/admin/'.$sysconf['admin_template']['dir'].'/notemplate_page_tpl.php';
-?>

@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -52,28 +52,27 @@ if (isset($_SESSION['memberID']) AND !empty($_SESSION['memberID'])) {
     include MODULES_BASE_DIR.'circulation/circulation_action.php';
 } else {
 ?>
-    <fieldset class="menuBox">
-        <div class="menuBoxInner circulationIcon">
-            <?php echo __('CIRCULATION - Insert a member ID to start transaction with keyboard or barcode reader'); ?>
-            <hr />
-            <form id="startCirc" action="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/circulation_action.php" method="post" style="display: inline;">
-            <?php echo __('Member ID'); ?> :
-            <?php
-            // create AJAX drop down
-            $ajaxDD = new simbio_fe_AJAX_select();
-            $ajaxDD->element_name = 'memberID';
-            $ajaxDD->element_css_class = 'ajaxInputField';
-            $ajaxDD->handler_URL = MODULES_WEB_ROOT_DIR.'membership/member_AJAX_response.php';
-            echo $ajaxDD->out();
-            ?>
-            <input type="submit" value="<?php echo __('Start Transaction'); ?>" name="start" id="start" class="button" />
-            </form>
-        </div>
-    </fieldset>
+<fieldset class="menuBox">
+  <div class="menuBoxInner circulationIcon">
+    <?php echo __('CIRCULATION - Insert a member ID to start transaction with keyboard or barcode reader'); ?>
+    <hr />
+    <form id="startCirc" action="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/circulation_action.php" method="post" style="display: inline;">
+    <?php echo __('Member ID'); ?> :
+    <?php
+    // create AJAX drop down
+    $ajaxDD = new simbio_fe_AJAX_select();
+    $ajaxDD->element_name = 'memberID';
+    $ajaxDD->element_css_class = 'ajaxInputField';
+    $ajaxDD->handler_URL = MODULES_WEB_ROOT_DIR.'membership/member_AJAX_response.php';
+    echo $ajaxDD->out();
+    ?>
+    <input type="submit" value="<?php echo __('Start Transaction'); ?>" name="start" id="start" class="button" />
+    </form>
+  </div>
+</fieldset>
 <?php
     if (isset($_POST['finishID'])) {
         $msg = str_ireplace('{member_id}', $_POST['finishID'], __('Transaction with member {member_id} is completed'));
         echo '<div class="infoBox">'.$msg.'</div>';
     }
 }
-?>

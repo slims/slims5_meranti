@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -40,4 +40,3 @@ $menu[] = array(__('Holiday Setting'), MODULES_WEB_ROOT_DIR.'system/holiday.php'
 $menu[] = array(__('Barcode Generator'), MODULES_WEB_ROOT_DIR.'system/barcode_generator.php', __('Barcode Generator'));
 $menu[] = array(__('System Log'), MODULES_WEB_ROOT_DIR.'system/sys_log.php', __('View Application System Log'));
 $menu[] = array(__('Database Backup'), MODULES_WEB_ROOT_DIR.'system/backup.php', __('Backup Application Database'));
-?>

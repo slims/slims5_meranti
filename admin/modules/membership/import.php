@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -205,4 +205,3 @@ $form->addTextField('text', 'recordNum', __('Number of Records To Export (0 for 
 $form->addTextField('text', 'recordOffset', __('Start From Record'), '1', 'style="width: 10%;"');
 // output the form
 echo $form->printOut();
-?>

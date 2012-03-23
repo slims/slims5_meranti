@@ -1,10 +1,10 @@
 <?php
 /**
- * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com)
+ * Copyright (C) 2008 Arie Nugraha (dicarve@yahoo.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -19,9 +19,11 @@
  */
 
 /* Reporting module submenu items */
+
 // IP based access limitation
 do_checkIP('smc');
-do_checkIP('smc-reporting');
+do_checkIP('smc-reporting');
+
 $menu[] = array('Header', __('Reporting'));
 $menu[] = array(__('Collection Statistic'), MODULES_WEB_ROOT_DIR.'reporting/index.php', __('View Library Collection Statistic'));
 $menu[] = array(__('Loan Report'), MODULES_WEB_ROOT_DIR.'reporting/loan_report.php', __('View Library Loan Report'));
@@ -29,4 +31,3 @@ $menu[] = array(__('Membership Report'), MODULES_WEB_ROOT_DIR.'reporting/member_
 $menu[] = array('Header', __('Other Reports'));
 // other/custom report menu
 require MODULES_BASE_DIR.'reporting/customs/customs_report_list.inc.php';
-?>
