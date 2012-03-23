@@ -106,6 +106,7 @@ class simbio_file_upload extends simbio
             $this->new_filename = basename($_FILES[$file_input_name]['name']);
         } else {
             $this->new_filename = $str_new_filename.$file_ext;
+//            $this->new_filename = $str_new_filename;
         }
 
         $_isTypeAllowed = 0;
