@@ -54,20 +54,26 @@ if (isset($_SESSION['memberID']) AND !empty($_SESSION['memberID'])) {
 ?>
 <fieldset class="menuBox">
   <div class="menuBoxInner circulationIcon">
-    <?php echo __('CIRCULATION - Insert a member ID to start transaction with keyboard or barcode reader'); ?>
-    <hr />
-    <form id="startCirc" action="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/circulation_action.php" method="post" style="display: inline;">
-    <?php echo __('Member ID'); ?> :
-    <?php
-    // create AJAX drop down
-    $ajaxDD = new simbio_fe_AJAX_select();
-    $ajaxDD->element_name = 'memberID';
-    $ajaxDD->element_css_class = 'ajaxInputField';
-    $ajaxDD->handler_URL = MODULES_WEB_ROOT_DIR.'membership/member_AJAX_response.php';
-    echo $ajaxDD->out();
-    ?>
-    <input type="submit" value="<?php echo __('Start Transaction'); ?>" name="start" id="start" class="button" />
-    </form>
+    <div class="per_title">
+	    <h2><?php echo strtoupper(__('Circulation')); ?></h2>
+    </div>
+    <div class="sub_section">
+	    <div class="action_button">
+		    <?php echo __('CIRCULATION - Insert a member ID to start transaction with keyboard or barcode reader'); ?>
+	    </div>
+      <form id="startCirc" action="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/circulation_action.php" method="post" style="display: inline;">
+      <?php echo __('Member ID'); ?> :
+      <?php
+      // create AJAX drop down
+      $ajaxDD = new simbio_fe_AJAX_select();
+      $ajaxDD->element_name = 'memberID';
+      $ajaxDD->element_css_class = 'ajaxInputField';
+      $ajaxDD->handler_URL = MODULES_WEB_ROOT_DIR.'membership/member_AJAX_response.php';
+      echo $ajaxDD->out();
+      ?>
+      <input type="submit" value="<?php echo __('Start Transaction'); ?>" name="start" id="start" class="button" />
+      </form>
+    </div>
   </div>
 </fieldset>
 <?php
