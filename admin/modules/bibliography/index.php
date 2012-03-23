@@ -467,8 +467,6 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $form->addAnything(__('Frequency'), $str_input);
     // biblio ISBN/ISSN
     $form->addTextField('text', 'isbn_issn', __('ISBN/ISSN'), $rec_d['isbn_issn'], 'style="width: 40%;"');
-    // biblio classification
-    $form->addTextField('text', 'class', __('Classification'), $rec_d['classification'], 'style="width: 40%;"');
     // biblio publisher
         // AJAX expression
         $ajax_exp = "ajaxFillSelect('".SENAYAN_WEB_ROOT_DIR."admin/AJAX_lookup_handler.php', 'mst_publisher', 'publisher_id:publisher_name', 'publisherID', $('#publ_search_str').val())";
@@ -505,6 +503,19 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         $str_input = '<div class="'.$visibility.'"><a class="notAJAX"  href="javascript: openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_topic.php?biblioID='.$rec_d['biblio_id'].'\', 500, 200, \''.__('Subjects/Topics').'\')">'.__('Add Subject(s)').'</a></div>';
         $str_input .= '<iframe name="topicIframe" id="topicIframe" class="borderAll" style="width: 100%; height: 70px;" src="'.MODULES_WEB_ROOT_DIR.'bibliography/iframe_topic.php?biblioID='.$rec_d['biblio_id'].'&block=1"></iframe>';
     $form->addAnything(__('Subject(s)'), $str_input);
+    // biblio classification
+		$cls_options = array();
+        // AJAX expression
+        $ajax_exp = "ajaxFillSelect('".SENAYAN_WEB_ROOT_DIR."admin/AJAX_lookup_handler.php', 'mst_topic', 'classification:classification:topic', 'class', $('#class_search_str').val())";
+        // string element
+        if ($rec_d['classification']) {
+            $cls_options[] = array($rec_d['classification'], $rec_d['classification']);
+        }
+        $plc_options[] = array('0', __('Classification'));
+        $str_input = simbio_form_element::selectList('class', $cls_options, '', 'style="width: 50%;"');
+        $str_input .= '&nbsp;';
+        $str_input .= simbio_form_element::textField('text', 'class_search_str', $rec_d['classification'], 'style="width: 45%;" onkeyup="'.$ajax_exp.'"');
+    $form->addAnything(__('Classification'), $str_input);
     // biblio language
         // get language data related to this record from database
         $lang_q = $dbs->query("SELECT language_id, language_name FROM mst_language");
