@@ -345,22 +345,31 @@ if (!$in_pop_up) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner biblioIcon">
-    <?php echo strtoupper(__('Bibliographic')); ?> - <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php?action=detail" class="headerText2"><?php echo __('Add New Bibliography'); ?></a>
-    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php" class="headerText2"><?php echo __('Bibliographic List'); ?></a>
-    <?php
-    // enable UCS?
-    if ($sysconf['ucs']['enable']) {
-    ?>
-    <div class="marginTop"><a href="#" onclick="ucsUpload('<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/ucs_upload.php', serializeChbox('dataList'))" class="notAJAX ucsUpload"><?php echo __('Upload Selected Bibliographic data to Union Catalog Server*'); ?></a></div>
-    <?php
-    }
-    ?>
-    <hr />
-    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
-    <input type="text" name="keywords" id="keywords" size="30" />
-    <select name="field"><option value="0"><?php echo __('All Fields'); ?></option><option value="title"><?php echo __('Title/Series Title'); ?> </option><option value="subject"><?php echo __('Topics'); ?></option><option value="author"><?php echo __('Authors'); ?></option><option value="isbn"><?php echo __('ISBN/ISSN'); ?></option><option value="publisher"><?php echo __('Publisher'); ?></option></select>
-    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
-    </form>
+    <div class="per_title">
+	    <h2><?php echo strtoupper(__('Bibliographic')); ?></h2>
+    </div>
+    <div class="sub_section">
+	    <div class="action_button">
+		    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php?action=detail" class="headerText2"><?php echo __('Add New Bibliography'); ?></a>
+		    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php" class="headerText2"><?php echo __('Bibliographic List'); ?></a>    
+	    </div>
+	    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
+		    <input type="text" name="keywords" id="keywords" size="30" />
+		    <select name="field"><option value="0"><?php echo __('All Fields'); ?></option><option value="title"><?php echo __('Title/Series Title'); ?> </option><option value="subject"><?php echo __('Topics'); ?></option><option value="author"><?php echo __('Authors'); ?></option><option value="isbn"><?php echo __('ISBN/ISSN'); ?></option><option value="publisher"><?php echo __('Publisher'); ?></option></select>
+		    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
+	    </form>
+        <div class="ucsUpload">
+		    <?php
+		    // enable UCS?
+			if ($sysconf['ucs']['enable']) {
+		    ?>
+		    <a href="#" onclick="ucsUpload('<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/ucs_upload.php', serializeChbox('dataList'))" class="notAJAX"><div class="button"><?php echo __('Upload Selected Bibliographic data to Union Catalog Server*'); ?></div></a>
+		    <?php
+		    }
+		    ?>    
+	    </div>
+
+    </div>
 </div>
 </fieldset>
 <?php
@@ -584,7 +593,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // edit mode messagge
     if ($form->edit_mode) {
         echo '<div class="infoBox" style="overflow: auto;">'
-            .'<div style="float: left; width: 80%;">'.__('You are going to edit biblio data').' : <b>'.$rec_d['title'].'</b>  <br />'.__('Last Updated').$rec_d['last_update'].'</div>'; //mfc
+            .'<div style="float: left; width: 80%;">'.__('You are going to edit biblio data').' : <b>'.$rec_d['title'].'</b>  <br />'.__('Last Updated').'&nbsp;'. $rec_d['last_update'].'</div>'; //mfc
             if ($rec_d['image']) {
                 if (file_exists(IMAGES_BASE_DIR.'docs/'.$rec_d['image'])) {
                     $upper_dir = '';

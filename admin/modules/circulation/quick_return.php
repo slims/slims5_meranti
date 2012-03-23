@@ -55,13 +55,19 @@ if (!$sysconf['quick_return']) {
 
 <fieldset class="menuBox">
 <div class="menuBoxInner quickReturnIcon">
-    <?php echo strtoupper(__('Quick Return')); ?> - <?php echo __('Insert an item ID to return collection with keyboard or barcode reader'); ?>
-    <hr />
+	<div class="per_title">
+    	<h2><?php echo strtoupper(__('Quick Return')); ?></h2>
+    </div>
+    <div class="sub_section">
     <form class="notAJAX" action="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/ajax_action.php" target="circAction" method="post" style="display: inline;">
     <?php echo __('Item ID'); ?> :
     <input type="text" name="quickReturnID" id="quickReturnID" size="30" />
     <input type="submit" value="<?php echo __('Return'); ?>" class="button" />
     </form>
+    </div>
+    <div class="infoBox">
+    <?php echo __('Insert an item ID to return collection with keyboard or barcode reader'); ?>    
+    </div>
     <iframe name="circAction" id="circAction" style="display: inline; width: 5px; height: 5px; visibility: hidden;"></iframe>
 </div>
 </fieldset>

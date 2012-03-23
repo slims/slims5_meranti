@@ -209,14 +209,20 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner printIcon">
-    <?php echo __('Labels Printing'); ?> - <a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/dl_print.php?action=print" class="notAJAX headerText2"><?php echo __('Print Labels for Selected Data'); ?></a>
-    &nbsp; <a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/dl_print.php?action=clear" class="notAJAX headerText2" style="color: #FF0000;"><?php echo __('Clear Print Queue'); ?></a>
-    <hr />
+	<div class="per_title">
+    <h2><?php echo __('Labels Printing'); ?></h2>
+    </div>
+	<div class="sub_section">
+    <div class="action_button">
+    <a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/dl_print.php?action=clear" class="notAJAX headerText2" style="color: #FF0000;"><?php echo __('Clear Print Queue'); ?></a>
+    &nbsp;<a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/dl_print.php?action=print" class="notAJAX headerText2"><?php echo __('Print Labels for Selected Data'); ?></a>
+	</div>
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/dl_print.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
     <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
-    <div style="margin-top: 3px;">
+    </div>
+    <div class="infoBox">
         <?php
         echo __('Maximum').' <font style="color: #FF0000">'.$max_print.'</font> '.__('records can be printed at once. Currently there is').' '; //mfc
         if (isset($_SESSION['labels'])) {

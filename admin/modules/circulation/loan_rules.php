@@ -125,13 +125,19 @@ if (isset($_POST['saveData'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner loanRulesIcon">
-    <?php echo strtoupper(__('Loan Rules')); ?> - <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/loan_rules.php?action=detail" class="headerText2"><?php echo __('Add New Loan Rules'); ?></a>
-    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/loan_rules.php" class="headerText2"><?php echo __('Loan Rules List'); ?></a>
-    <hr />
-    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/loan_rules.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
-    <input type="text" name="keywords" size="30">
-    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button">
-    </form>
+	<div class="per_title">
+	    <h2><?php echo strtoupper(__('Loan Rules')); ?></h2>
+    </div>
+    <div class="sub_section">
+	    <div class="action_button">
+		    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/loan_rules.php?action=detail" class="headerText2"><?php echo __('Add New Loan Rules'); ?></a>	    
+		    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/loan_rules.php" class="headerText2"><?php echo __('Loan Rules List'); ?></a>    
+	    </div>
+	    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/loan_rules.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
+		    <input type="text" name="keywords" size="30">
+		    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button">
+	    </form>
+    </div>
 </div>
 </fieldset>
 <?php
