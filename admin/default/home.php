@@ -65,10 +65,10 @@ if (!file_exists($sysconf['mysqldump'])) {
 
 // if there any warnings
 if ($warnings) {
-    echo '<div style="padding: 3px; border: 1px dotted #FF0000; background: #FFFFFF;">';
+    echo '<div class="message">';
     echo '<ul>';
     foreach ($warnings as $warning_msg) {
-        echo '<li style="color: #FF0000;">'.$warning_msg.'</li>';
+        echo '<li class="warning">'.$warning_msg.'</li>';
     }
     echo '</ul>';
     echo '</div>';

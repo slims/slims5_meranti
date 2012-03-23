@@ -153,9 +153,12 @@ if (isset($_POST['doExport'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner exportIcon">
-    <?php echo __('EXPORT TOOL'); ?>
-    <hr />
-    <?php echo __('Export bibliographics data to CSV file'); ?>
+	<div class="per_title">
+    	<h2><?php echo __('EXPORT TOOL'); ?></h2>
+	</div>	
+	<div class="infoBox">
+    	<?php echo __('Export bibliographics data to CSV file'); ?>
+	</div>
 </div>
 </fieldset>
 <?php

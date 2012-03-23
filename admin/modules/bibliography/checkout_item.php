@@ -47,12 +47,15 @@ if (!$can_read) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner itemOutIcon">
-    <?php echo __('Checkout Items'); ?>
-    <hr />
+	<div class="per_title">
+    	<h2><?php echo __('Checkout Items'); ?></h2>
+    </div>
+    <div class="sub_section">
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/checkout_item.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
     <input type="submit" id="doSearch" class="button" />
     </form>
+    </div>
 </div>
 </fieldset>
 <?php
