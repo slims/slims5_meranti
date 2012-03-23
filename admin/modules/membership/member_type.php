@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -29,6 +29,7 @@ define('DB_ACCESS', 'fa');
 require '../../../sysconfig.inc.php';
 // IP based access limitation
 require LIB_DIR.'ip_based_access.inc.php';
+
 do_checkIP('smc');
 do_checkIP('smc-membership');
 // start the session
@@ -254,4 +255,3 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     echo $datagrid_result;
 }
 /* main content end */
-?>

@@ -1,11 +1,13 @@
 <?php
 /**
  * Collection general report
- * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com)
+ * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com
+ *
+ * Copyright (C) 2008 Arie Nugraha (dicarve@yahoo.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -21,7 +23,8 @@
 
 /* Reporting section */
 
-// key to authenticate
+
+// key to authentication
 define('INDEX_AUTH', '1');
 
 if (!defined('SENAYAN_BASE_DIR')) {
@@ -30,10 +33,12 @@ if (!defined('SENAYAN_BASE_DIR')) {
     // start the session
     require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 }
+
 // IP based access limitation
 require LIB_DIR.'ip_based_access.inc.php';
 do_checkIP('smc');
-do_checkIP('smc-reporting');
+do_checkIP('smc-reporting');
+
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
 
@@ -170,4 +175,3 @@ if (isset($_GET['print'])) {
 <?php
 echo $table->printTable();
 /* collection statistic end */
-?>

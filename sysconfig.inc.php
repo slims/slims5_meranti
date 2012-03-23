@@ -6,7 +6,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -320,6 +320,7 @@ $sysconf['ucs']['auto_insert'] = false;
  */
 $sysconf['z3950_max_result'] = 50;
 $sysconf['z3950_source'][1] = array('uri' => 'z3950.loc.gov:7090/voyager', 'name' => 'Library of Congress Voyager');
+$sysconf['z3950_SRU_source'][1] = array('uri' => 'http://z3950.loc.gov:7090/voyager', 'name' => 'Library of Congress SRU Voyager');
 
 /**
  * Peer to peer server config

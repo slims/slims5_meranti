@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -32,6 +32,7 @@ require '../../../sysconfig.inc.php';
 require LIB_DIR.'ip_based_access.inc.php';
 do_checkIP('smc');
 do_checkIP('smc-circulation');
+
 // start the session
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
@@ -55,19 +56,13 @@ if (!$sysconf['quick_return']) {
 
 <fieldset class="menuBox">
 <div class="menuBoxInner quickReturnIcon">
-	<div class="per_title">
-    	<h2><?php echo strtoupper(__('Quick Return')); ?></h2>
-    </div>
-    <div class="sub_section">
+    <?php echo strtoupper(__('Quick Return')); ?> - <?php echo __('Insert an item ID to return collection with keyboard or barcode reader'); ?>
+    <hr />
     <form class="notAJAX" action="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/ajax_action.php" target="circAction" method="post" style="display: inline;">
     <?php echo __('Item ID'); ?> :
     <input type="text" name="quickReturnID" id="quickReturnID" size="30" />
     <input type="submit" value="<?php echo __('Return'); ?>" class="button" />
     </form>
-    </div>
-    <div class="infoBox">
-    <?php echo __('Insert an item ID to return collection with keyboard or barcode reader'); ?>    
-    </div>
     <iframe name="circAction" id="circAction" style="display: inline; width: 5px; height: 5px; visibility: hidden;"></iframe>
 </div>
 </fieldset>

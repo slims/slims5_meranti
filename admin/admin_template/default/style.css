@@ -1,12 +1,12 @@
 /*---------------------------------------------
-http://meyerweb.com/eric/tools/css/reset/ 
+http://meyerweb.com/eric/tools/css/reset/
 v2.0 | 20110126
 License: none (public domain)
 ----------------------------------------------*/
 a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,dialog,div,dl,dt,em,embed,fieldset,figcaption,figure,font,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,hr,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,meter,nav,object,ol,output,p,pre,progress,q,rp,rt,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video,xmp{border:0;margin:0;padding:0;font-size:100%}html,body{height:100%}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}b,strong{font-weight:bold}img{color:transparent;font-size:0;vertical-align:middle;-ms-interpolation-mode:bicubic}ol,ul{list-style:none}li{display:list-item}table{border-collapse:collapse;border-spacing:0}th,td,caption{font-weight:normal;vertical-align:top;text-align:left}q{quotes:none}q:before,q:after{content:'';content:none}sub,sup,small{font-size:75%}sub,sup{line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}svg{overflow:hidden}
 
 /*------------------
-Local Reset 
+Local Reset
 --------------------*/
 body {
 	font: 10pt/1.8 Calibri, Arial, sans-serif;
@@ -19,27 +19,27 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 h1 {
-	font-size:200%;	
+	font-size:200%;
 }
 
 h2 {
-	font-size:175%;	
+	font-size:175%;
 }
 
 h3 {
-	font-size:150%;	
+	font-size:150%;
 }
 
 h4 {
-	font-size:125%;	
+	font-size:125%;
 }
 
 h5 {
-	font-size:100%;	
+	font-size:100%;
 }
 
 h6 {
-	font-size:75%;	
+	font-size:75%;
 }
 
 
@@ -103,7 +103,7 @@ div.clear {
 
 
 /*---------
-	menu 
+	menu
 -----------*/
 #mainMenu {
 	position:fixed;
@@ -126,7 +126,7 @@ div.clear {
 }
 
 .menuCurrent {
-	color:#fff;	
+	color:#fff;
 	cursor: pointer;
 	display: inline-block;
 	background-color: #30c0fb;
@@ -234,7 +234,7 @@ header
 #headerImage {
   float: left;
   width:20px;
-  height:20px;  
+  height:20px;
   background: url(media/logo.png) no-repeat top left;
   background-size: 20px 20px;
   margin-left: 20px;
@@ -293,7 +293,7 @@ submenu
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b3b3b3', endColorstr='#a6a6a6', GradientType=0);
 	border-bottom-color: rgba(0, 0, 0, 0.25) !important;
 	border-left-color-ltr-source: physical !important;
-	border-left-color-rtl-source: physical !important; 
+	border-left-color-rtl-source: physical !important;
 	border-left-color-value: rgba(0, 0, 0, 0.1) !important;
 	border-right-color-ltr-source: physical !important;
 	border-right-color-rtl-source: physical !important;
@@ -306,7 +306,7 @@ submenu
 
 .subMenuItem {
 	display:block;
-	color:#4d4d4d;		
+	color:#4d4d4d;
 	clear:both;
 	padding:6px 10px;
 	background: transparent url(media/arrow.png) 175px center no-repeat;
@@ -328,12 +328,12 @@ submenu
 	height:100%;
 }
 
-.button, 
-.headerText2, 
-input[type="submit"], 
-.tab, 
+.button,
+.headerText2,
+input[type="submit"],
+.tab,
 a.printReport {
-	color:#fff !important;	
+	color:#fff !important;
 	cursor: pointer;
 	display: inline-block;
 	background-color: #30c0fb;
@@ -355,10 +355,10 @@ a.printReport {
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
-.button:hover, 
+.button:hover,
 .headerText2:hover,
-.editFormLink:hover, 
-input[type="submit"]:active, 
+.editFormLink:hover,
+input[type="submit"]:active,
 input[type="button"]:active,
 .tab:hover,
 a.printReport:active {
@@ -377,12 +377,12 @@ a.printReport:active {
 	background-image: none !important;
 }
 
-.editFormLink, 
-.confirmSubmit, 
+.editFormLink,
+.confirmSubmit,
 #finishForm input[type="button"],
 .tabSelected  {
 	color:#fff !important;
-	font-weight:normal !important;	
+	font-weight:normal !important;
 	cursor: pointer;
 	display: inline-block;
 	background-color: #30c0fb;
@@ -410,7 +410,7 @@ a.printReport:active {
 }
 
 #htmlPopFrame {
-	border-top: 1px dotted #ddd; 
+	border-top: 1px dotted #ddd;
 }
 
 /*-----------------------------------
@@ -555,8 +555,8 @@ table, tr, td, th {
 	margin:5px 0px 10px 5px;
 }
 
-.dataListHeader td, 
-.dataListHeader td a, 
+.dataListHeader td,
+.dataListHeader td a,
 .dataListHeaderPrinted,
 .dataListHeaderPrinted td a,
 .printPageInfo {
@@ -652,7 +652,7 @@ contentdisk
 	height:0px;
 	margin:0;
 	padding:0;
-	
+
 }
 
 #htmlPopTitle {
@@ -860,8 +860,8 @@ icon
 }
 
 .editLink {
-	margin-left: auto;	
-	margin-right: auto;	
+	margin-left: auto;
+	margin-right: auto;
 	display: block;
 	width: 32px;
 	height: 32px;
@@ -885,11 +885,10 @@ icon
 	color: #808080;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
-	border-radius: 3px;	
+	border-radius: 3px;
 	width: 150px;
 	padding:2px 2px 1px;
 	display: inline-block;
-	
 }
 
 .dateInput {
@@ -916,6 +915,20 @@ icon
 }
 
 .ucsUpload {
+
+}
+
+.printReport {
+  background: url(media/printer-small.png) center left no-repeat;
+}
+
+.ucsUpload {
+  text-decoration: none;
+  padding: 5px;
+  padding-left: 23px;
+  background: #fff url(media/upload.png) center left no-repeat;
+  color: #ff5d00;
+  border: 1px dotted #ff5d00;
 }
 
 .objectDragger, .objectDragger:hover {
@@ -951,6 +964,16 @@ icon
   font-weight: bold;
   color: #f00;
   background: url(media/email.png) left center no-repeat;
+}
+
+.disabled {
+	color: #999;
+	background: #ccc;
+}
+
+#listsFrame {
+	width: 100%;
+	height: 100%;
 }
 
 #iframeDragger {
