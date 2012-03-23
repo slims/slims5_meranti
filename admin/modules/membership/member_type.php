@@ -29,6 +29,7 @@ define('DB_ACCESS', 'fa');
 require '../../../sysconfig.inc.php';
 // IP based access limitation
 require LIB_DIR.'ip_based_access.inc.php';
+
 do_checkIP('smc');
 do_checkIP('smc-membership');
 // start the session
@@ -133,13 +134,19 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner memberTypeIcon">
-    <?php echo strtoupper(__('Member Type')); ?> - <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_type.php?action=detail" class="headerText2"><?php echo __('Add New Member Type'); ?></a>
-    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_type.php" class="headerText2"><?php echo __('Member Type List'); ?></a>
-    <hr />
-    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_type.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
-    <input type="text" name="keywords" size="30" />
-    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
-    </form>
+	<div class="per_title">
+    	<h2><?php echo strtoupper(__('Member Type')); ?></h2>
+    </div>
+    <div class="sub_section">
+	    <div class="action_button">
+		    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_type.php?action=detail" class="headerText2"><?php echo __('Add New Member Type'); ?></a>
+		    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_type.php" class="headerText2"><?php echo __('Member Type List'); ?></a>
+	    </div>
+	    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_type.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
+		    <input type="text" name="keywords" size="30" />
+		    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
+	    </form>
+    </div>
 </div>
 </fieldset>
 <?php
