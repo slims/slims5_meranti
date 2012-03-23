@@ -117,7 +117,7 @@ if (isset($_POST['doImport'])) {
                     $member_id = preg_replace('@^\\\s*'.$field_enc.'@i', '', $field[0]);
                     $member_id = '\''.$member_id.'\'';
                     $member_name = '\''.$field[1].'\'';
-                    $gender = $field[2];
+                    $gender = ( ! empty($field[2])) ? $field[2] : 0; // patched by Indra Sutriadi
                     $member_type_id = utility::getID($dbs, 'mst_member_type', 'member_type_id', 'member_type_name', $field[3], $mtype_id_cache);
                     $member_email = $field[4]?'\''.$field[4].'\'':'NULL';
                     $member_address = $field[5]?'\''.$field[5].'\'':'NULL';
@@ -175,7 +175,12 @@ if (isset($_POST['doImport'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner importIcon">
-    <?php echo strtoupper(__('Import Data')).'<hr />'.__('Import for members data from CSV file'); ?>
+    <div class="per_title">
+    	<h2><?php echo strtoupper(__('Import Data')); ?></h2>
+    </div>
+    <div class="infoBox">
+    <?php echo __('Import for members data from CSV file'); ?>
+	</div>
 </div>
 </fieldset>
 <div id="importInfo" class="infoBox" style="display: none;">&nbsp;</div><div id="importError" class="errorBox" style="display: none;">&nbsp;</div>
