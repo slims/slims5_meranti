@@ -30,8 +30,7 @@ require '../../../sysconfig.inc.php';
 // IP based access limitation
 require LIB_DIR.'ip_based_access.inc.php';
 do_checkIP('smc');
-
-do_checkIP('smc-masterfile')
+do_checkIP('smc-masterfile');
 
 // start the session
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';

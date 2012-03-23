@@ -27,6 +27,15 @@ if (!defined('INDEX_AUTH')) {
 if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
     include_once '../../sysconfig.inc.php';
 }
+?>
+<fieldset class="menuBox adminHome">
+<div class="menuBoxInner">
+	<div class="per_title">
+    	<h2><?php echo $sysconf['library_name']; ?><div><?php echo $sysconf['library_subname']; ?></div></h2>
+	</div>
+</div>
+</fieldset>
+<?php
 
 // generate warning messages
 $warnings = array();
@@ -82,4 +91,3 @@ if ($content_data) {
     echo '<div class="contentDesc">'.$content_data['Content'].'</div>';
     unset($content_data);
 }
-?>
