@@ -116,7 +116,12 @@ if (isset($_POST['doExport'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner exportIcon">
-    <?php echo strtoupper(__('Export Data')).'<hr />'.__('Export member(s) data to CSV file'); ?>
+	<div class="per_title">
+    	<h2><?php echo strtoupper(__('Export Data')); ?></h2>
+    </div>
+    <div class="infoBox">
+    	<?php echo __('Export member(s) data to CSV file'); ?>
+    </div>
 </div>
 </fieldset>
 <?php

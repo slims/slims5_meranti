@@ -175,7 +175,12 @@ if (isset($_POST['doImport'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner importIcon">
-    <?php echo strtoupper(__('Import Data')).'<hr />'.__('Import for members data from CSV file'); ?>
+    <div class="per_title">
+    	<h2><?php echo strtoupper(__('Import Data')); ?></h2>
+    </div>
+    <div class="infoBox">
+    <?php echo __('Import for members data from CSV file'); ?>
+	</div>
 </div>
 </fieldset>
 <div id="importInfo" class="infoBox" style="display: none;">&nbsp;</div><div id="importError" class="errorBox" style="display: none;">&nbsp;</div>
