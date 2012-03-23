@@ -34,8 +34,8 @@ $menu[] = array(__('Z3950 Service'), MODULES_WEB_ROOT_DIR.'bibliography/z3950.ph
 $menu[] = array(__('P2P Service'), MODULES_WEB_ROOT_DIR.'bibliography/p2p.php', __('Grab Bibliographic Data from Other SLiMS Web Services'));
 $menu[] = array(__('Labels Printing'), MODULES_WEB_ROOT_DIR.'bibliography/dl_print.php', __('Print Document Labels'));
 $menu[] = array(__('Item Barcodes Printing'), MODULES_WEB_ROOT_DIR.'bibliography/item_barcode_generator.php', __('Print Item Barcodes'));
-$menu[] = array(__('Import Data'), MODULES_WEB_ROOT_DIR.'bibliography/import.php', __('Import Data to Bibliographic Database from CSV file'));
-$menu[] = array(__('Export Data'), MODULES_WEB_ROOT_DIR.'bibliography/export.php', __('Export Bibliographic Data To CSV format'));
-$menu[] = array(__('Item Import'), MODULES_WEB_ROOT_DIR.'bibliography/item_import.php', __('Import Data to Item/Copies database from CSV file'));
+$menu[] = array(__('Data Export'), MODULES_WEB_ROOT_DIR.'bibliography/export.php', __('Export Bibliographic Data To CSV format'));
+$menu[] = array(__('Data Import'), MODULES_WEB_ROOT_DIR.'bibliography/import.php', __('Import Data to Bibliographic Database from CSV file'));
 $menu[] = array(__('Item Export'), MODULES_WEB_ROOT_DIR.'bibliography/item_export.php', __('Export Item/Copies data To CSV format'));
+$menu[] = array(__('Item Import'), MODULES_WEB_ROOT_DIR.'bibliography/item_import.php', __('Import Data to Item/Copies database from CSV file'));
 ?>
