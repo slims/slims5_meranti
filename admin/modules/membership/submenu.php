@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -31,4 +31,3 @@ $menu[] = array('Header', __('Tools'));
 $menu[] = array(__('Member Card Printing'), MODULES_WEB_ROOT_DIR.'membership/member_card_generator.php', __('Print Member Card'));
 $menu[] = array(__('Import Data'), MODULES_WEB_ROOT_DIR.'membership/import.php', __('Import Members Data From CSV File'));
 $menu[] = array(__('Export Data'), MODULES_WEB_ROOT_DIR.'membership/export.php', __('Export Members Data To CSV File'));
-?>

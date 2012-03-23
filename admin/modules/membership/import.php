@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -117,7 +117,7 @@ if (isset($_POST['doImport'])) {
                     $member_id = preg_replace('@^\\\s*'.$field_enc.'@i', '', $field[0]);
                     $member_id = '\''.$member_id.'\'';
                     $member_name = '\''.$field[1].'\'';
-                    $gender = ( ! empty($field[2])) ? $field[2] : 0; // patched by Indra Sutriadi
+                    $gender = $field[2];
                     $member_type_id = utility::getID($dbs, 'mst_member_type', 'member_type_id', 'member_type_name', $field[3], $mtype_id_cache);
                     $member_email = $field[4]?'\''.$field[4].'\'':'NULL';
                     $member_address = $field[5]?'\''.$field[5].'\'':'NULL';
@@ -205,4 +205,3 @@ $form->addTextField('text', 'recordNum', __('Number of Records To Export (0 for 
 $form->addTextField('text', 'recordOffset', __('Start From Record'), '1', 'style="width: 10%;"');
 // output the form
 echo $form->printOut();
-?>

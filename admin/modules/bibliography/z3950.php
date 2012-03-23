@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -31,6 +31,7 @@ require '../../../sysconfig.inc.php';
 require LIB_DIR.'ip_based_access.inc.php';
 do_checkIP('smc');
 do_checkIP('smc-bibliography');
+
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
@@ -271,18 +272,15 @@ if (isset($_GET['keywords']) AND $can_read) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner biblioIcon">
-    <div class="per_title">
-    	<h2>Z3950</h2>
-    </div>
-    <div class="sub_section">
-	    <form name="search" id="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/z3950.php" loadcontainer="searchResult" method="get" style="display: inline;"><?php echo __('Search'); ?> :
-	    <input type="text" name="keywords" id="keywords" size="30" />
-	    <select name="field"><option value="isbn"><?php echo __('ISBN/ISSN'); ?></option><option value="ti"><?php echo __('Title/Series Title'); ?></option><option value="au"><?php echo __('Authors'); ?></option></select>
-	    <?php echo __('Server'); ?>: <select name="z3950_source" style="width: 20%;"><?php foreach ($sysconf['z3950_source'] as $serverid => $z3950_source) { echo '<option value="'.$z3950_source['uri'].'">'.$z3950_source['name'].'</option>';  } ?></select>
-	    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
-	    </form>
-    </div>
-    <div class="infoBox"><?php echo __('* Please make sure you have a working Internet connection.'); ?></div>
+    Z3950
+    <hr />
+    <form name="search" id="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/z3950.php" loadcontainer="searchResult" method="get" style="display: inline;"><?php echo __('Search'); ?> :
+    <input type="text" name="keywords" id="keywords" size="30" />
+    <select name="field"><option value="isbn"><?php echo __('ISBN/ISSN'); ?></option><option value="ti"><?php echo __('Title/Series Title'); ?></option><option value="au"><?php echo __('Authors'); ?></option></select>
+    <?php echo __('Server'); ?>: <select name="z3950_source" style="width: 20%;"><?php foreach ($sysconf['z3950_source'] as $serverid => $z3950_source) { echo '<option value="'.$z3950_source['uri'].'">'.$z3950_source['name'].'</option>';  } ?></select>
+    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
+    </form>
+    <div><?php echo __('* Please make sure you have a working Internet connection.'); ?></div>
 </div>
 </fieldset>
 <div id="searchResult">&nbsp;</div>

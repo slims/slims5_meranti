@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -93,7 +93,7 @@ if (isset($_POST['doExport'])) {
             LEFT JOIN mst_gmd AS gmd ON b.gmd_id=gmd.gmd_id
             LEFT JOIN mst_publisher AS publ ON b.publisher_id=publ.publisher_id
             LEFT JOIN mst_language AS lang ON b.language_id=lang.language_id
-            LEFT JOIN mst_place AS pl ON b.publish_place_id=pl.place_id ";
+            LEFT JOIN mst_place AS pl ON b.publish_place_id=pl.place_id ORDER BY b.last_update DESC";
         if ($limit > 0) { $sql .= ' LIMIT '.$limit; }
         if ($offset > 1) {
             if ($limit > 0) {
@@ -155,7 +155,7 @@ if (isset($_POST['doExport'])) {
 <div class="menuBoxInner exportIcon">
 	<div class="per_title">
     	<h2><?php echo __('EXPORT TOOL'); ?></h2>
-	</div>	
+	</div>
 	<div class="infoBox">
     	<?php echo __('Export bibliographics data to CSV file'); ?>
 	</div>
@@ -187,4 +187,3 @@ $form->addTextField('text', 'recordNum', __('Number of Records To Export (0 for 
 $form->addTextField('text', 'recordOffset', __('Start From Record'), '1', 'style="width: 10%;"');
 // output the form
 echo $form->printOut();
-?>

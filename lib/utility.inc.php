@@ -7,7 +7,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -47,6 +47,24 @@ class utility
         echo '<script type="text/javascript">'."\n";
         echo 'alert("'.addslashes($str_message).'")'."\n";
         echo '</script>'."\n";
+    }
+
+
+    /**
+     * Static Method to create random string
+     *
+     * @param   int     $int_num_string: number of randowm string to created
+     * @return  void
+     */
+    public static function createRandomString($int_num_string = 32)
+    {
+      $_random = '';
+      $_salt = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      for ($r = 0; $r < $int_num_string; $r++) {
+        $_random .= $_salt[mt_srand(strlen($_salt))];
+      }
+
+      return $_random;
     }
 
 
@@ -283,7 +301,7 @@ class utility
                 $mix_input = filter_input(INPUT_GET, $mix_input);
             }
         }
-        
+
         // trim whitespace on string
         if ($bool_trim) { $mix_input = trim($mix_input); }
         // strip html
@@ -294,4 +312,3 @@ class utility
         return $mix_input;
     }
 }
-?>
