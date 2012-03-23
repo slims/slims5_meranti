@@ -93,7 +93,7 @@ if (isset($_POST['doExport'])) {
             LEFT JOIN mst_gmd AS gmd ON b.gmd_id=gmd.gmd_id
             LEFT JOIN mst_publisher AS publ ON b.publisher_id=publ.publisher_id
             LEFT JOIN mst_language AS lang ON b.language_id=lang.language_id
-            LEFT JOIN mst_place AS pl ON b.publish_place_id=pl.place_id ";
+            LEFT JOIN mst_place AS pl ON b.publish_place_id=pl.place_id ORDER BY b.last_update DESC";
         if ($limit > 0) { $sql .= ' LIMIT '.$limit; }
         if ($offset > 1) {
             if ($limit > 0) {
@@ -153,9 +153,12 @@ if (isset($_POST['doExport'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner exportIcon">
-    <?php echo __('EXPORT TOOL'); ?>
-    <hr />
-    <?php echo __('Export bibliographics data to CSV file'); ?>
+	<div class="per_title">
+    	<h2><?php echo __('EXPORT TOOL'); ?></h2>
+	</div>
+	<div class="infoBox">
+    	<?php echo __('Export bibliographics data to CSV file'); ?>
+	</div>
 </div>
 </fieldset>
 <?php

@@ -221,9 +221,12 @@ if (isset($_POST['doImport'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner importIcon">
-    <?php echo __('IMPORT TOOL'); ?>
-    <hr />
+	<div class="per_title">
+    <h2><?php echo __('IMPORT TOOL'); ?></h2>
+    </div>
+    <div class="infoBox">
     <?php echo __('Import for bibliographics data from CSV file. For guide on CVS fields order and format please refer to documentation or visit <a href="http://slims.web.id" target="_blank">Official Website</a>'); ?>
+	</div>
 </div>
 </fieldset>
 <div id="importInfo" class="infoBox" style="display: none;">&nbsp;</div><div id="importError" class="errorBox" style="display: none;">&nbsp;</div>

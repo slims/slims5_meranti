@@ -56,8 +56,14 @@ if (isset($_GET['reportView'])) {
 if (!$reportView) {
 ?>
     <!-- filter -->
-    <fieldset style="margin-bottom: 3px;">
-    <legend style="font-weight: bold"><?php echo strtoupper(__('Loan History')); ?> - <?php echo __('Report Filter'); ?></legend>
+    <fieldset>
+    <div class="per_title">
+    	<h2><?php echo strtoupper(__('Loan History')); ?></h2>
+	</div>
+    <div class="infoBox">
+    <?php echo __('Report Filter'); ?>
+    </div>
+    <div class="sub_section">
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
         <div class="divRow">
@@ -113,10 +119,11 @@ if (!$reportView) {
     </div>
     <div style="padding-top: 10px; clear: both;">
     <input type="submit" name="applyFilter" value="<?php echo __('Apply Filter'); ?>" />
-    <input type="button" name="moreFilter" value="<?php echo __('Show More Filter Options'); ?>" />
+    <input type="button" class="button" name="moreFilter" value="<?php echo __('Show More Filter Options'); ?>" />
     <input type="hidden" name="reportView" value="true" />
     </div>
     </form>
+    </div>
     </fieldset>
     <!-- filter end -->
     <div class="dataListHeader" style="padding: 3px;"><span id="pagingBox"></span></div>

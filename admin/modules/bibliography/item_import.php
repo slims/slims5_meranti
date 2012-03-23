@@ -187,9 +187,12 @@ if (isset($_POST['doImport'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner importIcon">
-    <?php echo __('ITEM IMPORT TOOL'); ?>
-    <hr />
+	<div class="per_title">
+    	<h2><?php echo __('ITEM IMPORT TOOL'); ?></h2>
+	</div>
+	<div class="infoBox">
     <?php echo __('Import for item data from CSV file'); ?>
+	</div>
 </div>
 </fieldset>
 <div id="importInfo" class="infoBox" style="display: none;">&nbsp;</div><div id="importError" class="errorBox" style="display: none;">&nbsp;</div>

@@ -29,6 +29,7 @@ define('DB_ACCESS', 'fa');
 require '../../../sysconfig.inc.php';
 // IP based access limitation
 require LIB_DIR.'ip_based_access.inc.php';
+
 do_checkIP('smc');
 do_checkIP('smc-bibliography');
 // start the session
@@ -41,6 +42,7 @@ require SIMBIO_BASE_DIR.'simbio_FILE/simbio_directory.inc.php';
 
 // page title
 $page_title = 'File Attachment Upload';
+
 // check for biblio ID in url
 $biblioID = 0;
 if (isset($_GET['biblioID']) AND $_GET['biblioID']) {
@@ -191,7 +193,7 @@ if ($file_attach_d['biblio_id'] AND $file_attach_d['file_id']) {
 }
 
 // file title
-$form->addTextField('text', 'fileTitle', __('Title').'*', $file_attach_d['file_title'], 'style="width: 100%; overflow: auto;"');
+$form->addTextField('text', 'fileTitle', __('Title').'*', $file_attach_d['file_title'], 'style="width: 95%; overflow: auto;"');
 // file attachment
 if ($file_attach_d['file_name']) {
     $form->addAnything('Attachment', $file_attach_d['file_dir'].'/'.$file_attach_d['file_name']);

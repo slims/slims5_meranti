@@ -56,7 +56,7 @@ if ((bool) ini_get('safe_mode')) {
 @date_default_timezone_set('Asia/Jakarta');
 
 // senayan version
-define('SENAYAN_VERSION', 'senayan3-stable15');
+define('SENAYAN_VERSION', 'SLiMS 5 (Meranti)');
 
 // senayan session cookies name
 define('SENAYAN_SESSION_COOKIES_NAME', 'SenayanAdmin');

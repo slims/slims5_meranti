@@ -18,6 +18,31 @@ h1,h2,h3,h4,h5,h6 {
 	font-weight:normal;
 }
 
+h1 {
+	font-size:200%;
+}
+
+h2 {
+	font-size:175%;
+}
+
+h3 {
+	font-size:150%;
+}
+
+h4 {
+	font-size:125%;
+}
+
+h5 {
+	font-size:100%;
+}
+
+h6 {
+	font-size:75%;
+}
+
+
 a {
 	text-decoration: none !important;
 	font-weight:normal;
@@ -169,31 +194,49 @@ header
 -----------*/
 
 #header {
-	background-color:#bbd5f9;
-	padding:60px 0px 25px;
-	box-shadow: inset 0px 0px 10px #a6a6a6;
+	position: fixed;
+	bottom:0px;
+	width:100%;
+	background-color: #222;
+	background-color: #222222;
+	background-repeat: repeat-x;
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#333333), to(#222222));
+	background-image: -moz-linear-gradient(top, #333333, #222222);
+	background-image: -ms-linear-gradient(top, #333333, #222222);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #333333), color-stop(100%, #222222));
+	background-image: -webkit-linear-gradient(top, #333333, #222222);
+	background-image: -o-linear-gradient(top, #333333, #222222);
+	background-image: linear-gradient(top, #333333, #222222);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+	color:#fff;
+	padding:5px;
 }
 
 #libraryName {
-	font-size:40px;
+	font-size:18px;
 	color:#fff;
-	text-shadow:#666 0px 1px 4px;
-	line-height: normal;
 	text-transform: uppercase;
+	float: left;
+	margin-right:10px;
+	width:80px;
+	border-right:#999 solid 1px;
 }
 
 #librarySubName {
-	font-size:15px;
-	color:#666;
-	text-shadow:#eee 1px 1px 0px;
-	line-height: 10px;
+	font-size:14px;
+	padding-top:4px;
+	margin-left:10px;
 }
 
 #headerImage {
   float: left;
-  width: 75px;
-  height: 75px;
+  width:20px;
+  height:20px;
   background: url(media/logo.png) no-repeat top left;
+  background-size: 20px 20px;
   margin-left: 20px;
   margin-right: 10px;
 }
@@ -286,7 +329,7 @@ submenu
 .button,
 .headerText2,
 input[type="submit"],
-input[type="button"],
+.tab,
 a.printReport {
 	color:#fff !important;
 	cursor: pointer;
@@ -302,7 +345,6 @@ a.printReport {
 	background-image: linear-gradient(top, #62cffc, #30c0fb);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#62cffc', endColorstr='#30c0fb', GradientType=0);
 	padding: 5px 14px 6px;
-	font-size: 13px;
 	line-height: normal;
 	border: 1px solid #fff;
 	-webkit-border-radius: 4px;
@@ -311,10 +353,12 @@ a.printReport {
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
-.button:active,
-.headerText2:active,
+.button:hover,
+.headerText2:hover,
+.editFormLink:hover,
 input[type="submit"]:active,
 input[type="button"]:active,
+.tab:hover,
 a.printReport:active {
 	-webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.05);
 	-moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -331,7 +375,10 @@ a.printReport:active {
 	background-image: none !important;
 }
 
-.editFormLink, .confirmSubmit, #finishForm input[type="button"]  {
+.editFormLink,
+.confirmSubmit,
+#finishForm input[type="button"],
+.tabSelected  {
 	color:#fff !important;
 	font-weight:normal !important;
 	cursor: pointer;
@@ -368,13 +415,14 @@ a.printReport:active {
 button, input, select, checkbox
 -------------------------------------*/
 input[type="text"],
+input[type="password"],
 textarea {
 	display: inline-block;
 	width: 210px;
 	padding: 4px;
 	font-size: 13px;
 	line-height: 18px;
-	color: #808080;
+	color: #5a5a5a;
 	border: 1px solid #ccc;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -474,8 +522,8 @@ table, tr, td, th {
 #mainForm table td,
 #memberList table td,
 .border td,
-#pageContent td,
-#mainContent fieldset {
+#pageContent td
+{
 	padding:7px;
 	border-top: dotted 1px #ddd !important;
 	border-bottom: dotted 1px #ddd !important;
@@ -619,35 +667,6 @@ contentdisk
 	border-left: dotted 1px #ddd;
 	border-bottom: dotted 1px #ddd;
 	padding:5px;
-}
-
-.errorBox {
-  position: relative;
-  padding: 7px 15px;
-  margin-bottom: 18px;
-  color: #fff;
-  background-color: #c43c35;
-  background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#ee5f5b), to(#c43c35));
-  background-image: -moz-linear-gradient(top, #ee5f5b, #c43c35);
-  background-image: -ms-linear-gradient(top, #ee5f5b, #c43c35);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ee5f5b), color-stop(100%, #c43c35));
-  background-image: -webkit-linear-gradient(top, #ee5f5b, #c43c35);
-  background-image: -o-linear-gradient(top, #ee5f5b, #c43c35);
-  background-image: linear-gradient(top, #ee5f5b, #c43c35);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ee5f5b', endColorstr='#c43c35', GradientType=0);
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.7);
-  border-color: #eedc94 #eedc94 #e4c652;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  border-width: 1px;
-  border-style: solid;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
-
 }
 
 
@@ -868,7 +887,6 @@ icon
 	width: 150px;
 	padding:2px 2px 1px;
 	display: inline-block;
-
 }
 
 .dateInput {
@@ -888,6 +906,14 @@ icon
   height: 22px;
   background: url(media/cal.png) bottom left no-repeat;
   float: right;
+}
+
+.printReport {
+  background: url(media/printer-small.png) center left no-repeat;
+}
+
+.ucsUpload {
+
 }
 
 .printReport {
@@ -951,4 +977,40 @@ icon
 #iframeDragger {
 	background-color:#eee;
 	border: none;
+}
+
+.message
+{
+}
+
+.message li
+{
+	margin-bottom:1px;
+}
+
+.warning, .error, .errorBox
+{
+	padding:10px;
+	background-color: #c43c35;
+	background-repeat: repeat-x;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	border-color: #c43c35 #c43c35 #882a25;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	color:#ffffff;
+}
+
+.action_button
+{
+	float: right;
+}
+
+.per_title
+{
+	background-color:#bbd5f9;
+	padding:10px;
+}
+
+.sub_section
+{
+	padding:10px;
 }

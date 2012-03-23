@@ -31,6 +31,7 @@ require '../../../sysconfig.inc.php';
 require LIB_DIR.'ip_based_access.inc.php';
 do_checkIP('smc');
 do_checkIP('smc-bibliography');
+
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
