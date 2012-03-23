@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -187,9 +187,12 @@ if (isset($_POST['doImport'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner importIcon">
-    <?php echo __('ITEM IMPORT TOOL'); ?>
-    <hr />
+	<div class="per_title">
+    	<h2><?php echo __('ITEM IMPORT TOOL'); ?></h2>
+	</div>
+	<div class="infoBox">
     <?php echo __('Import for item data from CSV file'); ?>
+	</div>
 </div>
 </fieldset>
 <div id="importInfo" class="infoBox" style="display: none;">&nbsp;</div><div id="importError" class="errorBox" style="display: none;">&nbsp;</div>
@@ -217,4 +220,3 @@ $form->addTextField('text', 'recordNum', __('Number of Records To Export (0 for 
 $form->addTextField('text', 'recordOffset', __('Start From Record'), '1', 'style="width: 10%;"');
 // output the form
 echo $form->printOut();
-?>

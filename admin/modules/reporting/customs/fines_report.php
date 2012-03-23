@@ -133,7 +133,7 @@ if (!$reportView) {
     $output = simbio_date::generateCalendar($selected_year, $selected_month, $fines_data);
 
     // print out
-    echo '<div class="printPageInfo">Fines Count Report for year <strong>'.$selected_year.'</strong>, month <strong>'.$selected_month.'</strong> <a class="printReport" onclick="window.print()" href="#">['.__('Print Current Page').']</a></div>'."\n";
+    echo '<div class="printPageInfo">Fines Count Report for year <strong>'.$selected_year.'</strong>, month <strong>'.$selected_month.'</strong> <a class="printReport" onclick="window.print()" href="#">'.__('Print Current Page').'</a></div>'."\n";
     echo $output;
 
     $content = ob_get_clean();

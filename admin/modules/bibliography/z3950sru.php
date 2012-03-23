@@ -18,7 +18,7 @@
  *
  */
 
-/* Peer-to-Peer Web Services section */
+/* Z3950 Web Services section */
 
 // key to authenticate
 define('INDEX_AUTH', '1');
@@ -29,7 +29,6 @@ define('DB_ACCESS', 'fa');
 require '../../../sysconfig.inc.php';
 // IP based access limitation
 require LIB_DIR.'ip_based_access.inc.php';
-
 do_checkIP('smc');
 do_checkIP('smc-bibliography');
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
@@ -37,7 +36,6 @@ require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/simbio_dbop.inc.php';
-require LIB_DIR.'modsxmlsenayan.inc.php';
 
 // privileges checking
 $can_read = utility::havePrivilege('bibliography', 'r');
@@ -47,11 +45,16 @@ if (!$can_read) {
     die('<div class="errorBox">'.__('You are not authorized to view this section').'</div>');
 }
 
+if (isset($_GET['z3950_SRU_source'])) {
+    $zserver = trim(urldecode($_GET['z3950_SRU_source']));
+} else {
+    $zserver = 'http://z3950.loc.gov:7090/voyager?';
+}
+
 /* RECORD OPERATION */
-if (isset($_POST['saveResults']) && isset($_POST['p2precord']) && isset($_POST['p2pserver_save'])) {
+if (isset($_POST['saveZ']) AND isset($_SESSION['z3950result'])) {
   require MODULES_BASE_DIR.'bibliography/biblio_utils.inc.php';
 
-  $p2pserver = trim($_POST['p2pserver_save']);
   $gmd_cache = array();
   $publ_cache = array();
   $place_cache = array();
@@ -59,16 +62,13 @@ if (isset($_POST['saveResults']) && isset($_POST['p2precord']) && isset($_POST['
   $author_cache = array();
   $subject_cache = array();
   $input_date = date('Y-m-d H:i:s');
-  // record counter
+  // create dbop object
+  $sql_op = new simbio_dbop($dbs);
   $r = 0;
 
-  foreach ($_POST['p2precord'] as $id) {
-      // construct full XML URI
-      $detail_uri = $p2pserver."/index.php?p=show_detail&inXML=true&id=".$id;
-      // parse XML
-      $data = modsXMLsenayan($detail_uri, 'uri');
+  foreach ($_POST['zrecord'] as $id) {
       // get record detail
-      $record = $data['records'][0];
+      $record = $_SESSION['z3950result'][$id];
       // insert record to database
       if ($record) {
           // create dbop object
@@ -101,7 +101,8 @@ if (isset($_POST['saveResults']) && isset($_POST['p2precord']) && isset($_POST['
           }
 
           $biblio['input_date'] = $biblio['create_date'];
-          $biblio['last_update'] = $biblio['modified_date'];
+          // $biblio['last_update'] = $biblio['modified_date'];
+          $biblio['last_update'] = date('Y-m-d H:i:s');
 
           // remove unneeded elements
           unset($biblio['manuscript']);
@@ -158,60 +159,73 @@ if (isset($_POST['saveResults']) && isset($_POST['p2precord']) && isset($_POST['
           }
       }
   }
+
+  // destroy result Z3950 session
+  unset($_SESSION['z3950result']);
   utility::jsAlert($r.' records inserted to database.');
   echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'\');</script>';
   exit();
 }
-
 /* RECORD OPERATION END */
 
-
 /* SEARCH OPERATION */
-if (isset($_GET['keywords']) && $can_read && isset($_GET['p2pserver']))  {
-    $max_fetch = 20;
-    # get server information
-    $serverid = (integer)$_GET['p2pserver'];
-    $p2pserver = $sysconf['p2pserver'][$serverid]['uri'];
-    $p2pserver_name = $sysconf['p2pserver'][$serverid]['name'];
-    # get keywords
-    $keywords = urlencode($_GET['keywords']);
-    # $p2pquery = $p2pserver.'index.php?resultXML=true&keywords='.$_GET['keywords'];
-    $data = modsXMLsenayan($p2pserver."/index.php?resultXML=true&search=Search&keywords=".$keywords, 'uri');
+if (isset($_GET['keywords']) AND $can_read) {
+  require LIB_DIR.'modsxmlslims.inc.php';
+  $_SESSION['z3950result'] = array();
+  if ($_GET['index'] != 0) {
+    $index = trim($_GET['index']).' any ';
+  }
+  $keywords = urlencode($index.'"'.trim($_GET['keywords'].'"'));
+  $query = '';
+  if ($keywords) {
+    $sru_server = $zserver.'?version=1.1&operation=searchRetrieve&query='.$keywords.'&startRecord=1&maximumRecords=20&recordSchema=mods';
+    // parse SRU Server XML
+    $sru_xml = new SimpleXMLElement($sru_server, LIBXML_NSCLEAN, true);
+    // below is for debugging purpose
+    // echo '<pre>'; var_dump($sru_xml); echo '</pre>'; exit();
+    $zs_xml = $sru_xml->children('http://www.loc.gov/zing/srw/');
+    $hits = $zs_xml->numberOfRecords;
 
-    # debugging tools
-    # echo $p2pserver."/index.php?resultXML=true&keywords=".$keywords;
-    # echo '<br />';
-    if ($data['records']) {
-        echo '<div class="infoBox">Found '.$data['result_num'].' records from <strong>'.$p2pserver_name.'</strong> Server</div>';
-        echo '<form method="post" class="notAJAX" action="'.MODULES_WEB_ROOT_DIR.'bibliography/p2p.php" target="blindSubmit">';
-        echo '<table align="center" id="dataList" cellpadding="5" cellspacing="0">';
-        echo '<tr><td colspan="3"><input type="submit" name="saveResults" value="Save P2P Records to Database" /></td></tr>';
-        $row = 1;
-        foreach($data['records'] as $record) {
-            if ($row > $max_fetch) {
-                break;
-            }
-            $row_class = ($row%2 == 0)?'alterCell':'alterCell2';
-            echo '<tr>';
-            echo '<td width="2%" class="'.$row_class.'"><input type="checkbox" name="p2precord[]" value="'.$record['id'].'" /></td>';
-            echo '<td width="98%" class="'.$row_class.'"><strong>'.$record['title'].'</strong>';
-            echo '<div><i>';
-            // concat authors name
-            $buffer_authors = '';
-            foreach ($record['authors'] as $author) { $buffer_authors .= $author['name'].' - '; }
-            echo substr_replace($buffer_authors, '', -3);
-            echo '</i></div>';
-            echo '</td>';
-            echo '</tr>';
-            $row++;
-        }
-        echo '</table>'."\n";
-        echo '<input type="hidden" name="p2pserver_save" value="'.$p2pserver.'" />';
-        echo '</form>';
+    if ($hits > 0) {
+      echo '<div class="infoBox">Found '.$hits.' records from Z3950 SRU Server.</div>';
+      echo '<form method="post" class="notAJAX" action="'.MODULES_WEB_ROOT_DIR.'bibliography/z3950sru.php" target="blindSubmit">';
+      echo '<table align="center" id="dataList" cellpadding="5" cellspacing="0">';
+      echo '<tr>';
+      echo '<td colspan="3"><input type="submit" name="saveZ" value="Save Z3950 Records to Database" /></td>';
+      echo '</tr>';
+      $row = 1;
+      foreach ($zs_xml->records->record as $rec) {
+        // echo '<pre>'; var_dump($rec->recordData->children()); echo '</pre>';
+        $mods = modsXMLslims($rec->recordData->children()->mods);
+        // save it to session vars for retrieving later
+        $_SESSION['z3950result'][$row] = $mods;
+        // authors
+        $authors = array(); foreach ($mods['authors'] as $auth) { $authors[] = $auth['name']; }
+
+        $row_class = ($row%2 == 0)?'alterCell':'alterCell2';
+        echo '<tr>';
+        echo '<td width="1%" class="'.$row_class.'"><input type="checkbox" name="zrecord['.$row.']" value="'.$row.'" /></td>';
+        echo '<td width="80%" class="'.$row_class.'"><strong>'.$mods['title'].'</strong><div><i>'.implode(' - ', $authors).'</i></div></td>';
+        echo '<td width="19%" class="'.$row_class.'">'.$mods['isbn_issn'].'</td>';
+        echo '</tr>';
+
+        $row++;
+      }
+      echo '</table>';
+      echo '</form>';
+    } else if ($errors) {
+      echo '<div class="errorBox"><ul>';
+      foreach ($errors as $errmsg) {
+          echo '<li>'.$errmsg.'</li>';
+      }
+      echo '</ul></div>';
     } else {
-        echo '<div class="errorBox">'.sprintf(__('Sorry, no result found from %s OR maybe XML result and detail disabled.'), $p2pserver).'</div>';
+      echo '<div class="errorBox">No Results Found!</div>';
     }
-    exit();
+  } else {
+    echo '<div class="errorBox">No Keywords Supplied!</div>';
+  }
+  exit();
 }
 /* SEARCH OPERATION END */
 
@@ -219,11 +233,12 @@ if (isset($_GET['keywords']) && $can_read && isset($_GET['p2pserver']))  {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner biblioIcon">
-    P2P Service
+    Z3950 SRU
     <hr />
-    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/p2p.php" loadcontainer="searchResult" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
+    <form name="search" id="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/z3950sru.php" loadcontainer="searchResult" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" id="keywords" size="30" />
-    <?php echo __('Server'); ?>: <select name="p2pserver" style="width: 20%;"><?php foreach ($sysconf['p2pserver'] as $serverid => $p2pserver) { echo '<option value="'.$serverid.'">'.$p2pserver['name'].'</option>';  } ?></select>
+    <select name="index"><option value="0"><?php echo __('All fields'); ?></option><option value="bath.isbn"><?php echo __('ISBN/ISSN'); ?></option><option value="dc.title"><?php echo __('Title/Series Title'); ?></option><option value="bath.name"><?php echo __('Authors'); ?></option></select>
+    <?php echo __('SRU Server'); ?>: <select name="z3950_SRU_source" style="width: 20%;"><?php foreach ($sysconf['z3950_SRU_source'] as $serverid => $z3950_source) { echo '<option value="'.$z3950_source['uri'].'">'.$z3950_source['name'].'</option>';  } ?></select>
     <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
     <div><?php echo __('* Please make sure you have a working Internet connection.'); ?></div>

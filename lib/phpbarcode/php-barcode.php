@@ -52,7 +52,13 @@ $font_loc = "./DejaVuSans.ttf";
 if (stripos(PHP_OS, 'Darwin') !== false) {
     $genbarcode_loc = './bin/darwin/genbarcode';
 } else if (stripos(PHP_OS, 'Linux') !== false) {
-    $genbarcode_loc = './bin/nix/genbarcode';
+    if (PHP_INT_SIZE == 4) {
+        $genbarcode_loc = './bin/nix/genbarcode';
+    } elseif (PHP_INT_SIZE == 8) {
+        $genbarcode_loc = './bin/nix/genbarcode64';
+    } else {
+        $genbarcode_loc = './bin/nix/genbarcode';
+    }
 } else {
     $genbarcode_loc = '.\bin\win\genbarcode.exe';
 }

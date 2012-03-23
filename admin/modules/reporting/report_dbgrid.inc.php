@@ -7,7 +7,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -22,7 +22,7 @@
  */
 
 // be sure that this file not accessed directly
-if (INDEX_AUTH != 1) { 
+if (INDEX_AUTH != 1) {
     die("can not access this file directly");
 }
 
@@ -85,11 +85,9 @@ class report_datagrid extends simbio_datagrid
         } else {
             $this->paging_set =  '&nbsp;';
         }
-        $_buffer .= '<div class="printPageInfo"><strong>'.$this->num_rows.'</strong> '.__('record(s) found. Currently displaying page').' '.$this->current_page.' ('.$int_num2show.' '.__('record each page').') <a class="printReport" onclick="window.print()" href="#">['.__('Print Current Page').']</a></div>'."\n"; //mfc
+        $_buffer .= '<div class="printPageInfo"><strong>'.$this->num_rows.'</strong> '.__('record(s) found. Currently displaying page').' '.$this->current_page.' ('.$int_num2show.' '.__('record each page').') <a class="printReport" onclick="window.print()" href="#">'.__('Print Current Page').'</a></div>'."\n"; //mfc
         $_buffer .= $this->printTable();
 
         return $_buffer;
     }
 }
-
-?>

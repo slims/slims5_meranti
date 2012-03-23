@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -59,6 +59,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         $data['topic'] = $dbs->escape_string($topic);
         $data['topic_type'] = trim($dbs->escape_string($_POST['subjectType']));
         $data['auth_list'] = trim($dbs->escape_string(strip_tags($_POST['authList'])));
+        $data['classification'] = trim($dbs->escape_string($_POST['class']));
         $data['input_date'] = date('Y-m-d');
         $data['last_update'] = date('Y-m-d');
 
@@ -170,6 +171,8 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     /* Form Element(s) */
     // subject
     $form->addTextField('text', 'topic', __('Subject').'*', $rec_d['topic'], 'style="width: 60%;"');
+	// classification
+    $form->addTextField('text', 'class', __('Classification Code'), $rec_d['classification'], 'style="width: 30%;"');
     // subject type
     foreach ($sysconf['subject_type'] as $subj_type_id => $subj_type) {
         $subj_type_options[] = array($subj_type_id, $subj_type);
@@ -199,14 +202,16 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // create datagrid
     $datagrid = new simbio_datagrid();
     if ($can_read AND $can_write) {
-        $subj_type_fld = 2;
+        $subj_type_fld = 3;
         $datagrid->setSQLColumn('t.topic_id',
             't.topic AS \''.__('Subject').'\'',
+			't.classification AS \''.__('Class. Code').'\'',
             't.topic_type AS \''.__('Subject Type').'\'',
             't.auth_list AS \''.__('Authority Files').'\'',
             't.last_update AS \''.__('Last Update').'\'');
     } else {
         $datagrid->setSQLColumn('t.topic AS \''.__('Subject').'\'',
+			't.classification AS \''.__('Class. Code').'\'',
             't.topic_type AS \''.__('Subject Type').'\'',
             't.auth_list AS \''.__('Authority Files').'\'',
             't.last_update AS \''.__('Last Update').'\'');
@@ -220,14 +225,14 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         if (count($words) > 1) {
             $concat_sql = ' AND (';
             foreach ($words as $word) {
-                $concat_sql .= " t.topic LIKE '%$word%' AND";
+                $concat_sql .= " (t.topic LIKE '%$word%' OR t.classification LIKE '%$word%') AND";
             }
             // remove the last AND
             $concat_sql = substr_replace($concat_sql, '', -3);
             $concat_sql .= ') ';
             $sql_criteria .= $concat_sql;
         } else {
-            $sql_criteria .= " AND t.topic LIKE '%$keyword%'";
+            $sql_criteria .= " AND t.topic LIKE '%$keyword%' OR t.classification LIKE '%$keyword%' ";
         }
     }
     $datagrid->setSQLCriteria($sql_criteria);
@@ -256,4 +261,3 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     echo $datagrid_result;
 }
 /* main content end */
-?>

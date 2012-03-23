@@ -1,38 +1,68 @@
-<?php
-/**
- * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com)
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- *
- */
+<?ph
 
-/* Serial Control Management section */
+/*
 
-// key to authenticate
-define('INDEX_AUTH', '1');
+ * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com
 
-if (!defined('SENAYAN_BASE_DIR')) {
-    // main system configuration
-    require '../../../sysconfig.inc.php';
-    // start the session
-    require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
-}
+ 
+
+ * This program is free software; you can redistribute it and/or modif
+
+ * it under the terms of the GNU General Public License as published b
+
+ * the Free Software Foundation; either version 3 of the License, o
+
+ * (at your option) any later version
+
+ 
+
+ * This program is distributed in the hope that it will be useful
+
+ * but WITHOUT ANY WARRANTY; without even the implied warranty o
+
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See th
+
+ * GNU General Public License for more details
+
+ 
+
+ * You should have received a copy of the GNU General Public Licens
+
+ * along with this program; if not, write to the Free Softwar
+
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  US
+
+ 
+
+ *
+
+
+/* Serial Control Management section *
+
+
+// key to authenticat
+
+define('INDEX_AUTH', '1')
+
+
+if (!defined('SENAYAN_BASE_DIR')) 
+
+    // main system configuratio
+
+    require '../../../sysconfig.inc.php'
+
+    // start the sessio
+
+    require SENAYAN_BASE_DIR.'admin/default/session.inc.php'
+
+
+
 // IP based access limitation
 require LIB_DIR.'ip_based_access.inc.php';
-do_checkIP('smc');
-do_checkIP('smc-serialcontrol');
+do_checkIP('smc')
+
+do_checkIP('smc-serialcontrol')
+
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php';

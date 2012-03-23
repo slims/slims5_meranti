@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -198,13 +198,16 @@ if (!$in_pop_up) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner itemIcon">
-    <?php echo strtoupper(__('Items')); ?>
-    <hr />
-    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/item.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
-    <input type="text" name="keywords" id="keywords" size="30" />
-    <select name="searchby"><option value="item">Item</option><option value="others"><?php echo __('Others'); ?> </option></select>
-    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
-    </form>
+	<div class="per_title">
+    	<h2><?php echo strtoupper(__('Items')); ?></h2>
+	</div>
+	<div class="sub_section">
+	    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/item.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
+		    <input type="text" name="keywords" id="keywords" size="30" />
+		    <select name="searchby"><option value="item">Item</option><option value="others"><?php echo __('Others'); ?> </option></select>
+		    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
+	    </form>
+    </div>
 </div>
 </fieldset>
 <?php
@@ -341,7 +344,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // edit mode messagge
     if ($form->edit_mode) {
         echo '<div class="infoBox">'.__('You are going to edit Item data').': <b>'.$rec_d['title'].'</b> ' //mfc
-            .'<br />'.__('Last Updated').' '.$rec_d['last_update'];
+            .'<br />'.__('Last Updated').'&nbsp;'.$rec_d['last_update'];
         echo '</div>'."\n";
     }
     // print out the form object
@@ -488,4 +491,3 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     echo $datagrid_result;
 }
 /* main content end */
-?>

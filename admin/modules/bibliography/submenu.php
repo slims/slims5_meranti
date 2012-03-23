@@ -4,7 +4,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -20,6 +20,7 @@
 
 /* Bibliographic module submenu items */
 // IP based access limitation
+
 do_checkIP('smc');
 do_checkIP('smc-bibliography');
 
@@ -38,4 +39,3 @@ $menu[] = array(__('Data Export'), MODULES_WEB_ROOT_DIR.'bibliography/export.php
 $menu[] = array(__('Data Import'), MODULES_WEB_ROOT_DIR.'bibliography/import.php', __('Import Data to Bibliographic Database from CSV file'));
 $menu[] = array(__('Item Export'), MODULES_WEB_ROOT_DIR.'bibliography/item_export.php', __('Export Item/Copies data To CSV format'));
 $menu[] = array(__('Item Import'), MODULES_WEB_ROOT_DIR.'bibliography/item_import.php', __('Import Data to Item/Copies database from CSV file'));
-?>
