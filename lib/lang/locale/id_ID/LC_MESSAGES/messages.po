@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Senayan3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-15 20:21+0700\n"
-"PO-Revision-Date: 2011-08-15 20:21+0700\n"
-"Last-Translator: Arie Nugraha <dicarve@gmail.com>\n"
+"PO-Revision-Date: 2012-03-23 20:39+0700\n"
+"Last-Translator: Arif Syamsudin <buitenzorg812@gmail.com>\n"
 "Language-Team: Arie Nugraha; Hendro Wicaksono; Wardiyono <dicarve@yahoo.com; hendrowicaksono@yahoo.com; wynerst@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,11 +19,11 @@ msgstr ""
 
 #: index.php:40
 msgid "Web Online Public Access Catalog - Use the search options to find documents quickly"
-msgstr "Web Online Public Access Catalog - Gunakan fasilitas pencarian untuk mempercepat anda menemukan data katalog"
+msgstr "Akses Katalog Publik Daring - Gunakan fasilitas pencarian untuk mempercepat penemuan data katalog"
 
 #: index.php:49
 msgid "You are currently Logged on as member"
-msgstr "Anda saat ini login sebagai anggota"
+msgstr "Anda saat ini masuk sebagai anggota"
 
 #: index.php:49
 msgid "LOGOUT"
@@ -107,7 +107,7 @@ msgstr "Kontributor"
 
 #: admin/index.php:63
 msgid "Welcome To The Library Automation System, you are currently logged in as"
-msgstr "Selamat datang di automasi perpustakaan, saat ini anda login sebagai"
+msgstr "Selamat datang di automasi perpustakaan, saat ini Anda masuk sebagai"
 
 #: admin/logout.php:36
 msgid "You Have Been Logged Out From Library Automation System"
@@ -115,31 +115,31 @@ msgstr "Anda telah keluar dari sistem automasi perpustakaan"
 
 #: admin/default/home.php:35
 msgid "<strong>PHP GD</strong> extension is not installed. Please install it or application won't be able to create image thumbnail and barcode."
-msgstr "Extension <strong>PHP GD</strong> belum terinstall. Pastikan PHP GD terinstall atau aplikasi tidak dapat membuat thumbnail image dan membuat barcode"
+msgstr "Ekstensi <strong>PHP GD</strong> belum terpasang. Pastikan PHP GD sudah terpasang atau aplikasi tidak dapat membuat gambar mini dan barkod"
 
 #: admin/default/home.php:39
 msgid "<strong>Freetype</strong> support is not enabled in PHP GD extension. Rebuild PHP GD extension with Freetype support or application won't be able to create barcode."
-msgstr "Dukungan <strong>Freetype</strong> pada PHP GD belum ada. Bangun atau install ulang PHP GD dengan dukungan Freetype atau aplikasi tidak dapat membuat barcode."
+msgstr "Dukungan <strong>Freetype</strong> pada PHP GD belum ada. Bangun-ulang PHP GD dengan dukungan Freetype atau aplikasi tidak dapat membuat barkod."
 
 #: admin/default/home.php:46
 msgid "There is currently <strong>{num_overdue}</strong> library members having overdue. Please check at <b>Circulation</b> module at <b>Overdues</b> section for more detail"
-msgstr "Terdapat <strong>{num_overdue}</strong> anggota perpustakaan terlambat mengembalikan koleksi. Cek modul <b>Sirkulasi</b> pada bagian <b>Keterlambatan</b> untuk lebih detil"
+msgstr "Terdapat <strong>{num_overdue}</strong> anggota perpustakaan yang terlambat mengembalikan koleksi. Periksa modul <b>Sirkulasi</b> pada bagian <b>Keterlambatan</b> untuk detil"
 
 #: admin/default/home.php:51
 msgid "<strong>Images</strong> directory and directories under it is not writable. Make sure it is writable by changing its permission or you won't be able to upload any images and create barcodes"
-msgstr "Direktori <strong>Images</strong> dan direktori-direktori di bawahnya tidak dapat ditulis. Pastikan direktori-direktori ini bisa ditulis atau aplikasi tidak dapat mengunggah gambar dan membuat barcode."
+msgstr "Direktori <strong>Images</strong> dan direktori-direktori di bawahnya tidak dapat ditulis. Pastikan direktori-direktori ini bisa ditulis atau aplikasi tidak dapat mengunggah gambar dan membuat barkod."
 
 #: admin/default/home.php:55
 msgid "<strong>Repository</strong> directory is not writable. Make sure it is writable (and all directories under it) by changing its permission or you won't be able to upload any bibliographic attachments."
-msgstr "Direktori <strong>Repository</strong> dan direktori-direktori di bawahnya tidak dapat ditulis. Pastikan direktori-direktori ini bisa ditulis atau aplikasi tidak bisa mengunggah file attachment untuk data bibliografi."
+msgstr "Direktori <strong>Repository</strong> dan direktori-direktori di bawahnya tidak dapat ditulis. Pastikan direktori-direktori ini bisa ditulis atau aplikasi tidak bisa mengunggah berkas lampiran untuk data bibliografi."
 
 #: admin/default/home.php:59
 msgid "<strong>File upload</strong> directory is not writable. Make sure it is writable (and all directories under it) by changing its permission or you won't be able to upload any file, create report files and create database backups."
-msgstr "Direktori <strong>Upload File</strong> dan direktori-direktori di bawahnya tidak dapat ditulis. Pastikan direktori-direktori ini bisa ditulis atau aplikasi tidak bisa mengunggah file, membuat report dan backup."
+msgstr "Direktori <strong>Upload File</strong> dan direktori-direktori di bawahnya tidak dapat ditulis. Pastikan direktori-direktori ini bisa ditulis atau aplikasi tidak bisa mengunggah berkas, membuat laporan dan cadangan."
 
 #: admin/default/home.php:63
 msgid "The PATH for <strong>mysqldump</strong> program is not right! Please check configuration file or you won't be able to do any database backups."
-msgstr "Letak program <strong>mysqldump</strong> tidak ditemukan! Periksa kembali file konfigurasi aplikasi atau anda tidak dapat melakukan backup."
+msgstr "Letak <strong>mysqldump</strong> tidak sesuai! Periksa kembali berkas konfigurasi aplikasi atau Anda tidak dapat melakukan pencadangan."
 
 #: admin/default/session_check.inc.php:32
 #: admin/default/session_check.inc.php:44
@@ -148,7 +148,7 @@ msgstr "Anda tidak memiliki wewenang untuk masuk ke bagian ini!"
 
 #: admin/default/session_check.inc.php:56
 msgid "Your Login Session has already timeout!"
-msgstr "Sesi login anda telah habis. Harap lakukan login kembali"
+msgstr "Sesi masuk Anda telah habis!"
 
 #: admin/default/submenu.php:21
 msgid "Panel"
@@ -156,19 +156,19 @@ msgstr "Panel"
 
 #: admin/default/submenu.php:22
 msgid "Change User Profiles"
-msgstr "Ubah Profil User"
+msgstr "Ubah Profil Pengguna"
 
 #: admin/default/submenu.php:22
 msgid "Change Current User Profiles and Password"
-msgstr "Ubah Profil dan Password User Aktif"
+msgstr "Ubah Profil dan Kata Sandi Pengguna Saat Ini"
 
 #: admin/default/submenu.php:24
 msgid "Add New Bibliography"
-msgstr "Tambah Katalog Baru"
+msgstr "Tambah Data Bibliografi Baru"
 
 #: admin/default/submenu.php:24
 msgid "Add New Bibliographic Data/Catalog"
-msgstr "Menambahkan Data Katalog Baru"
+msgstr "Menambahkan Data Bibliografi Baru"
 
 #: admin/default/submenu.php:27
 msgid "Start Transaction"
@@ -176,7 +176,7 @@ msgstr "Mulai Transaksi"
 
 #: admin/default/submenu.php:27
 msgid "Start Circulation Transaction Proccess"
-msgstr "Mulai Proses Transaksi Sirkulasi"
+msgstr "Mulai Transaksi Sirkulasi"
 
 #: admin/default/submenu.php:30
 msgid "Quick Return"
@@ -196,7 +196,7 @@ msgstr "Tambah Data Anggota Perpustakaan"
 
 #: admin/modules/bibliography/checkout_item.php:46
 msgid "Checkout Items"
-msgstr "Daftar Koleksi Keluar"
+msgstr "Daftar Eksemplar Keluar"
 
 #: admin/modules/bibliography/checkout_item.php:48
 #: admin/modules/bibliography/dl_print.php:211
@@ -219,7 +219,7 @@ msgstr "Pencarian"
 #: admin/modules/bibliography/item_barcode_generator.php:239
 #: admin/modules/bibliography/item_barcode_generator.php:246
 msgid "Item Code"
-msgstr "Kode Koleksi"
+msgstr "Kode Eksemplar"
 
 #: admin/modules/bibliography/checkout_item.php:65
 msgid "Member ID"
@@ -257,7 +257,7 @@ msgstr "Tanggal Harus Kembali"
 #: admin/modules/bibliography/item.php:478
 #: admin/modules/bibliography/item_barcode_generator.php:283
 msgid "Found <strong>{result->num_rows}</strong> from your keywords"
-msgstr "Ditemukan  <strong>{result->num_rows}</strong> dari pencarian anda melalui kata kunci"
+msgstr "Ditemukan  <strong>{result->num_rows}</strong> dari pencarian Anda melalui kata kunci"
 
 #: admin/modules/bibliography/dl_print.php:85
 #: admin/modules/bibliography/item_barcode_generator.php:91
@@ -287,7 +287,7 @@ msgstr "Pencetakan Label"
 
 #: admin/modules/bibliography/dl_print.php:208
 msgid "Print Labels for Selected Data"
-msgstr "Cetak Data Terpilih"
+msgstr "Cetak Label dari Data Terpilih"
 
 #: admin/modules/bibliography/dl_print.php:209
 #: admin/modules/bibliography/item_barcode_generator.php:203
@@ -302,12 +302,12 @@ msgstr "Maksimum"
 #: admin/modules/bibliography/dl_print.php:217
 #: admin/modules/bibliography/item_barcode_generator.php:211
 msgid "records can be printed at once. Currently there is"
-msgstr "Rekod bisa dicetak pada saat bersamaan. Saat ini terdapat"
+msgstr "Cantuman bisa dicetak pada saat bersamaan. Saat ini terdapat"
 
 #: admin/modules/bibliography/dl_print.php:221
 #: admin/modules/bibliography/item_barcode_generator.php:215
 msgid "in queue waiting to be printed."
-msgstr "antrian menunggu untuk dicetak."
+msgstr "dalam antrian menunggu untuk dicetak."
 
 #: admin/modules/bibliography/dl_print.php:246
 #: admin/modules/bibliography/dl_print.php:254
@@ -331,7 +331,7 @@ msgstr "Tambahkan Dalam Antrian"
 #: admin/modules/bibliography/dl_print.php:284
 #: admin/modules/bibliography/item_barcode_generator.php:276
 msgid "Add to print queue?"
-msgstr "Cetak dalam antrian pencetakan?"
+msgstr "Tambahkan dalam antrian pencetakan?"
 
 #: admin/modules/bibliography/dl_print.php:292
 #: admin/modules/bibliography/index.php:703
@@ -357,19 +357,19 @@ msgstr "Ruas penting (bertanda *) harus diisi dengan benar!"
 #: admin/modules/bibliography/export.php:105
 #: admin/modules/bibliography/item_export.php:107
 msgid "Error on query to database, Export FAILED!"
-msgstr "Terdapat kesalahan dalam melakukan query ke basisdata. Ekspor GAGAL!"
+msgstr "Terdapat kesalahan dalam melakukan <i>query</i> ke basisdata. Ekspor GAGAL!"
 
 #: admin/modules/bibliography/export.php:143
 msgid "There is no record in bibliographic database yet, Export FAILED!"
-msgstr "Belum ada data dalam tabel bibliografi di basisdata. Ekspor GAGAL!"
+msgstr "Tidak ada cantuman dalam basisdata bibliografi. Ekspor GAGAL!"
 
 #: admin/modules/bibliography/export.php:152
 msgid "EXPORT TOOL"
-msgstr "Fasilitas Eksport"
+msgstr "Fasilitas Ekspor"
 
 #: admin/modules/bibliography/export.php:154
 msgid "Export bibliographics data to CSV file"
-msgstr "Eksport data bibliografi data kedalam format CSV"
+msgstr "Ekspor data bibliografi data ke format CSV"
 
 #: admin/modules/bibliography/export.php:161
 #: admin/modules/bibliography/item_export.php:144
@@ -381,7 +381,7 @@ msgstr "Ekspor Sekarang"
 #: admin/modules/bibliography/item_export.php:153
 #: admin/modules/bibliography/item_import.php:205
 msgid "Field Separator"
-msgstr "Pemisah Antar Ruas"
+msgstr "Pemisah Ruas"
 
 #: admin/modules/bibliography/export.php:172
 #: admin/modules/bibliography/import.php:243
@@ -393,21 +393,21 @@ msgstr "Batas Awal-Akhir Ruas"
 #: admin/modules/bibliography/export.php:176
 #: admin/modules/bibliography/item_export.php:159
 msgid "Record Separator"
-msgstr "Batas Pemisah Rekod"
+msgstr "Batas Pemisah Cantuman"
 
 #: admin/modules/bibliography/export.php:178
 #: admin/modules/bibliography/import.php:245
 #: admin/modules/bibliography/item_export.php:161
 #: admin/modules/bibliography/item_import.php:209
 msgid "Number of Records To Export (0 for all records)"
-msgstr "Jumlah Rekod untuk diekspor (0 untuk semua rekod)"
+msgstr "Jumlah Cantuman untuk diekspor (0 untuk semua rekod)"
 
 #: admin/modules/bibliography/export.php:180
 #: admin/modules/bibliography/import.php:247
 #: admin/modules/bibliography/item_export.php:163
 #: admin/modules/bibliography/item_import.php:211
 msgid "Start From Record"
-msgstr "Mulai dari rekod ke"
+msgstr "Mulai dari cantuman ke"
 
 #: admin/modules/bibliography/iframe_attach.php:70
 msgid "Attachment removed!"
@@ -416,7 +416,7 @@ msgstr "Lampiran dihapus!"
 #: admin/modules/bibliography/iframe_attach.php:115
 #: admin/modules/bibliography/index.php:515
 msgid "File Attachments"
-msgstr "Lampiran"
+msgstr "Lampiran Berkas"
 
 #: admin/modules/bibliography/iframe_author.php:64
 msgid "Author succesfully removed!"
@@ -449,20 +449,20 @@ msgstr "Eksemplar/Kopi"
 #: admin/modules/bibliography/import.php:48
 #: admin/modules/bibliography/item_import.php:48
 msgid "Please select the file to import!"
-msgstr "Tentukan data yang akan diimpor!"
+msgstr "Pilih berkas yang akan diimpor!"
 
 #: admin/modules/bibliography/import.php:72
 #: admin/modules/bibliography/item_import.php:72
 msgid "Upload failed! File type not allowed or the size is more than"
-msgstr "GAGAL menunggah! Jenis data tidak sesuai atau ukuran lebih dari"
+msgstr "GAGAL mengunggah! Jenis data tidak sesuai atau ukuran lebih dari"
 
 #: admin/modules/bibliography/import.php:218
 msgid "IMPORT TOOL"
-msgstr "FASILITAS IMPORT"
+msgstr "FASILITAS IMPOR"
 
 #: admin/modules/bibliography/import.php:220
 msgid "Import for bibliographics data from CSV file. For guide on CVS fields order and format please refer to documentation or visit <a href=\"http://senayan.diknas.go.id\" target=\"_blank\">Official Website</a>"
-msgstr "Impor data bibiliogrfi dari berkas CSV. Lihat panduan tentang format penulisan dan urutan ruas dalam berkas CSV atau kunjungi <a href=\"http://slims.web.id\" target=\"_blank\">Situs Resmi</a>"
+msgstr "Impor data bibiliografi dari berkas CSV. Lihat panduan tentang format penulisan dan urutan ruas dalam berkas CSV atau kunjungi <a href=\"http://slims.web.id\" target=\"_blank\">Situs Resmi</a>"
 
 #: admin/modules/bibliography/import.php:228
 #: admin/modules/bibliography/item_import.php:193
@@ -472,11 +472,11 @@ msgstr "Impor Sekarang"
 #: admin/modules/bibliography/import.php:239
 #: admin/modules/bibliography/item_import.php:203
 msgid "File To Import"
-msgstr "Data untuk di impor"
+msgstr "Berkas untuk di impor"
 
 #: admin/modules/bibliography/index.php:61
 msgid "Title can not be empty"
-msgstr "Judul harus diisi"
+msgstr "Judul tidak boleh kosong"
 
 #: admin/modules/bibliography/index.php:163
 #: admin/modules/bibliography/index.php:167
@@ -489,7 +489,7 @@ msgstr "Data bibliografi berhasil diperbaharui"
 
 #: admin/modules/bibliography/index.php:216
 msgid "Bibliography Data FAILED to Updated. Please Contact System Administrator"
-msgstr "Data bibliografi GAGAL diperbaharui. Hubungi System Administrator untuk pemecahan"
+msgstr "Data bibliografi GAGAL diperbaharui. Hubungi Administrator Sistem"
 
 #: admin/modules/bibliography/index.php:249
 msgid "New Bibliography Data Successfully Saved"
@@ -497,11 +497,11 @@ msgstr "Data baru bibliografi berhasil disimpan"
 
 #: admin/modules/bibliography/index.php:263
 msgid "Bibliography Data FAILED to Save. Please Contact System Administrator"
-msgstr "Data bibliografi GAGAL disimpan. Hubungi System Administrator untuk pemecahan"
+msgstr "Data bibliografi GAGAL disimpan. Hubungi Administrator Sistem"
 
 #: admin/modules/bibliography/index.php:317
 msgid "Below data can not be deleted:"
-msgstr "Daftar data berikut tidak bisa dihapus :"
+msgstr "Data berikut tidak bisa dihapus :"
 
 #: admin/modules/bibliography/index.php:327
 msgid "All Data Successfully Deleted"
@@ -513,11 +513,11 @@ msgid ""
 "Please contact system administrator"
 msgstr ""
 "Sebagian atau semua data GAGAL dihapus!\\n"
-"Hubungi admin sistem untuk pemecahannya"
+"Hubungi administrator sistem"
 
 #: admin/modules/bibliography/index.php:342
 msgid "Bibliographic"
-msgstr "Katalog"
+msgstr "Bibliografi"
 
 #: admin/modules/bibliography/index.php:343
 msgid "Bibliographic List"
@@ -525,7 +525,7 @@ msgstr "Daftar Bibliografi"
 
 #: admin/modules/bibliography/index.php:348
 msgid "Upload Selected Bibliographic data to Union Catalog Server*"
-msgstr "Unggah Data Bibliografi Terpilih ke Katalog Induk"
+msgstr "Unggah Data Bibliografi Terpilih ke Peladen Katalog Induk"
 
 #: admin/modules/bibliography/index.php:355
 msgid "All Fields"
@@ -533,7 +533,7 @@ msgstr "Semua Ruas"
 
 #: admin/modules/bibliography/index.php:355
 msgid "Title/Series Title"
-msgstr "Judul Seri"
+msgstr "Judul/Judul Seri"
 
 #: admin/modules/bibliography/index.php:355
 msgid "Topics"
@@ -574,11 +574,11 @@ msgstr "Edisi"
 
 #: admin/modules/bibliography/index.php:423
 msgid "Specific Detail Info"
-msgstr "Detil Spesifik"
+msgstr "Info Detil Spesifik"
 
 #: admin/modules/bibliography/index.php:426
 msgid "Add New Items"
-msgstr "Tambah Data Eksemplar"
+msgstr "Tambah Eksemplar Baru"
 
 #: admin/modules/bibliography/index.php:431
 msgid "Authors/Roles"
@@ -638,11 +638,11 @@ msgstr "Subyek/Topik"
 
 #: admin/modules/bibliography/index.php:490
 msgid "Add Subject(s)"
-msgstr "Tambah Data Subyek/Subjek"
+msgstr "Tambah Data Subyek"
 
 #: admin/modules/bibliography/index.php:492
 msgid "Subject(s)"
-msgstr "Subyek/Subjek"
+msgstr "Subyek"
 
 #: admin/modules/bibliography/index.php:500
 msgid "Language"
@@ -650,7 +650,7 @@ msgstr "Bahasa"
 
 #: admin/modules/bibliography/index.php:502
 msgid "Abstract/Notes"
-msgstr "Abstrak"
+msgstr "Abstrak/Catatan"
 
 #: admin/modules/bibliography/index.php:507
 #: admin/modules/bibliography/index.php:512
@@ -663,7 +663,7 @@ msgstr "Tambah Lampiran"
 
 #: admin/modules/bibliography/index.php:517
 msgid "File Attachment"
-msgstr "Lampiran"
+msgstr "Lampiran Berkas"
 
 #: admin/modules/bibliography/index.php:551
 msgid "Show"
@@ -714,7 +714,7 @@ msgstr "Tidak Ada"
 #: admin/modules/bibliography/index.php:648
 #: admin/modules/bibliography/index.php:654
 msgid "Copies"
-msgstr "Kopi"
+msgstr "Salin"
 
 #: admin/modules/bibliography/index.php:623
 #: admin/modules/bibliography/index.php:629
@@ -745,9 +745,8 @@ msgid "Items"
 msgstr "Eksemplar"
 
 #: admin/modules/bibliography/item.php:199
-#, fuzzy
 msgid "Others"
-msgstr "Laporan Lain"
+msgstr "Lainnya"
 
 #: admin/modules/bibliography/item.php:269
 msgid "Edit Biblographic data"
@@ -837,19 +836,19 @@ msgstr "Pengarang"
 #: admin/modules/bibliography/item_barcode_generator.php:194
 #: admin/modules/bibliography/item_barcode_generator.php:202
 msgid "Item Barcodes Printing"
-msgstr "Cetak Barcode Koleksi"
+msgstr "Cetak Barkod Eksemplar"
 
 #: admin/modules/bibliography/item_barcode_generator.php:202
 msgid "Print Barcodes for Selected Data"
-msgstr "Cetak Data Terpilih"
+msgstr "Cetak Barkod untuk Data Terpilih"
 
 #: admin/modules/bibliography/item_export.php:126
 msgid "There is no record in item database yet, Export FAILED!"
-msgstr "Tidak  ada rekod dalam basisdata eksemplar, Ekspor GAGAL!"
+msgstr "Tidak ada cantuman dalam basisdata eksemplar, Ekspor GAGAL!"
 
 #: admin/modules/bibliography/item_export.php:135
 msgid "ITEM EXPORT TOOL"
-msgstr "Fasilitas Impor"
+msgstr "Perangkat Ekspor Eksemplar"
 
 #: admin/modules/bibliography/item_export.php:137
 msgid "Export item data to CSV file"
@@ -857,7 +856,7 @@ msgstr "Ekspor data eksemplar ke dalam berkas CSV"
 
 #: admin/modules/bibliography/item_import.php:184
 msgid "ITEM IMPORT TOOL"
-msgstr "Fasilitas Import"
+msgstr "Perangkat Impor Eksemplar"
 
 #: admin/modules/bibliography/item_import.php:186
 msgid "Import for item data from CSV file"
@@ -870,35 +869,34 @@ msgstr "Maaf, dari %s tidak ada hasil ATAU kemungkinan hasil dan detil XML dinon
 
 #: admin/modules/bibliography/p2p.php:219
 #: admin/modules/bibliography/z3950.php:274
-#, fuzzy
 msgid "Server"
-msgstr "Reservasi"
+msgstr "Peladen"
 
 #: admin/modules/bibliography/p2p.php:222
 #: admin/modules/bibliography/z3950.php:277
 msgid "* Please make sure you have a working Internet connection."
-msgstr "* Pastikan anda memiliki koneksi internet"
+msgstr "* Pastikan Anda memiliki koneksi internet"
 
 #: admin/modules/bibliography/pop_attach.php:85
 msgid "Upload FAILED! Forbidden file type or file size too big!"
-msgstr "Unggah GAGAL! Jenis file terlarang atau ukuran terlalu besar!"
+msgstr "Unggah GAGAL! Jenis berkas terlarang atau ukuran terlalu besar!"
 
 #: admin/modules/bibliography/pop_attach.php:134
 msgid "File Attachment data updated!"
-msgstr "Data lampiran berhasil diubah!"
+msgstr "Data berkas lampiran berhasil diperbarui!"
 
 #: admin/modules/bibliography/pop_attach.php:138
 msgid "File Attachment data FAILED to update!"
-msgstr "Data lampiran GAGAL diubah!"
+msgstr "Data berkas lampiran GAGAL diperbarui!"
 
 #: admin/modules/bibliography/pop_attach.php:143
 #: admin/modules/bibliography/pop_attach.php:158
 msgid "File Attachment uploaded succesfully!"
-msgstr "Data Lampiran berhasil diunggah!"
+msgstr "Berkas Lampiran berhasil diunggah!"
 
 #: admin/modules/bibliography/pop_attach.php:147
 msgid "File Attachment data FAILED to save!"
-msgstr "Data Lampiran GAGAL disimpan!"
+msgstr "Berkas Lampiran GAGAL disimpan!"
 
 #: admin/modules/bibliography/pop_attach.php:167
 msgid "Upload Now"
@@ -914,7 +912,7 @@ msgstr "Direktori Repositori"
 
 #: admin/modules/bibliography/pop_attach.php:211
 msgid "File To Attach"
-msgstr "Berkas Lampiran"
+msgstr "Berkas untuk dilampirkan"
 
 #: admin/modules/bibliography/pop_attach.php:214
 msgid "URL"
@@ -946,7 +944,7 @@ msgstr "Pengarang berhasil diperbaharui!"
 
 #: admin/modules/bibliography/pop_author.php:95
 msgid "Author FAILED to Add. Please Contact System Administrator"
-msgstr "Pengarang GAGAL Ditambahkan. Hubungi System Administrator"
+msgstr "Pengarang GAGAL Ditambahkan. Hubungi Administrator Sistem"
 
 #: admin/modules/bibliography/pop_author.php:120
 msgid "Author added!"
@@ -971,7 +969,7 @@ msgstr "Sisipkan Dalam Bibliografi"
 
 #: admin/modules/bibliography/pop_topic.php:94
 msgid "Subject FAILED to Add. Please Contact System Administrator"
-msgstr "Subyek GAGAL Ditambahkan. Hubungi System Administrator"
+msgstr "Subyek GAGAL Ditambahkan. Hubungi Administrator Sistem"
 
 #: admin/modules/bibliography/pop_topic.php:119
 msgid "Subject added!"
@@ -991,7 +989,7 @@ msgstr "Ketik untuk mencari topik atau menambah baru"
 
 #: admin/modules/bibliography/submenu.php:24
 msgid "Show Existing Bibliographic Data"
-msgstr "Daftar Data Katalog"
+msgstr "Tunjukkan Data Bibliografi yang Ada"
 
 #: admin/modules/bibliography/submenu.php:27
 msgid "Item List"
@@ -999,11 +997,11 @@ msgstr "Daftar Eksemplar"
 
 #: admin/modules/bibliography/submenu.php:27
 msgid "Show List of Library Items"
-msgstr "Daftar Eksemplar yang dimiliki Perpustakaan"
+msgstr "Tunjukkan Daftar Eksemplar yang dimiliki Perpustakaan"
 
 #: admin/modules/bibliography/submenu.php:28
 msgid "Show List of Checkout Items"
-msgstr "Daftar Eksemplar Yang Sedang Dipinjam"
+msgstr "Tunjukkan Daftar Eksemplar Yang Sedang Dipinjam"
 
 #: admin/modules/bibliography/submenu.php:29
 msgid "Tools"
@@ -1015,7 +1013,7 @@ msgstr "Layanan Z3950"
 
 #: admin/modules/bibliography/submenu.php:30
 msgid "Grab Bibliographic Data from Z3950 Web Services"
-msgstr "Ambil Data Bibliografi/Katalog dari layanan Z3950"
+msgstr "Ambil Data Bibliografi dari Layanan Z3950"
 
 #: admin/modules/bibliography/submenu.php:31
 msgid "P2P Service"
@@ -1027,11 +1025,11 @@ msgstr "Ambil Data Bibliografi dari Layanan Situs SLiMS Lainnya"
 
 #: admin/modules/bibliography/submenu.php:32
 msgid "Print Document Labels"
-msgstr "Pencetakan Label Dokumen"
+msgstr "Cetak Label Dokumen"
 
 #: admin/modules/bibliography/submenu.php:33
 msgid "Print Item Barcodes"
-msgstr "Cetak Barcode Koleksi"
+msgstr "Cetak Barkod Eksemplar"
 
 #: admin/modules/bibliography/submenu.php:34
 msgid "Import Data"
@@ -1039,7 +1037,7 @@ msgstr "Impor Data"
 
 #: admin/modules/bibliography/submenu.php:34
 msgid "Import Data to Bibliographic Database from CSV file"
-msgstr "Impor Data Bibliografi dari data CSV"
+msgstr "Impor Data ke Bibliografi dari berkas CSV"
 
 #: admin/modules/bibliography/submenu.php:35
 msgid "Export Data"
@@ -1055,7 +1053,7 @@ msgstr "Impor Item"
 
 #: admin/modules/bibliography/submenu.php:36
 msgid "Import Data to Item/Copies database from CSV file"
-msgstr "Impor Data kedalam Eksemplar/Duplikat basisdata dari data CSV"
+msgstr "Impor Data ke dalam Eksemplar/Salin basisdata dari berkas CSV"
 
 #: admin/modules/bibliography/submenu.php:37
 msgid "Item Export"
@@ -1063,7 +1061,7 @@ msgstr "Ekspor Item"
 
 #: admin/modules/bibliography/submenu.php:37
 msgid "Export Item/Copies data To CSV format"
-msgstr "Ekspor Item/Duplikat data kedalam Format CSV"
+msgstr "Ekspor Item/Salin data ke dalam Format CSV"
 
 #: admin/modules/bibliography/ucs_upload.php:31
 msgid "UCS is not enabled! Change global system configuration to enable UCS"
@@ -1071,7 +1069,7 @@ msgstr "UCS tidak aktif! Ubah konfigurasi sistem untuk mengaktifkan UCS"
 
 #: admin/modules/circulation/circulation_action.php:49
 msgid "ERROR! Loan data can't be saved to database"
-msgstr "ERROR! Data peminjaman tidak dapat masuk ke dalam database"
+msgstr "GALAT! Data peminjaman tidak dapat disimpan ke dalam basisdata"
 
 #: admin/modules/circulation/circulation_action.php:57
 msgid "Transaction finished"
@@ -1080,11 +1078,11 @@ msgstr "Transaksi Selesai"
 #: admin/modules/circulation/circulation_action.php:85
 #: admin/modules/circulation/circulation_action.php:107
 msgid "Overdue fines inserted to fines database"
-msgstr "Denda keterlambatan telah masuk ke dalam database"
+msgstr "Denda keterlambatan telah masuk ke dalam basisdata"
 
 #: admin/modules/circulation/circulation_action.php:98
 msgid "Item CANNOT BE Extended! This Item is being reserved by other member"
-msgstr "Masa Peminjaman koleksi TIDAK BISA diperpanjang. Telah dipesan oleh anggota lain"
+msgstr "Masa Peminjaman eksemplar TIDAK BISA diperpanjang. Eksemplar ini telah dipesan oleh anggota lain"
 
 #: admin/modules/circulation/circulation_action.php:105
 msgid "Loan Extended"
@@ -1102,19 +1100,19 @@ msgstr "Anda mau menganulir ketentuan ini?"
 
 #: admin/modules/circulation/circulation_action.php:154
 msgid "WARNING! This Item is reserved by another member"
-msgstr "PERHATIAN! Item ini telah direservasi oleh anggota yang lain"
+msgstr "PERHATIAN! Eksemplar ini telah dipesan oleh anggota yang lain"
 
 #: admin/modules/circulation/circulation_action.php:164
 msgid "This Item is not registered in database"
-msgstr "Item ini tidak terdaftar dalam pangkalan data"
+msgstr "Eksemplar ini tidak terdaftar dalam pangkalan data"
 
 #: admin/modules/circulation/circulation_action.php:169
 msgid "This Item is currently not available"
-msgstr "Item tidak dipinjamkan untuk saat ini"
+msgstr "Saat ini, eksemplar tidak tersedia"
 
 #: admin/modules/circulation/circulation_action.php:174
 msgid "Loan NOT PERMITTED! Membership already EXPIRED!"
-msgstr "DILARANG meminjam! Keanggotaan sudah habis!"
+msgstr "DILARANG meminjam! Masa keanggotaan sudah habis!"
 
 #: admin/modules/circulation/circulation_action.php:179
 msgid "Loan NOT PERMITTED! Membership under PENDING State!"
@@ -1122,15 +1120,15 @@ msgstr "DILARANG meminjam! Keanggotaan sedang ditunda untuk sementara!"
 
 #: admin/modules/circulation/circulation_action.php:184
 msgid "Loan Forbidden for this Item!"
-msgstr "Item tidak dipinjamkan!"
+msgstr "Eksemplar tidak untuk dipinjamkan!"
 
 #: admin/modules/circulation/circulation_action.php:221
 msgid "Item {removeID} removed from session"
-msgstr "Item {removeID} dihapus dari session"
+msgstr "Eksemplar {removeID} dihapus dari sesi"
 
 #: admin/modules/circulation/circulation_action.php:238
 msgid "This is item already returned or not exists in loan database"
-msgstr "Item ini sudah dikembalikan atau tidak terdaftar pada tabel peminjaman"
+msgstr "Eksemplar ini sudah dikembalikan atau tidak terdaftar pada pangkalan data peminjaman"
 
 #: admin/modules/circulation/circulation_action.php:249
 msgid "OVERDUED for {overdueDays} days(s) with fines value of"
@@ -1138,7 +1136,7 @@ msgstr "TERLAMBAT {overdueDays} hari dengan denda sebesar"
 
 #: admin/modules/circulation/circulation_action.php:262
 msgid "Item {itemCode} is being reserved by member {member}"
-msgstr "Koleksi {itemCode} saat ini sedang dalam reservasi oleh anggota {member}"
+msgstr "Eksemplar {itemCode} saat ini sudah dipesan oleh anggota {member}"
 
 #: admin/modules/circulation/circulation_action.php:273
 msgid " successfully returned on"
@@ -1151,7 +1149,7 @@ msgstr "Nama Anggota"
 
 #: admin/modules/circulation/circulation_action.php:301
 msgid "NO DATA Selected to reserve!"
-msgstr "TIDAK ADA DATA yang dipilih untuk reservasi!"
+msgstr "TIDAK ADA DATA yang dipilih untuk dipesan!"
 
 #: admin/modules/circulation/circulation_action.php:314
 msgid "Can not add more reservation. Maximum limit reached"
@@ -1159,7 +1157,7 @@ msgstr "Tidak bisa menambahkan data reservasi karena sudah mencapai batas maksim
 
 #: admin/modules/circulation/circulation_action.php:332
 msgid "Can't reserve this Item. Loan Forbidden!"
-msgstr "Tidak bisa mereservasi. Item tidak untuk dipinjamkan!"
+msgstr "Tidak bisa mereservasi. Eksemplar tidak untuk dipinjamkan!"
 
 #: admin/modules/circulation/circulation_action.php:350
 msgid "Reservation added"
@@ -1167,7 +1165,7 @@ msgstr "Reservasi ditambahkan"
 
 #: admin/modules/circulation/circulation_action.php:355
 msgid "Item for this title is already available or already on hold by this member!"
-msgstr "Item untuk judul ini sudah tersedia atau sudah dipinjam oleh yang bersangkutan!"
+msgstr "Eksemplar untuk judul ini sudah tersedia atau sudah dipinjam oleh yang bersangkutan!"
 
 #: admin/modules/circulation/circulation_action.php:374
 msgid "Reservation removed"
@@ -1179,7 +1177,7 @@ msgstr "Data denda dihapus"
 
 #: admin/modules/circulation/circulation_action.php:413
 msgid " not valid (unregistered in database)"
-msgstr " tidak terdaftar (tidak diregistrasi dalam database)"
+msgstr "tidak terdaftar (tidak terdaftar dalam pangkalan data)"
 
 #: admin/modules/circulation/circulation_action.php:442
 msgid "Finish Transaction"
@@ -1191,7 +1189,7 @@ msgstr "Tutup/Selesaikan Transaksi?"
 
 #: admin/modules/circulation/circulation_action.php:458
 msgid "Member Email"
-msgstr "Email Anggota"
+msgstr "Surel Anggota"
 
 #: admin/modules/circulation/circulation_action.php:459
 msgid "Member Type"
@@ -1247,7 +1245,7 @@ msgstr "Data Denda Berhasil Diperbaharui"
 
 #: admin/modules/circulation/fines_list.php:80
 msgid "Fines Data FAILED to Updated. Please Contact System Administrator"
-msgstr "Data Denda GAGAL Diperbaharui. Hubungi System Administrator Untuk Pemecahannya"
+msgstr "Data Denda GAGAL Diperbaharui. Hubungi Administrator Sistem"
 
 #: admin/modules/circulation/fines_list.php:86
 msgid "New Fines Data Successfully Saved"
@@ -1255,7 +1253,7 @@ msgstr "Data Denda Berhasil Disimpan"
 
 #: admin/modules/circulation/fines_list.php:87
 msgid "Fines Data FAILED to Save. Please Contact System Administrator"
-msgstr "Data Denda GAGAL Disimpan. Hubungi System Administrator Untuk Pemecahannya"
+msgstr "Data Denda GAGAL Disimpan. Hubungi Administrator Sistem"
 
 #: admin/modules/circulation/fines_list.php:123
 msgid "Add New Fines"
@@ -1291,7 +1289,7 @@ msgstr "Kredit"
 
 #: admin/modules/circulation/fines_list.php:172
 msgid "You are going to edit fines data"
-msgstr "Anda akan memperbaharui data denda"
+msgstr "Anda akan menyunting data denda"
 
 #: admin/modules/circulation/index.php:41
 msgid "You don't have enough privileges to view this section"
@@ -1299,15 +1297,15 @@ msgstr "Anda tidak memiliki hak untuk mengakses ke bagian ini"
 
 #: admin/modules/circulation/index.php:51
 msgid "CIRCULATION - Insert a member ID to start transaction with keyboard or barcode reader"
-msgstr "SIRKULASI - Masukkan nomor anggota untuk mulai transaksi dengan keyboard atau pemindai"
+msgstr "SIRKULASI - Masukkan nomor anggota untuk mulai transaksi dengan papan kunci atau pemindai"
 
 #: admin/modules/circulation/index.php:69
 msgid "Transaction with member {member_id} is completed"
-msgstr "Transaksi sirkulasi dengan anggota {member_id} telah selesai"
+msgstr "Transaksi dengan anggota {member_id} selesai"
 
 #: admin/modules/circulation/loan.php:118
 msgid "Insert Item Code/Barcode"
-msgstr "Masukkan Kode Barkod"
+msgstr "Masukkan Kode Eksemplar/Barkod"
 
 #: admin/modules/circulation/loan.php:120
 #: admin/modules/circulation/pop_loan_receipt.php:80
@@ -1321,7 +1319,7 @@ msgstr "Hapus"
 
 #: admin/modules/circulation/loan.php:147
 msgid "Click To Change Loan Date"
-msgstr "Klik untuk mengubah manual tanggal peminjaman"
+msgstr "Klik untuk mengubah tanggal peminjaman"
 
 #: admin/modules/circulation/loan.php:148
 msgid "Click To Change Due Date"
@@ -1329,11 +1327,11 @@ msgstr "Klik untuk mengubah manual tanggal jatuh tempo"
 
 #: admin/modules/circulation/loan_list.php:53
 msgid "Are you sure you want to return the item"
-msgstr "Yakin akan mengembalikan koleksi ini"
+msgstr "Anda yakin, akan mengembalikan eksemplar ini"
 
 #: admin/modules/circulation/loan_list.php:55
 msgid "Are you sure to extend loan for"
-msgstr "Yakin akan memperpanjang koleksi"
+msgstr "Anda yakin, akan memperpanjang peminjaman untuk"
 
 #: admin/modules/circulation/loan_list.php:89
 #: admin/modules/circulation/pop_loan_receipt.php:135
@@ -1351,22 +1349,22 @@ msgstr "Tipe Koleksi"
 
 #: admin/modules/circulation/loan_list.php:99
 msgid "Return this item"
-msgstr "Kembalikan Koleksi ini"
+msgstr "Kembalikan eksemplar ini"
 
 #: admin/modules/circulation/loan_list.php:103
 #: admin/modules/circulation/loan_list.php:107
 #: admin/modules/circulation/loan_list.php:109
 msgid "No Extend"
-msgstr "Tidak Boleh Perpanjang Peminjaman"
+msgstr "Tidak Ada Perpanjangan"
 
 #: admin/modules/circulation/loan_list.php:111
 msgid "Extend loan for this item"
-msgstr "Perpanjang Peminjaman untuk Koleksi ini"
+msgstr "Perpanjang Peminjaman untuk eksemplar ini"
 
 #: admin/modules/circulation/loan_list.php:116
 #: admin/modules/circulation/pop_loan_receipt.php:80
 msgid "Extended"
-msgstr "Peminjaman Diperpanjang"
+msgstr "Perpanjang"
 
 #: admin/modules/circulation/loan_list.php:123
 msgid "OVERDUED for"
@@ -1386,7 +1384,7 @@ msgstr "Aturan Peminjaman Berhasil Diperbaharui"
 
 #: admin/modules/circulation/loan_rules.php:71
 msgid "Loan Rules FAILED to Updated. Please Contact System Administrator"
-msgstr "Aturan Peminjaman GAGAL Diperbaharui. Hubungi System Administrator Untuk Pemecahannya"
+msgstr "Aturan Peminjaman GAGAL Diperbaharui. Hubungi Administrator Sistem"
 
 #: admin/modules/circulation/loan_rules.php:77
 msgid "New Loan Rules Successfully Saved"
@@ -1394,7 +1392,7 @@ msgstr "Aturan Peminjaman Baru Berhasil Disimpan"
 
 #: admin/modules/circulation/loan_rules.php:79
 msgid "Loan Rules FAILED to Save. Please Contact System Administrator"
-msgstr "Aturan Peminjaman GAGAL Disimpan. Hubungi System Administrator Untuk Pemecahannya"
+msgstr "Aturan Peminjaman GAGAL Disimpan. Hubungi Administrator Sistem"
 
 #: admin/modules/circulation/loan_rules.php:120
 #: admin/modules/circulation/submenu.php:26
@@ -1456,11 +1454,11 @@ msgstr "Pengembalian cepat tidak tersedia"
 
 #: admin/modules/circulation/quick_return.php:50
 msgid "Insert an item ID to return collection with keyboard or barcode reader"
-msgstr "Masukan nomor Kode Item dengan menggunakan keyboard atau barcode reader"
+msgstr "Masukan kode eksemplar dengan menggunakan papan kunci atau pemindai barkod"
 
 #: admin/modules/circulation/quick_return.php:53
 msgid "Item ID"
-msgstr "Item ID"
+msgstr "ID Eksemplar"
 
 #: admin/modules/circulation/reserve_list.php:49
 msgid "Are you sure to remove reservation for"
@@ -1525,7 +1523,7 @@ msgstr "Data Pengarang Berhasil Diperbaharui"
 
 #: admin/modules/master_file/author.php:74
 msgid "Author Data FAILED to Updated. Please Contact System Administrator"
-msgstr "Data Pengarang GAGAL Diperbaharui. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data Pengarang GAGAL Diperbaharui. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/author.php:81
 msgid "New Author Data Successfully Saved"
@@ -1534,7 +1532,7 @@ msgstr "Pengarang Baru Berhasil Disimpan"
 #: admin/modules/master_file/author.php:83
 #: admin/modules/master_file/coll_type.php:79
 msgid "Author Data FAILED to Save. Please Contact System Administrator"
-msgstr "Data tipe koleksi GAGAL disimpan. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data tipe koleksi GAGAL disimpan. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/author.php:124
 msgid "Add New Author"
@@ -1547,15 +1545,14 @@ msgstr "Daftar Pengarang"
 #: admin/modules/master_file/author.php:169
 #: admin/modules/master_file/author.php:203
 #: admin/modules/master_file/author.php:209
-#, fuzzy
 msgid "Author Year"
-msgstr "Nama Pengarang"
+msgstr "Tahun Lahir Pengarang"
 
 #: admin/modules/master_file/author.php:174
 #: admin/modules/master_file/author.php:204
 #: admin/modules/master_file/author.php:210
 msgid "Authority Type"
-msgstr "Jenis Pengarang"
+msgstr "Jenis Kepengarangan"
 
 #: admin/modules/master_file/author.php:176
 #: admin/modules/master_file/author.php:205
@@ -1577,7 +1574,7 @@ msgstr "Data Tipe Koleksi Berhasil Diperbaharui"
 
 #: admin/modules/master_file/coll_type.php:70
 msgid "Colllection Type Data FAILED to Updated. Please Contact System Administrator"
-msgstr "Data Tipe Koleksi GAGAL Diperbaharui. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data Tipe Koleksi GAGAL Diperbaharui. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/coll_type.php:77
 msgid "New Colllection Type Data Successfully Saved"
@@ -1585,11 +1582,11 @@ msgstr "Data Baru Tipe Koleksi Berhasil Disimpan"
 
 #: admin/modules/master_file/coll_type.php:109
 msgid "Location ({item_name}) still used by {number_items} item(s)"
-msgstr "Lokasi {item_name} masih digunakan oleh {number_items} item"
+msgstr "Lokasi {item_name} masih digunakan oleh eksemplar {number_items}"
 
 #: admin/modules/master_file/coll_type.php:140
 msgid "Add New Collection Type"
-msgstr "Tambah Tipe Koleksi Baru"
+msgstr "Tambah Tipe Koleksi"
 
 #: admin/modules/master_file/coll_type.php:141
 msgid "Collection Type List"
@@ -1609,7 +1606,7 @@ msgstr "Data Bahasa Berhasil Diperbaharui"
 
 #: admin/modules/master_file/doc_language.php:73
 msgid "Language Data FAILED to Updated. Please Contact System Administrator"
-msgstr "Data Bahasa GAGAL Diperbaharui. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data Bahasa GAGAL Diperbaharui. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/doc_language.php:80
 msgid "New Language Data Successfully Saved"
@@ -1617,11 +1614,11 @@ msgstr "Bahasa Baru Berhasil Disimpan"
 
 #: admin/modules/master_file/doc_language.php:82
 msgid "Language Data FAILED to Save. Please Contact System Administrator"
-msgstr "Data Bahasa GAGAL Disimpan. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data Bahasa GAGAL Disimpan. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/doc_language.php:123
 msgid "Doc. Language"
-msgstr "Bahasa Dok."
+msgstr "Bahasa Dokumen"
 
 #: admin/modules/master_file/doc_language.php:123
 msgid "Add New Language"
@@ -1645,7 +1642,7 @@ msgstr "Data Kala Terbit Berhasil Diperbaharui"
 
 #: admin/modules/master_file/frequency.php:72
 msgid "Frequency Data FAILED to Updated. Please Contact System Administrator"
-msgstr "Kala Terbit GAGAL Diperbaharui. Hubungi admin sistem untuk pemecahannya"
+msgstr "Kala Terbit GAGAL Diperbaharui. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/frequency.php:78
 msgid "New Frequency Data Successfully Saved"
@@ -1653,7 +1650,7 @@ msgstr "Kala Terbit Baru Berhasil Disimpan"
 
 #: admin/modules/master_file/frequency.php:80
 msgid "Frequency Data FAILED to Save. Please Contact System Administrator"
-msgstr "Kala Terbit GAGAL Disimpan. Hubungi admin sistem untuk pemecahannya"
+msgstr "Kala Terbit GAGAL Disimpan. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/frequency.php:121
 msgid "Add New Frequency"
@@ -1705,7 +1702,7 @@ msgstr "Data GMD Berhasil Diperbaharui"
 
 #: admin/modules/master_file/index.php:75
 msgid "GMD Data FAILED to Updated. Please Contact System Administrator"
-msgstr "Data GMD GAGAL Diperbaharui. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data GMD GAGAL Diperbaharui. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/index.php:81
 msgid "New GMD Data Successfully Saved"
@@ -1713,7 +1710,7 @@ msgstr "GMD Baru Berhasil Disimpan"
 
 #: admin/modules/master_file/index.php:83
 msgid "GMD Data FAILED to Save. Please Contact System Administrator"
-msgstr "Data GMD GAGAL Disimpan. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data GMD GAGAL Disimpan. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/index.php:124
 msgid "Add New GMD"
@@ -1749,47 +1746,47 @@ msgstr "Lewatkan ketika Inventarisasi"
 
 #: admin/modules/master_file/item_status.php:55
 msgid "Item Status ID and Name can't be empty"
-msgstr "Kode dan Nama Status Koleksi tidak boleh kosong"
+msgstr "Kode dan Nama Status Eksemplar tidak boleh kosong"
 
 #: admin/modules/master_file/item_status.php:93
 msgid "Item Status Data Successfully Updated"
-msgstr "Status Koleksi Berhasil Diperbaharui"
+msgstr "Status Eksemplar Berhasil Diperbaharui"
 
 #: admin/modules/master_file/item_status.php:97
 msgid "Item Status Data FAILED to Updated. Please Contact System Administrator"
-msgstr "Status Koleksi GAGAL Diperbaharui. Hubungi admin sistem untuk pemecahannya"
+msgstr "Status Eksemplar GAGAL Diperbaharui. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/item_status.php:104
 msgid "New Item Status Data Successfully Saved"
-msgstr "Status Koleksi Yang Baru Berhasil Disimpan"
+msgstr "Status Eksemplar Yang Baru Berhasil Disimpan"
 
 #: admin/modules/master_file/item_status.php:106
 msgid "Item Status Data FAILED to Save. Please Contact System Administrator"
-msgstr "Status Koleksi GAGAL Disimpan. Hubungi admin sistem untuk pemecahannya"
+msgstr "Status Eksemplar GAGAL Disimpan. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/item_status.php:147
 msgid "Add New Item Status"
-msgstr "Tambah Status Koleksi Baru"
+msgstr "Tambah Status Eksemplar Baru"
 
 #: admin/modules/master_file/item_status.php:190
 #: admin/modules/master_file/item_status.php:218
 #: admin/modules/master_file/item_status.php:222
 msgid "Item Status Code"
-msgstr "Kode Status Koleksi"
+msgstr "Kode Status Eksemplar"
 
 #: admin/modules/master_file/item_status.php:192
 #: admin/modules/master_file/item_status.php:219
 #: admin/modules/master_file/item_status.php:223
 msgid "Item Status Name"
-msgstr "Status Koleksi"
+msgstr "Nama Status Eksemplar"
 
 #: admin/modules/master_file/item_status.php:201
 msgid "Rules"
-msgstr "Peraturannya"
+msgstr "Peraturan"
 
 #: admin/modules/master_file/item_status.php:205
 msgid "You are going to edit Item Status data"
-msgstr "Anda akan menyunting data status koleksi"
+msgstr "Anda akan menyunting data status eksemplar"
 
 #: admin/modules/master_file/label.php:109
 msgid "Label Data Successfully Updated"
@@ -1797,7 +1794,7 @@ msgstr "Data Label Berhasil Diperbaharui"
 
 #: admin/modules/master_file/label.php:111
 msgid "Label Data FAILED to Updated. Please Contact System Administrator"
-msgstr "Label GAGAL Diperbaharui. Hubungi admin sistem untuk pemecahannya"
+msgstr "Label GAGAL Diperbaharui. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/label.php:117
 msgid "New Label Data Successfully Saved"
@@ -1805,7 +1802,7 @@ msgstr "Label Baru Berhasil Disimpan"
 
 #: admin/modules/master_file/label.php:119
 msgid "Label Data FAILED to Save. Please Contact System Administrator"
-msgstr "Label GAGAL Disimpan. Hubungi admin sistem untuk pemecahannya"
+msgstr "Label GAGAL Disimpan. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/label.php:160
 msgid "Label"
@@ -1845,15 +1842,15 @@ msgstr "Data Lokasi Berhasil Diperbaharui"
 
 #: admin/modules/master_file/location.php:74
 msgid "Location Data FAILED to Updated. Please Contact System Administrator"
-msgstr "Data Lokasi GAGAL Diperbaharui. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data Lokasi GAGAL Diperbaharui. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/location.php:81
 msgid "New Location Data Successfully Saved"
-msgstr "Data Baru Lokasi Berhasil Disimpan"
+msgstr "Data Lokasi Baru Berhasil Disimpan"
 
 #: admin/modules/master_file/location.php:83
 msgid "Location Data FAILED to Save. Please Contact System Administrator"
-msgstr "Data Lokasi GAGAL Disimpan. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data Lokasi GAGAL Disimpan. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/location.php:144
 msgid "Add New Location"
@@ -1889,7 +1886,7 @@ msgstr "Data Tempat Berhasil Diperbaharui"
 
 #: admin/modules/master_file/place.php:70
 msgid "Place Data FAILED to Updated. Please Contact System Administrator"
-msgstr "Data Tempat Terbit GAGAL Diperbaharui. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data Tempat Terbit GAGAL Diperbaharui. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/place.php:77
 msgid "New Place Data Successfully Saved"
@@ -1897,7 +1894,7 @@ msgstr "Data Tempat Baru Berhasil Disimpan"
 
 #: admin/modules/master_file/place.php:79
 msgid "Place Data FAILED to Save. Please Contact System Administrator"
-msgstr "Data Tempat GAGAL Disimpan. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data Tempat GAGAL Disimpan. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/place.php:120
 #: admin/modules/master_file/submenu.php:31
@@ -1921,7 +1918,7 @@ msgstr "Nama-nama Tempat"
 
 #: admin/modules/master_file/place.php:167
 msgid "You are going to edit place data"
-msgstr "Anda akan mengedit data tempat"
+msgstr "Anda akan menyunting data tempat"
 
 #: admin/modules/master_file/publisher.php:50
 msgid "Publisher Name can't be empty"
@@ -1929,11 +1926,11 @@ msgstr "Nama Penerbit tidak boleh kosong"
 
 #: admin/modules/master_file/publisher.php:68
 msgid "Publisher Data Successfully Updated"
-msgstr "Data Penerbit Berhasil Diperbahatui"
+msgstr "Data Penerbit Berhasil Diperbaharui"
 
 #: admin/modules/master_file/publisher.php:70
 msgid "PUBLISHER Data FAILED to Updated. Please Contact System Administrator"
-msgstr "Data PENERBIT GAGAL Diperbaharui. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data PENERBIT GAGAL Diperbaharui. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/publisher.php:77
 msgid "New Publisher Data Successfully Saved"
@@ -1941,7 +1938,7 @@ msgstr "Data Penerbit Baru Berhasil Disimpan"
 
 #: admin/modules/master_file/publisher.php:79
 msgid "Publisher Data FAILED to Save. Please Contact System Administrator"
-msgstr "Data Penerbit GAGAL Disimpan. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data Penerbit GAGAL Disimpan. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/publisher.php:120
 msgid "Add New Publisher"
@@ -1959,7 +1956,7 @@ msgstr "Nama Penerbit"
 
 #: admin/modules/master_file/publisher.php:167
 msgid "You are going to edit publisher data"
-msgstr "Anda akan meng-edit data penerbit"
+msgstr "Anda akan menyunting data penerbit"
 
 #: admin/modules/master_file/submenu.php:24
 msgid "General Material Designation"
@@ -1971,7 +1968,7 @@ msgstr "Penerbit Dokumen"
 
 #: admin/modules/master_file/submenu.php:26
 msgid "Item Supplier"
-msgstr "Penyuplai Koleksi"
+msgstr "Penyuplai Eksemplar"
 
 #: admin/modules/master_file/submenu.php:27
 msgid "Document Authors"
@@ -1987,7 +1984,7 @@ msgstr "Subyek"
 
 #: admin/modules/master_file/submenu.php:29
 msgid "Item Location"
-msgstr "Lokasi Koleksi"
+msgstr "Lokasi Eksemplar"
 
 #: admin/modules/master_file/submenu.php:30
 msgid "Lookup Files"
@@ -2002,53 +1999,50 @@ msgid "Special Labels for Titles to Show Up On Homepage"
 msgstr "Label"
 
 #: admin/modules/master_file/submenu.php:38
-#, fuzzy
 msgid "Orphaned Author"
-msgstr "Tambah Pengarang"
+msgstr "Data Pengarang Mubazir"
 
 #: admin/modules/master_file/submenu.php:38
-#, fuzzy
 msgid "Orphaned Authors"
-msgstr "Tambah Data Pengarang"
+msgstr "Data Pengarang Mubazir"
 
 #: admin/modules/master_file/submenu.php:39
-#, fuzzy
 msgid "Orphaned Subject"
-msgstr "Tambahkan Subyek"
+msgstr "Data Subyek Mubazir"
 
 #: admin/modules/master_file/supplier.php:50
 msgid "Supplier Name can't be empty"
-msgstr "Nama Suplaiyer tidak boleh kosong"
+msgstr "Nama penyuplai tidak boleh kosong"
 
 #: admin/modules/master_file/supplier.php:74
 msgid "Supplier Data Successfully Updated"
-msgstr "Data Suplaiyer Berhasil Diperbaharui"
+msgstr "Data Penyuplai Berhasil Diperbaharui"
 
 #: admin/modules/master_file/supplier.php:76
 msgid "Supplier Data FAILED to Updated. Please Contact System Administrator"
-msgstr "Data Suplaiyer GAGAL Diperbaharui. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data Suplaiyer GAGAL Diperbaharui. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/supplier.php:83
 msgid "New Supplier Data Successfully Saved"
-msgstr "Data Suplaiyer Baru Berhasil Disimpan"
+msgstr "Data Penyuplai Baru Berhasil Disimpan"
 
 #: admin/modules/master_file/supplier.php:86
 msgid "Supplier Data FAILED to Save. Please Contact System Administrator"
-msgstr "Data Suplaiyer GAGAL Disimpan. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data Penyuplai GAGAL Disimpan. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/supplier.php:128
 msgid "Add New Supplier"
-msgstr "Tambah Penyuplai/Agen"
+msgstr "Tambah Penyuplai"
 
 #: admin/modules/master_file/supplier.php:129
 msgid "Supplier List"
-msgstr "Daftar Penyuplai/Agen"
+msgstr "Daftar Penyuplai"
 
 #: admin/modules/master_file/supplier.php:171
 #: admin/modules/master_file/supplier.php:198
 #: admin/modules/master_file/supplier.php:204
 msgid "Supplier Name"
-msgstr "Nama Suplaiyer"
+msgstr "Nama Penyuplai"
 
 #: admin/modules/master_file/supplier.php:173
 #: admin/modules/membership/index.php:377
@@ -2081,7 +2075,7 @@ msgstr "Nomor Akun"
 
 #: admin/modules/master_file/supplier.php:185
 msgid "You are going to edit Supplier data"
-msgstr "Anda akan meng-edit data Suplaiyer data"
+msgstr "Anda akan menyunting data Penyuplai"
 
 #: admin/modules/master_file/topic.php:50
 msgid "Subject can't be empty"
@@ -2093,7 +2087,7 @@ msgstr "Data Subyek Berhasil Diperbaharui"
 
 #: admin/modules/master_file/topic.php:72
 msgid "Subject Data FAILED to Updated. Please Contact System Administrator"
-msgstr "Subyek GAGAL Diperbaharui. Hubungi admin sistem untuk pemecahannya"
+msgstr "Subyek GAGAL Diperbaharui. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/topic.php:79
 msgid "New Subject Data Successfully Saved"
@@ -2101,7 +2095,7 @@ msgstr "Subyek Baru Berhasil Disimpan"
 
 #: admin/modules/master_file/topic.php:81
 msgid "Subject Data FAILED to Save. Please Contact System Administrator"
-msgstr "Subyek GAGAL Disimpan. Hubungi admin sistem untuk pemecahannya"
+msgstr "Subyek GAGAL Disimpan. Hubungi Administrator Sistem"
 
 #: admin/modules/master_file/topic.php:123
 msgid "Add New Subject"
@@ -2119,23 +2113,23 @@ msgstr "Tipe Subyek"
 
 #: admin/modules/master_file/topic.php:177
 msgid "You are going to edit Subject data"
-msgstr "Anda akan meng-edit data Subyek"
+msgstr "Anda akan menyunting data Subyek"
 
 #: admin/modules/membership/export.php:105
 msgid "There is no record in membership database yet, Export FAILED!"
-msgstr "Tabel keanggotaan dalam pangkalan data belum memiliki rekod. Ekspor GAGAL!"
+msgstr "Tabel keanggotaan dalam pangkalan data belum memiliki cantuman. Ekspor GAGAL!"
 
 #: admin/modules/membership/export.php:115
 msgid "Export member(s) data to CSV file"
-msgstr "Fasilitas Ekspor data anggota dalam berkas CSV"
+msgstr "Ekspor data anggota dalam berkas CSV"
 
 #: admin/modules/membership/import.php:162
 msgid "records inserted successfully to members database, from record"
-msgstr "rekod berhasil disisipkan dalam data anggota dari total rekod"
+msgstr "rekod berhasil disisipkan dalam data anggota dari cantuman"
 
 #: admin/modules/membership/import.php:172
 msgid "Import for members data from CSV file"
-msgstr "Fasilitas Impor data anggota dari berkas CSV"
+msgstr "Impor data anggota dari berkas CSV"
 
 #: admin/modules/membership/index.php:58
 msgid "Member ID and Name can't be empty"
@@ -2157,7 +2151,7 @@ msgstr "Citra/Berkas Gambar GAGAL Diunggah"
 #: admin/modules/membership/index.php:173
 #: admin/modules/membership/index.php:197
 msgid "Member Data FAILED to Save/Update. Please Contact System Administrator"
-msgstr "Data anggota gagal di-simpan/update. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data anggota gagal disimpan/Diperbarui. Hubungi Administrator Sistem"
 
 #: admin/modules/membership/index.php:181
 msgid "New Member Data Successfully Saved"
@@ -2165,7 +2159,7 @@ msgstr "Data Anggota Baru Berhasil Disimpan"
 
 #: admin/modules/membership/index.php:260
 msgid "Below member data can't be deleted because still have unreturned item(s)"
-msgstr "Data anggota dibawah tidak bisa dihapus karena masih memiliki koleksi yang belum dikembalikan"
+msgstr "Data anggota di bawah tidak bisa dihapus karena masih memiliki koleksi yang belum dikembalikan"
 
 #: admin/modules/membership/index.php:279
 #: admin/modules/membership/submenu.php:23
@@ -2178,7 +2172,7 @@ msgstr "Daftar Anggota"
 
 #: admin/modules/membership/index.php:281
 msgid "View Expired Member"
-msgstr "Lihat Anggota yang Expired"
+msgstr "Lihat Anggota yang Kadaluarsa"
 
 #: admin/modules/membership/index.php:283
 msgid "Member Search"
@@ -2231,9 +2225,8 @@ msgid "Postal Code"
 msgstr "Kode Pos"
 
 #: admin/modules/membership/index.php:381
-#, fuzzy
 msgid "Mail Address"
-msgstr "Alamat"
+msgstr "Alamat Surat"
 
 #: admin/modules/membership/index.php:387
 msgid "Personal ID Number"
@@ -2260,28 +2253,28 @@ msgstr "Foto"
 #: admin/modules/membership/index.php:470
 #: admin/modules/membership/index.php:476
 msgid "E-mail"
-msgstr "E-mail"
+msgstr "Surel"
 
 #: admin/modules/membership/index.php:438
 msgid "New Password"
-msgstr "Password Baru"
+msgstr "Kata sandi Baru"
 
 #: admin/modules/membership/index.php:440
 msgid "Confirm New Password"
-msgstr "Konfirmasi Password Baru"
+msgstr "Konfirmasi Kata sandi Baru"
 
 #: admin/modules/membership/index.php:445
 #: admin/modules/membership/member_type.php:195
 msgid "You are going to edit member data"
-msgstr "Anda akan meng-edit data anggota"
+msgstr "Anda akan menyunting data anggota"
 
 #: admin/modules/membership/index.php:446
 msgid "Leave Password field blank if you don't want to change the password"
-msgstr "Biarkan kotak Password kosong jika tidak ingin mengubahnya"
+msgstr "Biarkan kotak Kata sandi kosong jika tidak ingin mengubahnya"
 
 #: admin/modules/membership/index.php:505
 msgid "Expired Member List"
-msgstr "Daftar Anggota yang Expired"
+msgstr "Daftar Anggota yang Kedaluwarsa"
 
 #: admin/modules/membership/index.php:506
 msgid "Extend Selected Member(s)"
@@ -2326,7 +2319,7 @@ msgstr "Tipe Keanggotaan Berhasil Diperbaharui"
 #: admin/modules/membership/member_type.php:81
 #: admin/modules/membership/member_type.php:89
 msgid "Member Type Data FAILED to Save/Update. Please Contact System Administrator"
-msgstr "Data Tipe Keanggotaan GAGAL Disimpan/Diperbaharui. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data Tipe Keanggotaan GAGAL Disimpan/Diperbaharui. Hubungi Administrator Sistem"
 
 #: admin/modules/membership/member_type.php:87
 msgid "New Member Type Successfully Saved"
@@ -2388,11 +2381,11 @@ msgstr "Cetak Kartu Anggota"
 
 #: admin/modules/membership/submenu.php:29
 msgid "Import Members Data From CSV File"
-msgstr "Impor Data Anggota dari file CSV"
+msgstr "Impor Data Anggota dari berkas CSV"
 
 #: admin/modules/membership/submenu.php:30
 msgid "Export Members Data To CSV File"
-msgstr "Ekspor Data Anggota ke CSV file"
+msgstr "Ekspor Data Anggota ke berkas CSV"
 
 #: admin/modules/reporting/charts_report.php:68
 #: admin/modules/reporting/index.php:79
@@ -2404,7 +2397,7 @@ msgstr "Total Judul Menurut Media/GMD"
 #: admin/modules/reporting/index.php:93
 #: admin/modules/reporting/index.php:98
 msgid "Total Items By Collection Type"
-msgstr "Total Item Menurut Jenis Koleksi"
+msgstr "Total Eksemplar Menurut Jenis Koleksi"
 
 #: admin/modules/reporting/charts_report.php:94
 #: admin/modules/reporting/member_report.php:62
@@ -2422,30 +2415,29 @@ msgstr "Total Judul Menurut Media/GMD"
 #: admin/modules/reporting/loan_report.php:68
 #: admin/modules/reporting/loan_report.php:72
 msgid "Total Loan By Collection Type"
-msgstr "Total Item Menurut Jenis Koleksi"
+msgstr "Total Eksemplar Menurut Jenis Koleksi"
 
 #: admin/modules/reporting/index.php:52
 msgid "Total Titles"
 msgstr "Total Judul"
 
 #: admin/modules/reporting/index.php:57
-#, fuzzy
 msgid "Total Titles with items"
-msgstr "Total Judul"
+msgstr "Total Judul dengan eksemplar"
 
 #: admin/modules/reporting/index.php:62
 #: admin/modules/reporting/index.php:72
 msgid "Total Items/Copies"
-msgstr "Total Item/Kopi"
+msgstr "Total Eksemplar/Kopi"
 
 #: admin/modules/reporting/index.php:69
 #: admin/modules/reporting/index.php:72
 msgid "Total Checkout Items"
-msgstr "Total Item Dipinjam"
+msgstr "Total Eksemplar Dipinjam"
 
 #: admin/modules/reporting/index.php:72
 msgid "Total Items In Library"
-msgstr "Total Item Dalam Koleksi"
+msgstr "Total Eksemplar Dalam Koleksi"
 
 #: admin/modules/reporting/index.php:79
 #: admin/modules/reporting/index.php:93
@@ -2461,11 +2453,11 @@ msgstr "10 Judul Terpopuler"
 
 #: admin/modules/reporting/index.php:113
 msgid "Collection Statistic Summary"
-msgstr "Statistik Koleksi"
+msgstr "Ringkasan Statistik Koleksi"
 
 #: admin/modules/reporting/index.php:142
 msgid "Collection Statistic Report"
-msgstr "Laporan Statistik Koleksi Perpustakaan"
+msgstr "Laporan Statistik Koleksi"
 
 #: admin/modules/reporting/index.php:159
 #: admin/modules/reporting/submenu.php:24
@@ -2485,7 +2477,7 @@ msgstr "Total Peminjaman"
 #: admin/modules/reporting/loan_report.php:80
 #: admin/modules/reporting/loan_report.php:86
 msgid "Total Loan Transactions"
-msgstr "Total Transsaksi Peminjaman"
+msgstr "Total Transaksi Peminjaman"
 
 #: admin/modules/reporting/loan_report.php:86
 msgid "Transaction Average (Per Day)"
@@ -2528,7 +2520,7 @@ msgstr "Total Anggota Yang Aktif"
 
 #: admin/modules/reporting/member_report.php:72
 msgid "Total Expired Member"
-msgstr "Total Keanggotaan Kedaluarsa"
+msgstr "Total Keanggotaan Kedaluwarsa"
 
 #: admin/modules/reporting/member_report.php:83
 msgid "10 most active members"
@@ -2546,11 +2538,11 @@ msgstr "Laporan Anggota"
 
 #: admin/modules/reporting/report_dbgrid.inc.php:88
 msgid "record(s) found. Currently displaying page"
-msgstr "rekod ditemukan. Menampilkan halaman"
+msgstr "cantuman ditemukan. Menampilkan halaman"
 
 #: admin/modules/reporting/report_dbgrid.inc.php:88
 msgid "record each page"
-msgstr "rekod setiap halamannya"
+msgstr "cantuman setiap halamannya"
 
 #: admin/modules/reporting/report_dbgrid.inc.php:88
 #: admin/modules/reporting/customs/class_recap.php:258
@@ -2565,15 +2557,15 @@ msgstr "Pelaporan"
 
 #: admin/modules/reporting/submenu.php:24
 msgid "View Library Collection Statistic"
-msgstr "Tampilkan statistik koleksi perpustakaan"
+msgstr "Tampilkan Statistik Koleksi Perpustakaan"
 
 #: admin/modules/reporting/submenu.php:25
 msgid "View Library Loan Report"
-msgstr "Tampilkan laporan peminjaman perpustakaan"
+msgstr "Tampilkan Laporan Peminjaman Perpustakaan"
 
 #: admin/modules/reporting/submenu.php:26
 msgid "View Membership Report"
-msgstr "Tampilkan laporan keanggotaan perpustakaan"
+msgstr "Tampilkan Laporan Keanggotaan"
 
 #: admin/modules/reporting/submenu.php:27
 msgid "Other Reports"
@@ -2594,7 +2586,7 @@ msgstr "Rekapitulasi"
 #: admin/modules/reporting/customs/member_list.php:58
 #: admin/modules/reporting/customs/member_loan_list.php:57
 msgid "Report Filter"
-msgstr "Filter Laporan"
+msgstr "Tapis Laporan"
 
 #: admin/modules/reporting/customs/class_recap.php:60
 msgid "Recap By"
@@ -2610,7 +2602,7 @@ msgstr "Rekap berdasar"
 #: admin/modules/reporting/customs/member_list.php:116
 #: admin/modules/reporting/customs/member_loan_list.php:90
 msgid "Apply Filter"
-msgstr "Terapkan Filter"
+msgstr "Terapkan Tapis"
 
 #: admin/modules/reporting/customs/class_recap.php:75
 #: admin/modules/reporting/customs/due_date_warning.php:76
@@ -2621,11 +2613,11 @@ msgstr "Terapkan Filter"
 #: admin/modules/reporting/customs/member_list.php:117
 #: admin/modules/reporting/customs/member_loan_list.php:91
 msgid "Show More Filter Options"
-msgstr "Tunjukan Filter Lebih Banyak"
+msgstr "Tunjukan Opsi Tapis Lebih Banyak"
 
 #: admin/modules/reporting/customs/class_recap.php:75
 msgid "Hide Filter Options"
-msgstr "Sembunyikan Pilihan Filter"
+msgstr "Sembunyikan Pilihan Tapis"
 
 #: admin/modules/reporting/customs/class_recap.php:258
 msgid "Title and Collection Recap by"
@@ -2646,11 +2638,11 @@ msgstr "Daftar judul bibliografi"
 #: admin/modules/reporting/customs/customs_report_list.inc.php:30
 #: admin/modules/reporting/customs/item_titles_list.php:57
 msgid "Items Title List"
-msgstr "Daftar Item/Kopi"
+msgstr "Daftar Judul Eksemplar"
 
 #: admin/modules/reporting/customs/customs_report_list.inc.php:30
 msgid "List of collection/items"
-msgstr "Daftar Item/Kopi"
+msgstr "Daftar koleksi/eksemplar"
 
 #: admin/modules/reporting/customs/customs_report_list.inc.php:31
 #: admin/modules/reporting/customs/item_usage.php:56
@@ -2659,29 +2651,29 @@ msgstr "Statistik Penggunaan Koleksi"
 
 #: admin/modules/reporting/customs/customs_report_list.inc.php:31
 msgid "List of Collection/items usage statistic"
-msgstr "Statistik Penggunaan Koleksi"
+msgstr "Daftar Koleksi/statistik penggunaan eksemplar"
 
 #: admin/modules/reporting/customs/customs_report_list.inc.php:32
 #: admin/modules/reporting/customs/loan_by_class.php:52
 msgid "Loans by Classification"
-msgstr "Peminjaman berdasarkan kelas"
+msgstr "Peminjaman berdasarkan Klasifikasi"
 
 #: admin/modules/reporting/customs/customs_report_list.inc.php:32
 msgid "Loan statistic by classification"
-msgstr "Statistik peminjaman berdasarkan kelas desimal"
+msgstr "Statistik peminjaman berdasarkan klasifikasi"
 
 #: admin/modules/reporting/customs/customs_report_list.inc.php:33
 msgid "List of library member/patron"
-msgstr "Daftar Anggota perpustakaan terdaftar"
+msgstr "Daftar anggota perpustakaan"
 
 #: admin/modules/reporting/customs/customs_report_list.inc.php:34
 #: admin/modules/reporting/customs/member_loan_list.php:57
 msgid "Loan List by Member"
-msgstr "Daftar Peminjaman Anggota"
+msgstr "Daftar Peminjaman oleh Anggota"
 
 #: admin/modules/reporting/customs/customs_report_list.inc.php:34
 msgid "List of loan by each member"
-msgstr "Daftar Peminjaman Anggota"
+msgstr "Daftar Peminjaman Tiap Anggota"
 
 #: admin/modules/reporting/customs/customs_report_list.inc.php:36
 #: admin/modules/reporting/customs/due_date_warning.php:57
@@ -2698,7 +2690,7 @@ msgstr "Aktifitas Staf"
 
 #: admin/modules/reporting/customs/customs_report_list.inc.php:38
 msgid "Staff activity log recapitulation"
-msgstr "Rekapitulasi Aktifitas Staf"
+msgstr "Catatan rekapitulasi aktifitas staf"
 
 #: admin/modules/reporting/customs/customs_report_list.inc.php:39
 msgid "Visitor Statistic"
@@ -2719,7 +2711,7 @@ msgstr "Laporan Denda"
 
 #: admin/modules/reporting/customs/due_date_warning.php:58
 msgid "This report loan items which will due in 3 to 0 days"
-msgstr "Laporan peminjaman eksemplar yang akan terlambat dalam 3 sampai 0 hari"
+msgstr "Melaporkan peminjaman eksemplar yang akan terlambat dalam 3 sampai 0 hari"
 
 #: admin/modules/reporting/customs/due_date_warning.php:70
 #: admin/modules/reporting/customs/item_titles_list.php:134
@@ -2727,7 +2719,7 @@ msgstr "Laporan peminjaman eksemplar yang akan terlambat dalam 3 sampai 0 hari"
 #: admin/modules/reporting/customs/member_list.php:111
 #: admin/modules/reporting/customs/member_loan_list.php:85
 msgid "Record each page"
-msgstr "Rekod per halaman"
+msgstr "Cantuman per halaman"
 
 #: admin/modules/reporting/customs/due_date_warning.php:71
 #: admin/modules/reporting/customs/item_titles_list.php:135
@@ -2735,7 +2727,7 @@ msgstr "Rekod per halaman"
 #: admin/modules/reporting/customs/member_list.php:112
 #: admin/modules/reporting/customs/member_loan_list.php:86
 msgid "Set between 20 and 200"
-msgstr "antara 20 dan 200"
+msgstr "Buat antara 20 dan 200"
 
 #: admin/modules/reporting/customs/fines_report.php:44
 #: admin/modules/reporting/customs/item_usage.php:105
@@ -2812,7 +2804,7 @@ msgstr "Okt"
 #: admin/modules/reporting/customs/item_usage.php:173
 #: admin/modules/reporting/customs/loan_by_class.php:126
 msgid "Nov"
-msgstr "Nov"
+msgstr "Nop"
 
 #: admin/modules/reporting/customs/fines_report.php:55
 #: admin/modules/reporting/customs/item_usage.php:116
@@ -2881,12 +2873,12 @@ msgstr "Kelas Non-Desimal"
 #: admin/modules/reporting/customs/loan_history.php:84
 #: admin/modules/reporting/customs/member_loan_list.php:69
 msgid "Loan Date From"
-msgstr "Tanggal Pinjam sejak"
+msgstr "Tanggal Pinjam Sejak"
 
 #: admin/modules/reporting/customs/loan_history.php:92
 #: admin/modules/reporting/customs/member_loan_list.php:77
 msgid "Loan Date Until"
-msgstr "Tanggal Pinjam hingga"
+msgstr "Tanggal Pinjam Hingga"
 
 #: admin/modules/reporting/customs/loan_history.php:100
 #: admin/modules/reporting/customs/loan_history.php:136
@@ -2896,7 +2888,7 @@ msgstr "Status peminjaman"
 #: admin/modules/reporting/customs/loan_history.php:102
 #: admin/modules/reporting/customs/loan_history.php:184
 msgid "On Loan"
-msgstr "Sedang dipinjam"
+msgstr "Sedang Dipinjam"
 
 #: admin/modules/reporting/customs/loan_history.php:102
 #: admin/modules/reporting/customs/loan_history.php:186
@@ -2905,11 +2897,11 @@ msgstr "Telah Kembali"
 
 #: admin/modules/reporting/customs/member_list.php:99
 msgid "Register Date From"
-msgstr "Tanggal Pendaftaran sejak"
+msgstr "Tanggal Pendaftaran Sejak"
 
 #: admin/modules/reporting/customs/member_list.php:105
 msgid "Register Date Until"
-msgstr "Tanggal Pendaftaran hingga"
+msgstr "Tanggal Pendaftaran Hingga"
 
 #: admin/modules/reporting/customs/overdued_list.php:174
 msgid "Overdue"
@@ -2925,39 +2917,39 @@ msgstr "Tanggal Pesan sejak"
 
 #: admin/modules/reporting/customs/reserve_list.php:86
 msgid "Reserve Date Until"
-msgstr "Tanggal Pesan hingga"
+msgstr "Tanggal Pesan Hingga"
 
 #: admin/modules/reporting/customs/staff_act.php:60
 msgid "Activity Date From"
-msgstr "Aktifitas sejak"
+msgstr "Aktifitas Sejak"
 
 #: admin/modules/reporting/customs/staff_act.php:66
 msgid "Activity Date Until"
-msgstr "Aktifitas hingga"
+msgstr "Aktifitas Hingga"
 
 #: admin/modules/reporting/customs/staff_act.php:90
 msgid "Real Name"
-msgstr "Nama Pengguna"
+msgstr "Nama Asli"
 
 #: admin/modules/reporting/customs/staff_act.php:91
 msgid "Login Username"
-msgstr "Login Pengguna"
+msgstr "Nama masuk Pengguna"
 
 #: admin/modules/reporting/customs/staff_act.php:92
 msgid "Bibliography Data Entry"
-msgstr "Entri data Bibliografi"
+msgstr "Entri Data Bibliografi"
 
 #: admin/modules/reporting/customs/staff_act.php:93
 msgid "Item Data Entry"
-msgstr "Entri data Item/Kopi"
+msgstr "Entri Data Eksemplar/Kopi"
 
 #: admin/modules/reporting/customs/staff_act.php:94
 msgid "Member Data Entry"
-msgstr "Entri data Anggota"
+msgstr "Entri Data Anggota"
 
 #: admin/modules/reporting/customs/staff_act.php:95
 msgid "Circulation Tasks"
-msgstr "Sirkulasi"
+msgstr "Tugas Sirkulasi"
 
 #: admin/modules/reporting/customs/visitor_list.php:68
 msgid "NON-Member visitor"
@@ -2994,7 +2986,7 @@ msgstr "Pengunjung Bukan Anggota"
 
 #: admin/modules/reporting/customs/visitor_report.php:161
 msgid "Total visit/month"
-msgstr "Total Kunjungan/bulan"
+msgstr "Total kunjungan/bulan"
 
 #: admin/modules/reporting/customs/visitor_report_day.php:67
 msgid "Visitor Report"
@@ -3003,7 +2995,7 @@ msgstr "Laporan Pengunjung"
 #: admin/modules/serial_control/index.php:53
 #: admin/modules/serial_control/submenu.php:23
 msgid "Serial Control"
-msgstr "Terbitan Berseri"
+msgstr "Kendali Terbitan Berseri"
 
 #: admin/modules/serial_control/index.php:76
 msgid "Edit Bibliographic data"
@@ -3027,19 +3019,19 @@ msgstr "Judul Terbitan Berseri"
 
 #: admin/modules/serial_control/kardex.php:61
 msgid "Kardex data updated!"
-msgstr "Data Kardeks tersimpan!"
+msgstr "Data Kardeks terbarui!"
 
 #: admin/modules/serial_control/kardex.php:67
 msgid "Kardex data deleted!"
-msgstr "Data Kardeks berhasil dihapus!"
+msgstr "Data Kardeks terhapus!"
 
 #: admin/modules/serial_control/serial_base_lib.inc.php:151
 msgid "Date Expected"
-msgstr "Tgl. Harus Terima"
+msgstr "Tanggal Harus Terima"
 
 #: admin/modules/serial_control/serial_base_lib.inc.php:152
 msgid "Date Received"
-msgstr "Tgl. Diterima"
+msgstr "Tanggal Diterima"
 
 #: admin/modules/serial_control/serial_base_lib.inc.php:152
 msgid "Seq. Number"
@@ -3059,19 +3051,19 @@ msgstr "Berlangganan"
 
 #: admin/modules/serial_control/submenu.php:24
 msgid "Manage Subscription"
-msgstr "Data Berlangganan Terbitan Berseri"
+msgstr "Atur Langganan"
 
 #: admin/modules/serial_control/subscription.php:64
 msgid "Error inserting subscription data, Subscription Date must be filled!"
-msgstr "Error memasukan data berlangganan, Tanggal berlangganan harus diisikan!"
+msgstr "Galat memasukan data langganan, Tanggal Langganan harus diisi!"
 
 #: admin/modules/serial_control/subscription.php:84
 msgid "Subscription Data Successfully Updated"
-msgstr "Data Berlangganan berhasil diperbarui"
+msgstr "Data Berlangganan Berhasil Diperbarui"
 
 #: admin/modules/serial_control/subscription.php:86
 msgid "Subscription Data FAILED to Updated. Please Contact System Administrator"
-msgstr "Data Berlangganan GAGAL diperbarui. Harap hubungi Administrator sistem"
+msgstr "Data Berlangganan GAGAL Diperbarui. Hubungi Administrator sistem"
 
 #: admin/modules/serial_control/subscription.php:100
 msgid "New Subscription Data Successfully Saved"
@@ -3079,7 +3071,7 @@ msgstr "Data Berlangganan baru berhasil disimpan"
 
 #: admin/modules/serial_control/subscription.php:102
 msgid "Subscription Data FAILED to Save. Please Contact System Administrator"
-msgstr "Data Berlangganan GAGAL disimpan. Harap hubungi Administrator sistem"
+msgstr "Data Berlangganan GAGAL disimpan. Hubungi Administrator sistem"
 
 #: admin/modules/serial_control/subscription.php:138
 msgid "Subscription data successfully deleted"
@@ -3096,7 +3088,7 @@ msgstr "Mulai Berlangganan"
 
 #: admin/modules/serial_control/subscription.php:180
 msgid "Total Exemplar Expected"
-msgstr "Eksemplar Yang Diharapkan"
+msgstr "Jumlah eksemplar Yang Diharapkan"
 
 #: admin/modules/serial_control/subscription.php:183
 #: admin/modules/serial_control/subscription.php:219
@@ -3106,7 +3098,7 @@ msgstr "Nama Periode Langganan"
 #: admin/modules/serial_control/subscription.php:185
 #: admin/modules/serial_control/subscription.php:221
 msgid "Subscription Notes"
-msgstr "Catatan"
+msgstr "Catatan Berlangganan"
 
 #: admin/modules/serial_control/subscription.php:199
 msgid "You are going to edit Subscription data"
@@ -3114,15 +3106,15 @@ msgstr "Anda akan Mengubah data Berlangganan"
 
 #: admin/modules/serial_control/subscription.php:209
 msgid "View/Edit Kardex Detail"
-msgstr "Lihat/Ubah detik kardeks"
+msgstr "Lihat/Ubah Detil Kardeks"
 
 #: admin/modules/stock_take/current.php:52
 msgid "NO stock taking proccess initialized yet!"
-msgstr "BELUM ADA proses inventarisasi koleksi yang telah diinisialisasi!"
+msgstr "BELUM ADA inisialisasi inventarisasi koleksi!"
 
 #: admin/modules/stock_take/current.php:64
 msgid "STOCK TAKE PROCCESS - Insert Item Code/Barcode with keyboard or barcode scanner"
-msgstr "PROSES INVENTARISASI - Masukan kode item/barcode menggunakan pemindai barcode atau keyboard"
+msgstr "PROSES INVENTARISASI - Masukan Kode Eksemplar/Barkod menggunakan papan kunci atau pemindai barkod"
 
 #: admin/modules/stock_take/current.php:66
 msgid "Change Status"
@@ -3130,11 +3122,11 @@ msgstr "Ubah Status"
 
 #: admin/modules/stock_take/current.php:67
 msgid "List stocktakes by"
-msgstr "Daftar stok take item"
+msgstr "Daftar inventarisasi oleh"
 
 #: admin/modules/stock_take/current.php:68
 msgid "Current User Only"
-msgstr "User saat ini"
+msgstr "Pengguna Saat Ini"
 
 #: admin/modules/stock_take/current.php:69
 msgid "All User"
@@ -3142,7 +3134,7 @@ msgstr "Semua User"
 
 #: admin/modules/stock_take/current.php:73
 msgid "Current Missing/Lost Items"
-msgstr "Koleksi Hilang saat ini"
+msgstr "Eksemplar Hilang Saat Ini"
 
 #: admin/modules/stock_take/current.php:98
 msgid "Exists"
@@ -3154,11 +3146,11 @@ msgstr "Hilang"
 
 #: admin/modules/stock_take/finish.php:46
 msgid "NO stock taking proccess running!"
-msgstr "TIDAK ADA proses inventarisasi yang sedang berjalan!"
+msgstr "TIDAK ADA inventarisasi yang sedang berjalan!"
 
 #: admin/modules/stock_take/finish.php:148
 msgid "Stock Take Proccess Finished!"
-msgstr "Proses Inventarisasi Koleksi Selesai!"
+msgstr "Proses Inventarisasi Selesai!"
 
 #: admin/modules/stock_take/finish.php:157
 #: admin/modules/stock_take/finish.php:165
@@ -3167,52 +3159,52 @@ msgstr "Selesaikan Inventarisasi"
 
 #: admin/modules/stock_take/finish.php:158
 msgid "Are you sure to end current stock take proccess? Once it finished there is no way you can rollback this stock take"
-msgstr "Anda yakin mengakhiri proses Inventarisasi Koleksi? Setelah diakhiri anda tidak bisa mengubah kembali data Inventarisasi"
+msgstr "Anda yakin mengakhiri proses inventarisasi? Setelah diakhiri Anda tidak bisa mengubah kembali data inventarisasi"
 
 #: admin/modules/stock_take/finish.php:175
 msgid "Purge Lost Item"
-msgstr "Buang Data Koleksi Hilang"
+msgstr "Buang Data Eksemplar Hilang"
 
 #: admin/modules/stock_take/index.php:50
 msgid "Stock Take"
-msgstr "Inventarisasi Koleksi"
+msgstr "Inventarisasi"
 
 #: admin/modules/stock_take/index.php:62
 #: admin/modules/stock_take/index.php:79
 #: admin/modules/stock_take/index.php:111
 #: admin/modules/stock_take/init.php:151
 msgid "Stock Take Name"
-msgstr "Nama/Kode Inventariasi"
+msgstr "Nama Inventariasi"
 
 #: admin/modules/stock_take/index.php:63
 #: admin/modules/stock_take/index.php:112
 msgid "Start Date"
-msgstr "Tgl Mulai"
+msgstr "Tanggal Mulai"
 
 #: admin/modules/stock_take/index.php:64
 #: admin/modules/stock_take/index.php:113
 msgid "End Date"
-msgstr "Tgl Selesai"
+msgstr "Tanggal Selesai"
 
 #: admin/modules/stock_take/index.php:65
 msgid "Initializer"
-msgstr "Yang Meng-inisialisasi"
+msgstr "Yang Menginisialisasi"
 
 #: admin/modules/stock_take/index.php:66
 msgid "Total Item Stock Taked"
-msgstr "Jumlah Inventarisasi Total"
+msgstr "Total Eksemplar Terinventarisasi"
 
 #: admin/modules/stock_take/index.php:67
 msgid "Total Item Lost"
-msgstr "Jumlah Total Koleksi Hilang"
+msgstr "Total Eksemplar Hilang"
 
 #: admin/modules/stock_take/index.php:68
 msgid "Total Item Exists"
-msgstr "Jumlah Koleksi Yang Ada"
+msgstr "Total Eksemplar tersedia"
 
 #: admin/modules/stock_take/index.php:69
 msgid "Total Item On Loan"
-msgstr "Jumlah Total Koleksi Dipinjam"
+msgstr "Total Eksemplar Terpinjam"
 
 #: admin/modules/stock_take/index.php:70
 msgid "Stock Take Participants"
@@ -3230,19 +3222,19 @@ msgstr "Laporan"
 
 #: admin/modules/stock_take/index.php:88
 msgid "Currently Active"
-msgstr "Dalam Proses"
+msgstr "Sedang Aktif"
 
 #: admin/modules/stock_take/init.php:46
 msgid "There is already stock taking proccess running!"
-msgstr "Sudah ada proses Inventarisasi Koleksi yang sedang berjalan!"
+msgstr "Ada proses inventarisasi yang sedang berjalan!"
 
 #: admin/modules/stock_take/init.php:50
 msgid "Stock Take Name must be filled!"
-msgstr "Nama/Kode Inventarisasi koleksi tidak boleh kosong!"
+msgstr "Nama/Kode inventarisasi tidak boleh kosong!"
 
 #: admin/modules/stock_take/init.php:129
 msgid "Stock Taking Initialized"
-msgstr "Inisialisasi Inventarisasi Koleksi Berhasil"
+msgstr "Inisialisasi Inventarisasi"
 
 #: admin/modules/stock_take/init.php:134
 msgid ""
@@ -3250,24 +3242,24 @@ msgid ""
 "No item to stock take!"
 msgstr ""
 "Inventarisasi GAGAL.\\n"
-" Tak ada item untuk diinventarisasi"
+" Tak ada eksemplar untuk diinventarisasi"
 
 #: admin/modules/stock_take/init.php:142
 msgid "Initialize Stock Take"
-msgstr "Inisialisasi Sekarang"
+msgstr "Inisialisasi Inventarisasi"
 
 #: admin/modules/stock_take/init.php:180
 msgid "Separate each class comma sign. Use * for wildcard"
-msgstr "Pisahkan setiap kelas dengan tanda koma. Gunakan * sebagai wildcard"
+msgstr "Pisahkan setiap kelas dengan tanda koma. Gunakan * sebagai <i>wildcard</i>"
 
 #: admin/modules/stock_take/lost_item_list.php:49
 #: admin/modules/stock_take/submenu.php:31
 msgid "Current Lost Item"
-msgstr "Koleksi Hilang"
+msgstr "Eksemplar Hilang Saat Ini"
 
 #: admin/modules/stock_take/resync.php:61
 msgid "Re-synchronize will only update current stock take's item data. It won't update any new bibliographic or item data that were inserted in the middle of stock take proccess"
-msgstr "Resinkronisasi hanya meng-update data bibliografi dan item yang masuk dalam daftar Inventarisasi, bukan data bibliografi/item baru yang dimasukkan ditengah proses stok opname"
+msgstr "Resinkronisasi hanya memperbarui data bibliografi dan eksemplar yang masuk dalam daftar Inventarisasi, bukan data bibliografi/eksemplar baru yang dimasukkan ditengah proses inventarisasi"
 
 #: admin/modules/stock_take/resync.php:64
 msgid "Resynchronize Now"
@@ -3276,34 +3268,34 @@ msgstr "Resinkronisasi Sekarang"
 #: admin/modules/stock_take/st_log.php:51
 #: admin/modules/stock_take/submenu.php:32
 msgid "Stock Take Log"
-msgstr "Log Inventarisasi"
+msgstr "Catatan Inventarisasi"
 
 #: admin/modules/stock_take/st_report.php:58
 msgid "CURRENT STOCK TAKE REPORT"
-msgstr "Laporan Inventarisasi Koleksi"
+msgstr "LAPORAN INVENTARISASI SAAT INI"
 
 #: admin/modules/stock_take/st_report.php:88
 msgid "Total Checked/Scanned Items"
-msgstr "Total Checked/Scanned Items"
+msgstr "Total Eksemplar Diperiksa/Terpindai"
 
 #: admin/modules/stock_take/st_report.php:95
 msgid "items already checked"
-msgstr "item telah dicek"
+msgstr "Eksemplar yang telah diperiksa"
 
 #: admin/modules/stock_take/st_report.php:125
 #: admin/modules/stock_take/st_report.php:163
 msgid "Lost Items"
-msgstr "Koleksi Hilang"
+msgstr "Eksemplar yang Hilang"
 
 #: admin/modules/stock_take/st_report.php:126
 #: admin/modules/stock_take/st_report.php:164
 msgid "Existing Items"
-msgstr "Item yang Tersedia"
+msgstr "Eksemplar yang Tersedia"
 
 #: admin/modules/stock_take/st_report.php:127
 #: admin/modules/stock_take/st_report.php:165
 msgid "On Loan Items"
-msgstr "Koleksi Terpinjam"
+msgstr "Eksemplar Terpinjam"
 
 #: admin/modules/stock_take/st_report.php:130
 msgid " classes"
@@ -3311,15 +3303,15 @@ msgstr " kelas"
 
 #: admin/modules/stock_take/st_upload.php:102
 msgid "Succesfully upload stock take file"
-msgstr "Unggah berkas inventarisasi berhasil"
+msgstr "Unggahan berkas inventarisasi berhasil"
 
 #: admin/modules/stock_take/st_upload.php:102
 msgid " item codes scanned!"
-msgstr " kode item terpindai!"
+msgstr " kode eksemplar terpindai!"
 
 #: admin/modules/stock_take/st_upload.php:119
 msgid "STOCK TAKE UPLOAD - Upload a plain text file (.txt) containing list of Item Code to stock take. Each Item Code separated by line."
-msgstr "STOCK TAKE UPLOAD - Upload a plain text file (.txt) containing list of Item Code to stock take. Each Item Code separated by line."
+msgstr "UNGGAH INVENTARISASI - Unggah berkas teks (.txt) yang berisi daftar No. Eksemplar untuk inventarisasi. Pisahkan Kode Eksemplar dengan baris baru."
 
 #: admin/modules/stock_take/st_upload.php:121
 msgid " File"
@@ -3343,7 +3335,7 @@ msgstr "Inventarisasi Aktif"
 
 #: admin/modules/stock_take/submenu.php:28
 msgid "View Current Stock Take Process"
-msgstr "Lihat Proses Inventarisasi Koleksi Aktif"
+msgstr "Tampilkan Proses Inventarisasi Terkini"
 
 #: admin/modules/stock_take/submenu.php:29
 msgid "Stock Take Report"
@@ -3351,27 +3343,27 @@ msgstr "Laporan Inventarisasi"
 
 #: admin/modules/stock_take/submenu.php:29
 msgid "View Current Stock Take Report"
-msgstr "Lihat Laporan Proses Inventarisasi Koleksi Aktif"
+msgstr "Tampilkan Laporan Inventarisasi Terkini"
 
 #: admin/modules/stock_take/submenu.php:30
 msgid "Finish Current Stock Take Proccess"
-msgstr "Selesaikan Proses Inventarisasi Aktif"
+msgstr "Selesaikan Proses Inventarisasi Terkini"
 
 #: admin/modules/stock_take/submenu.php:31
 msgid "View Lost Item in Current Stock Take Proccess"
-msgstr "Daftar Koleksi Hilang pada Proses Inventarisasi Koleksi Aktif"
+msgstr "Tampilkan Eksemplar Hilang pada Inventarisasi Terkini"
 
 #: admin/modules/stock_take/submenu.php:32
 msgid "View Log of Current Stock Take Proccess"
-msgstr "Lihat Log dari Proses Inventarisasi Aktif"
+msgstr "Tampilkan Catatan dari Inventarisasi Terkini"
 
 #: admin/modules/stock_take/submenu.php:33
 msgid "Resynchronize"
-msgstr "Sinkronisasi Ulang"
+msgstr "Resinkronisasi"
 
 #: admin/modules/stock_take/submenu.php:33
 msgid "Resynchronize bibliographic data with current stock take"
-msgstr "Sinkronisasi ulang data bibliografi dengan proses inventarisasi aktif"
+msgstr "Resinkronisasi data bibliografi dengan inventarisasi terkini"
 
 #: admin/modules/stock_take/submenu.php:34
 msgid "Upload List"
@@ -3379,23 +3371,23 @@ msgstr "Unggah Daftar"
 
 #: admin/modules/stock_take/submenu.php:34
 msgid "Upload List in text file"
-msgstr "Unggah Daftar barcode dalam file teks"
+msgstr "Unggah Daftar dalam bentuk berkas teks"
 
 #: admin/modules/stock_take/submenu.php:36
 msgid "Initialize"
-msgstr "Inisialisasi/Mulai"
+msgstr "Inisialisasi"
 
 #: admin/modules/stock_take/submenu.php:36
 msgid "Initialize New Stock Take Proccess"
-msgstr "Memulai Proses Inventarisasi Koleksi Baru"
+msgstr "Memulai Inventarisasi Baru"
 
 #: admin/modules/system/app_user.php:62
 msgid "User Name or Real Name can't be empty"
-msgstr "Nama Lengkap dan Nama Login tidak boleh kosong"
+msgstr "Nama Pengguna atau Nama Asli tidak boleh kosong"
 
 #: admin/modules/system/app_user.php:65
 msgid "Login username or Real Name is probihited!"
-msgstr "Login Pengguna atau Nama Lengkap tidak bisa digunakan!"
+msgstr "Login pengguna atau Nama Lengkap tidak bisa digunakan!"
 
 #: admin/modules/system/app_user.php:102
 msgid "User Data Successfully Updated"
@@ -3403,15 +3395,15 @@ msgstr "Data Pengguna Berhasil Diperbaharui"
 
 #: admin/modules/system/app_user.php:104
 msgid "User Data FAILED to Updated. Please Contact System Administrator"
-msgstr "Data Pengguna GAGAL Diperbaharui. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data Pengguna GAGAL Diperbaharui. Hubungi Administrator Sistem"
 
 #: admin/modules/system/app_user.php:112
 msgid "New User Data Successfully Saved"
-msgstr "Pengguna Baru Berhasil Disimpan"
+msgstr "Data Pengguna Baru Berhasil Disimpan"
 
 #: admin/modules/system/app_user.php:114
 msgid "User Data FAILED to Save. Please Contact System Administrator"
-msgstr "Data Pengguna Baru GAGAL Disimpan. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data Pengguna Baru GAGAL Disimpan. Hubungi Administrator Sistem"
 
 #: admin/modules/system/app_user.php:162
 msgid "System Users"
@@ -3419,11 +3411,11 @@ msgstr "Pengguna Aplikasi"
 
 #: admin/modules/system/app_user.php:162
 msgid "Add New User"
-msgstr "Data Staf Baru"
+msgstr "Tambah Pengguna"
 
 #: admin/modules/system/app_user.php:163
 msgid "User List"
-msgstr "Daftar Staf"
+msgstr "Daftar Pengguna"
 
 #: admin/modules/system/app_user.php:233
 msgid "Group(s)"
@@ -3431,12 +3423,12 @@ msgstr "Kelompok"
 
 #: admin/modules/system/app_user.php:242
 msgid "You are going to edit user profile"
-msgstr "Anda akan meng-edit data pengguna"
+msgstr "Anda akan menyunting data pengguna"
 
 #: admin/modules/system/app_user.php:263
 #: admin/modules/system/app_user.php:268
 msgid "Last Login"
-msgstr "Login terakhir"
+msgstr "Terakhir kali Masuk"
 
 #: admin/modules/system/backup.php:44
 msgid "Database Backup"
@@ -3449,28 +3441,28 @@ msgstr "Mulai Salinan Baru"
 #: admin/modules/system/barcode_generator.php:86
 #: admin/modules/system/barcode_generator.php:116
 msgid "Barcode Generator"
-msgstr "Pembuat Barcode"
+msgstr "Pembuat Barkod"
 
 #: admin/modules/system/barcode_generator.php:101
 msgid "Error creating barcode!"
-msgstr "GAGAL mencetak Barcode!"
+msgstr "GAGAL mencetak Barkod"
 
 #: admin/modules/system/barcode_generator.php:106
 msgid "Barcode generation finished"
-msgstr "Pencetakan Barcode selesai"
+msgstr "Pencetakan Barkod selesai"
 
 #: admin/modules/system/barcode_generator.php:116
 msgid "Type barcodes text to one or more text field below and click"
-msgstr "Ketik teks Barcode dalam kotak di bawah ini dan klik"
+msgstr "Ketik teks Barkod dalam kotak di bawah ini dan klik"
 
 #: admin/modules/system/barcode_generator.php:116
 #: admin/modules/system/barcode_generator.php:146
 msgid "Generate Barcodes"
-msgstr "Cetak Barcode"
+msgstr "Cetak Barkod"
 
 #: admin/modules/system/barcode_generator.php:130
 msgid "Barcode Size"
-msgstr "Ukuran Barcode"
+msgstr "Ukuran Barkod"
 
 #: admin/modules/system/barcode_generator.php:130
 msgid "Small"
@@ -3490,18 +3482,18 @@ msgstr "Tabel indeks dipotong!"
 
 #: admin/modules/system/biblio_indexes.php:55
 msgid "Index table FAILED to truncated, probably because of database query error!"
-msgstr "Tabel Index GAGALuntuk dihapus, kemungkinan terjadi kesalahan dalam queri pada basisdata!"
+msgstr "Tabel Indeks GAGAL dihapus, kemungkinan terjadi kesalahan dalam <i>query</i> pada basisdata!"
 
 #: admin/modules/system/biblio_indexes.php:69
 #, php-format
 msgid "<strong>%d</strong> records (from total of <strong>%d</strong>) re-indexed. Finished in %d minutes %d second(s)"
-msgstr "<strong>%d</strong> rekod (dari total <strong>%d</strong>) yang berhasil di indeks ulang. Selesai dalam %d menit %d detik"
+msgstr "<strong>%d</strong> cantuman (dari total <strong>%d</strong>) yang berhasil di indeks ulang. Selesai dalam %d menit %d detik"
 
 #: admin/modules/system/biblio_indexes.php:71
 #: admin/modules/system/biblio_indexes.php:93
 #, php-format
 msgid "<strong>%d</strong> index records failed to indexed. The IDs are: %s"
-msgstr "<strong>%d</strong> rekod indeks gagal untuk di indeks. IDnya adalah: %s"
+msgstr "<strong>%d</strong> cantuman indeks gagal untuk di indeks. IDnya adalah: %s"
 
 #: admin/modules/system/biblio_indexes.php:83
 msgid "Please empty the Index first before re-creating the Index"
@@ -3510,7 +3502,7 @@ msgstr "Kosongkan Indeks sebelum membuat ulang indeks"
 #: admin/modules/system/biblio_indexes.php:91
 #, php-format
 msgid "<strong>%d</strong> records (from total of <strong>%d</strong>) re-indexed. Finished in %d second(s)"
-msgstr "<strong>%d</strong> rekod (dari total <strong>%d</strong> berhasil di indeks ulang. Diselesaikan dalam %d detik"
+msgstr "<strong>%d</strong> cantuman (dari total <strong>%d</strong> berhasil di indeks ulang. Diselesaikan dalam %d detik"
 
 #: admin/modules/system/biblio_indexes.php:103
 msgid "Bibliographic Index"
@@ -3530,15 +3522,15 @@ msgstr "Perbaharui indeks"
 
 #: admin/modules/system/content.php:53
 msgid "Title or Path can't be empty!"
-msgstr "Judul atau Path tidak boleh dikosongkan!"
+msgstr "Judul atau <i>Path</i> tidak boleh dikosongkan!"
 
 #: admin/modules/system/content.php:75
 msgid "Content data updated"
-msgstr "Data Konten berhasil diupdate"
+msgstr "Isi Data berhasil diperbarui"
 
 #: admin/modules/system/content.php:77
 msgid "Content data FAILED to update!"
-msgstr "Data Konten GAGAL diupdate!"
+msgstr "Data Konten GAGAL diperbarui!"
 
 #: admin/modules/system/content.php:85
 msgid "Content data saved"
@@ -3550,100 +3542,100 @@ msgstr "Data Konten GAGAL disimpan!"
 
 #: admin/modules/system/content.php:134
 msgid "Content"
-msgstr "Konten"
+msgstr "Isi"
 
 #: admin/modules/system/content.php:134
 msgid "Add New Content"
-msgstr "Add New Content"
+msgstr "Tambahkan Data Baru"
 
 #: admin/modules/system/content.php:135
 msgid "Content List"
-msgstr "Content List"
+msgstr "Daftar Isi"
 
 #: admin/modules/system/content.php:178
 #: admin/modules/system/content.php:211
 #: admin/modules/system/content.php:215
 msgid "Content Title"
-msgstr "Judul Konten"
+msgstr "Judul Isi"
 
 #: admin/modules/system/content.php:180
 #: admin/modules/system/content.php:212
 #: admin/modules/system/content.php:216
 msgid "Path (Must be unique)"
-msgstr "Path (Harus unik)"
+msgstr "<i>Path</i> (Harus unik)"
 
 #: admin/modules/system/content.php:182
 msgid "Content Description"
-msgstr "Deskripsi Konten"
+msgstr "Deskripsi Isi"
 
 #: admin/modules/system/content.php:186
 msgid "You are going to update Content data"
-msgstr "Anda akan mengubah data konten"
+msgstr "Anda akan mengubah data Isi"
 
 #: admin/modules/system/holiday.php:67
 msgid "Holiday Data Successfully updated"
-msgstr "Libur Khusus Berhasil Diperbaharui"
+msgstr "Data Hari Libur Berhasil diperbarui"
 
 #: admin/modules/system/holiday.php:73
 msgid "Holiday FAILED to update. Please Contact System Administrator"
-msgstr "Libur Khusus GAGAL Diperbaharui. Hubungi admin sistem untuk pemecahannya"
+msgstr "Hari Libur GAGAL Diperbaharui. Hubungi administrator Sistem"
 
 #: admin/modules/system/holiday.php:79
 msgid "New Holiday Successfully Saved"
-msgstr "Libur Khusus Baru Berhasil Disimpan"
+msgstr "Hari Libur Baru Berhasil Disimpan"
 
 #: admin/modules/system/holiday.php:106
 msgid "Holiday FAILED to Save. Please Contact System Administrator"
-msgstr "Libur Khusus Baru GAGAL Disimpan. Hubungi admin sistem untuk pemecahannya"
+msgstr "Hari Libur GAGAL Disimpan. Hubungi administrator Sistem"
 
 #: admin/modules/system/holiday.php:152
 msgid "Holiday Setting"
-msgstr "Hari Libur"
+msgstr "Setelan Hari Libur"
 
 #: admin/modules/system/holiday.php:154
 msgid "Set holiday"
-msgstr "Hari Libur"
+msgstr "Atur Hari Libur"
 
 #: admin/modules/system/holiday.php:155
 msgid "Special holiday"
-msgstr "Daftar Libur Khusus"
+msgstr "Hari Libur Khusus"
 
 #: admin/modules/system/holiday.php:156
 msgid "Add Special holiday"
-msgstr "Tambah Hari Libur Khusus Baru"
+msgstr "Tambah Hari Libur Khusus"
 
 #: admin/modules/system/holiday.php:189
 #: admin/modules/system/holiday.php:213
 #: admin/modules/system/holiday.php:217
 msgid "Holiday Date Start"
-msgstr "Tanggal Libur"
+msgstr "Mula Tanggal Libur"
 
 #: admin/modules/system/holiday.php:192
 msgid "Holiday Date End"
-msgstr "Tanggal Libur Akhir"
+msgstr "Akhir Tanggal Libur"
 
 #: admin/modules/system/holiday.php:195
 #: admin/modules/system/holiday.php:214
 #: admin/modules/system/holiday.php:218
 msgid "Holiday Description"
-msgstr "Keterangan"
+msgstr "Keterangan Hari Libur"
 
 #: admin/modules/system/holiday.php:199
 msgid "You are going to edit holiday data"
-msgstr "Anda akan meng-edit hari libur"
+msgstr "Anda akan menyunting hari libur"
 
 #: admin/modules/system/holiday.php:212
 #: admin/modules/system/holiday.php:216
 msgid "Day name"
-msgstr "Hari"
+msgstr "Nama hari"
 
 #: admin/modules/system/holiday.php:251
 msgid "Maximum 6 day can be set as holiday!"
-msgstr "Maksimum 6 hari bisa di-set sebagai hari libur!"
+msgstr "Hari libur bisa diatur maksimal 6 hari!"
 
 #: admin/modules/system/holiday.php:264
 msgid "Holiday settings saved"
-msgstr "Set hari libur berhasil disimpan"
+msgstr "Aturan hari libur tersimpan"
 
 #: admin/modules/system/holiday.php:293
 msgid "Monday"
@@ -3676,19 +3668,19 @@ msgstr "Minggu"
 #: admin/modules/system/holiday.php:306
 #: admin/modules/system/index.php:138
 msgid "Save Settings"
-msgstr "Simpan Konfigurasi"
+msgstr "Simpan Pengaturan"
 
 #: admin/modules/system/index.php:49
 msgid "System Configuration"
-msgstr "Konfigurasi Sistem"
+msgstr "Pengaturan Sistem"
 
 #: admin/modules/system/index.php:49
 msgid "Modify global application preferences"
-msgstr "Mengatur konfigurasi global aplikasi sesuai kebutuhan"
+msgstr "Merubah preferensi aplikasi global"
 
 #: admin/modules/system/index.php:131
 msgid "Settings saved. Refreshing page"
-msgstr "Konfigurasi telah disimpan. Perbaharui informasi terbaru"
+msgstr "Pengaturan disimpan. Penyegaran laman"
 
 #: admin/modules/system/index.php:152
 msgid "Library Name"
@@ -3696,19 +3688,19 @@ msgstr "Nama Perpustakaan"
 
 #: admin/modules/system/index.php:155
 msgid "Library Subname"
-msgstr "Nama Perpustakaan Tambahan"
+msgstr "Nama Tambahan Perpustakaan"
 
 #: admin/modules/system/index.php:169
 msgid "Public Template"
-msgstr "Template publik"
+msgstr "Template Publik"
 
 #: admin/modules/system/index.php:182
 msgid "Admin Template"
-msgstr "Template administrasi"
+msgstr "Template Admin"
 
 #: admin/modules/system/index.php:186
 msgid "Default App. Language"
-msgstr "Bahasa pengantar"
+msgstr "Bahasa Aplikasi Baku"
 
 #: admin/modules/system/index.php:194
 msgid "Number Of Collections To Show In OPAC Result List"
@@ -3716,7 +3708,7 @@ msgstr "Jumlah koleksi yang ditampilkan hasil pencarian OPAC"
 
 #: admin/modules/system/index.php:198
 msgid "Show Promoted Titles at Homepage"
-msgstr "Tampilkan Judul Terpilih di Homepage"
+msgstr "Tampilkan Judul Terpilih di laman OPAC"
 
 #: admin/modules/system/index.php:208
 msgid "Don't Print"
@@ -3732,19 +3724,19 @@ msgstr "Cetak Bukti Sirkulasi"
 
 #: admin/modules/system/index.php:216
 msgid "Loan and Due Date Manual Change"
-msgstr "Perubahan Tanggal Peminjaman dan Jatuh Tempo manual"
+msgstr "Perubahan Manual Tanggal Peminjaman dan Jatuh Tempo"
 
 #: admin/modules/system/index.php:222
 msgid "Loan Limit Override"
-msgstr "Mengabaikan batas pinjam"
+msgstr "Mengabaikan Batas Pinjam"
 
 #: admin/modules/system/index.php:228
 msgid "OPAC XML Detail"
-msgstr "Detail OPAC XML"
+msgstr "Detil XML OPAC"
 
 #: admin/modules/system/index.php:234
 msgid "OPAC XML Result"
-msgstr "Hasil OPAC dalam XML"
+msgstr "Hasil XML OPAC"
 
 #: admin/modules/system/index.php:238
 msgid "Forbid"
@@ -3756,27 +3748,27 @@ msgstr "Diijinkan"
 
 #: admin/modules/system/index.php:240
 msgid "Allow OPAC File Download"
-msgstr "Unduh file hasil pencarian OPAC"
+msgstr "Izinkan Pengunduhan Berkas OPAC"
 
 #: admin/modules/system/index.php:243
 msgid "Session Login Timeout"
-msgstr "Timeout Sesi Login"
+msgstr "Sesi Login Berakhir"
 
 #: admin/modules/system/index.php:246
 msgid "Barcode Encoding"
-msgstr "Jenis Barkod"
+msgstr "Penyandian Barkod"
 
 #: admin/modules/system/module.php:50
 msgid "Module name and path can't be empty"
-msgstr "Nama dan path tidak boleh kosong"
+msgstr "Nama dan <i>path</i> modul tidak boleh kosong"
 
 #: admin/modules/system/module.php:73
 msgid "Module Data Successfully Updated"
-msgstr "Data Modul Berhasil Diperbaharui"
+msgstr "Data Modul Berhasil Diperbarui"
 
 #: admin/modules/system/module.php:75
 msgid "Module Data FAILED to Updated. Please Contact System Administrator"
-msgstr "Data Modul GAGAL Diperbaharui. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data Modul GAGAL Diperbarui. Hubungi administrator Sistem"
 
 #: admin/modules/system/module.php:86
 msgid "New Module Data Successfully Saved"
@@ -3784,7 +3776,7 @@ msgstr "Data Modul Baru Berhasil Disimpan"
 
 #: admin/modules/system/module.php:88
 msgid "Module Data FAILED to Save. Please Contact System Administrator"
-msgstr "Data Modul GAGAL Disimpan. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data Modul GAGAL Disimpan. Hubungi administrator Sistem"
 
 #: admin/modules/system/module.php:138
 #: admin/modules/system/submenu.php:32
@@ -3793,7 +3785,7 @@ msgstr "Modul"
 
 #: admin/modules/system/module.php:138
 msgid "Add New Modules"
-msgstr "Data Modul Baru"
+msgstr "Tambah Modul Baru"
 
 #: admin/modules/system/module.php:139
 msgid "Modules List"
@@ -3807,7 +3799,7 @@ msgstr "Nama Modul"
 
 #: admin/modules/system/module.php:180
 msgid "Module Path"
-msgstr "Modul Path"
+msgstr "<i>Path</i> Modul"
 
 #: admin/modules/system/module.php:182
 #: admin/modules/system/module.php:199
@@ -3816,7 +3808,7 @@ msgstr "Deskripsi Modul"
 
 #: admin/modules/system/module.php:186
 msgid "You are going to edit data"
-msgstr "Anda akan meng-edit data modul"
+msgstr "Anda akan menyunting data modul"
 
 #: admin/modules/system/module_priv_form.inc.php:31
 msgid "Read"
@@ -3832,7 +3824,7 @@ msgstr "Sistem"
 
 #: admin/modules/system/submenu.php:26
 msgid "Configure Global System Preferences"
-msgstr "Konfigurasi Global Aplikasi"
+msgstr "Konfigurasi Preferensi Sistem Global"
 
 #: admin/modules/system/submenu.php:31
 msgid "Biblio Indexes"
@@ -3840,7 +3832,7 @@ msgstr "Indeks Biblio"
 
 #: admin/modules/system/submenu.php:31
 msgid "Bibliographic Indexes management"
-msgstr "Manajemen Indeks Bibliografi"
+msgstr "Pengaturan Indeks Bibliografi"
 
 #: admin/modules/system/submenu.php:32
 msgid "Configure Application Modules"
@@ -3848,7 +3840,7 @@ msgstr "Konfigurasi Modul Aplikasi"
 
 #: admin/modules/system/submenu.php:33
 msgid "Manage Application User or Library Staff"
-msgstr "Pengelolaan Data Pengguna Aplikasi/Staf Perpustakaan"
+msgstr "Kelola Pengguna Aplikasi atau Staf Perpustakaan"
 
 #: admin/modules/system/submenu.php:34
 #: admin/modules/system/user_group.php:161
@@ -3857,7 +3849,7 @@ msgstr "Kelompok Pengguna"
 
 #: admin/modules/system/submenu.php:34
 msgid "Manage Group of Application User"
-msgstr "Pengelolaan Data Kelompok Pengguna Aplikasi"
+msgstr "Kelola Kelompok Pengguna Aplikasi"
 
 #: admin/modules/system/submenu.php:36
 msgid "Configure Holiday Setting"
@@ -3866,23 +3858,23 @@ msgstr "Konfigurasi Hari Libur"
 #: admin/modules/system/submenu.php:38
 #: admin/modules/system/sys_log.php:69
 msgid "System Log"
-msgstr "Log Sistem"
+msgstr "Catatan Sistem"
 
 #: admin/modules/system/submenu.php:38
 msgid "View Application System Log"
-msgstr "Lihat Sistem Log Aplikasi"
+msgstr "Lihat Catatan Aplikasi Sistem"
 
 #: admin/modules/system/submenu.php:39
 msgid "Backup Application Database"
-msgstr "Membuat Salinan Pangkalan Data Aplikasi"
+msgstr "Buat Salinan Pangkalan Data Aplikasi"
 
 #: admin/modules/system/sys_log.php:60
 msgid "System Log data completely cleared!"
-msgstr "Data Log Sistem sepenuhnya terhapus!"
+msgstr "Data Catatan Sistem sepenuhnya terhapus!"
 
 #: admin/modules/system/sys_log.php:71
 msgid "Are you SURE to completely clear system log data? This action cannot be undo!"
-msgstr "Apakah anda YAKIN untuk menghapus seluruh data Log Sistem? Aksi ini tidak bisa di-undo"
+msgstr "Anda YAKIN untuk menghapus seluruh catatan data sistem? Aksi ini tidak bisa dibatalkan!"
 
 #: admin/modules/system/sys_log.php:71
 msgid "CLEAR LOGS"
@@ -3890,11 +3882,11 @@ msgstr "HAPUS LOG"
 
 #: admin/modules/system/sys_log.php:72
 msgid "Save Logs record to file?"
-msgstr "Simpan Rekod Log ke Berkas?"
+msgstr "Simpan cantuman catatan ke dalam berkas?"
 
 #: admin/modules/system/sys_log.php:72
 msgid "Save Logs To File"
-msgstr "Simpan Data Log ke Berkas"
+msgstr "Simpan Catatan ke Dalam Berkas"
 
 #: admin/modules/system/sys_log.php:96
 msgid "Time"
@@ -3902,11 +3894,11 @@ msgstr "Waktu"
 
 #: admin/modules/system/sys_log.php:98
 msgid "Message"
-msgstr "Catatan Pesan"
+msgstr "Pesan"
 
 #: admin/modules/system/user_group.php:49
 msgid "Group name can't be empty"
-msgstr "Nama Kelompok tidak boleh kosong"
+msgstr "Nama kelompok tidak boleh kosong"
 
 #: admin/modules/system/user_group.php:84
 msgid "Group Data Successfully Updated"
@@ -3914,19 +3906,19 @@ msgstr "Data Kelompok Berhasil Diperbaharui"
 
 #: admin/modules/system/user_group.php:86
 msgid "Group Data FAILED to Updated. Please Contact System Administrator"
-msgstr "Data Kelompok GAGAL Diperbaharui. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data Kelompok GAGAL Diperbaharui. Hubungi Administrator Sistem"
 
 #: admin/modules/system/user_group.php:112
 msgid "New Group Data Successfully Saved"
-msgstr "Kelompok Baru Berhasil Disimpan"
+msgstr "Data Kelompok Baru Berhasil Disimpan"
 
 #: admin/modules/system/user_group.php:114
 msgid "Group Data FAILED to Save. Please Contact System Administrator"
-msgstr "Data Kelompok GAGAL Disimpan. Hubungi admin sistem untuk pemecahannya"
+msgstr "Data Kelompok GAGAL Disimpan. Hubungi Administrator Sistem"
 
 #: admin/modules/system/user_group.php:161
 msgid "Add New Group"
-msgstr "Data Kelompok Baru"
+msgstr "Tambah Kelompok Baru"
 
 #: admin/modules/system/user_group.php:162
 msgid "Group List"
@@ -3943,12 +3935,12 @@ msgstr "Hak Istimewa"
 
 #: admin/modules/system/user_group.php:217
 msgid "You are going to edit Group data"
-msgstr "Anda akan meng-edit data kelompok"
+msgstr "Anda akan menyunting data kelompok"
 
 #: lib/biblio_list_model.inc.php:182
 #: lib/biblio_list_model.inc.php:203
 msgid "Record Detail"
-msgstr "Detail Rekod"
+msgstr "Detail Cantuman"
 
 #: lib/biblio_list_model.inc.php:271
 msgid "mark this"
@@ -3964,7 +3956,7 @@ msgstr "Klik disini untuk mencari dokumen lain dari pengarang ini"
 
 #: lib/detail.inc.php:186
 msgid "Click to view others documents with this subject"
-msgstr "Klik disini untuk mencari dokumen lain dengan subjek ini"
+msgstr "Klik di sini untuk mencari dokumen lain dengan subjek ini"
 
 #: lib/contents/attachment_list.php:53
 msgid "No Attachment"
@@ -3985,43 +3977,39 @@ msgstr "Semua GMD/Media"
 #: lib/contents/default.inc.php:132
 #: lib/contents/default.inc.php:145
 msgid "Found  <strong>{biblio_list->num_rows}</strong> from your keywords"
-msgstr "Ditemukan  <strong>{biblio_list->num_rows}</strong> dari pencarian anda melalui kata kunci"
+msgstr "Ditemukan  <strong>{biblio_list->num_rows}</strong> dari pencarian Anda melalui kata kunci"
 
 #: lib/contents/default.inc.php:178
 msgid "You currently on page <strong>{page}</strong> of <strong>{total_pages}</strong> page(s)"
 msgstr "Saat ini anda berada pada halaman <strong>{page}</strong> dari total <strong>{total_pages}</strong> halaman"
 
 #: lib/contents/download_current_loan.inc.php:88
-#, fuzzy
 msgid "Current Loan item(s)"
-msgstr "Pinjaman Saat Ini"
+msgstr "Eksemplar Terpinjam Saat Ini"
 
 #: lib/contents/download_current_loan.inc.php:97
 msgid "Your Current Loan"
-msgstr "Peminjaman Anda"
+msgstr "Pinjaman Terkini"
 
 #: lib/contents/download_loan_history.inc.php:64
-#, fuzzy
 msgid "Return Date"
-msgstr "Tanggal Dikembalikan"
+msgstr "Tanggal Kembali"
 
 #: lib/contents/download_loan_history.inc.php:88
-#, fuzzy
 msgid "item(s) loan history"
-msgstr "Judul dalam keranjang"
+msgstr "sejarah peminjaman eksemplar"
 
 #: lib/contents/download_loan_history.inc.php:97
-#, fuzzy
 msgid "Your Loan History"
-msgstr "Sejarah Peminjaman"
+msgstr "Sejarah Peminjaman Anda"
 
 #: lib/contents/item_list.php:53
 msgid "There is no item/copy for this title yet"
-msgstr "Tidak ada item untuk judul ini"
+msgstr "Tidak ada eksemplar/kopi untuk judul ini"
 
 #: lib/contents/item_list.php:75
 msgid "Currently On Loan (Due on"
-msgstr "Sedang dipinjam (jatuh tempo"
+msgstr "Sedang Dipinjam (Jatuh tempo pada"
 
 #: lib/contents/item_list.php:77
 msgid "Available but not for loan"
@@ -4029,19 +4017,19 @@ msgstr "Tersedia namun tidak untuk dipinjamkan"
 
 #: lib/contents/login.inc.php:55
 msgid "Please supply valid username and password"
-msgstr "Lengkapi username dan password dengan benar"
+msgstr "Masukkan nama pengguna dan kata sandi dengan benar"
 
 #: lib/contents/login.inc.php:97
 msgid "Welcome to Library Automation, "
-msgstr "Selamat Datang di Otomasi Perpustakaan,"
+msgstr "Selamat Datang di Automasi Perpustakaan,"
 
 #: lib/contents/login.inc.php:108
 msgid "Wrong Username or Password. ACCESS DENIED"
-msgstr "Username atau Password salah. ANDA TIDAK BERHAK MELANJUTKAN"
+msgstr "Nama Pengguna atau Kata Sandi Salah. AKSES DITOLAK"
 
 #: lib/contents/login.inc.php:119
 msgid "Your browser does not support Javascript or Javascript is disabled. Application won't run without Javascript!"
-msgstr "Browser anda tidak mendukung Javascript atau Javascript tidak diaktifkan. Aplikasi tidak dapat dijalankan tanpa Javascript!"
+msgstr "Peramban Anda tidak mendukung <i>Javascript</i> atau <i>Javascript</i> tidak diaktifkan. Aplikasi tidak dapat dijalankan tanpa <i>Javascript</i>!"
 
 #: lib/contents/member.inc.php:36
 msgid "Welcome to Member's Area where you can view your current loan information and view your membership status."
@@ -4049,28 +4037,27 @@ msgstr "Selamat Datang di Area Anggota, dimana Anda bisa melihat status keanggot
 
 #: lib/contents/member.inc.php:62
 msgid "Please fill your Username and Password to Login!"
-msgstr "Mohon isi Username dan Password untuk Login!"
+msgstr "Mohon isi Nama Pengguna dan Kata Sandi untuk Login!"
 
 #: lib/contents/member.inc.php:102
 msgid "Login FAILED! Wrong username or password!"
-msgstr "Login GAGAL! Username/E-mail atau password salah!"
+msgstr "Login GAGAL! Nama Pengguna/Surel atau kata sandi salah!"
 
 #: lib/contents/member.inc.php:112
 msgid "Library Member Login"
 msgstr "Login Anggota Perpustakaan"
 
 #: lib/contents/member.inc.php:116
-#, fuzzy
 msgid "Wrong Captcha Code entered, Please write the right code!"
-msgstr "Sandi yang diberikan SALAH! Silahkan masukkan sandi yang benar"
+msgstr "Sandi Captcha yang diberikan SALAH! Silahkan masukkan sandi yang benar"
 
 #: lib/contents/member.inc.php:119
 msgid "Please insert your member ID and password given by library system administrator. If you are library's member and don't have a password yet, please contact library staff."
-msgstr "Masukan ID anggota serta Password yang diberikan oleh administrator sistem/pustakawan. Jika Anda anggota perpustakaan namun belum memiliki password, hubungi staff perpustakaan."
+msgstr "Masukan ID anggota serta kata sandi yang diberikan oleh administrator sistem perpustakaan. Jika Anda anggota perpustakaan namun belum memiliki kata sandi, hubungi staf perpustakaan."
 
 #: lib/contents/member.inc.php:148
 msgid "Password"
-msgstr "Sandi Login"
+msgstr "Kata Sandi"
 
 #: lib/contents/member.inc.php:171
 msgid "Login"
@@ -4078,16 +4065,16 @@ msgstr "Masuk"
 
 #: lib/contents/member.inc.php:188
 msgid "Current Password"
-msgstr "Password Saat Ini"
+msgstr "Kata Sandi Terkini"
 
 #: lib/contents/member.inc.php:196
 msgid "Confirm Password"
-msgstr "Konfirmasi Password"
+msgstr "Konfirmasi Kata Sandi"
 
 #: lib/contents/member.inc.php:200
 #: lib/contents/member.inc.php:591
 msgid "Change Password"
-msgstr "Ubah Password"
+msgstr "Ubah Kata Sandi"
 
 #: lib/contents/member.inc.php:368
 msgid "Reserve title(s) on Basket"
@@ -4107,7 +4094,7 @@ msgstr "Judul dalam keranjang"
 
 #: lib/contents/member.inc.php:393
 msgid "Your Membership Already EXPIRED! Please extend your membership."
-msgstr "Keanggotaan anda sudah HABIS MASA BERLAKU-nya! Harap perpanjang keanggotaan anda segera."
+msgstr "Masa Berlaku Keanggotaan Anda sudah KEDALUWARSA! Harap perpanjang keanggotaan Anda."
 
 #: lib/contents/member.inc.php:396
 msgid "Membership currently in pending state, no loan transaction can be made yet."
@@ -4119,23 +4106,23 @@ msgstr "TERLAMBAT"
 
 #: lib/contents/member.inc.php:476
 msgid "item(s) currently on loan"
-msgstr "koleksi yang sedang dipinjam"
+msgstr "eksemplar yang sedang dipinjam"
 
 #: lib/contents/member.inc.php:520
 msgid "Your password have been changed successfully."
-msgstr "Sandi anda sudah berhasil dirubah."
+msgstr "Kata Sandi Anda sudah berhasil dirubah."
 
 #: lib/contents/member.inc.php:523
 msgid "Current password entered WRONG! Please insert the right password!"
-msgstr "Sandi yang diberikan SALAH! Silahkan masukkan sandi yang benar"
+msgstr "Kata Sandi yang dimasukkan SALAH! Silahkan masukkan kata sandi yang benar!"
 
 #: lib/contents/member.inc.php:525
 msgid "Password confirmation FAILED! Make sure to check undercase or uppercase letters!"
-msgstr "Konfirmasi sandi GAGAL! Periksa ukuran huruf yang digunakan!"
+msgstr "Konfirmasi kata sandi GAGAL! Periksa ukuran huruf yang digunakan!"
 
 #: lib/contents/member.inc.php:527
 msgid "Password update FAILED! ERROR ON DATABASE!"
-msgstr "Perubahan sandi GAGAL! DATABASE ERROR!"
+msgstr "Perubahan kata sandi GAGAL! GALAT PADA PANGKALAN DATA!"
 
 #: lib/contents/member.inc.php:538
 msgid "Reservation e-mail sent successfully!"
@@ -4155,28 +4142,27 @@ msgstr "Kembali ke sebelumnya"
 
 #: lib/contents/visitor.inc.php:99
 msgid ", thank you for inserting your data to our visitor log"
-msgstr ", terimakasih sudah memasukkan data Anda pada daftar pengunjung kami"
+msgstr ", terimakasih telah memasukkan data Anda pada catatan pengunjung kami"
 
 #: lib/contents/visitor.inc.php:101
-#, fuzzy
 msgid "Your membership already EXPIRED, please renew/extend your membership immediately"
-msgstr "Keanggotaan anda sudah HABIS MASA BERLAKU-nya! Harap perpanjang keanggotaan anda segera."
+msgstr "Masa berlaku keanggotaan sudah BERAKHIR! Harap perpanjang keanggotaan anda"
 
 #: lib/contents/visitor.inc.php:104
 msgid "Sorry, Please fill institution field if you are not library member"
-msgstr "Maaf, jika Anda bukan anggota perpustakaan, silahkan beritahu kami nama institusi Anda "
+msgstr "Maaf, jika Anda bukan anggota perpustakaan, silahkan isi nama institusi Anda "
 
 #: lib/contents/visitor.inc.php:106
 msgid "Error inserting counter data to database!"
-msgstr "Terjadi kesalahan dalam memasukkan data penghitung ke dalam basisdata!"
+msgstr "Terjadi galat dalam memasukkan data penghitung ke dalam pangkalan data!"
 
 #: lib/contents/visitor.inc.php:114
 msgid "Visitor Counter"
-msgstr "Penghitung jumlah pengunjung"
+msgstr "Penghitung Jumlah Pengunjung"
 
 #: lib/contents/visitor.inc.php:116
 msgid "Please insert your library member ID otherwise your full name instead"
-msgstr "Silahkan masukkan Nomor Anggota Anda atau jika belum memiliki, masukkan nama lengkap Anda"
+msgstr "Silahkan masukkan nomor anggota Anda atau masukkan nama lengkap Anda"
 
 #: lib/lang/localisation.php:65
 msgid "Arabic"
@@ -4184,11 +4170,11 @@ msgstr "Bahasa Arab"
 
 #: lib/lang/localisation.php:66
 msgid "German"
-msgstr "Jerman"
+msgstr "Bahasa Jerman"
 
 #: lib/lang/localisation.php:67
 msgid "English"
-msgstr "Inggris"
+msgstr "Bahasa Inggris"
 
 #: lib/lang/localisation.php:68
 msgid "Espanol"
@@ -4196,19 +4182,19 @@ msgstr "Bahasa Spanyol"
 
 #: lib/lang/localisation.php:69
 msgid "Indonesian"
-msgstr "Indonesia"
+msgstr "Bahasa Indonesia"
 
 #: lib/lang/localisation.php:70
 msgid "Thai"
-msgstr ""
+msgstr "Bahasa Thai"
 
 #: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:89
 msgid "DELETE"
-msgstr "DELETE"
+msgstr "HAPUS"
 
 #: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:90
 msgid "EDIT"
-msgstr "EDIT"
+msgstr "SUNTING"
 
 #: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:105
 msgid "Are You Sure Want to DELETE Selected Data?"
@@ -4232,11 +4218,11 @@ msgstr "Urut daftar berdasar"
 
 #: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:372
 msgid "Check All"
-msgstr "Cek Semua"
+msgstr "Tandai Semua"
 
 #: simbio2/simbio_DB/datagrid/simbio_dbgrid.inc.php:373
 msgid "Uncheck All"
-msgstr "Hilangkan Cek"
+msgstr "Hilangkan Semua Tanda"
 
 #: simbio2/simbio_GUI/form_maker/simbio_form_element.inc.php:267
 msgid "Date"
@@ -4245,7 +4231,7 @@ msgstr "Tanggal"
 #: simbio2/simbio_GUI/form_maker/simbio_form_table.inc.php:105
 #: simbio2/simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php:98
 msgid "Delete Record"
-msgstr "Hapus Rekod"
+msgstr "Hapus Cantuman"
 
 #: simbio2/simbio_GUI/form_maker/simbio_form_table.inc.php:106
 #: simbio2/simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php:99
@@ -4254,7 +4240,7 @@ msgstr "Batal"
 
 #: simbio2/simbio_GUI/paging/simbio_paging.inc.php:118
 msgid "First Page"
-msgstr "Hal. Pertama"
+msgstr "Halaman Pertama"
 
 #: simbio2/simbio_GUI/paging/simbio_paging.inc.php:120
 msgid "Previous"
@@ -4266,7 +4252,7 @@ msgstr "Berikutnya"
 
 #: simbio2/simbio_GUI/paging/simbio_paging.inc.php:149
 msgid "Last Page"
-msgstr "Hal. Akhir"
+msgstr "Halaman Akhir"
 
 #: simbio2/simbio_GUI/table/simbio_table.inc.php:223
 msgid "No Data"
@@ -4290,7 +4276,7 @@ msgstr "Bantuan pencarian"
 
 #: template/blue/index_template.inc.php:39
 msgid "Member Area"
-msgstr "Daerah Khusus Anggota"
+msgstr "Area Anggota"
 
 #: template/blue/index_template.inc.php:40
 msgid "Librarian LOGIN"
@@ -4298,7 +4284,7 @@ msgstr "LOGIN Pustakawan"
 
 #: template/blue/index_template.inc.php:52
 msgid "Select Language"
-msgstr "Select Language"
+msgstr "Pilih Bahasa"
 
 #: template/blue/index_template.inc.php:61
 msgid "Simple Search"
@@ -4322,12 +4308,11 @@ msgstr "Ruas Kustom 2"
 
 #: template/google/login_template.inc.php:45
 msgid "Sign in to your account at"
-msgstr ""
+msgstr "Masuk ke akun Anda pada"
 
 #: template/google/login_template.inc.php:50
-#, fuzzy
 msgid "Username"
-msgstr "Login Pengguna"
+msgstr "Nama Pengguna"
 
 #~ msgid "View node catalog data"
 #~ msgstr "Lihat catalog pada node"

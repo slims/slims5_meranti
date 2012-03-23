@@ -174,7 +174,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // author name
     $form->addTextField('text', 'authorName', __('Author Name').'*', $rec_d['author_name'], 'style="width: 60%;"');
     // author year
-    $form->addTextField('text', 'authorYear', __('Author Year'), $rec_d['author_year'], 'style="width: 60%;"');
+    $form->addTextField('text', 'authorYear', __('Author Birth Year'), $rec_d['author_year'], 'style="width: 60%;"');
     // authority type
     foreach ($sysconf['authority_type'] as $auth_type_id => $auth_type) {
         $auth_type_options[] = array($auth_type_id, $auth_type);
