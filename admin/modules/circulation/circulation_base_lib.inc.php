@@ -21,7 +21,7 @@
 /* CIRCULATION BASE LIBRARY */
 
 // be sure that this file not accessed directly
-if (INDEX_AUTH != 1) { 
+if (INDEX_AUTH != 1) {
     die("can not access this file directly");
 }
 
@@ -149,7 +149,7 @@ class circulation extends member
         if ($this->is_pending) {
             return LOAN_NOT_PERMITTED_PENDING;
         }
-        $_q = $this->obj_db->query("SELECT b.title, i.coll_type_id, 
+        $_q = $this->obj_db->query("SELECT b.title, i.coll_type_id,
             b.gmd_id, ist.no_loan FROM biblio AS b
             LEFT JOIN item AS i ON b.biblio_id=i.biblio_id
             LEFT JOIN mst_item_status AS ist ON i.item_status_id=ist.item_status_id
@@ -315,6 +315,11 @@ class circulation extends member
         // calculate due date
         $_due_date = simbio_date::getNextDate($this->loan_periode, $_loan_date);
         $_due_date = simbio_date::getNextDateNotHoliday($_due_date, $this->holiday_dayname, $this->holiday_date);
+        // check if due date is not more than member expiry date
+        $_expiry_date_compare = simbio_date::compareDates($_due_date, $this->expire_date);
+        if ($_expiry_date_compare != $this->expire_date) {
+            $_due_date = $this->expire_date;
+        }
         $query = $this->obj_db->query("UPDATE loan SET renewed=renewed+1, due_date='$_due_date', is_return=0
             WHERE loan_id=$int_loan_id AND member_id='".$this->member_id."'");
         $_SESSION['reborrowed'][] = $int_loan_id;
