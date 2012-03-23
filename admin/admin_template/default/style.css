@@ -252,7 +252,7 @@ submenu
 	box-shadow: inset -5px 0px 10px #e6e6e6 !important;
 	-webkit-box-shadow: inset -5px 0px 10px #e6e6e6 !important;
 	-moz-box-shadow: inset -5px 0px 10px #e6e6e6 !important;
-	padding-top:44px !important;
+	padding-top:45px !important;
 }
 
 .subMenuHeader {
@@ -280,7 +280,7 @@ submenu
 }
 
 .loader {
-	margin-top:44px;
+	margin-top:45px;
 	background-color: #ff908a;
 	background-repeat: repeat-x;
 	background-image: -khtml-gradient(linear, left top, left bottom, from(#b3b3b3), to(#a6a6a6));
