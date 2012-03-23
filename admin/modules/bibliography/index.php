@@ -358,7 +358,6 @@ if (!$in_pop_up) {
 		    <select name="field"><option value="0"><?php echo __('All Fields'); ?></option><option value="title"><?php echo __('Title/Series Title'); ?> </option><option value="subject"><?php echo __('Topics'); ?></option><option value="author"><?php echo __('Authors'); ?></option><option value="isbn"><?php echo __('ISBN/ISSN'); ?></option><option value="publisher"><?php echo __('Publisher'); ?></option></select>
 		    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
 	    </form>
-        <div class="ucsUpload">
 		    <?php
 		    // enable UCS?
 			if ($sysconf['ucs']['enable']) {
@@ -367,8 +366,6 @@ if (!$in_pop_up) {
 		    <?php
 		    }
 		    ?>    
-	    </div>
-
     </div>
 </div>
 </fieldset>
