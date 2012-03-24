@@ -27,6 +27,7 @@ $menu[] = array('Header', __('Authority Files'));
 $menu[] = array(__('GMD'), MODULES_WEB_ROOT_DIR.'master_file/index.php', __('General Material Designation'));
 $menu[] = array(__('Publisher'), MODULES_WEB_ROOT_DIR.'master_file/publisher.php', __('Document Publisher'));
 $menu[] = array(__('Supplier'), MODULES_WEB_ROOT_DIR.'master_file/supplier.php', __('Item Supplier'));
+$menu[] = array(__('Statement of Responsibility'), MODULES_WEB_ROOT_DIR.'master_file/sor.php', __('Statement of Responsibility'));
 $menu[] = array(__('Author'), MODULES_WEB_ROOT_DIR.'master_file/author.php', __('Document Authors'));
 $menu[] = array(__('Subject'), MODULES_WEB_ROOT_DIR.'master_file/topic.php', __('Subject'));
 $menu[] = array(__('Location'), MODULES_WEB_ROOT_DIR.'master_file/location.php', __('Item Location'));
