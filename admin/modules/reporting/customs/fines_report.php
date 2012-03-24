@@ -67,7 +67,7 @@ if (isset($_GET['reportView'])) {
 if (!$reportView) {
 ?>
     <!-- filter -->
-    <fieldset style="margin-bottom: 3px;">
+    <fieldset>
     <div class="per_title">
     	<h2><?php echo __('Fines Report'); ?></h2>
 	  </div>
@@ -75,7 +75,6 @@ if (!$reportView) {
     <?php echo __('Report Filter'); ?>
     </div>
     <div class="sub_section">
-    <legend style="font-weight: bold"><?php echo strtoupper(__('')); ?> - <?php echo __('Report Filter'); ?></legend>
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
         <div class="divRow">
