@@ -49,7 +49,7 @@ $header_info = '';
 $metadata = '';
 // member login information
 if (utility::isMemberLogin()) {
-    $header_info .= '<div id="memberLoginInfo">'.__('You are currently Logged on as member').': <strong>'.$_SESSION['m_name'].' (<em>'.$_SESSION['m_email'].'</em>)</strong> <a id="memberLogout" href="index.php?p=member&logout=1">['.__('LOGOUT').']</a></div>';
+    $header_info .= '<div id="memberLoginInfo">'.__('You are currently Logged on as member').': <strong>'.$_SESSION['m_name'].' (<em>'.$_SESSION['m_email'].'</em>)</strong> <a id="memberLogout" href="index.php?p=member&logout=1">'.__('LOGOUT').'</a></div>';
 }
 
 // start the output buffering for main content
@@ -74,8 +74,32 @@ if (isset($_GET['p'])) {
         $content_data = $content->get($dbs, $path);
         if ($content_data) {
             $page_title = $content_data['Title'];
-            $info = '<div class="contentTitle">'.$content_data['Title'].'</div>';
-            echo '<div class="contentDesc">'.$content_data['Content'].'</div>';
+			echo '
+					<div class="sidebar">
+						<div class="tagline">
+							Related Collections
+						</div>
+						<ul>
+							<li><a href="#">Lorem Ipsum</a></li>  
+							<li><a href="#">simply dummy text</a></li>
+							<li><a href="#">the printing</a></li>
+							<li><a href="#">typesetting industry</a></li>
+							<li><a href="#">the industry</a></li>
+							<li><a href="#">standard dummy text</a></li>
+						</ul>
+					
+					</div>
+
+					<div class="section">
+						<div class="tagline">
+						'.$content_data['Title'].'
+						</div>
+						<div class="collections-list">
+							<div class="collection-detail" style="padding:20px;">'.$content_data['Content'].'</div> 					
+							<div class="clear">&nbsp;</div>							
+						</div>
+					</div>			
+			';		
             unset($content_data);
         } else {
             header ("location:index.php");

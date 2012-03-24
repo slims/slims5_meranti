@@ -143,12 +143,11 @@ if (isset($_POST['logMeIn'])) {
       <?php } ?>
     <?php } ?>
     <!-- Captcha preloaded javascript - end -->
-
     <form action="index.php?p=login" method="post">
     <div class="heading1">Username</div>
-    <div><input type="text" name="userName" id="userName" style="width: 80%;" /></div>
-    <div class="heading1 marginTop">Password</div>
-    <div><input type="password" name="passWord" style="width: 80%;" /></div>
+    <div class="login_input"><input type="text" name="userName" id="userName" class="login_input" /></div>
+    <div class="heading1">Password</div>
+    <div class="login_input"><input type="password" name="passWord" class="login_input" /></div>
     <!-- Captcha in form - start -->
     <?php if ($sysconf['captcha']['smc']['enable']) { ?>
       <?php if ($sysconf['captcha']['smc']['type'] == "recaptcha") { ?>
@@ -169,8 +168,9 @@ if (isset($_POST['logMeIn'])) {
     } ?>
     <!-- Captcha in form - end -->
 
-    <div class="marginTop"><input type="submit" name="logMeIn" value="<?php echo __('Login'); ?>" id="loginButton" />
-        <input type="button" value="Home" id="homeButton" class="button" onclick="javascript: location.href = 'index.php';" />
+    <div class="marginTop">
+    <input type="submit" name="logMeIn" value="<?php echo __('Login'); ?>" class="loginButton" />
+    <input type="button" value="Home" class="homeButton" onclick="javascript: location.href = 'index.php';" />
     </div>
     </form>
 </div>

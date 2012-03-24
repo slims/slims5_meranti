@@ -111,8 +111,8 @@ if (isset($_POST['logMeIn']) && !$is_member_login) {
 // check if member already login
 if (!$is_member_login) {
 ?>
-    <fieldset id="memberLogin">
-    <legend><?php echo __('Library Member Login'); ?></legend>
+    <div class="section">
+    <div class="tagline"><?php echo __('Library Member Login'); ?></div>
 	<?php
 	// captcha invalid warning
 	if (isset($_GET['captchaInvalid']) && $_GET['captchaInvalid'] === 'true') {
@@ -145,11 +145,12 @@ if (!$is_member_login) {
       <?php } ?>
     <?php } ?>
     <!-- Captcha preloaded javascript - end -->
+    <div class="loginInfo">
     <form action="index.php?p=member" method="post">
     <div class="fieldLabel"><?php echo __('Member ID'); ?></div>
-        <div><input type="text" name="memberID" /></div>
+        <div class="login_input"><input type="text" name="memberID" /></div>
     <div class="fieldLabel marginTop"><?php echo __('Password'); ?></div>
-        <div><input type="password" name="memberPassWord" /></div>
+        <div  class="login_input"><input type="password" name="memberPassWord" /></div>
     <!-- Captcha in form - start -->
     <div>
     <?php if ($sysconf['captcha']['member']['enable']) { ?>
@@ -174,7 +175,8 @@ if (!$is_member_login) {
     <div class="marginTop"><input type="submit" name="logMeIn" value="<?php echo __('Login'); ?>" />
     </div>
     </form>
-    </fieldset>
+    </div>
+    </div>
 <?php
 } else {
     /*
@@ -188,19 +190,19 @@ if (!$is_member_login) {
         $_form = '<form id="memberChangePassword" method="post" action="index.php?p=member">'."\n";
         $_form .= '<table class="memberDetail" cellpadding="5" cellspacing="0">'."\n";
         $_form .= '<tr>'."\n";
-        $_form .= '<td class="alterCell" width="20%"><strong>'.__('Current Password').'</strong></td>';
-        $_form .= '<td class="alterCell2"><input type="password" name="currPass" /></td>';
+        $_form .= '<td class="key alterCell" width="20%"><strong>'.__('Current Password').'</strong></td>';
+        $_form .= '<td class="value alterCell2"><input type="password" name="currPass" /></td>';
         $_form .= '</tr>'."\n";
         $_form .= '<tr>'."\n";
-        $_form .= '<td class="alterCell" width="20%"><strong>'.__('New Password').'</strong></td>';
-        $_form .= '<td class="alterCell2"><input type="password" name="newPass" /></td>';
+        $_form .= '<td class="key alterCell" width="20%"><strong>'.__('New Password').'</strong></td>';
+        $_form .= '<td class="value alterCell2"><input type="password" name="newPass" /></td>';
         $_form .= '</tr>'."\n";
         $_form .= '<tr>'."\n";
-        $_form .= '<td class="alterCell" width="20%"><strong>'.__('Confirm Password').'</strong></td>';
-        $_form .= '<td class="alterCell2"><input type="password" name="newPass2" /></td>';
+        $_form .= '<td class="key alterCell" width="20%"><strong>'.__('Confirm Password').'</strong></td>';
+        $_form .= '<td class="value alterCell2"><input type="password" name="newPass2" /></td>';
         $_form .= '</tr>'."\n";
         $_form .= '<tr>'."\n";
-        $_form .= '<td class="alterCell2" colspan="2"><input type="submit" name="changePass" value="'.__('Change Password').'" /></td>';
+        $_form .= '<td class="alterCell2" colspan="2"><input type="submit" id="loginButton" name="changePass" value="'.__('Change Password').'" /></td>';
         $_form .= '</tr>'."\n";
         $_form .= '</table>'."\n";
         $_form .= '</form>'."\n";
@@ -393,7 +395,7 @@ if (!$is_member_login) {
         // member notes and pending information
         if ($_SESSION['m_membership_pending'] || $_SESSION['m_is_expired']) {
             $_detail .= '<tr>'."\n";
-            $_detail .= '<td class="alterCell" width="15%"><strong>Notes</strong></td><td class="alterCell2" colspan="3">';
+            $_detail .= '<td class="key alterCell" width="15%"><strong>Notes</strong></td><td class="value alterCell2" colspan="3">';
             if ($_SESSION['m_is_expired']) {
                 $_detail .= '<div style="color: #f00;">'.__('Your Membership Already EXPIRED! Please extend your membership.').'</div>';
             }
@@ -404,20 +406,20 @@ if (!$is_member_login) {
             $_detail .= '</tr>'."\n";
         }
         $_detail .= '<tr>'."\n";
-        $_detail .= '<td class="alterCell" width="15%"><strong>'.__('Member Name').'</strong></td><td class="alterCell2" width="30%">'.$_SESSION['m_name'].'</td>';
-        $_detail .= '<td class="alterCell" width="15%"><strong>'.__('Member ID').'</strong></td><td class="alterCell2" width="30%">'.$_SESSION['mid'].'</td>';
+        $_detail .= '<td class="key alterCell" width="15%"><strong>'.__('Member Name').'</strong></td><td class="value alterCell2" width="30%">'.$_SESSION['m_name'].'</td>';
+        $_detail .= '<td class="key alterCell" width="15%"><strong>'.__('Member ID').'</strong></td><td class="value alterCell2" width="30%">'.$_SESSION['mid'].'</td>';
         $_detail .= '</tr>'."\n";
         $_detail .= '<tr>'."\n";
-        $_detail .= '<td class="alterCell" width="15%"><strong>'.__('Member Email').'</strong></td><td class="alterCell2" width="30%">'.$_SESSION['m_email'].'</td>';
-        $_detail .= '<td class="alterCell" width="15%"><strong>'.__('Member Type').'</strong></td><td class="alterCell2" width="30%">'.$_SESSION['m_member_type'].'</td>';
+        $_detail .= '<td class="key alterCell" width="15%"><strong>'.__('Member Email').'</strong></td><td class="value alterCell2" width="30%">'.$_SESSION['m_email'].'</td>';
+        $_detail .= '<td class="key alterCell" width="15%"><strong>'.__('Member Type').'</strong></td><td class="value alterCell2" width="30%">'.$_SESSION['m_member_type'].'</td>';
         $_detail .= '</tr>'."\n";
         $_detail .= '<tr>'."\n";
-        $_detail .= '<td class="alterCell" width="15%"><strong>'.__('Register Date').'</strong></td><td class="alterCell2" width="30%">'.$_SESSION['m_register_date'].'</td>';
-        $_detail .= '<td class="alterCell" width="15%"><strong>'.__('Expiry Date').'</strong></td><td class="alterCell2" width="30%">'.$_SESSION['m_expire_date'].'</td>';
+        $_detail .= '<td class="key alterCell" width="15%"><strong>'.__('Register Date').'</strong></td><td class="value alterCell2" width="30%">'.$_SESSION['m_register_date'].'</td>';
+        $_detail .= '<td class="key alterCell" width="15%"><strong>'.__('Expiry Date').'</strong></td><td class="value alterCell2" width="30%">'.$_SESSION['m_expire_date'].'</td>';
         $_detail .= '</tr>'."\n";
         $_detail .= '<tr>'."\n";
-        $_detail .= '<td class="alterCell" width="15%"><strong>'.__('Institution').'</strong></td>'
-            .'<td class="alterCell2" colspan="3">'.$_SESSION['m_institution'].'</td>';
+        $_detail .= '<td class="key alterCell" width="15%"><strong>'.__('Institution').'</strong></td>'
+            .'<td class="value alterCell2" colspan="3">'.$_SESSION['m_institution'].'</td>';
         $_detail .= '</tr>'."\n";
         $_detail .= '</table>'."\n";
 
@@ -588,18 +590,32 @@ if (!$is_member_login) {
     }
 
     // show all
-    echo '<h3 class="memberInfoHead">'.__('Member Detail').'</h3>'."\n";
+	echo '<div class="tagline">';
+    echo '<div class="memberInfoHead">'.__('Member Detail').'</div>'."\n";
+    echo '</div>';
+    echo '<div class="collection-list"><div class="item_list">';
     echo showMemberDetail();
-    echo '<h3 class="memberInfoHead">'.__('Your Current Loan').'</h3>'."\n";
+    echo '</div>';
+	echo '<div class="tagline">';
+    echo '<div class="memberInfoHead">'.__('Your Current Loan').'</div>'."\n";
+    echo '</div>';
+    echo '<div class="collection-list"><div class="item_list">';
     echo showLoanList();
-    echo '<h3 class="memberInfoHead">'.__('Your Loan History').'</h3>'."\n";
+    echo '</div>';
+	echo '<div class="tagline">';
+    echo '<div class="memberInfoHead">'.__('Your Loan History').'</div>'."\n";
+    echo '</div>';
     echo showLoanHist();
-
-    echo '<h3 class="memberInfoHead">'.__('Your Title Basket').'</h3><a name="biblioBasket"></a>'."\n";
+    echo '</div>';
+	echo '<div class="tagline">';
+    echo '<div class="memberInfoHead">'.__('Your Title Basket').'</div><a name="biblioBasket"></a>'."\n";
     echo showBasket();
+    echo '</div>';
     // change password only form NATIVE authentication, not for others such as LDAP
     if ($sysconf['auth']['member']['method'] == 'native') {
-        echo '<h3 class="memberInfoHead">'.__('Change Password').'</h3>'."\n";
+	echo '<div class="tagline">';
+        echo '<div class="memberInfoHead">'.__('Change Password').'</div>'."\n";
+	    echo '</div>';
         echo changePassword();
     }
     ?>

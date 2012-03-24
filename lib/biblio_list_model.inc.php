@@ -184,14 +184,16 @@ abstract class biblio_list_model
             if ($this->show_labels AND !empty($_biblio_d['labels'])) {
                 $arr_labels = @unserialize($_biblio_d['labels']);
                 if ($arr_labels !== false) {
-	            foreach ($arr_labels as $label) {
+	            foreach ($arr_labels as $label) 
+	            {
 	                if (!isset($this->label_cache[$label[0]]['name'])) {
 	                    $_label_q = $this->obj_db->query('SELECT label_name, label_desc, label_image FROM mst_label AS lb
 	                        WHERE lb.label_name=\''.$label[0].'\'');
 	                    $_label_d = $_label_q->fetch_row();
 	                    $this->label_cache[$label[0]] = array('name' => $_label_d[0], 'desc' => $_label_d[1], 'image' => $_label_d[2]);
 	                }
-	                if (isset($label[1]) && $label[1]) {
+	                if (isset($label[1]) && $label[1])
+	                {
 	                    $_biblio_d['title'] .= ' <a href="'.$label[1].'" target="_blank"><img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" border="0" /></a>';
 	                } else {
 	                    $_biblio_d['title'] .= ' <img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" />';
@@ -214,20 +216,22 @@ abstract class biblio_list_model
                 $images_loc = 'images/docs/'.$_biblio_d['image'];
                 #$cache_images_loc = 'images/cache/'.$_biblio_d['image'];
                 if ($sysconf['tg']['type'] == 'phpthumb') {
-                    $_image_cover = 'style="background-image: url(./lib/phpthumb/phpThumb.php?src='.$sysconf['tg']['relative_url'].''.$images_loc.'&w=42); background-repeat: no-repeat;"';
+                    $_image_cover = '<img src="./lib/phpthumb/phpThumb.php?src='.$sysconf['tg']['relative_url'].''.$images_loc.'&w=90" width="90" height="115" />';
                 } elseif ($sysconf['tg']['type'] == 'minigalnano') {
-                    $_image_cover = 'style="background-image: url(./lib/minigalnano/createthumb.php?filename='.$sysconf['tg']['relative_url'].''.$images_loc.'&width=42); background-repeat: no-repeat;"';
+                    $_image_cover = '<img src="./lib/minigalnano/createthumb.php?filename='.$sysconf['tg']['relative_url'].''.$images_loc.'&width=90" width="90" height="115" />';
                 } else {
-                    $_image_cover = 'style="background-image: url(./lib/phpthumb/phpThumb.php?src='.$sysconf['tg']['relative_url'].''.$images_loc.'&w=42); background-repeat: no-repeat;"';
+                    $_image_cover = '<img src="./lib/phpthumb/phpThumb.php?src='.$sysconf['tg']['relative_url'].''.$images_loc.'&w=90" width="90" height="115" />';
                 }
             }
 
             $_alt_list = ($_i%2 == 0)?'alterList':'alterList2';
-            $_buffer .= '<div class="item '.$_alt_list.'" '.$_image_cover.'>'.$_biblio_d['title'].'<br />';
+            $_buffer .= '<div class="item-list"><div class="cover-list">'.$_image_cover.'</div>';
+			$_buffer .= '<div class="detail-list">
+									<h4>'.$_biblio_d['title'].'</h4>';
             // concat author data
             $_authors = isset($_biblio_d['author'])?$_biblio_d['author']:self::getAuthors($this->obj_db, $_biblio_d['biblio_id']);
             if ($_authors) {
-                $_buffer .= '<div class="subItem authorField"><b>'.__('Author(s)').'</b> : '.$_authors.'</div>';
+                $_buffer .= '<div class="author"><b>'.__('Author(s)').'</b> : '.$_authors.'</div>';
             }
 
             # checking custom file
@@ -261,16 +265,16 @@ abstract class biblio_list_model
                                 $_buffer .= '<div class="customField availabilityField"><b>'.$_field_opts[1].'</b> : '.$this->item_availability_message.'</div>';
                             }
                         } else if ($_field == 'node_id' && $this->disable_item_data) {
-			    $_buffer .= '<div class="customField locationField"><b>'.$_field_opts[1].'</b> : '.$sysconf['node'][$_biblio_d['node_id']]['name'].'</div>';
-			}
-                    }
-                }
-            }
+			    			$_buffer .= '<div class="customField locationField"><b>'.$_field_opts[1].'</b> : '.$sysconf['node'][$_biblio_d['node_id']]['name'].'</div>';
+						}
+                	}
+            	}
+        	}
 
 	    // checkbox for marking collection
 	    $_check_mark = (utility::isMemberLogin() && $this->enable_mark)?' <input type="checkbox" id="biblioCheck'.$_i.'" name="biblio[]" class="biblioCheck" value="'.$_biblio_d['biblio_id'].'" /> <label for="biblioCheck'.$_i.'">'.__('mark this').'</label>':'';
             $_buffer .= '<div class="subItem">'.$_biblio_d['detail_button'].' '.$_biblio_d['xml_button'].$_check_mark.'</div>';
-            $_buffer .= "</div>\n";
+            $_buffer .= "</div></div>\n";
             $_i++;
         }
 
@@ -288,10 +292,9 @@ abstract class biblio_list_model
 		$_is_member_logged_in = utility::isMemberLogin() && $this->enable_mark;
 		if ($_paging) {
 			$_biblio_list .= $_paging;
-			$_biblio_list .= '<hr width="98%" size="1" />';
 		}
 		if ($_is_member_logged_in) {
-			$_submit = '<div class="biblioMarkFormAction"><input type="submit" class="button markBiblio" name="markBiblio" value="'.__('Put marked selection into basket').'" /></div>';
+			$_submit = '<div class="biblioMarkFormAction"><input type="submit" name="markBiblio" value="'.__('Put marked selection into basket').'" /></div>';
 			$_biblio_list .= '<form class="biblioMarkForm" method="post" action="index.php?p=member#biblioBasket">';
 			$_biblio_list .= $_submit;
 		}
@@ -301,7 +304,6 @@ abstract class biblio_list_model
 			$_biblio_list .= '</form>';
 		}
 		if ($_paging) {
-			$_biblio_list .= '<hr width="98%" size="1" />';
 			$_biblio_list .= $_paging;
 		}
 
