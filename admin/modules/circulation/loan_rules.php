@@ -130,8 +130,8 @@ if (isset($_POST['saveData'])) {
     </div>
     <div class="sub_section">
 	    <div class="action_button">
-		    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/loan_rules.php?action=detail" class="headerText2"><?php echo __('Add New Loan Rules'); ?></a>
 		    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/loan_rules.php" class="headerText2"><?php echo __('Loan Rules List'); ?></a>
+		    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/loan_rules.php?action=detail" class="headerText2"><?php echo __('Add New Loan Rules'); ?></a>
 	    </div>
 	    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/loan_rules.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
 		    <input type="text" name="keywords" size="30">
