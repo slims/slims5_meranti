@@ -45,7 +45,7 @@ if (get_magic_quotes_gpc()) {
     $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 }
 // turn off all error messages for security reason
-@ini_set('display_errors', false);
+@ini_set('display_errors', true);
 // check if safe mode is on
 if ((bool) ini_get('safe_mode')) {
     define('SENAYAN_IN_SAFE_MODE', 1);
@@ -434,6 +434,20 @@ $sysconf['ipaccess']['smc-stocktake'] = 'all';
 $sysconf['ipaccess']['smc-system'] = 'all';
 $sysconf['ipaccess']['smc-reporting'] = 'all';
 $sysconf['ipaccess']['smc-serialcontrol'] = 'all';
+
+// OAI-PMH settings
+$sysconf['OAI']['identifierPrefix'] = 'oai:slims/';
+$sysconf['OAI']['Identify']['baseURL'] = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/oai.php';
+$sysconf['OAI']['Identify']['repositoryName'] = 'SLiMS Senayan Library Management System OAI-PMh';
+$sysconf['OAI']['Identify']['adminEmail'] = 'admin@slims.web.id';
+$sysconf['OAI']['Identify']['granularity'] = 'YYYY-MM-DDThh:mm:ssZ';
+$sysconf['OAI']['Identify']['deletedRecord'] = 'transient';
+$sysconf['OAI']['Identify']['metadataPolicy'] = '';
+$sysconf['OAI']['ListRecords']['RecordPerSet'] = '100';
+$sysconf['OAI']['MetadataFormats']['Dublin Core'] = array(
+  'oai_prefix' => 'oai_dc',
+  'schema_xsd' => 'http://www.openarchives.org/OAI/2.0/oai_dc.xsd',
+  'namespace' => 'http://www.openarchives.org/OAI/2.0/oai_dc/');
 
 // check if session is auto started and then destroy it
 if ($is_auto = @ini_get('session.auto_start')) { define('SESSION_AUTO_STARTED', $is_auto); }

@@ -53,7 +53,7 @@ class detail extends content_list
      */
     public function __construct($obj_db, $int_detail_id, $str_output_format = 'html')
     {
-        if (!in_array($str_output_format, array('html', 'xml', 'mods'))) {
+        if (!in_array($str_output_format, array('html', 'xml', 'mods', 'dc'))) {
             $this->output_format = trim($str_output_format);
         } else { $this->output_format = $str_output_format; }
 
@@ -216,7 +216,7 @@ class detail extends content_list
      * @return  array
      *
      */
-    protected function MODSoutput()
+    public function MODSoutput()
     {
         // get global configuration vars array
         global $sysconf;
@@ -367,8 +367,8 @@ class detail extends content_list
 
         // image
         if (!empty($this->record_detail['image'])) {
-            $_image = urlencode($this->record_detail['image']);
-			$_xml_output .= '<slims:image>'.htmlentities($_image).'</slims:image>'."\n";
+          $_image = urlencode($this->record_detail['image']);
+			    $_xml_output .= '<slims:image>'.htmlentities($_image).'</slims:image>'."\n";
         }
 
         // record info
@@ -380,6 +380,133 @@ class detail extends content_list
         $_xml_output .= '</recordInfo>';
 
         $_xml_output .= '</mods>';
+
+        return $_xml_output;
+    }
+
+
+    /**
+     * Record detail output in MODS (Metadata Object Description Schema) XML mode
+     * @return  array
+     *
+     */
+    public function DublinCoreOutput()
+    {
+        // get global configuration vars array
+        global $sysconf;
+
+        // convert to htmlentities
+        foreach ($this->record_detail as $_field => $_value) {
+            if (is_string($_value)) {
+                $this->record_detail[$_field] = htmlspecialchars(utf8_encode($_value));
+            }
+        }
+
+        // set prefix and suffix
+        $this->detail_prefix = '';
+        $this->detail_suffix = '';
+
+        $_xml_output = '';
+
+        // parse title
+        $_title_sub = '';
+        $_title_statement_resp = '';
+        if (stripos($this->record_detail['title'], ':') !== false) {
+            $_title_main = trim(substr_replace($this->record_detail['title'], '', stripos($this->record_detail['title'], ':')+1));
+            $_title_sub = trim(substr_replace($this->record_detail['title'], '', 0, stripos($this->record_detail['title'], ':')+1));
+        } else if (stripos($this->record_detail['title'], '/') !== false) {
+            $_title_statement_resp = trim(substr_replace($this->record_detail['title'], '', stripos($this->record_detail['title'], '/')+1));
+        } else {
+            $_title_main = trim($this->record_detail['title']);
+        }
+
+        $_xml_output .= '<dc:title>'.$_title_main;
+        if ($_title_sub) {
+            $_xml_output .= ' '.$_title_sub;
+        }
+        $_xml_output .= '</dc:title>'."\n";
+
+        // get the authors data
+        $_biblio_authors_q = $this->obj_db->query('SELECT a.*,ba.level FROM mst_author AS a'
+            .' LEFT JOIN biblio_author AS ba ON a.author_id=ba.author_id WHERE ba.biblio_id='.$this->detail_id);
+        while ($_auth_d = $_biblio_authors_q->fetch_assoc()) {
+            $_xml_output .= '<dc:creator>'.$_auth_d['author_name'].'</dc:creator>'."\n";
+        }
+        $_biblio_authors_q->free_result();
+
+        // imprint/publication data
+        $_xml_output .= '<dc:publisher>'.$this->record_detail['publisher_name'].'</dc:publisher>'."\n";
+
+        // date
+        $_xml_output .= '<dc:date>'.$this->record_detail['publish_year'].'</dc:date>'."\n";
+
+        // edition
+        $_xml_output .= '<dc:hasVersion>'.$this->record_detail['edition'].'</dc:hasVersion>'."\n";
+
+        // language
+        $_xml_output .= '<dc:language>'.$this->record_detail['language_name'].'</dc:language>'."\n";
+
+        // Physical Description/Collation
+        $_xml_output .= '<dc:medium>'.$this->record_detail['gmd_name'].'</dc:medium>'."\n";
+        $_xml_output .= '<dc:format>'.$this->record_detail['gmd_name'].'</dc:format>'."\n";
+        if ((integer)$this->record_detail['frequency_id'] > 0) {
+            $_xml_output .= '<dc:format>Serial</dc:format>'."\n";
+        }
+        $_xml_output .= '<dc:extent>'.$this->record_detail['collation'].'</dc:extent>'."\n";
+
+        // Series title
+        if ($this->record_detail['series_title']) {
+          $_xml_output .= '<dc:isPartOf>'.$this->record_detail['series_title'].'</dc:isPartOf>'."\n";
+        }
+
+        // Note
+        $_xml_output .= '<dc:description>'.$this->record_detail['notes'].'</dc:description>'."\n";
+        $_xml_output .= '<dc:abstract>'.$this->record_detail['notes'].'</dc:abstract>'."\n";
+
+        // subject/topic
+        $_biblio_topics_q = $this->obj_db->query('SELECT t.topic, t.topic_type, t.auth_list, bt.level FROM mst_topic AS t
+          LEFT JOIN biblio_topic AS bt ON t.topic_id=bt.topic_id WHERE bt.biblio_id='.$this->detail_id.' ORDER BY t.auth_list');
+        while ($_topic_d = $_biblio_topics_q->fetch_assoc()) {
+          $_xml_output .= '<dc:subject>'.$_topic_d['topic'].'</dc:subject>'."\n";
+        }
+
+        // classification
+        $_xml_output .= '<dc:subject>'.$this->record_detail['classification'].'</dc:subject>';
+
+        // ISBN/ISSN
+        $_xml_output .= '<dc:identifier>'.str_replace(array('-', ' '), '', $this->record_detail['isbn_issn']).'</dc:identifier>';
+
+        // Call Number
+        $_xml_output .= '<dc:identifier>'.$this->record_detail['call_number'].'</dc:identifier>'."\n";
+
+        $_copy_q = $this->obj_db->query('SELECT i.item_code, i.call_number, stat.item_status_name, loc.location_name, stat.rules, i.site FROM item AS i '
+            .'LEFT JOIN mst_item_status AS stat ON i.item_status_id=stat.item_status_id '
+            .'LEFT JOIN mst_location AS loc ON i.location_id=loc.location_id '
+            .'WHERE i.biblio_id='.$this->detail_id);
+        if ($_copy_q->num_rows > 0) {
+            while ($_copy_d = $_copy_q->fetch_assoc()) {
+                $_xml_output .= '<dc:hasPart>'.$_copy_d['item_code'].'</dc:hasPart>'."\n";
+            }
+        }
+
+        // digital files
+        $attachment_q = $this->obj_db->query('SELECT att.*, f.* FROM biblio_attachment AS att
+            LEFT JOIN files AS f ON att.file_id=f.file_id WHERE att.biblio_id='.$this->detail_id.' AND att.access_type=\'public\' LIMIT 20');
+        if ($attachment_q->num_rows > 0) {
+          $_xml_output .= '<dc:relation>';
+          while ($attachment_d = $attachment_q->fetch_assoc()) {
+              // check member type privileges
+              if ($attachment_d['access_limit']) { continue; }
+              $_xml_output .= htmlentities($attachment_d['file_title']);
+          }
+          $_xml_output .= '</dc:relation>'."\n";
+        }
+
+        // image
+        if (!empty($this->record_detail['image'])) {
+          $_image = urlencode($this->record_detail['image']);
+			    $_xml_output .= '<dc:relation>'.htmlentities($_image).'</dc:relation>'."\n";
+        }
 
         return $_xml_output;
     }
