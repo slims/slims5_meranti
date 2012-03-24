@@ -135,7 +135,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 <fieldset class="menuBox">
 <div class="menuBoxInner memberTypeIcon">
 	<div class="per_title">
-    	<h2><?php echo strtoupper(__('Member Type')); ?></h2>
+    	<h2><?php echo __('Member Type'); ?></h2>
     </div>
     <div class="sub_section">
 	    <div class="action_button">

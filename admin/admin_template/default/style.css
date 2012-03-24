@@ -1014,6 +1014,11 @@ icon
 	padding:10px;
 }
 
+.per_title h2 div
+{
+	font-size: 90%;
+}
+
 .sub_section
 {
 	padding:10px;

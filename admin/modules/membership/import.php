@@ -176,7 +176,7 @@ if (isset($_POST['doImport'])) {
 <fieldset class="menuBox">
 <div class="menuBoxInner importIcon">
     <div class="per_title">
-    	<h2><?php echo strtoupper(__('Import Data')); ?></h2>
+    	<h2><?php echo __('Import Data'); ?></h2>
     </div>
     <div class="infoBox">
     <?php echo __('Import for members data from CSV file'); ?>

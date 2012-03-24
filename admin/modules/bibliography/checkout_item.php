@@ -119,4 +119,3 @@ if (isset($_GET['keywords']) AND $_GET['keywords']) {
 
 echo $datagrid_result;
 /* main content end */
-?>

@@ -164,13 +164,19 @@ if (!$changecurrent) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner userIcon">
-    <?php echo strtoupper(__('System Users')); ?> - <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/app_user.php?action=detail" class="headerText2"><?php echo __('Add New User'); ?></a>
-    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>/system/app_user.php" class="headerText2"><?php echo __('User List'); ?></a>
-    <hr />
+	<div class="per_title">
+	    <h2><?php echo __('System Users'); ?></h2>
+  </div>
+	<div class="sub_section">
+	  <div class="action_button">
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/app_user.php?action=detail" class="headerText2"><?php echo __('Add New User'); ?></a>
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>/system/app_user.php" class="headerText2"><?php echo __('User List'); ?></a>
+	  </div>
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>system/app_user.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
     <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
+  </div>
 </div>
 </fieldset>
 <?php

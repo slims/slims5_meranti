@@ -158,13 +158,16 @@ if (isset($_POST['confirmFinish'])) {
     exit();
 } else {
 ?>
-    <fieldset class="menuBox">
-    <div class="menuBoxInner errorIcon">
-    <strong style="color: #f00;"><?php echo strtoupper(__('Finish Stock Take')); ?><hr />
-    <?php echo __('Are you sure to end current stock take proccess? Once it finished there is no way you can rollback this stock take'); ?>
-    </strong>
-    </div>
-    </fieldset>
+<fieldset class="menuBox">
+<div class="menuBoxInner errorIcon">
+	<div class="per_title">
+	    <h2><?php echo __('Finish Stock Take'); ?></h2>
+  </div>
+	<div class="infoBox">
+    <span class="important"><?php echo __('Are you sure to end current stock take proccess? Once it finished there is no way you can rollback this stock take'); ?></span>
+  </div>
+</div>
+</fieldset>
 <?php
     // create new instance
     $form = new simbio_form_table_AJAX('stockTakeForm', $_SERVER['PHP_SELF'], 'post');
@@ -184,4 +187,3 @@ if (isset($_POST['confirmFinish'])) {
     // print out the object
     echo $form->printOut();
 }
-?>

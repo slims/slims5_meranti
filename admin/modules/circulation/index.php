@@ -55,7 +55,7 @@ if (isset($_SESSION['memberID']) AND !empty($_SESSION['memberID'])) {
 <fieldset class="menuBox">
   <div class="menuBoxInner circulationIcon">
     <div class="per_title">
-	    <h2><?php echo strtoupper(__('Circulation')); ?></h2>
+	    <h2><?php echo __('Circulation'); ?></h2>
     </div>
     <div class="sub_section">
 	    <div class="action_button">

@@ -273,7 +273,7 @@ if (isset($_GET['keywords']) AND $can_read) {
 <fieldset class="menuBox">
 <div class="menuBoxInner biblioIcon">
     <div class="per_title">
-	    <h2><?php echo strtoupper(__('Z3950')); ?></h2>
+	    <h2><?php echo __('Z3950'); ?></h2>
     </div>
     <div class="sub_section">
       <form name="search" id="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/z3950.php" loadcontainer="searchResult" method="get" style="display: inline;"><?php echo __('Search'); ?> :

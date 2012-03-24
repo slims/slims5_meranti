@@ -283,13 +283,13 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 <fieldset class="menuBox">
 <div class="menuBoxInner memberIcon">
 	<div class="per_title">
-    	<h2><?php echo strtoupper(__('Membership')); ?></h2>
+    	<h2><?php echo __('Membership'); ?></h2>
     </div>
     <div class="sub_section">
 	<div class="action_button">
     <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/index.php?action=detail" class="headerText2"><?php echo __('Add New Member'); ?></a>
     <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/index.php" class="headerText2"><?php echo __('Member List'); ?></a>
-    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/index.php?expire=true" class="headerText2" style="color: #FF0000;"><?php echo __('View Expired Member'); ?></a>	
+    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/index.php?expire=true" class="headerText2" style="color: #FF0000;"><?php echo __('View Expired Member'); ?></a>
 	</div>
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/index.php" id="search" method="get" style="display: inline;"><?php echo __('Member Search'); ?> :
 	    <input type="text" name="keywords" size="30" /><?php if (isset($_GET['expire'])) { echo '<input type="hidden" name="expire" value="true" />'; } ?>

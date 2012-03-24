@@ -126,12 +126,12 @@ if (isset($_POST['saveData'])) {
 <fieldset class="menuBox">
 <div class="menuBoxInner loanRulesIcon">
 	<div class="per_title">
-	    <h2><?php echo strtoupper(__('Loan Rules')); ?></h2>
+	    <h2><?php echo __('Loan Rules'); ?></h2>
     </div>
     <div class="sub_section">
 	    <div class="action_button">
-		    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/loan_rules.php?action=detail" class="headerText2"><?php echo __('Add New Loan Rules'); ?></a>	    
-		    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/loan_rules.php" class="headerText2"><?php echo __('Loan Rules List'); ?></a>    
+		    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/loan_rules.php?action=detail" class="headerText2"><?php echo __('Add New Loan Rules'); ?></a>
+		    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/loan_rules.php" class="headerText2"><?php echo __('Loan Rules List'); ?></a>
 	    </div>
 	    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>circulation/loan_rules.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
 		    <input type="text" name="keywords" size="30">
@@ -205,11 +205,11 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // loan periode
     $form->addTextField('text', 'loanPeriode', __('Loan Period'), $rec_d['loan_periode'], 'size="5"');
     // reborrow limit
-    $form->addTextField('text', 'reborrowLimit', __('Reborrow Limit'), $rec_d['reborrow_limit'], 'size="5"');
+    $form->addTextField('text', 'reborrowLimit', __('Reborrow Limit'), $rec_d['reborrow_limit']?$rec_d['reborrow_limit']:'0', 'size="5"');
     // fine each day
-    $form->addTextField('text', 'fineEachDay', __('Fines Each Day'), $rec_d['fine_each_day']);
+    $form->addTextField('text', 'fineEachDay', __('Fines Each Day'), $rec_d['fine_each_day']?$rec_d['fine_each_day']:'0');
     // overdue grace periode
-    $form->addTextField('text', 'gracePeriode', __('Overdue Grace Periode'), $rec_d['grace_periode']);
+    $form->addTextField('text', 'gracePeriode', __('Overdue Grace Periode'), $rec_d['grace_periode']?$rec_d['grace_periode']:'0');
 
     // edit mode messagge
     if ($form->edit_mode) {

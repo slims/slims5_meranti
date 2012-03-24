@@ -58,9 +58,11 @@ if (!$reportView) {
     <!-- filter -->
     <fieldset>
     <div class="per_title">
-    	<h2><?php echo strtoupper(__('Reservation')); ?></h2>
+    	<h2><?php echo __('Reservation'); ?></h2>
     </div>
-    <div class="infoBox"><?php echo __('Report Filter'); ?></div>
+    <div class="infoBox">
+    <?php echo __('Report Filter'); ?>
+    </div>
     <div class="sub_section">
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
@@ -170,4 +172,3 @@ if (!$reportView) {
     // include the page template
     require SENAYAN_BASE_DIR.'/admin/'.$sysconf['admin_template']['dir'].'/printed_page_tpl.php';
 }
-?>

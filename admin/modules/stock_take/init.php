@@ -110,7 +110,7 @@ if ($stk_q->num_rows) {
             $insert_q = $dbs->query("INSERT INTO stock_take_item (stock_take_id, item_id, item_code, title, gmd_name, classification, coll_type_name, call_number, location, status, checked_by, last_update)
                 SELECT $stock_take_id, i.item_id, i.item_code, b.title, g.gmd_name, b.classification, ct.coll_type_name, i.call_number, loc.location_name, 'm', '".$_SESSION['realname']."', NULL FROM
                 item AS i
-				LEFT JOIN mst_item_status AS ist ON i.item_status_id=ist.item_status_id
+                LEFT JOIN mst_item_status AS ist ON i.item_status_id=ist.item_status_id
                 LEFT JOIN mst_coll_type AS ct ON i.coll_type_id=ct.coll_type_id
                 LEFT JOIN mst_location AS loc ON i.location_id=loc.location_id
                 LEFT JOIN biblio AS b ON i.biblio_id=b.biblio_id
@@ -188,5 +188,3 @@ if ($stk_q->num_rows) {
     // print out the object
     echo $form->printOut();
 }
-
-?>

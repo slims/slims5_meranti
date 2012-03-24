@@ -19,7 +19,7 @@
  */
 
 // be sure that this file not accessed directly
-if (INDEX_AUTH != 1) { 
+if (INDEX_AUTH != 1) {
     die("can not access this file directly");
 }
 
@@ -40,4 +40,3 @@ $menu[] = array(__('Visitor Statistic'), MODULES_WEB_ROOT_DIR.'reporting/customs
 $menu[] = array(__('Visitor Statistic (by Day)'), MODULES_WEB_ROOT_DIR.'reporting/customs/visitor_report_day.php', __('Visitor Statistic (by Day)'));
 $menu[] = array(__('Visitor List'), MODULES_WEB_ROOT_DIR.'reporting/customs/visitor_list.php', __('Visitor List'));
 $menu[] = array(__('Fines Report'), MODULES_WEB_ROOT_DIR.'reporting/customs/fines_report.php', __('Fines Report'));
-?>

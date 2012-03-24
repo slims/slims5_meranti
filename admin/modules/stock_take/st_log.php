@@ -35,7 +35,6 @@ do_checkIP('smc-stocktake');
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php';
-require SIMBIO_BASE_DIR.'simbio_GUI/template_parser/simbio_template_parser.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/datagrid/simbio_dbgrid.inc.php';
@@ -52,12 +51,16 @@ if (!$can_read) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner stockTakeIcon">
-    <?php echo strtoupper(__('Stock Take Log')); ?>
-    <hr />
+<div class="menuBoxInner errorIcon">
+  <div class="per_title">
+    <h2><?php echo __('Stock Take Log'); ?></h2>
+  </div>
+  <div class="sub_section">
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>stock_take/st_log.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
     <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
-</form>
+    </form>
+  </div>
 </div>
 </fieldset>
 <?php
@@ -111,5 +114,3 @@ if (isset($_GET['keywords']) AND $_GET['keywords']) {
 
 echo $datagrid_result;
 /* main content end */
-
-?>

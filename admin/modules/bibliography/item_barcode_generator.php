@@ -204,7 +204,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 <fieldset class="menuBox">
 <div class="menuBoxInner printIcon">
     <div class="per_title">
-	    <h2><?php echo __('ITEM BARCODES PRINTING'); ?></h2>
+	    <h2><?php echo __('Item Barcodes Printing'); ?></h2>
     </div>
     <div class="sub_section">
 	    <div class="action_button">

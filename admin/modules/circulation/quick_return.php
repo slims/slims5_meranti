@@ -57,7 +57,7 @@ if (!$sysconf['quick_return']) {
 <fieldset class="menuBox">
 <div class="menuBoxInner quickReturnIcon">
     <div class="per_title">
-	    <h2><?php echo strtoupper(__('Quick Return')); ?></h2>
+	    <h2><?php echo __('Quick Return'); ?></h2>
     </div>
     <div class="sub_section">
 	    <div class="action_button">
