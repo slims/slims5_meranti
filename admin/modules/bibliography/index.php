@@ -142,11 +142,14 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         $data['promoted'] = ($_POST['promote'] == '0')?'literal{0}':'1';
         // labels
         $arr_label = array();
-        foreach ($_POST['labels'] as $label) {
+        if ($_POST['labels']) {
+          foreach ($_POST['labels'] as $label) {
             if (trim($label) != '') {
-                $arr_label[] = array($label, isset($_POST['label_urls'][$label])?$_POST['label_urls'][$label]:null );
+              $arr_label[] = array($label, isset($_POST['label_urls'][$label])?$_POST['label_urls'][$label]:null );
             }
+          }
         }
+
         $data['labels'] = $arr_label?serialize($arr_label):'literal{NULL}';
         $data['frequency_id'] = ($_POST['frequencyID'] == '0')?'literal{0}':(integer)$_POST['frequencyID'];
         $data['spec_detail_info'] = trim($dbs->escape_string(strip_tags($_POST['specDetailInfo'])));
@@ -220,7 +223,6 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 $sql_op->delete('search_biblio', "biblio_id=$updateRecordID");
                 $indexer->makeIndex($updateRecordID);
             } else { utility::jsAlert(__('Bibliography Data FAILED to Updated. Please Contact System Administrator')."\n".$sql_op->error); }
-            exit();
         } else {
             /* INSERT RECORD MODE */
             // insert the data
@@ -248,9 +250,10 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 }
                 // insert custom data
                 if ($custom_data) {
-                    $custom_data['biblio_id'] = $last_biblio_id;
-                    @$sql_op->insert('biblio_custom', $custom_data);
+                  $custom_data['biblio_id'] = $last_biblio_id;
+                  @$sql_op->insert('biblio_custom', $custom_data);
                 }
+
 
                 utility::jsAlert(__('New Bibliography Data Successfully Saved'));
                 // write log
@@ -263,12 +266,34 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 $indexer->makeIndex($last_biblio_id);
                 // auto insert catalog to UCS if enabled
                 if ($sysconf['ucs']['enable'] && $sysconf['ucs']['auto_insert']) {
-                    echo '<script type="text/javascript">parent.ucsUpload(\''.MODULES_WEB_ROOT_DIR.'bibliography/ucs_upload.php\', \'itemID[]='.$last_biblio_id.'\');</script>';
+                  echo '<script type="text/javascript">parent.ucsUpload(\''.MODULES_WEB_ROOT_DIR.'bibliography/ucs_upload.php\', \'itemID[]='.$last_biblio_id.'\');</script>';
                 }
-                echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(\''.MODULES_WEB_ROOT_DIR.'bibliography/index.php\', {method: \'post\', addData: \'itemID='.$last_biblio_id.'&detail=true\'});</script>';
             } else { utility::jsAlert(__('Bibliography Data FAILED to Save. Please Contact System Administrator')."\n".$sql_op->error); }
-            exit();
         }
+
+        // item batch insert
+        if (trim($_POST['itemCodePattern']) != '' && $_POST['itemCodeStart'] > 0 && $_POST['itemCodeEnd'] > 0) {
+          $hasil = array();
+          $pattern = trim($_POST['itemCodePattern']);
+          // get last zero chars
+          preg_match('@0+$@i', $pattern, $hasil);
+          $zeros = strlen($hasil[0]);
+          $start = (integer)$_POST['itemCodeStart'];
+          $end = (integer)$_POST['itemCodeEnd'];
+          for ($b = $start; $b <= $end; $b++) {
+            $len = strlen($b);
+            if ($zeros > 0) {
+              $itemcode = preg_replace('@0{'.$len.'}$@i', $b, $pattern);
+            } else { $itemcode = $pattern.$b; }
+
+            $item_insert_sql = sprintf("INSERT IGNORE INTO item (biblio_id, item_code, call_number)
+              VALUES (%d, '%s', '%s')", $updateRecordID?$updateRecordID:$last_biblio_id, $itemcode, $data['call_number']);
+            @$dbs->query($item_insert_sql);
+          }
+        }
+
+        echo '<script type="text/javascript">parent.$(\'#mainContent\').simbioAJAX(\''.MODULES_WEB_ROOT_DIR.'bibliography/index.php\', {method: \'post\', addData: \'itemID='.$last_biblio_id.'&detail=true\'});</script>';
+        exit();
     }
     exit();
 } else if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemAction'])) {
@@ -433,14 +458,18 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $form->addTextField('text', 'edition', __('Edition'), $rec_d['edition'], 'style="width: 40%;"');
     // biblio specific detail info/area
     $form->addTextField('textarea', 'specDetailInfo', __('Specific Detail Info'), $rec_d['spec_detail_info'], 'rows="2" style="width: 100%"');
+    // biblio item batch add
+    $str_input = __('Pattern').': <input type="text" class="small_input" name="itemCodePattern" value="'.$sysconf['batch_item_code_pattern'].'" /> &nbsp;&nbsp;';
+    $str_input .= __('From').': <input type="text" class="small_input" name="itemCodeStart" value="0" /> '.__('To').' <input type="text" class="small_input" name="itemCodeEnd" value="0" />';
+    $form->addAnything(__('Item(s) code batch generator'), $str_input);
     // biblio item add
     if (!$in_pop_up AND $form->edit_mode) {
-        $str_input = '<div class="makeHidden"><a class="notAJAX" href="javascript: openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_item.php?inPopUp=true&action=detail&biblioID='.$rec_d['biblio_id'].'\', 650, 400, \''.__('Items/Copies').'\')">'.__('Add New Items').'</a></div>';
+        $str_input = '<div class="makeHidden"><a class="notAJAX button" href="javascript: openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_item.php?inPopUp=true&action=detail&biblioID='.$rec_d['biblio_id'].'\', 650, 400, \''.__('Items/Copies').'\')">'.__('Add New Items').'</a></div>';
         $str_input .= '<iframe name="itemIframe" id="itemIframe" class="borderAll" style="width: 100%; height: 70px;" src="'.MODULES_WEB_ROOT_DIR.'bibliography/iframe_item_list.php?biblioID='.$rec_d['biblio_id'].'&block=1"></iframe>'."\n";
-        $form->addAnything('Item(s) Data', $str_input);
+        $form->addAnything(__('Item(s) Data'), $str_input);
     }
     // biblio authors
-        $str_input = '<div class="'.$visibility.'"><a class="notAJAX" href="javascript: openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_author.php?biblioID='.$rec_d['biblio_id'].'\', 500, 200, \''.__('Authors/Roles').'\')">'.__('Add Author(s)').'</a></div>';
+        $str_input = '<div class="'.$visibility.'"><a class="notAJAX button" href="javascript: openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_author.php?biblioID='.$rec_d['biblio_id'].'\', 500, 200, \''.__('Authors/Roles').'\')">'.__('Add Author(s)').'</a></div>';
         $str_input .= '<iframe name="authorIframe" id="authorIframe" class="borderAll" style="width: 100%; height: 70px;" src="'.MODULES_WEB_ROOT_DIR.'bibliography/iframe_author.php?biblioID='.$rec_d['biblio_id'].'&block=1"></iframe>';
     $form->addAnything(__('Author(s)'), $str_input);
     // biblio gmd
@@ -497,7 +526,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // biblio call_number
     $form->addTextField('text', 'callNumber', __('Call Number'), $rec_d['call_number'], 'style="width: 40%;"');
     // biblio topics
-        $str_input = '<div class="'.$visibility.'"><a class="notAJAX"  href="javascript: openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_topic.php?biblioID='.$rec_d['biblio_id'].'\', 500, 200, \''.__('Subjects/Topics').'\')">'.__('Add Subject(s)').'</a></div>';
+        $str_input = '<div class="'.$visibility.'"><a class="notAJAX button" href="javascript: openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_topic.php?biblioID='.$rec_d['biblio_id'].'\', 500, 200, \''.__('Subjects/Topics').'\')">'.__('Add Subject(s)').'</a></div>';
         $str_input .= '<iframe name="topicIframe" id="topicIframe" class="borderAll" style="width: 100%; height: 70px;" src="'.MODULES_WEB_ROOT_DIR.'bibliography/iframe_topic.php?biblioID='.$rec_d['biblio_id'].'&block=1"></iframe>';
     $form->addAnything(__('Subject(s)'), $str_input);
     // biblio classification
@@ -535,7 +564,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         $form->addAnything(__('Image'), $str_input);
     }
     // biblio file attachment
-    $str_input = '<div class="'.$visibility.'"><a class="notAJAX" href="javascript: openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_attach.php?biblioID='.$rec_d['biblio_id'].'\', 600, 300, \''.__('File Attachments').'\')">'.__('Add Attachment').'</a></div>';
+    $str_input = '<div class="'.$visibility.'"><a class="notAJAX button" href="javascript: openHTMLpop(\''.MODULES_WEB_ROOT_DIR.'bibliography/pop_attach.php?biblioID='.$rec_d['biblio_id'].'\', 600, 300, \''.__('File Attachments').'\')">'.__('Add Attachment').'</a></div>';
     $str_input .= '<iframe name="attachIframe" id="attachIframe" class="borderAll" style="width: 100%; height: 70px;" src="'.MODULES_WEB_ROOT_DIR.'bibliography/iframe_attach.php?biblioID='.$rec_d['biblio_id'].'&block=1"></iframe>';
     $form->addAnything(__('File Attachment'), $str_input);
 

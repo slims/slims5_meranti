@@ -875,7 +875,7 @@ icon
 
 .dateField {
 	border: 1px solid #ccc;
-  	-webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
 	-moz-transition: border linear 0.2s, box-shadow linear 0.2s;
 	-ms-transition: border linear 0.2s, box-shadow linear 0.2s;
 	-o-transition: border linear 0.2s, box-shadow linear 0.2s;
@@ -1023,4 +1023,12 @@ icon
 .sub_section
 {
 	padding:10px;
+}
+
+.makeHidden {
+	display: none;
+}
+
+input.small_input {
+  width: 50px;
 }
