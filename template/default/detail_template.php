@@ -9,6 +9,10 @@ ob_start(); /* <- DONT REMOVE THIS COMMAND */
 <td class="tblContent" style="width: 80%;" valign="top">{title}</td>
 </tr>
 <tr>
+<td class="tblHead" style="width: 20%;" valign="top"><?php print __('Statement of Responsibility'); ?></td>
+<td class="tblContent" style="width: 80%;" valign="top">{sor}</td>
+</tr>
+<tr>
 <td class="tblHead" style="width: 20%;" valign="top"><?php print __('Edition'); ?></td>
 <td class="tblContent" style="width: 80%;" valign="top">{edition}</td>
 </tr>

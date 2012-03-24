@@ -59,12 +59,13 @@ class detail extends content_list
 
         $this->obj_db = $obj_db;
         $this->detail_id = $int_detail_id;
-        $_sql = sprintf('SELECT b.*, l.language_name, p.publisher_name, pl.place_name AS \'publish_place\', gmd.gmd_name, fr.frequency FROM biblio AS b
+        $_sql = sprintf('SELECT b.*, l.language_name, p.publisher_name, sr.sor, pl.place_name AS \'publish_place\', gmd.gmd_name, fr.frequency FROM biblio AS b
             LEFT JOIN mst_gmd AS gmd ON b.gmd_id=gmd.gmd_id
             LEFT JOIN mst_language AS l ON b.language_id=l.language_id
             LEFT JOIN mst_publisher AS p ON b.publisher_id=p.publisher_id
             LEFT JOIN mst_place AS pl ON b.publish_place_id=pl.place_id
             LEFT JOIN mst_frequency AS fr ON b.frequency_id=fr.frequency_id
+            LEFT JOIN mst_sor AS sr ON b.sor_id=sr.sor_id
             WHERE biblio_id=%d', $int_detail_id);
         // for debugging purpose only
         // die($_sql);
@@ -128,19 +129,20 @@ class detail extends content_list
 
         // get title and set it to public record_title property
         $this->record_title = $this->record_detail['title'];
-        $this->metadata .= '<meta name="Title" content="'.$this->record_title.'" />';
-        $this->metadata .= '<meta name="Edition" content="'.$this->record_detail['edition'].'" />';
-        $this->metadata .= '<meta name="Call Number" content="'.$this->record_detail['call_number'].'" />';
-        $this->metadata .= '<meta name="ISBN/ISSN" content="'.$this->record_detail['isbn_issn'].'" />';
-        $this->metadata .= '<meta name="Classification" content="'.$this->record_detail['classification'].'" />';
-        $this->metadata .= '<meta name="Series Title" content="'.$this->record_detail['series_title'].'" />';
-        $this->metadata .= '<meta name="Media" content="'.$this->record_detail['gmd_name'].'" />';
-        $this->metadata .= '<meta name="Language" content="'.$this->record_detail['language_name'].'" />';
-        $this->metadata .= '<meta name="Publisher" content="'.$this->record_detail['publisher_name'].'" />';
-        $this->metadata .= '<meta name="Publish Year" content="'.$this->record_detail['publish_year'].'" />';
-        $this->metadata .= '<meta name="Publish Place" content="'.$this->record_detail['publish_place'].'" />';
-        $this->metadata .= '<meta name="Physical Description" content="'.$this->record_detail['collation'].'" />';
-        $this->metadata .= '<meta name="Notes" content="'.strip_tags($this->record_detail['notes']).'" />';
+        $this->metadata .= '<meta name="Title" content="'.$this->record_title.'" />'."\n";
+        $this->metadata .= '<meta name="Edition" content="'.$this->record_detail['edition'].'" />'."\n";
+        $this->metadata .= '<meta name="Call Number" content="'.$this->record_detail['call_number'].'" />'."\n";
+        $this->metadata .= '<meta name="ISBN/ISSN" content="'.$this->record_detail['isbn_issn'].'" />'."\n";
+        $this->metadata .= '<meta name="Classification" content="'.$this->record_detail['classification'].'" />'."\n";
+        $this->metadata .= '<meta name="Series Title" content="'.$this->record_detail['series_title'].'" />'."\n";
+        $this->metadata .= '<meta name="Media" content="'.$this->record_detail['gmd_name'].'" />'."\n";
+        $this->metadata .= '<meta name="Language" content="'.$this->record_detail['language_name'].'" />'."\n";
+        $this->metadata .= '<meta name="Publisher" content="'.$this->record_detail['publisher_name'].'" />'."\n";
+        $this->metadata .= '<meta name="Publish Year" content="'.$this->record_detail['publish_year'].'" />'."\n";
+        $this->metadata .= '<meta name="Publish Place" content="'.$this->record_detail['publish_place'].'" />'."\n";
+        $this->metadata .= '<meta name="Physical Description" content="'.$this->record_detail['collation'].'" />'."\n";
+        $this->metadata .= '<meta name="Notes" content="'.strip_tags($this->record_detail['notes']).'" />'."\n";
+        $this->metadata .= '<meta name="Statement of Responsibility" content="'.$this->record_detail['sor'].'" />'."\n";
 
         // check image
         if (!empty($this->record_detail['image'])) {
