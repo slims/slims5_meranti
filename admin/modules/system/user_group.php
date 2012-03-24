@@ -169,8 +169,8 @@ if (isset($_POST['saveData'])) {
   </div>
 	<div class="sub_section">
 	  <div class="action_button">
-      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/user_group.php?action=detail" class="headerText2"><?php echo __('Add New Group'); ?></a>
       <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/user_group.php" class="headerText2"><?php echo __('Group List'); ?></a>
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/user_group.php?action=detail" class="headerText2"><?php echo __('Add New Group'); ?></a>
 	  </div>
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>system/user_group.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
