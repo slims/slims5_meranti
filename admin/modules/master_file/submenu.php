@@ -41,3 +41,4 @@ $menu[] = array(__('Frequency'), MODULES_WEB_ROOT_DIR.'master_file/frequency.php
 $menu[] = array('Header', __('Tools'));
 $menu[] = array(__('Orphaned Author'), MODULES_WEB_ROOT_DIR.'master_file/author.php?type=orphaned', __('Orphaned Authors'));
 $menu[] = array(__('Orphaned Subject'), MODULES_WEB_ROOT_DIR.'master_file/topic.php?type=orphaned', __('Orphaned Subject'));
+$menu[] = array(__('Orphaned Publisher'), MODULES_WEB_ROOT_DIR.'master_file/publisher.php?type=orphaned', __('Orphaned Publisher'));

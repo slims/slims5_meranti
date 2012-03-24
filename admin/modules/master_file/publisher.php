@@ -184,7 +184,12 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 } else {
     /* PUBLISHER LIST */
     // table spec
-    $table_spec = 'mst_publisher AS p';
+    if (isset($_GET['type']) && $_GET['type'] == 'orphaned') {
+        $table_spec = 'mst_publisher AS p LEFT JOIN biblio AS b ON p.publisher_id = b.publisher_id WHERE b.publisher_id IS NULL';
+        #$sql_criteria = 'b.publisher_id IS NULL';
+    } else {
+        $table_spec = 'mst_publisher AS p';
+    }
 
     // create datagrid
     $datagrid = new simbio_datagrid();
