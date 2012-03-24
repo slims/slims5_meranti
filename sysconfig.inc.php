@@ -436,7 +436,7 @@ $sysconf['ipaccess']['smc-reporting'] = 'all';
 $sysconf['ipaccess']['smc-serialcontrol'] = 'all';
 
 // OAI-PMH settings
-$sysconf['OAI']['identifierPrefix'] = 'slims/';
+$sysconf['OAI']['identifierPrefix'] = 'oai:slims/';
 $sysconf['OAI']['Identify']['baseURL'] = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/oai.php';
 $sysconf['OAI']['Identify']['repositoryName'] = 'SLiMS Senayan Library Management System OAI-PMh';
 $sysconf['OAI']['Identify']['adminEmail'] = 'admin@slims.web.id';

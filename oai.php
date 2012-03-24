@@ -34,7 +34,7 @@ $config['oai_pmh_verbs'] = array(
   'ListMetadataFormats',
   'ListIdentifiers',
   'ListRecords',
-  'ListSet'
+  'ListSets'
   );
 
 // cek apakah ada request OAI-PMH pada REQUEST HTTP GET atau POST
@@ -78,8 +78,27 @@ if (isset($_GET['verb']) || isset($_POST['verb'])) {
     }
 
     echo '</OAI-PMH>';
+  } else {
+    // mulai output XML
+    header('Content-type: text/xml');
+    echo '<?xml version="1.0" encoding="UTF-8"?>'."\n"
+      .'<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">'."\n"
+      .'<responseDate>'.$date_respons.'</responseDate>'."\n";
+
+    echo '<request>'.$sysconf['OAI']['Identify']['baseURL'].'</request>
+      <error code="badVerb">Illegal OAI verb</error>
+      </OAI-PMH>';
   }
   exit();
 } else {
-  exit('Harap berikan verb OAI-PMH yang anda inginkan');
+  // mulai output XML
+  header('Content-type: text/xml');
+  echo '<?xml version="1.0" encoding="UTF-8"?>'."\n"
+    .'<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">'."\n"
+    .'<responseDate>'.$date_respons.'</responseDate>'."\n";
+
+  echo '<request>'.$sysconf['OAI']['Identify']['baseURL'].'</request>
+    <error code="badVerb">Illegal OAI verb</error>
+    </OAI-PMH>';
+  exit();
 }

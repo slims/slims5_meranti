@@ -60,14 +60,15 @@ class OAI_Web_Service {
     $num_data = $num_rec_q->fetch_row();
     $completeListSize = $num_data[0];
 
-    $rec_q = $this->db->query("SELECT * FROM biblio $where ORDER BY biblio_id DESC LIMIT ".$sysconf['OAI']['ListRecords']['RecordPerSet']." OFFSET $offset");
+    $rec_q = $this->db->query("SELECT biblio_id, last_update FROM biblio $where
+      ORDER BY biblio_id DESC LIMIT ".$sysconf['OAI']['ListRecords']['RecordPerSet']." OFFSET $offset");
 
     ob_start();
     echo '<request verb="ListIdentifiers" metadataPrefix="'.$metadataPrefix.'">'.$sysconf['OAI']['Identify']['baseURL'].'</request>'."\n";
     echo "<ListIdentifiers>\n";
     // mulai iterasi record
     while ($rec_data = $rec_q->fetch_assoc()) {
-      echo "<header>\n<identifier>".$rec_data['oai_id']."</identifier><datestamp></datestamp></header>\n";
+      echo "<header>\n<identifier>".$sysconf['OAI']['identifierPrefix'].$rec_data['biblio_id']."</identifier><datestamp>".$rec_data['last_update']."</datestamp></header>\n";
     }
 
     // resumptionToken
@@ -120,8 +121,8 @@ class OAI_Web_Service {
     // mulai iterasi record
     while ($set_data = $set_q->fetch_assoc()) {
       echo "<set>\n".
-      "<setSpec>".$set_data['id']."</setSpec>\n".
-      "<setName>".$set_data['set_category']." = ".$set_data['set_name']."</setName>\n".
+      "<setSpec>".$set_data['topic_id']."</setSpec>\n".
+      "<setName>Subject = ".$set_data['topic']."</setName>\n".
       "</set>\n";
     }
 
@@ -199,6 +200,17 @@ class OAI_Web_Service {
   public function GetRecord($recordID, $metadataPrefix = 'oai_dc') {
     global $sysconf;
     ob_start();
+
+    // check record ID
+    /*
+    if (strpos($recordID, $sysconf['OAI']['identifierPrefix']) !== true) {
+      echo '<request verb="GetRecord" identifier="'.$recordID.'" metadataPrefix="'.$metadataPrefix.'">'.$sysconf['OAI']['Identify']['baseURL'].'</request>'."\n";
+      echo '<error code="idDoesNotExist">No matching identifier in our Repository</error>';
+      return ob_get_clean();
+    }
+    */
+
+    $recordID = str_ireplace($sysconf['OAI']['identifierPrefix'], '', $recordID);
     echo '<request verb="GetRecord" identifier="'.$recordID.'" metadataPrefix="'.$metadataPrefix.'">'.$sysconf['OAI']['Identify']['baseURL'].'</request>'."\n";
     echo "<GetRecord>\n";
     echo $this->outputRecordXML($recordID, $metadataPrefix);
@@ -248,11 +260,11 @@ class OAI_Web_Service {
     echo '<request verb="ListMetadataFormats">'.$sysconf['OAI']['Identify']['baseURL'].'</request>'."\n";
     echo "<ListMetadataFormats>\n";
     // query ke database
-    foreach ($sysconf['OAI']['MetadataFormats'] as $metadataformat_q) {
+    foreach ($sysconf['OAI']['MetadataFormats'] as $metadataformat) {
       echo "<metadataFormat>\n";
-      echo "<metadataPrefix>".$metadataformat_data['oai_prefix']."</metadataPrefix>\n".
-        "<schema>".$metadataformat_data['schema_xsd']."</schema>\n".
-        "<metadataNamespace>".$metadataformat_data['namespace']."</metadataNamespace>\n";
+      echo "<metadataPrefix>".$metadataformat['oai_prefix']."</metadataPrefix>\n".
+        "<schema>".$metadataformat['schema_xsd']."</schema>\n".
+        "<metadataNamespace>".$metadataformat['namespace']."</metadataNamespace>\n";
     }
     echo "</metadataFormat>\n";
     echo "</ListMetadataFormats>\n";
@@ -271,6 +283,8 @@ class OAI_Web_Service {
    *
    */
   protected function outputRecordXML($recordID, $metadataPrefix = 'oai_dc') {
+    global $sysconf;
+
     // berikut adalah entitas yang dilarang oleh XML, tambahkan dalam array apabila diperlukan
     $xmlForbiddenSymbols = array('&Acirc;', '&Atilde;', '&para;',
       '&cedil;', '&copy;', '&shy;', '&pound;', '&plusmn;',
