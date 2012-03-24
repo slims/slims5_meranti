@@ -9,4 +9,5 @@ CREATE TABLE IF NOT EXISTS `mst_sor` (
   FULLTEXT KEY `sor_ft_idx` (`sor`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
+ALTER TABLE `biblio` ADD `sor_id` INT( 11 ) COLLATE utf8_unicode_ci NULL AFTER `title` ;
 ALTER TABLE `biblio` DROP INDEX `references_idx` ,ADD INDEX `references_idx` ( `gmd_id` , `publisher_id` , `language_id` , `publish_place_id` , `sor_id` ) ;
