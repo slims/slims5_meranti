@@ -350,8 +350,8 @@ if (!$in_pop_up) {
     </div>
     <div class="sub_section">
 	    <div class="action_button">
-		    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php?action=detail" class="headerText2"><?php echo __('Add New Bibliography'); ?></a>
 		    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php" class="headerText2"><?php echo __('Bibliographic List'); ?></a>
+		    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php?action=detail" class="headerText2"><?php echo __('Add New Bibliography'); ?></a>
 	    </div>
 	    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
 		    <input type="text" name="keywords" id="keywords" size="30" />
