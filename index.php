@@ -64,11 +64,11 @@ if (isset($_GET['p'])) {
     if (file_exists(LIB_DIR.'contents/'.$path.'.inc.php')) {
         include LIB_DIR.'contents/'.$path.'.inc.php';
         if ($path != 'show_detail') {
-            $metadata = '<meta name="robots" content="noindex, follow">';
+            $metadata = '<meta name="robots" content="noindex, nofollow">';
         }
     } else {
         // get content data from database
-        $metadata = '<meta name="robots" content="noindex, follow">';
+        $metadata = '<meta name="robots" content="index, nofollow">';
         include LIB_DIR.'content.inc.php';
         $content = new content();
         $content_data = $content->get($dbs, $path);
@@ -82,7 +82,7 @@ if (isset($_GET['p'])) {
         }
     }
 } else {
-    $metadata = '<meta name="robots" content="noindex, follow">';
+    $metadata = '<meta name="robots" content="index, follow">';
     // homepage header info
     if (!isset($_GET['p'])) {
         if ((!isset($_GET['keywords'])) AND (!isset($_GET['page'])) AND (!isset($_GET['title'])) AND (!isset($_GET['author'])) AND (!isset($_GET['subject'])) AND (!isset($_GET['location']))) {
