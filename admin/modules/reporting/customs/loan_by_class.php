@@ -2,6 +2,7 @@
 /**
  *
  * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com)
+ * Modified for Excel output (C) 2010 by Wardiyono (wynerst@gmail.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -123,6 +124,8 @@ if (!$reportView) {
 <?php
 } else {
     ob_start();
+	$xls_rc = 0;
+	$xls_cc = 0;
     // months array
     $months['01'] = __('Jan');
     $months['02'] = __('Feb');
@@ -144,6 +147,8 @@ if (!$reportView) {
     // header
     $output .= '<tr>';
     $output .= '<td class="dataListHeaderPrinted">'.__('Classification').'</td>';
+	$xlsrows = array($xls_rc => array(__('Classification'),__('Jan'),__('Feb'),__('Mar'),__('Apr'),__('May'),__('Jun'),__('Jul'),__('Aug'),__('Sep'),__('Oct'),__('Nov'),__('Dec')));
+	$xls_rc++;
     foreach ($months as $month) {
         $output .= '<td class="dataListHeaderPrinted">'.$month.'</td>';
     }
@@ -169,6 +174,8 @@ if (!$reportView) {
     $row_class = ($class_num%2 == 0)?'alterCellPrinted':'alterCellPrinted2';
     if ($class_num == 'NONDECIMAL') {
         $output .= '<tr><td class="'.$row_class.'"><strong style="font-size: 1.5em;">NON DECIMAL Classification</strong></td>';
+		$xlsrows[$xls_rc][$xls_cc] = 'NON DECIMAL Classification';
+		$xls_cc++;
         // count loan each month
         foreach ($months as $month_num => $month) {
             $loan_q = $dbs->query("SELECT COUNT(*) FROM biblio AS b
@@ -181,11 +188,17 @@ if (!$reportView) {
             } else {
                 $output .= '<td class="'.$row_class.'"><span style="color: #ff0000;">'.$loan_d[0].'</span></td>';
             }
+			$xlsrows[$xls_rc][$xls_cc] = $loan_d[0];
+			$xls_cc++;
         }
 
+		$xls_rc++;
+		$xls_cc =0;
         $output .= '</tr>';
     } else {
         $output .= '<tr><td class="'.$row_class.'"><strong style="font-size: 1.5em;">'.$class_num.'00</strong></td>';
+		$xlsrows[$xls_rc][$xls_cc] = $class_num;
+		$xls_cc++;
 
         // count loan each month
         foreach ($months as $month_num => $month) {
@@ -199,8 +212,12 @@ if (!$reportView) {
             } else {
                 $output .= '<td class="'.$row_class.'"><span style="color: #ff0000;">'.$loan_d[0].'</span></td>';
             }
+			$xlsrows[$xls_rc][$xls_cc] = $loan_d[0];
+			$xls_cc++;
         }
 
+		$xls_rc++;
+		$xls_cc =0;
         $output .= '</tr>';
 
         $class_num2 = 0;
@@ -209,6 +226,9 @@ if (!$reportView) {
             $row_class = ($row_class == 'alterCellPrinted')?'alterCellPrinted2':'alterCellPrinted';
 
             $output .= '<tr><td class="'.$row_class.'"><strong>&nbsp;&nbsp;&nbsp;'.$class_num.$class_num2.'0</strong></td>';
+			$xlsrows[$xls_rc][$xls_cc] = '   '.$class_num;
+			$xls_cc++;
+
             // count loan each month
             foreach ($months as $month_num => $month) {
                 $loan_q = $dbs->query("SELECT COUNT(*) FROM biblio AS b
@@ -221,8 +241,12 @@ if (!$reportView) {
                 } else {
                     $output .= '<td class="'.$row_class.'"><span style="color: #ff0000;">'.$loan_d[0].'</span></td>';
                 }
-            }
+				$xlsrows[$xls_rc][$xls_cc] = $loan_d[0];
+				$xls_cc++;
+	        }
 
+			$xls_rc++;
+			$xls_cc =0;
             $output .= '</tr>';
             $class_num2++;
         }
@@ -230,10 +254,16 @@ if (!$reportView) {
     $output .= '</table>';
 
     // print out
-    echo '<div class="printPageInfo">Loan Recap By Class <strong>'.$class_num.'</strong> for year <strong>'.$selected_year.'</strong>'.( isset($coll_type_name)?'<div>'.$coll_type_name.'</div>':'' ).' <a class="printReport" onclick="window.print()" href="#">'.__('Print Current Page').'</a></div>'."\n";
+    echo '<div class="printPageInfo">Loan Recap By Class <strong>'.$class_num.'</strong> for year <strong>'.$selected_year.'</strong>'.( isset($coll_type_name)?'<div>'.$coll_type_name.'</div>':'' ).' <a class="printReport" onclick="window.print()" href="#">['.__('Print Current Page').']</a>';
+	echo '<a href="../xlsoutput.php" class="button">'.__('Export to spreadsheet format').'</a></div>'."\n";
     echo $output;
 
+	unset($_SESSION['xlsquery']); 
+	$_SESSION['xlsdata'] = $xlsrows;
+	$_SESSION['tblout'] = "loan_by_class_list";
+	echo '<p align="right"><a href="../xlsoutput.php" class="button">'.__('Export to spreadsheet format').'</a></p>';
     $content = ob_get_clean();
     // include the page template
     require SENAYAN_BASE_DIR.'/admin/'.$sysconf['admin_template']['dir'].'/printed_page_tpl.php';
 }
+?>

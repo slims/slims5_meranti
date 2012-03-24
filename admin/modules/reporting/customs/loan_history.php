@@ -2,6 +2,7 @@
 /**
  *
  * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com)
+ * Modified for Excel output (C) 2010 by Wardiyono (wynerst@gmail.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -123,7 +124,7 @@ if (!$reportView) {
     <input type="hidden" name="reportView" value="true" />
     </div>
     </form>
-    </div>
+	</div>
     </fieldset>
     <!-- filter end -->
     <div class="dataListHeader" style="padding: 3px;"><span id="pagingBox"></span></div>
@@ -206,8 +207,22 @@ if (!$reportView) {
     echo '<script type="text/javascript">'."\n";
     echo 'parent.$(\'#pagingBox\').html(\''.str_replace(array("\n", "\r", "\t"), '', $reportgrid->paging_set).'\');'."\n";
     echo '</script>';
+	$xlsquery = 'SELECT m.member_id AS \''.__('Member ID').'\''.
+        ', m.member_name AS \''.__('Member Name').'\''.
+        ', l.item_code AS \''.__('Item Code').'\''.
+        ', b.title AS \''.__('Title').'\''.
+        ', l.loan_date AS \''.__('Loan Date').'\''.
+        ', l.due_date AS \''.__('Due Date').'\', l.is_return AS \''.__('Loan Status').'\''.
+		' FROM '.$table_spec.' WHERE '.$criteria;
+
+		unset($_SESSION['xlsdata']);
+		$_SESSION['xlsquery'] = $xlsquery;
+		$_SESSION['tblout'] = "loan_history";
+
+	echo '<p align="right"><a href="../xlsoutput.php" class="button">'.__('Export to spreadsheet format').'</a></p>';
 
     $content = ob_get_clean();
     // include the page template
     require SENAYAN_BASE_DIR.'/admin/'.$sysconf['admin_template']['dir'].'/printed_page_tpl.php';
 }
+?>
