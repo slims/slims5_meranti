@@ -331,6 +331,7 @@ submenu
 .button,
 .headerText2,
 input[type="submit"],
+input[type="button"],
 .tab,
 a.printReport {
 	color:#fff !important;

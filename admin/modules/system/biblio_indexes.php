@@ -110,12 +110,12 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 	    <h2><?php echo __('Bibliographic Index'); ?></h2>
   </div>
 	<div class="sub_section">
+		.
 	  <div class="action_button">
 	    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/biblio_indexes.php?action=detail&detail=empty" class="headerText2"><?php echo __('Emptying Index'); ?></a>
       <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/biblio_indexes.php?action=detail&detail=reindex" class="headerText2"><?php echo __('Re-create Index'); ?></a>
       <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/biblio_indexes.php?action=detail&detail=update" class="headerText2"><?php echo __('Update Index'); ?></a>
 	  </div>
-    <?php echo strtoupper(__('')); ?>
 	</div>
 	<div class="infoBox">Bibliographic Index will speed up catalog search</div>
 </div>

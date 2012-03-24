@@ -123,6 +123,19 @@ if (isset($_POST['saveData']) AND $can_write) {
   exit();
 }
 
+?>
+<fieldset class="menuBox">
+  <div class="menuBoxInner systemIcon">
+    <div class="per_title">
+      <h2><?php echo __('Barcode Generator'); ?></h2>
+    </div>
+    <div class="infoBox">
+      <?php echo __('Enter your barcodes code on one or more textboxes below to create barcode'); ?>
+    </div>
+  </div>
+</fieldset>
+<?php
+
 // create table object
 $table = new simbio_table();
 $table->table_attr = 'align="center" class="border fullWidth" cellpadding="5" cellspacing="0"';
