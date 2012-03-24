@@ -29,7 +29,8 @@ require '../../../../sysconfig.inc.php';
 // IP based access limitation
 require LIB_DIR.'ip_based_access.inc.php';
 do_checkIP('smc');
-do_checkIP('smc-reporting');// start the session
+do_checkIP('smc-reporting');
+// start the session
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 // privileges checking
@@ -56,8 +57,14 @@ if (isset($_GET['reportView'])) {
 if (!$reportView) {
 ?>
     <!-- filter -->
-    <fieldset style="margin-bottom: 3px;">
-    <legend style="font-weight: bold"><?php echo strtoupper(__('Due Date Warning')); ?> - <?php echo __('Report Filter'); ?></legend>
+    <fieldset>
+    <div class="per_title">
+      <h2><?php echo __('Due Date Warning'); ?></h2>
+    </div>
+    <div class="infoBox">
+    <?php echo __('Report Filter'); ?>
+    </div>
+    <div class="sub_section">
     <div><?php echo __('This report loan items which will due in 3 to 0 days'); ?></div>
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
@@ -75,8 +82,8 @@ if (!$reportView) {
         </div>
     </div>
     <div style="padding-top: 10px; clear: both;">
-    <input type="submit" name="applyFilter" value="<?php echo __('Apply Filter'); ?>" />
     <input type="button" name="moreFilter" value="<?php echo __('Show More Filter Options'); ?>" />
+    <input type="submit" name="applyFilter" value="<?php echo __('Apply Filter'); ?>" />
     <input type="hidden" name="reportView" value="true" />
     </div>
     </form>
@@ -172,4 +179,3 @@ if (!$reportView) {
     // include the page template
     require SENAYAN_BASE_DIR.'/admin/'.$sysconf['admin_template']['dir'].'/printed_page_tpl.php';
 }
-?>

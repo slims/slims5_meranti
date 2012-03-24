@@ -7,7 +7,7 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -68,7 +68,7 @@ if (isset($_GET['p'])) {
         }
     } else {
         // get content data from database
-        $metadata = '<meta name="robots" content="noindex, follow">';
+        $metadata = '<meta name="robots" content="index, follow">';
         include LIB_DIR.'content.inc.php';
         $content = new content();
         $content_data = $content->get($dbs, $path);
@@ -106,7 +106,7 @@ if (isset($_GET['p'])) {
         }
     }
 } else {
-    $metadata = '<meta name="robots" content="noindex, follow">';
+    $metadata = '<meta name="robots" content="index, follow">';
     // homepage header info
     if (!isset($_GET['p'])) {
         if ((!isset($_GET['keywords'])) AND (!isset($_GET['page'])) AND (!isset($_GET['title'])) AND (!isset($_GET['author'])) AND (!isset($_GET['subject'])) AND (!isset($_GET['location']))) {
@@ -149,4 +149,3 @@ if ($sysconf['template']['base'] == 'html') {
 } else if ($sysconf['template']['base'] == 'php') {
     require $sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/index_template.inc.php';
 }
-?>

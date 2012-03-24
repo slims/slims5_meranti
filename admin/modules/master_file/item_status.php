@@ -150,13 +150,19 @@ if (isset($_POST['saveData'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner masterFileIcon">
-    <?php echo strtoupper(__('Item Status')); ?> - <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/item_status.php?action=detail" class="headerText2"><?php echo __('Add New Item Status'); ?></a>
-    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/item_status.php" class="headerText2"><?php echo __('Item Status'); ?></a>
-    <hr />
+	<div class="per_title">
+	    <h2><?php echo __('Item Status'); ?></h2>
+  </div>
+	<div class="sub_section">
+	  <div class="action_button">
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/item_status.php" class="headerText2"><?php echo __('Item Status'); ?></a>
+		  <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/item_status.php?action=detail" class="headerText2"><?php echo __('Add New Item Status'); ?></a>
+	  </div>
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/item_status.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
     <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
+	</div>
 </div>
 </fieldset>
 <?php

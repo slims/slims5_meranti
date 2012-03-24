@@ -51,12 +51,15 @@ if (!$can_read) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner stockTakeIcon">
-    <?php echo strtoupper(__('Stock Take')); ?>
-    <hr />
+	<div class="per_title">
+	  <h2><?php echo __('Stock Take'); ?></h2>
+  </div>
+	<div class="sub_section">
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>stock_take/index.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
     <input type="submit" value="<?php echo __('Search'); ?>" class="button" />
     </form>
+  </div>
 </div>
 </fieldset>
 <?php
@@ -154,4 +157,3 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID'])) {
 
     echo $datagrid_result;
 }
-?>

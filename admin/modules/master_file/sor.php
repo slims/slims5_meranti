@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com)
+ * Copyright (C) 2012 Hendro Wicaksono (hendrowicaksono@yahoo.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
  *
  */
 
-/* Collection Type Management section */
+/* Statement of Responsibility Management section */
 
 // key to authenticate
 define('INDEX_AUTH', '1');
@@ -45,18 +45,18 @@ $can_read = utility::havePrivilege('master_file', 'r');
 $can_write = utility::havePrivilege('master_file', 'w');
 
 if (!$can_read) {
-    die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
+    die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
 }
 
 /* RECORD OPERATION */
-if (isset($_POST['saveData'])) {
-    $collTypeName = trim(strip_tags($_POST['collTypeName']));
+if (isset($_POST['saveData']) AND $can_read AND $can_write) {
+    $sorName = trim(strip_tags($_POST['sorName']));
     // check form validity
-    if (empty($collTypeName)) {
-        utility::jsAlert(__('Collection type name can\'t be empty'));
+    if (empty($sorName)) {
+        utility::jsAlert(__('Statement of Responsibility can\'t be empty')); //mfc
         exit();
     } else {
-        $data['coll_type_name'] = $dbs->escape_string($collTypeName);
+        $data['sor'] = $dbs->escape_string($sorName);
         $data['input_date'] = date('Y-m-d');
         $data['last_update'] = date('Y-m-d');
 
@@ -69,20 +69,20 @@ if (isset($_POST['saveData'])) {
             // filter update record ID
             $updateRecordID = (integer)$_POST['updateRecordID'];
             // update the data
-            $update = $sql_op->update('mst_coll_type', $data, 'coll_type_id='.$updateRecordID);
+            $update = $sql_op->update('mst_sor', $data, 'sor_id='.$updateRecordID);
             if ($update) {
-                utility::jsAlert(__('Colllection Type Data Successfully Updated'));
+                utility::jsAlert(__('Statement of Responsibility Data Successfully Updated'));
                 echo '<script type="text/javascript">parent.jQuery(\'#mainContent\').simbioAJAX(parent.jQuery.ajaxHistory[0].url);</script>';
-            } else { utility::jsAlert(__('Colllection Type Data FAILED to Updated. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
+            } else { utility::jsAlert(__('Statement of Responsibility Data FAILED to Updated. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
         } else {
             /* INSERT RECORD MODE */
             // insert the data
-            $insert = $sql_op->insert('mst_coll_type', $data);
+            $insert = $sql_op->insert('mst_sor', $data);
             if ($insert) {
-                utility::jsAlert(__('New Colllection Type Data Successfully Saved'));
+                utility::jsAlert(__('New Statement of Responsibility Data Successfully Saved'));
                 echo '<script type="text/javascript">parent.jQuery(\'#mainContent\').simbioAJAX(\''.$_SERVER['PHP_SELF'].'\');</script>';
-            } else { utility::jsAlert(__('Author Data FAILED to Save. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
+            } else { utility::jsAlert(__('Statement of Responsibility Data FAILED to Save. Please Contact System Administrator')."\nDEBUG : ".$sql_op->error); }
             exit();
         }
     }
@@ -102,31 +102,11 @@ if (isset($_POST['saveData'])) {
     // loop array
     foreach ($_POST['itemID'] as $itemID) {
         $itemID = (integer)$itemID;
-        // check if this item data still have an item
-        $item_q = $dbs->query('SELECT ct.coll_type_name, COUNT(item_id) FROM item AS i
-            LEFT JOIN mst_coll_type AS ct ON i.coll_type_id=ct.coll_type_id
-            WHERE i.coll_type_id='.$itemID.' GROUP BY i.coll_type_id');
-        $item_d = $item_q->fetch_row();
-        if ($item_d[1] < 1) {
-            if (!$sql_op->delete('mst_coll_type', "coll_type_id=$itemID")) {
-                $error_num++;
-            }
-        } else {
-            $msg = str_replace('{item_name}', $item_d[0], __('Location ({item_name}) still used by {number_items} item(s)')); //mfc
-            $msg = str_replace('{number_items}', $item_d[1], $msg);
-            $still_have_item[] = $msg;
+        if (!$sql_op->delete('mst_sor', 'sor_id='.$itemID)) {
             $error_num++;
         }
     }
 
-    if ($still_have_item) {
-        $undeleted_coll_types = '';
-        foreach ($still_have_item as $coll_type) {
-            $undeleted_coll_types .= $coll_type."\n";
-        }
-        utility::jsAlert(__('Below data can not be deleted:').$undeleted_coll_types);
-        exit();
-    }
     // error alerting
     if ($error_num == 0) {
         utility::jsAlert(__('All Data Successfully Deleted'));
@@ -137,21 +117,21 @@ if (isset($_POST['saveData'])) {
     }
     exit();
 }
-/* RECORD OPERATION END */
+/* RECORD OPERATION */
 
 /* search form */
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner masterFileIcon">
 	<div class="per_title">
-	    <h2><?php echo __('Collection Type'); ?></h2>
+	    <h2><?php echo __('Statement of Responsibility'); ?></h2>
   </div>
 	<div class="sub_section">
 	  <div class="action_button">
-      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/coll_type.php" class="headerText2"><?php echo __('Collection Type List'); ?></a>
-      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/coll_type.php?action=detail" class="headerText2"><?php echo __('Add New Collection Type'); ?></a>
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/sor.php" class="headerText2"><?php echo __('Statement of Responsibility List'); ?></a>
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/sor.php?action=detail" class="headerText2"><?php echo __('Add New Statement of Responsibility'); ?></a>
 	  </div>
-    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/coll_type.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
+    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/sor.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
     <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
@@ -163,10 +143,11 @@ if (isset($_POST['saveData'])) {
 /* main content */
 if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'detail')) {
     if (!($can_read AND $can_write)) {
-        die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
+        die('<div class="errorBox">'.__('You don\'t have enough privileges to access this area!').'</div>');
     }
+    /* RECORD FORM */
     $itemID = (integer)isset($_POST['itemID'])?$_POST['itemID']:0;
-    $rec_q = $dbs->query("SELECT * FROM mst_coll_type WHERE coll_type_id=$itemID");
+    $rec_q = $dbs->query('SELECT * FROM mst_sor WHERE sor_id='.$itemID);
     $rec_d = $rec_q->fetch_assoc();
 
     // create new instance
@@ -184,44 +165,43 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         // record ID for delete process
         $form->record_id = $itemID;
         // form record title
-        $form->record_title = $rec_d['coll_type_name'];
+        $form->record_title = $rec_d['sor'];
         // submit button attribute
         $form->submit_button_attr = 'name="saveData" value="'.__('Update').'" class="button"';
     }
 
     /* Form Element(s) */
-    // coll_type_name
-    $form->addTextField('text', 'collTypeName', __('Collection Type').'*', $rec_d['coll_type_name'], 'style="width: 60%;"');
+    // Statement of Responsibility
+    $form->addTextField('text', 'sorName', __('Statement of Responsibility').'*', $rec_d['sor'], 'style="width: 60%;"');
 
     // edit mode messagge
     if ($form->edit_mode) {
-        echo '<div class="infoBox">'.__('You are going to edit collection type data').' : <b>'.$rec_d['coll_type_name'].'</b>  <br />'.__('Last Update').$rec_d['last_update'].'</div>'; //mfc
+        echo '<div class="infoBox">'.__('You are going to edit Statement of Responsibility data').' : <b>'.$rec_d['sor'].'</b> <br />'.__('Last Update').$rec_d['last_update'] //mfc
+            .'</div>'."\n";
     }
     // print out the form object
     echo $form->printOut();
 } else {
-    /* COLLECTION TYPE LIST */
+    /* Statement of Responsibility LIST */
     // table spec
-    $table_spec = 'mst_coll_type AS ct';
+    $table_spec = 'mst_sor AS p';
 
     // create datagrid
     $datagrid = new simbio_datagrid();
     if ($can_read AND $can_write) {
-        $datagrid->setSQLColumn('ct.coll_type_id', 'ct.coll_type_name AS \''.__('Collection Type').'\'', 'ct.last_update AS \''.__('Last Update').'\'');
+        $datagrid->setSQLColumn('p.sor_id',
+            'p.sor AS \''.__('Statement of Responsibility Name').'\'',
+            'p.last_update AS \''.__('Last Update').'\'');
     } else {
-        $datagrid->setSQLColumn('ct.coll_type_name AS \''.__('Collection Type').'\'', 'ct.last_update AS \''.__('Last Update').'\'');
+        $datagrid->setSQLColumn('p.sor AS \''.__('Statement of Responsibility').'\'',
+            'p.last_update AS \''.__('Last Update').'\'');
     }
-    $datagrid->setSQLorder('coll_type_name ASC');
-
-    // change the record order
-    if (isset($_GET['fld']) AND isset($_GET['dir'])) {
-        $datagrid->setSQLorder("'".urldecode($_GET['fld'])."' ".$dbs->escape_string($_GET['dir']));
-    }
+    $datagrid->setSQLorder('sor ASC');
 
     // is there any search
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
        $keywords = $dbs->escape_string($_GET['keywords']);
-       $datagrid->setSQLCriteria("ct.coll_type_name LIKE '%$keywords%'");
+       $datagrid->setSQLCriteria("p.sor LIKE '%$keywords%'");
     }
 
     // set table and table header attributes
@@ -230,11 +210,13 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // set delete proccess URL
     $datagrid->chbox_form_URL = $_SERVER['PHP_SELF'];
 
-    // put the result into variables
+    // put the result into variable
     $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, ($can_read AND $can_write));
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
+        echo '<table cellpadding="3" cellspacing="0" class="infoBox">';
         $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
-        echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"</div>';
+        echo '<tr><th>'.$msg.' : "'.$_GET['keywords'].'"</th></tr>';
+        echo '</table>';
     }
 
     echo $datagrid_result;

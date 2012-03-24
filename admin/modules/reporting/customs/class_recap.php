@@ -2,6 +2,7 @@
 /**
  *
  * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com)
+ * Modified for Excel output (C) 2010 by Wardiyono (wynerst@gmail.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +30,8 @@ require '../../../../sysconfig.inc.php';
 // IP based access limitation
 require LIB_DIR.'ip_based_access.inc.php';
 do_checkIP('smc');
-do_checkIP('smc-reporting');// start the session
+do_checkIP('smc-reporting');
+// start the session
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 // privileges checking
@@ -55,8 +57,14 @@ if (isset($_GET['reportView'])) {
 if (!$reportView) {
 ?>
     <!-- filter -->
-    <fieldset style="margin-bottom: 3px;">
-    <legend style="font-weight: bold"><?php echo strtoupper(__('Custom Recapitulations')); ?> - <?php echo __('Report Filter'); ?></legend>
+    <fieldset>
+    <div class="per_title">
+    	<h2><?php echo __('Custom Recapitulations'); ?></h2>
+	  </div>
+    <div class="infoBox">
+    <?php echo __('Report Filter'); ?>
+    </div>
+    <div class="sub_section">
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
         <div class="divRow">
@@ -80,6 +88,7 @@ if (!$reportView) {
     <input type="hidden" name="reportView" value="true" />
     </div>
     </form>
+    </div>
     </fieldset>
     <script type="text/javascript">hideRows('filterForm', 1);</script>
     <!-- filter end -->
@@ -87,6 +96,8 @@ if (!$reportView) {
 <?php
 } else {
     ob_start();
+	$xls_rc = 0;
+	$xls_cc = 0;
     $row_class = 'alterCellPrinted';
     $recapby = __('Classification');
     $output = '<table align="center" class="border" style="width: 100%;" cellpadding="3" cellspacing="0">';
@@ -94,6 +105,8 @@ if (!$reportView) {
     $output .= '<tr><td class="dataListHeaderPrinted">'.$recapby.'</td>
         <td class="dataListHeaderPrinted">'.__('Title').'</td>
         <td class="dataListHeaderPrinted">'.__('Items').'</td></tr>';
+	$xlsrows = array($xls_rc => array($recapby,__('Title'),__('Items')));
+	$xls_rc++;
     if (isset($_GET['recapBy']) AND trim($_GET['recapBy']) != '') {
         switch ($_GET['recapBy']) {
             case 'gmd' :
@@ -107,18 +120,18 @@ if (!$reportView) {
                 $bytitle_q = $dbs->query("SELECT COUNT(biblio_id) FROM biblio WHERE gmd_id=".$gmd_d[0]);
                 $bytitle_d = $bytitle_q->fetch_row();
                 $output .= '<td class="'.$row_class.'"><strong style="font-size: 1.3em;">'.$bytitle_d[0].'</strong></td>';
-
                 // count by item
                 $byitem_q = $dbs->query("SELECT COUNT(item_id) FROM item AS i INNER JOIN biblio AS b
                     ON i.biblio_id=b.biblio_id
                     WHERE b.gmd_id=".$gmd_d[0]);
                 $byitem_d = $byitem_q->fetch_row();
                 $output .= '<td class="'.$row_class.'"><strong style="font-size: 1.3em;">'.$byitem_d[0].'</strong></td>';
-
+				$xlsrows[$xls_rc] = array($gmd_d[1],$bytitle_d[0],$byitem_d[0]);
+				$xls_rc++;
                 $output .= '</tr>';
-            }
+			}
             /* GMD END */
-            break;
+			break;
             case 'language' :
             $recapby = __('Language');
             /* LANGUAGE */
@@ -138,6 +151,8 @@ if (!$reportView) {
                 $byitem_d = $byitem_q->fetch_row();
                 $output .= '<td class="'.$row_class.'"><strong style="font-size: 1.3em;">'.$byitem_d[0].'</strong></td>';
 
+				$xlsrows[$xls_rc] = array($lang_d[1],$bytitle_d[0],$byitem_d[0]);
+				$xls_rc++;
                 $output .= '</tr>';
             }
             /* LANGUAGE END */
@@ -152,14 +167,17 @@ if (!$reportView) {
                 // count by title
                 $bytitle_q = $dbs->query("SELECT DISTINCT biblio_id FROM item AS i
                     WHERE i.coll_type_id=".$ctype_d[0]."");
+				$bytitle_d[0] = $bytitle_q->num_rows;
                 $output .= '<td class="'.$row_class.'"><strong style="font-size: 1.3em;">'.$bytitle_q->num_rows.'</strong></td>';
-
+				
                 // count by item
                 $byitem_q = $dbs->query("SELECT COUNT(item_id) FROM item AS i
                     WHERE i.coll_type_id=".$ctype_d[0]);
                 $byitem_d = $byitem_q->fetch_row();
                 $output .= '<td class="'.$row_class.'"><strong style="font-size: 1.3em;">'.$byitem_d[0].'</strong></td>';
 
+				$xlsrows[$xls_rc] = array($ctype_d[1],$bytitle_d[0],$byitem_d[0]);
+				$xls_rc++;
                 $output .= '</tr>';
             }
             /* COLLECTION TYPE END */
@@ -186,6 +204,8 @@ if (!$reportView) {
             $byitem_d = $byitem_q->fetch_row();
             $output .= '<td class="'.$row_class.'"><strong style="font-size: 1.5em;">'.$byitem_d[0].'</strong></td>';
 
+			$xlsrows[$xls_rc] = array($class_num.'00',$bytitle_d[0],$byitem_d[0]);
+			$xls_rc++;
             $output .= '</tr>';
 
             // 2nd subclasses
@@ -205,6 +225,8 @@ if (!$reportView) {
                 $byitem_d = $byitem_q->fetch_row();
                 $output .= '<td class="'.$row_class.'">'.$byitem_d[0].'</td>';
 
+				$xlsrows[$xls_rc] = array('  '.$class_num.$class_num2.'0',$bytitle_d[0],$byitem_d[0]);
+				$xls_rc++;
                 $output .= '</tr>';
                 $class_num2++;
             }
@@ -227,6 +249,8 @@ if (!$reportView) {
         $byitem_d = $byitem_q->fetch_row();
         $output .= '<td class="'.$row_class.'"><strong style="font-size: 1.5em;">'.$byitem_d[0].'</strong></td>';
 
+		$xlsrows[$xls_rc] = array('2X',$bytitle_d[0],$byitem_d[0]);
+		$xls_rc++;
         $output .= '</tr>';
         /* 2X NUMBER CLASSES END */
 
@@ -250,6 +274,8 @@ if (!$reportView) {
                 $byitem_d = $byitem_q->fetch_row();
                 $output .= '<td class="'.$row_class.'"><strong style="font-size: 1.5em;">'.$byitem_d[0].'</strong></td>';
 
+				$xlsrows[$xls_rc] = array($_non_decimal[0],$bytitle_d[0],$byitem_d[0]);
+				$xls_rc++;
                 $output .= '</tr>';
             }
         }
@@ -258,11 +284,15 @@ if (!$reportView) {
     $output .= '</table>';
 
     // print out
-    echo '<div class="printPageInfo">'.__('Title and Collection Recap by').' <strong>'.$recapby.'</strong> <a class="printReport" onclick="window.print()" href="#">'.__('Print Current Page').'</a></div>'."\n";
+    echo '<div class="printPageInfo">'.__('Title and Collection Recap by').' <strong>'.$recapby.'</strong> <a class="printReport" onclick="window.print()" href="#">['.__('Print Current Page').']</a><a href="../xlsoutput.php" class="button">'.__('Export to spreadsheet format').'</a></div>'."\n";
     echo $output;
 
+	unset($_SESSION['xlsquery']); 
+	$_SESSION['xlsdata'] = $xlsrows;
+	$_SESSION['tblout'] = "recap_list";
+	echo '<p><a href="../xlsoutput.php" class="button">'.__('Export to spreadsheet format').'</a></p>';
     $content = ob_get_clean();
     // include the page template
     require SENAYAN_BASE_DIR.'/admin/'.$sysconf['admin_template']['dir'].'/printed_page_tpl.php';
 }
-?>
+

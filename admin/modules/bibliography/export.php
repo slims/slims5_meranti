@@ -45,116 +45,116 @@ if (!$can_read) {
 }
 
 if (isset($_POST['doExport'])) {
-    // check for form validity
-    if (empty($_POST['fieldSep']) OR empty($_POST['fieldEnc'])) {
-        utility::jsAlert(__('Required fields (*)  must be filled correctly!'));
-        exit();
+  // check for form validity
+  if (empty($_POST['fieldSep']) OR empty($_POST['fieldEnc'])) {
+      utility::jsAlert(__('Required fields (*)  must be filled correctly!'));
+      exit();
+  } else {
+    // set PHP time limit
+    set_time_limit(0);
+
+    // create local function to fetch values
+    function getValues($obj_db, $str_query)
+    {
+      // make query from database
+      $_value_q = $obj_db->query($str_query);
+      if ($_value_q->num_rows > 0) {
+          $_value_buffer = '';
+          while ($_value_d = $_value_q->fetch_row()) {
+              if ($_value_d[0]) {
+                  $_value_buffer .= '<'.$_value_d[0].'>';
+              }
+          }
+          return $_value_buffer;
+      }
+      return null;
+    }
+
+    // limit
+    $sep = trim($_POST['fieldSep']);
+    $encloser = trim($_POST['fieldEnc']);
+    $limit = intval($_POST['recordNum']);
+    $offset = intval($_POST['recordOffset']);
+    if ($_POST['recordSep'] === 'NEWLINE') {
+        $rec_sep = "\n";
+    } else if ($_POST['recordSep'] === 'RETURN') {
+        $rec_sep = "\r";
     } else {
-        // set PHP time limit
-        set_time_limit(0);
-
-        // create local function to fetch values
-        function getValues($obj_db, $str_query)
-        {
-            // make query from database
-            $_value_q = $obj_db->query($str_query);
-            if ($_value_q->num_rows > 0) {
-                $_value_buffer = '';
-                while ($_value_d = $_value_q->fetch_row()) {
-                    if ($_value_d[0]) {
-                        $_value_buffer .= '<'.$_value_d[0].'>';
-                    }
-                }
-                return $_value_buffer;
-            }
-            return null;
-        }
-
-        // limit
-        $sep = trim($_POST['fieldSep']);
-        $encloser = trim($_POST['fieldEnc']);
-        $limit = intval($_POST['recordNum']);
-        $offset = intval($_POST['recordOffset']);
-        if ($_POST['recordSep'] === 'NEWLINE') {
-            $rec_sep = "\n";
-        } else if ($_POST['recordSep'] === 'RETURN') {
-            $rec_sep = "\r";
+        $rec_sep = trim($_POST['recordSep']);
+    }
+    // fetch all data from biblio table
+    $sql = "SELECT
+        b.biblio_id, b.title, gmd.gmd_name, b.edition,
+        b.isbn_issn, publ.publisher_name, b.publish_year,
+        b.collation, b.series_title, b.call_number,
+        lang.language_name, pl.place_name, b.classification,
+        b.notes, b.image, b.file_att
+        FROM biblio AS b
+        LEFT JOIN mst_gmd AS gmd ON b.gmd_id=gmd.gmd_id
+        LEFT JOIN mst_publisher AS publ ON b.publisher_id=publ.publisher_id
+        LEFT JOIN mst_language AS lang ON b.language_id=lang.language_id
+        LEFT JOIN mst_place AS pl ON b.publish_place_id=pl.place_id ORDER BY b.last_update DESC";
+    if ($limit > 0) { $sql .= ' LIMIT '.$limit; }
+    if ($offset > 1) {
+      if ($limit > 0) {
+          $sql .= ' OFFSET '.($offset-1);
+      } else {
+          $sql .= ' LIMIT '.($offset-1).',99999999999';
+      }
+    }
+    // for debugging purpose only
+    // die($sql);
+    $all_data_q = $dbs->query($sql);
+    if ($dbs->error) {
+      utility::jsAlert(__('Error on query to database, Export FAILED!'));
+    } else {
+        if ($all_data_q->num_rows > 0) {
+          header('Content-type: text/plain');
+          header('Content-Disposition: attachment; filename="senayan_biblio_export.csv"');
+          while ($biblio_d = $all_data_q->fetch_row()) {
+              $buffer = null;
+              foreach ($biblio_d as $idx => $fld_d) {
+                  // skip biblio_id field
+                  if ($idx > 0) {
+                      $fld_d = $dbs->escape_string($fld_d);
+                      // data
+                      $buffer .=  stripslashes($encloser.$fld_d.$encloser);
+                      // field separator
+                      $buffer .= $sep;
+                  }
+              }
+              // authors
+              $authors = getValues($dbs, 'SELECT a.author_name FROM biblio_author AS ba
+                  LEFT JOIN mst_author AS a ON ba.author_id=a.author_id
+                  WHERE ba.biblio_id='.$biblio_d[0]);
+              $buffer .= $encloser.$authors.$encloser;
+              $buffer .= $sep;
+              // topics
+              $topics = getValues($dbs, 'SELECT t.topic FROM biblio_topic AS bt
+                  LEFT JOIN mst_topic AS t ON bt.topic_id=t.topic_id
+                  WHERE bt.biblio_id='.$biblio_d[0]);
+              $buffer .= $encloser.$topics.$encloser;
+              $buffer .= $sep;
+              // item code
+              $items = getValues($dbs, 'SELECT item_code FROM item AS i
+                  WHERE i.biblio_id='.$biblio_d[0]);
+              $buffer .= $encloser.$items.$encloser;
+              echo $buffer;
+              echo $rec_sep;
+          }
+          exit();
         } else {
-            $rec_sep = trim($_POST['recordSep']);
-        }
-        // fetch all data from biblio table
-        $sql = "SELECT
-            b.biblio_id, b.title, gmd.gmd_name, b.edition,
-            b.isbn_issn, publ.publisher_name, b.publish_year,
-            b.collation, b.series_title, b.call_number,
-            lang.language_name, pl.place_name, b.classification,
-            b.notes, b.image, b.file_att
-            FROM biblio AS b
-            LEFT JOIN mst_gmd AS gmd ON b.gmd_id=gmd.gmd_id
-            LEFT JOIN mst_publisher AS publ ON b.publisher_id=publ.publisher_id
-            LEFT JOIN mst_language AS lang ON b.language_id=lang.language_id
-            LEFT JOIN mst_place AS pl ON b.publish_place_id=pl.place_id ORDER BY b.last_update DESC";
-        if ($limit > 0) { $sql .= ' LIMIT '.$limit; }
-        if ($offset > 1) {
-            if ($limit > 0) {
-                $sql .= ' OFFSET '.($offset-1);
-            } else {
-                $sql .= ' LIMIT '.($offset-1).',99999999999';
-            }
-        }
-        // for debugging purpose only
-        // die($sql);
-        $all_data_q = $dbs->query($sql);
-        if ($dbs->error) {
-            utility::jsAlert(__('Error on query to database, Export FAILED!'));
-        } else {
-            if ($all_data_q->num_rows > 0) {
-                header('Content-type: text/plain');
-                header('Content-Disposition: attachment; filename="senayan_biblio_export.csv"');
-                while ($biblio_d = $all_data_q->fetch_row()) {
-                    $buffer = null;
-                    foreach ($biblio_d as $idx => $fld_d) {
-                        // skip biblio_id field
-                        if ($idx > 0) {
-                            $fld_d = $dbs->escape_string($fld_d);
-                            // data
-                            $buffer .=  stripslashes($encloser.$fld_d.$encloser);
-                            // field separator
-                            $buffer .= $sep;
-                        }
-                    }
-                    // authors
-                    $authors = getValues($dbs, 'SELECT a.author_name FROM biblio_author AS ba
-                        LEFT JOIN mst_author AS a ON ba.author_id=a.author_id
-                        WHERE ba.biblio_id='.$biblio_d[0]);
-                    $buffer .= $encloser.$authors.$encloser;
-                    $buffer .= $sep;
-                    // topics
-                    $topics = getValues($dbs, 'SELECT t.topic FROM biblio_topic AS bt
-                        LEFT JOIN mst_topic AS t ON bt.topic_id=t.topic_id
-                        WHERE bt.biblio_id='.$biblio_d[0]);
-                    $buffer .= $encloser.$topics.$encloser;
-                    $buffer .= $sep;
-                    // item code
-                    $items = getValues($dbs, 'SELECT item_code FROM item AS i
-                        WHERE i.biblio_id='.$biblio_d[0]);
-                    $buffer .= $encloser.$items.$encloser;
-                    echo $buffer;
-                    echo $rec_sep;
-                }
-                exit();
-            } else {
-                utility::jsAlert(__('There is no record in bibliographic database yet, Export FAILED!'));
-            }
+          utility::jsAlert(__('There is no record in bibliographic database yet, Export FAILED!'));
         }
     }
-    exit();
+  }
+  exit();
 }
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner exportIcon">
 	<div class="per_title">
-    	<h2><?php echo __('EXPORT TOOL'); ?></h2>
+    	<h2><?php echo __('Export Tool'); ?></h2>
 	</div>
 	<div class="infoBox">
     	<?php echo __('Export bibliographics data to CSV file'); ?>

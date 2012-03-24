@@ -99,6 +99,7 @@ div.clear {
 	width: 100%;
 	height: 100%;
 	min-height: 100%;
+	background-color: #fff;
 }
 
 
@@ -331,6 +332,7 @@ submenu
 .button,
 .headerText2,
 input[type="submit"],
+input[type="button"],
 .tab,
 a.printReport {
 	color:#fff !important;
@@ -477,26 +479,26 @@ select {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
-    -moz-appearance: menulist;
-    -moz-box-sizing: border-box;
-    -moz-font-feature-settings: -moz-use-system-font;
-    -moz-font-language-override: -moz-use-system-font;
-    -moz-user-select: none;
-    -x-system-font: -moz-list;
-    background-color: -moz-combobox;
-    cursor: default;
-    font-size-adjust: -moz-use-system-font;
-    font-stretch: -moz-use-system-font;
-    font-style: -moz-use-system-font;
-    font-variant: -moz-use-system-font;
-    line-height: normal !important;
-    overflow-x: -moz-hidden-unscrollable;
-    overflow-y: -moz-hidden-unscrollable;
-    text-align: start;
-    text-indent: 0;
-    text-shadow: none;
-    white-space: nowrap !important;
-    word-wrap: normal !important;
+  -moz-appearance: menulist;
+  -moz-box-sizing: border-box;
+  -moz-font-feature-settings: -moz-use-system-font;
+  -moz-font-language-override: -moz-use-system-font;
+  -moz-user-select: none;
+  -x-system-font: -moz-list;
+  background-color: -moz-combobox;
+  cursor: default;
+  font-size-adjust: -moz-use-system-font;
+  font-stretch: -moz-use-system-font;
+  font-style: -moz-use-system-font;
+  font-variant: -moz-use-system-font;
+  line-height: normal !important;
+  overflow-x: -moz-hidden-unscrollable;
+  overflow-y: -moz-hidden-unscrollable;
+  text-align: start;
+  text-indent: 0;
+  text-shadow: none;
+  white-space: nowrap !important;
+  word-wrap: normal !important;
 }
 
 textarea {
@@ -507,7 +509,7 @@ textarea {
 table
 ---------*/
 table, tr, td, th {
-	background-color: #fff !important;
+
 	border: none !important;
 }
 
@@ -526,11 +528,14 @@ table, tr, td, th {
 .border td,
 #pageContent td
 {
-	padding:7px;
+	padding:5px;
 	border-top: dotted 1px #ddd !important;
 	border-bottom: dotted 1px #ddd !important;
 	border-left: dotted 1px #ddd !important;
-	background-color:whitesmoke;
+}
+
+.alterCell {
+	background-color: #fff;
 }
 
 #pageContent td {
@@ -874,7 +879,7 @@ icon
 
 .dateField {
 	border: 1px solid #ccc;
-  	-webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
 	-moz-transition: border linear 0.2s, box-shadow linear 0.2s;
 	-ms-transition: border linear 0.2s, box-shadow linear 0.2s;
 	-o-transition: border linear 0.2s, box-shadow linear 0.2s;
@@ -1014,7 +1019,28 @@ icon
 	padding:10px;
 }
 
+.per_title h2 div
+{
+	font-size: 90%;
+}
+
 .sub_section
 {
 	padding:10px;
+}
+
+.makeHidden {
+	display: none;
+}
+
+input.small_input {
+  width: 50px;
+}
+
+.mceToolbar td, .mceLayout td {
+	padding: 0 !important;
+}
+
+.mceToolbar table td {
+	border: 0;
 }

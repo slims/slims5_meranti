@@ -199,7 +199,7 @@ if (!$in_pop_up) {
 <fieldset class="menuBox">
 <div class="menuBoxInner itemIcon">
 	<div class="per_title">
-    	<h2><?php echo strtoupper(__('Items')); ?></h2>
+    	<h2><?php echo __('Items'); ?></h2>
 	</div>
 	<div class="sub_section">
 	    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/item.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :

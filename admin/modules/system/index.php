@@ -51,9 +51,14 @@ require SIMBIO_BASE_DIR.'simbio_DB/simbio_dbop.inc.php';
 
 ?>
 <fieldset class="menuBox">
-    <div class="menuBoxInner systemIcon">
-        <?php echo strtoupper(__('System Configuration')).'<hr />'.__('Modify global application preferences'); ?>
+  <div class="menuBoxInner systemIcon">
+    <div class="per_title">
+      <h2><?php echo __('System Configuration'); ?></h2>
     </div>
+    <div class="infoBox">
+      <?php echo __('Modify global application preferences'); ?>
+    </div>
+  </div>
 </fieldset>
 <?php
 /* main content */

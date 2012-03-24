@@ -43,14 +43,20 @@ $page_title = 'Stock Take Lost Items';
 
 $reportView = false;
 if (isset($_GET['reportView'])) {
-    $reportView = true;
+  $reportView = true;
 }
 
 if (!$reportView) {
 ?>
     <!-- filter -->
-    <fieldset style="margin-bottom: 3px;">
-    <legend style="font-weight: bold"><?php echo strtoupper(__('Current Lost Item')); ?> - <?php echo __('Report Filter'); ?></legend>
+    <fieldset>
+	  <div class="per_title">
+	    <h2><?php echo __('Current Lost Item'); ?></h2>
+    </div>
+	  <div class="infoBox">
+      <?php echo __('Report Filter'); ?>
+    </div>
+    <div class="sub_section">
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
     <div class="divRow">
@@ -119,15 +125,16 @@ if (!$reportView) {
         ?>
         </div>
     </div>
-    <div style="padding-top: 10px; clear: both;">
-    <input type="submit" name="applyFilter" value="<?php echo __('Apply Filter'); ?>" />
-    <input type="button" name="moreFilter" value="<?php echo __('Show More Filter Options'); ?>" />
-    <input type="hidden" name="reportView" value="true" />
+    <div class="action_button">
+      <input type="submit" name="applyFilter" value="<?php echo __('Apply Filter'); ?>" />
+      <input type="button" name="moreFilter" value="<?php echo __('Show More Filter Options'); ?>" />
+      <input type="hidden" name="reportView" value="true" />
     </div>
     </form>
+    </div>
     </fieldset>
     <!-- filter end -->
-    <div class="dataListHeader" style="height: 35px;"><span id="pagingBox"></span></div>
+    <div class="dataListHeader reportHeader"><span id="pagingBox"></span></div>
     <iframe name="reportView" src="<?php echo $_SERVER['PHP_SELF'].'?reportView=true'; ?>" frameborder="0" style="width: 100%; height: 500px;"></iframe>
 <?php
 } else {
@@ -196,4 +203,3 @@ if (!$reportView) {
     // include the page template
     require SENAYAN_BASE_DIR.'/admin/'.$sysconf['admin_template']['dir'].'/printed_page_tpl.php';
 }
-?>

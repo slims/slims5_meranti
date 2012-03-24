@@ -220,7 +220,7 @@ if (isset($_GET['keywords']) && $can_read && isset($_GET['p2pserver']))  {
 <fieldset class="menuBox">
 <div class="menuBoxInner biblioIcon">
     <div class="per_title">
-	    <h2><?php echo strtoupper(__('P2P Service')); ?></h2>
+	    <h2><?php echo __('P2P Service'); ?></h2>
     </div>
     <div class="sub_section">
       <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/p2p.php" loadcontainer="searchResult" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :

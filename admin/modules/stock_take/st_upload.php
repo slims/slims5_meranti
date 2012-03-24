@@ -122,13 +122,18 @@ if (isset($_POST['stUpload']) && isset($_FILES['stFile'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner stockTakeIcon">
-    <?php echo __('STOCK TAKE UPLOAD - Upload a plain text file (.txt) containing list of Item Code to stock take. Each Item Code separated by line.'); ?><hr />
+  <div class="per_title">
+    <h2><?php echo __('Stock Take Upload'); ?></h2>
+  </div>
+  <div class="infoBox"><?php echo __('Upload a plain text file (.txt) containing list of Item Code to stock take. Each Item Code separated by line.'); ?></div>
+  <div class="sub_section">
     <form name="uploadForm" class="notAJAX" method="post" enctype="multipart/form-data" action="<?php echo MODULES_WEB_ROOT_DIR.'stock_take/st_upload.php'; ?>" target="uploadAction" style="display: inline;">
-    <?php echo __(' File'); //mfc ?>: <input type="file" name="stFile" id="stFile" /> Maximum <?php echo $sysconf['max_upload']; ?> KB
+    <?php echo __('File'); ?>: <input type="file" name="stFile" id="stFile" /> Maximum <?php echo $sysconf['max_upload']; ?> KB
     <div style="margin: 3px;"><input type="submit" name="stUpload" id="stUpload" value="<?php echo __('Upload File'); ?>" class="button" />
     <iframe name="uploadAction" style="width: 0; height: 0; visibility: hidden;"></iframe>
     </div>
     </form>
+  </div>
 </div>
 </fieldset>
-<div id="stUploadMsg" class="infoBox" style="display: none;">&nbsp;</div>&nbsp;
+<div id="stUploadMsg" class="infoBox" style="display: none;">&nbsp;</div>

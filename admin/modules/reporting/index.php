@@ -164,12 +164,15 @@ if (isset($_GET['print'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner statisticIcon">
-    <?php echo strtoupper(__('Collection Statistic')); ?>
-    <hr />
+	<div class="per_title">
+	  <h2><?php echo __('Collection Statistic'); ?></h2>
+  </div>
+	<div class="infoBox">
     <form name="printForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="submitPrint" id="printForm" class="notAJAX" method="get" style="display: inline;">
     <input type="hidden" name="print" value="true" /><input type="submit" value="<?php echo __('Download Report'); ?>" class="button" />
     </form>
     <iframe name="submitPrint" style="visibility: hidden; width: 0; height: 0;"></iframe>
+  </div>
 </div>
 </fieldset>
 <?php

@@ -12,7 +12,6 @@ if (!defined('INDEX_AUTH')) {
 } elseif (INDEX_AUTH != 1) {
     die("can not access this file directly");
 }
-
 //set default index page
 $p = 'home';	
 

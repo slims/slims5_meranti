@@ -128,18 +128,18 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 <fieldset class="menuBox">
 <div class="menuBoxInner masterFileIcon">
 	<div class="per_title">
-	    <h2><?php echo strtoupper(__('Subject')); ?></h2>
-    </div>    
+	    <h2><?php echo __('Subject'); ?></h2>
+  </div>
 	<div class="sub_section">
-	    <div class="action_button">
-		    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/topic.php?action=detail" class="headerText2"><?php echo __('Add New Subject'); ?></a>
-		    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/topic.php" class="headerText2"><?php echo __('Subject List'); ?></a>    
-	    </div>
-	    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/topic.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
-		    <input type="text" name="keywords" size="30" />
-		    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
-	    </form>
-    </div>
+	  <div class="action_button">
+		  <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/topic.php" class="headerText2"><?php echo __('Subject List'); ?></a>
+		  <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/topic.php?action=detail" class="headerText2"><?php echo __('Add New Subject'); ?></a>
+	  </div>
+	  <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/topic.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
+		  <input type="text" name="keywords" size="30" />
+		  <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
+	  </form>
+  </div>
 </div>
 </fieldset>
 <?php

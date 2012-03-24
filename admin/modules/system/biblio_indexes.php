@@ -106,12 +106,18 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner systemIcon">
-    <?php echo strtoupper(__('Bibliographic Index')); ?>
-	<div style="font-weight: normal">Bibliographic Index will speed up catalog search</div>
-	<hr />
-	<a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/biblio_indexes.php?action=detail&detail=empty" class="headerText2"><?php echo __('Emptying Index'); ?></a>
-    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/biblio_indexes.php?action=detail&detail=reindex" class="headerText2"><?php echo __('Re-create Index'); ?></a>
-    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/biblio_indexes.php?action=detail&detail=update" class="headerText2"><?php echo __('Update Index'); ?></a>
+	<div class="per_title">
+	    <h2><?php echo __('Bibliographic Index'); ?></h2>
+  </div>
+	<div class="sub_section">
+		.
+	  <div class="action_button">
+	    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/biblio_indexes.php?action=detail&detail=empty" class="headerText2"><?php echo __('Emptying Index'); ?></a>
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/biblio_indexes.php?action=detail&detail=reindex" class="headerText2"><?php echo __('Re-create Index'); ?></a>
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/biblio_indexes.php?action=detail&detail=update" class="headerText2"><?php echo __('Update Index'); ?></a>
+	  </div>
+	</div>
+	<div class="infoBox">Bibliographic Index will speed up catalog search</div>
 </div>
 </fieldset>
 <?php

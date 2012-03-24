@@ -2,6 +2,7 @@
 /**
  *
  * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com)
+ * Modified for Excel output (C) 2010 by Wardiyono (wynerst@gmail.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +30,8 @@ require '../../../../sysconfig.inc.php';
 // IP based access limitation
 require LIB_DIR.'ip_based_access.inc.php';
 do_checkIP('smc');
-do_checkIP('smc-reporting');// start the session
+do_checkIP('smc-reporting');
+// start the session
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 // privileges checking
@@ -57,8 +59,14 @@ if (isset($_GET['reportView'])) {
 if (!$reportView) {
 ?>
     <!-- filter -->
-    <fieldset style="margin-bottom: 3px;">
-    <legend style="font-weight: bold"><?php echo strtoupper(__('Member List')); ?> - <?php echo __('Report Filter'); ?></legend>
+    <fieldset>
+    <div class="per_title">
+      <h2><?php echo __('Member List'); ?></h2>
+    </div>
+    <div class="infoBox">
+    <?php echo __('Report Filter'); ?>
+    </div>
+    <div class="sub_section">
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
         <div class="divRow">
@@ -116,11 +124,12 @@ if (!$reportView) {
         </div>
     </div>
     <div style="padding-top: 10px; clear: both;">
-    <input type="submit" name="applyFilter" value="<?php echo __('Apply Filter'); ?>" />
     <input type="button" name="moreFilter" value="<?php echo __('Show More Filter Options'); ?>" />
+    <input type="submit" name="applyFilter" value="<?php echo __('Apply Filter'); ?>" />
     <input type="hidden" name="reportView" value="true" />
     </div>
     </form>
+	</div>
     </fieldset>
     <!-- filter end -->
     <div class="dataListHeader" style="padding: 3px;"><span id="pagingBox"></span></div>
@@ -174,9 +183,16 @@ if (!$reportView) {
     echo '<script type="text/javascript">'."\n";
     echo 'parent.$(\'#pagingBox\').html(\''.str_replace(array("\n", "\r", "\t"), '', $reportgrid->paging_set).'\');'."\n";
     echo '</script>';
+	$xlsquery = 'SELECT m.member_id AS \''.__('Member ID').'\''.
+        ', m.member_name AS \''.__('Member Name').'\''.
+        ', mt.member_type_name AS \''.__('Membership Type').'\' FROM '.$table_spec.' WHERE '.$criteria;
 
+	unset($_SESSION['xlsdata']);
+	$_SESSION['xlsquery'] = $xlsquery;
+	$_SESSION['tblout'] = "member_list";
+
+	echo '<p><a href="../xlsoutput.php" class="button">'.__('Export to spreadsheet format').'</a></p>';
     $content = ob_get_clean();
     // include the page template
     require SENAYAN_BASE_DIR.'/admin/'.$sysconf['admin_template']['dir'].'/printed_page_tpl.php';
 }
-?>

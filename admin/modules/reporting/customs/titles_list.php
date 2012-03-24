@@ -2,6 +2,7 @@
 /**
  *
  * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com)
+ * Modified for Excel output (C) 2010 by Wardiyono (wynerst@gmail.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,8 +58,14 @@ if (isset($_GET['reportView'])) {
 if (!$reportView) {
 ?>
     <!-- filter -->
-    <fieldset style="margin-bottom: 3px;">
-    <legend style="font-weight: bold"><?php echo strtoupper(__('Title List')); ?> - <?php echo __('Report Filter'); ?></legend>
+    <fieldset>
+    <div class="per_title">
+    	<h2><?php echo __('Title List'); ?></h2>
+	  </div>
+    <div class="infoBox">
+    <?php echo __('Report Filter'); ?>
+    </div>
+    <div class="sub_section">
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
         <div class="divRow">
@@ -140,11 +147,12 @@ if (!$reportView) {
         </div>
     </div>
     <div style="padding-top: 10px; clear: both;">
-    <input type="submit" name="applyFilter" value="<?php echo __('Apply Filter'); ?>" />
     <input type="button" name="moreFilter" value="<?php echo __('Show More Filter Options'); ?>" />
+    <input type="submit" name="applyFilter" value="<?php echo __('Apply Filter'); ?>" />
     <input type="hidden" name="reportView" value="true" />
     </div>
     </form>
+	</div>
     </fieldset>
     <!-- filter end -->
     <div class="dataListHeader" style="padding: 3px;"><span id="pagingBox"></span></div>
@@ -229,7 +237,7 @@ if (!$reportView) {
     }
 
     // subquery/view string
-    $subquery_str = '(SELECT DISTINCT bsub.biblio_id, bsub.gmd_id, bsub.title, bsub.isbn_issn, bsub.call_number, bsub.classification, bsub.language_id, 
+    $subquery_str = '(SELECT DISTINCT bsub.biblio_id, bsub.gmd_id, bsub.title, bsub.isbn_issn, bsub.call_number, bsub.classification, bsub.language_id,
 		bsub.publish_place_id, bsub.publisher_id
         FROM biblio AS bsub
         LEFT JOIN biblio_author AS ba ON bsub.biblio_id = ba.biblio_id
@@ -273,6 +281,16 @@ if (!$reportView) {
     echo '<script type="text/javascript">'."\n";
     echo 'parent.$(\'#pagingBox\').html(\''.str_replace(array("\n", "\r", "\t"), '', $reportgrid->paging_set).'\');'."\n";
     echo '</script>';
+
+	$xlsquery = 'SELECT b.biblio_id, b.title AS \''.__('Title').'\', COUNT(item_id) AS '.__('Copies').
+		',  b.isbn_issn AS \''.__('ISBN/ISSN').'\', b.call_number AS \''.__('Call Number').'\' FROM '.
+		$table_spec . ' WHERE '. $outer_criteria . ' group by b.biblio_id';
+		// echo $xlsquery;
+		unset($_SESSION['xlsdata']); 
+		$_SESSION['xlsquery'] = $xlsquery;
+		$_SESSION['tblout'] = "title_list";
+
+	echo '<p><a href="../xlsoutput.php" class="button">'.__('Export to spreadsheet format').'</a></p>';
 
     $content = ob_get_clean();
     // include the page template

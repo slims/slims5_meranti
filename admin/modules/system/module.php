@@ -141,13 +141,19 @@ if (isset($_POST['saveData'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner moduleIcon">
-    <?php echo strtoupper(__('Modules')); ?> - <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/module.php?action=detail" class="headerText2"><?php echo __('Add New Modules'); ?></a>
-    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/module.php" class="headerText2"><?php echo __('Modules List'); ?></a>
-    <hr />
+	<div class="per_title">
+	  <h2><?php echo __('Modules'); ?></h2>
+  </div>
+	<div class="sub_section">
+	  <div class="action_button">
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/module.php" class="headerText2"><?php echo __('Modules List'); ?></a>
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/module.php?action=detail" class="headerText2"><?php echo __('Add New Modules'); ?></a>
+	  </div>
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>system/module.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
     <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
+  </div>
 </div>
 </fieldset>
 <?php

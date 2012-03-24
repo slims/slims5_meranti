@@ -53,18 +53,19 @@ class detail extends content_list
      */
     public function __construct($obj_db, $int_detail_id, $str_output_format = 'html')
     {
-        if (!in_array($str_output_format, array('html', 'xml', 'mods'))) {
+        if (!in_array($str_output_format, array('html', 'xml', 'mods', 'dc'))) {
             $this->output_format = trim($str_output_format);
         } else { $this->output_format = $str_output_format; }
 
         $this->obj_db = $obj_db;
         $this->detail_id = $int_detail_id;
-        $_sql = sprintf('SELECT b.*, l.language_name, p.publisher_name, pl.place_name AS \'publish_place\', gmd.gmd_name, fr.frequency FROM biblio AS b
+        $_sql = sprintf('SELECT b.*, l.language_name, p.publisher_name, sr.sor, pl.place_name AS \'publish_place\', gmd.gmd_name, fr.frequency FROM biblio AS b
             LEFT JOIN mst_gmd AS gmd ON b.gmd_id=gmd.gmd_id
             LEFT JOIN mst_language AS l ON b.language_id=l.language_id
             LEFT JOIN mst_publisher AS p ON b.publisher_id=p.publisher_id
             LEFT JOIN mst_place AS pl ON b.publish_place_id=pl.place_id
             LEFT JOIN mst_frequency AS fr ON b.frequency_id=fr.frequency_id
+            LEFT JOIN mst_sor AS sr ON b.sor_id=sr.sor_id
             WHERE biblio_id=%d', $int_detail_id);
         // for debugging purpose only
         // die($_sql);
@@ -128,19 +129,20 @@ class detail extends content_list
 
         // get title and set it to public record_title property
         $this->record_title = $this->record_detail['title'];
-        $this->metadata .= '<meta name="Title" content="'.$this->record_title.'" />';
-        $this->metadata .= '<meta name="Edition" content="'.$this->record_detail['edition'].'" />';
-        $this->metadata .= '<meta name="Call Number" content="'.$this->record_detail['call_number'].'" />';
-        $this->metadata .= '<meta name="ISBN/ISSN" content="'.$this->record_detail['isbn_issn'].'" />';
-        $this->metadata .= '<meta name="Classification" content="'.$this->record_detail['classification'].'" />';
-        $this->metadata .= '<meta name="Series Title" content="'.$this->record_detail['series_title'].'" />';
-        $this->metadata .= '<meta name="Media" content="'.$this->record_detail['gmd_name'].'" />';
-        $this->metadata .= '<meta name="Language" content="'.$this->record_detail['language_name'].'" />';
-        $this->metadata .= '<meta name="Publisher" content="'.$this->record_detail['publisher_name'].'" />';
-        $this->metadata .= '<meta name="Publish Year" content="'.$this->record_detail['publish_year'].'" />';
-        $this->metadata .= '<meta name="Publish Place" content="'.$this->record_detail['publish_place'].'" />';
-        $this->metadata .= '<meta name="Physical Description" content="'.$this->record_detail['collation'].'" />';
-        $this->metadata .= '<meta name="Notes" content="'.strip_tags($this->record_detail['notes']).'" />';
+        $this->metadata .= '<meta name="Title" content="'.$this->record_title.'" />'."\n";
+        $this->metadata .= '<meta name="Edition" content="'.$this->record_detail['edition'].'" />'."\n";
+        $this->metadata .= '<meta name="Call Number" content="'.$this->record_detail['call_number'].'" />'."\n";
+        $this->metadata .= '<meta name="ISBN/ISSN" content="'.$this->record_detail['isbn_issn'].'" />'."\n";
+        $this->metadata .= '<meta name="Classification" content="'.$this->record_detail['classification'].'" />'."\n";
+        $this->metadata .= '<meta name="Series Title" content="'.$this->record_detail['series_title'].'" />'."\n";
+        $this->metadata .= '<meta name="Media" content="'.$this->record_detail['gmd_name'].'" />'."\n";
+        $this->metadata .= '<meta name="Language" content="'.$this->record_detail['language_name'].'" />'."\n";
+        $this->metadata .= '<meta name="Publisher" content="'.$this->record_detail['publisher_name'].'" />'."\n";
+        $this->metadata .= '<meta name="Publish Year" content="'.$this->record_detail['publish_year'].'" />'."\n";
+        $this->metadata .= '<meta name="Publish Place" content="'.$this->record_detail['publish_place'].'" />'."\n";
+        $this->metadata .= '<meta name="Physical Description" content="'.$this->record_detail['collation'].'" />'."\n";
+        $this->metadata .= '<meta name="Notes" content="'.strip_tags($this->record_detail['notes']).'" />'."\n";
+        $this->metadata .= '<meta name="Statement of Responsibility" content="'.$this->record_detail['sor'].'" />'."\n";
 
         // check image
         if (!empty($this->record_detail['image'])) {
@@ -216,7 +218,7 @@ class detail extends content_list
      * @return  array
      *
      */
-    protected function MODSoutput()
+    public function MODSoutput()
     {
         // get global configuration vars array
         global $sysconf;
@@ -367,8 +369,8 @@ class detail extends content_list
 
         // image
         if (!empty($this->record_detail['image'])) {
-            $_image = urlencode($this->record_detail['image']);
-			$_xml_output .= '<slims:image>'.htmlentities($_image).'</slims:image>'."\n";
+          $_image = urlencode($this->record_detail['image']);
+			    $_xml_output .= '<slims:image>'.htmlentities($_image).'</slims:image>'."\n";
         }
 
         // record info
@@ -380,6 +382,133 @@ class detail extends content_list
         $_xml_output .= '</recordInfo>';
 
         $_xml_output .= '</mods>';
+
+        return $_xml_output;
+    }
+
+
+    /**
+     * Record detail output in MODS (Metadata Object Description Schema) XML mode
+     * @return  array
+     *
+     */
+    public function DublinCoreOutput()
+    {
+        // get global configuration vars array
+        global $sysconf;
+
+        // convert to htmlentities
+        foreach ($this->record_detail as $_field => $_value) {
+            if (is_string($_value)) {
+                $this->record_detail[$_field] = htmlspecialchars(utf8_encode($_value));
+            }
+        }
+
+        // set prefix and suffix
+        $this->detail_prefix = '';
+        $this->detail_suffix = '';
+
+        $_xml_output = '';
+
+        // parse title
+        $_title_sub = '';
+        $_title_statement_resp = '';
+        if (stripos($this->record_detail['title'], ':') !== false) {
+            $_title_main = trim(substr_replace($this->record_detail['title'], '', stripos($this->record_detail['title'], ':')+1));
+            $_title_sub = trim(substr_replace($this->record_detail['title'], '', 0, stripos($this->record_detail['title'], ':')+1));
+        } else if (stripos($this->record_detail['title'], '/') !== false) {
+            $_title_statement_resp = trim(substr_replace($this->record_detail['title'], '', stripos($this->record_detail['title'], '/')+1));
+        } else {
+            $_title_main = trim($this->record_detail['title']);
+        }
+
+        $_xml_output .= '<dc:title>'.$_title_main;
+        if ($_title_sub) {
+            $_xml_output .= ' '.$_title_sub;
+        }
+        $_xml_output .= '</dc:title>'."\n";
+
+        // get the authors data
+        $_biblio_authors_q = $this->obj_db->query('SELECT a.*,ba.level FROM mst_author AS a'
+            .' LEFT JOIN biblio_author AS ba ON a.author_id=ba.author_id WHERE ba.biblio_id='.$this->detail_id);
+        while ($_auth_d = $_biblio_authors_q->fetch_assoc()) {
+            $_xml_output .= '<dc:creator>'.$_auth_d['author_name'].'</dc:creator>'."\n";
+        }
+        $_biblio_authors_q->free_result();
+
+        // imprint/publication data
+        $_xml_output .= '<dc:publisher>'.$this->record_detail['publisher_name'].'</dc:publisher>'."\n";
+
+        // date
+        $_xml_output .= '<dc:date>'.$this->record_detail['publish_year'].'</dc:date>'."\n";
+
+        // edition
+        $_xml_output .= '<dc:hasVersion>'.$this->record_detail['edition'].'</dc:hasVersion>'."\n";
+
+        // language
+        $_xml_output .= '<dc:language>'.$this->record_detail['language_name'].'</dc:language>'."\n";
+
+        // Physical Description/Collation
+        $_xml_output .= '<dc:medium>'.$this->record_detail['gmd_name'].'</dc:medium>'."\n";
+        $_xml_output .= '<dc:format>'.$this->record_detail['gmd_name'].'</dc:format>'."\n";
+        if ((integer)$this->record_detail['frequency_id'] > 0) {
+            $_xml_output .= '<dc:format>Serial</dc:format>'."\n";
+        }
+        $_xml_output .= '<dc:extent>'.$this->record_detail['collation'].'</dc:extent>'."\n";
+
+        // Series title
+        if ($this->record_detail['series_title']) {
+          $_xml_output .= '<dc:isPartOf>'.$this->record_detail['series_title'].'</dc:isPartOf>'."\n";
+        }
+
+        // Note
+        $_xml_output .= '<dc:description>'.$this->record_detail['notes'].'</dc:description>'."\n";
+        $_xml_output .= '<dc:abstract>'.$this->record_detail['notes'].'</dc:abstract>'."\n";
+
+        // subject/topic
+        $_biblio_topics_q = $this->obj_db->query('SELECT t.topic, t.topic_type, t.auth_list, bt.level FROM mst_topic AS t
+          LEFT JOIN biblio_topic AS bt ON t.topic_id=bt.topic_id WHERE bt.biblio_id='.$this->detail_id.' ORDER BY t.auth_list');
+        while ($_topic_d = $_biblio_topics_q->fetch_assoc()) {
+          $_xml_output .= '<dc:subject>'.$_topic_d['topic'].'</dc:subject>'."\n";
+        }
+
+        // classification
+        $_xml_output .= '<dc:subject>'.$this->record_detail['classification'].'</dc:subject>';
+
+        // ISBN/ISSN
+        $_xml_output .= '<dc:identifier>'.str_replace(array('-', ' '), '', $this->record_detail['isbn_issn']).'</dc:identifier>';
+
+        // Call Number
+        $_xml_output .= '<dc:identifier>'.$this->record_detail['call_number'].'</dc:identifier>'."\n";
+
+        $_copy_q = $this->obj_db->query('SELECT i.item_code, i.call_number, stat.item_status_name, loc.location_name, stat.rules, i.site FROM item AS i '
+            .'LEFT JOIN mst_item_status AS stat ON i.item_status_id=stat.item_status_id '
+            .'LEFT JOIN mst_location AS loc ON i.location_id=loc.location_id '
+            .'WHERE i.biblio_id='.$this->detail_id);
+        if ($_copy_q->num_rows > 0) {
+            while ($_copy_d = $_copy_q->fetch_assoc()) {
+                $_xml_output .= '<dc:hasPart>'.$_copy_d['item_code'].'</dc:hasPart>'."\n";
+            }
+        }
+
+        // digital files
+        $attachment_q = $this->obj_db->query('SELECT att.*, f.* FROM biblio_attachment AS att
+            LEFT JOIN files AS f ON att.file_id=f.file_id WHERE att.biblio_id='.$this->detail_id.' AND att.access_type=\'public\' LIMIT 20');
+        if ($attachment_q->num_rows > 0) {
+          $_xml_output .= '<dc:relation>';
+          while ($attachment_d = $attachment_q->fetch_assoc()) {
+              // check member type privileges
+              if ($attachment_d['access_limit']) { continue; }
+              $_xml_output .= htmlentities($attachment_d['file_title']);
+          }
+          $_xml_output .= '</dc:relation>'."\n";
+        }
+
+        // image
+        if (!empty($this->record_detail['image'])) {
+          $_image = urlencode($this->record_detail['image']);
+			    $_xml_output .= '<dc:relation>'.htmlentities($_image).'</dc:relation>'."\n";
+        }
 
         return $_xml_output;
     }

@@ -72,4 +72,3 @@ echo '</form>'."\n";
 echo '<iframe name="resyncSubmit" style="width: 0; height: 0; visibility: hidden;"></iframe>'."\n";
 echo '</div>';
 echo '<div id="resyncInfo" style="display: none; padding: 5px; font-weight: bold; border: 1px solid #999;">&nbsp;</div>';
-?>

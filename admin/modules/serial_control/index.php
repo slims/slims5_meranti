@@ -56,13 +56,16 @@ if (!$can_read) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner serialIcon">
-    <?php echo strtoupper(__('Serial Control')); ?>
-    <hr />
+	<div class="per_title">
+	    <h2><?php echo __('Serial Control'); ?></h2>
+  </div>
+	<div class="sub_section">
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>serial_control/index.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" id="keywords" size="30" />
     <select name="field"><option value="0"><?php echo __('ALL'); ?></option><option value="title"><?php echo __('Title'); ?></option><option value="topic"><?php echo __('Subject(s)'); ?></option><option value="author_name"><?php echo __('Author(s)'); ?></option><option value="isbn_issn"><?php echo __('ISBN/ISSN'); ?></option></select>
     <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
+  </div>
 </div>
 </fieldset>
 <script type="text/javascript">

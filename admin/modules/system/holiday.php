@@ -155,11 +155,17 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner calendarIcon">
-    <?php echo strtoupper(__('Holiday Setting')); ?>
-    <hr />
-    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php" class="headerText2"><?php echo __('Set holiday'); ?></a>
-    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php?mode=special" class="headerText2"><?php echo __('Special holiday'); ?></a>
-    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php?mode=special&action=detail" class="headerText2"><?php echo __('Add Special holiday'); ?></a>
+	<div class="per_title">
+	    <h2><?php echo __('Holiday Setings'); ?></h2>
+  </div>
+	<div class="sub_section">
+    .
+	  <div class="action_button">
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php" class="headerText2"><?php echo __('Holiday Setting'); ?></a>
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php?mode=special" class="headerText2"><?php echo __('Special holiday'); ?></a>
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php?mode=special&action=detail" class="headerText2"><?php echo __('Add Special holiday'); ?></a>
+	  </div>
+  </div>
 </div>
 </fieldset>
 <?php

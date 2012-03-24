@@ -33,16 +33,16 @@ if (!defined('INDEX_AUTH')) {
 @ini_set('magic_quotes_sybase', false);
 // force disabling magic quotes
 if (get_magic_quotes_gpc()) {
-    function stripslashes_deep($value)
-    {
-        $value = is_array($value)?array_map('stripslashes_deep', $value):stripslashes($value);
-        return $value;
-    }
+  function stripslashes_deep($value)
+  {
+    $value = is_array($value)?array_map('stripslashes_deep', $value):stripslashes($value);
+    return $value;
+  }
 
-    $_POST = array_map('stripslashes_deep', $_POST);
-    $_GET = array_map('stripslashes_deep', $_GET);
-    $_COOKIE = array_map('stripslashes_deep', $_COOKIE);
-    $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
+  $_POST = array_map('stripslashes_deep', $_POST);
+  $_GET = array_map('stripslashes_deep', $_GET);
+  $_COOKIE = array_map('stripslashes_deep', $_COOKIE);
+  $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 }
 // turn off all error messages for security reason
 @ini_set('display_errors', false);
@@ -161,6 +161,7 @@ $sysconf['opac_result_num'] = 10;
 
 /* Biblio module */
 $sysconf['biblio_result_num'] = 30;
+$sysconf['batch_item_code_pattern'] = 'B00000';
 
 /* Promote selected title(s) to homepage setting */
 $sysconf['enable_promote_titles'] = false;
@@ -434,6 +435,21 @@ $sysconf['ipaccess']['smc-stocktake'] = 'all';
 $sysconf['ipaccess']['smc-system'] = 'all';
 $sysconf['ipaccess']['smc-reporting'] = 'all';
 $sysconf['ipaccess']['smc-serialcontrol'] = 'all';
+
+// OAI-PMH settings
+$sysconf['OAI']['enable'] = false;
+$sysconf['OAI']['identifierPrefix'] = 'oai:slims/';
+$sysconf['OAI']['Identify']['baseURL'] = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].SENAYAN_WEB_ROOT_DIR.'oai.php';
+$sysconf['OAI']['Identify']['repositoryName'] = 'SLiMS Senayan Library Management System OAI-PMh';
+$sysconf['OAI']['Identify']['adminEmail'] = 'admin@slims.web.id';
+$sysconf['OAI']['Identify']['granularity'] = 'YYYY-MM-DDThh:mm:ssZ';
+$sysconf['OAI']['Identify']['deletedRecord'] = 'transient';
+$sysconf['OAI']['Identify']['metadataPolicy'] = '';
+$sysconf['OAI']['ListRecords']['RecordPerSet'] = '100';
+$sysconf['OAI']['MetadataFormats']['Dublin Core'] = array(
+  'oai_prefix' => 'oai_dc',
+  'schema_xsd' => 'http://www.openarchives.org/OAI/2.0/oai_dc.xsd',
+  'namespace' => 'http://www.openarchives.org/OAI/2.0/oai_dc/');
 
 // check if session is auto started and then destroy it
 if ($is_auto = @ini_get('session.auto_start')) { define('SESSION_AUTO_STARTED', $is_auto); }
