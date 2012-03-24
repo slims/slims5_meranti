@@ -167,8 +167,9 @@ if (!$reportView) {
                 // count by title
                 $bytitle_q = $dbs->query("SELECT DISTINCT biblio_id FROM item AS i
                     WHERE i.coll_type_id=".$ctype_d[0]."");
+				$bytitle_d[0] = $bytitle_q->num_rows;
                 $output .= '<td class="'.$row_class.'"><strong style="font-size: 1.3em;">'.$bytitle_q->num_rows.'</strong></td>';
-
+				
                 // count by item
                 $byitem_q = $dbs->query("SELECT COUNT(item_id) FROM item AS i
                     WHERE i.coll_type_id=".$ctype_d[0]);
@@ -289,7 +290,7 @@ if (!$reportView) {
 	unset($_SESSION['xlsquery']); 
 	$_SESSION['xlsdata'] = $xlsrows;
 	$_SESSION['tblout'] = "recap_list";
-	echo '<p align="right"><a href="../xlsoutput.php" class="button">'.__('Export to spreadsheet format').'</a></p>';
+	echo '<p><a href="../xlsoutput.php" class="button">'.__('Export to spreadsheet format').'</a></p>';
     $content = ob_get_clean();
     // include the page template
     require SENAYAN_BASE_DIR.'/admin/'.$sysconf['admin_template']['dir'].'/printed_page_tpl.php';

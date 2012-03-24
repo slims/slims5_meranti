@@ -219,7 +219,7 @@ if (!$reportView) {
 		$_SESSION['xlsquery'] = $xlsquery;
 		$_SESSION['tblout'] = "loan_history";
 
-	echo '<p align="right"><a href="../xlsoutput.php" class="button">'.__('Export to spreadsheet format').'</a></p>';
+	echo '<p><a href="../xlsoutput.php" class="button">'.__('Export to spreadsheet format').'</a></p>';
 
     $content = ob_get_clean();
     // include the page template
