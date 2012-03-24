@@ -155,8 +155,8 @@ if (isset($_POST['saveData'])) {
   </div>
 	<div class="sub_section">
 	  <div class="action_button">
-		  <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/item_status.php?action=detail" class="headerText2"><?php echo __('Add New Item Status'); ?></a>
       <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/item_status.php" class="headerText2"><?php echo __('Item Status'); ?></a>
+		  <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/item_status.php?action=detail" class="headerText2"><?php echo __('Add New Item Status'); ?></a>
 	  </div>
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/item_status.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />

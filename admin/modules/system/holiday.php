@@ -161,7 +161,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 	<div class="sub_section">
     .
 	  <div class="action_button">
-      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php" class="headerText2"><?php echo __('Set holiday'); ?></a>
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php" class="headerText2"><?php echo __('Holiday Setting'); ?></a>
       <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php?mode=special" class="headerText2"><?php echo __('Special holiday'); ?></a>
       <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/holiday.php?mode=special&action=detail" class="headerText2"><?php echo __('Add Special holiday'); ?></a>
 	  </div>
