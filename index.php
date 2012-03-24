@@ -64,11 +64,11 @@ if (isset($_GET['p'])) {
     if (file_exists(LIB_DIR.'contents/'.$path.'.inc.php')) {
         include LIB_DIR.'contents/'.$path.'.inc.php';
         if ($path != 'show_detail') {
-            $metadata = '<meta name="robots" content="noindex, nofollow">';
+            $metadata = '<meta name="robots" content="noindex, follow">';
         }
     } else {
         // get content data from database
-        $metadata = '<meta name="robots" content="index, nofollow">';
+        $metadata = '<meta name="robots" content="index, follow">';
         include LIB_DIR.'content.inc.php';
         $content = new content();
         $content_data = $content->get($dbs, $path);

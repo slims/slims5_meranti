@@ -29,6 +29,7 @@ if (!defined('INDEX_AUTH')) {
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/form.js"></script>
 <script type="text/javascript" src="js/gui.js"></script>
+<?php echo $metadata; ?>
 </head>
 
 <body class="not-front logged-in page-node node-type-page one-sidebar sidebar-left">
