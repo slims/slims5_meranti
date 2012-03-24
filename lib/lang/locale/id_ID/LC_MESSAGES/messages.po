@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Senayan3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-24 23:02+0700\n"
-"PO-Revision-Date: 2012-03-24 23:02+0700\n"
+"PO-Revision-Date: 2012-03-24 23:48+0700\n"
 "Last-Translator: Arif Syamsudin <buitenzorg812@gmail.com>\n"
 "Language-Team: Arie Nugraha; Hendro Wicaksono; Wardiyono <dicarve@yahoo.com; hendrowicaksono@yahoo.com; wynerst@gmail.com>\n"
 "Language: \n"
@@ -4256,35 +4256,35 @@ msgstr "Tersedia namun tidak untuk dipinjamkan"
 
 #: lib/lang/localisation.php:65
 msgid "Arabic"
-msgstr "Bahasa Arab"
+msgstr "Arabic"
 
 #: lib/lang/localisation.php:66
 msgid "Bengali"
-msgstr "Bahasa Bengali"
+msgstr "Bengali"
 
 #: lib/lang/localisation.php:67
 msgid "German"
-msgstr "Bahasa Jerman"
+msgstr "German"
 
 #: lib/lang/localisation.php:68
 msgid "English"
-msgstr "Bahasa Inggris"
+msgstr "English"
 
 #: lib/lang/localisation.php:69
 msgid "Espanol"
-msgstr "Bahasa Spanyol"
+msgstr "Espanol"
 
 #: lib/lang/localisation.php:70
 msgid "Indonesian"
-msgstr "Bahasa Indonesia"
+msgstr "Indonesia"
 
 #: lib/lang/localisation.php:71
 msgid "Brazilian Portuguese"
-msgstr "Bahasa Portugis Brazil"
+msgstr "Brazilian Portuguese"
 
 #: lib/lang/localisation.php:72
 msgid "Thai"
-msgstr "Bahasa Thai"
+msgstr "Thai"
 
 #: simbio2/simbio_GUI/table/simbio_table.inc.php:223
 msgid "No Data"
