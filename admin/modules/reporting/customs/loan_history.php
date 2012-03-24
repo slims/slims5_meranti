@@ -58,8 +58,8 @@ if (!$reportView) {
     <!-- filter -->
     <fieldset>
     <div class="per_title">
-    	<h2><?php echo strtoupper(__('Loan History')); ?></h2>
-	</div>
+    	<h2><?php echo __('Loan History'); ?></h2>
+	  </div>
     <div class="infoBox">
     <?php echo __('Report Filter'); ?>
     </div>
@@ -211,4 +211,3 @@ if (!$reportView) {
     // include the page template
     require SENAYAN_BASE_DIR.'/admin/'.$sysconf['admin_template']['dir'].'/printed_page_tpl.php';
 }
-?>

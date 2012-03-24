@@ -63,73 +63,73 @@ ob_start();
 /* main content */
 // biblio author save proccess
 if (isset($_POST['save']) AND (isset($_POST['authorID']) OR trim($_POST['search_str']))) {
-    $author_name = trim($dbs->escape_string(strip_tags($_POST['search_str'])));
-    // create new sql op object
-    $sql_op = new simbio_dbop($dbs);
-    // check if biblioID POST var exists
-    if (isset($_POST['biblioID']) AND !empty($_POST['biblioID'])) {
-        $data['biblio_id'] = intval($_POST['biblioID']);
-        // check if the author select list is empty or not
-        if (isset($_POST['authorID']) AND !empty($_POST['authorID'])) {
-            $data['author_id'] = $_POST['authorID'];
-        } else if ($author_name AND empty($_POST['authorID'])) {
-            // check author
-            $author_id = checkAuthor($author_name, $_POST['type']);
-            if ($author_id !== false) {
-                $data['author_id'] = $author_id;
-            } else {
-                // adding new author
-                $author_data['author_name'] = $author_name;
-                $author_data['authority_type'] = $_POST['type'];
-                $author_data['input_date'] = date('Y-m-d');
-                $author_data['last_update'] = date('Y-m-d');
-                // insert new author to author master table
-                @$sql_op->insert('mst_author', $author_data);
-                $data['author_id'] = $sql_op->insert_id;
-            }
-        }
-        $data['level'] = intval($_POST['level']);
+  $author_name = trim($dbs->escape_string(strip_tags($_POST['search_str'])));
+  // create new sql op object
+  $sql_op = new simbio_dbop($dbs);
+  // check if biblioID POST var exists
+  if (isset($_POST['biblioID']) AND !empty($_POST['biblioID'])) {
+      $data['biblio_id'] = intval($_POST['biblioID']);
+      // check if the author select list is empty or not
+      if (isset($_POST['authorID']) AND !empty($_POST['authorID'])) {
+          $data['author_id'] = $_POST['authorID'];
+      } else if ($author_name AND empty($_POST['authorID'])) {
+          // check author
+          $author_id = checkAuthor($author_name, $_POST['type']);
+          if ($author_id !== false) {
+              $data['author_id'] = $author_id;
+          } else {
+              // adding new author
+              $author_data['author_name'] = $author_name;
+              $author_data['authority_type'] = $_POST['type'];
+              $author_data['input_date'] = date('Y-m-d');
+              $author_data['last_update'] = date('Y-m-d');
+              // insert new author to author master table
+              @$sql_op->insert('mst_author', $author_data);
+              $data['author_id'] = $sql_op->insert_id;
+          }
+      }
+      $data['level'] = intval($_POST['level']);
 
-        if ($sql_op->insert('biblio_author', $data)) {
-            echo '<script type="text/javascript">';
-            echo 'alert(\''.__('Author succesfully updated!').'\');';
-            echo 'parent.setIframeContent(\'authorIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_author.php?biblioID='.$data['biblio_id'].'\');';
-            echo '</script>';
-        } else {
-            utility::jsAlert(__('Author FAILED to Add. Please Contact System Administrator')."\n".$sql_op->error);
-        }
-    } else {
-        if (isset($_POST['authorID']) AND !empty($_POST['authorID'])) {
-            // add to current session
-            $_SESSION['biblioAuthor'][$_POST['authorID']] = array($_POST['authorID'], intval($_POST['level']));
-        } else if ($author_name AND empty($_POST['authorID'])) {
-            // check author
-            $author_id = checkAuthor($author_name);
-            if ($author_id !== false) {
-                $last_id = $author_id;
-            } else {
-                // adding new author
-                $data['author_name'] = $author_name;
-                $data['authority_type'] = $_POST['type'];
-                $data['input_date'] = date('Y-m-d');
-                $data['last_update'] = date('Y-m-d');
-                // insert new author to author master table
-                $sql_op->insert('mst_author', $data);
-                $last_id = $sql_op->insert_id;
-            }
-            $_SESSION['biblioAuthor'][$last_id] = array($last_id, intval($_POST['level']));
-        }
+      if ($sql_op->insert('biblio_author', $data)) {
+          echo '<script type="text/javascript">';
+          echo 'alert(\''.__('Author succesfully updated!').'\');';
+          echo 'parent.setIframeContent(\'authorIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_author.php?biblioID='.$data['biblio_id'].'\');';
+          echo '</script>';
+      } else {
+          utility::jsAlert(__('Author FAILED to Add. Please Contact System Administrator')."\n".$sql_op->error);
+      }
+  } else {
+      if (isset($_POST['authorID']) AND !empty($_POST['authorID'])) {
+          // add to current session
+          $_SESSION['biblioAuthor'][$_POST['authorID']] = array($_POST['authorID'], intval($_POST['level']));
+      } else if ($author_name AND empty($_POST['authorID'])) {
+          // check author
+          $author_id = checkAuthor($author_name);
+          if ($author_id !== false) {
+              $last_id = $author_id;
+          } else {
+              // adding new author
+              $data['author_name'] = $author_name;
+              $data['authority_type'] = $_POST['type'];
+              $data['input_date'] = date('Y-m-d');
+              $data['last_update'] = date('Y-m-d');
+              // insert new author to author master table
+              $sql_op->insert('mst_author', $data);
+              $last_id = $sql_op->insert_id;
+          }
+          $_SESSION['biblioAuthor'][$last_id] = array($last_id, intval($_POST['level']));
+      }
 
-        echo '<script type="text/javascript">';
-        echo 'alert(\''.__('Author added!').'\');';
-        echo 'parent.setIframeContent(\'authorIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_author.php\');';
-        echo '</script>';
-    }
+      echo '<script type="text/javascript">';
+      echo 'alert(\''.__('Author added!').'\');';
+      echo 'parent.setIframeContent(\'authorIframe\', \''.MODULES_WEB_ROOT_DIR.'bibliography/iframe_author.php\');';
+      echo '</script>';
+  }
 }
 
 ?>
 
-<div style="padding: 5px; background: #CCCCCC;">
+<div class="popUpForm">
 <form name="mainForm" action="pop_author.php?biblioID=<?php echo $biblioID; ?>" method="post">
 <div>
     <strong><?php echo __('Add Author'); ?> </strong>
@@ -149,10 +149,10 @@ if (isset($_POST['save']) AND (isset($_POST['authorID']) OR trim($_POST['search_
     }
     ?></select>
 </div>
-<div style="margin-top: 5px;">
+<div class="popUpSubForm">
 <select name="authorID" id="authorID" size="5" style="width: 100%;"><option value="0"><?php echo __('Type to search for existing authors or to add a new one'); ?></option></select>
 <?php if ($biblioID) { echo '<input type="hidden" name="biblioID" value="'.$biblioID.'" />'; } ?>
-<input type="submit" name="save" value="<?php echo __('Insert To Bibliography'); ?>" style="margin-top: 5px;" />
+<input type="submit" name="save" value="<?php echo __('Insert To Bibliography'); ?>" class="popUpSubmit" />
 </div>
 </form>
 </div>

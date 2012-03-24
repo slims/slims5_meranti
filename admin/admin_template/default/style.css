@@ -96,9 +96,9 @@ div.clear {
 }
 
 #main {
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
 }
 
 
@@ -221,8 +221,8 @@ header
 	text-transform: uppercase;
 	float: left;
 	margin-right:10px;
-	width:80px;
 	border-right:#999 solid 1px;
+	padding-right:10px;
 }
 
 #librarySubName {
@@ -252,6 +252,7 @@ submenu
 	box-shadow: inset -5px 0px 10px #e6e6e6 !important;
 	-webkit-box-shadow: inset -5px 0px 10px #e6e6e6 !important;
 	-moz-box-shadow: inset -5px 0px 10px #e6e6e6 !important;
+	padding-top:45px !important;
 }
 
 .subMenuHeader {
@@ -279,6 +280,7 @@ submenu
 }
 
 .loader {
+	margin-top:45px;
 	background-color: #ff908a;
 	background-repeat: repeat-x;
 	background-image: -khtml-gradient(linear, left top, left bottom, from(#b3b3b3), to(#a6a6a6));
@@ -1002,12 +1004,19 @@ icon
 .action_button
 {
 	float: right;
+	padding:0;
+	margin:0;
 }
 
 .per_title
 {
 	background-color:#bbd5f9;
 	padding:10px;
+}
+
+.per_title h2 div
+{
+	font-size: 90%;
 }
 
 .sub_section

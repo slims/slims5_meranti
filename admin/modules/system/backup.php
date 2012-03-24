@@ -51,8 +51,13 @@ if (!($can_read AND $can_write)) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner backupIcon">
-    <?php echo strtoupper(__('Database Backup')); ?> - <input type="button" onclick="$('#createBackup').submit()" class="button notAJAX" value="<?php echo __('Start New Backup'); ?>" />
-    <hr />
+	<div class="per_title">
+	    <h2><?php echo __('Database Backup'); ?></h2>
+  </div>
+	<div class="sub_section">
+	  <div class="action_button">
+      <input type="button" onclick="$('#createBackup').submit()" class="button notAJAX" value="<?php echo __('Start New Backup'); ?>" />
+	  </div>
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>system/backup_proc.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
     <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
@@ -61,6 +66,7 @@ if (!($can_read AND $can_write)) {
     <input type="hidden" name="start" value="true" />
     <input type="hidden" name="tkn" value="<?php echo $_SESSION['token']; ?>" />
     </form>
+  </div>
 </div>
 </fieldset>
 <?php

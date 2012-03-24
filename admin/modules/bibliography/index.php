@@ -346,19 +346,18 @@ if (!$in_pop_up) {
 <fieldset class="menuBox">
 <div class="menuBoxInner biblioIcon">
     <div class="per_title">
-	    <h2><?php echo strtoupper(__('Bibliographic')); ?></h2>
+	    <h2><?php echo __('Bibliographic'); ?></h2>
     </div>
     <div class="sub_section">
 	    <div class="action_button">
 		    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php?action=detail" class="headerText2"><?php echo __('Add New Bibliography'); ?></a>
-		    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php" class="headerText2"><?php echo __('Bibliographic List'); ?></a>    
+		    <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php" class="headerText2"><?php echo __('Bibliographic List'); ?></a>
 	    </div>
 	    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/index.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
 		    <input type="text" name="keywords" id="keywords" size="30" />
 		    <select name="field"><option value="0"><?php echo __('All Fields'); ?></option><option value="title"><?php echo __('Title/Series Title'); ?> </option><option value="subject"><?php echo __('Topics'); ?></option><option value="author"><?php echo __('Authors'); ?></option><option value="isbn"><?php echo __('ISBN/ISSN'); ?></option><option value="publisher"><?php echo __('Publisher'); ?></option></select>
 		    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
 	    </form>
-        <div class="ucsUpload">
 		    <?php
 		    // enable UCS?
 			if ($sysconf['ucs']['enable']) {
@@ -366,9 +365,7 @@ if (!$in_pop_up) {
 		    <a href="#" onclick="ucsUpload('<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/ucs_upload.php', serializeChbox('dataList'))" class="notAJAX"><div class="button"><?php echo __('Upload Selected Bibliographic data to Union Catalog Server*'); ?></div></a>
 		    <?php
 		    }
-		    ?>    
-	    </div>
-
+		    ?>
     </div>
 </div>
 </fieldset>
@@ -457,7 +454,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // biblio publish frequencies
         // get frequency data related to this record from database
         $freq_q = $dbs->query('SELECT frequency_id, frequency FROM mst_frequency');
-        $freq_options[] = array('0', strtoupper(__('Not Applicable')));
+        $freq_options[] = array('0', __('Not Applicable'));
         while ($freq_d = $freq_q->fetch_row()) {
             $freq_options[] = array($freq_d[0], $freq_d[1]);
         }

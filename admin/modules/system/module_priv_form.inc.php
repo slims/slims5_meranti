@@ -72,23 +72,23 @@ echo $table->printTable();
 ob_start();
 ?>
 <script type="text/javascript">
-    $(document).ready(function() {
-       $('#allRead').toggle(function(evt) {
-            evt.preventDefault();
-            $('input:checkbox.read').attr('checked', 'checked');
-        }, function(evt) {
-            evt.preventDefault();
-            $('input:checkbox.read').removeAttr('checked');
-        });
+  $(document).ready(function() {
+     $('#allRead').toggle(function(evt) {
+          evt.preventDefault();
+          $('input:checkbox.read').attr('checked', 'checked');
+      }, function(evt) {
+          evt.preventDefault();
+          $('input:checkbox.read').removeAttr('checked');
+      });
 
-       $('#allWrite').toggle(function(evt) {
-            evt.preventDefault();
-            $('input:checkbox.write').attr('checked', 'checked');
-        }, function(evt) {
-            evt.preventDefault();
-            $('input:checkbox.write').removeAttr('checked');
-        });
-    });
+     $('#allWrite').toggle(function(evt) {
+          evt.preventDefault();
+          $('input:checkbox.write').attr('checked', 'checked');
+      }, function(evt) {
+          evt.preventDefault();
+          $('input:checkbox.write').removeAttr('checked');
+      });
+  });
 </script>
 <?php
 echo ob_get_clean();

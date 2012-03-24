@@ -19,8 +19,6 @@
  *
  */
 
-
-
 /* Barcode generator section */
 // key to authenticate
 define('INDEX_AUTH', '1');
@@ -32,21 +30,18 @@ require '../../../sysconfig.inc.php';
 require LIB_DIR.'ip_based_access.inc.php';
 do_checkIP('smc');
 do_checkIP('smc-system');
-
 // start the session
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
+require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
 
 // privileges checking
 $can_read = utility::havePrivilege('system', 'r');
 $can_write = utility::havePrivilege('system', 'w');
 
-
 if (!$can_read) {
   die('<div class="errorBox">'.__('You don\'t have enough privileges to view this section').'</div>');
 }
-
-
 
 $max_print = 50;
 // barcode pdf download
@@ -128,15 +123,6 @@ if (isset($_POST['saveData']) AND $can_write) {
   exit();
 }
 
-?>
-
-<fieldset class="menuBox">
-<div class="menuBoxInner barcodeIcon">
-    <?php echo __('Barcode Generator').' <hr />' . __('Type barcodes text to one or more text field below and click'). ' "' .__('Generate Barcodes'). '".'; ?>
-</div>
-</fieldset>
-
-<?php
 // create table object
 $table = new simbio_table();
 $table->table_attr = 'align="center" class="border fullWidth" cellpadding="5" cellspacing="0"';
@@ -147,18 +133,18 @@ $row_num = 6;
 
 // submit button
 $table->appendTableRow(array(__('Barcode Size').' : <select name="size"><option value="1">'.__('Small').'</option>
-    <option value="2" selected>'.__('Medium').'</option>
-    <option value="3">'.__('Big').'</option></select>'));
+  <option value="2" selected>'.__('Medium').'</option>
+  <option value="3">'.__('Big').'</option></select>'));
 // set cell attribute
 $table->setCellAttr($row, 0, 'colspan="3" class="alterCell"');
 $row++;
 
 // barcode text fields
 while ($row <= $row_num) {
-    $table->appendTableRow(array('<input type="text" name="barcode[]" style="width: 100%;" />',
-        '<input type="text" name="barcode[]" style="width: 100%;" />',
-        '<input type="text" name="barcode[]" style="width: 100%;" />'));
-    $row++;
+  $table->appendTableRow(array('<input type="text" name="barcode[]" style="width: 100%;" />',
+    '<input type="text" name="barcode[]" style="width: 100%;" />',
+    '<input type="text" name="barcode[]" style="width: 100%;" />'));
+  $row++;
 }
 
 // submit button

@@ -164,13 +164,19 @@ if (isset($_POST['saveData'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner userGroupIcon">
-    <?php echo strtoupper(__('User Group')); ?> - <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/user_group.php?action=detail" class="headerText2"><?php echo __('Add New Group'); ?></a>
-    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/user_group.php" class="headerText2"><?php echo __('Group List'); ?></a>
-    <hr />
+	<div class="per_title">
+	  <h2><?php echo __('User Group'); ?></h2>
+  </div>
+	<div class="sub_section">
+	  <div class="action_button">
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/user_group.php?action=detail" class="headerText2"><?php echo __('Add New Group'); ?></a>
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>system/user_group.php" class="headerText2"><?php echo __('Group List'); ?></a>
+	  </div>
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>system/user_group.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
     <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
+  </div>
 </div>
 </fieldset>
 <?php

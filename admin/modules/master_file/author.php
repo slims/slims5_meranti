@@ -30,8 +30,7 @@ require '../../../sysconfig.inc.php';
 // IP based access limitation
 require LIB_DIR.'ip_based_access.inc.php';
 do_checkIP('smc');
-
-do_checkIP('smc-masterfile')
+do_checkIP('smc-masterfile');
 
 // start the session
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
@@ -129,13 +128,19 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner masterFileIcon">
-    <?php echo strtoupper(__('Author')); ?> - <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/author.php?action=detail" class="headerText2"><?php echo __('Add New Author'); ?></a>
-    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/author.php" class="headerText2"><?php echo __('Author List'); ?></a>
-    <hr />
+	<div class="per_title">
+	    <h2><?php echo __('Author'); ?></h2>
+  </div>
+	<div class="sub_section">
+	  <div class="action_button">
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/author.php?action=detail" class="headerText2"><?php echo __('Add New Author'); ?></a>
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/author.php" class="headerText2"><?php echo __('Author List'); ?></a>
+	  </div>
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/author.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
     <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
+  </div>
 </div>
 </fieldset>
 <?php
@@ -174,7 +179,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // author name
     $form->addTextField('text', 'authorName', __('Author Name').'*', $rec_d['author_name'], 'style="width: 60%;"');
     // author year
-    $form->addTextField('text', 'authorYear', __('Author Year'), $rec_d['author_year'], 'style="width: 60%;"');
+    $form->addTextField('text', 'authorYear', __('Author Birth Year'), $rec_d['author_year'], 'style="width: 60%;"');
     // authority type
     foreach ($sysconf['authority_type'] as $auth_type_id => $auth_type) {
         $auth_type_options[] = array($auth_type_id, $auth_type);

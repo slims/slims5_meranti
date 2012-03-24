@@ -123,13 +123,19 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner masterFileIcon">
-    <?php echo strtoupper(__('Publisher')); ?> - <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/publisher.php?action=detail" class="headerText2"><?php echo __('Add New Publisher'); ?></a>
-    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/publisher.php" class="headerText2"><?php echo __('Publisher List'); ?></a>
-    <hr />
+	<div class="per_title">
+	    <h2><?php echo __('Publisher'); ?></h2>
+  </div>
+	<div class="sub_section">
+	  <div class="action_button">
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/publisher.php?action=detail" class="headerText2"><?php echo __('Add New Publisher'); ?></a>
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/publisher.php" class="headerText2"><?php echo __('Publisher List'); ?></a>
+	  </div>
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/publisher.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
     <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
+  </div>
 </div>
 </fieldset>
 <?php

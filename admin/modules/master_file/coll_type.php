@@ -143,13 +143,19 @@ if (isset($_POST['saveData'])) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner masterFileIcon">
-    <?php echo strtoupper(__('Collection Type')); ?> - <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/coll_type.php?action=detail" class="headerText2"><?php echo __('Add New Collection Type'); ?></a>
-    &nbsp; <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/coll_type.php" class="headerText2"><?php echo __('Collection Type List'); ?></a>
-    <hr />
+	<div class="per_title">
+	    <h2><?php echo __('Collection Type'); ?></h2>
+  </div>
+	<div class="sub_section">
+	  <div class="action_button">
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/coll_type.php?action=detail" class="headerText2"><?php echo __('Add New Collection Type'); ?></a>
+      <a href="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/coll_type.php" class="headerText2"><?php echo __('Collection Type List'); ?></a>
+	  </div>
     <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>master_file/coll_type.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" size="30" />
     <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
+  </div>
 </div>
 </fieldset>
 <?php

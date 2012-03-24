@@ -81,7 +81,7 @@ jQuery.fn.simbioAJAX = function(strURL, params)
         }
     });
     $(".loader").ajaxStop(function(){ $(this).removeClass('loadingImage'); });
-    $(".loader").ajaxError(function(event, request, settings){ $(this).append("<div class=\"error\">Error requesting page : <strong>" + settings.url + "</strong>" + request.responseText + "</div>");})
+    $(".loader").ajaxError(function(event, request, settings){ $(this).html("<div class=\"error\">Error requesting page : <strong>" + settings.url + "</strong>" + request.responseText + "</div>");})
 
     // send AJAX request
     var ajaxResponse = $.ajax({

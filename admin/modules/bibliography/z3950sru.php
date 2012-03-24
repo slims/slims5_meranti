@@ -233,15 +233,18 @@ if (isset($_GET['keywords']) AND $can_read) {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner biblioIcon">
-    Z3950 SRU
-    <hr />
+	<div class="per_title">
+	    <h2><?php echo __('Z3950 Search/Retrieve via URL (SRU)'); ?></h2>
+    </div>
+    <div class="sub_section">
     <form name="search" id="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>bibliography/z3950sru.php" loadcontainer="searchResult" method="get" style="display: inline;"><?php echo __('Search'); ?> :
     <input type="text" name="keywords" id="keywords" size="30" />
     <select name="index"><option value="0"><?php echo __('All fields'); ?></option><option value="bath.isbn"><?php echo __('ISBN/ISSN'); ?></option><option value="dc.title"><?php echo __('Title/Series Title'); ?></option><option value="bath.name"><?php echo __('Authors'); ?></option></select>
     <?php echo __('SRU Server'); ?>: <select name="z3950_SRU_source" style="width: 20%;"><?php foreach ($sysconf['z3950_SRU_source'] as $serverid => $z3950_source) { echo '<option value="'.$z3950_source['uri'].'">'.$z3950_source['name'].'</option>';  } ?></select>
     <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
     </form>
-    <div><?php echo __('* Please make sure you have a working Internet connection.'); ?></div>
+    </div>
+    <div class="infoBox"><?php echo __('* Please make sure you have a working Internet connection.'); ?></div>
 </div>
 </fieldset>
 <div id="searchResult">&nbsp;</div>

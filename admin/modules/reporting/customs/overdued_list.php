@@ -59,9 +59,11 @@ if (!$reportView) {
     <!-- filter -->
     <fieldset>
     <div class="per_title">
-    	<h2><?php echo strtoupper(__('Overdued List')); ?></h2>
+    	<h2><?php echo __('Overdued List'); ?></h2>
     </div>
-    <div class="infoBox"><?php echo __('Report Filter'); ?></div>
+    <div class="infoBox">
+    <?php echo __('Report Filter'); ?>
+    </div>
     <div class="sub_section">
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
@@ -107,120 +109,119 @@ if (!$reportView) {
     <iframe name="reportView" id="reportView" src="<?php echo $_SERVER['PHP_SELF'].'?reportView=true'; ?>" frameborder="0" style="width: 100%; height: 500px;"></iframe>
 <?php
 } else {
-    ob_start();
-    // table spec
-    $table_spec = 'member AS m
-        LEFT JOIN loan AS l ON m.member_id=l.member_id';
+  ob_start();
+  // table spec
+  $table_spec = 'member AS m
+      LEFT JOIN loan AS l ON m.member_id=l.member_id';
 
-    // create datagrid
-    $reportgrid = new report_datagrid();
-    $reportgrid->setSQLColumn('m.member_id AS \''.__('Member ID').'\'');
-    $reportgrid->setSQLorder('l.due_date DESC');
-    $reportgrid->sql_group_by = 'm.member_id';
+  // create datagrid
+  $reportgrid = new report_datagrid();
+  $reportgrid->setSQLColumn('m.member_id AS \''.__('Member ID').'\'');
+  $reportgrid->setSQLorder('l.due_date DESC');
+  $reportgrid->sql_group_by = 'm.member_id';
 
-    $overdue_criteria = ' (l.is_lent=1 AND l.is_return=0 AND TO_DAYS(due_date) < TO_DAYS(\''.date('Y-m-d').'\')) ';
-    // is there any search
-    if (isset($_GET['id_name']) AND $_GET['id_name']) {
-        $keyword = $dbs->escape_string(trim($_GET['id_name']));
-        $words = explode(' ', $keyword);
-        if (count($words) > 1) {
-            $concat_sql = ' (';
-            foreach ($words as $word) {
-                $concat_sql .= " (m.member_id LIKE '%$word%' OR m.member_name LIKE '%$word%') AND";
-            }
-            // remove the last AND
-            $concat_sql = substr_replace($concat_sql, '', -3);
-            $concat_sql .= ') ';
-            $overdue_criteria .= ' AND '.$concat_sql;
-        } else {
-            $overdue_criteria .= " AND m.member_id LIKE '%$keyword%' OR m.member_name LIKE '%$keyword%'";
-        }
-    }
-    // loan date
-    if (isset($_GET['startDate']) AND isset($_GET['untilDate'])) {
-        $date_criteria = ' AND (TO_DAYS(l.loan_date) BETWEEN TO_DAYS(\''.$_GET['startDate'].'\') AND
-            TO_DAYS(\''.$_GET['untilDate'].'\'))';
-        $overdue_criteria .= $date_criteria;
-    }
-    if (isset($_GET['recsEachPage'])) {
-        $recsEachPage = (integer)$_GET['recsEachPage'];
-        $num_recs_show = ($recsEachPage >= 5 && $recsEachPage <= 200)?$recsEachPage:$num_recs_show;
-    }
-    $reportgrid->setSQLCriteria($overdue_criteria);
+  $overdue_criteria = ' (l.is_lent=1 AND l.is_return=0 AND TO_DAYS(due_date) < TO_DAYS(\''.date('Y-m-d').'\')) ';
+  // is there any search
+  if (isset($_GET['id_name']) AND $_GET['id_name']) {
+      $keyword = $dbs->escape_string(trim($_GET['id_name']));
+      $words = explode(' ', $keyword);
+      if (count($words) > 1) {
+          $concat_sql = ' (';
+          foreach ($words as $word) {
+              $concat_sql .= " (m.member_id LIKE '%$word%' OR m.member_name LIKE '%$word%') AND";
+          }
+          // remove the last AND
+          $concat_sql = substr_replace($concat_sql, '', -3);
+          $concat_sql .= ') ';
+          $overdue_criteria .= ' AND '.$concat_sql;
+      } else {
+          $overdue_criteria .= " AND m.member_id LIKE '%$keyword%' OR m.member_name LIKE '%$keyword%'";
+      }
+  }
+  // loan date
+  if (isset($_GET['startDate']) AND isset($_GET['untilDate'])) {
+      $date_criteria = ' AND (TO_DAYS(l.loan_date) BETWEEN TO_DAYS(\''.$_GET['startDate'].'\') AND
+          TO_DAYS(\''.$_GET['untilDate'].'\'))';
+      $overdue_criteria .= $date_criteria;
+  }
+  if (isset($_GET['recsEachPage'])) {
+      $recsEachPage = (integer)$_GET['recsEachPage'];
+      $num_recs_show = ($recsEachPage >= 5 && $recsEachPage <= 200)?$recsEachPage:$num_recs_show;
+  }
+  $reportgrid->setSQLCriteria($overdue_criteria);
 
-    // set table and table header attributes
-    $reportgrid->table_attr = 'align="center" class="dataListPrinted" cellpadding="5" cellspacing="0"';
-    $reportgrid->table_header_attr = 'class="dataListHeaderPrinted"';
-    $reportgrid->column_width = array('1' => '80%');
+  // set table and table header attributes
+  $reportgrid->table_attr = 'align="center" class="dataListPrinted" cellpadding="5" cellspacing="0"';
+  $reportgrid->table_header_attr = 'class="dataListHeaderPrinted"';
+  $reportgrid->column_width = array('1' => '80%');
 
-    // callback function to show overdued list
-    function showOverduedList($obj_db, $array_data)
-    {
-        global $date_criteria;
+  // callback function to show overdued list
+  function showOverduedList($obj_db, $array_data)
+  {
+      global $date_criteria;
 
-        // member name
-        $member_q = $obj_db->query('SELECT member_name, member_email, member_phone, member_mail_address FROM member WHERE member_id=\''.$array_data[0].'\'');
-        $member_d = $member_q->fetch_row();
-        $member_name = $member_d[0];
-        $member_mail_address = $member_d[3];
-        unset($member_q);
+      // member name
+      $member_q = $obj_db->query('SELECT member_name, member_email, member_phone, member_mail_address FROM member WHERE member_id=\''.$array_data[0].'\'');
+      $member_d = $member_q->fetch_row();
+      $member_name = $member_d[0];
+      $member_mail_address = $member_d[3];
+      unset($member_q);
 
-        $ovd_title_q = $obj_db->query('SELECT l.item_code, i.price, i.price_currency,
-            b.title, l.loan_date,
-            l.due_date, (TO_DAYS(DATE(NOW()))-TO_DAYS(due_date)) AS \'Overdue Days\'
-            FROM loan AS l
-                LEFT JOIN item AS i ON l.item_code=i.item_code
-                LEFT JOIN biblio AS b ON i.biblio_id=b.biblio_id
-            WHERE (l.is_lent=1 AND l.is_return=0 AND TO_DAYS(due_date) < TO_DAYS(\''.date('Y-m-d').'\')) AND l.member_id=\''.$array_data[0].'\''.( !empty($date_criteria)?$date_criteria:'' ));
-        $_buffer = '<div style="font-weight: bold; color: black; font-size: 10pt; margin-bottom: 3px;">'.$member_name.' ('.$array_data[0].')</div>';
-        $_buffer .= '<div style="color: black; font-size: 10pt; margin-bottom: 3px;">'.$member_mail_address.'</div>';
-        $_buffer .= '<div style="font-size: 10pt; margin-bottom: 3px;"><div id="'.$array_data[0].'emailStatus"></div>'.__('E-mail').': <a href="mailto:'.$member_d[1].'">'.$member_d[1].'</a> - <a class="usingAJAX" href="'.MODULES_WEB_ROOT_DIR.'membership/overdue_mail.php'.'" postdata="memberID='.$array_data[0].'" loadcontainer="'.$array_data[0].'emailStatus">Send Notification e-mail</a> - '.__('Phone Number').': '.$member_d[2].'</div>';
-        $_buffer .= '<table width="100%" cellspacing="0">';
-        while ($ovd_title_d = $ovd_title_q->fetch_assoc()) {
-            $_buffer .= '<tr>';
-            $_buffer .= '<td valign="top" width="10%">'.$ovd_title_d['item_code'].'</td>';
-            $_buffer .= '<td valign="top" width="40%">'.$ovd_title_d['title'].'<div>'.__('Price').': '.$ovd_title_d['price'].' '.$ovd_title_d['price_currency'].'</div></td>';
-            $_buffer .= '<td width="20%">'.__('Overdue').': '.$ovd_title_d['Overdue Days'].' '.__('day(s)').'</td>';
-            $_buffer .= '<td width="30%">'.__('Loan Date').': '.$ovd_title_d['loan_date'].' &nbsp; '.__('Due Date').': '.$ovd_title_d['due_date'].'</td>';
-            $_buffer .= '</tr>';
-        }
-        $_buffer .= '</table>';
-        return $_buffer;
-    }
-    // modify column value
-    $reportgrid->modifyColumnContent(0, 'callback{showOverduedList}');
+      $ovd_title_q = $obj_db->query('SELECT l.item_code, i.price, i.price_currency,
+          b.title, l.loan_date,
+          l.due_date, (TO_DAYS(DATE(NOW()))-TO_DAYS(due_date)) AS \'Overdue Days\'
+          FROM loan AS l
+              LEFT JOIN item AS i ON l.item_code=i.item_code
+              LEFT JOIN biblio AS b ON i.biblio_id=b.biblio_id
+          WHERE (l.is_lent=1 AND l.is_return=0 AND TO_DAYS(due_date) < TO_DAYS(\''.date('Y-m-d').'\')) AND l.member_id=\''.$array_data[0].'\''.( !empty($date_criteria)?$date_criteria:'' ));
+      $_buffer = '<div style="font-weight: bold; color: black; font-size: 10pt; margin-bottom: 3px;">'.$member_name.' ('.$array_data[0].')</div>';
+      $_buffer .= '<div style="color: black; font-size: 10pt; margin-bottom: 3px;">'.$member_mail_address.'</div>';
+      $_buffer .= '<div style="font-size: 10pt; margin-bottom: 3px;"><div id="'.$array_data[0].'emailStatus"></div>'.__('E-mail').': <a href="mailto:'.$member_d[1].'">'.$member_d[1].'</a> - <a class="usingAJAX" href="'.MODULES_WEB_ROOT_DIR.'membership/overdue_mail.php'.'" postdata="memberID='.$array_data[0].'" loadcontainer="'.$array_data[0].'emailStatus">Send Notification e-mail</a> - '.__('Phone Number').': '.$member_d[2].'</div>';
+      $_buffer .= '<table width="100%" cellspacing="0">';
+      while ($ovd_title_d = $ovd_title_q->fetch_assoc()) {
+          $_buffer .= '<tr>';
+          $_buffer .= '<td valign="top" width="10%">'.$ovd_title_d['item_code'].'</td>';
+          $_buffer .= '<td valign="top" width="40%">'.$ovd_title_d['title'].'<div>'.__('Price').': '.$ovd_title_d['price'].' '.$ovd_title_d['price_currency'].'</div></td>';
+          $_buffer .= '<td width="20%">'.__('Overdue').': '.$ovd_title_d['Overdue Days'].' '.__('day(s)').'</td>';
+          $_buffer .= '<td width="30%">'.__('Loan Date').': '.$ovd_title_d['loan_date'].' &nbsp; '.__('Due Date').': '.$ovd_title_d['due_date'].'</td>';
+          $_buffer .= '</tr>';
+      }
+      $_buffer .= '</table>';
+      return $_buffer;
+  }
+  // modify column value
+  $reportgrid->modifyColumnContent(0, 'callback{showOverduedList}');
 
-    // put the result into variables
-    echo $reportgrid->createDataGrid($dbs, $table_spec, $num_recs_show);
+  // put the result into variables
+  echo $reportgrid->createDataGrid($dbs, $table_spec, $num_recs_show);
 
-    ?>
-    <script type="text/javascript" src="<?php echo JS_WEB_ROOT_DIR.'jquery.js'; ?>"></script>
-    <script type="text/javascript" src="<?php echo JS_WEB_ROOT_DIR.'updater.js'; ?>"></script>
-    <script type="text/javascript">
-    // registering event for send email button
-    $(document).ready(function() {
-        parent.$('#pagingBox').html('<?php echo str_replace(array("\n", "\r", "\t"), '', $reportgrid->paging_set) ?>');
-        $('a.usingAJAX').click(function(evt) {
-            evt.preventDefault();
-            var anchor = $(this);
-            // get anchor href
-            var url = anchor.attr('href');
-            var postData = anchor.attr('postdata');
-            var loadContainer = anchor.attr('loadcontainer');
-            if (loadContainer) { container = jQuery('#'+loadContainer); }
-            // set ajax
-            if (postData) {
-                container.simbioAJAX(url, {method: 'post', addData: postData});
-            } else {
-                container.simbioAJAX(url, {addData: {ajaxload: 1}});
-            }
-        });
-    });
-    </script>
-    <?php
+  ?>
+  <script type="text/javascript" src="<?php echo JS_WEB_ROOT_DIR.'jquery.js'; ?>"></script>
+  <script type="text/javascript" src="<?php echo JS_WEB_ROOT_DIR.'updater.js'; ?>"></script>
+  <script type="text/javascript">
+  // registering event for send email button
+  $(document).ready(function() {
+      parent.$('#pagingBox').html('<?php echo str_replace(array("\n", "\r", "\t"), '', $reportgrid->paging_set) ?>');
+      $('a.usingAJAX').click(function(evt) {
+          evt.preventDefault();
+          var anchor = $(this);
+          // get anchor href
+          var url = anchor.attr('href');
+          var postData = anchor.attr('postdata');
+          var loadContainer = anchor.attr('loadcontainer');
+          if (loadContainer) { container = jQuery('#'+loadContainer); }
+          // set ajax
+          if (postData) {
+              container.simbioAJAX(url, {method: 'post', addData: postData});
+          } else {
+              container.simbioAJAX(url, {addData: {ajaxload: 1}});
+          }
+      });
+  });
+  </script>
+  <?php
 
-    $content = ob_get_clean();
-    // include the page template
-    require SENAYAN_BASE_DIR.'/admin/'.$sysconf['admin_template']['dir'].'/printed_page_tpl.php';
+  $content = ob_get_clean();
+  // include the page template
+  require SENAYAN_BASE_DIR.'/admin/'.$sysconf['admin_template']['dir'].'/printed_page_tpl.php';
 }
-?>

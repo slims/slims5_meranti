@@ -201,14 +201,20 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 ?>
 <fieldset class="menuBox">
 <div class="menuBoxInner printIcon">
-    <?php echo __('Member Card Printing'); ?> - <a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_card_generator.php?action=print" class="notAJAX headerText2"><?php echo __('Print Member Cards for Selected Data'); ?></a>
-    &nbsp;<a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_card_generator.php?action=clear" class="notAJAX headerText2" style="color: #f00;"><?php echo __('Clear Print Queue'); ?></a>
-    <hr />
-    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_card_generator.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?>:
-    <input type="text" name="keywords" size="30" />
-    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
-    </form>
-    <div style="margin-top: 3px;">
+	<div class="per_title">
+    	<h2><?php echo __('Member Card Printing'); ?></h2>
+    </div>
+	<div class="sub_section">
+		<div class="action_button">
+		<a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_card_generator.php?action=print" class="notAJAX headerText2"><?php echo __('Print Member Cards for Selected Data'); ?></a>
+		<a target="blindSubmit" href="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_card_generator.php?action=clear" class="notAJAX headerText2" style="color: #f00;"><?php echo __('Clear Print Queue'); ?></a>
+		</div>
+	    <form name="search" action="<?php echo MODULES_WEB_ROOT_DIR; ?>membership/member_card_generator.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?>:
+	    <input type="text" name="keywords" size="30" />
+	    <input type="submit" id="doSearch" value="<?php echo __('Search'); ?>" class="button" />
+	    </form>
+    </div>
+    <div class="infoBox">
     <?php
     echo __('Maximum').' <font style="color: #f00">'.$max_print.'</font> '.__('records can be printed at once. Currently there is').' '; //mfc
     if (isset($_SESSION['card'])) {

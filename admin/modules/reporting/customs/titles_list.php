@@ -57,8 +57,14 @@ if (isset($_GET['reportView'])) {
 if (!$reportView) {
 ?>
     <!-- filter -->
-    <fieldset style="margin-bottom: 3px;">
-    <legend style="font-weight: bold"><?php echo strtoupper(__('Title List')); ?> - <?php echo __('Report Filter'); ?></legend>
+    <fieldset>
+    <div class="per_title">
+    	<h2><?php echo __('Title List'); ?></h2>
+	  </div>
+    <div class="infoBox">
+    <?php echo __('Report Filter'); ?>
+    </div>
+    <div class="sub_section">
     <form method="get" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="reportView">
     <div id="filterForm">
         <div class="divRow">
@@ -145,6 +151,7 @@ if (!$reportView) {
     <input type="hidden" name="reportView" value="true" />
     </div>
     </form>
+    </div>
     </fieldset>
     <!-- filter end -->
     <div class="dataListHeader" style="padding: 3px;"><span id="pagingBox"></span></div>
@@ -229,7 +236,7 @@ if (!$reportView) {
     }
 
     // subquery/view string
-    $subquery_str = '(SELECT DISTINCT bsub.biblio_id, bsub.gmd_id, bsub.title, bsub.isbn_issn, bsub.call_number, bsub.classification, bsub.language_id, 
+    $subquery_str = '(SELECT DISTINCT bsub.biblio_id, bsub.gmd_id, bsub.title, bsub.isbn_issn, bsub.call_number, bsub.classification, bsub.language_id,
 		bsub.publish_place_id, bsub.publisher_id
         FROM biblio AS bsub
         LEFT JOIN biblio_author AS ba ON bsub.biblio_id = ba.biblio_id
