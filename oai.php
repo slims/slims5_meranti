@@ -25,6 +25,22 @@ define('INDEX_AUTH', '1');
 
 // required file
 require 'sysconfig.inc.php';
+$date_respons = date('Y-m-d').'T'.date('H:i:s').'Z';
+
+if (!$sysconf['OAI']['enable']) {
+  header('Content-type: text/xml');
+  echo '<?xml version="1.0" encoding="UTF-8"?><OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/
+  http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+  <responseDate>'.$date_respons.'</responseDate>
+  <request>'.$sysconf['OAI']['Identify']['baseURL'].'</request>
+  <error code="badVerb">OAI Repository disabled</error>
+  </OAI-PMH>';
+  exit();
+}
+
+// required library
 require LIB_DIR.'oai-pmh.inc.php';
 require LIB_DIR.'detail.inc.php';
 
@@ -44,7 +60,6 @@ if (isset($_GET['verb']) || isset($_POST['verb'])) {
     // MULAI PROSES OAI-PMH REQUEST
     // buat instance object OAI-PMH
     $oai_respon_handlers = new OAI_Web_Service($dbs);
-    $date_respons = date('Y-m-d').'T'.date('H:i:s').'Z';
 
     // mulai output XML
     header('Content-type: text/xml');
