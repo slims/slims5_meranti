@@ -548,4 +548,3 @@ if (defined('LIGHTWEIGHT_MODE') OR isset($_COOKIE['LIGHTWEIGHT_MODE'])) {
     $sysconf['enable_xml_detail'] = false;
     $sysconf['enable_xml_result'] = false;
 }
-?>

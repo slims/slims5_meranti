@@ -1,10 +1,10 @@
-/*-------------------------------------------------------------------- 	
+/*--------------------------------------------------------------------
 
-	Theme Name	: Meranti Template 
+	Theme Name	: Meranti Template
 	Version		: 1.0.0
 	Author		: Eddy Subratha
 	Tags			: slims, themes, template, meranti
-	Copyright	: (c) 2012 Eddy Subratha - eddy.subratha{at}gmail.com	
+	Copyright	: (c) 2012 Eddy Subratha - eddy.subratha{at}gmail.com
 
 ---------------------------------------------------------------------*/
 @import url('css/reset.css');
@@ -170,7 +170,7 @@ p {
 	padding-top:10px;
 }
 
-.nav li 
+.nav li
 {
 	font-size:14px;
 	float: left;
@@ -184,9 +184,9 @@ p {
 
 #masking
 {
-	background: transparent url(images/line-dotted.png) left top repeat; 
-	width:100%; 
-	height:100%; 
+	background: transparent url(images/line-dotted.png) left top repeat;
+	width:100%;
+	height:100%;
 	position:fixed;
 	z-index: -99;
 	padding:0;
@@ -194,7 +194,7 @@ p {
 }
 
 
-.slider 
+.slider
 {
 	padding:20px 0px;
 }
@@ -230,12 +230,12 @@ h4{
 }
 
 .sidebar
-{	
+{
 	background:rgba(224,77,64,0.9);
 	filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#e04d40,endColorstr=#e04d40);
 	zoom:1;
 	width:250px;
-	float: left;	
+	float: left;
 	font-size:14px;
 }
 
@@ -267,7 +267,7 @@ h4{
 /*-----------------------------------*/
 .collection
 {
-	
+
 }
 
 .item
@@ -357,7 +357,7 @@ hr
 	border-bottom: dotted 1px #222222;
 	width:100%;
 	margin-bottom:15px;
-	
+
 }
 
 .footer
@@ -412,7 +412,7 @@ hr
 
 .item-list:first-child
 {
-	border-top: none;	
+	border-top: none;
 }
 
 .cover-list
@@ -432,7 +432,7 @@ hr
 }
 
 .titleField
-{	
+{
 	color: #78a9c0;
 	font-size:18px;
 }
@@ -502,7 +502,7 @@ hr
 }
 
 .biblioMarkFormAction input
-{	
+{
 	width:250px;
 	float: right;
 	margin:10px !important;
@@ -511,7 +511,7 @@ hr
 
 }
 
-.biblioCheck 
+.biblioCheck
 {
 	padding:0;
 	margin:0;
@@ -522,11 +522,11 @@ hr
 -----------------------------*/
 #login-page
 {
-	background: whitesmoke url(images/bg_noise.jpg) left top repeat;		
+	background: whitesmoke url(images/bg_noise.jpg) left top repeat;
 	display:block;
 }
 
-#loginForm 
+#loginForm
 {
 	background:#ffffff;
 	padding:20px;
@@ -577,7 +577,7 @@ hr
 }
 
 .loginButton, .homeButton, #loginButton
-{	
+{
 	height:40px;
 	cursor: pointer;
 	margin-right:15px;
@@ -590,7 +590,7 @@ hr
 
 
 .marginTop input
-{	
+{
 	width:75px;
 	height:40px;
 	cursor: pointer;
@@ -611,7 +611,7 @@ hr
 /*----------------------------
 	Member Login
 -----------------------------*/
-.memberBasketList 
+.memberBasketList
 {
 	border:none !important;
 
@@ -662,7 +662,7 @@ hr
 
 .memberDetail strong
 {
-	font-weight:normal !important;	
+	font-weight:normal !important;
 }
 
 .dataListHeader
@@ -678,7 +678,7 @@ hr
 	padding:10px !important;
 }
 
-.dataListHeader td 
+.dataListHeader td
 {
 	color#fc0;
 }
