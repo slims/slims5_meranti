@@ -480,11 +480,11 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         // AJAX expression
         $ajax_exp = "ajaxFillSelect('".SENAYAN_WEB_ROOT_DIR."admin/AJAX_lookup_handler.php', 'mst_sor', 'sor_id:sor', 'sorID', $('#sor_search_str').val())";
         if ($rec_d['sor']) {
-            $publ_options[] = array($rec_d['sor_id'], $rec_d['sor']);
+            $sor_options[] = array($rec_d['sor_id'], $rec_d['sor']);
         }
-        $publ_options[] = array('0', __('Statement of Responsibility'));
+        $sor_options[] = array('0', __('Statement of Responsibility'));
         // string element
-        $str_input = simbio_form_element::selectList('sorID', $publ_options, '', 'style="width: 50%;"');
+        $str_input = simbio_form_element::selectList('sorID', $sor_options, '', 'style="width: 50%;"');
         $str_input .= '&nbsp;';
         $str_input .= simbio_form_element::textField('text', 'sor_search_str', $rec_d['sor'], 'style="width: 45%;" onkeyup="'.$ajax_exp.'"');
     $form->addAnything(__('Statement of Responsibility'), $str_input);
