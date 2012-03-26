@@ -27,20 +27,55 @@ if (isset($_GET['p']))
 		$p = 'login';
 	}
 }
-// menu list
-// if you want to add some menu, add array item below
-$menus['home'] 	= array('url' => 'index.php', 			'text' => __('Home'));
-$menus['libinfo'] = array('url' => 'index.php?p=libinfo', 	'text' => __('Library Information'));
-$menus['help'] 	= array('url' => 'index.php?p=help', 	'text' => __('Help on Search'));
-$menus['member'] 	= array('url' => 'index.php?p=member', 	'text' => __('Member Area'));
-$menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian LOGIN'));
+
+/*----------------------------------------------------
+  menu list
+  you may modified as you need
+----------------------------------------------------*/
+$menus = array (
+				'home' 		=> array('url' 	=> 'index.php', 
+									 'text'	=> __('Home')
+									),
+				'libinfo' 	=> array('url' 	=> 'index.php?p=libinfo', 
+									 'text'	=> __('Library Information')
+									),
+				'help' 		=> array('url' 	=> 'index.php?p=help', 
+									 'text'	=> __('Help on Search')
+									),
+				'member' 		=> array('url' 	=> 'index.php?p=member', 
+									 'text'	=> __('Member Area')
+									),
+				'login' 		=> array('url' 	=> 'index.php?p=login', 
+									 'text'	=> __('Librarian LOGIN')
+									)
+);
+
+/*----------------------------------------------------
+  social button
+  you may modified as you need. 
+----------------------------------------------------*/
+$social = array	(
+				'facebook' 	=> array('url' 	=> 'http://www.facebook.com/groups/senayan.slims/', 
+									 'text'	=> 'Facebook'
+									),
+				'twitter' 	=> array('url' 	=> 'http://twitter.com/#!/slims_official', 
+									 'text'	=> 'Twitter'
+									),
+				'youtube' 	=> array('url' 	=> 'http://www.youtube.com/user/senayanslims', 
+									 'text'	=> 'Youtube'
+									),
+				'gihub' 	=> array('url' 	=> 'https://github.com/slims/', 
+									 'text'	=> 'Github'
+									)									
+				);
+
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/2002/REC-xhtml1-20020801/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 	<title><?php echo $page_title; ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="description" content="SLiMS (Senayan Library Management System) is an open source Library Management System. It is build on Open source technology like PHP and MySQL"
+	<meta name="description" content="SLiMS (Senayan Library Management System) is an open source Library Management System. It is build on Open source technology like PHP and MySQL">
 	<meta name="keywords" content="senayan,slims,libraru automation,free library application, library, perpustakaan, aplikasi perpustakaan">	
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<meta name="robots" content="index, nofollow">
@@ -76,12 +111,13 @@ $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian 
 				    </form>
 				</div>
 				<div class="treding grid_7">
+					<?php if(isset($social) && count($social) > 0) { ?>
 					<ul class="social">
-						<li><a href="http://www.facebook.com/groups/senayan.slims/" target="blank">Facebook</a></li>
-						<li><a href="http://twitter.com/#!/slims_official" target="_blank">Twitter</a></li>
-						<li><a href="https://github.com/slims/" target="_blank">Github</a></li>
-						<li><a href="http://www.youtube.com/user/senayanslims" target="_blank">Youtube Channel</a></li>
+					<?php foreach ($social as $path => $menu) { ?>
+						<li><a href="<?php echo $menu['url']; ?>" title="<?php echo $menu['text']; ?>" <?php if ($p == $path) {echo ' class="active"';} ?>><?php echo $menu['text']; ?></a></li>
+					<?php } ?>
 					</ul>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
@@ -89,12 +125,12 @@ $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian 
 		<div class="logo">
 			<div class="container_12">
 				<div class="grid_4 title">
-					<div class="sitename"><a href="index.php" title="Home"><?php echo $sysconf['library_name']; ?></div>
+					<div class="sitename"><a href="index.php" title="Home"><?php echo $sysconf['library_name']; ?></a></div>
 					<div class="subname"><?php echo $sysconf['library_subname']; ?></div>
 				</div>
 				<ul class="nav">
 					<?php foreach ($menus as $path => $menu) { ?>
-						<li><a href="<?php echo $menu['url']; ?>" title="<?php echo $menu['text']; ?>" <?php if ($p == $path) {echo ' class="active"';} ?>><?php echo $menu['text']; ?></a></li>
+						<li><a href="<?php echo $menu['url']; ?>" title="<?php echo $menu['text']; ?>" <?php if ($_GET['p'] == $path) {echo ' class="active"';} ?>><?php echo $menu['text']; ?></a></li>
 					<?php } ?>
 				</ul>
 			</div>
@@ -110,19 +146,7 @@ $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian 
 						</div>
 						<p class="info">
 							<?php echo $info; ?>
-						</p>
-						<div class="tagline">
-							Related Collections
-						</div>
-						<ul>
-							<li><a href="#">Lorem Ipsum</a></li>
-							<li><a href="#">simply dummy text</a></li>
-							<li><a href="#">the printing</a></li>
-							<li><a href="#">typesetting industry</a></li>
-							<li><a href="#">the industry</a></li>
-							<li><a href="#">standard dummy text</a></li>
-						</ul>
-
+						</p>						
 					</div>
 
 					<div class="section">
@@ -143,7 +167,6 @@ $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian 
 						<div class="info">
 							<?php echo $info; ?>
 						</div>
-
 						<div class="tagline">
 							<?php echo __('User Login'); ?>
 						</div>
@@ -155,7 +178,7 @@ $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian 
 						<div class="collections-list">
 							<?php echo $main_content; ?>
 							<div class="clear">&nbsp;</div>
-						</div>
+						</div>						
 					</div>
 					<?php } elseif(isset($_GET['p'])) { ?>
 						<?php echo $main_content; ?>
@@ -165,10 +188,11 @@ $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian 
 					</div>
 					<div class="search">
 					    <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
-							<div class="simply">
-							    <input type="text" name="title" id="title" class="keyword defaultText" value="" />
+						    <div class="simply">
+							<input type="hidden" name="search" value="Search" />
+							<input type="text" name="title" id="title" class="keyword" />
 						    </div>
-						    <div class="advance" style="display:none;">
+						    <div class="advance" style="display: none;">
 						    <table width="100%">
 							    <tr>
 								    <td class="value">
@@ -199,8 +223,8 @@ $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian 
 									    <?php echo $gmd_list; ?>
 									    </select>
 								    </td>
-								</tr>
-								<tr>
+							    </tr>
+							    <tr>
 								    <td class="value">
 									    <?php echo __('Collection Type'); ?>
 								    </td>
@@ -217,17 +241,17 @@ $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian 
 									    <?php echo $location_list; ?>
 									    </select>
 								    </td>
-								</tr>
+							    </tr>
 							    <tr>
 								    <td colspan="4" class="value" style="text-align:center;">
-									    <input type="submit" name="search" value="<?php echo __('Search'); ?>" class="loginButton" style="te" />
-									</td>
-								</tr>
-							</table>
-							</div>
+									<input type="submit" name="search" value="<?php echo __('Search'); ?>" class="searchButton" />
+								    </td>
+							    </tr>
+						    </table>
+						    </div>
 							<div id="show_advance">
 							    	<a href="#"><?php echo __('Advanced Search'); ?></a>
-						    </div>
+							</div>
 					    </form>
 					</div>
 					<script type="text/javascript">
@@ -237,10 +261,14 @@ $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian 
 							$('#advSearchForm input').attr('autocomplete','off');
 
 							$('#show_advance').click(function(){
-								$('.advance').slideToggle();
+							    $('.advance').slideToggle();
 							});
-
-							$('#title').focus();
+							
+							$('#title').keypress(function(e){
+							    if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+								this.form.submit();
+							    }     
+							});
 						});
 
 					</script>
@@ -276,8 +304,8 @@ $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian 
 			fit_landscape			:   0,		//Landscape images will not exceed browser width
 			image_protect			:	1,		//Disables image dragging and right click with Javascript
 			slides					:   [ 		//Background image
-			{ image : '<?php echo $sysconf['template']['css']; ?>/../images/1.jpg' },
-			{ image : '<?php echo $sysconf['template']['css']; ?>/../images/2.jpg' }										]
+			{ image : '<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/images/1.jpg' },
+			{ image : '<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/images/2.jpg' }										]
 		});
 	});
 	</script>

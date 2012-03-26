@@ -244,6 +244,11 @@ hr
 	color: #da5240;
 }
 
+
+
+/*----------------------------------------------------------------*/
+/* Search Layout */
+/*----------------------------------------------------------------*/
 .simply
 {
 	font-size:24px;
@@ -251,10 +256,6 @@ hr
 	filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#000000,endColorstr=#000000);
 	padding:20px;
 }
-
-/*----------------------------------------------------------------*/
-/* Search Layout */
-/*----------------------------------------------------------------*/
 .search .keyword
 {
 	padding:20px;
@@ -263,6 +264,7 @@ hr
 	width:400px;
 	background:transparent;
 	border: none;
+	outline: 0;
 }
 
 .advance
@@ -293,6 +295,12 @@ hr
 #show_advance a {
 	color:#666666;
 	font-size:14px;
+}
+
+.searchButton
+{
+    border-radius: 3px;
+    height:40px;
 }
 
 /*----------------------------------------------------------------*/
@@ -619,16 +627,9 @@ hr
 	cursor: pointer;
 }
 
-.marginTop .loginButton
+.marginTop
 {
 	float: right;
-	clear:both;
-}
-
-.marginTop .homeButton
-{
-	float: right;
-
 }
 
 /*----------------------------------------------------------------*/
@@ -661,6 +662,7 @@ hr
 {
 	padding:20px;
 	border-bottom: dotted 1px #222222;
+	background-color: rgba(0,0,0,0.9);
 }
 
 .fieldLabel
@@ -670,9 +672,10 @@ hr
 	clear:both;
 }
 
-.alterCell, .alterCell2, .memberLoanListInfo, .memberLoanHistInfo {
-    background-color: rgba(0,0,0,0.9) !important;
-	padding: 10px !important;
+.alterCell, .alterCell2, .memberLoanListInfo, .memberLoanHistInfo
+{
+      background-color: rgba(0,0,0,0.9) !important;
+      padding: 10px !important;
 }
 
 .memberDetail, .memberLoanList
