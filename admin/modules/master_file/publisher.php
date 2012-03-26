@@ -16,6 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
+ * Some patches by Hendro Wicaksono (hendrowicaksono@yahoo.com)
  */
 
 /* Publisher Management section */
@@ -186,7 +187,6 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // table spec
     if (isset($_GET['type']) && $_GET['type'] == 'orphaned') {
         $table_spec = 'mst_publisher AS p LEFT JOIN biblio AS b ON p.publisher_id = b.publisher_id WHERE b.publisher_id IS NULL';
-        #$sql_criteria = 'b.publisher_id IS NULL';
     } else {
         $table_spec = 'mst_publisher AS p';
     }

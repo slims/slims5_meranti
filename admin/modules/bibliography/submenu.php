@@ -37,6 +37,7 @@ $menu[] = array(__('P2P Service'), MODULES_WEB_ROOT_DIR.'bibliography/p2p.php', 
 $menu[] = array('Header', __('Tools'));
 $menu[] = array(__('Labels Printing'), MODULES_WEB_ROOT_DIR.'bibliography/dl_print.php', __('Print Document Labels'));
 $menu[] = array(__('Item Barcodes Printing'), MODULES_WEB_ROOT_DIR.'bibliography/item_barcode_generator.php', __('Print Item Barcodes'));
+$menu[] = array(__('Catalog Printing'), MODULES_WEB_ROOT_DIR.'bibliography/printed_card.php', __('Print Catalog Card'));
 $menu[] = array(__('Data Export'), MODULES_WEB_ROOT_DIR.'bibliography/export.php', __('Export Bibliographic Data To CSV format'));
 $menu[] = array(__('Data Import'), MODULES_WEB_ROOT_DIR.'bibliography/import.php', __('Import Data to Bibliographic Database from CSV file'));
 $menu[] = array(__('Item Export'), MODULES_WEB_ROOT_DIR.'bibliography/item_export.php', __('Export Item/Copies data To CSV format'));
