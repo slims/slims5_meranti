@@ -1,10 +1,10 @@
 <?php
 /*------------------------------------------------------------
-	
+
 	Template		: Slims Meranti Template
 	Create Date	: March 24, 2012
 	Author		: Eddy Subratha (eddy.subratha@gmail.com)
-		 
+
 -------------------------------------------------------------*/
 // be sure that this file not accessed directly
 if (!defined('INDEX_AUTH')) {
@@ -13,7 +13,7 @@ if (!defined('INDEX_AUTH')) {
     die("can not access this file directly");
 }
 //set default index page
-$p = 'home';	
+$p = 'home';
 
 if (isset($_GET['p']))
 {
@@ -55,7 +55,8 @@ $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian 
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/form.js"></script>
 	<script type="text/javascript" src="js/gui.js"></script>
-	<script type="text/javascript" src="<?php echo $sysconf['template']['css']; ?>/../js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/js/supersized.3.1.3.min.js"></script>
+	<script type="text/javascript" src="<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/js/adapt.min.js"></script>
 
 </head>
 
@@ -70,7 +71,7 @@ $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian 
 					    <select name="select_lang"  onchange="document.langSelect.submit();">
 					    <?php echo $language_select; ?>
 					    </select>
-				    </form> 
+				    </form>
 				</div>
 				<div class="treding grid_7">
 					<ul class="social">
@@ -78,28 +79,28 @@ $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian 
 						<li><a href="http://twitter.com/#!/slims_official" target="_blank">Twitter</a></li>
 						<li><a href="https://github.com/slims/" target="_blank">Github</a></li>
 						<li><a href="http://www.youtube.com/user/senayanslims" target="_blank">Youtube Channel</a></li>
-					</ul>					
+					</ul>
 				</div>
 			</div>
-		</div>		
+		</div>
 
 		<div class="logo">
 			<div class="container_12">
 				<div class="grid_4 title">
-					<div class="sitename"><a href="index.php" title="Home"><?php echo $sysconf['library_name']; ?></div> 
-					<div class="subname"><?php echo $sysconf['library_subname']; ?></div> 
+					<div class="sitename"><a href="index.php" title="Home"><?php echo $sysconf['library_name']; ?></div>
+					<div class="subname"><?php echo $sysconf['library_subname']; ?></div>
 				</div>
-				<ul class="nav">					
-					<?php foreach ($menus as $path => $menu) { ?>					
+				<ul class="nav">
+					<?php foreach ($menus as $path => $menu) { ?>
 						<li><a href="<?php echo $menu['url']; ?>" title="<?php echo $menu['text']; ?>" <?php if ($p == $path) {echo ' class="active"';} ?>><?php echo $menu['text']; ?></a></li>
 					<?php } ?>
 				</ul>
-			</div>		
+			</div>
 		</div>
 
 		<div class="content">
 			<div class="container_12">
-				<div class="grid_12 welcome">					
+				<div class="grid_12 welcome">
 					<?php if(isset($_GET['title']) || isset($_GET['keyword'])) { ?>
 					<div class="sidebar">
 						<div class="tagline">
@@ -112,24 +113,24 @@ $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian 
 							Related Collections
 						</div>
 						<ul>
-							<li><a href="#">Lorem Ipsum</a></li>  
+							<li><a href="#">Lorem Ipsum</a></li>
 							<li><a href="#">simply dummy text</a></li>
 							<li><a href="#">the printing</a></li>
 							<li><a href="#">typesetting industry</a></li>
 							<li><a href="#">the industry</a></li>
 							<li><a href="#">standard dummy text</a></li>
 						</ul>
-					
+
 					</div>
 
 					<div class="section">
 						<div class="tagline">
-							<?php echo __('Collections'); ?> 
+							<?php echo __('Collections'); ?>
 							<a href="javascript: history.back();" class="back to_right"> <?php echo __('Back'); ?> </a>
 						</div>
 						<div class="collections-list">
-							<?php echo $main_content; ?> 					
-							<div class="clear">&nbsp;</div>							
+							<?php echo $main_content; ?>
+							<div class="clear">&nbsp;</div>
 						</div>
 					</div>
 					<?php } elseif($_GET['p'] == 'member') { ?>
@@ -138,22 +139,22 @@ $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian 
 							<?php echo __('Information'); ?>
 						</div>
 						<div class="info">
-							<?php echo $info; ?> 
+							<?php echo $info; ?>
 						</div>
-						
+
 						<div class="tagline">
 							<?php echo __('User Login'); ?>
 						</div>
 						<div class="info">
-							<?php echo $header_info; ?> 
+							<?php echo $header_info; ?>
 						</div>
-					</div>	
+					</div>
 					<div class="section">
 						<div class="collections-list">
-							<?php echo $main_content; ?> 					
-							<div class="clear">&nbsp;</div>							
+							<?php echo $main_content; ?>
+							<div class="clear">&nbsp;</div>
 						</div>
-					</div>					
+					</div>
 					<?php } elseif(isset($_GET['p'])) { ?>
 						<?php echo $main_content; ?>
 					<?php } else { ?>
@@ -212,7 +213,7 @@ $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian 
 								    <td class="value">
 									    <select name="location">
 									    <?php echo $location_list; ?>
-									    </select>					    
+									    </select>
 								    </td>
 								</tr>
 							    <tr>
@@ -223,51 +224,47 @@ $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian 
 							</table>
 							</div>
 							<div id="show_advance">
-							    	<a href="#"><?php echo __('Advance Search'); ?></a>
+							    	<a href="#"><?php echo __('Advanced Search'); ?></a>
 						    </div>
-					    </form>	
+					    </form>
 					</div>
 					<script type="text/javascript">
 						$(document).ready(function()
 						{
-							//Disable all html autocomplete 
+							//Disable all html autocomplete
 							$('#advSearchForm input').attr('autocomplete','off');
-							
+
 							$('#show_advance').click(function(){
 								$('.advance').slideToggle();
 							});
-							
+
 							$('#title').focus();
-						});		
-					
-					</script>										
+						});
+
+					</script>
 					<?php } ?>
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="footer">
 			<div class="container_12">
 				<div class="grid_6 lisence">
 					This software and this template are released Under GNU GPL License Version 3
 				</div>
 				<div class="grid_5 oss">
-					Award-Winning of Open Source Software Category in ICT Award 2009  
+					Award-Winning of Open Source Software Category in ICT Award 2009
 				</div>
 			</div>
 		</div>
 
 	</div>
-	
-	<script type="text/javascript" src="<?php echo $sysconf['template']['css']; ?>/../js/supersized.3.1.3.min.js"></script>
-	<script type="text/javascript" src="<?php echo $sysconf['template']['css']; ?>/../js/adapt.min.js"></script>
 
-	
-	<script type="text/javascript">  	
+	<script type="text/javascript">
 	jQuery(function($){
 		$.supersized({
-              transition			: 6,
-              keyboard_nav          : 0,			
+      transition			: 6,
+      keyboard_nav          : 0,
 			start_slide			:	1,		//Start slide (0 is random) //Requires multiple background images
 			vertical_center       	:   1,		//Vertically center background
 			horizontal_center     	:   1,		//Horizontally center background
@@ -277,8 +274,8 @@ $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian 
 			fit_landscape			:   0,		//Landscape images will not exceed browser width
 			image_protect			:	1,		//Disables image dragging and right click with Javascript
 			slides					:   [ 		//Background image
-										  		{ image : '<?php echo $sysconf['template']['css']; ?>/../images/1.jpg' },
-											  		{ image : '<?php echo $sysconf['template']['css']; ?>/../images/2.jpg' }										]					
+			{ image : '<?php echo $sysconf['template']['css']; ?>/../images/1.jpg' },
+			{ image : '<?php echo $sysconf['template']['css']; ?>/../images/2.jpg' }										]
 		});
 	});
 

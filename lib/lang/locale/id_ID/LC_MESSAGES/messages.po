@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Senayan3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-25 00:43+0700\n"
-"PO-Revision-Date: 2012-03-25 00:43+0700\n"
+"POT-Creation-Date: 2012-03-25 04:32+0700\n"
+"PO-Revision-Date: 2012-03-25 04:32+0700\n"
 "Last-Translator: Arif Syamsudin <buitenzorg812@gmail.com>\n"
 "Language-Team: Arie Nugraha; Hendro Wicaksono; Wardiyono <dicarve@yahoo.com; hendrowicaksono@yahoo.com; wynerst@gmail.com>\n"
 "Language: \n"
@@ -206,41 +206,51 @@ msgstr "Lampiran Berkas"
 msgid "Availability"
 msgstr "Ketersediaan"
 
-#: template/default/index_template.inc.php:54
+#: template/default/index_template.inc.php:35
 msgid "Member Area"
 msgstr "Area Anggota"
 
-#: template/default/index_template.inc.php:55
+#: template/default/index_template.inc.php:36
 msgid "Librarian LOGIN"
 msgstr "LOGIN Pustakawan"
 
-#: template/default/index_template.inc.php:98
+#: template/default/index_template.inc.php:69
 msgid "Select Language"
 msgstr "Pilih Bahasa"
 
-#: template/default/index_template.inc.php:110
-msgid "Advanced Search"
-msgstr "Pencarian Spesifik"
+#: template/default/index_template.inc.php:106
+#: template/default/index_template.inc.php:138
+#, fuzzy
+msgid "Information"
+msgstr "Info Perpustakaan"
 
-#: template/default/index_template.inc.php:126
+#: template/default/index_template.inc.php:127
+#, fuzzy
+msgid "Collections"
+msgstr "Semua Koleksi"
+
+#: template/default/index_template.inc.php:128
+#: template/default/detail_template.php:12
+msgid "Back"
+msgstr ""
+
+#: template/default/index_template.inc.php:145
+#, fuzzy
+msgid "User Login"
+msgstr "Daftar Pengguna"
+
+#: template/default/index_template.inc.php:202
 msgid "Collection Type"
 msgstr "Tipe Koleksi"
 
-#: template/default/index_template.inc.php:130
+#: template/default/index_template.inc.php:210
 msgid "Location"
 msgstr "Lokasi"
 
-#: template/default/detail_template.php:85
-msgid "Custom Field 1"
-msgstr "Ruas Kustom 1"
-
-#: template/default/detail_template.php:89
-msgid "Custom Field 2"
-msgstr "Ruas Kustom 2"
-
-#: template/default/detail_template.php:95
-msgid "Back To Previous"
-msgstr "Kembali ke sebelumnya"
+#: template/default/index_template.inc.php:226
+#, fuzzy
+msgid "Advance Search"
+msgstr "Pencarian Spesifik"
 
 #: admin/logout.php:36
 msgid "You Have Been Logged Out From Library Automation System"
@@ -2433,7 +2443,7 @@ msgstr "Anda akan menyunting data Subyek"
 #: admin/modules/master_file/topic.php:214
 #: admin/modules/master_file/topic.php:220
 msgid "Class. Code"
-msgstr "Kode Kelas"
+msgstr "Kode Klasifikasi"
 
 #: admin/modules/master_file/coll_type.php:56
 msgid "Collection type name can't be empty"
@@ -2542,6 +2552,11 @@ msgstr "Data Pengarang Mubazir"
 #: admin/modules/master_file/submenu.php:43
 msgid "Orphaned Subject"
 msgstr "Data Subyek Mubazir"
+
+#: admin/modules/master_file/submenu.php:44
+#, fuzzy
+msgid "Orphaned Publisher"
+msgstr "Data Pengarang Mubazir"
 
 #: admin/modules/master_file/location.php:57
 msgid "Location ID and Name can't be empty"
@@ -2840,8 +2855,8 @@ msgid "Add New Publisher"
 msgstr "Tambah Penerbit Baru"
 
 #: admin/modules/master_file/publisher.php:175
-#: admin/modules/master_file/publisher.php:193
-#: admin/modules/master_file/publisher.php:197
+#: admin/modules/master_file/publisher.php:198
+#: admin/modules/master_file/publisher.php:202
 msgid "Publisher Name"
 msgstr "Nama Penerbit"
 
@@ -4024,28 +4039,28 @@ msgstr "Peralatan Ekspor"
 msgid "Export bibliographics data to CSV file"
 msgstr "Ekspor data bibliografi data ke format CSV"
 
-#: lib/detail.inc.php:172
+#: lib/detail.inc.php:174
 msgid "Click to view others documents with this author"
 msgstr "Klik disini untuk mencari dokumen lain dari pengarang ini"
 
-#: lib/detail.inc.php:186
+#: lib/detail.inc.php:188
 msgid "Click to view others documents with this subject"
 msgstr "Klik di sini untuk mencari dokumen lain dengan subjek ini"
 
 #: lib/biblio_list_model.inc.php:182
-#: lib/biblio_list_model.inc.php:203
+#: lib/biblio_list_model.inc.php:205
 msgid "Record Detail"
 msgstr "Detail Cantuman"
 
-#: lib/biblio_list_model.inc.php:258
+#: lib/biblio_list_model.inc.php:262
 msgid "none copy available"
 msgstr "tidak ada kopi yang tersedia"
 
-#: lib/biblio_list_model.inc.php:271
+#: lib/biblio_list_model.inc.php:275
 msgid "mark this"
 msgstr "tandai ini"
 
-#: lib/biblio_list_model.inc.php:294
+#: lib/biblio_list_model.inc.php:297
 msgid "Put marked selection into basket"
 msgstr "Taruh pilihan yang ditandai ke dalam keranjang"
 
@@ -4061,6 +4076,10 @@ msgstr "Ditemukan  <strong>{biblio_list->num_rows}</strong> dari pencarian Anda 
 #: lib/contents/default.inc.php:178
 msgid "You currently on page <strong>{page}</strong> of <strong>{total_pages}</strong> page(s)"
 msgstr "Saat ini anda berada pada halaman <strong>{page}</strong> dari total <strong>{total_pages}</strong> halaman"
+
+#: lib/contents/show_detail.inc.php:60
+msgid "Back To Previous"
+msgstr "Kembali ke sebelumnya"
 
 #: lib/contents/member.inc.php:39
 msgid "Welcome to Member's Area where you can view your current loan information and view your membership status."
@@ -4086,103 +4105,103 @@ msgstr "Sandi Captcha yang diberikan SALAH! Silahkan masukkan sandi yang benar"
 msgid "Please insert your member ID and password given by library system administrator. If you are library's member and don't have a password yet, please contact library staff."
 msgstr "Masukan ID anggota serta kata sandi yang diberikan oleh administrator sistem perpustakaan. Jika Anda anggota perpustakaan namun belum memiliki kata sandi, hubungi staf perpustakaan."
 
-#: lib/contents/member.inc.php:151
+#: lib/contents/member.inc.php:152
 msgid "Password"
 msgstr "Kata Sandi"
 
-#: lib/contents/member.inc.php:174
+#: lib/contents/member.inc.php:175
 msgid "Login"
 msgstr "Masuk"
 
-#: lib/contents/member.inc.php:191
+#: lib/contents/member.inc.php:193
 msgid "Current Password"
 msgstr "Kata Sandi Terkini"
 
-#: lib/contents/member.inc.php:199
+#: lib/contents/member.inc.php:201
 msgid "Confirm Password"
 msgstr "Konfirmasi Kata Sandi"
 
-#: lib/contents/member.inc.php:203
-#: lib/contents/member.inc.php:602
+#: lib/contents/member.inc.php:205
+#: lib/contents/member.inc.php:617
 msgid "Change Password"
 msgstr "Ubah Kata Sandi"
 
-#: lib/contents/member.inc.php:372
+#: lib/contents/member.inc.php:374
 msgid "Reserve title(s) on Basket"
 msgstr "Reservasi ditambahkan ke dalam Keranjang"
 
-#: lib/contents/member.inc.php:373
+#: lib/contents/member.inc.php:375
 msgid "Clear Basket"
 msgstr "Bersihkan Keranjang"
 
-#: lib/contents/member.inc.php:374
+#: lib/contents/member.inc.php:376
 msgid "Remove selected title(s) from Basket"
 msgstr "Hapus judul terpilih dari Keranjang"
 
-#: lib/contents/member.inc.php:376
+#: lib/contents/member.inc.php:378
 msgid "title(s) on basket"
 msgstr "Judul dalam keranjang"
 
-#: lib/contents/member.inc.php:398
+#: lib/contents/member.inc.php:400
 msgid "Your Membership Already EXPIRED! Please extend your membership."
 msgstr "Masa Berlaku Keanggotaan Anda sudah KEDALUWARSA! Harap perpanjang keanggotaan Anda."
 
-#: lib/contents/member.inc.php:401
+#: lib/contents/member.inc.php:403
 msgid "Membership currently in pending state, no loan transaction can be made yet."
 msgstr "Keanggotaan dalam status ditunda, tidak bisa melakukan transaksi peminjaman."
 
-#: lib/contents/member.inc.php:434
+#: lib/contents/member.inc.php:436
 msgid "OVERDUED"
 msgstr "TERLAMBAT"
 
-#: lib/contents/member.inc.php:481
+#: lib/contents/member.inc.php:483
 msgid "item(s) currently on loan"
 msgstr "eksemplar yang sedang dipinjam"
 
-#: lib/contents/member.inc.php:503
+#: lib/contents/member.inc.php:505
 #: lib/contents/download_loan_history.inc.php:64
 msgid "Return Date"
 msgstr "Tanggal Kembali"
 
-#: lib/contents/member.inc.php:516
+#: lib/contents/member.inc.php:518
 #: lib/contents/download_loan_history.inc.php:88
 msgid "item(s) loan history"
 msgstr "sejarah peminjaman eksemplar"
 
-#: lib/contents/member.inc.php:525
+#: lib/contents/member.inc.php:527
 msgid "Your password have been changed successfully."
 msgstr "Kata Sandi Anda sudah berhasil dirubah."
 
-#: lib/contents/member.inc.php:528
+#: lib/contents/member.inc.php:530
 msgid "Current password entered WRONG! Please insert the right password!"
 msgstr "Kata Sandi yang dimasukkan SALAH! Silahkan masukkan kata sandi yang benar!"
 
-#: lib/contents/member.inc.php:530
+#: lib/contents/member.inc.php:532
 msgid "Password confirmation FAILED! Make sure to check undercase or uppercase letters!"
 msgstr "Konfirmasi kata sandi GAGAL! Periksa ukuran huruf yang digunakan!"
 
-#: lib/contents/member.inc.php:532
+#: lib/contents/member.inc.php:534
 msgid "Password update FAILED! ERROR ON DATABASE!"
 msgstr "Perubahan kata sandi GAGAL! GALAT PADA PANGKALAN DATA!"
 
-#: lib/contents/member.inc.php:543
+#: lib/contents/member.inc.php:545
 msgid "Reservation e-mail sent successfully!"
 msgstr "Surel untuk reservasi berhasil dikirim!"
 
-#: lib/contents/member.inc.php:591
+#: lib/contents/member.inc.php:594
 msgid "Member Detail"
 msgstr "Data Anggota"
 
-#: lib/contents/member.inc.php:593
+#: lib/contents/member.inc.php:600
 msgid "Your Current Loan"
 msgstr "Pinjaman Terkini"
 
-#: lib/contents/member.inc.php:595
+#: lib/contents/member.inc.php:606
 #: lib/contents/download_loan_history.inc.php:97
 msgid "Your Loan History"
 msgstr "Sejarah Peminjaman Anda"
 
-#: lib/contents/member.inc.php:598
+#: lib/contents/member.inc.php:611
 msgid "Your Title Basket"
 msgstr "Keranjang Judul Anda"
 

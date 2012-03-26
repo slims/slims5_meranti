@@ -16,6 +16,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
+ * Some patches by Hendro Wicaksono (hendrowicaksono@yahoo.com)
  */
 
 /* Place Management section */
@@ -184,6 +185,14 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     /* PLACE LIST */
     // table spec
     $table_spec = 'mst_place AS pl';
+
+    if (isset($_GET['type']) && $_GET['type'] == 'orphaned') {
+        $table_spec = 'mst_place AS pl LEFT JOIN biblio AS b ON pl.place_id = b.publish_place_id WHERE b.publish_place_id IS NULL';
+    } else {
+        $table_spec = 'mst_place AS pl';
+    }
+
+
 
     // create datagrid
     $datagrid = new simbio_datagrid();
