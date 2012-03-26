@@ -1,12 +1,16 @@
 /*--------------------------------------------------------------------
 
-	Theme Name	: Meranti Template
+	Theme Name	: Slims Meranti Template
 	Version		: 1.0.0
 	Author		: Eddy Subratha
-	Tags			: slims, themes, template, meranti
-	Copyright	: (c) 2012 Eddy Subratha - eddy.subratha{at}gmail.com
+	Tags		: senayan, slims, themes, template, meranti
+	Copyrights	: (c) 2012 Eddy Subratha - eddy.subratha{at}gmail.com
 
 ---------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------*/
+/* Include Reset - 960gs - Supersized - Default Font */
+/*----------------------------------------------------------------*/
 @import url('css/reset.css');
 @import url('css/960.css');
 @import url('css/supersized.core.css');
@@ -16,9 +20,12 @@
   font-weight: 400;
   src: 	local('Karla-Regular'),
   		url('Karla-Regular.ttf') format('ttf');
-
 }
+
 /*----------------------------------------------------------------*/
+/* General */
+/*----------------------------------------------------------------*/
+
 body {
 	color: #333;
 	font: 12pt/1.5 Karla, Calibri, Arial, sans-serif;
@@ -35,6 +42,84 @@ a:hover {
 
 p {
 	margin-bottom:10px;
+}
+
+h1,h2,h3,h4,h5,h6
+{
+	font-weight:normal;
+}
+
+h1
+{
+	font-size: 150%;
+}
+
+h2
+{
+	font-size: 135%;
+}
+
+h3
+{
+	font-size: 120%;
+}
+
+h4
+{
+	font-size: 110%;
+}
+
+input,
+textarea,
+select,
+.uneditable-input {
+  display: inline-block;
+  width: 210px;
+  height: 18px;
+  padding: 4px;
+  font-size: 13px;
+  line-height: 18px;
+  color: #808080;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+select {
+  padding: initial;
+}
+
+select
+{
+  height: 27px;
+  *height: auto;
+  line-height: 27px;
+  *margin-top: 4px;
+  /* For IE7, add top margin to align select with labels */
+}
+
+
+hr
+{
+	border-bottom: dotted 1px #222222;
+	width:100%;
+	margin-bottom:15px;
+
+}
+
+/*----------------------------------------------------------------*/
+/* Header Layout */
+/*----------------------------------------------------------------*/
+#masking
+{
+	background: transparent url(images/line-dotted.png) left top repeat;
+	width:100%;
+	height:100%;
+	position:fixed;
+	z-index: -99;
+	padding:0;
+	margin:0;
 }
 
 .topic
@@ -63,7 +148,9 @@ p {
 
 .sitename
 {
-	font-size:26px;
+	font-size:20px;
+	letter-spacing: -1px;
+	white-space: nowrap;
 }
 
 .subname
@@ -71,6 +158,59 @@ p {
 	font-size:12px;
 }
 
+.subname a{
+	color:#ffcc00;    
+}
+
+.logo
+{
+	background-color:rgba(0,0,0,0.9);
+	filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#000000,endColorstr=#000000);
+	zoom:1;
+	padding:15px 0px;
+	color:#ffffff;
+	position: fixed;
+	width: 100%;
+	margin-top:47px;
+}
+
+/*----------------------------------------------------------------*/
+/* Header Navigation */
+/*----------------------------------------------------------------*/
+.nav
+{
+	float: right;
+	padding-top:10px;
+}
+
+.nav li
+{
+	font-size:13px;
+	float: left;
+	padding-right:9px;
+	letter-spacing: -1px;
+}
+
+.sitename a, .nav a, .sidebar a
+{
+	color: #ffffff;
+}
+
+.social li
+{
+	float: left;
+	margin-right:10px;
+	display:inline;
+}
+
+.social li a
+{
+	color:#fff;
+}
+
+/*----------------------------------------------------------------*/
+/* Content Layout */
+/*----------------------------------------------------------------*/
 #content
 {
 	z-index: 999;
@@ -112,6 +252,9 @@ p {
 	padding:20px;
 }
 
+/*----------------------------------------------------------------*/
+/* Search Layout */
+/*----------------------------------------------------------------*/
 .search .keyword
 {
 	padding:20px;
@@ -152,82 +295,9 @@ p {
 	font-size:14px;
 }
 
-.logo
-{
-	background-color:rgba(0,0,0,0.9);
-	filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#000000,endColorstr=#000000);
-	zoom:1;
-	padding:15px 0px;
-	color:#ffffff;
-	position: fixed;
-	width: 100%;
-	margin-top:47px;
-}
-
-.nav
-{
-	float: right;
-	padding-top:10px;
-}
-
-.nav li
-{
-	font-size:14px;
-	float: left;
-	padding-right:10px
-}
-
-.sitename a, .nav a, .sidebar a
-{
-	color: #ffffff;
-}
-
-#masking
-{
-	background: transparent url(images/line-dotted.png) left top repeat;
-	width:100%;
-	height:100%;
-	position:fixed;
-	z-index: -99;
-	padding:0;
-	margin:0;
-}
-
-
-.slider
-{
-	padding:20px 0px;
-}
-
-.photo
-{
-	border: solid 10px #ffffff;
-	box-shadow:0px 0px 5px #cccccc;
-}
-
-h1,h2,h3,h4,h5,h6
-{
-	font-weight:normal;
-}
-
-h1
-{
-	font-size: 150%;
-}
-
-h2
-{
-	font-size: 135%;
-}
-
-h3
-{
-	font-size: 120%;
-}
-
-h4{
-	font-size: 110%;
-}
+/*----------------------------------------------------------------*/
+/* Sidebar Layout */
+/*----------------------------------------------------------------*/
 
 .sidebar
 {
@@ -261,10 +331,9 @@ h4{
 	zoom:1;
 }
 
-
-/*-----------------------------------*/
-/* block item */
-/*-----------------------------------*/
+/*----------------------------------------------------------------*/
+/* Collection Layout */
+/*----------------------------------------------------------------*/
 .collection
 {
 
@@ -320,82 +389,6 @@ h4{
 	box-shadow: inset 0px 0px 10px #ddd;
 }
 
-
-input,
-textarea,
-select,
-.uneditable-input {
-  display: inline-block;
-  width: 210px;
-  height: 18px;
-  padding: 4px;
-  font-size: 13px;
-  line-height: 18px;
-  color: #808080;
-  border: 1px solid #ccc;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-}
-
-select {
-  padding: initial;
-}
-
-select
-{
-  height: 27px;
-  *height: auto;
-  line-height: 27px;
-  *margin-top: 4px;
-  /* For IE7, add top margin to align select with labels */
-}
-
-
-hr
-{
-	border-bottom: dotted 1px #222222;
-	width:100%;
-	margin-bottom:15px;
-
-}
-
-.footer
-{
-	position: fixed;
-	bottom:0;
-	width: 100%;
-	display: block;
-	background-color: rgba(0,0,0,0.9);
-	filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#000000,endColorstr=#000000);
-	zoom:1;
-	font-size: 12px;
-	color: #ffffff;
-	padding:10px 0px;
-}
-
-.lisence
-{
-	text-align: right;
-	border-right: solid 1px #fff;
-	padding-right:20px;
-}
-
-.social li
-{
-	float: left;
-	margin-right:10px;
-	display:inline;
-}
-
-.social li a
-{
-	color:#fff;
-}
-
-/*-----------------------------------*/
-/* list view */
-/*-----------------------------------*/
 .collections-list
 {
 	width: 690px;
@@ -452,7 +445,10 @@ hr
 	text-decoration: underline;
 }
 
+/*----------------------------------------------------------------*/
 /* Collection Detail */
+/*----------------------------------------------------------------*/
+
 .collection-detail
 {
 	font-size:14px;
@@ -517,9 +513,36 @@ hr
 	margin:0;
 	width:20px;
 }
-/*----------------------------
-	Admin Login
------------------------------*/
+
+/*----------------------------------------------------------------*/
+/* Footer Layout */
+/*----------------------------------------------------------------*/
+
+.footer
+{
+	position: fixed;
+	bottom:0;
+	width: 100%;
+	display: block;
+	background-color: rgba(0,0,0,0.9);
+	filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#000000,endColorstr=#000000);
+	zoom:1;
+	font-size: 12px;
+	color: #ffffff;
+	padding:10px 0px;
+}
+
+.lisence
+{
+	text-align: right;
+	border-right: solid 1px #fff;
+	padding-right:20px;
+}
+
+/*----------------------------------------------------------------*/
+/* Admin Login */
+/*----------------------------------------------------------------*/
+
 #login-page
 {
 	background: whitesmoke url(images/bg_noise.jpg) left top repeat;
@@ -608,9 +631,10 @@ hr
 
 }
 
-/*----------------------------
-	Member Login
------------------------------*/
+/*----------------------------------------------------------------*/
+/* Member Login */
+/*----------------------------------------------------------------*/
+
 .memberBasketList
 {
 	border:none !important;

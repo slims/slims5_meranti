@@ -1,7 +1,7 @@
 <?php
 /*------------------------------------------------------------
 
-	Template		: Slims Meranti Template
+	Template	: Slims Meranti Template
 	Create Date	: March 24, 2012
 	Author		: Eddy Subratha (eddy.subratha@gmail.com)
 
@@ -40,7 +40,10 @@ $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian 
 <head>
 	<title><?php echo $page_title; ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="SLiMS (Senayan Library Management System) is an open source Library Management System. It is build on Open source technology like PHP and MySQL"
+	<meta name="keywords" content="senayan,slims,libraru automation,free library application, library, perpustakaan, aplikasi perpustakaan">	
 	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="robots" content="index, nofollow">
 	<!-- load style -->
 	<link rel="shortcut icon" href="webicon.ico" type="image/x-icon" />
 	<link href="template/core.style.css" rel="stylesheet" type="text/css" />
@@ -252,7 +255,7 @@ $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian 
 					This software and this template are released Under GNU GPL License Version 3
 				</div>
 				<div class="grid_5 oss">
-					Award-Winning of Open Source Software Category in ICT Award 2009
+					The Winner in the Category of OSS Indonesia ICT Award 2009
 				</div>
 			</div>
 		</div>
