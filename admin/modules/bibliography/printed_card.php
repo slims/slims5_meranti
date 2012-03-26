@@ -38,6 +38,19 @@ require SIMBIO_BASE_DIR.'simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/paging/simbio_paging.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/datagrid/simbio_dbgrid.inc.php';
 
+function reverseAuthor($lastfirst) {
+	if ($lastfirst == "") {
+		return "";
+	} else {
+		list($last, $first) = explode(', ', $lastfirst);
+		if ($first <>"") {
+			return $first . " " . $last;
+		} else {
+			return $last;
+		}
+	}
+}
+
 // privileges checking
 $can_read = utility::havePrivilege('bibliography', 'r');
 
@@ -138,13 +151,14 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 		$biblio_d['author'] = "";
 		$i = 0;
 		while ($author_d = $author_q->fetch_row()) {
-			$biblio_d['author'] .= $author_d[0] . ',';
+			$biblio_d['author'] .= reverseAuthor($author_d[0]) . ', ';
 			$i += 1;
+			if ($i == 1) { $mainauthor = $author_d[0]; }
 			if ($i > 1) { $tajuk[] = $author_d[0]; }
 			if ($i >= 3) { break; }
 		}
 		// strip the last comma
-		$biblio_d['author'] = substr_replace($biblio_d['author'], '', -1);
+		$biblio_d['author'] = substr_replace($biblio_d['author'], '', -2);
 
         // subject
 		$subject_q = $dbs->query('SELECT t.topic
@@ -174,7 +188,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 		   WHERE biblio_id = '. $biblio_d['biblio_id']. ' GROUP BY biblio_id');
 		$biblio_d['copies'] = "&nbsp;";
 		while ($number_d = $number_q->fetch_row()) {
-			$biblio_d['copies'] = $number_d[0] . __('Copies');
+			$biblio_d['copies'] = $number_d[0] ." " . __('Copies');
 		}
 		
 		for ($i=0; $i < count($tajuk); $i++)
@@ -188,10 +202,16 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 		}
 		$katalog .= "<tr ".$set_break."><td class=kotak>
 			<table border=0 width=470 height=270 cellpadding=0 cellspacing=0>
-			<tr><td class=data>&nbsp;</td><td align=center colspan=2 rowspan=2>".$tajuk[$i]."</td></tr>
+			<tr><td class=data>&nbsp;</td><td align=center colspan=2 rowspan=2>";
+		if (strlen($tajuk[$i]) > 60) {
+			$katalog .= substr($tajuk[$i], 0,60)."...";
+		} else {
+			$katalog .= $tajuk[$i];
+		}
+		$katalog .="</td></tr>
 			<tr><td class=data>".$sliced_label[0]."</td></tr>
-			<tr><td class=data nowrap>".$sliced_label[1]."</td><td align=left class=data colspan=2>".$biblio_d['author']."</td></tr>
-			<tr><td class=data>".$sliced_label[2]."</td><td align=left class=data colspan=2>&nbsp;&nbsp;&nbsp;".$biblio_d['title']." / ".$biblio_d['author'].". --  ".$biblio_d['edition']."</td></tr>
+			<tr><td class=callno nowrap>".$sliced_label[1]."</td><td align=left class=data colspan=2>".$mainauthor."</td></tr>
+			<tr><td class=callno>".$sliced_label[2]."</td><td align=left class=data colspan=2>&nbsp;&nbsp;&nbsp;".$biblio_d['title']." / ".$biblio_d['author'].". --  ".$biblio_d['edition']."</td></tr>
 			<tr><td></td><td align=left class=data colspan=2>&nbsp;&nbsp;&nbsp;".$biblio_d['publisher']."</td></tr>
 			<tr><td></td><td colspan=2 class=data>&nbsp;</td></tr>
 			<tr><td></td><td align=left class=data colspan=2>&nbsp;&nbsp;&nbsp;".$biblio_d['physic']."-- ".$biblio_d['series'].".</td></tr>
@@ -223,6 +243,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     $html_str .= '<meta http-equiv="Pragma" content="no-cache" /><meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0" /><meta http-equiv="Expires" content="Sat, 26 Jul 1997 05:00:00 GMT" />';
     $html_str .= '<style type="text/css">'."\n";
     $html_str .= '.data {FONT-FAMILY: verdana; FONT-SIZE: 10px; HEIGHT: 20px; PADDING-LEFT: 5px; PADDING-TOP: 0px; text-valign: bottom;  background:#ffffff}'."\n";
+    $html_str .= '.callno {FONT-FAMILY: verdana; FONT-SIZE: 10px; HEIGHT: 20px; PADDING-LEFT: 5px; PADDING-TOP: 0px; vertical-align: top;  background:#ffffff}'."\n";
     $html_str .= '.kata {FONT-FAMILY: verdana; FONT-SIZE: 11px;}'."\n";
     $html_str .= '.kotak {FONT-FAMILY: verdana; FONT-SIZE: 11px; HEIGHT: 20px; FONT-STYLE: bold; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; text-valign: bottom;background:#ffffff;border-bottom:solid 1px #000000;border-top:solid 1px #000000;border-left:solid 1px #000000;border-right:solid 1px #000000;text-align:center}'."\n";
     $html_str .= '</style>'."\n";
