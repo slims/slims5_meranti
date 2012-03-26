@@ -130,7 +130,7 @@ $social = array	(
 				</div>
 				<ul class="nav">
 					<?php foreach ($menus as $path => $menu) { ?>
-						<li><a href="<?php echo $menu['url']; ?>" title="<?php echo $menu['text']; ?>" <?php if ($_GET['p'] == $path) {echo ' class="active"';} ?>><?php echo $menu['text']; ?></a></li>
+						<li><a href="<?php echo $menu['url']; ?>" title="<?php echo $menu['text']; ?>" <?php if ($p == $path) {echo ' class="active"';} ?>><?php echo $menu['text']; ?></a></li>
 					<?php } ?>
 				</ul>
 			</div>
@@ -159,7 +159,7 @@ $social = array	(
 							<div class="clear">&nbsp;</div>
 						</div>
 					</div>
-					<?php } elseif($_GET['p'] == 'member') { ?>
+					<?php } elseif($p == 'member') { ?>
 					<div class="sidebar">
 						<div class="tagline">
 							<?php echo __('Information'); ?>
