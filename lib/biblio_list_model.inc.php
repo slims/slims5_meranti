@@ -184,7 +184,7 @@ abstract class biblio_list_model
             if ($this->show_labels AND !empty($_biblio_d['labels'])) {
                 $arr_labels = @unserialize($_biblio_d['labels']);
                 if ($arr_labels !== false) {
-	            foreach ($arr_labels as $label) 
+	            foreach ($arr_labels as $label)
 	            {
 	                if (!isset($this->label_cache[$label[0]]['name'])) {
 	                    $_label_q = $this->obj_db->query('SELECT label_name, label_desc, label_image FROM mst_label AS lb
@@ -328,6 +328,14 @@ abstract class biblio_list_model
         $_buffer .= '<slims:modsResultShowed>'.$this->num2show.'</slims:modsResultShowed>'."\n";
         $_buffer .= '</slims:resultInfo>'."\n";
         while ($_biblio_d = $this->resultset->fetch_assoc()) {
+						// replace xml entities
+						foreach ($_biblio_d as $_field => $_value) {
+						  if (is_string($_value)) {
+								$_biblio_d[$_field] = preg_replace_callback('/&([a-zA-Z][a-zA-Z0-9]+);/S',
+                  'utility::convertXMLentities', trim($_value));
+						  }
+						}
+
             $_buffer .= '<mods version="3.3" ID="'.$_biblio_d['biblio_id'].'">'."\n";
             // parse title
             $_title_sub = '';
@@ -338,9 +346,9 @@ abstract class biblio_list_model
                 $_title_main = trim($_biblio_d['title']);
             }
 
-            $_buffer .= '<titleInfo>'."\n".'<title>'.htmlentities($_title_main).'</title>'."\n";
+            $_buffer .= '<titleInfo>'."\n".'<title>'.$_title_main.'</title>'."\n";
             if ($_title_sub) {
-                $_buffer .= '<subTitle>'.htmlentities($_title_sub).'</subTitle>'."\n";
+                $_buffer .= '<subTitle>'.$_title_sub.'</subTitle>'."\n";
             }
             $_buffer .= '</titleInfo>'."\n";
 
@@ -359,7 +367,7 @@ abstract class biblio_list_model
                     $sysconf['authority_type'][$_auth_d['authority_type']] = 'personal';
                 }
                 $_buffer .= '<name type="'.$sysconf['authority_type'][$_auth_d['authority_type']].'" authority="'.$_auth_d['auth_list'].'">'."\n"
-                  .'<namePart>'.$_auth_d['author_name'].'</namePart>'."\n"
+                  .'<namePart>'.htmlentities($_auth_d['author_name']).'</namePart>'."\n"
                   .'<role><roleTerm type="text">'.$sysconf['authority_level'][$_auth_d['level']].'</roleTerm></role>'."\n"
                 .'</name>'."\n";
             }
@@ -371,9 +379,9 @@ abstract class biblio_list_model
 
 			// imprint/publication data
 			$_buffer .= '<originInfo>'."\n";
-			$_buffer .= '<place><placeTerm type="text">'.htmlentities($_biblio_d['publish_place']).'</placeTerm></place>'."\n"
-			  .'<publisher>'.htmlentities($_biblio_d['publisher']).'</publisher>'."\n"
-			  .'<dateIssued>'.htmlentities($_biblio_d['publish_year']).'</dateIssued>'."\n";
+			$_buffer .= '<place><placeTerm type="text">'.$_biblio_d['publish_place'].'</placeTerm></place>'."\n"
+			  .'<publisher>'.$_biblio_d['publisher'].'</publisher>'."\n"
+			  .'<dateIssued>'.$_biblio_d['publish_year'].'</dateIssued>'."\n";
 			$_buffer .= '</originInfo>'."\n";
 
 			// doc images

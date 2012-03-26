@@ -35,7 +35,6 @@ $menus['help'] 	= array('url' => 'index.php?p=help', 	'text' => __('Help on Sear
 $menus['member'] 	= array('url' => 'index.php?p=member', 	'text' => __('Member Area'));
 $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian LOGIN'));
 ?>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/2002/REC-xhtml1-20020801/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
@@ -278,7 +277,6 @@ $menus['login'] 	= array('url' => 'index.php?p=login', 	'text' => __('Librarian 
 			{ image : '<?php echo $sysconf['template']['css']; ?>/../images/2.jpg' }										]
 		});
 	});
-
 	</script>
 
 </body>
