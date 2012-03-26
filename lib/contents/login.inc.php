@@ -151,7 +151,7 @@ if (isset($_POST['logMeIn'])) {
     <!-- Captcha in form - start -->
     <?php if ($sysconf['captcha']['smc']['enable']) { ?>
       <?php if ($sysconf['captcha']['smc']['type'] == "recaptcha") { ?>
-      <div style="margin-left:40px; margin-right:auto; margin-top:10px;">
+      <div class="captchaAdmin">
       <?php
         require_once LIB_DIR.$sysconf['captcha']['smc']['folder'].'/'.$sysconf['captcha']['smc']['incfile'];
         $publickey = $sysconf['captcha']['smc']['publickey'];
