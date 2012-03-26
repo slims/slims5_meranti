@@ -177,8 +177,16 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 			$biblio_d['copies'] = $number_d[0] . __('Copies');
 		}
 		
-		for ($i=0; $i < count($tajuk); $i++) {
-		$katalog .= "<tr><td class=kotak>
+		for ($i=0; $i < count($tajuk); $i++)
+		{
+		/* check for break page */
+		if($i % 3 == 0)
+		{
+			$set_break = ' style="page-break-before:always;" ';			
+		} else {
+			$set_break = '';
+		}
+		$katalog .= "<tr ".$set_break."><td class=kotak>
 			<table border=0 width=470 height=270 cellpadding=0 cellspacing=0>
 			<tr><td class=data>&nbsp;</td><td align=center colspan=2 rowspan=2>".$tajuk[$i]."</td></tr>
 			<tr><td class=data>".$sliced_label[0]."</td></tr>
