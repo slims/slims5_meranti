@@ -176,12 +176,23 @@ abstract class biblio_list_model
         // loop data
         $_i = 0;
         if (!$this->resultset) {
-            return '<div style="border: 1px dotted #f00; color: #f00; padding: 5px; margin: 5px;">Query error : '.$this->query_error.'</div>';
+            return '<div class="errorBox">Query error : '.$this->query_error.'</div>';
         }
-        while ($_biblio_d = $this->resultset->fetch_assoc()) {
+        
+        $check_result = count($this->resultset->fetch_assoc());
+        if($check_result == 0)
+        {        	
+        	echo '	<div class="no_result">
+        				<h1>'.__('Ooops...we are sorry').'</h1>
+        				<div class="message">'.__('Cannot find your data here. Please try again with another keyword').'</div>
+        			</div>';
+        } else {
+        while ($_biblio_d = $this->resultset->fetch_assoc())
+        {
             $_biblio_d['title'] = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" class="titleField" title="'.__('Record Detail').'">'.$_biblio_d['title'].'</a>';
             // label
-            if ($this->show_labels AND !empty($_biblio_d['labels'])) {
+            if ($this->show_labels AND !empty($_biblio_d['labels']))
+            {
                 $arr_labels = @unserialize($_biblio_d['labels']);
                 if ($arr_labels !== false) {
 	            foreach ($arr_labels as $label)
@@ -199,7 +210,7 @@ abstract class biblio_list_model
 	                    $_biblio_d['title'] .= ' <img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" />';
 	                }
 	            }
-		}
+				}
             }
             // button
             $_biblio_d['detail_button'] = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" class="detailLink" title="'.__('Record Detail').'">'.__('Record Detail').'</a>';
@@ -270,7 +281,7 @@ abstract class biblio_list_model
                 	}
             	}
         	}
-
+		}
 	    // checkbox for marking collection
 	    $_check_mark = (utility::isMemberLogin() && $this->enable_mark)?' <input type="checkbox" id="biblioCheck'.$_i.'" name="biblio[]" class="biblioCheck" value="'.$_biblio_d['biblio_id'].'" /> <label for="biblioCheck'.$_i.'">'.__('mark this').'</label>':'';
             $_buffer .= '<div class="subItem">'.$_biblio_d['detail_button'].' '.$_biblio_d['xml_button'].$_check_mark.'</div>';
@@ -306,7 +317,6 @@ abstract class biblio_list_model
 		if ($_paging) {
 			$_biblio_list .= $_paging;
 		}
-
         return $_biblio_list;
     }
 
