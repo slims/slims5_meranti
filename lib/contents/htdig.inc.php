@@ -30,7 +30,7 @@ if (!defined('INDEX_AUTH')) {
  */
 
 // HTDIG base config config
-$server_addr = isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : $_SERVER['LOCAL_ADDR'];
+$server_addr = isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : (isset($_SERVER['LOCAL_ADDR']) ? $_SERVER['LOCAL_ADDR'] : gethostbyname($_SERVER['SERVER_NAME']));
 $htdigSearch = 'http://'.$server_addr.'/htdig/search.html';
 $htdigBin = 'http://'.$server_addr.'/cgi-bin/htsearch';
 

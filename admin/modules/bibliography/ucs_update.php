@@ -69,7 +69,7 @@ if (isset($_POST['itemID']) && !empty($_POST['itemID']) && isset($_POST['nodeOpe
     // create HTTP request
     $http_request = new http_request();
     // send HTTP POST request
-    $server_addr = isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : $_SERVER['LOCAL_ADDR'];
+    $server_addr = isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : (isset($_SERVER['LOCAL_ADDR']) ? $_SERVER['LOCAL_ADDR'] : gethostbyname($_SERVER['SERVER_NAME']));
     $http_request->send_http_request($ucs['serveraddr'].'/uc-ops.php', $server_addr, $to_sent, 'POST', 'text/json');
     // below is for debugging purpose only
     // die(json_encode(array('status' => 'RAW', 'message' => $http_request->body())));
