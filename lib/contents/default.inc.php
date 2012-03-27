@@ -44,13 +44,13 @@ if ($sysconf['index']['type'] == 'index') {
 
 // create biblio list object
 try {
-    $biblio_list = new biblio_list($dbs, $sysconf['opac_result_num']);
+  $biblio_list = new biblio_list($dbs, $sysconf['opac_result_num']);
 } catch (Exception $err) {
-    die($err->getMessage());
+  die($err->getMessage());
 }
 
 if (isset($sysconf['enable_xml_detail']) && !$sysconf['enable_xml_detail']) {
-    $biblio_list->xml_detail = false;
+  $biblio_list->xml_detail = false;
 }
 
 // if we are in searching mode
@@ -144,49 +144,50 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
     } else {
         $info .= '<div style="clear: both;">'.__('Found  <strong>{biblio_list->num_rows}</strong> from your keywords').': <strong><cite>'.$keywords.'</cite></strong></div>'; //mfc
     }
-} else {
+
     // show promoted titles
     if (isset($sysconf['enable_promote_titles']) && $sysconf['enable_promote_titles']) {
         $biblio_list->only_promoted = true;
     }
-}
 
-// check if we are on xml resultset mode
-if (isset($_GET['resultXML']) && $sysconf['enable_xml_result']) {
-    // get document list but don't output the result
-    $biblio_list->getDocumentList(false);
-    if ($biblio_list->num_rows > 0) {
-        // send http header
-        header('Content-Type: text/xml');
-        echo '<?xml version="1.0" encoding="UTF-8" ?>'."\n";
-        echo $biblio_list->XMLresult();
-    }
-    exit();
-} else {
     // show the list
     echo $biblio_list->getDocumentList();
     echo '<br />'."\n";
     // set result number info
     $info = str_replace('{biblio_list->num_rows}', $biblio_list->num_rows, $info);
-}
-// count total pages
-$total_pages = ceil($biblio_list->num_rows/$sysconf['opac_result_num']);
 
-// page number info
-if (isset($_GET['page']) AND $_GET['page'] > 1) {
-    $page = intval($_GET['page']);
-    $msg = str_replace('{page}', $page, __('You currently on page <strong>{page}</strong> of <strong>{total_pages}</strong> page(s)')); //mfc
-    $msg = str_replace('{total_pages}', $total_pages, $msg);
-    $info .= '<div style="clear: both;">'.$msg.'</div>';
-} else {
-    $page = 1;
+    // count total pages
+    $total_pages = ceil($biblio_list->num_rows/$sysconf['opac_result_num']);
+
+    // page number info
+    if (isset($_GET['page']) AND $_GET['page'] > 1) {
+      $page = intval($_GET['page']);
+      $msg = str_replace('{page}', $page, __('You currently on page <strong>{page}</strong> of <strong>{total_pages}</strong> page(s)')); //mfc
+      $msg = str_replace('{total_pages}', $total_pages, $msg);
+      $info .= '<div style="clear: both;">'.$msg.'</div>';
+    } else {
+      $page = 1;
+    }
+
+    // query time
+    if (!isset($_SERVER['QUERY_STRING'])) {
+      $_SERVER['QUERY_STRING'] = '';
+    }
+    $info .= '<div>'.__('Query took').' <b>'.$biblio_list->query_time.'</b> '.__('second(s) to complete').'</div>'; //mfc
+    if (isset($biblio_list) && isset($sysconf['enable_xml_result']) && $sysconf['enable_xml_result']) {
+        $info .= '<div><a href="index.php?resultXML=true&'.$_SERVER['QUERY_STRING'].'" class="xmlResultLink" target="_blank" title="View Result in XML Format" style="clear: both;">XML Result</a></div>';
+    }
 }
-// query time
-if (!isset($_SERVER['QUERY_STRING'])) {
-	$_SERVER['QUERY_STRING'] = '';
+
+// check if we are on xml resultset mode
+if (isset($_GET['resultXML']) && $sysconf['enable_xml_result']) {
+  // get document list but don't output the result
+  $biblio_list->getDocumentList(false);
+  if ($biblio_list->num_rows > 0) {
+      // send http header
+      header('Content-Type: text/xml');
+      echo '<?xml version="1.0" encoding="UTF-8" ?>'."\n";
+      echo $biblio_list->XMLresult();
+  }
+  exit();
 }
-$info .= '<div>'.__('Query took').' <b>'.$biblio_list->query_time.'</b> '.__('second(s) to complete').'</div>'; //mfc
-if (isset($biblio_list) && isset($sysconf['enable_xml_result']) && $sysconf['enable_xml_result']) {
-    $info .= '<div><a href="index.php?resultXML=true&'.$_SERVER['QUERY_STRING'].'" class="xmlResultLink" target="_blank" title="View Result in XML Format" style="clear: both;">XML Result</a></div>';
-}
-?>

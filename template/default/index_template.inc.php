@@ -5,8 +5,24 @@
 	Create Date	: March 24, 2012
 	Author		: Eddy Subratha (eddy.subratha@gmail.com)
 
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+
 -------------------------------------------------------------*/
 // be sure that this file not accessed directly
+
 if (!defined('INDEX_AUTH')) {
     die("can not access this file directly");
 } elseif (INDEX_AUTH != 1) {
@@ -33,40 +49,40 @@ if (isset($_GET['p']))
   you may modified as you need
 ----------------------------------------------------*/
 $menus = array (
-				'home' 		=> array('url' 	=> 'index.php', 
+				'home' 		=> array('url' 	=> 'index.php',
 									 'text'	=> __('Home')
 									),
-				'libinfo' 	=> array('url' 	=> 'index.php?p=libinfo', 
+				'libinfo' 	=> array('url' 	=> 'index.php?p=libinfo',
 									 'text'	=> __('Library Information')
 									),
-				'help' 		=> array('url' 	=> 'index.php?p=help', 
+				'help' 		=> array('url' 	=> 'index.php?p=help',
 									 'text'	=> __('Help on Search')
 									),
-				'member' 		=> array('url' 	=> 'index.php?p=member', 
+				'member' 		=> array('url' 	=> 'index.php?p=member',
 									 'text'	=> __('Member Area')
 									),
-				'login' 		=> array('url' 	=> 'index.php?p=login', 
+				'login' 		=> array('url' 	=> 'index.php?p=login',
 									 'text'	=> __('Librarian LOGIN')
 									)
 );
 
 /*----------------------------------------------------
   social button
-  you may modified as you need. 
+  you may modified as you need.
 ----------------------------------------------------*/
 $social = array	(
-				'facebook' 	=> array('url' 	=> 'http://www.facebook.com/groups/senayan.slims/', 
+				'facebook' 	=> array('url' 	=> 'http://www.facebook.com/groups/senayan.slims/',
 									 'text'	=> 'Facebook'
 									),
-				'twitter' 	=> array('url' 	=> 'http://twitter.com/#!/slims_official', 
+				'twitter' 	=> array('url' 	=> 'http://twitter.com/#!/slims_official',
 									 'text'	=> 'Twitter'
 									),
-				'youtube' 	=> array('url' 	=> 'http://www.youtube.com/user/senayanslims', 
+				'youtube' 	=> array('url' 	=> 'http://www.youtube.com/user/senayanslims',
 									 'text'	=> 'Youtube'
 									),
-				'gihub' 	=> array('url' 	=> 'https://github.com/slims/', 
+				'gihub' 	=> array('url' 	=> 'https://github.com/slims/',
 									 'text'	=> 'Github'
-									)									
+									)
 				);
 
 ?>
@@ -76,7 +92,7 @@ $social = array	(
 	<title><?php echo $page_title; ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="description" content="SLiMS (Senayan Library Management System) is an open source Library Management System. It is build on Open source technology like PHP and MySQL">
-	<meta name="keywords" content="senayan,slims,libraru automation,free library application, library, perpustakaan, aplikasi perpustakaan">	
+	<meta name="keywords" content="senayan,slims,libraru automation,free library application, library, perpustakaan, aplikasi perpustakaan">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<meta name="robots" content="index, nofollow">
 	<!-- load style -->
@@ -146,7 +162,7 @@ $social = array	(
 						</div>
 						<p class="info">
 							<?php echo $info; ?>
-						</p>						
+						</p>
 					</div>
 
 					<div class="section">
@@ -178,7 +194,7 @@ $social = array	(
 						<div class="collections-list">
 							<?php echo $main_content; ?>
 							<div class="clear">&nbsp;</div>
-						</div>						
+						</div>
 					</div>
 					<?php } elseif(isset($_GET['p'])) { ?>
 						<?php echo $main_content; ?>
@@ -263,11 +279,11 @@ $social = array	(
 							$('#show_advance').click(function(){
 							    $('.advance').slideToggle();
 							});
-							
+
 							$('#title').keypress(function(e){
 							    if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
 								this.form.submit();
-							    }     
+							    }
 							});
 						});
 

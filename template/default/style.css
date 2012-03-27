@@ -159,7 +159,7 @@ hr
 }
 
 .subname a{
-	color:#ffcc00;    
+	color:#ffcc00;
 }
 
 .logo
@@ -347,14 +347,6 @@ hr
 
 }
 
-.item
-{
-	float: left;
-	display:inline;
-	box-shadow: 0px 0px 3px #ccc;
-	margin: 0px 10px 15px 10px;
-}
-
 .detail
 {
 	display:none;
@@ -402,7 +394,7 @@ hr
 	width: 690px;
 }
 
-.item-list
+.item
 {
 	width: 100%;
 	float: left;
@@ -411,7 +403,7 @@ hr
 	border-bottom: dotted 1px #222222;
 }
 
-.item-list:first-child
+.item:first-child
 {
 	border-top: none;
 }

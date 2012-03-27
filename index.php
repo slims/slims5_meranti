@@ -80,14 +80,14 @@ if (isset($_GET['p'])) {
 							Related Collections
 						</div>
 						<ul>
-							<li><a href="#">Lorem Ipsum</a></li>  
+							<li><a href="#">Lorem Ipsum</a></li>
 							<li><a href="#">simply dummy text</a></li>
 							<li><a href="#">the printing</a></li>
 							<li><a href="#">typesetting industry</a></li>
 							<li><a href="#">the industry</a></li>
 							<li><a href="#">standard dummy text</a></li>
 						</ul>
-					
+
 					</div>
 
 					<div class="section">
@@ -95,11 +95,11 @@ if (isset($_GET['p'])) {
 						'.$content_data['Title'].'
 						</div>
 						<div class="collections-list">
-							<div class="collection-detail" style="padding:20px;">'.$content_data['Content'].'</div> 					
-							<div class="clear">&nbsp;</div>							
+							<div class="collection-detail" style="padding:20px;">'.$content_data['Content'].'</div>
+							<div class="clear">&nbsp;</div>
 						</div>
-					</div>			
-			';		
+					</div>
+			';
             unset($content_data);
         } else {
             header ("location:index.php");
@@ -126,26 +126,4 @@ if (isset($_GET['p'])) {
 $main_content = ob_get_clean();
 
 // template output
-if ($sysconf['template']['base'] == 'html') {
-    // create the template object
-    $template = new simbio_template_parser($sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/index_template.html');
-    // assign content to markers
-    $template->assign('<!--PAGE_TITLE-->', $page_title);
-    $template->assign('<!--CSS-->', $sysconf['template']['css']);
-    $template->assign('<!--INFO-->', $info);
-    $template->assign('<!--LIBRARY_NAME-->', $sysconf['library_name']);
-    $template->assign('<!--LIBRARY_SUBNAME-->', $sysconf['library_subname']);
-    $template->assign('<!--GMD_LIST-->', $gmd_list);
-    $template->assign('<!--COLLTYPE_LIST-->', $colltype_list);
-    $template->assign('<!--LOCATION_LIST-->', $location_list);
-    $template->assign('<!--LANGUAGE_SELECT-->', $language_select);
-    $template->assign('<!--ADVSEARCH_AUTHOR-->', $advsearch_author);
-    $template->assign('<!--ADVSEARCH_TOPIC-->', $advsearch_topic);
-    $template->assign('<!--HEADER_INFO-->', $header_info);
-    $template->assign('<!--MAIN_CONTENT-->', $main_content);
-    if ($metadata) { $template->assign('<!--METADATA-->', $metadata); }
-    // print out the template
-    $template->printOut();
-} else if ($sysconf['template']['base'] == 'php') {
-    require $sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/index_template.inc.php';
-}
+require $sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/index_template.inc.php';

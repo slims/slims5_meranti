@@ -176,7 +176,7 @@ abstract class biblio_list_model
         // loop data
         $_i = 0;
         if (!$this->resultset) {
-            return '<div style="border: 1px dotted #f00; color: #f00; padding: 5px; margin: 5px;">Query error : '.$this->query_error.'</div>';
+            return '<div class="error">Query error : '.$this->query_error.'</div>';
         }
         while ($_biblio_d = $this->resultset->fetch_assoc()) {
             $_biblio_d['title'] = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" class="titleField" title="'.__('Record Detail').'">'.$_biblio_d['title'].'</a>';
@@ -184,22 +184,22 @@ abstract class biblio_list_model
             if ($this->show_labels AND !empty($_biblio_d['labels'])) {
                 $arr_labels = @unserialize($_biblio_d['labels']);
                 if ($arr_labels !== false) {
-	            foreach ($arr_labels as $label)
-	            {
-	                if (!isset($this->label_cache[$label[0]]['name'])) {
-	                    $_label_q = $this->obj_db->query('SELECT label_name, label_desc, label_image FROM mst_label AS lb
-	                        WHERE lb.label_name=\''.$label[0].'\'');
-	                    $_label_d = $_label_q->fetch_row();
-	                    $this->label_cache[$label[0]] = array('name' => $_label_d[0], 'desc' => $_label_d[1], 'image' => $_label_d[2]);
-	                }
-	                if (isset($label[1]) && $label[1])
-	                {
-	                    $_biblio_d['title'] .= ' <a href="'.$label[1].'" target="_blank"><img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" border="0" /></a>';
-	                } else {
-	                    $_biblio_d['title'] .= ' <img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" />';
-	                }
-	            }
-		}
+										foreach ($arr_labels as $label)
+										{
+												if (!isset($this->label_cache[$label[0]]['name'])) {
+														$_label_q = $this->obj_db->query('SELECT label_name, label_desc, label_image FROM mst_label AS lb
+																WHERE lb.label_name=\''.$label[0].'\'');
+														$_label_d = $_label_q->fetch_row();
+														$this->label_cache[$label[0]] = array('name' => $_label_d[0], 'desc' => $_label_d[1], 'image' => $_label_d[2]);
+												}
+												if (isset($label[1]) && $label[1])
+												{
+														$_biblio_d['title'] .= ' <a href="'.$label[1].'" target="_blank"><img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" border="0" /></a>';
+												} else {
+														$_biblio_d['title'] .= ' <img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" />';
+												}
+										}
+								}
             }
             // button
             $_biblio_d['detail_button'] = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" class="detailLink" title="'.__('Record Detail').'">'.__('Record Detail').'</a>';
@@ -225,9 +225,8 @@ abstract class biblio_list_model
             }
 
             $_alt_list = ($_i%2 == 0)?'alterList':'alterList2';
-            $_buffer .= '<div class="item-list"><div class="cover-list">'.$_image_cover.'</div>';
-			$_buffer .= '<div class="detail-list">
-									<h4>'.$_biblio_d['title'].'</h4>';
+            $_buffer .= '<div class="item"><div class="cover-list">'.$_image_cover.'</div>';
+						$_buffer .= '<div class="detail-list"><h4>'.$_biblio_d['title'].'</h4>';
             // concat author data
             $_authors = isset($_biblio_d['author'])?$_biblio_d['author']:self::getAuthors($this->obj_db, $_biblio_d['biblio_id']);
             if ($_authors) {
