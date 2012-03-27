@@ -179,14 +179,6 @@ abstract class biblio_list_model
             return '<div class="errorBox">Query error : '.$this->query_error.'</div>';
         }
         
-        $check_result = count($this->resultset->fetch_assoc());
-        if($check_result == 0)
-        {        	
-        	echo '	<div class="no_result">
-        				<h1>'.__('Ooops...we are sorry').'</h1>
-        				<div class="message">'.__('Cannot find your data here. Please try again with another keyword').'</div>
-        			</div>';
-        } else {
         while ($_biblio_d = $this->resultset->fetch_assoc())
         {
             $_biblio_d['title'] = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" class="titleField" title="'.__('Record Detail').'">'.$_biblio_d['title'].'</a>';
@@ -278,8 +270,7 @@ abstract class biblio_list_model
                         } else if ($_field == 'node_id' && $this->disable_item_data) {
 			    			$_buffer .= '<div class="customField locationField"><b>'.$_field_opts[1].'</b> : '.$sysconf['node'][$_biblio_d['node_id']]['name'].'</div>';
 						}
-                	}
-            	}
+                	}            	
         	}
 		}
 	    // checkbox for marking collection

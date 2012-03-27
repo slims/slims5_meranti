@@ -422,10 +422,12 @@ hr
 	width:90px;
 	height:115px;
 	margin:5px;
+	clear: both;
 }
 
 .detail-list
-{	margin-left: 110px;
+{
+	margin-left: 110px;
 	font-size:14px;
 }
 
