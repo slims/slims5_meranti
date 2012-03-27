@@ -254,7 +254,7 @@ if (!$reportView) {
     $output .= '</table>';
 
     // print out
-    echo '<div class="printPageInfo">Loan Recap By Class <strong>'.$class_num.'</strong> for year <strong>'.$selected_year.'</strong>'.( isset($coll_type_name)?'<div>'.$coll_type_name.'</div>':'' ).' <a class="printReport" onclick="window.print()" href="#">['.__('Print Current Page').']</a>';
+    echo '<div class="printPageInfo">Loan Recap By Class <strong>'.$class_num.'</strong> for year <strong>'.$selected_year.'</strong>'.( isset($coll_type_name)?'<div>'.$coll_type_name.'</div>':'' ).' <a class="printReport" onclick="window.print()" href="#">'.__('Print Current Page').'</a>';
 	echo '<a href="../xlsoutput.php" class="button">'.__('Export to spreadsheet format').'</a></div>'."\n";
     echo $output;
 
