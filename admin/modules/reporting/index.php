@@ -156,7 +156,7 @@ if (isset($_GET['print'])) {
     $file_write = @file_put_contents(REPORT_FILE_BASE_DIR.'biblio_stat_print_result.html', $html_str);
     if ($file_write) {
         // open result in new window
-        echo '<script type="text/javascript">parent.openWin(\''.SENAYAN_WEB_ROOT_DIR.'/'.FILES_DIR.'/'.REPORT_DIR.'/biblio_stat_print_result.html\', \'popMemberReport\', 800, 500, true)</script>';
+        echo '<script type="text/javascript">parent.openWin(\''.SENAYAN_WEB_ROOT_DIR.FILES_DIR.'/'.REPORT_DIR.'/biblio_stat_print_result.html\', \'popMemberReport\', 800, 500, true)</script>';
     } else { utility::jsAlert('ERROR! Loan statistic report failed to generate, possibly because '.REPORT_FILE_BASE_DIR.' directory is not writable'); }
     exit();
 }

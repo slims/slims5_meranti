@@ -149,7 +149,7 @@ if (isset($_GET['print'])) {
     $file_write = @file_put_contents(REPORT_FILE_BASE_DIR.'loan_stat_print_result.html', $html_str);
     if ($file_write) {
         // open result in new window
-        echo '<script type="text/javascript">parent.openWin(\''.SENAYAN_WEB_ROOT_DIR.'/'.FILES_DIR.'/'.REPORT_DIR.'/loan_stat_print_result.html\', \'popMemberReport\', 800, 500, true)</script>';
+        echo '<script type="text/javascript">parent.openWin(\''.SENAYAN_WEB_ROOT_DIR.FILES_DIR.'/'.REPORT_DIR.'/loan_stat_print_result.html\', \'popMemberReport\', 800, 500, true)</script>';
     } else { utility::jsAlert('ERROR! Loan statistic report failed to generate, possibly because '.REPORT_FILE_BASE_DIR.' directory is not writable'); }
     exit();
 }
@@ -161,7 +161,7 @@ if (isset($_GET['print'])) {
 	    <h2><?php echo __('Loan Report'); ?></h2>
   </div>
 	<div class="infoBox">
-    <form name="printForm" action="<?php echo $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']; ?>" target="submitPrint" id="printForm" method="get" class="notAJAX" style="display: inline;">
+    <form name="printForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" target="submitPrint" id="printForm" method="get" class="notAJAX" style="display: inline;">
     <input type="hidden" name="print" value="true" /><input type="submit" value="<?php echo __('Download Report'); ?>" class="button" />
     </form>
     <iframe name="submitPrint" style="visibility: hidden; width: 0; height: 0;"></iframe>
