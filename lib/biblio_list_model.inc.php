@@ -176,9 +176,11 @@ abstract class biblio_list_model
         // loop data
         $_i = 0;
         if (!$this->resultset) {
-            return '<div class="error">Query error : '.$this->query_error.'</div>';
+          return '<div class="errorBox">Query error : '.$this->query_error.'</div>';
         }
-        while ($_biblio_d = $this->resultset->fetch_assoc()) {
+
+        while ($_biblio_d = $this->resultset->fetch_assoc())
+        {
             $_biblio_d['title'] = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" class="titleField" title="'.__('Record Detail').'">'.$_biblio_d['title'].'</a>';
             // label
             if ($this->show_labels AND !empty($_biblio_d['labels'])) {
@@ -267,9 +269,8 @@ abstract class biblio_list_model
 			    			$_buffer .= '<div class="customField locationField"><b>'.$_field_opts[1].'</b> : '.$sysconf['node'][$_biblio_d['node_id']]['name'].'</div>';
 						}
                 	}
-            	}
         	}
-
+		}
 	    // checkbox for marking collection
 	    $_check_mark = (utility::isMemberLogin() && $this->enable_mark)?' <input type="checkbox" id="biblioCheck'.$_i.'" name="biblio[]" class="biblioCheck" value="'.$_biblio_d['biblio_id'].'" /> <label for="biblioCheck'.$_i.'">'.__('mark this').'</label>':'';
             $_buffer .= '<div class="subItem">'.$_biblio_d['detail_button'].' '.$_biblio_d['xml_button'].$_check_mark.'</div>';
@@ -305,7 +306,6 @@ abstract class biblio_list_model
 		if ($_paging) {
 			$_biblio_list .= $_paging;
 		}
-
         return $_biblio_list;
     }
 

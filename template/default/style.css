@@ -334,9 +334,8 @@ hr
 {
 	float: right;
 	text-align:left;
-	background:rgba(0,0,0,0.9);
+	background-color:rgba(0,0,0,0.9);
 	filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#000000,endColorstr=#000000);
-	zoom:1;
 }
 
 /*----------------------------------------------------------------*/
@@ -411,11 +410,16 @@ hr
 .cover-list
 {
 	float: left;
-	padding:5px;
+	background: transparent url(images/nobook.png) center top no-repeat;
+	width:90px;
+	height:115px;
+	margin:5px;
+	clear: both;
 }
 
 .detail-list
-{	margin-left: 110px;
+{
+	margin-left: 110px;
 	font-size:14px;
 }
 
@@ -573,10 +577,9 @@ hr
 
 #loginForm form
 {
-	background:#bad4f8;
-	padding:40px;
+	background:#63b2d5;
+	padding:40px 40px 80px 40px;
 	border-radius:5px;
-	height:150px;
 }
 
 .heading1
@@ -654,7 +657,6 @@ hr
 {
 	padding:20px;
 	border-bottom: dotted 1px #222222;
-	background-color: rgba(0,0,0,0.9);
 }
 
 .fieldLabel
@@ -707,7 +709,183 @@ hr
 	padding:10px !important;
 }
 
-.clear
+.memberButton
 {
-	clear:both;
+  height: 37px;
+  margin-left:125px;
+  width:228px;
+  background-color: #3b9eca;
+  color:#ffffff;
 }
+/*-----------------------------------*/
+/* HTML Pop Up Div 					 */
+/*-----------------------------------*/
+#blocker
+{
+	background-color: #000000; ; 
+	opacity: 0.7 !important;
+	-moz-opacity: 0.7 !important;
+	-webkit-opacity: 0.7 !important;
+	filter: alpha(opacity=70); /*IE*/
+}
+
+#htmlPop {
+    background: whitesmoke;
+    position: fixed;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+	box-shadow: outset 0px 0px 5px #ccc;
+	-moz-box-shadow: outset 0px 0px 5px #ccc;
+	-webkit-box-shadow: outset 0px 0px 5px #ccc;
+	border:solid 1px #fff;
+}
+
+#htmlPopTitle {
+    background-color: #000;  
+    color: #666;
+    font-weight: bold;
+}
+
+#htmlPopFrame {
+    width: 100% !important;
+}
+
+/*-----------------------------------*/
+/* Popup				 		     */
+/*-----------------------------------*/
+#fade {
+	display: none; 
+	background-image: url(images/bg.png) !important ; 
+	position: fixed; left: 0; top: 0;
+	width: 100%; height: 100%;
+	opacity: 0.8;
+	-webkit-opacity: 0.8;
+	-moz-opacity: 0.8;
+	filter: alpha(opacity=80); /*IE*/
+	z-index: 9;
+}
+.popup_block{
+	display: none; /*--hidden by default--*/
+	background: #fff;
+	float: left;
+	font-size: 1.2em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 10;
+	-webkit-box-shadow: 0px 0px 20px #000;
+	-moz-box-shadow: 0px 0px 20px #000;
+	box-shadow: 0px 0px 20px #000;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+img.btn_close {
+	float: right;
+	margin: -55px -55px 0 0;
+}
+/*--Making IE6 Understand Fixed Positioning--*/
+*html #fade {
+	position: absolute;
+}
+*html .popup_block {
+	position: absolute;
+}
+
+/*-----------------------------------*/
+/* Popup			     */
+/*-----------------------------------*/
+#guestbookForm p
+{
+	background-color: #bde0e7;
+	padding:10px;
+	color:#fff;
+	font-size:20px;
+	text-align:right;
+}
+
+#guestbookForm form
+{
+	padding:0 !important;
+	margin:0  !important;
+}
+
+#guestbookForm table
+{
+	margin-left:0px !important;
+	background-color:rgba(255,255,255,0.7);
+	width:100%;
+	border: solid 1px #eee;
+	float: left  !important;
+}
+
+#guestbookForm table td
+{
+	border: none;
+	
+}
+
+#guestbookForm table td:first-child
+{
+
+	text-align: right;
+}
+
+#guestbookForm td span
+{
+	font-size:10px;
+	height:10px;
+}
+
+#guestbookForm #pekerjaan
+{
+	width:200px;
+	height:10px;
+}
+
+#guestbookForm #captcha
+{
+	width:150px;
+	height:50px;	
+}
+
+#guestbookList a
+{
+	background-color:#8fb2d8;
+	border: solid 1px #8fb2d8;
+	padding:7px;
+	box-shadow: inset 0px 0px 5px #6a98ca;
+	-webkit-box-shadow: inset 0px 0px 5px #6a98ca;
+	-moz-box-shadow: inset 0px 0px 5px #6a98ca;
+	color:#fff;
+	font-size: 18px;
+	clear: both;
+	margin-top:30px;
+	cursor:pointer;
+}
+
+
+/*------------------------------------------
+ captcha
+-------------------------------------------*/
+.captchaMember
+{
+    padding: 0px 0px 10px 125px;  
+}
+
+.captchaAdmin
+{
+    padding: 0px 0px 10px 0px;  
+    clear: both;
+    
+}
+.errorBox
+{
+    background-color: #ca453b;
+    padding:10px !important;
+    color: #ffffff;
+    margin:0 !important;
+    font-size: 14px;
+    border: none !important;
+}
+
+

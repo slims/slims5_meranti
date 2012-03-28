@@ -111,7 +111,6 @@ if (isset($_POST['logMeIn']) && !$is_member_login) {
 // check if member already login
 if (!$is_member_login) {
 ?>
-    <div class="section">
     <div class="tagline"><?php echo __('Library Member Login'); ?></div>
 	<?php
 	// captcha invalid warning
@@ -155,7 +154,7 @@ if (!$is_member_login) {
     <div>
     <?php if ($sysconf['captcha']['member']['enable']) { ?>
       <?php if ($sysconf['captcha']['member']['type'] == "recaptcha") { ?>
-      <div style="margin-left:auto; margin-right:auto; margin-top:10px;">
+      <div class="captchaMember">
       <?php
         require_once LIB_DIR.$sysconf['captcha']['member']['folder'].'/'.$sysconf['captcha']['member']['incfile'];
         $publickey = $sysconf['captcha']['member']['publickey'];
@@ -172,8 +171,7 @@ if (!$is_member_login) {
     } ?>
     </div>
     <!-- Captcha in form - end -->
-    <div class="marginTop"><input type="submit" name="logMeIn" value="<?php echo __('Login'); ?>" />
-    </div>
+    <input type="submit" name="logMeIn" value="<?php echo __('Login'); ?>" class="memberButton" />
     </form>
     </div>
     </div>

@@ -108,8 +108,6 @@ $social = array	(
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/form.js"></script>
 	<script type="text/javascript" src="js/gui.js"></script>
-	<script type="text/javascript" src="<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/js/supersized.3.1.3.min.js"></script>
-	<script type="text/javascript" src="<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/js/adapt.min.js"></script>
 
 </head>
 
@@ -159,6 +157,7 @@ $social = array	(
 					<div class="sidebar">
 						<div class="tagline">
 							<?php echo __('Information'); ?>
+							<a href="javascript: history.back();" class="back to_right"> <?php echo __('Back'); ?> </a>
 						</div>
 						<p class="info">
 							<?php echo $info; ?>
@@ -179,6 +178,7 @@ $social = array	(
 					<div class="sidebar">
 						<div class="tagline">
 							<?php echo __('Information'); ?>
+							<a href="javascript: history.back();" class="back to_right"> <?php echo __('Back'); ?> </a>
 						</div>
 						<div class="info">
 							<?php echo $info; ?>
@@ -306,25 +306,41 @@ $social = array	(
 
 	</div>
 
+	<script type="text/javascript" src="<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/js/supersized.3.1.3.min.js"></script>
 	<script type="text/javascript">
 	jQuery(function($){
-		$.supersized({
-      transition			: 6,
-      keyboard_nav          : 0,
-			start_slide			:	1,		//Start slide (0 is random) //Requires multiple background images
-			vertical_center       	:   1,		//Vertically center background
-			horizontal_center     	:   1,		//Horizontally center background
-			min_width		    	:   1000,	//Min width allowed (in pixels)
-			min_height		    	:   700,	//Min height allowed (in pixels)
-			fit_portrait         	:   1,		//Portrait images will not exceed browser height
-			fit_landscape			:   0,		//Landscape images will not exceed browser width
-			image_protect			:	1,		//Disables image dragging and right click with Javascript
-			slides					:   [ 		//Background image
-			{ image : '<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/images/1.jpg' },
-			{ image : '<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/images/2.jpg' }										]
+		$.supersized(
+		{
+		    transition		: 6,
+		    keyboard_nav 	: 0,
+		    start_slide		: 0,		
+		    vertical_center   	: 1,		
+		    horizontal_center 	: 1,		
+		    min_width		: 1000,	
+		    min_height		: 700,	
+		    fit_portrait        : 1,
+		    fit_landscape	: 0,
+		    image_protect	: 1,
+		    slides		: [ 
+					    { image : '<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/images/1.jpg' },
+					    { image : '<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/images/2.jpg' }
+					  ]					
 		});
 	});
+
+	var ADAPT_CONFIG = {
+		path: 'assets/css/',
+		range: [
+		'0px    to 760px  = mobile.css',
+		'760px  to 980px  = 720.css',
+		'980px  to 1280px = 960.css',
+		'1280px to 1600px = 1200.css',
+		'1600px to 1920px = 1560.css',
+		'1920px           = fluid.css'
+		]
+	};
 	</script>
+	<script type="text/javascript" src="<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/js/adapt.min.js"></script>
 
 </body>
 </html>
