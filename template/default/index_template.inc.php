@@ -153,7 +153,7 @@ $social = array	(
 		<div class="content">
 			<div class="container_12">
 				<div class="grid_12 welcome">
-					<?php if(isset($_GET['title']) || isset($_GET['keyword'])) { ?>
+					<?php if(isset($_GET['search']) || isset($_GET['title']) || isset($_GET['keyword'])) { ?>
 					<div class="sidebar">
 						<div class="tagline">
 							<?php echo __('Information'); ?>
@@ -161,12 +161,20 @@ $social = array	(
 						<p class="info">
 							<?php echo $info; ?>
 						</p>
+						<?php if ($sysconf['enable_search_clustering']) { ?>
 						<div class="tagline">
 							<?php echo __('Search Cluster'); ?>
 						</div>
-						<p class="info">
-							
-						</p>
+						  <div id="search-cluster"><?php echo __('Generating search cluster...');  ?></div>
+							<script type="text/javascript">
+								$.ajax('index.php?p=clustering&q=<?php echo urlencode($criteria); ?>',
+								  { type: 'GET',
+										success: function(data, status, jqXHR) {
+                      $('#search-cluster').html(data);
+									  }
+									});
+							</script>
+						<?php } ?>
 					</div>
 
 					<div class="section">

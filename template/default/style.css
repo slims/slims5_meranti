@@ -895,3 +895,12 @@ img.btn_close {
 .content-padding {
 	padding: 10px;
 }
+
+/*------------------------------------------
+ search cluster
+-------------------------------------------*/
+.cluster-title {
+  padding: 5px;
+	margin-bottom: 5px;
+	background: #89C1DB;
+}
