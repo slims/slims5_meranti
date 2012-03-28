@@ -152,6 +152,7 @@ div.clear {
 }
 
 #footer {
+	display: none;
 	background-color: #222;
 	background-color: #222222;
 	background-repeat: repeat-x;
@@ -327,6 +328,7 @@ submenu
 
 #mainContent {
 	height:100%;
+	margin-bottom:100px;
 }
 
 .button,
