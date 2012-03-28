@@ -73,34 +73,9 @@ if (isset($_GET['p'])) {
         $content = new content();
         $content_data = $content->get($dbs, $path);
         if ($content_data) {
-            $page_title = $content_data['Title'];
-			echo '
-					<div class="sidebar">
-						<div class="tagline">
-							Related Collections
-						</div>
-						<ul>
-							<li><a href="#">Lorem Ipsum</a></li>
-							<li><a href="#">simply dummy text</a></li>
-							<li><a href="#">the printing</a></li>
-							<li><a href="#">typesetting industry</a></li>
-							<li><a href="#">the industry</a></li>
-							<li><a href="#">standard dummy text</a></li>
-						</ul>
-
-					</div>
-
-					<div class="section">
-						<div class="tagline">
-						'.$content_data['Title'].'
-						</div>
-						<div class="collections-list">
-							<div class="collection-detail" style="padding:20px;">'.$content_data['Content'].'</div>
-							<div class="clear">&nbsp;</div>
-						</div>
-					</div>
-			';
-            unset($content_data);
+          $page_title = $content_data['Title'];
+          echo $content_data['Content'];
+          unset($content_data);
         } else {
             header ("location:index.php");
         }

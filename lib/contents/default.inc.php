@@ -129,20 +129,20 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
 
     // search result info construction
     if ($is_adv) {
-        $info .= '<div style="clear: both;">'.__('Found  <strong>{biblio_list->num_rows}</strong> from your keywords').': <strong><cite>'.$keywords.'</cite></strong></div>  '; //mfc
-        if ($title) { $info .= 'Title : <strong><cite>'.$title.'</cite></strong>, '; }
-        if ($author) { $info .= 'Author : <strong><cite>'.$author.'</cite></strong>, '; }
-        if ($subject) { $info .= 'Subject : <strong><cite>'.$subject.'</cite></strong>, '; }
-        if ($isbn) { $info .= 'ISBN/ISSN : <strong><cite>'.$isbn.'</cite></strong>, '; }
-        if ($gmd) { $info .= 'GMD : <strong><cite>'.$gmd.'</cite></strong>, '; }
-        if ($colltype) { $info .= 'Collection Type : <strong><cite>'.$colltype.'</cite></strong>, '; }
-        if ($location) { $info .= 'Location : <strong><cite>'.$location.'</cite></strong>, '; }
-        if ($publisher) { $info .= 'Publisher : <strong><cite>'.$publisher.'</cite></strong>, '; }
-        if ($callnumber) { $info .= 'Call Number : <strong><cite>'.$callnumber.'</cite></strong>, '; }
+        $search_result_info .= '<div style="clear: both;">'.__('Found  <strong>{biblio_list->num_rows}</strong> from your keywords').': <strong><cite>'.$keywords.'</cite></strong></div>  '; //mfc
+        if ($title) { $search_result_info .= 'Title : <strong><cite>'.$title.'</cite></strong>, '; }
+        if ($author) { $search_result_info .= 'Author : <strong><cite>'.$author.'</cite></strong>, '; }
+        if ($subject) { $search_result_info .= 'Subject : <strong><cite>'.$subject.'</cite></strong>, '; }
+        if ($isbn) { $search_result_info .= 'ISBN/ISSN : <strong><cite>'.$isbn.'</cite></strong>, '; }
+        if ($gmd) { $search_result_info .= 'GMD : <strong><cite>'.$gmd.'</cite></strong>, '; }
+        if ($colltype) { $search_result_info .= 'Collection Type : <strong><cite>'.$colltype.'</cite></strong>, '; }
+        if ($location) { $search_result_info .= 'Location : <strong><cite>'.$location.'</cite></strong>, '; }
+        if ($publisher) { $search_result_info .= 'Publisher : <strong><cite>'.$publisher.'</cite></strong>, '; }
+        if ($callnumber) { $search_result_info .= 'Call Number : <strong><cite>'.$callnumber.'</cite></strong>, '; }
         // strip last comma
-        $info = substr_replace($info, '', -2);
+        $search_result_info = substr_replace($search_result_info, '', -2);
     } else {
-        $info .= '<div style="clear: both;">'.__('Found  <strong>{biblio_list->num_rows}</strong> from your keywords').': <strong><cite>'.$keywords.'</cite></strong></div>'; //mfc
+        $search_result_info .= '<div style="clear: both;">'.__('Found  <strong>{biblio_list->num_rows}</strong> from your keywords').': <strong><cite>'.$keywords.'</cite></strong></div>'; //mfc
     }
 
     // show promoted titles
@@ -154,7 +154,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
     echo $biblio_list->getDocumentList();
     echo '<br />'."\n";
     // set result number info
-    $info = str_replace('{biblio_list->num_rows}', $biblio_list->num_rows, $info);
+    $search_result_info = str_replace('{biblio_list->num_rows}', $biblio_list->num_rows, $search_result_info);
 
     // count total pages
     $total_pages = ceil($biblio_list->num_rows/$sysconf['opac_result_num']);
@@ -164,7 +164,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
       $page = intval($_GET['page']);
       $msg = str_replace('{page}', $page, __('You currently on page <strong>{page}</strong> of <strong>{total_pages}</strong> page(s)')); //mfc
       $msg = str_replace('{total_pages}', $total_pages, $msg);
-      $info .= '<div style="clear: both;">'.$msg.'</div>';
+      $search_result_info .= '<div style="clear: both;">'.$msg.'</div>';
     } else {
       $page = 1;
     }
@@ -173,9 +173,9 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
     if (!isset($_SERVER['QUERY_STRING'])) {
       $_SERVER['QUERY_STRING'] = '';
     }
-    $info .= '<div>'.__('Query took').' <b>'.$biblio_list->query_time.'</b> '.__('second(s) to complete').'</div>'; //mfc
+    $search_result_info .= '<div>'.__('Query took').' <b>'.$biblio_list->query_time.'</b> '.__('second(s) to complete').'</div>';
     if (isset($biblio_list) && isset($sysconf['enable_xml_result']) && $sysconf['enable_xml_result']) {
-        $info .= '<div><a href="index.php?resultXML=true&'.$_SERVER['QUERY_STRING'].'" class="xmlResultLink" target="_blank" title="View Result in XML Format" style="clear: both;">XML Result</a></div>';
+        $search_result_info .= '<div><a href="index.php?resultXML=true&'.$_SERVER['QUERY_STRING'].'" class="xmlResultLink" target="_blank" title="View Result in XML Format" style="clear: both;">XML Result</a></div>';
     }
 }
 

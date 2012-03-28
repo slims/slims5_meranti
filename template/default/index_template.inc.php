@@ -49,21 +49,21 @@ if (isset($_GET['p']))
   you may modified as you need
 ----------------------------------------------------*/
 $menus = array (
-				'home' 		=> array('url' 	=> 'index.php',
-									 'text'	=> __('Home')
-									),
-				'libinfo' 	=> array('url' 	=> 'index.php?p=libinfo',
-									 'text'	=> __('Library Information')
-									),
-				'help' 		=> array('url' 	=> 'index.php?p=help',
-									 'text'	=> __('Help on Search')
-									),
-				'member' 		=> array('url' 	=> 'index.php?p=member',
-									 'text'	=> __('Member Area')
-									),
-				'login' 		=> array('url' 	=> 'index.php?p=login',
-									 'text'	=> __('Librarian LOGIN')
-									)
+		'home' 		=> array('url' 	=> 'index.php',
+							 'text'	=> __('Home')
+							),
+		'libinfo' 	=> array('url' 	=> 'index.php?p=libinfo',
+							 'text'	=> __('Library Information')
+							),
+		'help' 		=> array('url' 	=> 'index.php?p=help',
+							 'text'	=> __('Help on Search')
+							),
+		'member' 		=> array('url' 	=> 'index.php?p=member',
+							 'text'	=> __('Member Area')
+							),
+		'login' 		=> array('url' 	=> 'index.php?p=login',
+							 'text'	=> __('Librarian LOGIN')
+							)
 );
 
 /*----------------------------------------------------
@@ -71,19 +71,19 @@ $menus = array (
   you may modified as you need.
 ----------------------------------------------------*/
 $social = array	(
-				'facebook' 	=> array('url' 	=> 'http://www.facebook.com/groups/senayan.slims/',
-									 'text'	=> 'Facebook'
-									),
-				'twitter' 	=> array('url' 	=> 'http://twitter.com/#!/slims_official',
-									 'text'	=> 'Twitter'
-									),
-				'youtube' 	=> array('url' 	=> 'http://www.youtube.com/user/senayanslims',
-									 'text'	=> 'Youtube'
-									),
-				'gihub' 	=> array('url' 	=> 'https://github.com/slims/',
-									 'text'	=> 'Github'
-									)
-				);
+		'facebook' 	=> array('url' 	=> 'http://www.facebook.com/groups/senayan.slims/',
+							 'text'	=> 'Facebook'
+							),
+		'twitter' 	=> array('url' 	=> 'http://twitter.com/#!/slims_official',
+							 'text'	=> 'Twitter'
+							),
+		'youtube' 	=> array('url' 	=> 'http://www.youtube.com/user/senayanslims',
+							 'text'	=> 'Youtube'
+							),
+		'gihub' 	=> array('url' 	=> 'https://github.com/slims/',
+							 'text'	=> 'Github'
+							)
+		);
 
 ?>
 <!DOCTYPE html>
@@ -157,10 +157,15 @@ $social = array	(
 					<div class="sidebar">
 						<div class="tagline">
 							<?php echo __('Information'); ?>
-							<a href="javascript: history.back();" class="back to_right"> <?php echo __('Back'); ?> </a>
 						</div>
 						<p class="info">
 							<?php echo $info; ?>
+						</p>
+						<div class="tagline">
+							<?php echo __('Search Cluster'); ?>
+						</div>
+						<p class="info">
+							
 						</p>
 					</div>
 
@@ -168,6 +173,9 @@ $social = array	(
 						<div class="tagline">
 							<?php echo __('Collections'); ?>
 							<a href="javascript: history.back();" class="back to_right"> <?php echo __('Back'); ?> </a>
+						</div>
+						<div class="search-result-info">
+              <?php echo $search_result_info; ?>
 						</div>
 						<div class="collections-list">
 							<?php echo $main_content; ?>
@@ -197,7 +205,21 @@ $social = array	(
 						</div>
 					</div>
 					<?php } elseif(isset($_GET['p'])) { ?>
-						<?php echo $main_content; ?>
+					  <?php if ($_GET['p'] == 'show_detail') {
+								echo $main_content;
+						} else {
+						?>
+							<div class="tagline">
+								<?php echo $page_title; ?>
+								<a href="javascript: history.back();" class="back to_right"> <?php echo __('Back'); ?> </a>
+							</div>
+							<div class="section">
+								<div class="collection-detail">
+									<div class="content-padding"><?php echo $main_content; ?></div>
+									<div class="clear">&nbsp;</div>
+								</div>
+							</div>
+						<?php } ?>
 					<?php } else { ?>
 					<div class="tagline">
 						<?php echo $info; ?>
@@ -206,10 +228,18 @@ $social = array	(
 					    <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
 						    <div class="simply">
 							<input type="hidden" name="search" value="Search" />
-							<input type="text" name="title" id="title" class="keyword" />
+							<input type="text" name="keywords" id="title" class="keyword" />
 						    </div>
 						    <div class="advance" style="display: none;">
 						    <table width="100%">
+							    <tr>
+								    <td class="value">
+								    <?php echo __('Title'); ?>
+								    </td>
+								    <td class="value" colspan="3">
+								    <input type="text" name="title" />
+								    </td>
+							    </tr>
 							    <tr>
 								    <td class="value">
 								    <?php echo __('Author(s)'); ?>
@@ -266,7 +296,7 @@ $social = array	(
 						    </table>
 						    </div>
 							<div id="show_advance">
-							    	<a href="#"><?php echo __('Advanced Search'); ?></a>
+							  <a href="#"><?php echo __('Advanced Search'); ?></a>
 							</div>
 					    </form>
 					</div>
@@ -286,7 +316,6 @@ $social = array	(
 							    }
 							});
 						});
-
 					</script>
 					<?php } ?>
 				</div>
@@ -313,18 +342,18 @@ $social = array	(
 		{
 		    transition		: 6,
 		    keyboard_nav 	: 0,
-		    start_slide		: 0,		
-		    vertical_center   	: 1,		
-		    horizontal_center 	: 1,		
-		    min_width		: 1000,	
-		    min_height		: 700,	
-		    fit_portrait        : 1,
+		    start_slide		: 0,
+		    vertical_center : 1,
+		    horizontal_center : 1,
+		    min_width	: 1000,
+		    min_height : 700,
+		    fit_portrait  : 1,
 		    fit_landscape	: 0,
 		    image_protect	: 1,
-		    slides		: [ 
-					    { image : '<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/images/1.jpg' },
-					    { image : '<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/images/2.jpg' }
-					  ]					
+		    slides		: [
+					{ image : '<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/images/1.jpg' },
+				  { image : '<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/images/2.jpg' }
+				]
 		});
 	});
 
@@ -336,7 +365,7 @@ $social = array	(
 		'980px  to 1280px = 960.css',
 		'1280px to 1600px = 1200.css',
 		'1600px to 1920px = 1560.css',
-		'1920px           = fluid.css'
+		'1920px = fluid.css'
 		]
 	};
 	</script>
