@@ -451,6 +451,9 @@ $sysconf['OAI']['MetadataFormats']['Dublin Core'] = array(
   'schema_xsd' => 'http://www.openarchives.org/OAI/2.0/oai_dc.xsd',
   'namespace' => 'http://www.openarchives.org/OAI/2.0/oai_dc/');
 
+// Search clustering
+$sysconf['enable_search_clustering'] = true;
+
 // check if session is auto started and then destroy it
 if ($is_auto = @ini_get('session.auto_start')) { define('SESSION_AUTO_STARTED', $is_auto); }
 if (defined('SESSION_AUTO_STARTED')) { @session_destroy(); }
