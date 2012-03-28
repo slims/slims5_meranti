@@ -904,3 +904,9 @@ img.btn_close {
 	margin-bottom: 5px;
 	background: #89C1DB;
 }
+
+.cluster-loading {
+	width: 99%;
+	height: 100px;
+	background: url(images/loader.gif) center center no-repeat;
+}

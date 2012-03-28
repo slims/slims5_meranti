@@ -168,14 +168,16 @@ $social = array	(
 						<div class="tagline">
 							<?php echo __('Search Cluster'); ?>
 						</div>
-						  <div id="search-cluster"><?php echo __('Generating search cluster...');  ?></div>
+						  <div id="search-cluster"><div class="cluster-loading"><?php echo __('Generating search cluster...');  ?></div></div>
 							<script type="text/javascript">
+							$('document').ready( function() {
 								$.ajax('index.php?p=clustering&q=<?php echo urlencode($criteria); ?>',
 								  { type: 'GET',
 										success: function(data, status, jqXHR) {
                       $('#search-cluster').html(data);
 									  }
 									});
+							});
 							</script>
 						<?php } ?>
 					</div>
@@ -323,10 +325,10 @@ $social = array	(
 							    if ($("#advance-search").is(":hidden"))
 							    {
 								$("#advance-search").slideDown();
-								$('#simply-search').hide();								
+								$('#simply-search').hide();
 							    } else {
 								$("#advance-search").slideUp('fast');
-								$('#simply-search').show();								
+								$('#simply-search').show();
 							    }
 							});
 

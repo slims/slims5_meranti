@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (C) 2007,2008  Arie Nugraha (dicarve@yahoo.com)
- * Modified by Wardiyono (wynerst@gmail.com) - 
+ * Modified by Wardiyono (wynerst@gmail.com) -
  * 		based on catalog format from Eddy Subratha
  *
  * This program is free software; you can redistribute it and/or modify
@@ -128,7 +128,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 
     $biblio_q = $dbs->query('SELECT b.biblio_id, b.title as title, b.call_number,
 		CONCAT(\'[\', g.gmd_name, \'].\') as gmd,
-		CONCAT(b.edition, \'.\') as edition, b.isbn_issn, 
+		CONCAT(b.edition, \'.\') as edition, b.isbn_issn,
 		CONCAT(pp.place_name, \' : \', p.publisher_name, \', \', b.publish_year, \'.\') as publisher,
 		CONCAT(b.collation, \'.\') as physic,
 		CONCAT(b.series_title, \'.\') as series
@@ -137,10 +137,10 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 	LEFT JOIN mst_publisher as p on b.publisher_id = p.publisher_id
 	LEFT JOIN mst_place as pp on b.publish_place_id = pp.place_id
 	WHERE '.$criteria);
-	
+
 	$katalog = "";
     while ($biblio_d = $biblio_q->fetch_array()) {
-		
+
 		$tajuk[] = "&nbsp;";
 		$tajuk[] = $biblio_d['title'];
 		// author
@@ -174,7 +174,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 			if ($i >= 3) { break; }
 		}
 		$biblio_d['subject'] = substr_replace($biblio_d['subject'], '', -1);
-		
+
 		// explode label data by space
 		$sliced_label = explode(' ', $biblio_d['call_number'], 5);
 		if (count($sliced_label) < 3) {
@@ -190,13 +190,13 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 		while ($number_d = $number_q->fetch_row()) {
 			$biblio_d['copies'] = $number_d[0] ." " . __('Copies');
 		}
-		
+
 		for ($i=0; $i < count($tajuk); $i++)
 		{
 		/* check for break page */
 		if($i % 3 == 0)
 		{
-			$set_break = ' style="page-break-before:always;" ';			
+			$set_break = ' style="page-break-before:always;" ';
 		} else {
 			$set_break = '';
 		}
@@ -223,11 +223,11 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 			</table>
 			</td></tr>\n";
 		}
-	
+
 		unset($tajuk);
 		unset($sliced_label);
     }
-	
+
     // include printed settings configuration file
     //include SENAYAN_BASE_DIR.'admin'.DIRECTORY_SEPARATOR.'admin_template'.DIRECTORY_SEPARATOR.'printed_settings.inc.php';
     // check for custom template settings
@@ -325,16 +325,16 @@ if ($sysconf['index']['type'] == 'index' || ($sysconf['index']['type'] == 'sphin
 } else {
     require LIB_DIR.'biblio_list.inc.php';
     // table spec
-    $table_spec = 'biblio as b LEFT JOIN item as i ON b.biblio_id=i.biblio_id';
+    $table_spec = 'biblio LEFT JOIN item as i ON biblio.biblio_id=i.biblio_id';
     if ($can_read) {
-        $datagrid->setSQLColumn('b.biblio_id, b.title, COUNT(i.item_id) as '.__('Item'));
+        $datagrid->setSQLColumn('biblio.biblio_id, biblio.title, COUNT(i.item_id) as '.__('Item'));
     }
 
 //  SELECT IF(item.item_id IS NOT NULL, item.item_id, CONCAT('b', biblio.biblio_id)), biblio.title AS 'Title', IF(item.call_number<>'', item.call_number, biblio.call_number) AS 'Call Number'
 //  FROM biblio LEFT JOIN item ON biblio.biblio_id=item.biblio_id
-	
+
 }
-$datagrid->setSQLorder('b.last_update DESC');
+$datagrid->setSQLorder('biblio.last_update DESC');
 // is there any search
 if (isset($_GET['keywords']) AND $_GET['keywords']) {
     $keywords = $dbs->escape_string(trim($_GET['keywords']));
@@ -354,8 +354,8 @@ if (isset($_GET['keywords']) AND $_GET['keywords']) {
 if (isset($criteria)) {
     $datagrid->setSQLcriteria('('.$criteria['sql_criteria'].')');
 }
-	$datagrid->sql_group_by = "b.biblio_id";
-	
+	$datagrid->sql_group_by = "biblio.biblio_id";
+
 // set table and table header attributes
 $datagrid->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
 $datagrid->table_header_attr = 'class="dataListHeader" style="font-weight: bold;"';
