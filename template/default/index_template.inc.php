@@ -95,7 +95,7 @@ $social = array	(
 	<title><?php echo $page_title; ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="description" content="SLiMS (Senayan Library Management System) is an open source Library Management System. It is build on Open source technology like PHP and MySQL">
-	<meta name="keywords" content="senayan,slims,libraru automation,free library application, library, perpustakaan, aplikasi perpustakaan">
+	<meta name="keywords" content="senayan,slims,library automation,free library application, library, perpustakaan, aplikasi perpustakaan">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<meta name="robots" content="index, nofollow">
 	<!-- load style -->
@@ -156,7 +156,7 @@ $social = array	(
 		<div class="content">
 			<div class="container_12">
 				<div class="grid_12 welcome">
-					<?php if(isset($_GET['title']) || isset($_GET['keywords'])) { ?>
+					<?php if(isset($_GET['search']) || isset($_GET['title']) || isset($_GET['keywords'])) { ?>
 					<div class="sidebar">
 						<div class="tagline">
 							<?php echo __('Information'); ?>
@@ -251,14 +251,6 @@ $social = array	(
 						    </div>
 						    <div class="advance">
 						    <table width="100%">
-							    <tr>
-								    <td class="value">
-								    <?php echo __('Title'); ?>
-								    </td>
-								    <td class="value" colspan="3">
-								    <input type="text" name="title" />
-								    </td>
-							    </tr>
 							    <tr>
 								    <td class="value">
 								    <?php echo __('Author(s)'); ?>
