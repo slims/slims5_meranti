@@ -137,7 +137,7 @@ $social = array	(
 		<div class="content">
 			<div class="container_12">
 				<div class="grid_12 welcome">
-					<?php if(isset($_GET['title']) || isset($_GET['keyword'])) { ?>
+					<?php if(isset($_GET['title']) || isset($_GET['keywords'])) { ?>
 					<div class="sidebar">
 						<div class="tagline">
 							<?php echo __('Information'); ?>
@@ -187,12 +187,20 @@ $social = array	(
 						<?php echo $info; ?>
 					</div>
 					<div class="search">
-					    <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
-						    <div class="simply">
+						<div id="simply-search">
+						    <div class="simply" >
+							<form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
 							<input type="hidden" name="search" value="Search" />
+							<input type="text" name="keywords" id="title" class="keyword" />
+							</form>
+						    </div>
+						</div>
+						<div id="advance-search" style="display:none;" >
+						    <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
+						    <div class="simply" >
 							<input type="text" name="title" id="title" class="keyword" />
 						    </div>
-						    <div class="advance" style="display: none;">
+						    <div class="advance">
 						    <table width="100%">
 							    <tr>
 								    <td class="value">
@@ -249,19 +257,28 @@ $social = array	(
 							    </tr>
 						    </table>
 						    </div>
-							<div id="show_advance">
-							    	<a href="#"><?php echo __('Advanced Search'); ?></a>
-							</div>
-					    </form>
+	    					    </form>
+						</div>
+						<div id="show_advance">
+							<a href="#"><?php echo __('Advanced Search'); ?></a>
+						</div>
 					</div>
 					<script type="text/javascript">
 						$(document).ready(function()
 						{
 							//Disable all html autocomplete
 							$('#advSearchForm input').attr('autocomplete','off');
+							$('#title').attr('style','');
 
 							$('#show_advance').click(function(){
-							    $('.advance').slideToggle();
+							    if ($("#advance-search").is(":hidden"))
+							    {
+								$("#advance-search").slideDown();
+								$('#simply-search').hide();								
+							    } else {
+								$("#advance-search").slideUp('fast');
+								$('#simply-search').show();								
+							    }
 							});
 							
 							$('#title').keypress(function(e){
