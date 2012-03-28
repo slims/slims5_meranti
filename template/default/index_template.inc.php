@@ -5,8 +5,24 @@
 	Create Date	: March 24, 2012
 	Author		: Eddy Subratha (eddy.subratha@gmail.com)
 
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+
 -------------------------------------------------------------*/
 // be sure that this file not accessed directly
+
 if (!defined('INDEX_AUTH')) {
     die("can not access this file directly");
 } elseif (INDEX_AUTH != 1) {
@@ -33,41 +49,44 @@ if (isset($_GET['p']))
   you may modified as you need
 ----------------------------------------------------*/
 $menus = array (
-				'home' 		=> array('url' 	=> 'index.php', 
-									 'text'	=> __('Home')
-									),
-				'libinfo' 	=> array('url' 	=> 'index.php?p=libinfo', 
-									 'text'	=> __('Library Information')
-									),
-				'help' 		=> array('url' 	=> 'index.php?p=help', 
-									 'text'	=> __('Help on Search')
-									),
-				'member' 		=> array('url' 	=> 'index.php?p=member', 
-									 'text'	=> __('Member Area')
-									),
-				'login' 		=> array('url' 	=> 'index.php?p=login', 
-									 'text'	=> __('Librarian LOGIN')
-									)
+		'home' 		=> array('url' 	=> 'index.php',
+							 'text'	=> __('Home')
+							),
+		'libinfo' 	=> array('url' 	=> 'index.php?p=libinfo',
+							 'text'	=> __('Library Information')
+							),
+		'help' 		=> array('url' 	=> 'index.php?p=help',
+							 'text'	=> __('Help on Search')
+							),
+		'member' 		=> array('url' 	=> 'index.php?p=member',
+							 'text'	=> __('Member Area')
+							),
+		'login' 		=> array('url' 	=> 'index.php?p=login',
+							 'text'	=> __('Librarian LOGIN')
+							)
 );
 
 /*----------------------------------------------------
   social button
-  you may modified as you need. 
+  you may modified as you need.
 ----------------------------------------------------*/
 $social = array	(
-				'facebook' 	=> array('url' 	=> 'http://www.facebook.com/groups/senayan.slims/', 
-									 'text'	=> 'Facebook'
-									),
-				'twitter' 	=> array('url' 	=> 'http://twitter.com/#!/slims_official', 
-									 'text'	=> 'Twitter'
-									),
-				'youtube' 	=> array('url' 	=> 'http://www.youtube.com/user/senayanslims', 
-									 'text'	=> 'Youtube'
-									),
-				'gihub' 	=> array('url' 	=> 'https://github.com/slims/', 
-									 'text'	=> 'Github'
-									)									
-				);
+		'facebook' 	=> array('url' 	=> 'http://www.facebook.com/groups/senayan.slims/',
+							 'text'	=> 'Facebook'
+							),
+		'twitter' 	=> array('url' 	=> 'http://twitter.com/#!/slims_official',
+							 'text'	=> 'Twitter'
+							),
+		'youtube' 	=> array('url' 	=> 'http://www.youtube.com/user/senayanslims',
+							 'text'	=> 'Youtube'
+							),
+		'gihub' 	=> array('url' 	=> 'https://github.com/slims/',
+							 'text'	=> 'Github'
+							),
+		'forum' 	=> array('url' 	=> 'http://slims.web.id/forum/',
+							 'text'	=> 'Forum'
+							)
+		);
 
 ?>
 <!DOCTYPE html>
@@ -76,7 +95,7 @@ $social = array	(
 	<title><?php echo $page_title; ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="description" content="SLiMS (Senayan Library Management System) is an open source Library Management System. It is build on Open source technology like PHP and MySQL">
-	<meta name="keywords" content="senayan,slims,libraru automation,free library application, library, perpustakaan, aplikasi perpustakaan">	
+	<meta name="keywords" content="senayan,slims,libraru automation,free library application, library, perpustakaan, aplikasi perpustakaan">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<meta name="robots" content="index, nofollow">
 	<!-- load style -->
@@ -141,17 +160,33 @@ $social = array	(
 					<div class="sidebar">
 						<div class="tagline">
 							<?php echo __('Information'); ?>
-							<a href="javascript: history.back();" class="back to_right"> <?php echo __('Back'); ?> </a>
 						</div>
 						<p class="info">
 							<?php echo $info; ?>
-						</p>						
+						</p>
+						<?php if ($sysconf['enable_search_clustering']) { ?>
+						<div class="tagline">
+							<?php echo __('Search Cluster'); ?>
+						</div>
+						  <div id="search-cluster"><?php echo __('Generating search cluster...');  ?></div>
+							<script type="text/javascript">
+								$.ajax('index.php?p=clustering&q=<?php echo urlencode($criteria); ?>',
+								  { type: 'GET',
+										success: function(data, status, jqXHR) {
+                      $('#search-cluster').html(data);
+									  }
+									});
+							</script>
+						<?php } ?>
 					</div>
 
 					<div class="section">
 						<div class="tagline">
 							<?php echo __('Collections'); ?>
 							<a href="javascript: history.back();" class="back to_right"> <?php echo __('Back'); ?> </a>
+						</div>
+						<div class="search-result-info">
+              <?php echo $search_result_info; ?>
 						</div>
 						<div class="collections-list">
 							<?php echo $main_content; ?>
@@ -178,10 +213,24 @@ $social = array	(
 						<div class="collections-list">
 							<?php echo $main_content; ?>
 							<div class="clear">&nbsp;</div>
-						</div>						
+						</div>
 					</div>
 					<?php } elseif(isset($_GET['p'])) { ?>
-						<?php echo $main_content; ?>
+					  <?php if ($_GET['p'] == 'show_detail') {
+								echo $main_content;
+						} else {
+						?>
+							<div class="tagline">
+								<?php echo $page_title; ?>
+								<a href="javascript: history.back();" class="back to_right"> <?php echo __('Back'); ?> </a>
+							</div>
+							<div class="section">
+								<div class="collection-detail">
+									<div class="content-padding"><?php echo $main_content; ?></div>
+									<div class="clear">&nbsp;</div>
+								</div>
+							</div>
+						<?php } ?>
 					<?php } else { ?>
 					<div class="tagline">
 						<?php echo $info; ?>
@@ -202,6 +251,14 @@ $social = array	(
 						    </div>
 						    <div class="advance">
 						    <table width="100%">
+							    <tr>
+								    <td class="value">
+								    <?php echo __('Title'); ?>
+								    </td>
+								    <td class="value" colspan="3">
+								    <input type="text" name="title" />
+								    </td>
+							    </tr>
 							    <tr>
 								    <td class="value">
 								    <?php echo __('Author(s)'); ?>
@@ -280,14 +337,13 @@ $social = array	(
 								$('#simply-search').show();								
 							    }
 							});
-							
+
 							$('#title').keypress(function(e){
 							    if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
 								this.form.submit();
-							    }     
+							    }
 							});
 						});
-
 					</script>
 					<?php } ?>
 				</div>
@@ -314,18 +370,18 @@ $social = array	(
 		{
 		    transition		: 6,
 		    keyboard_nav 	: 0,
-		    start_slide		: 0,		
-		    vertical_center   	: 1,		
-		    horizontal_center 	: 1,		
-		    min_width		: 1000,	
-		    min_height		: 700,	
-		    fit_portrait        : 1,
+		    start_slide		: 0,
+		    vertical_center : 1,
+		    horizontal_center : 1,
+		    min_width	: 1000,
+		    min_height : 700,
+		    fit_portrait  : 1,
 		    fit_landscape	: 0,
 		    image_protect	: 1,
-		    slides		: [ 
-					    { image : '<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/images/1.jpg' },
-					    { image : '<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/images/2.jpg' }
-					  ]					
+		    slides		: [
+					{ image : '<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/images/1.jpg' },
+				  { image : '<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/images/2.jpg' }
+				]
 		});
 	});
 
@@ -337,7 +393,7 @@ $social = array	(
 		'980px  to 1280px = 960.css',
 		'1280px to 1600px = 1200.css',
 		'1600px to 1920px = 1560.css',
-		'1920px           = fluid.css'
+		'1920px = fluid.css'
 		]
 	};
 	</script>

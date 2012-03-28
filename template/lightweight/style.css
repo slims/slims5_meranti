@@ -133,6 +133,11 @@ a:hover {
     background-color: #FF9900;
 }
 
+.item .cover-list {
+    float: right;
+    width: 90px;
+}
+
 .subItem {
     margin-top: 3px;
 }
@@ -177,4 +182,3 @@ em a:hover {
 font {
     font-size: 11px;
 }
-
