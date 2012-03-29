@@ -82,6 +82,9 @@ $social = array	(
 							),
 		'gihub' 	=> array('url' 	=> 'https://github.com/slims/',
 							 'text'	=> 'Github'
+							),
+		'forum' 	=> array('url' 	=> 'http://slims.web.id/forum/',
+							 'text'	=> 'Forum'
 							)
 		);
 
@@ -92,7 +95,7 @@ $social = array	(
 	<title><?php echo $page_title; ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="description" content="SLiMS (Senayan Library Management System) is an open source Library Management System. It is build on Open source technology like PHP and MySQL">
-	<meta name="keywords" content="senayan,slims,libraru automation,free library application, library, perpustakaan, aplikasi perpustakaan">
+	<meta name="keywords" content="senayan,slims,library automation,free library application, library, perpustakaan, aplikasi perpustakaan">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<meta name="robots" content="index, nofollow">
 	<!-- load style -->
@@ -153,7 +156,11 @@ $social = array	(
 		<div class="content">
 			<div class="container_12">
 				<div class="grid_12 welcome">
+<<<<<<< HEAD
 					<?php if(isset($_GET['search']) || isset($_GET['title']) || isset($_GET['keyword'])) { ?>
+=======
+					<?php if(isset($_GET['search']) || isset($_GET['title']) || isset($_GET['keywords'])) { ?>
+>>>>>>> 42ffc259d9e127eaef308535407f574eb52a1592
 					<div class="sidebar">
 						<div class="tagline">
 							<?php echo __('Information'); ?>
@@ -165,14 +172,24 @@ $social = array	(
 						<div class="tagline">
 							<?php echo __('Search Cluster'); ?>
 						</div>
+<<<<<<< HEAD
 						  <div id="search-cluster"><?php echo __('Generating search cluster...');  ?></div>
 							<script type="text/javascript">
+=======
+						  <div id="search-cluster"><div class="cluster-loading"><?php echo __('Generating search cluster...');  ?></div></div>
+							<script type="text/javascript">
+							$('document').ready( function() {
+>>>>>>> 42ffc259d9e127eaef308535407f574eb52a1592
 								$.ajax('index.php?p=clustering&q=<?php echo urlencode($criteria); ?>',
 								  { type: 'GET',
 										success: function(data, status, jqXHR) {
                       $('#search-cluster').html(data);
 									  }
 									});
+<<<<<<< HEAD
+=======
+							});
+>>>>>>> 42ffc259d9e127eaef308535407f574eb52a1592
 							</script>
 						<?php } ?>
 					</div>
@@ -233,21 +250,21 @@ $social = array	(
 						<?php echo $info; ?>
 					</div>
 					<div class="search">
-					    <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
-						    <div class="simply">
+						<div id="simply-search">
+						    <div class="simply" >
+							<form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
 							<input type="hidden" name="search" value="Search" />
 							<input type="text" name="keywords" id="title" class="keyword" />
+							</form>
 						    </div>
-						    <div class="advance" style="display: none;">
+						</div>
+						<div id="advance-search" style="display:none;" >
+						    <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
+						    <div class="simply" >
+							<input type="text" name="title" id="title" class="keyword" />
+						    </div>
+						    <div class="advance">
 						    <table width="100%">
-							    <tr>
-								    <td class="value">
-								    <?php echo __('Title'); ?>
-								    </td>
-								    <td class="value" colspan="3">
-								    <input type="text" name="title" />
-								    </td>
-							    </tr>
 							    <tr>
 								    <td class="value">
 								    <?php echo __('Author(s)'); ?>
@@ -303,19 +320,28 @@ $social = array	(
 							    </tr>
 						    </table>
 						    </div>
-							<div id="show_advance">
-							  <a href="#"><?php echo __('Advanced Search'); ?></a>
-							</div>
-					    </form>
+	    					    </form>
+						</div>
+						<div id="show_advance">
+							<a href="#"><?php echo __('Advanced Search'); ?></a>
+						</div>
 					</div>
 					<script type="text/javascript">
 						$(document).ready(function()
 						{
 							//Disable all html autocomplete
 							$('#advSearchForm input').attr('autocomplete','off');
+							$('#title').attr('style','');
 
 							$('#show_advance').click(function(){
-							    $('.advance').slideToggle();
+							    if ($("#advance-search").is(":hidden"))
+							    {
+								$("#advance-search").slideDown();
+								$('#simply-search').hide();
+							    } else {
+								$("#advance-search").slideUp('fast');
+								$('#simply-search').show();
+							    }
 							});
 
 							$('#title').keypress(function(e){

@@ -174,8 +174,11 @@ if (isset($_GET['keywords']) AND $can_read) {
   $_SESSION['z3950result'] = array();
   if ($_GET['index'] != 0) {
     $index = trim($_GET['index']).' any ';
+    $keywords = urlencode($index.'"'.trim($_GET['keywords'].'"'));
+  } else {
+    $keywords = urlencode('"'.trim($_GET['keywords']).'"');
   }
-  $keywords = urlencode($index.'"'.trim($_GET['keywords'].'"'));
+
   $query = '';
   if ($keywords) {
     $sru_server = $zserver.'?version=1.1&operation=searchRetrieve&query='.$keywords.'&startRecord=1&maximumRecords=20&recordSchema=mods';

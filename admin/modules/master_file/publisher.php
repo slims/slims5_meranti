@@ -185,8 +185,10 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 } else {
     /* PUBLISHER LIST */
     // table spec
+    $sql_criteria = 'b.publisher_id > 1';
     if (isset($_GET['type']) && $_GET['type'] == 'orphaned') {
-        $table_spec = 'mst_publisher AS p LEFT JOIN biblio AS b ON p.publisher_id = b.publisher_id WHERE b.publisher_id IS NULL';
+        $table_spec = 'mst_publisher AS p LEFT JOIN biblio AS b ON p.publisher_id = b.publisher_id';
+        $sql_criteria = 'b.publisher_id IS NULL';
     } else {
         $table_spec = 'mst_publisher AS p';
     }
@@ -208,8 +210,10 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // is there any search
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
        $keywords = $dbs->escape_string($_GET['keywords']);
-       $datagrid->setSQLCriteria("p.publisher_name LIKE '%$keywords%'");
+       $sql_criteria .= " AND p.publisher_name LIKE '%$keywords%'";
     }
+
+    $datagrid->setSQLCriteria($sql_criteria);
 
     // set table and table header attributes
     $datagrid->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';

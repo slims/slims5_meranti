@@ -93,6 +93,8 @@ function modsXMLslims($modsrecords)
     $data['notes'] = (string)$modsrecords->note;
 
     # mods->subject
+    $_term_type = 'topical';
+    $_term = '';
     foreach ($modsrecords->subject as $_subj) {
       $_authority = (string)$_subj['authority'];
       if (isset($_subj->topic)) {
@@ -141,8 +143,6 @@ function modsXMLslims($modsrecords)
       $data['modified_date'] = (string)$modsrecords->recordInfo->recordChangeDate;
       $data['origin'] = (string)$modsrecords->recordInfo->recordOrigin;
     }
-
-    $modsrecords_num++;
 
     return $data;
 }

@@ -184,15 +184,13 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 } else {
     /* PLACE LIST */
     // table spec
-    $table_spec = 'mst_place AS pl';
-
+    $sql_criteria = 'pl.place_id > 1';
     if (isset($_GET['type']) && $_GET['type'] == 'orphaned') {
-        $table_spec = 'mst_place AS pl LEFT JOIN biblio AS b ON pl.place_id = b.publish_place_id WHERE b.publish_place_id IS NULL';
+        $table_spec = 'mst_place AS pl LEFT JOIN biblio AS b ON pl.place_id = b.publish_place_id';
+        $sql_criteria = 'b.publish_place_id IS NULL';
     } else {
         $table_spec = 'mst_place AS pl';
     }
-
-
 
     // create datagrid
     $datagrid = new simbio_datagrid();
@@ -209,8 +207,10 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // is there any search
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
        $keywords = $dbs->escape_string($_GET['keywords']);
-       $datagrid->setSQLCriteria("pl.place_name LIKE '%$keywords%'");
+       $sql_criteria .= " AND pl.place_name LIKE '%$keywords%'";
     }
+
+    $datagrid->setSQLCriteria($sql_criteria);
 
     // set table and table header attributes
     $datagrid->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';

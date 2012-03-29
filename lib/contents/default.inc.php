@@ -53,6 +53,9 @@ if (isset($sysconf['enable_xml_detail']) && !$sysconf['enable_xml_detail']) {
   $biblio_list->xml_detail = false;
 }
 
+// search result info
+$search_result_info = '';
+
 // if we are in searching mode
 if (isset($_GET['search']) && !empty($_GET['search'])) {
     // default vars
