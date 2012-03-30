@@ -118,7 +118,6 @@ if (isset($_POST['saveZ']) AND isset($_SESSION['z3950result'])) {
 
         // insert biblio data
         $sql_op->insert('biblio', $biblio);
-        echo '<p>'.$sql_op->error.'</p><p>&nbsp;</p>';
         $biblio_id = $sql_op->insert_id;
         if ($biblio_id < 1) {
             continue;
