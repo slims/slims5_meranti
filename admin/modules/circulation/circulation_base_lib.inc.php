@@ -353,11 +353,15 @@ class circulation extends member
         if ($_date == $str_return_date) {
             // how many days the overdue
             $_overdue_days = simbio_date::calcDay($str_return_date, $_loan_d[0]);
-            /*
-            // count holiday and subtract it from overdue days
-            $_holiday_count = simbio_date::countHolidayBetween($_loan_d[0], $str_return_date, $this->holiday_dayname, $this->holiday_date);
-            $_overdue_days = $_overdue_days-$_holiday_count;
-            */
+            
+            /* modified by Indra Sutriadi */
+            if ($this->ignore_holidays_fine_calc === true) {
+                // count holiday and subtract it from overdue days
+                $_holiday_count = simbio_date::countHolidayBetween($_loan_d[0], $str_return_date, $this->holiday_dayname, $this->holiday_date);
+                $_overdue_days = $_overdue_days-$_holiday_count;
+            }
+            /* end of modification */
+            
             if ($_overdue_days < 1) {
                 return false;
             }
