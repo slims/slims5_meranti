@@ -284,7 +284,7 @@ if (!$reportView) {
     $output .= '</table>';
 
     // print out
-    echo '<div class="printPageInfo">'.__('Title and Collection Recap by').' <strong>'.$recapby.'</strong> <a class="printReport" onclick="window.print()" href="#">['.__('Print Current Page').']</a><a href="../xlsoutput.php" class="button">'.__('Export to spreadsheet format').'</a></div>'."\n";
+    echo '<div class="printPageInfo">'.__('Title and Collection Recap by').' <strong>'.$recapby.'</strong> <a class="printReport" onclick="window.print()" href="#">'.__('Print Current Page').'</a><a href="../xlsoutput.php" class="button">'.__('Export to spreadsheet format').'</a></div>'."\n";
     echo $output;
 
 	unset($_SESSION['xlsquery']); 
