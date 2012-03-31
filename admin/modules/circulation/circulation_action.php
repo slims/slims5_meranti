@@ -250,6 +250,13 @@ if (isset($_POST['quickReturnID']) AND $_POST['quickReturnID']) {
         $loan_d = $loan_info_q->fetch_assoc();
         // create circulation object
         $circulation = new circulation($dbs, $loan_d['member_id']);
+        
+        /* modified by Indra Sutriadi */
+        $circulation->ignore_holidays_fine_calc = $sysconf['ignore_holidays_fine_calc'];
+        $circulation->holiday_dayname = $_SESSION['holiday_dayname'];
+        $circulation->holiday_date = $_SESSION['holiday_date'];
+        /* end of modification */
+        
         // check for overdue
         $overdue = $circulation->countOverdueValue($loan_d['loan_id'], $return_date);
         // check overdue

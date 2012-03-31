@@ -118,6 +118,11 @@ if (isset($_POST['updateData'])) {
     $loan_limit_override = $_POST['loan_limit_override'] == '1'?true:false;
     $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($loan_limit_override)).'\' WHERE setting_name=\'loan_limit_override\'');
 
+    // ignore holidays fine calculation
+    // added by Indra Sutriadi
+    $ignore_holidays_fine_calc = $_POST['ignore_holidays_fine_calc'] == '1'?true:false;
+    $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($ignore_holidays_fine_calc)).'\' WHERE setting_name=\'ignore_holidays_fine_calc\'');
+
     // xml detail
     $xml_detail = $_POST['enable_xml_detail'] == '1'?true:false;
     $dbs->query('UPDATE setting SET setting_value=\''.$dbs->escape_string(serialize($xml_detail)).'\' WHERE setting_name=\'enable_xml_detail\'');
@@ -231,6 +236,13 @@ $options = null;
 $options[] = array('0', __('Disable'));
 $options[] = array('1', __('Enable'));
 $form->addSelectList('loan_limit_override', __('Loan Limit Override'), $options, $sysconf['loan_limit_override']?'1':'0');
+
+// enable ignore holidays fine calc
+// added by Indra Sutriadi
+$options = null;
+$options[] = array('0', __('Disable'));
+$options[] = array('1', __('Enable'));
+$form->addSelectList('ignore_holidays_fine_calc', __('Ignore Holidays Fine Calculation'), $options, $sysconf['ignore_holidays_fine_calc']?'1':'0');
 
 // enable bibliography xml detail
 $options = null;

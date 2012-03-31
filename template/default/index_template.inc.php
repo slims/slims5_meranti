@@ -1,9 +1,9 @@
 <?php
 /*------------------------------------------------------------
 
-	Template	: Slims Meranti Template
-	Create Date	: March 24, 2012
-	Author		: Eddy Subratha (eddy.subratha@gmail.com)
+Template	: Slims Meranti Template
+Create Date	: March 24, 2012
+Author		: Eddy Subratha (eddy.subratha@gmail.com)
 
 
 This program is free software; you can redistribute it and/or modify

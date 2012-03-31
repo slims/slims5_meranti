@@ -122,7 +122,7 @@ class simbio_date
         $_start_mktime = mktime(0, 0, 0, $_parsed_start_date['month'], $_parsed_start_date['day'], $_parsed_start_date['year']);
         $_end_mktime = mktime(0, 0, 0, $_parsed_end_date['month'], $_parsed_end_date['day'], $_parsed_end_date['year']);
         while ($_start_mktime <= $_end_mktime) {
-            if (in_array(date('D', $_start_mktime), $array_holiday_dayname) OR in_array(date('Y-m-d', $_start_mktime), $array_holiday_date)) {
+            if (in_array(strtolower(date('D', $_start_mktime)), $array_holiday_dayname) OR in_array(date('Y-m-d', $_start_mktime), $array_holiday_date)) {
                 $_holiday_count += 1;
             }
             $_start_mktime += $_one_day;
