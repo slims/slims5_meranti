@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2009 Arie Nugraha (dicarve@yahoo.com)
+ * Copyright (C) 2012 Arie Nugraha (dicarve@yahoo.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

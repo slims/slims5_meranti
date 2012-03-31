@@ -45,7 +45,7 @@ if (get_magic_quotes_gpc()) {
   $_REQUEST = array_map('stripslashes_deep', $_REQUEST);
 }
 // turn off all error messages for security reason
-@ini_set('display_errors',true);
+@ini_set('display_errors',false);
 // check if safe mode is on
 if ((bool) ini_get('safe_mode')) {
     define('SENAYAN_IN_SAFE_MODE', 1);
@@ -235,7 +235,7 @@ $sysconf['allowed_file_att'] = array('.pdf', '.rtf', '.txt',
     '.avi', '.mpeg', '.mp4', '.flv', '.mvk',
     '.jpg', '.jpeg', '.png', '.gif',
     '.docx', '.pptx', '.xlsx',
-    '.ogg', '.mp3');
+    '.ogg', '.mp3', '.xml', '.mrc');
 
 /* FILE ATTACHMENT MIMETYPES */
 $sysconf['mimetype']['docx'] = 'application/msword';
@@ -268,6 +268,8 @@ $sysconf['mimetype']['gif'] = 'image/gif';
 $sysconf['mimetype']['png'] = 'image/png';
 $sysconf['mimetype']['flv'] = 'video/x-flv';
 $sysconf['mimetype']['mp4'] = 'video/mp4';
+$sysconf['mimetype']['xml'] = 'text/xml';
+$sysconf['mimetype']['mrc'] = 'text/marc';
 
 /* PRICE CURRENCIES SETTING */
 $sysconf['currencies'] = array( array('0', 'NONE'), 'Rupiah', 'USD', 'Euro', 'DM', 'Pounds', 'Yen', 'Won', 'Yuan', 'Sing-D', 'Bath', 'Ruppee');
