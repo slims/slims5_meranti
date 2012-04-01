@@ -113,6 +113,22 @@ if (!$reportView) {
             </div>
         </div>
         <div class="divRow">
+            <div class="divRowLabel"><?php echo __('Received Date from'); ?></div>
+            <div class="divRowContent">
+            <?php
+            echo simbio_form_element::dateField('startDate', '2005-01-01');
+            ?>
+            </div>
+        </div>
+        <div class="divRow">
+            <div class="divRowLabel"><?php echo __('Received Date until'); ?></div>
+            <div class="divRowContent">
+            <?php
+            echo simbio_form_element::dateField('untilDate', date('Y-m-d'));
+            ?>
+            </div>
+        </div>
+        <div class="divRow">
             <div class="divRowLabel"><?php echo __('Item Status'); ?></div>
             <div class="divRowContent">
             <?php
@@ -208,6 +224,10 @@ if (!$reportView) {
         if ($coll_type_IDs) {
             $criteria .= " AND i.coll_type_id IN($coll_type_IDs)";
         }
+    }
+    if (isset($_GET['startDate']) AND isset($_GET['untilDate'])) {
+        $criteria .= ' AND (TO_DAYS(i.received_date) BETWEEN TO_DAYS(\''.$_GET['startDate'].'\') AND
+            TO_DAYS(\''.$_GET['untilDate'].'\'))';
     }
     if (isset($_GET['gmd']) AND !empty($_GET['gmd'])) {
         $gmd_IDs = '';
