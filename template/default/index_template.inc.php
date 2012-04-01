@@ -156,11 +156,7 @@ $social = array	(
 		<div class="content">
 			<div class="container_12">
 				<div class="grid_12 welcome">
-<<<<<<< HEAD
-					<?php if(isset($_GET['search']) || isset($_GET['title']) || isset($_GET['keyword'])) { ?>
-=======
 					<?php if(isset($_GET['search']) || isset($_GET['title']) || isset($_GET['keywords'])) { ?>
->>>>>>> 42ffc259d9e127eaef308535407f574eb52a1592
 					<div class="sidebar">
 						<div class="tagline">
 							<?php echo __('Information'); ?>
@@ -172,24 +168,16 @@ $social = array	(
 						<div class="tagline">
 							<?php echo __('Search Cluster'); ?>
 						</div>
-<<<<<<< HEAD
-						  <div id="search-cluster"><?php echo __('Generating search cluster...');  ?></div>
-							<script type="text/javascript">
-=======
 						  <div id="search-cluster"><div class="cluster-loading"><?php echo __('Generating search cluster...');  ?></div></div>
 							<script type="text/javascript">
 							$('document').ready( function() {
->>>>>>> 42ffc259d9e127eaef308535407f574eb52a1592
 								$.ajax('index.php?p=clustering&q=<?php echo urlencode($criteria); ?>',
 								  { type: 'GET',
 										success: function(data, status, jqXHR) {
                       $('#search-cluster').html(data);
 									  }
 									});
-<<<<<<< HEAD
-=======
 							});
->>>>>>> 42ffc259d9e127eaef308535407f574eb52a1592
 							</script>
 						<?php } ?>
 					</div>
