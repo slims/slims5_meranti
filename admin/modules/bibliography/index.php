@@ -97,7 +97,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
 
         $data['title'] = $dbs->escape_string($title);
         /* modified by hendro */
-        $data['sor'] = trim($dbs->escape_string(strip_tags($_POST['sor'])));
+        $data['sor_id'] = trim($dbs->escape_string(strip_tags($_POST['sor_id'])));
         /* end of modification */
         $data['edition'] = trim($dbs->escape_string(strip_tags($_POST['edition'])));
         $data['gmd_id'] = $_POST['gmdID'];
@@ -460,7 +460,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 
     // modified by hendro wicaksono
     // biblio sor statement of responsibility
-    $form->addTextField('text', 'sor', __('Statement of Responsibility'), $rec_d['sor'], 'style="width: 40%;"');
+    $form->addTextField('text', 'sor_id', __('Statement of Responsibility'), $rec_d['sor_id'], 'style="width: 40%;"');
     // end of modification
 
     // biblio edition
