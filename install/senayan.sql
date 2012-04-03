@@ -1,5 +1,5 @@
 -- SENAYAN Library Automation
--- Version 3.0 stable 10
+-- Version 5 (Meranti)
 -- Core database structure
 
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `biblio` (
   `biblio_id` int(11) NOT NULL auto_increment,
   `gmd_id` int(3) default NULL,
   `title` text collate utf8_unicode_ci NOT NULL,
-  `sor_id` int(11) default NULL,
+  `sor` varchar(200) collate utf8_unicode_ci default NULL,
   `edition` varchar(50) collate utf8_unicode_ci default NULL,
   `isbn_issn` varchar(20) collate utf8_unicode_ci default NULL,
   `publisher_id` int(11) default NULL,
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `biblio` (
   `input_date` datetime default NULL,
   `last_update` datetime default NULL,
   PRIMARY KEY  (`biblio_id`),
-  KEY `references_idx` (`gmd_id`,`publisher_id`,`language_id`,`publish_place_id`,`sor_id`),
+  KEY `references_idx` (`gmd_id`,`publisher_id`,`language_id`,`publish_place_id`),
   KEY `classification` (`classification`),
   KEY `biblio_flag_idx` (`opac_hide`,`promoted`),
   FULLTEXT KEY `title_ft_idx` (`title`,`series_title`),
@@ -1088,16 +1088,4 @@ CREATE TABLE IF NOT EXISTS `member_custom` (
 `member_id` VARCHAR(20) NOT NULL ,
 PRIMARY KEY ( `member_id` )
 ) ENGINE = MYISAM COMMENT = 'one to one relation with real member table';
-
---
--- Table structure for table `mst_sor` (statement of responsibility)
---
-CREATE TABLE IF NOT EXISTS `mst_sor` (
-  `sor_id` int(11) NOT NULL auto_increment,
-  `sor` varchar(255) collate utf8_unicode_ci default NULL,
-  `input_date` datetime default NULL,
-  `last_update` datetime default NULL,
-  PRIMARY KEY  (`sor_id`),
-  FULLTEXT KEY `sor_ft_idx` (`sor`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
