@@ -139,6 +139,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 	WHERE '.$criteria);
 
 	$katalog = "";
+	$item = 0;
     while ($biblio_d = $biblio_q->fetch_array()) {
 
 		$tajuk[] = "&nbsp;";
@@ -194,7 +195,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 		for ($i=0; $i < count($tajuk); $i++)
 		{
 		/* check for break page */
-		if($i % 3 == 0)
+		if($item % 3 == 0 AND $item != 0)
 		{
 			$set_break = ' style="page-break-before:always;" ';
 		} else {
@@ -222,6 +223,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 			<tr><td></td><td align=left class=data>&nbsp;&nbsp;&nbsp;".$biblio_d['copies']."</td><td class=data align=right>&nbsp;</td></tr>
 			</table>
 			</td></tr>\n";
+		$item++;
 		}
 
 		unset($tajuk);
@@ -242,6 +244,9 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     $html_str .= '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
     $html_str .= '<meta http-equiv="Pragma" content="no-cache" /><meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0" /><meta http-equiv="Expires" content="Sat, 26 Jul 1997 05:00:00 GMT" />';
     $html_str .= '<style type="text/css">'."\n";
+    $html_str .= '@media print {'."\n";
+    $html_str .= '.doNotPrint { display: none; }'."\n";
+    $html_str .= '}'."\n";
     $html_str .= '.data {FONT-FAMILY: verdana; FONT-SIZE: 10px; HEIGHT: 20px; PADDING-LEFT: 5px; PADDING-TOP: 0px; text-valign: bottom;  background:#ffffff}'."\n";
     $html_str .= '.callno {FONT-FAMILY: verdana; FONT-SIZE: 10px; HEIGHT: 20px; PADDING-LEFT: 5px; PADDING-TOP: 0px; vertical-align: top;  background:#ffffff}'."\n";
     $html_str .= '.kata {FONT-FAMILY: verdana; FONT-SIZE: 11px;}'."\n";
@@ -249,7 +254,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     $html_str .= '</style>'."\n";
     $html_str .= '</head>'."\n";
     $html_str .= '<body>'."\n";
-    $html_str .= '<a href="#" onclick="window.print()">Print Again</a>'."\n";
+    $html_str .= '<a href="#" class="doNotPrint" onclick="window.print()">Print Again</a>'."\n";
     $html_str .= '<table border=0 cellpadding=0 cellspacing=5>'."\n";
 	$html_str .= $katalog;
     $html_str .= '</table>'."\n";
