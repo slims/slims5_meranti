@@ -3,7 +3,8 @@
  *
  * Visitor Counter
  * Copyright (C) 2010 Arie Nugraha (dicarve@yahoo.com)
- *
+ * Modified By Eddy Subratha (eddy.subratha@gmail.com)
+ * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -109,23 +110,46 @@ if (isset($_POST['counter'])) {
 }
 
 ?>
+	<div id="masking"></div>
+		<div id="visitor" class="content">
+		    <div id="visitorCounterWrap">
+			    <div id="counterInfo"><?php echo __('Visitor Counter'); ?></div>							
+			    <div class="info"><?php echo __('Please insert your library member ID otherwise your full name instead'); ?></div>
+			    <img id="visitorCounterPhoto" src="images/persons/person.png" />
+			    <form action="index.php?p=visitor" name="visitorCounterForm" id="visitorCounterForm" method="post">
+				<div class="fieldLabel"><?php echo __('Member ID'); ?>/<?php echo __('Visitor Name'); ?>*</div>
+				<div class="label"><input type="text" name="memberID" id="memberID" /></div>
+				<div class="fieldLabel"><?php echo __('Institution'); ?></div>
+				<div class="label"><input type="text" name="institution" id="institution" />
+				<div class="marginTop" ><input type="submit" id="counter" name="counter" value="<?php echo __('Add'); ?>" /></div>
+			    </form>
+		    </div>	
+		    <div class="clear"></div>
+		</div>
+	</div>
 
-<fieldset id="visitorCounterWrap">
-<legend><?php echo __('Visitor Counter'); ?></legend>
-<div id="counterInfo"></div>
-<div class="info"><?php echo __('Please insert your library member ID otherwise your full name instead'); ?></div>
-<form action="index.php?p=visitor" name="visitorCounterForm" id="visitorCounterForm" method="post">
-    <div class="fieldLabel"><?php echo __('Member ID'); ?>/<?php echo __('Visitor Name'); ?>*</div>
-    <div><input type="text" name="memberID" id="memberID" /></div>
-    <div class="fieldLabel"><?php echo __('Institution'); ?></div>
-    <div><input type="text" name="institution" id="institution" /></div>
-    <div class="marginTop"><input type="submit" name="counter" value="<?php echo __('Add'); ?>" />
-</div>
-</form>
-<img id="visitorCounterPhoto" src="images/persons/person.png" />
-</fieldset>
+	<script type="text/javascript" src="<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/js/supersized.3.1.3.min.js"></script>
+	<script type="text/javascript">
+	jQuery(function($){
+		$.supersized(
+		{
+		    transition		: 2,
+		    keyboard_nav 	: 0,
+		    start_slide		: 0,
+		    vertical_center : 1,
+		    horizontal_center : 1,
+		    min_width	: 1000,
+		    min_height : 700,
+		    fit_portrait  : 1,
+		    fit_landscape	: 0,
+		    image_protect	: 1,
+		    slides		: [
+					{ image : '<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/images/1.jpg' },
+				  { image : '<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/images/2.jpg' }
+				]
+		});
+	});
 
-<script type="text/javascript">
     // give focus to first field
     jQuery('#memberID').focus();
 

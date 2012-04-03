@@ -214,7 +214,8 @@ hr
 #content
 {
 	z-index: 999;
-	margin-bottom: 70px;
+	padding-bottom: 60px;
+    
 }
 
 .content
@@ -399,9 +400,9 @@ hr
 
 .item
 {
-	width: 100%;
+	width: 670px;
 	float: left;
-	padding:10px;
+	padding:10px ;
 	clear: both;
 	border-bottom: dotted 1px #222222;
 }
@@ -910,3 +911,71 @@ img.btn_close {
 	height: 100px;
 	background: url(images/loader.gif) center center no-repeat;
 }
+
+/*------------------------------------------
+ visitor counter
+ Overwrite the default to this new style
+-------------------------------------------*/
+#visitorCounterWrap {
+  font-family: Karla, Arial, sans-serif !important;
+  margin: 0 auto;
+  width: 600px;
+  padding: 0;
+  border: none;
+  border-radius: 7px;  
+  background-color: rgba(0,0,0,0.9); 
+  
+}
+
+#visitorCounterWrap #counterInfo {
+  display: block;
+  padding: 20px;
+  font-weight: normal;
+  font-size: 150%;
+  border: none;
+}
+
+#visitorCounterWrap .info {
+    font-weight: normal;
+    border: none;
+    background: rgba(137,193,219,0.9);
+    margin: 0;
+    padding:20px;
+}
+
+
+
+#visitorCounterForm {
+    float: left;
+    padding-top:25px;
+}
+
+#visitorCounterForm input[type="text"]
+{
+  background-color: rgba(255,255,255,0.1);  
+  border:none;
+  padding:10px;
+  width: 330px;
+  color:#cccccc;
+}
+
+#visitorCounterWrap .fieldLabel
+{
+  white-space: nowrap;  
+}
+
+#visitorCounterWrap #counter
+{
+  margin-right: 8px;
+  background-color: #7dafc6;
+  border: none;
+  color: #ffffff;
+}
+
+#visitorCounterPhoto {
+    padding: 20px;
+    float: left;
+    width: 100px;
+    height: 120px;
+}
+
