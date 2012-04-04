@@ -96,25 +96,9 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         }
 
         $data['title'] = $dbs->escape_string($title);
-
         /* modified by hendro */
-        if ($_POST['sorID'] != '0') {
-            $data['sor_id'] = intval($_POST['sorID']);
-        } else {
-            if (!empty($_POST['sor_search_str'])) {
-                $new_sor = trim(strip_tags($_POST['sor_search_str']));
-                $new_id = utility::getID($dbs, 'mst_sor', 'sor_id', 'sor', $new_sor);
-                if ($new_id) {
-                    $data['sor_id'] = $new_id;
-                } else {
-                    $data['sor_id'] = 'literal{NULL}';
-                }
-            } else {
-                $data['sor_id'] = 'literal{NULL}';
-            }
-        }
+        $data['sor_id'] = trim($dbs->escape_string(strip_tags($_POST['sor_id'])));
         /* end of modification */
-
         $data['edition'] = trim($dbs->escape_string(strip_tags($_POST['edition'])));
         $data['gmd_id'] = $_POST['gmdID'];
         $data['isbn_issn'] = trim($dbs->escape_string(strip_tags($_POST['isbn_issn'])));
@@ -424,10 +408,9 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     /* RECORD FORM */
     // try query
     $itemID = (integer)isset($_POST['itemID'])?$_POST['itemID']:0;
-    $_sql_rec_q = sprintf('SELECT b.*, p.publisher_name, pl.place_name, sr.sor FROM biblio AS b
+    $_sql_rec_q = sprintf('SELECT b.*, p.publisher_name, pl.place_name FROM biblio AS b
         LEFT JOIN mst_publisher AS p ON b.publisher_id=p.publisher_id
         LEFT JOIN mst_place AS pl ON b.publish_place_id=pl.place_id
-        LEFT JOIN mst_sor AS sr ON b.sor_id=sr.sor_id 
         WHERE biblio_id=%d', $itemID);
     $rec_q = $dbs->query($_sql_rec_q);
     $rec_d = $rec_q->fetch_assoc();
@@ -477,17 +460,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 
     // modified by hendro wicaksono
     // biblio sor statement of responsibility
-        // AJAX expression
-        $ajax_exp = "ajaxFillSelect('".SENAYAN_WEB_ROOT_DIR."admin/AJAX_lookup_handler.php', 'mst_sor', 'sor_id:sor', 'sorID', $('#sor_search_str').val())";
-        if ($rec_d['sor']) {
-            $sor_options[] = array($rec_d['sor_id'], $rec_d['sor']);
-        }
-        $sor_options[] = array('0', __('Statement of Responsibility'));
-        // string element
-        $str_input = simbio_form_element::selectList('sorID', $sor_options, '', 'style="width: 50%;"');
-        $str_input .= '&nbsp;';
-        $str_input .= simbio_form_element::textField('text', 'sor_search_str', $rec_d['sor'], 'style="width: 45%;" onkeyup="'.$ajax_exp.'"');
-    $form->addAnything(__('Statement of Responsibility'), $str_input);
+    $form->addTextField('text', 'sor_id', __('Statement of Responsibility'), $rec_d['sor_id'], 'style="width: 40%;"');
     // end of modification
 
     // biblio edition
