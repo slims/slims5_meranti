@@ -171,12 +171,13 @@ $social = array	(
 						  <div id="search-cluster"><div class="cluster-loading"><?php echo __('Generating search cluster...');  ?></div></div>
 							<script type="text/javascript">
 							$('document').ready( function() {
-								$.ajax('index.php?p=clustering&q=<?php echo urlencode($criteria); ?>',
-								  { type: 'GET',
-										success: function(data, status, jqXHR) {
+								$.ajax({
+								  url: 'index.php?p=clustering&q=<?php echo urlencode($criteria); ?>',
+								  type: 'GET',
+								  success: function(data, status, jqXHR) {
                       $('#search-cluster').html(data);
 									  }
-									});
+								});
 							});
 							</script>
 						<?php } ?>
