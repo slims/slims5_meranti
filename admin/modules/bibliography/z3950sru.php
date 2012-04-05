@@ -25,6 +25,10 @@ define('INDEX_AUTH', '1');
 // key to get full database access
 define('DB_ACCESS', 'fa');
 
+if (!isset ($errors)) {
+    $errors = false;
+}
+
 // start the session
 require '../../../sysconfig.inc.php';
 // IP based access limitation
