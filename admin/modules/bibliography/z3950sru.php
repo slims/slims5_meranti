@@ -209,9 +209,12 @@ if (isset($_GET['keywords']) AND $can_read) {
         echo '<tr>';
         echo '<td width="1%" class="'.$row_class.'"><input type="checkbox" name="zrecord['.$row.']" value="'.$row.'" /></td>';
         echo '<td width="80%" class="'.$row_class.'"><strong>'.$mods['title'].'</strong><div><i>'.implode(' - ', $authors).'</i></div></td>';
-        echo '<td width="19%" class="'.$row_class.'">'.$mods['isbn_issn'].'</td>';
+        if (isset ($mods['isbn_issn'])) {
+            echo '<td width="19%" class="'.$row_class.'">'.$mods['isbn_issn'].'</td>';
+        } else {
+            echo '<td width="19%" class="'.$row_class.'">&nbsp;</td>';
+        }
         echo '</tr>';
-
         $row++;
       }
       echo '</table>';
