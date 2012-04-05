@@ -256,33 +256,25 @@ $social = array (
           <table width="100%">
            <tr>
             <td class="value">
-            <?php echo __('Title'); ?>
-            </td>
-            <td class="value">
-            <input type="text" name="title" />
-            </td>
-            <td class="value">
             <?php echo __('Author(s)'); ?>
             </td>
             <td class="value">
             <?php echo $advsearch_author; ?>
             </td>
-           </tr>
-           <tr>
             <td class="value">
             <?php echo __('Subject(s)'); ?>
             </td>
             <td class="value">
             <?php echo $advsearch_topic; ?>
             </td>
+           </tr>
+           <tr>
             <td class="value">
             <?php echo __('ISBN/ISSN'); ?>
             </td>
             <td class="value">
              <input type="text" name="isbn" />
             </td>
-           </tr>
-           <tr>
             <td class="value">
              <?php echo __('GMD'); ?>
             </td>
@@ -291,6 +283,8 @@ $social = array (
              <?php echo $gmd_list; ?>
              </select>
             </td>
+           </tr>
+           <tr>
             <td class="value">
              <?php echo __('Collection Type'); ?>
             </td>
@@ -299,8 +293,6 @@ $social = array (
              <?php echo $colltype_list; ?>
              </select>
             </td>
-           </tr>
-           <tr>
             <td class="value">
              <?php echo __('Location'); ?>
             </td>
