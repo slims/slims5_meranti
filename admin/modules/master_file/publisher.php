@@ -213,7 +213,9 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
        $sql_criteria .= " AND p.publisher_name LIKE '%$keywords%'";
     }
 
-    $datagrid->setSQLCriteria($sql_criteria);
+    if (isset($_GET['type']) AND $_GET['type'] == 'orphaned') {
+        $datagrid->setSQLCriteria($sql_criteria);
+    }
 
     // set table and table header attributes
     $datagrid->table_attr = 'align="center" id="dataList" cellpadding="5" cellspacing="0"';
