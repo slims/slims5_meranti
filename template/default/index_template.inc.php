@@ -188,7 +188,84 @@ $social = array	(
 							<a href="javascript: history.back();" class="back to_right"> <?php echo __('Back'); ?> </a>
 						</div>
 						<div class="search-result-info">
-              <?php echo $search_result_info; ?>
+						     <?php echo $search_result_info; ?>
+						</div>
+						<div class="result-search">
+							<div id="simply-search">
+							    <div class="simply" >
+								<form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
+								<input type="hidden" name="search" value="Search" />
+								<input type="text" name="keywords" id="title" class="keyword" />
+								</form>
+							    </div>
+							</div>
+							<div id="advance-search" style="display:none;" >
+							    <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
+							    <div class="simply" >
+								<input type="text" name="title" id="title" class="keyword" />
+							    </div>
+							    <div class="advance">
+							    <table width="100%">
+								    <tr>
+									    <td class="value">
+									    <?php echo __('Author(s)'); ?>
+									    </td>
+									    <td class="value">
+									    <?php echo $advsearch_author; ?>
+									    </td>
+									    <td class="value">
+									    <?php echo __('Subject(s)'); ?>
+									    </td>
+									    <td class="value">
+									    <?php echo $advsearch_topic; ?>
+									    </td>
+								    </tr>
+								    <tr>
+									    <td class="value">
+									    <?php echo __('ISBN/ISSN'); ?>
+									    </td>
+									    <td class="value">
+										    <input type="text" name="isbn" />
+									    </td>
+									    <td class="value">
+										    <?php echo __('GMD'); ?>
+									    </td>
+									    <td class="value">
+										    <select name="gmd">
+										    <?php echo $gmd_list; ?>
+										    </select>
+									    </td>
+								    </tr>
+								    <tr>
+									    <td class="value">
+										    <?php echo __('Collection Type'); ?>
+									    </td>
+									    <td class="value">
+										    <select name="colltype">
+										    <?php echo $colltype_list; ?>
+										    </select>
+									    </td>
+									    <td class="value">
+										    <?php echo __('Location'); ?>
+									    </td>
+									    <td class="value">
+										    <select name="location">
+										    <?php echo $location_list; ?>
+										    </select>
+									    </td>
+								    </tr>
+								    <tr>
+									    <td colspan="4" class="value" style="text-align:center;">
+										<input type="submit" name="search" value="<?php echo __('Search'); ?>" class="searchButton" />
+									    </td>
+								    </tr>
+							    </table>
+							    </div>
+							    </form>
+							</div>
+							<div id="show_advance">
+								<a href="#"><?php echo __('Advanced Search'); ?></a>
+							</div>
 						</div>
 						<div class="collections-list">
 							<?php echo $main_content; ?>
@@ -314,31 +391,6 @@ $social = array	(
 							<a href="#"><?php echo __('Advanced Search'); ?></a>
 						</div>
 					</div>
-					<script type="text/javascript">
-						$(document).ready(function()
-						{
-							//Disable all html autocomplete
-							$('#advSearchForm input').attr('autocomplete','off');
-							$('#title').attr('style','');
-
-							$('#show_advance').click(function(){
-							    if ($("#advance-search").is(":hidden"))
-							    {
-								$("#advance-search").slideDown();
-								$('#simply-search').hide();
-							    } else {
-								$("#advance-search").slideUp('fast');
-								$('#simply-search').show();
-							    }
-							});
-
-							$('#title').keypress(function(e){
-							    if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
-								this.form.submit();
-							    }
-							});
-						});
-					</script>
 					<?php } ?>
 				</div>
 			</div>
@@ -390,6 +442,29 @@ $social = array	(
 		'1920px = fluid.css'
 		]
 	};
+	$(document).ready(function()
+	{
+		//Disable all html autocomplete
+		$('#advSearchForm input').attr('autocomplete','off');
+		$('#title').attr('style','');
+
+		$('#show_advance').click(function(){
+		    if ($("#advance-search").is(":hidden"))
+		    {
+			$("#advance-search").slideDown();
+			$('#simply-search').hide();
+		    } else {
+			$("#advance-search").slideUp('fast');
+			$('#simply-search').show();
+		    }
+		});
+
+		$('#title').keypress(function(e){
+		    if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+			this.form.submit();
+		    }
+		});
+	});
 	</script>
 	<script type="text/javascript" src="<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/js/adapt.min.js"></script>
 
