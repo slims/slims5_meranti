@@ -25,6 +25,10 @@ define('INDEX_AUTH', '1');
 // key to get full database access
 define('DB_ACCESS', 'fa');
 
+if (!isset ($errors)) {
+    $errors = false;
+}
+
 // start the session
 require '../../../sysconfig.inc.php';
 // IP based access limitation
@@ -209,9 +213,12 @@ if (isset($_GET['keywords']) AND $can_read) {
         echo '<tr>';
         echo '<td width="1%" class="'.$row_class.'"><input type="checkbox" name="zrecord['.$row.']" value="'.$row.'" /></td>';
         echo '<td width="80%" class="'.$row_class.'"><strong>'.$mods['title'].'</strong><div><i>'.implode(' - ', $authors).'</i></div></td>';
-        echo '<td width="19%" class="'.$row_class.'">'.$mods['isbn_issn'].'</td>';
+        if (isset ($mods['isbn_issn'])) {
+            echo '<td width="19%" class="'.$row_class.'">'.$mods['isbn_issn'].'</td>';
+        } else {
+            echo '<td width="19%" class="'.$row_class.'">&nbsp;</td>';
+        }
         echo '</tr>';
-
         $row++;
       }
       echo '</table>';

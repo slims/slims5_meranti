@@ -111,13 +111,6 @@ if (isset($_POST['doImport'])) {
         $data['input_date'] = $input_date;
         $data['last_update'] = $input_date;
 
-        /*
-        echo '<pre>';
-        echo $record;
-        echo '</pre>';
-        continue;
-        */
-        
         echo '<pre>';
         echo "\n";
         $title_fld = $record->getField('245');
@@ -147,7 +140,11 @@ if (isset($_POST['doImport'])) {
           $ed2 = $ed_fld->getSubfields('b');
           if (isset($ed[0])) {
             // echo "\n"; echo 'Edition: '.$ed[0]->getData();
-            $data['edition'] = $ed[0]->getData().'.'.$ed2[0]->getData();
+            $data['edition'] = $ed[0]->getData();
+          }
+          if (isset($ed2[0])) {
+            // echo "\n"; echo 'Edition: '.$ed[0]->getData();
+            $data['edition'] .= $ed2[0]->getData();
           }
         }
 
@@ -360,6 +357,8 @@ $form->table_content_attr = 'class="alterCell2"';
 $str_input = simbio_form_element::textField('file', 'importFile');
 $str_input .= ' Maximum '.$sysconf['max_upload'].' KB';
 $form->addAnything(__('File To Import'), $str_input);
+// text import
+// $form->addTextField('textarea', 'MARCtext', __('MARC record text'), '', 'style="width: 100%; height: 500px;"');
 // number of records to import
 $form->addTextField('text', 'recordNum', __('Number of records to import (0 for all records)'), '0', 'style="width: 10%;"');
 // output the form

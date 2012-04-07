@@ -30,6 +30,8 @@ if (!isset($_GET['q'])) {
   sleep(3);
   $cluster_limit = 30;
 
+  $criteria = trim(strip_tags($_GET['q']));
+
   require SIMBIO_BASE_DIR.'simbio_UTILS/simbio_tokenizecql.inc.php';
   require LIB_DIR.'biblio_list_model.inc.php';
   // index choice
@@ -50,7 +52,6 @@ if (!isset($_GET['q'])) {
     die($err->getMessage());
   }
 
-  $criteria = trim(strip_tags($_GET['q']));
   $sql_criteria = $biblio_list->setSQLcriteria($criteria);
 
   // join with item table if search on colltype
@@ -61,8 +62,7 @@ if (!isset($_GET['q'])) {
   // cluster by GMD
   $gmd_cluster_q = $dbs->query('SELECT gmd.gmd_name AS `Cluster Name`, COUNT(biblio.biblio_id) AS `Cluster Count` FROM mst_gmd AS gmd
     LEFT JOIN biblio ON gmd.gmd_id=biblio.gmd_id
-    '.( isset($join_item)?$join_item:'' ).'
-    WHERE '.$sql_criteria['sql_criteria'].' GROUP BY `Cluster Name` LIMIT '.$cluster_limit);
+    '.( isset($join_item)?$join_item:'' ).( $criteria?' WHERE '.$sql_criteria['sql_criteria']:'' ).' GROUP BY `Cluster Name` LIMIT '.$cluster_limit);
   if ($gmd_cluster_q->num_rows > 0) {
     echo '<h3 class="cluster-title">'.__('GMD').'</h3>'."\n";
     echo '<ul class="cluster-list">'."\n";
@@ -75,7 +75,7 @@ if (!isset($_GET['q'])) {
   // cluster by Collection type
   $coll_type_cluster_q = $dbs->query('SELECT ct.coll_type_name AS `Cluster Name`, COUNT(biblio.biblio_id) AS `Cluster Count` FROM mst_coll_type AS ct
     LEFT JOIN item ON ct.coll_type_id=item.coll_type_id
-    LEFT JOIN biblio ON item.biblio_id=biblio.biblio_id WHERE '.$sql_criteria['sql_criteria'].' GROUP BY `Cluster Name` LIMIT '.$cluster_limit);
+    LEFT JOIN biblio ON item.biblio_id=biblio.biblio_id'.( $criteria?' WHERE '.$sql_criteria['sql_criteria']:'' ).' GROUP BY `Cluster Name` LIMIT '.$cluster_limit);
   if ($coll_type_cluster_q->num_rows > 0) {
     echo '<h3 class="cluster-title">'.__('Collection Type').'</h3>'."\n";
     echo '<ul class="cluster-list">'."\n";
@@ -90,8 +90,7 @@ if (!isset($_GET['q'])) {
   $subj_cluster_q = $dbs->query('SELECT t.topic AS `Cluster Name`, COUNT(bt.biblio_id) AS `Cluster Count` FROM mst_topic AS t
     LEFT JOIN biblio_topic AS bt ON t.topic_id=bt.topic_id
     LEFT JOIN biblio ON bt.biblio_id=biblio.biblio_id
-    '.( isset($join_item)?$join_item:'' ).'
-    WHERE '.$sql_criteria['sql_criteria'].' GROUP BY `Cluster Name` LIMIT '.$cluster_limit);
+    '.( isset($join_item)?$join_item:'' ).( $criteria?' WHERE '.$sql_criteria['sql_criteria']:'' ).' GROUP BY `Cluster Name` LIMIT '.$cluster_limit);
   if ($subj_cluster_q->num_rows > 0) {
     echo '<h3 class="cluster-title">'.__('Subject(s)').'</h3>'."\n";
     echo '<ul class="cluster-list">'."\n";
@@ -105,8 +104,7 @@ if (!isset($_GET['q'])) {
   $auth_cluster_q = $dbs->query('SELECT a.author_name AS `Cluster Name`, COUNT(ba.biblio_id) AS `Cluster Count` FROM mst_author AS a
     LEFT JOIN biblio_author AS ba ON a.author_id=ba.author_id
     LEFT JOIN biblio ON ba.biblio_id=biblio.biblio_id
-    '.( isset($join_item)?$join_item:'' ).'
-    WHERE '.$sql_criteria['sql_criteria'].' GROUP BY `Cluster Name` LIMIT '.$cluster_limit);
+    '.( isset($join_item)?$join_item:'' ).( $criteria?' WHERE '.$sql_criteria['sql_criteria']:'' ).' GROUP BY `Cluster Name` LIMIT '.$cluster_limit);
   if ($auth_cluster_q->num_rows > 0) {
     echo '<h3 class="cluster-title">'.__('Author(s)').'</h3>'."\n";
     echo '<ul class="cluster-list">'."\n";
