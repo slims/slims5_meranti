@@ -261,7 +261,8 @@ hr
 	filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#000000,endColorstr=#000000);
 	padding:20px;
 }
-.search .keyword
+
+#keyword, #title
 {
 	padding:20px;
 	margin-left:40px;
@@ -319,9 +320,10 @@ hr
 }
 
 
-.result-search .keyword
+.result-search #keyword,
+.result-search #title
 {
-	margin-left:140px;
+	margin-left:120px;
 	font-size:18px;
 	width:400px !important;
 	background:transparent;

@@ -196,14 +196,14 @@ $social = array (
 			<div class="simply" >
 			    <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
 			    <input type="hidden" name="search" value="Search" />
-			    <input type="text" name="keywords" id="title" class="keyword" />
+			    <input type="text" name="keywords" id="keyword" />
 			    </form>
 			</div>
 		    </div>
 		    <div id="advance-search" style="display:none;" >
 			<form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
 			<div class="simply" >
-			    <input type="text" name="title" id="title" class="keyword" />
+			    <input type="text" name="title" id="title" />
 			</div>
 			<div class="advance">
 			<table width="100%">
@@ -317,17 +317,17 @@ $social = array (
     </div>
     <div class="search">
 	    <div id="simply-search">
-		<div class="simply" >
-		    <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
-		    <input type="hidden" name="search" value="Search" />
-		    <input type="text" name="keywords" id="title" class="keyword" />
-		    </form>
-		</div>
+			<div class="simply" >
+			    <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
+			    <input type="hidden" name="search" value="Search" />
+			    <input type="text" name="keywords" id="keyword" />
+			    </form>
+			</div>
 	    </div>
 	    <div id="advance-search" style="display:none;" >
 		<form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
 		<div class="simply" >
-		    <input type="text" name="title" id="title" class="keyword" />
+		    <input type="text" name="title" id="title" />
 		</div>
 		<div class="advance">
 		<table width="100%">
@@ -444,18 +444,27 @@ $social = array (
 	};
 	$(document).ready(function()
 	{
-		//Disable all html autocomplete
+		$('#keyword').keyup(function(){
+			$('#title').val();		
+			$('#title').val($('#keyword').val());		
+		});
+
+		$('#title').keyup(function(){
+			$('#keyword').val();		
+			$('#keyword').val($('#title').val());		
+		});
+		
 		$('#advSearchForm input').attr('autocomplete','off');
 		$('#title').attr('style','');
 
 		$('#show_advance').click(function(){
 		    if ($("#advance-search").is(":hidden"))
 		    {
-			$("#advance-search").slideDown();
-			$('#simply-search').hide();
+				$("#advance-search").slideDown();
+				$('#simply-search').hide();
 		    } else {
-			$("#advance-search").slideUp('fast');
-			$('#simply-search').show();
+				$("#advance-search").slideUp('fast');
+				$('#simply-search').show();
 		    }
 		});
 
