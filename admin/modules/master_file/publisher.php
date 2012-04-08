@@ -209,8 +209,12 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
 
     // is there any search
     if (isset($_GET['keywords']) AND $_GET['keywords']) {
-       $keywords = $dbs->escape_string($_GET['keywords']);
-       $sql_criteria .= " AND p.publisher_name LIKE '%$keywords%'";
+        $keywords = $dbs->escape_string($_GET['keywords']);
+        if (isset($sql_criteria)) {
+		    $sql_criteria .= " AND p.publisher_name LIKE '%$keywords%'";
+		} else {
+            $sql_criteria = " p.publisher_name LIKE '%$keywords%'";		} 
+        $datagrid->setSQLCriteria($sql_criteria);
     }
 
     if (isset($_GET['type']) AND $_GET['type'] == 'orphaned') {
