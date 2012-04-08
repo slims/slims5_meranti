@@ -213,11 +213,11 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
         if (isset($sql_criteria)) {
 		    $sql_criteria .= " AND p.publisher_name LIKE '%$keywords%'";
 		} else {
-            $sql_criteria = " p.publisher_name LIKE '%$keywords%'";		} 
-        $datagrid->setSQLCriteria($sql_criteria);
+            $sql_criteria = " p.publisher_name LIKE '%$keywords%'";
+		} 
     }
 
-    if (isset($_GET['type']) AND $_GET['type'] == 'orphaned') {
+    if (isset($sql_criteria) AND $sql_criteria <> "") {
         $datagrid->setSQLCriteria($sql_criteria);
     }
 
