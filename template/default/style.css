@@ -261,7 +261,8 @@ hr
 	filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#000000,endColorstr=#000000);
 	padding:20px;
 }
-.search .keyword
+
+#keyword, #title
 {
 	padding:20px;
 	margin-left:40px;
@@ -307,6 +308,55 @@ hr
     border-radius: 3px;
     height:40px;
 }
+
+/*----------------------------------------------------------------*/
+/* Search Layout Inside Result Search List */
+/*----------------------------------------------------------------*/
+.result-search .simply
+{  
+	font-size:24px;
+	background: transparent url(images/search.png) center center no-repeat !important;
+	filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#000000,endColorstr=#000000);  
+}
+
+
+.result-search #keyword,
+.result-search #title
+{
+	margin-left:120px;
+	font-size:18px;
+	width:400px !important;
+	background:transparent;
+	border: none;
+	outline: 0;
+}
+
+.result-search .advance
+{
+	font-size:24px;
+	background: transparent;
+	filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#000000,endColorstr=#000000);
+	padding:5px;
+	font-size:16px;
+}
+
+.result-search  .advance table td
+{
+	padding:5px;
+}
+
+.result-search  .advance table td input
+{
+	width:200px;
+}
+
+.result-search  #show_advance
+{
+	background: rgba(255,255,255,1) url(images/line-dotted2.png) center center repeat ;
+	padding:2px;
+	text-align: center;
+}
+
 
 /*----------------------------------------------------------------*/
 /* Sidebar Layout */

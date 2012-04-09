@@ -183,168 +183,219 @@ $social = array (
       <?php } ?>
      </div>
 
-     <div class="section">
-      <div class="tagline">
-       <?php echo __('Collections'); ?>
-       <a href="javascript: history.back();" class="back to_right"> <?php echo __('Back'); ?> </a>
-      </div>
-      <div class="search-result-info">
-              <?php echo $search_result_info; ?>
-      </div>
-      <div class="collections-list">
-       <?php echo $main_content; ?>
-       <div class="clear">&nbsp;</div>
-      </div>
-     </div>
-     <?php } elseif($p == 'member') { ?>
-     <div class="sidebar">
-      <div class="tagline">
-       <?php echo __('Information'); ?>
-       <a href="javascript: history.back();" class="back to_right"> <?php echo __('Back'); ?> </a>
-      </div>
-      <div class="info">
-       <?php echo $info; ?>
-      </div>
-      <div class="tagline">
-       <?php echo __('User Login'); ?>
-      </div>
-      <div class="info">
-       <?php echo $header_info; ?>
-      </div>
-     </div>
-     <div class="section">
-      <div class="collections-list">
-       <?php echo $main_content; ?>
-       <div class="clear">&nbsp;</div>
-      </div>
-     </div>
-     <?php } elseif(isset($_GET['p'])) { ?>
-       <?php if ($_GET['p'] == 'show_detail') {
-        echo $main_content;
-      } else {
-      ?>
-       <div class="tagline">
-        <?php echo $page_title; ?>
-        <a href="javascript: history.back();" class="back to_right"> <?php echo __('Back'); ?> </a>
-       </div>
-       <div class="section">
-        <div class="collection-detail">
-         <div class="content-padding"><?php echo $main_content; ?></div>
-         <div class="clear">&nbsp;</div>
-        </div>
-       </div>
-      <?php } ?>
-     <?php } else { ?>
-     <div class="tagline">
-      <?php echo $info; ?>
-     </div>
-     <div class="search">
-      <div id="simply-search">
-          <div class="simply" >
-       <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
-       <input type="hidden" name="search" value="Search" />
-       <input type="text" name="keywords" id="title" class="keyword" />
-       </form>
-          </div>
-      </div>
-      <div id="advance-search" style="display:none;" >
-          <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
-          <div class="simply" >
-       <input type="text" name="title" id="title" class="keyword" />
-          </div>
-          <div class="advance">
-          <table width="100%">
-           <tr>
-            <td class="value">
-            <?php echo __('Author(s)'); ?>
-            </td>
-            <td class="value">
-            <?php echo $advsearch_author; ?>
-            </td>
-            <td class="value">
-            <?php echo __('Subject(s)'); ?>
-            </td>
-            <td class="value">
-            <?php echo $advsearch_topic; ?>
-            </td>
-           </tr>
-           <tr>
-            <td class="value">
-            <?php echo __('ISBN/ISSN'); ?>
-            </td>
-            <td class="value">
-             <input type="text" name="isbn" />
-            </td>
-            <td class="value">
-             <?php echo __('GMD'); ?>
-            </td>
-            <td class="value">
-             <select name="gmd">
-             <?php echo $gmd_list; ?>
-             </select>
-            </td>
-           </tr>
-           <tr>
-            <td class="value">
-             <?php echo __('Collection Type'); ?>
-            </td>
-            <td class="value">
-             <select name="colltype">
-             <?php echo $colltype_list; ?>
-             </select>
-            </td>
-            <td class="value">
-             <?php echo __('Location'); ?>
-            </td>
-            <td class="value">
-             <select name="location">
-             <?php echo $location_list; ?>
-             </select>
-            </td>
-           </tr>
-           <tr>
-            <td colspan="4" class="value" style="text-align:center;">
-         <input type="submit" name="search" value="<?php echo __('Search'); ?>" class="searchButton" />
-            </td>
-           </tr>
-          </table>
-          </div>
-              </form>
-      </div>
-      <div id="show_advance">
-       <a href="#"><?php echo __('Advanced Search'); ?></a>
-      </div>
-     </div>
-     <script type="text/javascript">
-      $(document).ready(function()
-      {
-       //Disable all html autocomplete
-       $('#advSearchForm input').attr('autocomplete','off');
-       $('#title').attr('style','');
-
-       $('#show_advance').click(function(){
-           if ($("#advance-search").is(":hidden"))
-           {
-        $("#advance-search").slideDown();
-        $('#simply-search').hide();
-           } else {
-        $("#advance-search").slideUp('fast');
-        $('#simply-search').show();
-           }
-       });
-
-       $('#title').keypress(function(e){
-           if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
-        this.form.submit();
-           }
-       });
-      });
-     </script>
-     <?php } ?>
+    <div class="section">
+	    <div class="tagline">
+		    <?php echo __('Collections'); ?>
+		    <a href="javascript: history.back();" class="back to_right"> <?php echo __('Back'); ?> </a>
+	    </div>
+	    <div class="search-result-info">
+		 <?php echo $search_result_info; ?>
+	    </div>
+	    <div class="result-search">
+		    <div id="simply-search">
+			<div class="simply" >
+			    <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
+			    <input type="hidden" name="search" value="Search" />
+			    <input type="text" name="keywords" id="keyword" />
+			    </form>
+			</div>
+		    </div>
+		    <div id="advance-search" style="display:none;" >
+			<form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
+			<div class="simply" >
+			    <input type="text" name="title" id="title" />
+			</div>
+			<div class="advance">
+			<table width="100%">
+				<tr>
+					<td class="value">
+					<?php echo __('Author(s)'); ?>
+					</td>
+					<td class="value">
+					<?php echo $advsearch_author; ?>
+					</td>
+					<td class="value">
+					<?php echo __('Subject(s)'); ?>
+					</td>
+					<td class="value">
+					<?php echo $advsearch_topic; ?>
+					</td>
+				</tr>
+				<tr>
+					<td class="value">
+					<?php echo __('ISBN/ISSN'); ?>
+					</td>
+					<td class="value">
+						<input type="text" name="isbn" />
+					</td>
+					<td class="value">
+						<?php echo __('GMD'); ?>
+					</td>
+					<td class="value">
+						<select name="gmd">
+						<?php echo $gmd_list; ?>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="value">
+						<?php echo __('Collection Type'); ?>
+					</td>
+					<td class="value">
+						<select name="colltype">
+						<?php echo $colltype_list; ?>
+						</select>
+					</td>
+					<td class="value">
+						<?php echo __('Location'); ?>
+					</td>
+					<td class="value">
+						<select name="location">
+						<?php echo $location_list; ?>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" class="value" style="text-align:center;">
+					    <input type="submit" name="search" value="<?php echo __('Search'); ?>" class="searchButton" />
+					</td>
+				</tr>
+			</table>
+			</div>
+			</form>
+		    </div>
+		    <div id="show_advance">
+			    <a href="#"><?php echo __('Advanced Search'); ?></a>
+		    </div>
+	    </div>
+	    <div class="collections-list">
+		    <?php echo $main_content; ?>
+		    <div class="clear">&nbsp;</div>
+	    </div>
     </div>
-   </div>
-  </div>
-
+    <?php } elseif($p == 'member') { ?>
+    <div class="sidebar">
+	    <div class="tagline">
+		    <?php echo __('Information'); ?>
+		    <a href="javascript: history.back();" class="back to_right"> <?php echo __('Back'); ?> </a>
+	    </div>
+	    <div class="info">
+		    <?php echo $info; ?>
+	    </div>
+	    <div class="tagline">
+		    <?php echo __('User Login'); ?>
+	    </div>
+	    <div class="info">
+		    <?php echo $header_info; ?>
+	    </div>
+    </div>
+    <div class="section">
+	    <div class="collections-list">
+		    <?php echo $main_content; ?>
+		    <div class="clear">&nbsp;</div>
+	    </div>
+    </div>
+    <?php } elseif(isset($_GET['p'])) { ?>
+      <?php if ($_GET['p'] == 'show_detail') {
+			    echo $main_content;
+	    } else {
+	    ?>
+		    <div class="tagline">
+			    <?php echo $page_title; ?>
+			    <a href="javascript: history.back();" class="back to_right"> <?php echo __('Back'); ?> </a>
+		    </div>
+		    <div class="section">
+			    <div class="collection-detail">
+				    <div class="content-padding"><?php echo $main_content; ?></div>
+				    <div class="clear">&nbsp;</div>
+			    </div>
+		    </div>
+	    <?php } ?>
+    <?php } else { ?>
+    <div class="tagline">
+	    <?php echo $info; ?>
+    </div>
+    <div class="search">
+	    <div id="simply-search">
+			<div class="simply" >
+			    <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
+			    <input type="hidden" name="search" value="Search" />
+			    <input type="text" name="keywords" id="keyword" />
+			    </form>
+			</div>
+	    </div>
+	    <div id="advance-search" style="display:none;" >
+		<form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
+		<div class="simply" >
+		    <input type="text" name="title" id="title" />
+		</div>
+		<div class="advance">
+		<table width="100%">
+			<tr>
+				<td class="value">
+				<?php echo __('Author(s)'); ?>
+				</td>
+				<td class="value">
+				<?php echo $advsearch_author; ?>
+				</td>
+				<td class="value">
+				<?php echo __('Subject(s)'); ?>
+				</td>
+				<td class="value">
+				<?php echo $advsearch_topic; ?>
+				</td>
+			</tr>
+			<tr>
+				<td class="value">
+				<?php echo __('ISBN/ISSN'); ?>
+				</td>
+				<td class="value">
+					<input type="text" name="isbn" />
+				</td>
+				<td class="value">
+					<?php echo __('GMD'); ?>
+				</td>
+				<td class="value">
+					<select name="gmd">
+					<?php echo $gmd_list; ?>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="value">
+					<?php echo __('Collection Type'); ?>
+				</td>
+				<td class="value">
+					<select name="colltype">
+					<?php echo $colltype_list; ?>
+					</select>
+				</td>
+				<td class="value">
+					<?php echo __('Location'); ?>
+				</td>
+				<td class="value">
+					<select name="location">
+					<?php echo $location_list; ?>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" class="value" style="text-align:center;">
+				    <input type="submit" name="search" value="<?php echo __('Search'); ?>" class="searchButton" />
+				</td>
+			</tr>
+		</table>
+		</div>
+		</form>
+	    </div>
+	    <div id="show_advance">
+		    <a href="#"><?php echo __('Advanced Search'); ?></a>
+	    </div>
+    </div>
+    <?php } ?>
+</div>
+</div>
+</div>
   <div class="footer">
    <div class="container_12">
     <div class="grid_6 lisence">
@@ -380,19 +431,51 @@ $social = array (
   });
  });
 
- var ADAPT_CONFIG = {
-  path: 'assets/css/',
-  range: [
-  '0px    to 760px  = mobile.css',
-  '760px  to 980px  = 720.css',
-  '980px  to 1280px = 960.css',
-  '1280px to 1600px = 1200.css',
-  '1600px to 1920px = 1560.css',
-  '1920px = fluid.css'
-  ]
- };
- </script>
- <script type="text/javascript" src="<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/js/adapt.min.js"></script>
+	var ADAPT_CONFIG = {
+		path: 'assets/css/',
+		range: [
+		'0px    to 760px  = mobile.css',
+		'760px  to 980px  = 720.css',
+		'980px  to 1280px = 960.css',
+		'1280px to 1600px = 1200.css',
+		'1600px to 1920px = 1560.css',
+		'1920px = fluid.css'
+		]
+	};
+	$(document).ready(function()
+	{
+		$('#keyword').keyup(function(){
+			$('#title').val();		
+			$('#title').val($('#keyword').val());		
+		});
+
+		$('#title').keyup(function(){
+			$('#keyword').val();		
+			$('#keyword').val($('#title').val());		
+		});
+		
+		$('#advSearchForm input').attr('autocomplete','off');
+		$('#title').attr('style','');
+
+		$('#show_advance').click(function(){
+		    if ($("#advance-search").is(":hidden"))
+		    {
+				$("#advance-search").slideDown();
+				$('#simply-search').hide();
+		    } else {
+				$("#advance-search").slideUp('fast');
+				$('#simply-search').show();
+		    }
+		});
+
+		$('#title').keypress(function(e){
+		    if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+			this.form.submit();
+		    }
+		});
+	});
+	</script>
+	<script type="text/javascript" src="<?php echo $sysconf['template']['dir'].'/'.$sysconf['template']['theme']; ?>/js/adapt.min.js"></script>
 
 </body>
 </html>
