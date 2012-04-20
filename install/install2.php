@@ -58,7 +58,7 @@
 			$config_file = str_replace("_DB_PASSWORD_", $database_password, $config_file);
 			
 			@chmod($config_file_directory,0777);			
-			$f = @fopen($config_file_path, "wb");
+			$f = @fopen($config_file_path, "w+");
 			if (@fwrite($f, $config_file) > 0){
 			    $link = @mysql_connect($database_host, $database_username, $database_password);
 				if($link){					
@@ -237,5 +237,3 @@
     $res=mysql_query($query, $link);
     return $res;
   }
-
-?>
