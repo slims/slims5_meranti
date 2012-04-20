@@ -2,7 +2,7 @@
 /**
  * Slims Installer files
  *
- * Copyright � 2006 - 2012 Advanced Power of PHP
+ * Copyright © 2006 - 2012 Advanced Power of PHP
  * Some modifications & patches by Eddy Subratha (eddy.subratha@gmail.com)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -57,9 +57,10 @@
 			$config_file = str_replace("_DB_USER_", $database_username, $config_file);
 			$config_file = str_replace("_DB_PASSWORD_", $database_password, $config_file);
 			
-			$f = @fopen($config_file_path, "w+");
+			@chmod($config_file_directory,0777);			
+			$f = @fopen($config_file_path, "wb");
 			if (@fwrite($f, $config_file) > 0){
-			$link = @mysql_connect($database_host, $database_username, $database_password);
+			    $link = @mysql_connect($database_host, $database_username, $database_password);
 				if($link){					
 					if (@mysql_select_db($database_name)) {                        
 					    if(false == ($db_error = apphp_db_install($database_name, $sql_dump))){
@@ -88,7 +89,9 @@
 			} else {				
 				$error_mg[] = "<li>Can not open configuration file ".$config_file_directory.$config_file_name."</li>";				
 			}
-			@fclose($f);			
+			fclose($f);
+			@chmod($config_file_directory,0755);			
+
 		}
 	}
         
@@ -97,7 +100,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Start | Slims's Easy Installer Guide</title>
+	<title>Step 2 | Slims Installer</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
 	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
@@ -206,7 +209,7 @@
           if ($next == '') { // get the last insert query
             $next = 'insert';
           }
-          if ( (eregi('create', $next)) || (eregi('insert', $next)) || (eregi('drop t', $next)) ) {
+	if ( (preg_match('/create/i', $next)) || (preg_match('/insert/i', $next)) || (preg_match('/drop/i', $next)) ) {
             $next = '';
             $sql_array[] = substr($restore_query, 0, $i);
             $restore_query = ltrim(substr($restore_query, $i+1));
