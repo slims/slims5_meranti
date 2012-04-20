@@ -57,41 +57,45 @@
 			$config_file = str_replace("_DB_USER_", $database_username, $config_file);
 			$config_file = str_replace("_DB_PASSWORD_", $database_password, $config_file);
 			
-			@chmod($config_file_directory,0777);			
-			$f = @fopen($config_file_path, "w+");
-			if (@fwrite($f, $config_file) > 0){
-			    $link = @mysql_connect($database_host, $database_username, $database_password);
-				if($link){					
-					if (@mysql_select_db($database_name)) {                        
-					    if(false == ($db_error = apphp_db_install($database_name, $sql_dump))){
-						$error_mg[] = "<li>Could not read file ".$sql_dump."! Please check if the file exists</li>";                            
-						@unlink($config_file_path);
-					    }else{
-						if($_POST['install_sample'] == 'yes')
-						{
-						    if(false == ($db_error = apphp_db_install($database_name, $sql_sample))){
-							$error_mg[] = "<li>Could not read file ".$sql_sample."! Please check if the file exists</li>";                            
-						    }else{
-							$completed = true;                            
-						    }						    
-						} else {
-						    $completed = true;                            						    
+			if(!copy('../sysconfig.local.inc-sample.php',$config_file_path))
+			{
+			    $error_mg[] = "<li>Could not create file ".$config_file_name."! Please check if the sysconfig.local.inc-sample.php file is exists</li>";	    
+			} else {
+			    @chmod($config_file_path,0777);
+			    $f = @fopen($config_file_path, "w+");
+			    if (@fwrite($f, $config_file) > 0){
+				$link = @mysql_connect($database_host, $database_username, $database_password);
+				    if($link){					
+					    if (@mysql_select_db($database_name)) {                        
+						if(false == ($db_error = apphp_db_install($database_name, $sql_dump))){
+						    $error_mg[] = "<li>Could not read file ".$sql_dump."! Please check if the file exists</li>";                            
+						    @unlink($config_file_path);
+						}else{
+						    if($_POST['install_sample'] == 'yes')
+						    {
+							if(false == ($db_error = apphp_db_install($database_name, $sql_sample))){
+							    $error_mg[] = "<li>Could not read file ".$sql_sample."! Please check if the file exists</li>";                            
+							}else{
+							    $completed = true;                            
+							}						    
+						    } else {
+							$completed = true;                            						    
+						    }
 						}
+					    } else {
+						    $error_mg[] = "<li>Database connecting error! Check your database exists.</li>";
+						    @unlink($config_file_path);
 					    }
-					} else {
-						$error_mg[] = "<li>Database connecting error! Check your database exists.</li>";
-			                        @unlink($config_file_path);
-					}
-				} else {
-					$error_mg[] = "<li>Database connecting error! Check your connection parameters</li>";
-		                        @unlink($config_file_path);
-				}
-			} else {				
-				$error_mg[] = "<li>Can not open configuration file ".$config_file_directory.$config_file_name."</li>";				
+				    } else {
+					    $error_mg[] = "<li>Database connecting error! Check your connection parameters</li>";
+					    @unlink($config_file_path);
+				    }
+			    } else {				
+				    $error_mg[] = "<li>Can not open configuration file ".$config_file_directory.$config_file_name."</li>";				
+			    }
+			    @fclose($f);
+			    @chmod($config_file_path,0755);
 			}
-			fclose($f);
-			@chmod($config_file_directory,0755);			
-
 		}
 	}
         
@@ -144,17 +148,9 @@
                   
 </body>
 </html>
-
-
-
-
-
-
-
-<? 
-
-
-  function apphp_db_install($database, $sql_file) {
+<?php 
+  function apphp_db_install($database, $sql_file)
+  {
     $db_error = false;
 
     if (!@apphp_db_select_db($database)) {
