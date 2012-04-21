@@ -92,6 +92,7 @@ $social = array (
 <link rel="icon" href="webicon.ico" type="image/x-icon" />
 <link rel="shortcut icon" href="webicon.ico" type="image/x-icon" />
 <link href="<?php echo $sysconf['template']['css']; ?>" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
 <?php echo $metadata; ?>
 <body>
 	<div id="content">
