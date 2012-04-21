@@ -27,7 +27,7 @@ require "settings.php";
 
 <html>
 <head>
-    <title>Step 2 | Slims's Easy Installer Guide</title>
+    <title>Step 1 | Slims Installer</title>
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>

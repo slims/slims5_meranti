@@ -20,6 +20,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
  */
+
 include "settings.php";    
 if (file_exists($config_file_path)) {        
     header("location: ".$application_start_file);
@@ -44,7 +45,7 @@ foreach($matches as $match)
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Slims Installer</title>
+	<title>Start | Slims Installer</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
 	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
