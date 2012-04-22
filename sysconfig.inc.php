@@ -468,10 +468,9 @@ if (defined('DB_ACCESS') && DB_ACCESS == 'fa' && file_exists(SENAYAN_BASE_DIR.'s
   if (file_exists(SENAYAN_BASE_DIR.'sysconfig.local.inc.php')) {
     include SENAYAN_BASE_DIR.'sysconfig.local.inc.php';
   } else {
-	header("location: install/index.php");
-	exit;  
+	  header("location: install/index.php");
+	  exit;
   }
-  
 }
 
 /* DATABASE RELATED */
