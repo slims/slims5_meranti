@@ -362,11 +362,16 @@ a.basket,
 	text-align: right;
 }
 
-.content h3, .memberInfoHead
+.content h3, .memberInfoHead, .tagline, .fieldLabel
 {
 	color: 	#df7568;
 	font-size:16px;
 	letter-spacing: -1px;
+}
+
+.loginInfo
+{
+	padding-top:5px;
 }
 
 /*----------------------------------------------------------------*/

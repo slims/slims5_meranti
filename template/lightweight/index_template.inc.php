@@ -114,11 +114,12 @@ $social = array (
 			</div>
 		</div>
 		<div id="section">
-		    <div class="info">
-		    <?php echo $info; ?>
-		    </div>
-		    <?php if(isset($header_info)) {?>
+		    <?php if($header_info != '') {?>
 	    	<div class="subinfo"><?php echo $header_info; ?></div>		    	
+		    <?php } else { ?>
+		    <div class="subinfo">
+		    <?php echo $info; ?>
+		    </div>		    
 		    <?php } ?>
 		    <?php if(isset($_GET['p']) || isset($_GET['search'])) : ?>
 		    <div class="content"><?php echo $main_content; ?></div>
