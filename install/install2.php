@@ -2,7 +2,7 @@
 /**
  * Slims Installer files
  *
- * Copyright 2006 - 2012 Advanced Power of PHP
+ * Copyright © 2006 - 2012 Advanced Power of PHP
  * Some modifications & patches by Eddy Subratha (eddy.subratha@gmail.com)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -103,7 +103,7 @@ function apphp_db_install($database, $sql_file) {
 
 function apphp_db_select_db($database) {
 	global $link;
-  return mysqli_select_db($database);
+  return mysqli_select_db($link, $database);
 }
 
 function apphp_db_query($query) {
@@ -120,78 +120,83 @@ $completed = false;
 $error_mg  = array();
 
 if ($_POST['submit'] == "step2") {
-	$database_host		= isset($_POST['database_host'])?$_POST['database_host']:'';
-	$database_name		= isset($_POST['database_name'])?$_POST['database_name']:'';
-	$database_username	= isset($_POST['database_username'])?$_POST['database_username']:'';
-	$database_password	= isset($_POST['database_password'])?$_POST['database_password']:'';
-	$database_sample	= isset($_POST['install_sample'])?$_POST['install_sample']:'';
+	$database_host		= isset($_POST['database_host'])?$_POST['database_host']:"";
+	$database_name		= isset($_POST['database_name'])?$_POST['database_name']:"";
+	$database_username	= isset($_POST['database_username'])?$_POST['database_username']:"";
+	$database_password	= isset($_POST['database_password'])?$_POST['database_password']:"";
+	$database_sample	= isset($_POST['install_sample'])?$_POST['install_sample']:"";
 
 	if (empty($database_host)){
-		$error_mg[] = '<li>Database host can not be empty </li>';
+		$error_mg[] = "<li>Database host can not be empty </li>";
 	}
 
 	if (empty($database_name)){
-		$error_mg[] = '<li>Database name can not be empty</li>';
+		$error_mg[] = "<li>Database name can not be empty</li>";
 	}
 
 	if (empty($database_username)){
-		$error_mg[] = '<li>Database username can not be empty</li>';
+		$error_mg[] = "<li>Database username can not be empty</li>";
 	}
 
 	if (empty($database_password)){
-		$error_mg[] = '<li>Database password can not be empty</li>';
+		$error_mg[] = "<li>Database password can not be empty</li>";
 	}
 
 	if(empty($error_mg)){
 
 		$config_file = file_get_contents($config_file_default);
-		$config_file = str_replace('_DB_HOST_', $database_host, $config_file);
-		$config_file = str_replace('_DB_NAME_', $database_name, $config_file);
-		$config_file = str_replace('_DB_USER_', $database_username, $config_file);
-		$config_file = str_replace('_DB_PASSWORD_', $database_password, $config_file);
+		$config_file = str_replace("_DB_HOST_", $database_host, $config_file);
+		$config_file = str_replace("_DB_NAME_", $database_name, $config_file);
+		$config_file = str_replace("_DB_USER_", $database_username, $config_file);
+		$config_file = str_replace("_DB_PASSWORD_", $database_password, $config_file);
 
-		$f = @fopen($config_file_path, "w+");
-		if (@fwrite($f, $config_file) > 0) {
-		$link = @mysqli_connect($database_host, $database_username, $database_password);
-			if($link){
-				if (@mysqli_select_db($link, $database_name)) {
-					apphp_db_install($database_name, $sql_dump);
-				  if($db_error){
-					  $error_mg[] = "<li>Could not read file ".$sql_dump."! Please check if the file exists</li>";
-					  @unlink($config_file_path);
-				  } else {
-					  if ($_POST['install_sample'] == 'yes') {
-							apphp_db_install($database_name, $sql_sample);
-							if ($db_error) {
-							  $error_mg[] = "<li>Could not read file ".$sql_sample."! Please check if the file exists</li>";
-							}else{
-							  $completed = true;
-							}
-						} else {
-							$completed = true;
-						}
-				  }
-				} else {
-					$error_mg[] = "<li>Database connecting error! Check your database exists.</li>";
-		        @unlink($config_file_path);
-				}
-			} else {
-				$error_mg[] = "<li>Database connecting error! Check your connection parameters</li>";
-	          @unlink($config_file_path);
-			}
+		if(!@copy('../sysconfig.local.inc-sample.php', $config_file_path)) {
+		  $error_mg[] = "<li>Could not create file ".$config_file_name."! Please check if the sysconfig.local.inc-sample.php file is exists, or
+			  try to manually copy this file and then rename it to sysconfig.local.inc.php and make sure this file is writable to your host's web server.</li>";
 		} else {
-			$error_mg[] = "<li>Can not open configuration file <strong>".$config_file_directory.$config_file_name."</strong>.
-			  Looks like your web server doesn't have write access to this file,
-			  try to create this file manually and make sure it is writable by host's web server if the problem persist.</li>";
+		    @chmod($config_file_path,0777);
+		    $f = @fopen($config_file_path, "w+");
+		    if (@fwrite($f, $config_file) > 0){
+			$link = @mysqli_connect($database_host, $database_username, $database_password);
+			    if($link){
+				    if (@mysqli_select_db($link, $database_name)) {
+					if(false == ($db_error = apphp_db_install($database_name, $sql_dump))){
+					    $error_mg[] = "<li>Could not read file ".$sql_dump."! Please check if the file exists or change its permission so it is readable by web server</li>";
+					    @unlink($config_file_path);
+					}else{
+					    if($_POST['install_sample'] == 'yes')
+					    {
+						if(false == ($db_error = apphp_db_install($database_name, $sql_sample))){
+						    $error_mg[] = "<li>Could not read file ".$sql_sample."! Please check if the file exists or change its permission so it is readable by web server</li>";
+						}else{
+						    $completed = true;
+						}
+					    } else {
+						$completed = true;
+					    }
+					}
+				    } else {
+					    $error_mg[] = "<li>Database connecting error! Check if your database exists</li>";
+					    @unlink($config_file_path);
+				    }
+			    } else {
+				    $error_mg[] = "<li>Database connecting error! Check your connection parameters</li>";
+				    @unlink($config_file_path);
+			    }
+		    } else {
+			    $error_mg[] = "<li>Can not open configuration file ".$config_file_directory.$config_file_name."</li>";
+		    }
+		    @fclose($f);
+		    @chmod($config_file_path,0755);
 		}
-		@fclose($f);
 	}
+	@fclose($f);
 }
 ?>
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Start | Slims's Easy Installer Guide</title>
+	<title>Step 2 | Slims Installer</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
 	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
@@ -229,7 +234,7 @@ if ($_POST['submit'] == "step2") {
 		<br/>
 	    <? } ?>
 	    <?php include_once("footer.php"); ?>
-	</div>
+	  </div>
 
   </div>
 </body>

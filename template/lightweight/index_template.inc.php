@@ -1,10 +1,9 @@
 <?php
 /*------------------------------------------------------------
 
-Template 	: Slims Meranti Template
+Template 	: Slims Meranti Mobile Template
 Create Date : March 24, 2012
 Author  	: Eddy Subratha (eddy.subratha@gmail.com)
-
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -58,8 +57,8 @@ $menus = array (
   'help'   => array('url'  => 'index.php?p=help',
         'text' => __('Help on Search')
        ),
-  'site'   => array('url'  => 'index.php?fullsite=1',
-        'text' => __('Full Site')
+  'site'   => array('url'  => 'index.php?p=member',
+        'text' => __('Member Area')
        )
 );
 
@@ -68,20 +67,20 @@ $menus = array (
   you may modified as you need.
 ----------------------------------------------------*/
 $social = array (
-  'facebook'  => array('url'  => 'http://www.facebook.com/groups/senayan.slims/',
-        'text' => 'Facebook'
+  'facebook'  => array(	'url'  => 'http://www.facebook.com/groups/senayan.slims/',
+        				'text' => 'Facebook'
        ),
-  'twitter'  => array('url'  => 'http://twitter.com/#!/slims_official',
-        'text' => 'Twitter'
+  'twitter'  => array(	'url'  => 'http://twitter.com/#!/slims_official',
+        				'text' => 'Twitter'
        ),
-  'youtube'  => array('url'  => 'http://www.youtube.com/user/senayanslims',
-        'text' => 'Youtube'
+  'youtube'  => array(	'url'  => 'http://www.youtube.com/user/senayanslims',
+        				'text' => 'Youtube'
        ),
-  'gihub'  => array('url'  => 'https://github.com/slims/',
-        'text' => 'Github'
+  'gihub'  => array(	'url'  => 'https://github.com/slims/',
+        				'text' => 'Github'
        ),
-  'forum'  => array('url'  => 'http://slims.web.id/forum/',
-        'text' => 'Forum'
+  'forum'  => array(	'url'  => 'http://slims.web.id/forum/',
+        				'text' => 'Forum'
        )
   );
 
@@ -92,6 +91,7 @@ $social = array (
 <link rel="icon" href="webicon.ico" type="image/x-icon" />
 <link rel="shortcut icon" href="webicon.ico" type="image/x-icon" />
 <link href="<?php echo $sysconf['template']['css']; ?>" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.js"></script>
 <?php echo $metadata; ?>
 <body>
 	<div id="content">
@@ -114,7 +114,13 @@ $social = array (
 			</div>
 		</div>
 		<div id="section">
-		    <div class="info"><?php echo $info; ?></div>
+		    <?php if($header_info != '') {?>
+	    	<div class="subinfo"><?php echo $header_info; ?></div>		    	
+		    <?php } else { ?>
+		    <div class="subinfo">
+		    <?php echo $info; ?>
+		    </div>		    
+		    <?php } ?>
 		    <?php if(isset($_GET['p']) || isset($_GET['search'])) : ?>
 		    <div class="content"><?php echo $main_content; ?></div>
 		    <?php endif; ?>
@@ -127,7 +133,7 @@ $social = array (
 			    <?php if(isset($social) && count($social) > 0) { ?>
 			    <ul class="social">
 			    <?php foreach ($social as $path => $menu) { ?>
-			     <li><a href="<?php echo $menu['url']; ?>" title="<?php echo $menu['text']; ?>" <?php if ($p == $path) {echo ' class="active"';} ?>><?php echo $menu['text']; ?></a></li>
+			     <li><a target="_blank" href="<?php echo $menu['url']; ?>" title="<?php echo $menu['text']; ?>" <?php if ($p == $path) {echo ' class="active"';} ?>><?php echo $menu['text']; ?></a></li>
 			    <?php } ?>
 			    </ul>
 			    <?php } ?>			    
@@ -136,7 +142,9 @@ $social = array (
 			    <form name="langSelect" action="index.php" method="get">
 			    <select name="select_lang"><?php echo $language_select; ?></select>
 			    <input type="submit" name="changeLang" value="Change Language" class="search" />
+			    <a href="m/index.php?fullsite=1" class="search" />Fullsite</a>
 			    </form>			    
+				
 			</div>
 
 		</div>
