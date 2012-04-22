@@ -255,6 +255,7 @@ submenu
 	-webkit-box-shadow: inset -5px 0px 10px #e6e6e6 !important;
 	-moz-box-shadow: inset -5px 0px 10px #e6e6e6 !important;
 	padding-top:45px !important;
+	height:900px;
 }
 
 .subMenuHeader {

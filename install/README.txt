@@ -1,4 +1,4 @@
-SENAYAN 3.0 stable
+SENAYAN 5 stable
 
 Core Senayan Developer :
 Hendro Wicaksono - hendrowicaksono@yahoo.com
@@ -33,7 +33,7 @@ Berikut adalah instruksi untuk instalasi baru SENAYAN :
 3. Buka phpMyAdmin atau mysql client (atau program manager mysql lainnya) dan jalankan
    script "senayan.sql" pada database SENAYAN anda.
    
-4. Cek kembali semua konfigurasi database dan konfigurasi lain pada file sysconfig.inc.php.
+4. Cek kembali semua konfigurasi database dan konfigurasi lain pada file sysconfig.inc.local.php.
    Cek pada bagian :
    define('DB_HOST', 'ISI DENGAN NAMA HOST RDBMS MYSQL ANDA - defaultnya "localhost"');
    define('DB_PORT', 'ISI DENGAN NOMOR PORT RDBMS MYSQL ANDA - defaultnya "3306"');

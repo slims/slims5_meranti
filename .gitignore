@@ -2,6 +2,7 @@ lib/phpthumb/cache/phpThumb_cache*
 images/barcodes/*
 images/persons/*
 images/docs/*
+images/labels/*
 files/*
 repository/*
 .DS_Store

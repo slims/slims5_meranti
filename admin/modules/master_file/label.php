@@ -70,32 +70,25 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
             // upload
             $img_upload_status = $image_upload->doUpload('labelImage', $data['label_name']);
             if ($img_upload_status == UPLOAD_SUCCESS) {
-                $data['label_image'] = $dbs->escape_string($image_upload->new_filename);
-                // resize the image
-                if (function_exists('imagecopyresampled')) {
-                    // we use phpthumb class to resize image
-                    include LIB_DIR.'phpthumb/phpthumb.class.php';
-                    // create phpthumb object
-                    $phpthumb = new phpThumb();
-                    $phpthumb->new = true;
-                    $phpthumb->src = IMAGES_BASE_DIR.'labels/'.$image_upload->new_filename;
-                    $phpthumb->w = 24;
-                    $phpthumb->h = 24;
-                    $phpthumb->f = 'png';
-                    $phpthumb->GenerateThumbnail();
-                    $temp_file = IMAGES_BASE_DIR.'labels/'.'temp-'.$image_upload->new_filename;
-                    $phpthumb->RenderToFile($temp_file);
-                    // remove original file and rename the resized image
-                    @unlink($phpthumb->src); @rename($temp_file, $phpthumb->src);
-                    unset($phpthumb);
-                }
-                // write log
-                utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'bibliography', $_SESSION['realname'].' upload label image file '.$image_upload->new_filename);
-                utility::jsAlert('Label image file successfully uploaded');
+              $data['label_image'] = $dbs->escape_string($image_upload->new_filename.'.png');
+              // resize the image
+              if (function_exists('imagecopyresampled')) {
+                // we use phpthumb class to resize image
+                include LIB_DIR.'phpthumb/ThumbLib.inc.php';
+                // create phpthumb object
+                $src = IMAGES_BASE_DIR.'labels/'.$image_upload->new_filename;
+                $phpthumb = PhpThumbFactory::create($src);
+                $w = $h = 24;
+                $phpthumb->resize($w, $h);
+                $phpthumb->save(IMAGES_BASE_DIR.'labels/'.$data['label_name'].'.png', 'PNG');
+              }
+              // write log
+              utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'bibliography', $_SESSION['realname'].' upload label image file '.$image_upload->new_filename);
+              utility::jsAlert('Label image file successfully uploaded');
             } else {
-                // write log
-                utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'bibliography', 'ERROR : '.$_SESSION['realname'].' FAILED TO upload label image file '.$image_upload->new_filename.', with error ('.$image_upload->error.')');
-                utility::jsAlert('FAILED to upload label image! Please see System Log for more detailed information');
+              // write log
+              utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'bibliography', 'ERROR : '.$_SESSION['realname'].' FAILED TO upload label image file '.$image_upload->new_filename.', with error ('.$image_upload->error.')');
+              utility::jsAlert('FAILED to upload label image! Please see System Log for more detailed information');
             }
         }
         $data['input_date'] = date('Y-m-d');

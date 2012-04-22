@@ -1,184 +1,345 @@
-/* GENERAL FONT DEFINITION */
+/*--------------------------------------------------------------------
+
+	Theme Name	: Slims Meranti Mobile Template
+	Version		: 1.0.0
+	Author		: Eddy Subratha
+	Tags		: senayan, slims, themes, template, meranti
+	Copyrights	: (c) 2012 Eddy Subratha - eddy.subratha{at}gmail.com
+
+---------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------*/
+/* Default Font */
+/*----------------------------------------------------------------*/
+@import url('css/reset.css');
+@font-face {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 400;
+  src: 	local('css/Karla/Karla-Regular'),
+	url('css/Karla/Karla-Regular.ttf') format('ttf');
+}
+
+/*----------------------------------------------------------------*/
+/* General */
+/*----------------------------------------------------------------*/
+html, body, #content {
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+html>body, html>body #content {
+    height: auto;
+}
+
+#header,#section,#footer{
+    width: 100%;
+	
+}
 
 body {
-    font-family: tahoma, Calibri, verdana, 'Dejavu Sans', sans;
-    font-size: 80%;
-    line-height: 140%;
-    color: #003380;
-    margin: 0;
-    padding: 0;
-    background: #FFFFFF;
+	color: #333;
+	font: 10pt/1.5 Karla, Calibri, Arial, sans-serif;
+	background: transparent url(images/3.jpg) left top fixed;
+	background-size: cover;
+	margin: 0 auto;
+	padding:0;
 }
 
-/* ID definitions */
-
-#main {
-    height: 100%;
-    border: 1px solid #999999;
-    border-top-width: 0;
-    border-bottom-width: 0;
-    margin: 0 auto;
-}
-
-#mainHeader {
-    padding: 5px;
-    background: #FFFFFF;
-}
-
-#libraryName {
-    padding-top: 5px;
-    margin-bottom: 20px;
-    font-size: 200%;
-    font-weight: bold;
-}
-
-#librarySubName {
-    color: #FFFFFF;
-    margin-top: 7px;
-    font-size: 90%;
-}
-
-#headerInfo {
-    padding: 3px;
-}
-
-#mainContent {
-    background: #FFFFFF;
-    width: 580px;
-}
-
-#mainContent p,h3 {
-    margin: 3px;
-}
-
-#barTop {
-    padding: 5px;
-    background: #CCCCCC url(media/bar_fill.png) repeat-x top left;
-}
-
-#infoBox {
-    margin: 3px;
-    border: 1px #999999 solid;
-    padding: 5px;
-}
-
-/* tags spesific style */
-
-a,a:hover {
-    font-size: 12px;
-    font-weight: bold;
-    color: #003380;
+a {
+  color: #666666;
+  text-decoration: none;
 }
 
 a:hover {
-    text-decoration: none;
-    color: #459801;
+  text-decoration: none;
 }
 
-/* classes definition */
-
-.author {
-    font-weight: bold;
-    font-size: 80%;
+p {
+	margin-bottom:10px;
 }
 
-.detailLink, .xmlDetailLink {
-    padding: 1px;
-    border: 1px solid #999999;
-    text-decoration: none;
-    background-color: #CCCCCC;
+h1,h2,h3,h4,h5,h6
+{
+	font-weight:normal;
 }
 
-.xmlDetailLink {
-    background-color: #FF9900;
+h1
+{
+	font-size: 150%;
 }
 
-.xmlResultLink {
-    padding: 1px;
-    padding-left: 3px;
-    padding-right: 3px;
-    font-size: 12px;
-    font-weight: bold;
-    background-color: #003380;
-    text-decoration: none;
-    color: #FFFFFF;
+h2
+{
+	font-size: 135%;
 }
 
-.item {
-    clear: both;
-    text-align: left;
-    margin: 5px;
-    margin-bottom: 10px;
-    padding: 5px;
-    padding-top: 1px;
-    background: url(media/image.png) top right no-repeat;
+h3
+{
+	font-size: 120%;
 }
 
-.item a,a:hover {
-    font-size: 12px;
-    font-weight: bold;
+h4
+{
+	font-size: 110%;
 }
 
-.item a:hover {
-    text-decoration: none;
-    color: #459801;
+input,
+textarea,
+select
+{
+	color: #000000;
+	border: 1px solid #ccc;
 }
 
-.item .detailLink {
-    font-size: 10px;
+select {
+	padding: initial;
+	height: 20px;
+	*height: auto;
+	line-height: 25px;
+	*margin-top: 4px;
 }
 
-.item .xmlDetailLink {
-    font-size: 10px;
-    background-color: #FF9900;
+/*----------------------------------------------------------------*/
+/* Header Layout */
+/*----------------------------------------------------------------*/
+#content
+{
+	text-align:center;
+	width:100%;
+	height:100%;
 }
 
-.item .cover-list {
-    float: right;
-    width: 90px;
+.treding
+{
+	background-color: #68b7df;
+	padding:10px;
+	width: 100%:
 }
 
-.subItem {
-    margin-top: 3px;
+
+.social
+{
+	text-align:center;
+	height:auto;
+	width: 100%:
+	border-bottom:solid 1px #ffffff;
 }
 
-.marginTop {
-    margin-top: 5px;
+.social li
+{
+	margin-right:5px;
+	display:inline;
 }
 
-.border {
-    border-width: 1px;
-    border-style: solid;
-    border-color: #999999;
+.social li a
+{
+	font-size: 12px;
+	color: #ffffff;
+	text-align: center;
 }
 
-.margined {
-    margin: 3px;
+.social li a:hover
+{	
+	background-color: rgba(0,0,0,0.1); 	
 }
 
-.tblHead {
-    background-color: #CCCCCC;
-    font-weight: bold;
+.title
+{
+	background-color: #262626;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	padding:10px;
+	width: 100%:
 }
 
-.tblContent {
-    background-color: #FFFFFF;
-    border-bottom: 1px solid #CCCCCC;
+.title a
+{
+	color:#fff;
 }
 
-.authorField {
-    font-size: 85%;
+.sitename
+{
+	font-size:20px;
+	letter-spacing: -1px;
+	white-space: nowrap;
 }
 
-/* ini untuk htdig */
-em a {
-    font-size: 11px;
+.subname
+{
+	font-size:12px;
 }
 
-em a:hover {
-    font-size: 11px;
+.subname a{
+	color:#ffcc00;
 }
 
-font {
-    font-size: 11px;
+.info
+{
+	border-top: solid 1px #ffffff;
+	background-color: #ffffff;
+	padding: 10px;
+	font-size: 10pt;
+	border-bottom:solid 1px #efefef;
+	
 }
+/*----------------------------------------------------------------*/
+/* Item Layout */
+/*----------------------------------------------------------------*/
+#section
+{
+	min-height: 70%;	
+
+}
+.item
+{
+	text-align: left;
+	font-size: 14px; 
+	padding:10px;
+	border-bottom:solid 1px #dddddd;
+}
+
+.item:hover
+{
+	background-color: #ffffff;
+}
+
+
+
+.cover-list
+{
+	background: transparent url(images/arrow.png) center center no-repeat;
+	width: 50px;
+	height:50px;
+	display: block;
+	float: right;
+	margin: 0;
+	padding: 0;
+}
+
+.detailLink
+{
+	display:none;
+}
+
+.content
+{
+	margin:10px;
+	padding:10px;
+	border: solid 1px #ffffff;
+	border-radius: 10px;
+	background-color: rgba(255,255,255,0.8);
+	-webkit-box-shadow: inset 0px 0px 20px #999999;
+	-moz-box-shadow: inset 0px 0px 10px #999999;
+	box-shadow: inset 0px 0px 10px #999999;
+	text-align: left;
+	
+}
+
+.biblioPaging
+{
+	font-size: 12px;
+	padding:10px;
+	border-bottom: solid 1px #e6e6e6;
+	text-align: center;
+}
+
+/*----------------------------------------------------------------*/
+/* Search & Language Layout */
+/*----------------------------------------------------------------*/
+.tools
+{
+	background-color: #d64e3e;
+	padding: 10px;
+	display: block;
+	border-top: solid 1px #df7568;	
+}
+
+
+.keywords, .search
+{
+	padding:5px;
+}
+
+.keywords, .search
+{
+	padding: 6px;
+	border: none;
+	border-radius: 50px;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	-webkit-appearance: none;
+	outline: 0;
+}
+
+.keywords
+{
+	background: #efefef url(images/magnifier.png) 5px center no-repeat;
+	width: 60%;
+	-webkit-box-shadow: inset 2px 2px 5px #cccccc;
+	-moz-box-shadow: inset 1px 1px 12px #cccccc;
+	-box-shadow: inset 0px 0px 5px #cccccc;
+	border: solid 1px #ccc;
+	-webkit-appearance: button;
+	padding-left:28px;
+	margin:0;
+}
+
+.search
+{
+	color: #EFDDA8;
+	background: #262C32;
+	border: solid 1px #262C32;
+	padding: 6px 15px;
+}
+
+/*----------------------------------------------------------------*/
+/* Detail Layout */
+/*----------------------------------------------------------------*/
+
+.content table
+{	
+	margin-right:10px;		
+}
+.border td
+{
+	border-bottom: solid 1px #efefef;
+	padding: 8px;
+}
+
+.tblHead
+{
+	color: #df7568;
+	text-align: right;
+}
+
+.content h3
+{
+	color: 	#df7568;
+	font-size:20px;
+	letter-spacing: -1px;
+}
+
+/*----------------------------------------------------------------*/
+/* Footer Layout */
+/*----------------------------------------------------------------*/
+
+#footer
+{
+	color: #FFFFFF;
+	display: block;
+	font-size: 12px;
+	width:100%;
+	background-color: rgba(0,0,0,0.9);
+	margin: 0;
+}
+
+.footer_info
+{
+	background-color: #333333;
+}
+.footer_info, .language
+{
+	padding:10px;
+}
+
