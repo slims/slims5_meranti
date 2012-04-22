@@ -67,20 +67,20 @@ $menus = array (
   you may modified as you need.
 ----------------------------------------------------*/
 $social = array (
-  'facebook'  => array('url'  => 'http://www.facebook.com/groups/senayan.slims/',
-        'text' => 'Facebook'
+  'facebook'  => array(	'url'  => 'http://www.facebook.com/groups/senayan.slims/',
+        				'text' => 'Facebook'
        ),
-  'twitter'  => array('url'  => 'http://twitter.com/#!/slims_official',
-        'text' => 'Twitter'
+  'twitter'  => array(	'url'  => 'http://twitter.com/#!/slims_official',
+        				'text' => 'Twitter'
        ),
-  'youtube'  => array('url'  => 'http://www.youtube.com/user/senayanslims',
-        'text' => 'Youtube'
+  'youtube'  => array(	'url'  => 'http://www.youtube.com/user/senayanslims',
+        				'text' => 'Youtube'
        ),
-  'gihub'  => array('url'  => 'https://github.com/slims/',
-        'text' => 'Github'
+  'gihub'  => array(	'url'  => 'https://github.com/slims/',
+        				'text' => 'Github'
        ),
-  'forum'  => array('url'  => 'http://slims.web.id/forum/',
-        'text' => 'Forum'
+  'forum'  => array(	'url'  => 'http://slims.web.id/forum/',
+        				'text' => 'Forum'
        )
   );
 
@@ -133,7 +133,7 @@ $social = array (
 			    <?php if(isset($social) && count($social) > 0) { ?>
 			    <ul class="social">
 			    <?php foreach ($social as $path => $menu) { ?>
-			     <li><a href="<?php echo $menu['url']; ?>" title="<?php echo $menu['text']; ?>" <?php if ($p == $path) {echo ' class="active"';} ?>><?php echo $menu['text']; ?></a></li>
+			     <li><a target="_blank" href="<?php echo $menu['url']; ?>" title="<?php echo $menu['text']; ?>" <?php if ($p == $path) {echo ' class="active"';} ?>><?php echo $menu['text']; ?></a></li>
 			    <?php } ?>
 			    </ul>
 			    <?php } ?>			    
