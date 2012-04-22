@@ -276,7 +276,8 @@ select {
 a.basket,
 #memberLogout,
 .login_input input,
-.memberButton
+.memberButton,
+.errorBox
 {
 	padding:5px;
 	border: none;
@@ -326,6 +327,15 @@ a.basket,
 	padding: 8px;	
 }
 
+.errorBox
+{
+	color: #ffffff;
+	background: #df7569;
+	border: solid 1px #d64f3f;
+	padding: 8px;
+	text-align: center;
+}
+
 .subItem label
 {
 	font-size:12px;
@@ -373,6 +383,7 @@ a.basket,
 {
 	padding-top:5px;
 }
+
 
 /*----------------------------------------------------------------*/
 /* Member Layout */
