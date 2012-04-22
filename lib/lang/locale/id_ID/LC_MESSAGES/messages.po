@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Senayan3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-14 17:29+0700\n"
-"PO-Revision-Date: 2012-04-14 17:29+0700\n"
+"POT-Creation-Date: 2012-04-21 16:23+0700\n"
+"PO-Revision-Date: 2012-04-21 16:23+0700\n"
 "Last-Translator: Arif Syamsudin <buitenzorg812@gmail.com>\n"
 "Language-Team: Arie Nugraha; Hendro Wicaksono; Wardiyono <dicarve@yahoo.com; hendrowicaksono@yahoo.com; wynerst@gmail.com>\n"
 "Language: \n"
@@ -21,79 +21,79 @@ msgstr ""
 "X-Poedit-Basepath: ../../../../../\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: sysconfig.inc.php:525
+#: sysconfig.inc.php:529
 msgid "Personal Name"
 msgstr "Nama Orang"
 
-#: sysconfig.inc.php:526
+#: sysconfig.inc.php:530
 msgid "Organizational Body"
 msgstr "Badan Organisasi"
 
-#: sysconfig.inc.php:527
+#: sysconfig.inc.php:531
 msgid "Conference"
 msgstr "Konferensi"
 
-#: sysconfig.inc.php:530
+#: sysconfig.inc.php:534
 msgid "Topic"
 msgstr "Topik"
 
-#: sysconfig.inc.php:531
+#: sysconfig.inc.php:535
 msgid "Geographic"
 msgstr "Geografis"
 
-#: sysconfig.inc.php:532
+#: sysconfig.inc.php:536
 msgid "Name"
 msgstr "Nama"
 
-#: sysconfig.inc.php:533
+#: sysconfig.inc.php:537
 msgid "Temporal"
 msgstr "Masa"
 
-#: sysconfig.inc.php:534
+#: sysconfig.inc.php:538
 msgid "Genre"
 msgstr "Aliran"
 
-#: sysconfig.inc.php:535
+#: sysconfig.inc.php:539
 msgid "Occupation"
 msgstr "Pekerjaan"
 
-#: sysconfig.inc.php:538
+#: sysconfig.inc.php:542
 msgid "Primary Author"
 msgstr "Pengarang Utama"
 
-#: sysconfig.inc.php:539
+#: sysconfig.inc.php:543
 msgid "Additional Author"
 msgstr "Pengarang Tambahan"
 
-#: sysconfig.inc.php:540
+#: sysconfig.inc.php:544
 msgid "Editor"
 msgstr "Penyunting"
 
-#: sysconfig.inc.php:541
+#: sysconfig.inc.php:545
 msgid "Translator"
 msgstr "Penerjemah"
 
-#: sysconfig.inc.php:542
+#: sysconfig.inc.php:546
 msgid "Director"
 msgstr "Direktur"
 
-#: sysconfig.inc.php:543
+#: sysconfig.inc.php:547
 msgid "Producer"
 msgstr "Produser"
 
-#: sysconfig.inc.php:544
+#: sysconfig.inc.php:548
 msgid "Composer"
 msgstr "Penggubah"
 
-#: sysconfig.inc.php:545
+#: sysconfig.inc.php:549
 msgid "Illustrator"
 msgstr "Ilustrator"
 
-#: sysconfig.inc.php:546
+#: sysconfig.inc.php:550
 msgid "Creator"
 msgstr "Pencipta"
 
-#: sysconfig.inc.php:547
+#: sysconfig.inc.php:551
 msgid "Contributor"
 msgstr "Kontributor"
 
@@ -109,19 +109,23 @@ msgstr "Anda saat ini masuk sebagai anggota"
 msgid "LOGOUT"
 msgstr "KELUAR"
 
-#: template/lightweight/index_template.inc.php:20
+#: template/lightweight/index_template.inc.php:53
 msgid "Home"
 msgstr "Beranda depan"
 
-#: template/lightweight/index_template.inc.php:21
+#: template/lightweight/index_template.inc.php:56
 msgid "Library Information"
 msgstr "Info Perpustakaan"
 
-#: template/lightweight/index_template.inc.php:22
+#: template/lightweight/index_template.inc.php:59
 msgid "Help on Search"
 msgstr "Bantuan pencarian"
 
-#: template/lightweight/index_template.inc.php:39
+#: template/lightweight/index_template.inc.php:62
+msgid "Full Site"
+msgstr "Moda Non-bergerak"
+
+#: template/lightweight/index_template.inc.php:113
 msgid "Search"
 msgstr "Pencarian"
 
@@ -347,13 +351,10 @@ msgid "Quick Return Collection"
 msgstr "Pengembalian Kilat Koleksi"
 
 #: admin/default/submenu.php:33
-#: admin/modules/membership/submenu.php:28
-#: admin/modules/membership/index.php:292
 msgid "Add New Member"
 msgstr "Tambah Anggota"
 
 #: admin/default/submenu.php:33
-#: admin/modules/membership/submenu.php:28
 msgid "Add New Library Member Data"
 msgstr "Tambah Data Anggota Perpustakaan"
 
@@ -846,6 +847,7 @@ msgstr "Toleransi Keterlambatan"
 
 #: admin/modules/membership/member_type.php:251
 #: admin/modules/circulation/fines_list.php:229
+#: admin/modules/circulation/member_loan_hist.php:88
 msgid "Found <strong>{result->num_rows}</strong> from your keywords"
 msgstr "Ditemukan  <strong>{result->num_rows}</strong> dari pencarian Anda melalui kata kunci"
 
@@ -930,16 +932,10 @@ msgid "You are going to edit fines data"
 msgstr "Anda akan menyunting data denda"
 
 #: admin/modules/circulation/member_loan_hist.php:62
-#: admin/modules/circulation/loan_list.php:96
-#: admin/modules/circulation/loan.php:141
-#: admin/modules/circulation/reserve_list.php:96
 msgid "Item Code"
 msgstr "Kode Eksemplar"
 
 #: admin/modules/circulation/member_loan_hist.php:64
-#: admin/modules/circulation/loan_list.php:96
-#: admin/modules/circulation/circulation_action.php:291
-#: admin/modules/circulation/loan.php:141
 msgid "Loan Date"
 msgstr "Tanggal Pinjam"
 
@@ -2135,6 +2131,7 @@ msgstr "Laporan Pengunjung Perpustakaan"
 #: admin/modules/reporting/customs/visitor_report.php:66
 #: admin/modules/reporting/customs/loan_by_class.php:101
 #: admin/modules/reporting/customs/fines_report.php:81
+#: admin/modules/reporting/customs/visitor_report_day.php:81
 msgid "Year"
 msgstr "Tahun"
 
@@ -2142,6 +2139,7 @@ msgstr "Tahun"
 #: admin/modules/reporting/customs/loan_by_class.php:130
 #: admin/modules/reporting/customs/loan_by_class.php:150
 #: admin/modules/reporting/customs/fines_report.php:48
+#: admin/modules/reporting/customs/visitor_report_day.php:48
 msgid "Jan"
 msgstr "Jan"
 
@@ -2149,6 +2147,7 @@ msgstr "Jan"
 #: admin/modules/reporting/customs/loan_by_class.php:131
 #: admin/modules/reporting/customs/loan_by_class.php:150
 #: admin/modules/reporting/customs/fines_report.php:49
+#: admin/modules/reporting/customs/visitor_report_day.php:49
 msgid "Feb"
 msgstr "Feb"
 
@@ -2156,6 +2155,7 @@ msgstr "Feb"
 #: admin/modules/reporting/customs/loan_by_class.php:132
 #: admin/modules/reporting/customs/loan_by_class.php:150
 #: admin/modules/reporting/customs/fines_report.php:50
+#: admin/modules/reporting/customs/visitor_report_day.php:50
 msgid "Mar"
 msgstr "Mar"
 
@@ -2163,6 +2163,7 @@ msgstr "Mar"
 #: admin/modules/reporting/customs/loan_by_class.php:133
 #: admin/modules/reporting/customs/loan_by_class.php:150
 #: admin/modules/reporting/customs/fines_report.php:51
+#: admin/modules/reporting/customs/visitor_report_day.php:51
 msgid "Apr"
 msgstr "Apr"
 
@@ -2170,6 +2171,7 @@ msgstr "Apr"
 #: admin/modules/reporting/customs/loan_by_class.php:134
 #: admin/modules/reporting/customs/loan_by_class.php:150
 #: admin/modules/reporting/customs/fines_report.php:52
+#: admin/modules/reporting/customs/visitor_report_day.php:52
 msgid "May"
 msgstr "Mei"
 
@@ -2177,6 +2179,7 @@ msgstr "Mei"
 #: admin/modules/reporting/customs/loan_by_class.php:135
 #: admin/modules/reporting/customs/loan_by_class.php:150
 #: admin/modules/reporting/customs/fines_report.php:53
+#: admin/modules/reporting/customs/visitor_report_day.php:53
 msgid "Jun"
 msgstr "Jun"
 
@@ -2184,6 +2187,7 @@ msgstr "Jun"
 #: admin/modules/reporting/customs/loan_by_class.php:136
 #: admin/modules/reporting/customs/loan_by_class.php:150
 #: admin/modules/reporting/customs/fines_report.php:54
+#: admin/modules/reporting/customs/visitor_report_day.php:54
 msgid "Jul"
 msgstr "Jul"
 
@@ -2191,6 +2195,7 @@ msgstr "Jul"
 #: admin/modules/reporting/customs/loan_by_class.php:137
 #: admin/modules/reporting/customs/loan_by_class.php:150
 #: admin/modules/reporting/customs/fines_report.php:55
+#: admin/modules/reporting/customs/visitor_report_day.php:55
 msgid "Aug"
 msgstr "Agu"
 
@@ -2198,6 +2203,7 @@ msgstr "Agu"
 #: admin/modules/reporting/customs/loan_by_class.php:138
 #: admin/modules/reporting/customs/loan_by_class.php:150
 #: admin/modules/reporting/customs/fines_report.php:56
+#: admin/modules/reporting/customs/visitor_report_day.php:56
 msgid "Sep"
 msgstr "Sep"
 
@@ -2205,6 +2211,7 @@ msgstr "Sep"
 #: admin/modules/reporting/customs/loan_by_class.php:139
 #: admin/modules/reporting/customs/loan_by_class.php:150
 #: admin/modules/reporting/customs/fines_report.php:57
+#: admin/modules/reporting/customs/visitor_report_day.php:57
 msgid "Oct"
 msgstr "Okt"
 
@@ -2212,6 +2219,7 @@ msgstr "Okt"
 #: admin/modules/reporting/customs/loan_by_class.php:140
 #: admin/modules/reporting/customs/loan_by_class.php:150
 #: admin/modules/reporting/customs/fines_report.php:58
+#: admin/modules/reporting/customs/visitor_report_day.php:58
 msgid "Nov"
 msgstr "Nop"
 
@@ -2219,6 +2227,7 @@ msgstr "Nop"
 #: admin/modules/reporting/customs/loan_by_class.php:141
 #: admin/modules/reporting/customs/loan_by_class.php:150
 #: admin/modules/reporting/customs/fines_report.php:59
+#: admin/modules/reporting/customs/visitor_report_day.php:59
 msgid "Dec"
 msgstr "Des"
 
@@ -2301,6 +2310,7 @@ msgid "NON Decimal Classes"
 msgstr "Kelas Non-Desimal"
 
 #: admin/modules/reporting/customs/fines_report.php:94
+#: admin/modules/reporting/customs/visitor_report_day.php:94
 msgid "Month"
 msgstr "Bulan"
 
@@ -2490,6 +2500,7 @@ msgid "Document Publisher"
 msgstr "Penerbit Dokumen"
 
 #: admin/modules/master_file/submenu.php:29
+#: admin/modules/master_file/supplier.php:135
 msgid "Supplier"
 msgstr "Agen"
 
@@ -2519,7 +2530,7 @@ msgid "Document Content Language"
 msgstr "Bahasa Konten Dokumen"
 
 #: admin/modules/master_file/submenu.php:38
-#: admin/modules/master_file/label.php:167
+#: admin/modules/master_file/label.php:160
 msgid "Label"
 msgstr "Label"
 
@@ -2683,43 +2694,43 @@ msgstr "Kode Bahasa"
 msgid "You are going to edit language data"
 msgstr "Anda akan menyunting data bahasa"
 
-#: admin/modules/master_file/label.php:115
+#: admin/modules/master_file/label.php:108
 msgid "Label Data Successfully Updated"
 msgstr "Data Label Berhasil Diperbaharui"
 
-#: admin/modules/master_file/label.php:117
+#: admin/modules/master_file/label.php:110
 msgid "Label Data FAILED to Updated. Please Contact System Administrator"
 msgstr "Label GAGAL Diperbaharui. Hubungi Administrator Sistem"
 
-#: admin/modules/master_file/label.php:123
+#: admin/modules/master_file/label.php:116
 msgid "New Label Data Successfully Saved"
 msgstr "Label Baru Berhasil Disimpan"
 
-#: admin/modules/master_file/label.php:125
+#: admin/modules/master_file/label.php:118
 msgid "Label Data FAILED to Save. Please Contact System Administrator"
 msgstr "Label GAGAL Disimpan. Hubungi Administrator Sistem"
 
-#: admin/modules/master_file/label.php:171
+#: admin/modules/master_file/label.php:164
 msgid "Label List"
 msgstr "Daftar Label"
 
-#: admin/modules/master_file/label.php:172
+#: admin/modules/master_file/label.php:165
 msgid "Add New Label"
 msgstr "Tambah Label"
 
-#: admin/modules/master_file/label.php:215
-#: admin/modules/master_file/label.php:246
-#: admin/modules/master_file/label.php:250
+#: admin/modules/master_file/label.php:208
+#: admin/modules/master_file/label.php:239
+#: admin/modules/master_file/label.php:243
 msgid "Label Name"
 msgstr "Nama Label"
 
-#: admin/modules/master_file/label.php:228
-#: admin/modules/master_file/label.php:245
-#: admin/modules/master_file/label.php:249
+#: admin/modules/master_file/label.php:221
+#: admin/modules/master_file/label.php:238
+#: admin/modules/master_file/label.php:242
 msgid "Label Description"
 msgstr "Deskripsi Label"
 
-#: admin/modules/master_file/label.php:232
+#: admin/modules/master_file/label.php:225
 msgid "You are going to edit Label data"
 msgstr "Anda akan menyunting data Label"
 
@@ -4026,6 +4037,7 @@ msgid "Type to search for existing topics or to add a new one"
 msgstr "Ketik untuk mencari topik atau menambah baru"
 
 #: admin/modules/bibliography/pop_topic.php:156
+#: admin/modules/bibliography/pop_author.php:155
 msgid "Insert To Bibliography"
 msgstr "Sisipkan Dalam Bibliografi"
 
