@@ -1,10 +1,9 @@
 <?php
 /*------------------------------------------------------------
 
-Template 	: Slims Meranti Template
+Template 	: Slims Meranti Mobile Template
 Create Date : March 24, 2012
 Author  	: Eddy Subratha (eddy.subratha@gmail.com)
-
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -58,8 +57,8 @@ $menus = array (
   'help'   => array('url'  => 'index.php?p=help',
         'text' => __('Help on Search')
        ),
-  'site'   => array('url'  => 'index.php?fullsite=1',
-        'text' => __('Full Site')
+  'site'   => array('url'  => 'index.php?p=member',
+        'text' => __('Member Area')
        )
 );
 
@@ -115,7 +114,12 @@ $social = array (
 			</div>
 		</div>
 		<div id="section">
-		    <div class="info"><?php echo $info; ?></div>
+		    <div class="info">
+		    <?php echo $info; ?>
+		    </div>
+		    <?php if(isset($header_info)) {?>
+	    	<div class="subinfo"><?php echo $header_info; ?></div>		    	
+		    <?php } ?>
 		    <?php if(isset($_GET['p']) || isset($_GET['search'])) : ?>
 		    <div class="content"><?php echo $main_content; ?></div>
 		    <?php endif; ?>
@@ -137,7 +141,9 @@ $social = array (
 			    <form name="langSelect" action="index.php" method="get">
 			    <select name="select_lang"><?php echo $language_select; ?></select>
 			    <input type="submit" name="changeLang" value="Change Language" class="search" />
+			    <a href="m/index.php?fullsite=1" class="search" />Fullsite</a>
 			    </form>			    
+				
 			</div>
 
 		</div>

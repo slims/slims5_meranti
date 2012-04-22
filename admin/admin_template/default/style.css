@@ -410,6 +410,11 @@ a.printReport:active {
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
+#pageContent
+{
+	height: 100% !important;
+}
+
 #pageContent div {
 	background-color:#fff !important;
 }
@@ -981,7 +986,7 @@ icon
 
 #listsFrame {
 	width: 100%;
-	height: 100%;
+	height: 600px !important;
 }
 
 #iframeDragger {
@@ -1046,4 +1051,9 @@ input.small_input {
 
 .mceToolbar table td {
 	border: 0;
+}
+
+.highlighted
+{
+	background-color:#ffde5a !important;
 }
