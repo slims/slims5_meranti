@@ -550,7 +550,7 @@ $sysconf['authority_level'][9] = __('Creator');
 $sysconf['authority_level'][10] = __('Contributor');
 
 // redirect to mobile template on mobile mode
-if (defined('LIGHTWEIGHT_MODE') OR isset($_COOKIE['LIGHTWEIGHT_MODE'])) {
+if (defined('LIGHTWEIGHT_MODE') AND ! isset($_COOKIE['FULLSITE_MODE'])) {
     $sysconf['template']['theme'] = 'lightweight';
     $sysconf['template']['css'] = $sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/style.css';
     $sysconf['enable_xml_detail'] = false;

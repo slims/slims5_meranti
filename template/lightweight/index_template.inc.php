@@ -60,6 +60,9 @@ $menus = array (
   'site'   => array('url'  => 'index.php?p=member',
         'text' => __('Member Area')
        )
+  'fullsite'   => array('url'  => 'm/index.php?fullsite=1',
+        'text' => __('Full Site')
+       )
 );
 
 /*----------------------------------------------------
