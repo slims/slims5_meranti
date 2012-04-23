@@ -57,7 +57,7 @@ $menus = array (
   'help'   => array('url'  => 'index.php?p=help',
         'text' => __('Help on Search')
        ),
-  'site'   => array('url'  => 'index.php?p=member',
+  'member'   => array('url'  => 'index.php?p=member',
         'text' => __('Member Area')
        )
 );
