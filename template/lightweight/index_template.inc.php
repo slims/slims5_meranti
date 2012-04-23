@@ -60,9 +60,6 @@ $menus = array (
   'site'   => array('url'  => 'index.php?p=member',
         'text' => __('Member Area')
        )
-  'fullsite'   => array('url'  => 'm/index.php?fullsite=1',
-        'text' => __('Full Site')
-       )
 );
 
 /*----------------------------------------------------
@@ -145,7 +142,7 @@ $social = array (
 			    <form name="langSelect" action="index.php" method="get">
 			    <select name="select_lang"><?php echo $language_select; ?></select>
 			    <input type="submit" name="changeLang" value="Change Language" class="search" />
-			    <a href="m/index.php?fullsite=1" class="search" />Fullsite</a>
+			    <a href="m/index.php?fullsite=1" class="search" /><?php echo __('Full Site'); ?></a>
 			    </form>			    
 				
 			</div>
