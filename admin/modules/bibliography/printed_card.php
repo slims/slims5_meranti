@@ -71,8 +71,8 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
     }
     /* LABEL SESSION ADDING PROCESS */
     $print_count = 0;
-    if (isset($_SESSION['labels']['item'])) {
-        $print_count += count($_SESSION['labels']['item']);
+    if (isset($_SESSION['cards']['item'])) {
+        $print_count += count($_SESSION['cards']['item']);
     }
     // loop array
     foreach ($_POST['itemID'] as $itemID) {
@@ -81,10 +81,10 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
             break;
         }
         $itemID = (integer)$itemID;
-		if (isset($_SESSION['labels'][$itemID])) {
+		if (isset($_SESSION['cards'][$itemID])) {
 			continue;
 		}
-		$_SESSION['labels']['item'][$itemID] = $itemID;
+		$_SESSION['cards']['item'][$itemID] = $itemID;
         $print_count++;
     }
     if (isset($limit_reach)) {
@@ -102,22 +102,22 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
 if (isset($_GET['action']) AND $_GET['action'] == 'clear') {
     utility::jsAlert(__('Print queue cleared!'));
     echo '<script type="text/javascript">parent.$(\'#queueCount\').html(\'0\');</script>';
-    unset($_SESSION['labels']);
+    unset($_SESSION['cards']);
     exit();
 }
 
 // on print action
 if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     // check if label session array is available
-    if (!isset($_SESSION['labels']['item']) && !isset($_SESSION['labels']['biblio'])) {
+    if (!isset($_SESSION['cards']['item']) && !isset($_SESSION['cards']['biblio'])) {
         utility::jsAlert(__('There is no data to print!'));
         die();
     }
 
     // concat item ID
     $item_ids = '';
-    if (isset($_SESSION['labels']['item'])) {
-        foreach ($_SESSION['labels']['item'] as $id) {
+    if (isset($_SESSION['cards']['item'])) {
+        foreach ($_SESSION['cards']['item'] as $id) {
             $item_ids .= $id.',';
         }
     }
@@ -126,7 +126,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 
     $criteria = "b.biblio_id IN($item_ids)";
 
-    $biblio_q = $dbs->query('SELECT b.biblio_id, b.title as title, b.call_number,
+    $biblio_q = $dbs->query('SELECT b.biblio_id, b.title as title, b.call_number, b.sor,
 		CONCAT(\'[\', g.gmd_name, \'].\') as gmd,
 		CONCAT(b.edition, \'.\') as edition, b.isbn_issn,
 		CONCAT(pp.place_name, \' : \', p.publisher_name, \', \', b.publish_year, \'.\') as publisher,
@@ -159,7 +159,11 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 			if ($i >= 3) { break; }
 		}
 		// strip the last comma
-		$biblio_d['author'] = substr_replace($biblio_d['author'], '', -2);
+		if ($biblio_d['sor'] <> "") {
+			$biblio_d['author'] = $biblio_d['sor'];
+		} else {
+			$biblio_d['author'] = substr_replace($biblio_d['author'], '', -2);
+		}
 
         // subject
 		$subject_q = $dbs->query('SELECT t.topic
@@ -169,12 +173,12 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
 		$biblio_d['subject'] = "";
 		$i = 0;
 		while ($subject_d = $subject_q->fetch_row()) {
-			$biblio_d['subject'] .= $subject_d[0]. ',';
+			$biblio_d['subject'] .= $subject_d[0]. '; ';
 			$tajuk[] = $subject_d[0];
 			$i += 1;
 			if ($i >= 3) { break; }
 		}
-		$biblio_d['subject'] = substr_replace($biblio_d['subject'], '', -1);
+		$biblio_d['subject'] = substr_replace($biblio_d['subject'], '', -2);
 
 		// explode label data by space
 		$sliced_label = explode(' ', $biblio_d['call_number'], 5);
@@ -261,7 +265,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     $html_str .= '<script type="text/javascript">self.print();</script>'."\n";
     $html_str .= '</body></html>'."\n";
     // unset the session
-    unset($_SESSION['labels']);
+    unset($_SESSION['cards']);
 
     // write to file
     $print_file_name = 'catalog_print_result_'.strtolower(str_replace(' ', '_', $_SESSION['uname'])).'.html';
@@ -270,7 +274,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
         echo '<script type="text/javascript">parent.$(\'#queueCount\').html(\'0\');</script>';
         // open result in new window
         echo '<script type="text/javascript">top.openHTMLpop(\''.SENAYAN_WEB_ROOT_DIR.FILES_DIR.'/'.$print_file_name.'\', 800, 500, \''.__('Catalog Printing').'\')</script>';
-    } else { utility::jsAlert('ERROR! Label failed to generate, possibly because '.SENAYAN_BASE_DIR.FILES_DIR.' directory is not writable'); }
+    } else { utility::jsAlert('ERROR! Catalog card failed to generate, possibly because '.SENAYAN_BASE_DIR.FILES_DIR.' directory is not writable'); }
     exit();
 }
 
@@ -294,8 +298,8 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     <div class="infoBox">
         <?php
         echo __('Maximum').' <font style="color: #FF0000">'.$max_print.'</font> '.__('records can be printed at once. Currently there is').' '; //mfc
-        if (isset($_SESSION['labels'])) {
-            echo '<font id="queueCount" style="color: #FF0000">'.count($_SESSION['labels']).'</font>';
+        if (isset($_SESSION['cards'])) {
+            echo '<font id="queueCount" style="color: #FF0000">'.count($_SESSION['cards']).'</font>';
         } else { echo '<font id="queueCount" style="color: #FF0000">0</font>'; }
         echo ' '.__('in queue waiting to be printed.'); //mfc
         ?>
