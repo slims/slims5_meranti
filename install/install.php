@@ -20,11 +20,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
  */
-require "settings.php";               
-?>	
-
+require 'settings.php';
+?>
 <!DOCTYPE HTML>
-
 <html>
 <head>
     <title>Step 1 | Slims Installer</title>
@@ -34,60 +32,54 @@ require "settings.php";
 <body>
     <div class="wrapper">
 	<div class="title">
-	    <h2>Step 1 - Generate the database </h2>	    
+	    <h2>Step 1 - Generate the database </h2>
 	</div>
 	<p class="message">Please complete following form with your database connection information</p>
 	<div class="content hastable">
-                        <form method="post" action="install2.php">
-                        <input type="hidden" name="submit" value="step2" />  
-                        <table class=text width="100%" border="0" cellspacing="0" cellpadding="2" class="main_text">
-                        <tr>
-                            <tr>
-                                <td>&nbsp;Database Host</td>
-                                <td>
-                                    <input type="text" class="form_text" name="database_host" value='localhost' size="30">&nbsp; <em>default : localhost</em>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;Database Name</td>
-                                <td>
-                                    <input type="text" class="form_text" name="database_name" size="30" value="">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;Database Username</td>
-                                <td>
-                                    <input type="text" class="form_text" name="database_username" size="30" value="">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;Database Password</td>
-                                <td>
-                                    <input type="text" class="form_text" name="database_password" size="30" value="">
-                                </td>
-                            </tr>
-                            <tr>
+    <form method="post" action="install2.php">
+        <input type="hidden" name="submit" value="step2" />
+        <table class=text width="100%" border="0" cellspacing="0" cellpadding="2" class="main_text">
+        <tr>
+            <tr>
+                <td>&nbsp;Database Host</td>
+                <td>
+                    <input type="text" class="form_text" name="database_host" value='localhost' size="30">&nbsp; <em>default : localhost</em>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;Database Name</td>
+                <td>
+                    <input type="text" class="form_text" name="database_name" size="30" value="">
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;Database Username</td>
+                <td>
+                    <input type="text" class="form_text" name="database_username" size="30" value="">
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;Database Password</td>
+                <td>
+                    <input type="text" class="form_text" name="database_password" size="30" value="">
+                </td>
+            </tr>
+            <tr>
 				<td>Generate Sample Data</td>
                                 <td>
 				    <input type="radio" name="install_sample" value="yes" /> Yes
 				    <input type="radio" name="install_sample" value="no" checked="checked" /> No
 				</td>
-                            </tr>
-                        </table>
+        </tr>
+        </table>
 			<br/>
 			<div class="toright">
-				    <input type="button" class="button" name="btn_cancel" value="Cancel" onclick="document.location.href='index.php'">
-                                    <input type="submit" class="button" name="btn_submit" value="Continue">
+				<input type="button" class="button" name="btn_cancel" value="Cancel" onclick="document.location.href='index.php'">
+        <input type="submit" class="button" name="btn_submit" value="Continue">
 			</div>
-                        </form>                        
-
+    </form>
 	</div>
 	<?php include_once("footer.php"); ?>
-    </div>    
-                  
+</div>
 </body>
 </html>
-
-
-
-    

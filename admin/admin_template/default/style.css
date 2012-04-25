@@ -241,6 +241,7 @@ header
   background-size: 20px 20px;
   margin-left: 20px;
   margin-right: 10px;
+  margin-top:5px;
 }
 
 
@@ -408,6 +409,11 @@ a.printReport:active {
 	-moz-border-radius: 4px;
 	border-radius: 4px;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+#pageContent
+{
+	height: 100% !important;
 }
 
 #pageContent div {
@@ -580,9 +586,20 @@ table, tr, td, th {
 	background-color:#eee !important;
 }
 
-
 .fullWidth {
   width: 100%;
+}
+
+.mceToolbar tr td
+{
+	
+	padding:0px !important;
+	margin:0px !important;
+	border-top: none !important;
+	border-left: none !important;
+	border-right: none !important;
+	border-bottom: none !important;
+
 }
 
 
@@ -981,7 +998,7 @@ icon
 
 #listsFrame {
 	width: 100%;
-	height: 100%;
+	height: 600px !important;
 }
 
 #iframeDragger {
@@ -1046,4 +1063,9 @@ input.small_input {
 
 .mceToolbar table td {
 	border: 0;
+}
+
+.highlighted
+{
+	background-color:#ffde5a !important;
 }

@@ -28,12 +28,14 @@ if (!defined('INDEX_AUTH')) {
 
 require '../sysconfig.inc.php';
 // set cookie
-$cookie_path = preg_replace('@\/m\/*@i', '', SENAYAN_WEB_ROOT_DIR);
+$cookie_path = preg_replace('@m\/*@i', '', SENAYAN_WEB_ROOT_DIR);
 // create cookies of lightweight mode
 if (isset($_GET['fullsite'])) {
-    // remove cookies
-    @setcookie('LIGHTWEIGHT_MODE', 1, time()-43200, $cookie_path);
-} else { @setcookie('LIGHTWEIGHT_MODE', 1, time()+43200, $cookie_path); }
+    @setcookie('FULLSITE_MODE', 1, time()+43200, $cookie_path);
+} else {
+	// remove cookies
+	@setcookie('FULLSITE_MODE', 0, time()-43200, $cookie_path);
+}
 // redirect to main bootstrap
 header('Location: ../index.php');
 ?>

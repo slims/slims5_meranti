@@ -468,10 +468,9 @@ if (defined('DB_ACCESS') && DB_ACCESS == 'fa' && file_exists(SENAYAN_BASE_DIR.'s
   if (file_exists(SENAYAN_BASE_DIR.'sysconfig.local.inc.php')) {
     include SENAYAN_BASE_DIR.'sysconfig.local.inc.php';
   } else {
-	header("location: install/index.php");
-	exit;  
+	  header("location: install/index.php");
+	  exit;
   }
-  
 }
 
 /* DATABASE RELATED */
@@ -551,7 +550,7 @@ $sysconf['authority_level'][9] = __('Creator');
 $sysconf['authority_level'][10] = __('Contributor');
 
 // redirect to mobile template on mobile mode
-if (defined('LIGHTWEIGHT_MODE') OR isset($_COOKIE['LIGHTWEIGHT_MODE'])) {
+if (defined('LIGHTWEIGHT_MODE') AND ! isset($_COOKIE['FULLSITE_MODE'])) {
     $sysconf['template']['theme'] = 'lightweight';
     $sysconf['template']['css'] = $sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/style.css';
     $sysconf['enable_xml_detail'] = false;

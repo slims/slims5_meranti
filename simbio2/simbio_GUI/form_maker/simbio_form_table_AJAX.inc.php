@@ -152,4 +152,3 @@ class simbio_form_table_AJAX extends simbio_form_maker
         return $_buffer;
     }
 }
-?>

@@ -226,7 +226,7 @@ class detail extends content_list
         foreach ($this->record_detail as $_field => $_value) {
             if (is_string($_value)) {
                 $this->record_detail[$_field] = preg_replace_callback('/&([a-zA-Z][a-zA-Z0-9]+);/S',
-                  'utility::convertXMLentities', trim($_value));
+                  'utility::convertXMLentities', htmlspecialchars(trim($_value)));
             }
         }
 
@@ -400,8 +400,8 @@ class detail extends content_list
         // convert to htmlentities
         foreach ($this->record_detail as $_field => $_value) {
             if (is_string($_value)) {
-                $this->record_detail[$_field] = preg_replace_callback('/&([a-zA-Z][a-zA-Z0-9]+);/S',
-                  'utility::convertXMLentities', trim($_value));
+              $this->record_detail[$_field] = preg_replace_callback('/&([a-zA-Z][a-zA-Z0-9]+);/S',
+                'utility::convertXMLentities', htmlspecialchars(trim($_value)));
             }
         }
 
