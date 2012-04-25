@@ -84,6 +84,9 @@ if (isset($_POST['process']) AND isset($_POST['loanID'])) {
     $loan_d = $loan_q->fetch_row();
     // create circulation object
     $circulation = new circulation($dbs, $_SESSION['memberID']);
+    $circulation->ignore_holidays_fine_calc = $sysconf['ignore_holidays_fine_calc'];
+	$circulation->holiday_dayname = $_SESSION['holiday_dayname'];
+	$circulation->holiday_date = $_SESSION['holiday_date'];
     if ($_POST['process'] == 'return') {
         $return_status = $circulation->returnItem($loanID);
         // write log
