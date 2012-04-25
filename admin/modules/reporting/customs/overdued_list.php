@@ -76,6 +76,14 @@ if (!$reportView) {
             </div>
         </div>
         <div class="divRow">
+            <div class="divRowLabel"><?php echo __('Institution'); ?></div>
+            <div class="divRowContent">
+            <?php
+            echo simbio_form_element::textField('text', 'inst_name', '', 'style="width: 50%"');
+            ?>
+            </div>
+        </div>
+        <div class="divRow">
             <div class="divRowLabel"><?php echo __('Loan Date From'); ?></div>
             <div class="divRowContent">
             <?php
@@ -97,7 +105,7 @@ if (!$reportView) {
         </div>
     </div>
     <div style="padding-top: 10px; clear: both;">
-    <input type="button" name="moreFilter" class="button" value="<?php echo __('Show More Filter Options'); ?>" />
+    <input type="button" name="moreFilter" value="<?php echo __('Show More Filter Options'); ?>" onclick="showHideTableRows('filterForm', 1, this, '<?php echo __('Show More Filter Options'); ?>', '<?php echo __('Hide Filter Options'); ?>')" />
     <input type="submit" name="applyFilter" value="<?php echo __('Apply Filter'); ?>" />
     <input type="hidden" name="reportView" value="true" />
     </div>
@@ -138,6 +146,11 @@ if (!$reportView) {
           $overdue_criteria .= " AND m.member_id LIKE '%$keyword%' OR m.member_name LIKE '%$keyword%'";
       }
   }
+  // istitution
+  if (isset($_GET['inst_name']) AND !empty($_GET['inst_name'])) {
+        $inst_name= $dbs->escape_string($_GET['inst_name']);
+        $overdue_criteria .= ' AND (m.inst_name LIKE \'%'.$inst_name.'%\')';
+    }
   // loan date
   if (isset($_GET['startDate']) AND isset($_GET['untilDate'])) {
       $date_criteria = ' AND (TO_DAYS(l.loan_date) BETWEEN TO_DAYS(\''.$_GET['startDate'].'\') AND

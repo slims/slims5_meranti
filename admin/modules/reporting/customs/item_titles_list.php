@@ -113,6 +113,22 @@ if (!$reportView) {
             </div>
         </div>
         <div class="divRow">
+            <div class="divRowLabel"><?php echo __('Received Date from'); ?></div>
+            <div class="divRowContent">
+            <?php
+            echo simbio_form_element::dateField('startDate', '2005-01-01');
+            ?>
+            </div>
+        </div>
+        <div class="divRow">
+            <div class="divRowLabel"><?php echo __('Received Date until'); ?></div>
+            <div class="divRowContent">
+            <?php
+            echo simbio_form_element::dateField('untilDate', date('Y-m-d'));
+            ?>
+            </div>
+        </div>
+        <div class="divRow">
             <div class="divRowLabel"><?php echo __('Item Status'); ?></div>
             <div class="divRowContent">
             <?php
@@ -146,7 +162,7 @@ if (!$reportView) {
         </div>
     </div>
     <div style="padding-top: 10px; clear: both;">
-    <input type="button" name="moreFilter" value="<?php echo __('Show More Filter Options'); ?>" />
+    <input type="button" name="moreFilter" value="<?php echo __('Show More Filter Options'); ?>" onclick="showHideTableRows('filterForm', 1, this, '<?php echo __('Show More Filter Options'); ?>', '<?php echo __('Hide Filter Options'); ?>')" />
     <input type="submit" name="applyFilter" value="<?php echo __('Apply Filter'); ?>" />
     <input type="hidden" name="reportView" value="true" />
     </div>
@@ -208,6 +224,10 @@ if (!$reportView) {
         if ($coll_type_IDs) {
             $criteria .= " AND i.coll_type_id IN($coll_type_IDs)";
         }
+    }
+    if (isset($_GET['startDate']) AND isset($_GET['untilDate'])) {
+        $criteria .= ' AND (TO_DAYS(i.received_date) BETWEEN TO_DAYS(\''.$_GET['startDate'].'\') AND
+            TO_DAYS(\''.$_GET['untilDate'].'\'))';
     }
     if (isset($_GET['gmd']) AND !empty($_GET['gmd'])) {
         $gmd_IDs = '';
