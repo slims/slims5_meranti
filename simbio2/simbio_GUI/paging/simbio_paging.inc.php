@@ -121,9 +121,9 @@ class simbio_paging
 
         if ($_page > 1) {
             $_buffer .= ' &nbsp;';
-            $_buffer .= '<a href="'.$_current_page.(1).$str_fragment.'" '.$str_target_frame.'>'.$_first.'</a>&nbsp; '."\n";
+            $_buffer .= '<a href="'.$_current_page.(1).$str_fragment.'" '.$str_target_frame.' class="first_link">'.$_first.'</a>&nbsp; '."\n";
             $_buffer .= ' &nbsp;';
-            $_buffer .= '<a href="'.$_current_page.($_page-1).$str_fragment.'" '.$str_target_frame.'>'.$_prev.'</a>&nbsp; '."\n";
+            $_buffer .= '<a href="'.$_current_page.($_page-1).$str_fragment.'" '.$str_target_frame.' class="prev_link">'.$_prev.'</a>&nbsp; '."\n";
         }
 
         for ($p = $_pager_offset; ($p <= $_num_page_total) AND ($_stopper < $int_pages_each_set+1); $p++) {
@@ -142,7 +142,7 @@ class simbio_paging
 
         if (($_pager_offset != $_num_page_total-4) AND ($_page != $_num_page_total)) {
             $_buffer .= ' &nbsp;';
-            $_buffer .= '<a href="'.$_current_page.($_page+1).$str_fragment.'" '.$str_target_frame.'>'.$_next.'</a>&nbsp; '."\n";
+            $_buffer .= '<a href="'.$_current_page.($_page+1).$str_fragment.'" '.$str_target_frame.' class="next_link">'.$_next.'</a>&nbsp; '."\n";
         }
 
         // Last page link
@@ -150,7 +150,7 @@ class simbio_paging
 
         if ($_page < $_num_page_total) {
             $_buffer .= ' &nbsp;';
-            $_buffer .= '<a href="'.$_current_page.($_num_page_total).$str_fragment.'" '.$str_target_frame.'>'.$_last.'</a>&nbsp; '."\n";
+            $_buffer .= '<a href="'.$_current_page.($_num_page_total).$str_fragment.'" '.$str_target_frame.' class="last_link">'.$_last.'</a>&nbsp; '."\n";
         }
 
         $_buffer .= '</span>';
