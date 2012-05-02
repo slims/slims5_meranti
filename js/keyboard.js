@@ -9,25 +9,34 @@
  */
 
 var slims_hotkey=false;
+var input_focus=false;
+var data_list=false;
+var tr_up=0;
+var tr_down=0;
+var tr_now=null;
 
 $(function() {}).keypress(function(event) {
 	/*
 	 * global hotkey for navigation module's menu and submodule's menu
 	 */
+	// control hotkey work not in text area
+	input_focus=$(':focus').length>0?true:false;
+
 	// hotkey for module's menu (Shift+F[1-12])
-	if(event.shiftKey && event.keyCode){
+	if(event.shiftKey && event.keyCode && !event.ctrlKey){
 		mlength=$('div#mainMenu ul#menuList li a').length-1;
 		index=event.keyCode-110;
 		if(index>=2 && index<mlength)
 			window.location=$('div#mainMenu ul#menuList li a').eq(event.keyCode - 110).attr('href');
-		else if(event.keyCode == 36)
+		else if(event.keyCode == 36 && input_focus===false) // (Shift+Home)
 			window.location=$('div#mainMenu ul#menuList li a:first').attr('href');
-		else if(event.keyCode == 27)
+		else if(event.keyCode == 27 && input_focus===false) // (Shift+Esc)
 			window.location=$('div#mainMenu ul#menuList li a:last').attr('href');
-		return false;
+		if(event.keyCode>=112 && event.keyCode<=123)
+			return false;
 	}
 	// hotkey for submodule's menu (Ctrl+[0-9] until Ctrl+Alt[0-9])
-	else if(event.ctrlKey && event.which){
+	else if(event.ctrlKey && event.which && !event.shiftKey){
 		slength=$('td#sidepan a').length;
 		eWhich=event.which;
 		if(!event.altKey){
@@ -49,33 +58,82 @@ $(function() {}).keypress(function(event) {
 	if(event.ctrlKey && event.which==109 && !event.altKey && !event.shiftKey){
 		slims_hotkey=true;
 		alert('SLiMS hotkey activated!');
+		$(':focus').blur();
 		return false;
 	}else if(event.ctrlKey && event.shiftKey && event.which==77 && !event.altKey){
 		slims_hotkey=false;
 		alert('SLiMS hotkey disabled!');
+		$(':input:first').focus();
 		return false;
 	}
 	if(slims_hotkey===true){
+		//~ alert('Key: '+event.keyCode+' Which: '+event.which);
+		tr_up=$('table#dataList tbody tr').length-2;
 		// navigation paging list
-		if($('table.datagrid-action-bar span.pagingList a').length>0){
+		if($('table.datagrid-action-bar span.pagingList a').length>0 && input_focus===false){
 			switch(event.keyCode){
-				case 39: //next
+				case 39: //next (Right Arrow)
 					$('table.datagrid-action-bar span.pagingList a.next_link:first').click();
 					break;
-				case 37: //prev
+				case 37: //prev (Left Arrow)
 					$('table.datagrid-action-bar span.pagingList a.prev_link:first').click();
 					break;
-				case 36: //first
+				case 36: //first (Home)
 					$('table.datagrid-action-bar span.pagingList a.first_link:first').click();
+					return false;
 					break;
-				case 35: //last
+				case 35: //last (End)
 					$('table.datagrid-action-bar span.pagingList a.last_link:first').click();
+					$(':focus').blur();
+					return false;
 					break;
 			}
 		}
-		// select all data from list
-		if(event.ctrlKey && event.which==97 && !event.altKey && !event.shiftKey){
-			$('table#dataList :checkbox').click();
+		var chlist=$('table#dataList tbody :checkbox');
+		// select all data from list (Ctrl+A)
+		if(event.ctrlKey && event.which==97 && !event.altKey && !event.shiftKey && chlist.length>0){
+			chlist.click();
+			return false;
+		}
+		// click row on data list
+		if(tr_up>1 && input_focus===false){
+			switch(event.keyCode){
+				case 38: //up (Up Arrow)
+					if(tr_now==null){
+						tr_now=tr_up;
+						$('table#dataList').append('<a href="#bottomList" id="linkBottomList" class="bottomList"></a>');
+						window.location=('#linkBottomList');
+					}
+					else if(tr_now>tr_down) tr_now--;
+					if(tr_now!=tr_up && chlist.eq(tr_now+1).is(':checked') && !event.shiftKey)
+						chlist.eq(tr_now+1).click();
+					chlist.eq(tr_now).not(':checked').click();
+					break;
+				case 40: //down (Down Arrow)
+					if(tr_now==null) tr_now=tr_down;
+					else if(tr_now<tr_up) tr_now++;
+					if(tr_now!=tr_down && chlist.eq(tr_now-1).is(':checked') && !event.shiftKey)
+						chlist.eq(tr_now-1).click();
+					chlist.eq(tr_now).not(':checked').click();
+					break;
+			}
+			if(event.shiftKey)
+				return false;
+		}
+		// edit row on data list (E)
+		if(event.which==101 && !event.ctrlKey && !event.altKey && !event.shiftKey && chlist.length>0 && input_focus===false){
+			$('table#dataList tbody a.editLink').eq(tr_now).click();
+			$(':focus').blur();
+		}
+		// click submit button first (Enter)
+		if(event.which==13 && event.keyCode==13 && !event.ctrlKey && !event.altKey && !event.shiftKey && chlist.length>0 && input_focus===false){
+			$('table.datagrid-action-bar :input:first').click();
+		}
+		// cancel editing (Esc)
+		if(event.keyCode==27 && !event.ctrlKey && !event.altKey && !event.shiftKey && $('form#mainForm input.cancelButton').length>0){
+			$('form#mainForm input.cancelButton:first').click();
+			tr_now=null;
+			$(':focus').blur();
 		}
 	}
 }).keydown(function(event) { // show up hotkeys tip
