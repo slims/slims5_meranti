@@ -57,7 +57,7 @@ if (isset($sysconf['enable_xml_detail']) && !$sysconf['enable_xml_detail']) {
 $search_result_info = '';
 
 // if we are in searching mode
-if (isset($_GET['search']) && !empty($_GET['search'])) {
+if (isset($_GET['search']) && !empty($_GET['search']) && !$_GET['resultXML']) {
     // default vars
     $is_adv = false;
     $keywords = '';

@@ -561,6 +561,6 @@ class utility
         );
 
       // Entity not found? Destroy it.
-      return isset($_ent_table[$matches[1]]) ? $_ent_table[$matches[1]] : '';
+      return isset($_ent_table[$str_xml_data[1]]) ? $_ent_table[$str_xml_data[1]] : '';
     }
 }
