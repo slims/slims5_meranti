@@ -124,7 +124,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         $data['postal_code'] = trim($dbs->escape_string(strip_tags($_POST['memberPostal'])));
         $data['member_notes'] = trim($dbs->escape_string(strip_tags($_POST['memberNotes'])));
         $data['member_email'] = trim($dbs->escape_string(strip_tags($_POST['memberEmail'])));
-        $data['is_pending'] = isset($_POST['isPending'])? intval($_POST['isPending']) : '0';
+        $data['is_pending'] = intval($_POST['isPending']);
         $data['input_date'] = date('Y-m-d');
         $data['last_update'] = date('Y-m-d');
         if (!empty($_FILES['image']) AND $_FILES['image']['size']) {
@@ -139,7 +139,18 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
             if ($upload_status == UPLOAD_SUCCESS) {
                 $data['member_image'] = $dbs->escape_string($upload->new_filename);
             }
-        }
+        } else if (!empty($_POST['base64picstring'])) {
+			$new_filename = 'member_'.$data['member_id'].'.jpg';
+/*
+			if (file_exists(IMAGES_BASE_DIR.'persons/'.$new_filename))
+				unlink(IMAGES_BASE_DIR.'persons/'.$new_filename);
+*/
+			if (file_put_contents(IMAGES_BASE_DIR.'persons/'.$new_filename, base64_decode($_POST['base64picstring']))) {
+				$data['member_image'] = $dbs->escape_string($new_filename);
+				if (!defined('UPLOAD_SUCCESS')) define('UPLOAD_SUCCESS', 1);
+				$upload_status = UPLOAD_SUCCESS;
+			}
+		}
         // password confirmation
         if (($mpasswd1 AND $mpasswd2) AND ($mpasswd1 === $mpasswd2)) {
             $data['mpasswd'] = 'literal{MD5(\''.$mpasswd2.'\')}';
@@ -432,18 +443,21 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     }
 
     // member is_pending
-    $form->addCheckBox('isPending', __('Pending Membership'), array(array('1', __('Yes'))), $rec_d['is_pending']);
+    $form->addCheckBox('isPending', __('Pending Membership'), array( array('1', __('Yes')) ), $rec_d['is_pending']);
     // member photo
     if ($rec_d['member_image']) {
         $str_input = '<a href="'.SENAYAN_WEB_ROOT_DIR.'images/persons/'.$rec_d['member_image'].'" target="_blank"><strong>'.$rec_d['member_image'].'</strong></a><br />';
-        $str_input .= simbio_form_element::textField('file', 'image');
-        $str_input .= ' '.__('Maximum').' '.$sysconf['max_image_upload'].' KB'; //mfc
-        $form->addAnything(__('Photo'), $str_input);
-    } else {
-        $str_input = simbio_form_element::textField('file', 'image');
-        $str_input .= ' '.__('Maximum').' '.$sysconf['max_image_upload'].' KB'; //mfc
-        $form->addAnything(__('Photo'), $str_input);
     }
+    $str_input .= simbio_form_element::textField('file', 'image');
+    $str_input .= ' '.__('Maximum').' '.$sysconf['max_image_upload'].' KB';
+    $str_input .= '<p>'.__('or take a photo').'</p>';
+    $str_input .= '<textarea id="base64picstring" name="base64picstring" style="display: none;"></textarea>';
+    $str_input .= '<object id="flash_video" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" height="280px" width="100%">';
+    $str_input .= '<param name="src" value="'.SENAYAN_WEB_ROOT_DIR.'lib/flex/ShotSLiMSMemberPicture.swf"/>';
+    $str_input .= '<embed name="src" src="'.SENAYAN_WEB_ROOT_DIR.'lib/flex/ShotSLiMSMemberPicture.swf" height="280px" width="100%"/>';
+    $str_input .= '</object>';
+    $form->addAnything(__('Photo'), $str_input);
+    
     // member email
     $form->addTextField('text', 'memberEmail', __('E-mail'), $rec_d['member_email'], 'style="width: 40%;"');
     // member password
@@ -459,7 +473,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
             .'</div>';
             if ($rec_d['member_image']) {
                 if (file_exists(IMAGES_BASE_DIR.'persons/'.$rec_d['member_image'])) {
-                    echo '<div style="float: right;"><img src="../lib/phpthumb/phpThumb.php?src=../../images/persons/'.urlencode($rec_d['member_image']).'&w=53" style="border: 1px solid #999999" /></div>';
+                    echo '<div style="float: right;"><img src="../lib/phpthumb/phpThumb.php?src=../../images/persons/'.urlencode($rec_d['member_image']).'&w=53&timestamp='.date('his').'" style="border: 1px solid #999999" /></div>';
                 }
             }
         echo '</div>'."\n";

@@ -15,6 +15,10 @@ var tr_up=0;
 var tr_down=0;
 var tr_now=null;
 
+function setPicture(s){
+	$('textarea#base64picstring').val(s);
+}
+
 $(function() {}).keypress(function(event) {
 	/*
 	 * global hotkey for navigation module's menu and submodule's menu
@@ -96,6 +100,7 @@ $(function() {}).keypress(function(event) {
 			return false;
 		}
 		// click row on data list
+		// hold-on Ctrl for multiple selection
 		if(tr_up>1 && input_focus===false){
 			switch(event.keyCode){
 				case 38: //up (Up Arrow)
@@ -105,20 +110,18 @@ $(function() {}).keypress(function(event) {
 						window.location=('#linkBottomList');
 					}
 					else if(tr_now>tr_down) tr_now--;
-					if(tr_now!=tr_up && chlist.eq(tr_now+1).is(':checked') && !event.shiftKey)
+					if(tr_now!=tr_up && chlist.eq(tr_now+1).is(':checked') && !event.ctrlKey)
 						chlist.eq(tr_now+1).click();
 					chlist.eq(tr_now).not(':checked').click();
 					break;
 				case 40: //down (Down Arrow)
 					if(tr_now==null) tr_now=tr_down;
 					else if(tr_now<tr_up) tr_now++;
-					if(tr_now!=tr_down && chlist.eq(tr_now-1).is(':checked') && !event.shiftKey)
+					if(tr_now!=tr_down && chlist.eq(tr_now-1).is(':checked') && !event.ctrlKey)
 						chlist.eq(tr_now-1).click();
 					chlist.eq(tr_now).not(':checked').click();
 					break;
 			}
-			if(event.shiftKey)
-				return false;
 		}
 		// edit row on data list (E)
 		if(event.which==101 && !event.ctrlKey && !event.altKey && !event.shiftKey && chlist.length>0 && input_focus===false){
