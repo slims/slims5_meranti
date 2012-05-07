@@ -186,22 +186,20 @@ abstract class biblio_list_model
             if ($this->show_labels AND !empty($_biblio_d['labels'])) {
                 $arr_labels = @unserialize($_biblio_d['labels']);
                 if ($arr_labels !== false) {
-										foreach ($arr_labels as $label)
-										{
-												if (!isset($this->label_cache[$label[0]]['name'])) {
-														$_label_q = $this->obj_db->query('SELECT label_name, label_desc, label_image FROM mst_label AS lb
-																WHERE lb.label_name=\''.$label[0].'\'');
-														$_label_d = $_label_q->fetch_row();
-														$this->label_cache[$label[0]] = array('name' => $_label_d[0], 'desc' => $_label_d[1], 'image' => $_label_d[2]);
-												}
-												if (isset($label[1]) && $label[1])
-												{
-														$_biblio_d['title'] .= ' <a href="'.$label[1].'" target="_blank"><img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" border="0" /></a>';
-												} else {
-														$_biblio_d['title'] .= ' <img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" />';
-												}
-										}
-								}
+                    foreach ($arr_labels as $label) {
+                        if (!isset($this->label_cache[$label[0]]['name'])) {
+                            $_label_q = $this->obj_db->query('SELECT label_name, label_desc, label_image FROM mst_label AS lb
+                                    WHERE lb.label_name=\''.$label[0].'\'');
+                            $_label_d = $_label_q->fetch_row();
+                            $this->label_cache[$label[0]] = array('name' => $_label_d[0], 'desc' => $_label_d[1], 'image' => $_label_d[2]);
+                        }
+                        if (isset($label[1]) && $label[1]) {
+                            $_biblio_d['title'] .= ' <a href="'.$label[1].'" target="_blank"><img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" border="0" /></a>';
+                        } else {
+                            $_biblio_d['title'] .= ' <img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" />';
+                        }
+                    }
+				}
             }
             // button
             $_biblio_d['detail_button'] = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" class="detailLink" title="'.__('Record Detail').'">'.__('Record Detail').'</a>';
@@ -327,13 +325,12 @@ abstract class biblio_list_model
         $_buffer .= '<slims:modsResultShowed>'.$this->num2show.'</slims:modsResultShowed>'."\n";
         $_buffer .= '</slims:resultInfo>'."\n";
         while ($_biblio_d = $this->resultset->fetch_assoc()) {
-						// replace xml entities
-						foreach ($_biblio_d as $_field => $_value) {
-						  if (is_string($_value)) {
-								$_biblio_d[$_field] = preg_replace_callback('/&([a-zA-Z][a-zA-Z0-9]+);/S',
-                  'utility::convertXMLentities', htmlspecialchars(trim($_value)));
-						  }
-						}
+            // replace xml entities
+            foreach ($_biblio_d as $_field => $_value) {
+                if (is_string($_value)) {
+                    $_biblio_d[$_field] = preg_replace_callback('/&([a-zA-Z][a-zA-Z0-9]+);/S','utility::convertXMLentities', htmlspecialchars(trim($_value)));
+                }
+            }
 
             $_buffer .= '<mods version="3.3" ID="'.$_biblio_d['biblio_id'].'">'."\n";
             // parse title
