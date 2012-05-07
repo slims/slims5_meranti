@@ -15,8 +15,8 @@ var tr_up=0;
 var tr_down=0;
 var tr_now=null;
 
-function setPicture(s){
-	$('textarea#base64picstring').val(s);
+function setPicture(s, t){
+	$('textarea#base64picstring').val(s+'#image/type#'+t);
 }
 
 $(function() {}).keypress(function(event) {

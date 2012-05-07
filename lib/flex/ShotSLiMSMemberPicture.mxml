@@ -30,14 +30,33 @@
 		import flash.media.Camera;
 		import flash.media.Video;
 		import flash.external.*;
+		import flash.geom.Rectangle;
 		import mx.controls.Alert;
 		import mx.graphics.ImageSnapshot;
 		import mx.graphics.codec.JPEGEncoder;
+		import mx.graphics.codec.PNGEncoder;
+		import mx.collections.ArrayCollection;
 		
-		public var cam:Camera;
-		public var shot:BitmapData;
-		public var vid:Video;
+		private var cam:Camera;
+		private var shot:BitmapData;
+		private var crop:BitmapData;
+		private var vid:Video;
+		
+		private const jpgEnc:JPEGEncoder = new JPEGEncoder(); 
+		private const pngEnc:PNGEncoder = new PNGEncoder(); 
+		
+		[Bindable]
+		public var kind:ArrayCollection = new ArrayCollection([
+			{label:"JPG", data:jpgEnc}, 
+			{label:"PNG", data:pngEnc}
+		]);
 
+		[Bindable]
+		public var ratio:ArrayCollection = new ArrayCollection([
+			{label:"2x3", data:1},
+			{label:"3x4", data:2},
+		]);
+		
 		public function initCamera():void {
 			cam = Camera.getCamera();
 			if (cam)
@@ -47,7 +66,7 @@
 				vid.width = cam.width;
 				vid.height = cam.height; 
 				vid.attachCamera(cam);
-				myVid.addChild(vid)
+				theCam.addChild(vid)
 			}
 			else
 			{
@@ -56,25 +75,46 @@
 		}
 		
 		public function shotCamera():void {
-			var shot:BitmapData = new BitmapData(myVid.width, myVid.height, true);
-			shot.draw(myVid);
+			var shot:BitmapData = new BitmapData(theCam.width, theCam.height, true);
+			shot.draw(theCam);
 			var shotBmp:Bitmap = new Bitmap(shot);
 
-			shotBmp.width = 320;
-			shotBmp.height = 240;
-			myVid.addChild(shotBmp);
+			shotBmp.width = theCam.width;
+			shotBmp.height = theCam.height;
+			theCam.addChild(shotBmp);
+			crop = Bitmap(shotBmp).bitmapData.clone();
 		}
 		
 		public function saveShot():void {
-			var jpgEncode:JPEGEncoder = new JPEGEncoder();
+			
+			var theCropImg:BitmapData = new BitmapData(theFrame.width, theFrame.height, true);
+			var rect:Rectangle = new Rectangle(theFrame.x, theFrame.y, theFrame.width, theFrame.height);
+			theCropImg.copyPixels(crop, rect, new Point(0, 0));
 			var theImg:ImageSnapshot;
-			theImg = ImageSnapshot.captureImage(myVid, 0, jpgEncode);
+			theImg = ImageSnapshot.captureImage(theCropImg, 0, cmbType.selectedItem.data);
 			var sVal:String = ImageSnapshot.encodeImageAsBase64(theImg);
 			if (ExternalInterface.available) {
 				var wrapperFunction:String = "setPicture";
-				ExternalInterface.call(wrapperFunction, sVal);
+				ExternalInterface.call(wrapperFunction, sVal, cmbType.selectedItem.label);
 			} else {
 				Alert.show("Wrapper not available!");
+			}
+		}
+
+		private function changeRatio():void {
+			switch (cmbRatio.selectedItem.data) {
+				case 1:
+					theFrame.width = 140;
+					theFrame.height = 210;
+					theFrame.x = 90;
+					theFrame.y = 15;
+					break;
+				case 2:
+					theFrame.width = 150;
+					theFrame.height = 200;
+					theFrame.x = 85;
+					theFrame.y = 20;
+					break;
 			}
 		}
 		]]>
@@ -82,7 +122,14 @@
 	<mx:Grid id="myGrid">
 		<mx:GridRow horizontalAlign="center">
 			<mx:GridItem id="rowCamera" horizontalAlign="center">
-				<mx:VideoDisplay id="myVid" width="320" height="240"/>
+				<s:Group>
+					<s:VideoDisplay id="theCam" width="320" height="240"/>
+					<s:Rect id="theFrame" width="140" height="210" x="90" y="15">
+						<s:stroke>
+							<s:SolidColorStroke color="0x000000" weight="1"/>
+						</s:stroke>
+					</s:Rect>
+				</s:Group>
 			</mx:GridItem>
 		</mx:GridRow>
 		<mx:GridRow id="rowButton">
@@ -90,6 +137,8 @@
 				<mx:Button id="btnInit" label="Load Camera" click="initCamera();"/>
 				<mx:Button id="btnCapture" label="Capture" click="shotCamera();"/>
 				<mx:Button id="btnSave" label="Use It!" click="saveShot();"/>
+				<mx:ComboBox id="cmbType" dataProvider="{kind}"/>
+				<mx:ComboBox id="cmbRatio" dataProvider="{ratio}" change="changeRatio()"/>
 			</mx:GridItem>
 		</mx:GridRow>
 	</mx:Grid>

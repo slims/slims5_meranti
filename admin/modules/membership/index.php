@@ -140,12 +140,10 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                 $data['member_image'] = $dbs->escape_string($upload->new_filename);
             }
         } else if (!empty($_POST['base64picstring'])) {
-			$new_filename = 'member_'.$data['member_id'].'.jpg';
-/*
-			if (file_exists(IMAGES_BASE_DIR.'persons/'.$new_filename))
-				unlink(IMAGES_BASE_DIR.'persons/'.$new_filename);
-*/
-			if (file_put_contents(IMAGES_BASE_DIR.'persons/'.$new_filename, base64_decode($_POST['base64picstring']))) {
+			list($filedata, $filedom) = explode('#image/type#', $_POST['base64picstring']);
+			$new_filename = 'member_'.$data['member_id'].'.'.strtolower($filedom);
+
+			if (file_put_contents(IMAGES_BASE_DIR.'persons/'.$new_filename, base64_decode($filedata))) {
 				$data['member_image'] = $dbs->escape_string($new_filename);
 				if (!defined('UPLOAD_SUCCESS')) define('UPLOAD_SUCCESS', 1);
 				$upload_status = UPLOAD_SUCCESS;
