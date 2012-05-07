@@ -124,7 +124,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         $data['postal_code'] = trim($dbs->escape_string(strip_tags($_POST['memberPostal'])));
         $data['member_notes'] = trim($dbs->escape_string(strip_tags($_POST['memberNotes'])));
         $data['member_email'] = trim($dbs->escape_string(strip_tags($_POST['memberEmail'])));
-        $data['is_pending'] = intval($_POST['isPending']);
+        $data['is_pending'] = isset($_POST['isPending'])? intval($_POST['isPending']) : '0';
         $data['input_date'] = date('Y-m-d');
         $data['last_update'] = date('Y-m-d');
         if (!empty($_FILES['image']) AND $_FILES['image']['size']) {

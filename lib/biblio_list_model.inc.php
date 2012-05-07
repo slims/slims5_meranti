@@ -331,7 +331,7 @@ abstract class biblio_list_model
 						foreach ($_biblio_d as $_field => $_value) {
 						  if (is_string($_value)) {
 								$_biblio_d[$_field] = preg_replace_callback('/&([a-zA-Z][a-zA-Z0-9]+);/S',
-                  'utility::convertXMLentities', trim($_value));
+                  'utility::convertXMLentities', htmlspecialchars(trim($_value)));
 						  }
 						}
 
