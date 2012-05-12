@@ -57,7 +57,7 @@ if (isset($sysconf['enable_xml_detail']) && !$sysconf['enable_xml_detail']) {
 $search_result_info = '';
 
 // if we are in searching mode
-if (isset($_GET['search']) && !empty($_GET['search']) && !isset($_GET['resultXML'])) {
+if (isset($_GET['search']) && !empty($_GET['search'])) {
     // default vars
     $is_adv = false;
     $keywords = '';
@@ -153,9 +153,12 @@ if (isset($_GET['search']) && !empty($_GET['search']) && !isset($_GET['resultXML
         $biblio_list->only_promoted = true;
     }
 
-    // show the list
-    echo $biblio_list->getDocumentList();
-    echo '<br />'."\n";
+    if (!isset($_GET['resultXML'])) {
+        // show the list
+        echo $biblio_list->getDocumentList();
+        echo '<br />'."\n";
+    }
+
     // set result number info
     $search_result_info = str_replace('{biblio_list->num_rows}', $biblio_list->num_rows, $search_result_info);
 
