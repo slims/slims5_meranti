@@ -496,6 +496,7 @@ hr
 	font-size:14px;
 	padding:10px;
 	border-bottom: dotted 1px #222222;
+	clear: both;
 }
 
 .biblioPaging b
@@ -558,12 +559,12 @@ hr
 
 .biblioMarkFormAction input
 {
-	width:250px;
 	float: right;
-	margin:10px !important;
-	height:40px !important;
-	padding:10px !important;
-
+  height: 37px;
+  margin:10px 10px 0px 0px;
+  width:auto;
+  background-color: #3b9eca;
+  color:#ffffff;
 }
 
 .biblioCheck
@@ -706,6 +707,7 @@ hr
 #memberLoginInfo
 {
 	border:none !important;
+	text-align: center;
 }
 
 .loginInfo
@@ -1028,4 +1030,12 @@ img.btn_close {
     width: 100px;
     height: 120px;
 }
+
+:-moz-placeholder {
+  color: #999999;
+}
+::-webkit-input-placeholder {
+  color: #999999;
+}
+
 
