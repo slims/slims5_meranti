@@ -30,6 +30,6 @@ if (utility::havePrivilege('circulation', 'r') AND utility::havePrivilege('circu
     $menu[] = array(__('Quick Return'), MODULES_WEB_ROOT_DIR.'circulation/quick_return.php', __('Quick Return Collection'));
 }
 if (utility::havePrivilege('membership', 'r') AND utility::havePrivilege('membership', 'w')) {
-    $menu[] = array(__('Add New Member'), MODULES_WEB_ROOT_DIR.'membership/index.php?action=new', __('Add New Library Member Data'));
+    $menu[] = array(__('Add New Member'), MODULES_WEB_ROOT_DIR.'membership/index.php?action=detail', __('Add New Library Member Data'));
 }
 ?>
