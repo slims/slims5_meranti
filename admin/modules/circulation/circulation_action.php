@@ -457,7 +457,7 @@ if (isset($_POST['memberID']) OR isset($_SESSION['memberID'])) {
         echo '<tr>'."\n";
         echo '<td class="dataListHeader" colspan="5">';
         // hidden form for transaction finish
-        echo '<form id="finishForm" method="post" target="blindSubmit" action="'.MODULES_WEB_ROOT_DIR.'circulation/circulation_action.php" style="display: inline;"><input type="button" value="'.__('Finish Transaction').'" onclick="confSubmit(\'finishForm\', \''.__('Are you sure want to finish current transaction?').'\')" /><input type="hidden" name="finish" value="true" /></form>';
+        echo '<form id="finishForm" method="post" target="blindSubmit" action="'.MODULES_WEB_ROOT_DIR.'circulation/circulation_action.php" style="display: inline;"><input type="button" accesskey="T" value="'.__('Finish Transaction').' (T)" onclick="confSubmit(\'finishForm\', \''.__('Are you sure want to finish current transaction?').'\')" /><input type="hidden" name="finish" value="true" /></form>';
         echo '</td>';
         echo '</tr>'."\n";
         echo '<tr>'."\n";
@@ -500,13 +500,13 @@ if (isset($_POST['memberID']) OR isset($_SESSION['memberID'])) {
         }
         echo '</table>'."\n";
         // tab and iframe
-        echo '<input type="button" style="width: 19%;" class="tab'.$add_style.'" value="'.__('Loans').'" src="'.MODULES_WEB_ROOT_DIR.'circulation/loan.php" '.$disabled.' />';
-        echo '<input type="button" style="width: 19%;" class="tab tabSelected" value="'.__('Current Loans').'" src="'.MODULES_WEB_ROOT_DIR.'circulation/loan_list.php" />';
+        echo '<input type="button" accesskey="L" style="width: 19%;" class="tab'.$add_style.'" value="'.__('Loans').' (L)" src="'.MODULES_WEB_ROOT_DIR.'circulation/loan.php" '.$disabled.' />';
+        echo '<input type="button" accesskey="C" style="width: 19%;" class="tab tabSelected" value="'.__('Current Loans').' (C)" src="'.MODULES_WEB_ROOT_DIR.'circulation/loan_list.php" />';
         if ($member_type_d['enable_reserve']) {
-          echo '<input type="button" style="width: 19%;" class="tab'.$add_style.'" value="'.__('Reserve').'" src="'.MODULES_WEB_ROOT_DIR.'circulation/reserve_list.php" '.$disabled.' />';
+          echo '<input type="button" accesskey="R" style="width: 19%;" class="tab'.$add_style.'" value="'.__('Reserve').' (R)" src="'.MODULES_WEB_ROOT_DIR.'circulation/reserve_list.php" '.$disabled.' />';
         }
-        echo '<input type="button" style="width: 19%;" class="tab" value="'.__('Fines').'" src="'.MODULES_WEB_ROOT_DIR.'circulation/fines_list.php" />';
-        echo '<input type="button" style="width: 19%;" class="tab" value="'.__('Loan History').'" src="'.MODULES_WEB_ROOT_DIR.'circulation/member_loan_hist.php" /><br />'."\n";
+        echo '<input type="button" accesskey="F" style="width: 19%;" class="tab" value="'.__('Fines').' (F)" src="'.MODULES_WEB_ROOT_DIR.'circulation/fines_list.php" />';
+        echo '<input type="button" accesskey="H" style="width: 19%;" class="tab" value="'.__('Loan History').' (H)" src="'.MODULES_WEB_ROOT_DIR.'circulation/member_loan_hist.php" /><br />'."\n";
         echo '<iframe src="modules/circulation/loan_list.php" id="listsFrame" class="expandable border"></iframe>'."\n";
     }
     exit();
