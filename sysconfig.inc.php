@@ -201,6 +201,30 @@ $barcodes_encoding['PLS'] = array('PLS', 'Plesseys');
 $barcodes_encoding['93'] = array('93', 'code 93');
 $sysconf['barcode_encoding'] = $barcodes_encoding['128B'];
 
+// Zend Barcode Engine
+$sysconf['zend_barcode_engine'] = false;
+// Zend Barcode Engine Encoding selection
+if ($sysconf['zend_barcode_engine'] === true) {
+    unset($barcodes_encoding);
+    $barcodes_encoding['CODE25'] = array('code25', 'Code 2 or 5 Industrial');
+    $barcodes_encoding['CODE25I'] = array('code25interleaved', 'Code 2 or 5 Interleaved ');
+    $barcodes_encoding['CODE39'] = array('code39', 'Code 39');
+    $barcodes_encoding['CODE128'] = array('code128', 'Code 128');
+    $barcodes_encoding['EAN2'] = array('ean2', 'Ean 2');
+    $barcodes_encoding['EAN5'] = array('ean5', 'Ean 5');
+    $barcodes_encoding['EAN8'] = array('ean8', 'Ean 8');
+    $barcodes_encoding['EAN13'] = array('ean13', 'Ean 13');
+    $barcodes_encoding['IDENTCODE'] = array('identcode', 'Identcode');
+    $barcodes_encoding['ITF14'] = array('itf14', 'ITF-14');
+    $barcodes_encoding['LEITCODE'] = array('leitcode', 'Leitcode');
+    $barcodes_encoding['PLANET'] = array('planet', 'Planet');
+    $barcodes_encoding['POSTNET'] = array('postnet', 'Postnet');
+    $barcodes_encoding['ROYALMAIL'] = array('royalmail', 'Royalmail');
+    $barcodes_encoding['UPCA'] = array('upca', 'UPC-A');
+    $barcodes_encoding['UPCE'] = array('upce', 'UPC-E');
+    $sysconf['barcode_encoding'] = $barcodes_encoding['CODE128'];
+}
+
 /* QUICK RETURN */
 $sysconf['quick_return'] = true;
 

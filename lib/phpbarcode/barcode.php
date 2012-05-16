@@ -118,9 +118,6 @@ $allowed_scale = array(1, 2, 3, 4, 5, 6);
 if ( ! isset($get->scale) OR (isset($get->scale) AND ! in_array($get->scale, $allowed_scale)))
 	$get->scale = 2;
 
-// include php-barcode lib
-require "php-barcode.php";
-
 // http vars
 $code = isset($get->code) ? trim($get->code) : '1234567890';
 if (get_magic_quotes_gpc())
@@ -131,6 +128,48 @@ $scale = isset($get->scale) ? trim($get->scale) : '2';
 $mode = isset($get->mode) ? trim($get->mode) : 'png';
 
 // output the barcode
-barcode_print($code, $encoding, $scale, $mode);
+if ($sysconf['zend_barcode_engine'] === true) {
+    // include Zend_Barcode library
+    ini_set('include_path', LIB_DIR);
+    require_once LIB_DIR . 'Zend/Barcode.php';
+    
+    $act = isset($get->act) ? trim($get->act) : 'save';
+    $output = isset($get->output) ? trim($get->output) : 'image';
+    $ext = $output == 'image' ? $mode : 'pdf';
+
+    $file_name = '../../images/barcodes/' . $code . '.' . $ext;
+
+    $options = array('text' => $code);
+    //$options['barHeight'] = 50;
+    //$options['barThickWidth'] = 3;
+    //$options['barThinWidth'] = 1;
+    $options['factor'] = $scale;
+    //$options['foreColor'] = "#000000";
+    //$options['backgroundColor'] = "#FFFFFF";
+    //$options['reverseColor'] = FALSE;
+    //$options['orientation'] = 0;
+    $options['font'] = "./DejaVuSans.ttf";
+    //$options['fontSize'] = 10;
+    //$options['withBorder'] = FALSE;
+    //$options['withQuietZones'] = TRUE;
+    //$options['drawText'] = TRUE;
+    //$options['stretchText'] = FALSE;
+    //$options['withChecksum'] = FALSE;
+    //$options['withChecksumInText'] = FALSE;
+
+    // output the barcode
+    $renderer = Zend_Barcode:: factory(
+        $encoding, $output, $options, array()
+    );
+    if ($act == 'save') {
+        call_user_func('image'.$mode, $renderer->draw(), $file_name);
+    } else {
+        $renderer->render();
+    }
+} else {
+    // include php-barcode lib
+    require "php-barcode.php";
+    barcode_print($code, $encoding, $scale, $mode);
+}
 
 ?>
