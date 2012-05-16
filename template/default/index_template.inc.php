@@ -161,9 +161,15 @@ $social = array (
       <div class="tagline">
        <?php echo __('Information'); ?>
       </div>
-      <p class="info">
+      <div class="info">
        <?php echo $info; ?>
-      </p>
+      </div>
+    <?php if (utility::isMemberLogin()) { ?>
+    <div class="info">
+	    <?php echo $header_info; ?>
+    </div>	    
+    <?php } ?>
+
       <?php if ($sysconf['enable_search_clustering']) { ?>
       <div class="tagline">
        <?php echo __('Search Cluster'); ?>
@@ -187,6 +193,7 @@ $social = array (
 	    <div class="tagline">
 		    <?php echo __('Collections'); ?>
 		    <a href="javascript: history.back();" class="back to_right"> <?php echo __('Back'); ?> </a>
+		    <br/>
 	    </div>
 	    <div class="search-result-info">
 		 <?php echo $search_result_info; ?>
@@ -196,14 +203,15 @@ $social = array (
 			<div class="simply" >
 			    <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
 			    <input type="hidden" name="search" value="Search" />
-			    <input type="text" name="keywords" id="keyword" />
+			    <input type="text" name="keywords" id="keyword" placeholder="<?php echo __('Keyword'); ?>" />
 			    </form>
 			</div>
 		    </div>
 		    <div id="advance-search" style="display:none;" >
 			<form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
+		    <input type="hidden" name="search" value="Search" />				
 			<div class="simply" >
-			    <input type="text" name="title" id="title" />
+			    <input type="text" name="title" id="title" placeholder="Title" />
 			</div>
 			<div class="advance">
 			<table width="100%">
@@ -282,12 +290,14 @@ $social = array (
 	    <div class="info">
 		    <?php echo $info; ?>
 	    </div>
+	    <?php if (utility::isMemberLogin()) { ?>	    
 	    <div class="tagline">
 		    <?php echo __('User Login'); ?>
 	    </div>
 	    <div class="info">
 		    <?php echo $header_info; ?>
 	    </div>
+	    <?php } ?>
     </div>
     <div class="section">
 	    <div class="collections-list">
@@ -304,6 +314,11 @@ $social = array (
 			    <?php echo $page_title; ?>
 			    <a href="javascript: history.back();" class="back to_right"> <?php echo __('Back'); ?> </a>
 		    </div>
+		    <?php if (utility::isMemberLogin()) { ?>
+		    <div class="search-result-info">
+			    <?php echo $header_info; ?>
+		    </div>	    
+		    <?php } ?>
 		    <div class="section">
 			    <div class="collection-detail">
 				    <div class="content-padding"><?php echo $main_content; ?></div>
@@ -315,19 +330,27 @@ $social = array (
     <div class="tagline">
 	    <?php echo $info; ?>
     </div>
+    <?php if (utility::isMemberLogin()) { ?>	    
+    <div class="search-result-info">
+	    <?php echo $header_info; ?>
+    </div>	    
+    <?php } ?>
+    
     <div class="search">
 	    <div id="simply-search">
 			<div class="simply" >
 			    <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
 			    <input type="hidden" name="search" value="Search" />
-			    <input type="text" name="keywords" id="keyword" />
+			    <input type="text" name="keywords" id="keyword" placeholder="<?php echo __('Keyword'); ?>" />
 			    </form>
 			</div>
 	    </div>
 	    <div id="advance-search" style="display:none;" >
 		<form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
+	    <input type="hidden" name="search" value="Search" />				
+	
 		<div class="simply" >
-		    <input type="text" name="title" id="title" />
+		    <input type="text" name="title" id="title" placeholder="<?php echo __('Title'); ?>" />
 		</div>
 		<div class="advance">
 		<table width="100%">

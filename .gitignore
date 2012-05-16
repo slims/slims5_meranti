@@ -8,3 +8,4 @@ repository/*
 .DS_Store
 ._.*
 ._*
+.project
