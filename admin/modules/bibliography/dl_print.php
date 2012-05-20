@@ -79,7 +79,7 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
         } else {
             // Item ID
             $itemID = (integer)$itemID;
-            if (isset($_SESSION['labels'][$itemID])) {
+            if (isset($_SESSION['labels']['item'][$itemID])) {
                 continue;
             }
             $_SESSION['labels']['item'][$itemID] = $itemID;
