@@ -57,10 +57,10 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
     /* LABEL SESSION ADDING PROCESS */
     $print_count = 0;
     if (isset($_SESSION['labels']['biblio'])) {
-        $print_count += count($_SESSION['labels']['biblio']);
+        $print_count_biblio = count($_SESSION['labels']['biblio']);
     }
     if (isset($_SESSION['labels']['item'])) {
-        $print_count += count($_SESSION['labels']['item']);
+        $print_count_item = count($_SESSION['labels']['item']);
     }
     // loop array
     foreach ($_POST['itemID'] as $itemID) {
@@ -70,11 +70,12 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
         }
         if (stripos($itemID, 'b', 0) !== false) {
             // Biblio ID
-            $itemID = preg_replace('@[a-zA-Z ]@i', '', $itemID);
-            if (isset($_SESSION['labels']['biblio'][$itemID])) {
+            $biblioID = str_ireplace('b', '', $itemID);
+            if (isset($_SESSION['labels']['biblio'][$biblioID])) {
                 continue;
             }
-            $_SESSION['labels']['biblio'][$itemID] = $itemID;
+            $_SESSION['labels']['biblio'][$biblioID] = $biblioID;
+            $print_count_biblio++;
         } else {
             // Item ID
             $itemID = (integer)$itemID;
@@ -82,15 +83,16 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
                 continue;
             }
             $_SESSION['labels']['item'][$itemID] = $itemID;
+            $print_count_item++;
         }
-        $print_count++;
     }
+    $print_count = $print_count_item + $print_count_biblio;
+    echo '<script type="text/javascript">top.$(\'#queueCount\').html(\''.$print_count.'\');</script>';
     if (isset($limit_reach)) {
         $msg = str_replace('{max_print}', $max_print, __('Selected items NOT ADDED to print queue. Only {max_print} can be printed at once'));
         utility::jsAlert($msg);
     } else {
         // update print queue count object
-        echo '<script type="text/javascript">parent.$(\'#queueCount\').html(\''.$print_count.'\');</script>';
         utility::jsAlert(__('Selected items added to print queue'));
     }
     exit();
@@ -99,7 +101,7 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
 // clean print queue
 if (isset($_GET['action']) AND $_GET['action'] == 'clear') {
     utility::jsAlert(__('Print queue cleared!'));
-    echo '<script type="text/javascript">parent.$(\'#queueCount\').html(\'0\');</script>';
+    echo '<script type="text/javascript">top.$(\'#queueCount\').html(\'0\');</script>';
     unset($_SESSION['labels']);
     exit();
 }
@@ -224,11 +226,11 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     </div>
     <div class="infoBox">
         <?php
-        echo __('Maximum').' <font style="color: #FF0000">'.$max_print.'</font> '.__('records can be printed at once. Currently there is').' '; //mfc
+        echo __('Maximum').' <font style="color: #FF0000">'.$max_print.'</font> '.__('records can be printed at once. Currently there is').' ';
         if (isset($_SESSION['labels'])) {
-            echo '<font id="queueCount" style="color: #FF0000">'.count($_SESSION['labels']).'</font>';
+            echo '<font id="queueCount" style="color: #FF0000">'.@( count($_SESSION['labels']['item'])+count($_SESSION['labels']['biblio']) ).'</font>';
         } else { echo '<font id="queueCount" style="color: #FF0000">0</font>'; }
-        echo ' '.__('in queue waiting to be printed.'); //mfc
+        echo ' '.__('in queue waiting to be printed.');
         ?>
     </div>
 </div>
@@ -298,8 +300,8 @@ $datagrid->column_width = array(0 => '75%', 1 => '20%');
 // put the result into variables
 $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, $can_read);
 if (isset($_GET['keywords']) AND $_GET['keywords']) {
-    $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
-    echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"<div>'.__('Query took').' <b>'.$datagrid->query_time.'</b> '.__('second(s) to complete').'</div></div>'; //mfc
+    $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords'));
+    echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"<div>'.__('Query took').' <b>'.$datagrid->query_time.'</b> '.__('second(s) to complete').'</div></div>';
 }
 echo $datagrid_result;
 /* main content end */

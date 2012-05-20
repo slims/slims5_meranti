@@ -89,12 +89,12 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
             $print_count++;
         }
     }
-    echo 'parent.$(\'#queueCount\').html(\''.$print_count.'\')';
+    echo 'top.$(\'#queueCount\').html(\''.$print_count.'\')';
     echo '</script>';
     // update print queue count object
     sleep(2);
     if (isset($limit_reach)) {
-        $msg = str_replace('{max_print}', $max_print, __('Selected items NOT ADDED to print queue. Only {max_print} can be printed at once')); //mfc
+        $msg = str_replace('{max_print}', $max_print, __('Selected items NOT ADDED to print queue. Only {max_print} can be printed at once'));
         utility::jsAlert($msg);
     } else {
       utility::jsAlert(__('Selected items added to print queue'));
@@ -105,7 +105,7 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
 // clean print queue
 if (isset($_GET['action']) AND $_GET['action'] == 'clear') {
     // update print queue count object
-    echo '<script type="text/javascript">parent.$(\'#queueCount\').html(\'0\');</script>';
+    echo '<script type="text/javascript">top.$(\'#queueCount\').html(\'0\');</script>';
     utility::jsAlert(__('Print queue cleared!'));
     unset($_SESSION['barcodes']);
     exit();
@@ -218,11 +218,11 @@ if (isset($_GET['action']) AND $_GET['action'] == 'print') {
     </div>
     <div class="infoBox">
     <?php
-    echo __('Maximum').' <font style="color: #f00">'.$max_print.'</font> '.__('records can be printed at once. Currently there is').' '; //mfc
+    echo __('Maximum').' <font style="color: #f00">'.$max_print.'</font> '.__('records can be printed at once. Currently there is').' ';
     if (isset($_SESSION['barcodes'])) {
         echo '<font id="queueCount" style="color: #f00">'.count($_SESSION['barcodes']).'</font>';
     } else { echo '<font id="queueCount" style="color: #f00">0</font>'; }
-    echo ' '.__('in queue waiting to be printed.'); //mfc
+    echo ' '.__('in queue waiting to be printed.');
     ?>
     </div>
 </div>
@@ -290,8 +290,8 @@ $datagrid->chbox_form_URL = $_SERVER['PHP_SELF'];
 // put the result into variables
 $datagrid_result = $datagrid->createDataGrid($dbs, $table_spec, 20, $can_read);
 if (isset($_GET['keywords']) AND $_GET['keywords']) {
-    $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords')); //mfc
-    echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"<div>'.__('Query took').' <b>'.$datagrid->query_time.'</b> '.__('second(s) to complete').'</div></div>'; //mfc
+    $msg = str_replace('{result->num_rows}', $datagrid->num_rows, __('Found <strong>{result->num_rows}</strong> from your keywords'));
+    echo '<div class="infoBox">'.$msg.' : "'.$_GET['keywords'].'"<div>'.__('Query took').' <b>'.$datagrid->query_time.'</b> '.__('second(s) to complete').'</div></div>';
 }
 echo $datagrid_result;
 /* main content end */
