@@ -89,15 +89,15 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID']) AND isset($_POST['itemA
             $print_count++;
         }
     }
+    echo 'parent.$(\'#queueCount\').html(\''.$print_count.'\')';
     echo '</script>';
+    // update print queue count object
     sleep(2);
     if (isset($limit_reach)) {
         $msg = str_replace('{max_print}', $max_print, __('Selected items NOT ADDED to print queue. Only {max_print} can be printed at once')); //mfc
         utility::jsAlert($msg);
     } else {
-        // update print queue count object
-        echo '<script type="text/javascript">parent.$(\'#queueCount\').html(\''.$print_count.'\');</script>';
-        utility::jsAlert(__('Selected items added to print queue'));
+      utility::jsAlert(__('Selected items added to print queue'));
     }
     exit();
 }
