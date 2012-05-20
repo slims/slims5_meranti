@@ -26,6 +26,40 @@
 	$completed = false;
 	$error_mg  = array();	
 
+	function apphp_db_install_core($database, $sql_file)
+	{
+		$db_error = false;
+
+		if (!@apphp_db_select_db($database)) {
+			if (@apphp_db_query('create database ' . $database)) {
+				apphp_db_select_db($database);
+			} else {
+				$db_error = mysql_error();
+				return false;		
+			}
+		}
+
+		if (!$db_error) {
+			if (file_exists($sql_file)) {
+                include_once $sql_file;
+                foreach ($sql['create'] as $value) {
+                	mysql_query($value);
+                }
+                foreach ($sql['insert'] as $value) {
+                	mysql_query($value);
+                }
+                foreach ($sql['alter'] as $value) {
+                	mysql_query($value);
+                }
+              return true;
+			} else {
+			  $db_error = 'SQL file does not exist: ' . $sql_file;
+			  return false;
+			}
+        }
+	}
+
+
 	function apphp_db_install($database, $sql_file)
 	{
 		$db_error = false;
@@ -101,6 +135,8 @@
 		}
 	}
 
+
+
 	function apphp_db_select_db($database) {
 		return mysql_select_db($database);
 	}
@@ -152,7 +188,7 @@
 				$link = @mysql_connect($database_host, $database_username, $database_password);
 				    if($link){					
 					    if (@mysql_select_db($database_name)) {                       
-							if(false == ($db_error = apphp_db_install($database_name, $sql_dump))){
+							if(false == ($db_error = apphp_db_install_core($database_name, $sql_dump))){
 								$error_mg[] = "<li>Could not read file ".$sql_dump."! Please check if the file exists</li>";                            
 								@unlink($config_file_path);
 							}else{

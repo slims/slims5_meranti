@@ -28,5 +28,5 @@ $config_file_path = $config_file_directory.$config_file_name;
 $application_name = "SLiMS Easy Installer";
 $application_start_file = "../index.php";
 $license_agreement_page = "";
-$sql_dump = "senayan.sql";
+$sql_dump = "senayan.sql.php";
 $sql_sample	= "sampledata.sql";
