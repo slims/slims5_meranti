@@ -1,9 +1,5 @@
 <?php
-
-@ini_set('display_errors', true);
-
-$sql['create'][] = "
-CREATE TABLE IF NOT EXISTS `biblio` (
+$sql['create'][] = 'CREATE TABLE IF NOT EXISTS `biblio` (
   `biblio_id` int(11) NOT NULL auto_increment,
   `gmd_id` int(3) default NULL,
   `title` text collate utf8_unicode_ci NOT NULL,
@@ -15,17 +11,17 @@ CREATE TABLE IF NOT EXISTS `biblio` (
   `collation` varchar(50) collate utf8_unicode_ci default NULL,
   `series_title` varchar(200) collate utf8_unicode_ci default NULL,
   `call_number` varchar(50) collate utf8_unicode_ci default NULL,
-  `language_id` char(5) collate utf8_unicode_ci default 'en',
+  `language_id` char(5) collate utf8_unicode_ci default \'en\',
   `source` varchar(3) collate utf8_unicode_ci default NULL,
   `publish_place_id` int(11) default NULL,
   `classification` varchar(40) collate utf8_unicode_ci default NULL,
   `notes` text collate utf8_unicode_ci,
   `image` varchar(100) collate utf8_unicode_ci default NULL,
   `file_att` varchar(255) collate utf8_unicode_ci default NULL,
-  `opac_hide` smallint(1) default '0',
-  `promoted` smallint(1) default '0',
+  `opac_hide` smallint(1) default \'0\',
+  `promoted` smallint(1) default \'0\',
   `labels` text collate utf8_unicode_ci NULL,
-  `frequency_id` int(11) NOT NULL default '0',
+  `frequency_id` int(11) NOT NULL default \'0\',
   `spec_detail_info` text collate utf8_unicode_ci,
   `input_date` datetime default NULL,
   `last_update` datetime default NULL,
@@ -36,54 +32,45 @@ CREATE TABLE IF NOT EXISTS `biblio` (
   FULLTEXT KEY `title_ft_idx` (`title`,`series_title`),
   FULLTEXT KEY `notes_ft_idx` (`notes`),
   FULLTEXT KEY `labels` (`labels`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-";
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;';
 
-$sql['create'][] = "
-CREATE TABLE IF NOT EXISTS `biblio_attachment` (
+$sql['create'][] = 'CREATE TABLE IF NOT EXISTS `biblio_attachment` (
   `biblio_id` int(11) NOT NULL,
   `file_id` int(11) NOT NULL,
-  `access_type` enum('public','private') collate utf8_unicode_ci NOT NULL,
+  `access_type` enum(\'public\',\'private\') collate utf8_unicode_ci NOT NULL,
   `access_limit` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL,
   KEY `biblio_id` (`biblio_id`),
   KEY `file_id` (`file_id`),
   KEY `biblio_id_2` (`biblio_id`,`file_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-";
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;';
 
-$sql['create'][] = "
-CREATE TABLE IF NOT EXISTS `biblio_author` (
-  `biblio_id` int(11) NOT NULL default '0',
-  `author_id` int(11) NOT NULL default '0',
-  `level` int(1) NOT NULL default '1',
+$sql['create'][] = 'CREATE TABLE IF NOT EXISTS `biblio_author` (
+  `biblio_id` int(11) NOT NULL default \'0\',
+  `author_id` int(11) NOT NULL default \'0\',
+  `level` int(1) NOT NULL default \'1\',
   PRIMARY KEY  (`biblio_id`,`author_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-";
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;';
 
-$sql['create'][] = "
-CREATE TABLE IF NOT EXISTS `biblio_topic` (
-  `biblio_id` int(11) NOT NULL default '0',
-  `topic_id` int(11) NOT NULL default '0',
-  `level` int(1) NOT NULL default '1',
+$sql['create'][] = 'CREATE TABLE IF NOT EXISTS `biblio_topic` (
+  `biblio_id` int(11) NOT NULL default \'0\',
+  `topic_id` int(11) NOT NULL default \'0\',
+  `level` int(1) NOT NULL default \'1\',
   PRIMARY KEY  (`biblio_id`,`topic_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-";
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;';
 
-$sql['create'][] = "
-CREATE TABLE IF NOT EXISTS `content` (
+$sql['create'][] = 'CREATE TABLE IF NOT EXISTS `content` (
   `content_id` int(11) NOT NULL auto_increment,
   `content_title` varchar(255) collate utf8_unicode_ci NOT NULL,
   `content_desc` text collate utf8_unicode_ci NOT NULL,
   `content_path` varchar(20) collate utf8_unicode_ci NOT NULL,
   `input_date` datetime NOT NULL,
   `last_update` datetime NOT NULL,
-  `content_ownpage` enum('1','2') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+  `content_ownpage` enum(\'1\',\'2\') COLLATE utf8_unicode_ci NOT NULL DEFAULT \'1\',
   PRIMARY KEY  (`content_id`),
   UNIQUE KEY `content_path` (`content_path`),
   FULLTEXT KEY `content_title` (`content_title`),
   FULLTEXT KEY `content_desc` (`content_desc`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
-";
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5;';
 
 $sql['insert'][] = 'INSERT INTO `content` (`content_id`, `content_title`, `content_desc`, `content_path`, `input_date`, `last_update`, `content_ownpage`) VALUES
 (1, \'Library Information\', \'<h3>Contact Information</h3>\r\n<p><strong>Address :</strong> <br /> Jenderal Sudirman Road, Senayan, Jakarta, Indonesia - Postal Code : 10270 <br /> <strong>Phone Number :</strong> <br /> (021) 5711144 <br /> <strong>Fax Number :</strong> <br /> (021) 5711144</p>\r\n<h3>Opening Hours</h3>\r\n<p><strong>Monday - Friday :</strong> <br /> Open : 08.00 AM<br /> Break : 12.00 - 13.00 PM<br /> Close : 20.00 PM <br /> <strong>Saturday  :</strong> <br /> Open : 08.00 AM<br /> Break : 12.00 - 13.00 PM<br /> Close : 17.00 PM</p>\r\n<h3>Collections</h3>\r\n<p>We have many types of collections in our library, range from Fictions to Sciences Material, from printed material to digital collections such CD-ROM, CD, VCD and DVD. We also collect daily serials publications such as newspaper and also monthly serials such as magazines.</p>\r\n<h3>Library Membership</h3>\r\n<p>To be able to loan our library collections, you must first become library member. There is terms and conditions that you must obey.</p>\', \'libinfo\', \'2009-09-13 19:48:16\', \'2009-09-13 19:48:16\', \'1\'),
@@ -777,7 +764,4 @@ $sql['create'][] = "CREATE TABLE IF NOT EXISTS `member_custom` (
 `member_id` VARCHAR(20) NOT NULL ,
 PRIMARY KEY ( `member_id` )
 ) ENGINE = MYISAM COMMENT = 'one to one relation with real member table';
-";
-
-$sql['alter'][] = "ALTER TABLE `biblio` DROP INDEX `references_idx` ,ADD INDEX `references_idx` ( `gmd_id` , `publisher_id` , `language_id` , `publish_place_id`) ;
 ";

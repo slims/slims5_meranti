@@ -1088,9 +1088,3 @@ CREATE TABLE IF NOT EXISTS `member_custom` (
 `member_id` VARCHAR(20) NOT NULL ,
 PRIMARY KEY ( `member_id` )
 ) ENGINE = MYISAM COMMENT = 'one to one relation with real member table';
-
---
--- Some update for meranti
---
-ALTER TABLE `biblio` DROP INDEX `references_idx` ,ADD INDEX `references_idx` ( `gmd_id` , `publisher_id` , `language_id` , `publish_place_id`) ;
-
