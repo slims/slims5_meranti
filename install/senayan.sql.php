@@ -1,4 +1,12 @@
 <?php
+$sql['create'][] = 'CREATE TABLE IF NOT EXISTS `backup_log` (
+  `backup_log_id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) NOT NULL default \'0\',
+  `backup_time` datetime NOT NULL default \'0000-00-00 00:00:00\',
+  `backup_file` varchar(100) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`backup_log_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;';
+
 $sql['create'][] = 'CREATE TABLE IF NOT EXISTS `biblio` (
   `biblio_id` int(11) NOT NULL auto_increment,
   `gmd_id` int(3) default NULL,
