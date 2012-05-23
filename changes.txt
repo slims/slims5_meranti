@@ -19,7 +19,23 @@ THANKS TO OUR USERS AND COMMUNITIES, YOU ARE DEVELOPERS TOO!
 
 SLIMS 5 (Meranti)
 ========================================================================
-
+Added: New Template for Admin and OPAC. For old templates can be 
+       downloaded from https://github.com/slimstemplate.
+Added: Z39.50 SRU: Search/Retrieval via URL
+Added: OAI/PMH support (server).
+Added: Statement of Responbility field in bibliographic form.
+Added: Item(s) code generator
+Added: Integrated Classification in Subject field
+Added: Catalog card printing
+Fixed: Bugs in import/export of bibliographic and item data.
+Added: Search result clustering :)
+Added: Brazilian Portuguise language
+Added: remove orphaned publisher and place
+Added: Import MARC data
+added: Member photo capture foto directly from membership form.
+added: keyboard shortcut to modules and submodules.
+added: option to not counting fines in holiday.
+added: Alternative to barcode printing using zend barcode
 
 SENAYAN 3 Stable 15 (Matoa)
 ========================================================================
