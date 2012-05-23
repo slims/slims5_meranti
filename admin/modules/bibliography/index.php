@@ -102,7 +102,12 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         $data['edition'] = trim($dbs->escape_string(strip_tags($_POST['edition'])));
         $data['gmd_id'] = $_POST['gmdID'];
         $data['isbn_issn'] = trim($dbs->escape_string(strip_tags($_POST['isbn_issn'])));
-        $data['classification'] = trim($dbs->escape_string(strip_tags($_POST['class'])));
+        if (trim($_POST['class']) != '0' && trim($_POST['class']) != '') {
+          $data['classification'] = trim($dbs->escape_string(strip_tags($_POST['class'])));
+        } else {
+          $data['classification'] = trim($dbs->escape_string(strip_tags($_POST['class_search_str'])));
+        }
+
         // check publisher
         if ($_POST['publisherID'] != '0') {
             $data['publisher_id'] = intval($_POST['publisherID']);
