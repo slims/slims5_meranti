@@ -11,31 +11,38 @@ Arif Syamsudin (buitenzorg812@lc.vlsm.org, buitenzorg812@gmail.com)
 Rasyid Ridho (rasyidridho@gmail.com, ridhoedogawa@yahoo.com)
 Eddy Subratha (eddy.subratha@gmail.com)
 Indra Sutriadi (indra.sutriadi@gmail.com)
+
+Localisation contributors :
 Tobias Zeumer (tzeumer@verweisungsform.de)
 Jhon Urrego Felipe Mejia (ingenierofelipeurrego@gmail.com)
+Prasitichai เรารักในหลวง
+A. K. M. Nurul Alam
 
 THANKS TO OUR USERS AND COMMUNITIES, YOU ARE DEVELOPERS TOO!
 
 
 SLIMS 5 (Meranti)
 ========================================================================
-Added: New Template for Admin and OPAC. For old templates can be 
-       downloaded from https://github.com/slimstemplate.
+Added: Web-based SLiMS installer
+Added: New Template for Admin and OPAC. For old templates can be downloaded from https://github.com/slimstemplate.
 Added: Z39.50 SRU: Search/Retrieval via URL
 Added: OAI/PMH support (server).
 Added: Statement of Responbility field in bibliographic form.
 Added: Item(s) code generator
 Added: Integrated Classification in Subject field
 Added: Catalog card printing
-Fixed: Bugs in import/export of bibliographic and item data.
 Added: Search result clustering :)
 Added: Brazilian Portuguise language
 Added: remove orphaned publisher and place
 Added: Import MARC data
-added: Member photo capture foto directly from membership form.
-added: keyboard shortcut to modules and submodules.
-added: option to not counting fines in holiday.
-added: Alternative to barcode printing using zend barcode
+Added: Member photo capture foto directly from membership form.
+Added: keyboard shortcut to modules and submodules.
+Added: option to not counting fines in holiday.
+Added: Alternative to barcode printing using zend barcode
+Added: Improvised mobile apps view
+Fixed: Bugs in import/export of bibliographic and item data.
+Fixed: Missing filter in item usage statistics on Reporting module
+Fixed: Bugs in XML result
 
 SENAYAN 3 Stable 15 (Matoa)
 ========================================================================
