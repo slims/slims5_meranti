@@ -11,7 +11,7 @@ ob_start(); /* <- DONT REMOVE THIS COMMAND */
       <div>
        <a class="back" href="javascript: history.back();"> <?php echo __('Back'); ?> </a>
        &nbsp; | &nbsp; 
-       <a target="_blank" href="index.php?p=show_detail&inXML=true&id=<?=$_GET['id']?>" class="xml" style="margin-top:10px;margin-right:20px;">XML</a>      
+       <a target="_blank" href="index.php?p=show_detail&inXML=true&id=<?php echo $_GET['id'];?>" class="xml" style="margin-top:10px;margin-right:20px;">XML</a>      
       </div>
      </div>
 
