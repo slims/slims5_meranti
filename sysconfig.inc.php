@@ -338,7 +338,7 @@ $sysconf['watermark']['opacity'] = '50'; #is opacity from 0 (transparent) to 100
  */
 $sysconf['ucs']['enable'] = false;
 // auto delete same record on UCS?
-$sysconf['ucs']['auto_delete'] = true;
+$sysconf['ucs']['auto_delete'] = false;
 // auto insert new record to UCS?
 $sysconf['ucs']['auto_insert'] = false;
 
