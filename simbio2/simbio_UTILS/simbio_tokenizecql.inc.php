@@ -70,11 +70,11 @@ function simbio_tokenizeCQL($str_query, $arr_searcheable_fields, $arr_stop_words
         // if (in_array($_token, array('exact', 'and', 'or', 'not'))) {
         if (preg_match('@\b(exact|and|or|not)\b@i', $_token)) {
             $_bool = strtolower($_token);
-            if ($_token == 'exact' AND !$_inside_quote) {
+            if ($_bool == 'exact' AND !$_inside_quote) {
                 $_last_boolean = '++';
-            } else if ($_token == 'or' AND !$_inside_quote) {
+            } else if ($_bool == 'or' AND !$_inside_quote) {
                 $_last_boolean = '*';
-            } else if ($_token == 'not' AND !$_inside_quote) {
+            } else if ($_bool == 'not' AND !$_inside_quote) {
                 $_last_boolean = '-';
             } else {
                 $_last_boolean = '+';
