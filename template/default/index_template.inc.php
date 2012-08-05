@@ -319,7 +319,7 @@ $social = array (
 			    <?php echo $header_info; ?>
 		    </div>	    
 		    <?php } ?>
-		    <div class="section">
+		    <div class="section page">
 			    <div class="collection-detail">
 				    <div class="content-padding"><?php echo $main_content; ?></div>
 				    <div class="clear">&nbsp;</div>
