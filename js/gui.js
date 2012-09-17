@@ -419,4 +419,9 @@ $('document').ready(function() {
     // disable form with class "disabled"
     $('form.disabled').disableForm();
     $(document).registerAdminEvents({ajaxifyLink: false, ajaxifyForm: false});
+
+    $('#keyword').bind('webkitspeechchange', function() {
+        $(this).parent().submit();
+    });                
+    
 });
