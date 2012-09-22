@@ -108,6 +108,22 @@ hr
 
 }
 
+label span {
+	width: 200px;
+	float: left;
+	display: inline;
+}
+
+input[type=radio] {
+	width: auto;
+	padding: 5px;
+}
+
+p.strip {
+	border-bottom: 1px solid #FFF;
+	padding-bottom: 5px;
+}
+
 /*----------------------------------------------------------------*/
 /* Header Layout */
 /*----------------------------------------------------------------*/
@@ -391,6 +407,11 @@ hr
 	text-align:left;
 	background-color:rgba(0,0,0,0.9);
 	filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#000000,endColorstr=#000000);
+}
+
+.section.page
+{
+	width: 100%;
 }
 
 /*----------------------------------------------------------------*/
