@@ -478,7 +478,7 @@ $sysconf['OAI']['MetadataFormats']['Dublin Core'] = array(
   'namespace' => 'http://www.openarchives.org/OAI/2.0/oai_dc/');
 
 // Search clustering
-$sysconf['enable_search_clustering'] = true;
+$sysconf['enable_search_clustering'] = false;
 
 // check if session is auto started and then destroy it
 if ($is_auto = @ini_get('session.auto_start')) { define('SESSION_AUTO_STARTED', $is_auto); }

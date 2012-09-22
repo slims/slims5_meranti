@@ -23,6 +23,10 @@ if (!$sysconf['enable_search_clustering']) {
   exit();
 }
 
+if ($sysconf['index']['type'] != 'index') {
+  exit();
+}
+
 if (!isset($_GET['q'])) {
   echo "No Cluster Found!";
   exit();
