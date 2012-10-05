@@ -108,7 +108,8 @@ $social = array (
 			</div>
 			<div class="tools">
 			    <form name="simpleSearch" action="index.php" method="get">
-			    <input type="text" name="keywords" class="keywords" />
+			    <input type="hidden" name="search" value="Search" /> 
+			    <input type="text" name="keywords" id="keyword" class="keywords"  placeholder="<?php echo __('Keyword'); ?>" x-webkit-speech="x-webkit-speech" />
 			    <input type="submit" name="search" value="<?php echo __('Search'); ?>" class="search"/>
 			    </form>			    
 			</div>
@@ -149,5 +150,13 @@ $social = array (
 
 		</div>
 	</div>
+    <script type="text/javascript">
+    $('document').ready(function() {
+	// Google Voice Search    
+	$('#keyword').bind('webkitspeechchange', function() {
+	    $(this).parents().submit();
+	});                    
+    });	
+    </script>
 </body>
 </html>
