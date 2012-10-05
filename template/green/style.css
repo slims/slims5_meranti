@@ -1,0 +1,257 @@
+/* GENERAL FONT DEFINITION */
+
+body {
+    font-family: FreeSans, arial, helvetica, sans;
+    font-size: 11px;
+    line-height: 170%;
+    color: #666666;
+    margin: 0;
+    padding: 0;
+    background: url(media/body.jpg) fixed repeat-x bottom center;
+}
+
+/* ID definitions */
+
+#main {
+    width: 780px;
+    height: 100%;
+    min-height: 100%;
+    border: 1px solid #999999;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    margin: 0 auto;
+}
+
+#mainHeader {
+    height: 90px;
+    background: #CCCCCC url(media/header.jpg) repeat-x top left;
+}
+
+#headerImage {
+    margin-top: 5px;
+    float: left;
+    width: 80px;
+    height: 80px;
+    background: url(media/logo.png) no-repeat top left;
+    margin-left: 10px;
+}
+
+#libraryName {
+    float: left;
+    padding-top: 20px;
+    font-size: 23px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+#librarySubName {
+    margin-top: 7px;
+    font-size: 80%;
+}
+
+#sidepan {
+    background: #CCCCCC;
+    width: 200px;
+}
+
+#sidepan .heading {
+    font-weight: bold;
+    padding-top: 7px;
+    padding-left: 37px;
+    height: 28px;
+    color: #FFFFFF;
+    background: #CCCCCC url(media/section_bar_fill.png) repeat-x bottom left;
+}
+
+#sidepan form,p {
+    margin: 3px;
+    margin-bottom: 9px;
+}
+
+#headerInfo {
+    padding: 3px;
+}
+
+#mainContent {
+    background: #FFFFFF;
+    width: 580px;
+}
+
+#mainContent p,h3 {
+    margin: 3px;
+}
+
+#mainMenu {
+    height: 35px;
+    background: #CCCCCC url(media/bar_fill.png) repeat-x top left;
+}
+
+#menuList {
+    display: inline;
+    padding: 5px;
+    margin: 0;
+    list-style: none;
+}
+
+#menuList li {
+    display: inline;
+    margin: 5px;
+    padding: 0;
+    padding-left: 21px;
+    padding-top: 3px;
+    background: url(media/menu_img.png) no-repeat left;
+}
+
+#menuList .menu,.menu:hover {
+    font-size: 12px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+#menuList .menu:hover {
+    text-decoration: underline;
+}
+
+#infoBox {
+    margin: 3px;
+    border: 1px #999999 solid;
+    padding: 5px;
+    padding-left: 70px;
+    min-height: 50px;
+    background: url(media/infobox_img.png) no-repeat -5px -5px;
+}
+
+#loginForm {
+    margin: 0 auto;
+    margin-top: 40px;
+    padding-top: 105px;
+    background: url(media/login_bg.png) top left no-repeat;
+    width: 400px;
+    height: 300px;
+    text-align: center;
+}
+
+#loginButton, #homeButton {
+    font-size: 12px;
+    border: 1px #666666 solid;
+    background-image: url(media/gradien_short.jpg);
+    background-position: bottom left;
+}
+
+#homeButton {
+    color: #666666;
+}
+
+/* tags spesific style */
+
+input,textarea,select {
+    border: 1px #727272 solid;
+    font-size: 12px;
+}
+
+input:hover,textarea:hover,select:hover {
+    border: 1px #444444 solid;
+}
+
+h3 {
+    height: 30px;
+    padding-left: 45px;
+    padding-top: 10px;
+    background: url(media/section_heading.png) no-repeat bottom left;
+    border-bottom: 1px solid #999999;
+}
+
+a, a:hover {
+    font-size: 12px;
+    font-weight: bold;
+    color: #666666;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+/* classes definition */
+
+.detailLink, .xmlDetailLink {
+    padding: 1px;
+    border: 1px solid #999999;
+    text-decoration: none;
+    background-color: #CCCCCC;
+}
+
+.xmlDetailLink {
+    background-color: #FF9900;
+}
+
+.xmlResultLink {
+    padding: 1px;
+    padding-left: 3px;
+    padding-right: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #444444;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.item {
+    min-height: 70px;
+    text-align: left;
+    margin: 5px;
+    margin-bottom: 10px;
+    padding: 5px;
+    padding-top: 1px;
+    padding-left: 53px;
+    background: url(media/image.png) top left no-repeat;
+}
+
+.item a,a:hover {
+    color: #666666;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.item a:hover {
+    text-decoration: none;
+    color: #000000;
+}
+
+.item .detailLink {
+    font-size: 10px;
+}
+
+.item .xmlDetailLink {
+    font-size: 10px;
+    background-color: #FF9900;
+}
+
+.subItem {
+    margin-top: 3px;
+}
+
+.marginTop {
+    margin-top: 5px;
+}
+
+.border {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #999999;
+}
+
+.margined {
+    margin: 3px;
+}
+
+.tblHead {
+    background-color: #CCCCCC;
+    font-weight: bold;
+}
+
+.tblContent {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #CCCCCC;
+}
