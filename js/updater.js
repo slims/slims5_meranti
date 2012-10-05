@@ -114,26 +114,30 @@ var ucsUpload = function(strUploadHandler, strData) {
         return;
     }
     jQuery.ajax({
-        url: strUploadHandler,
-        type: 'POST',
-        data: strData,
-        dataType: 'json',
-        success: function(ajaxRespond) {
-                var jsonObj = ajaxRespond;
-                // alert(jsonObj.status + ': ' + jsonObj.message);
-                alert(jsonObj.message);
-            },
-        error: function(ajaxRespond) {
-            alert('UCS Upload error with message: ' + ajaxRespond.responseText);
-            }
-        });
+      url: strUploadHandler,
+      type: 'POST',
+      data: strData,
+      dataType: 'json',
+      success: function(ajaxRespond) {
+              var jsonObj = ajaxRespond;
+              // alert(jsonObj.status + ': ' + jsonObj.message);
+              alert(jsonObj.message);
+          },
+      error: function(ajaxRespond) {
+          alert('UCS Upload error with message: ' + ajaxRespond.responseText);
+          }
+      });
 }
 
 /* invoke UCS record update */
 var ucsUpdate = function(strURLHandler, strData) {
-    strData = strData.trim();
-    jQuery.ajax(strURLHandler, {
-        type: 'POST',
-        data: strData
-        });
+    strData = jQuery.trim(strData);
+    jQuery.ajax({
+      url: strURLHandler,
+      type: 'POST',
+      data: strData,
+      dataType: 'json',
+      error: function(jqXHR, textStatus, errorThrown) {  alert('Error updating UCS : ' + textStatus + ' (' + errorThrown + ')'); },
+      success: function(data, textStatus, jqXHR) {  alert('UCS record(s) updated'); }
+      });
 }

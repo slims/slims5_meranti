@@ -338,7 +338,7 @@ $sysconf['watermark']['opacity'] = '50'; #is opacity from 0 (transparent) to 100
  */
 $sysconf['ucs']['enable'] = false;
 // auto delete same record on UCS?
-$sysconf['ucs']['auto_delete'] = true;
+$sysconf['ucs']['auto_delete'] = false;
 // auto insert new record to UCS?
 $sysconf['ucs']['auto_insert'] = false;
 
@@ -478,7 +478,7 @@ $sysconf['OAI']['MetadataFormats']['Dublin Core'] = array(
   'namespace' => 'http://www.openarchives.org/OAI/2.0/oai_dc/');
 
 // Search clustering
-$sysconf['enable_search_clustering'] = true;
+$sysconf['enable_search_clustering'] = false;
 
 // check if session is auto started and then destroy it
 if ($is_auto = @ini_get('session.auto_start')) { define('SESSION_AUTO_STARTED', $is_auto); }

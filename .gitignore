@@ -9,3 +9,4 @@ repository/*
 ._.*
 ._*
 .project
+sysconfig.local.inc.php

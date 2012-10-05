@@ -67,7 +67,7 @@ class biblio_list extends biblio_list_model
         // parse query
         $this->orig_query = $str_criteria;
         $_queries = simbio_tokenizeCQL($str_criteria, $this->searchable_fields, $this->stop_words, $this->queries_word_num_allowed);
-        // var_dump($_queries);
+        // echo '<pre>'; var_dump($_queries); echo '</pre>';
         if (count($_queries) < 1) {
             return null;
         }

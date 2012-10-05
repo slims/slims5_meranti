@@ -500,7 +500,8 @@ class detail extends content_list
           while ($attachment_d = $attachment_q->fetch_assoc()) {
               // check member type privileges
               if ($attachment_d['access_limit']) { continue; }
-              $_xml_output .= htmlentities($attachment_d['file_title']);
+              $_xml_output .= preg_replace_callback('/&([a-zA-Z][a-zA-Z0-9]+);/S',
+                  'utility::convertXMLentities', htmlspecialchars(trim($attachment_d['file_title'])));
           }
           $_xml_output .= '</dc:relation>'."\n";
         }

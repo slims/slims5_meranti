@@ -363,7 +363,7 @@ abstract class biblio_list_model
                     $sysconf['authority_type'][$_auth_d['authority_type']] = 'personal';
                 }
                 $_buffer .= '<name type="'.$sysconf['authority_type'][$_auth_d['authority_type']].'" authority="'.$_auth_d['auth_list'].'">'."\n"
-                  .'<namePart>'.htmlentities($_auth_d['author_name']).'</namePart>'."\n"
+                  .'<namePart>'.preg_replace_callback('/&([a-zA-Z][a-zA-Z0-9]+);/S','utility::convertXMLentities', htmlspecialchars(trim($_auth_d['author_name']))).'</namePart>'."\n"
                   .'<role><roleTerm type="text">'.$sysconf['authority_level'][$_auth_d['level']].'</roleTerm></role>'."\n"
                 .'</name>'."\n";
             }
