@@ -341,7 +341,7 @@ $social = array (
 			<div class="simply" >
 			    <form name="advSearchForm" id="advSearchForm" action="index.php" method="get">
 			    <input type="hidden" name="search" value="Search" />
-			    <input type="text" name="keywords" id="keyword" placeholder="<?php echo __('Keyword'); ?>" x-webkit-speech />
+			    <input type="text" name="keywords" id="keyword" placeholder="<?php echo __('Keyword'); ?>" x-webkit-speech="x-webkit-speech" />
 			    </form>
 			</div>
 	    </div>
