@@ -145,8 +145,8 @@ if (isset($_POST['save']) AND (isset($_POST['topicID']) OR trim($_POST['search_s
     ?></select>
     <select name="level" style="width: 20%;">
     <?php
-    echo '<option value="1">Primary</option>';
-    echo '<option value="2">Additional</option>';
+    echo '<option value="1">'.$sysconf['subject_level'][1].'</option>';
+    echo '<option value="2">'.$sysconf['subject_level'][1].'</option>';
     ?>
     </select>
 </div>
