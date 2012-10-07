@@ -9,6 +9,10 @@ ob_start(); /* <- DONT REMOVE THIS COMMAND */
 <td class="tblContent" style="width: 80%;" valign="top">{title}</td>
 </tr>
 <tr>
+<td class="tblHead" style="width: 20%;" valign="top"><?php print __('Subtitle'); ?></td>
+<td class="tblContent" style="width: 80%;" valign="top">{subtitle}</td>
+</tr>
+<tr>
 <td class="tblHead" style="width: 20%;" valign="top"><?php print __('Edition'); ?></td>
 <td class="tblContent" style="width: 80%;" valign="top">{edition}</td>
 </tr>
@@ -34,8 +38,8 @@ ob_start(); /* <- DONT REMOVE THIS COMMAND */
 <td class="tblContent" style="width: 80%;" valign="top">{classification}</td>
 </tr>
 <tr>
-<td class="tblHead" style="width: 20%;" valign="top"><?php print __('Series Title'); ?></td>
-<td class="tblContent" style="width: 80%;" valign="top">{series_title}</td>
+<td class="tblHead" style="width: 20%;" valign="top"><?php print __('Series Title').' ('. __('Volume').')'; ?></td>
+<td class="tblContent" style="width: 80%;" valign="top">{series_title} ({volume})</td>
 </tr>
 <td class="tblHead" style="width: 20%;" valign="top"><?php print __('GMD'); ?></td>
 <td class="tblContent" style="width: 80%;" valign="top">{gmd_name}</td>

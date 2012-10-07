@@ -24,7 +24,7 @@ ob_start(); /* <- DONT REMOVE THIS COMMAND */
         <table id="review" width="100%">
          <tr>
           <th colspan="2">
-          {title}
+          {title}. {subtitle}
           </th>
          </tr>
          <tr>
@@ -61,8 +61,8 @@ ob_start(); /* <- DONT REMOVE THIS COMMAND */
           <td class="value">{classification}</td>
          </tr>
          <tr>
-          <td class="key"><?php print __('Series Title'); ?></td>  
-          <td class="value">{series_title}</td>
+          <td class="key"><?php print __('Series Title').' ('. __('Volume').')'; ?></td>  
+          <td class="value">{series_title} ({volume})</td>
          </tr>
          <tr>
           <td class="key"><?php print __('GMD'); ?></td>  

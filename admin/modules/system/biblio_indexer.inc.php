@@ -90,7 +90,7 @@ class biblio_indexer
 	 * @return	boolean	false on Failed, true otherwise
 	 */
 	public function makeIndex($int_biblio_id) {
-		$bib_sql = 'SELECT b.biblio_id, b.title, b.edition, b.publish_year, b.notes, b.series_title, b.classification, b.spec_detail_info,
+		$bib_sql = 'SELECT b.biblio_id, b.title, b.subtitle, b.edition, b.publish_year, b.notes, b.series_title, b.volume, b.classification, b.spec_detail_info,
 			g.gmd_name AS `gmd`, pb.publisher_name AS `publisher`, pl.place_name AS `publish_place`, b.isbn_issn,
 			lg.language_name AS `language`, b.call_number, b.opac_hide, b.promoted, b.labels, b.`collation`, b.image, b.input_date, b.last_update
 			FROM biblio AS b
@@ -112,6 +112,7 @@ class biblio_indexer
 
 		/* GMD , Title, Year  */
 		$data['title'] = $this->obj_db->escape_string($rb_id['title']);
+		$data['subtitle'] = $this->obj_db->escape_string($rb_id['subtitle']);
 		$data['edition'] = $this->obj_db->escape_string($rb_id['edition']);
 		$data['gmd'] = $this->obj_db->escape_string($rb_id['gmd']);
 		$data['publisher'] = $this->obj_db->escape_string($rb_id['publisher']);
@@ -138,6 +139,9 @@ class biblio_indexer
 		}
 		if ($rb_id['series_title'] != '') {
 		    $data['series_title'] = $this->obj_db->escape_string($rb_id['series_title']);
+		}
+		if ($rb_id['volume'] != '') {
+		    $data['volume'] = $this->obj_db->escape_string($rb_id['volume']);
 		}
 
 		/* author  */
