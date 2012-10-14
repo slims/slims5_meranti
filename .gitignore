@@ -1,3 +1,4 @@
+_templates/*
 lib/phpthumb/cache/phpThumb_cache*
 images/barcodes/*
 images/persons/*
