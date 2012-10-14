@@ -30,27 +30,27 @@ if (!defined('INDEX_AUTH')) {
 /* Location list */
 ob_start();
 echo '<option value="0">'.__('All Locations').'</option>';
-$loc_q = $dbs->query('SELECT location_name FROM mst_location LIMIT 50');
+$loc_q = $dbs->query('SELECT t1.location_name, COUNT(t2.location_id) AS num FROM mst_location AS t1 INNER JOIN item AS t2 ON t1.location_id = t2.location_id GROUP BY t2.location_id ORDER BY location_name LIMIT 50');
 while ($loc_d = $loc_q->fetch_row()) {
-    echo '<option value="'.$loc_d[0].'">'.$loc_d[0].'</option>';
+    echo '<option value="'.$loc_d[0].'">'.$loc_d[0].' ['.$loc_d[1].']</option>';
 }
 $location_list = ob_get_clean();
 
 /* Collection type List */
 ob_start();
 echo '<option value="0">'.__('All Collections').'</option>';
-$colltype_q = $dbs->query('SELECT coll_type_name FROM mst_coll_type LIMIT 50');
+$colltype_q = $dbs->query('SELECT t1.coll_type_name, COUNT(t2.coll_type_id) AS num FROM mst_coll_type AS t1 INNER JOIN item AS t2 ON t1.coll_type_id = t2.coll_type_id GROUP BY t2.coll_type_id ORDER BY coll_type_name LIMIT 50');
 while ($colltype_d = $colltype_q->fetch_row()) {
-    echo '<option value="'.$colltype_d[0].'">'.$colltype_d[0].'</option>';
+    echo '<option value="'.$colltype_d[0].'">'.$colltype_d[0].' ['.$colltype_d[1].']</option>';
 }
 $colltype_list = ob_get_clean();
 
 /* GMD List */
 ob_start();
 echo '<option value="0">'.__('All GMD/Media').'</option>';
-$gmd_q = $dbs->query('SELECT gmd_name FROM mst_gmd LIMIT 50');
+$gmd_q = $dbs->query('SELECT t1.gmd_name, COUNT(t2.gmd_id) AS num FROM mst_gmd AS t1 INNER JOIN biblio AS t2 ON t1.gmd_id = t2.gmd_id GROUP BY t2.gmd_id ORDER BY gmd_name LIMIT 50');
 while ($gmd_d = $gmd_q->fetch_row()) {
-    echo '<option value="'.$gmd_d[0].'">'.$gmd_d[0].'</option>';
+    echo '<option value="'.$gmd_d[0].'">'.$gmd_d[0].' ['.$gmd_d[1].']</option>';
 }
 $gmd_list = ob_get_clean();
 
