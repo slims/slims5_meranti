@@ -183,9 +183,10 @@ class biblio_list extends biblio_list_model
                         } else { $_sql_criteria .= ' biblio.classification LIKE \''.$_q.'%\''; }
                         break;
                     case 'isbn' :
+                    		$isbn = str_replace('-', '', $_q);
                         if ($_b == '-') {
-                            $_sql_criteria .= ' biblio.isbn_issn!=\''.$_q.'\'';
-                        } else { $_sql_criteria .= ' biblio.isbn_issn=\''.$_q.'\''; }
+                            $_sql_criteria .= ' REPLACE(biblio.isbn_issn, "-", "") !=\''.$isbn.'\'';
+                        } else { $_sql_criteria .= ' REPLACE(biblio.isbn_issn, "-", "")=\''.$isbn.'\''; }
                         break;
                     case 'publisher' :
                         $_subquery = 'SELECT publisher_id FROM mst_publisher WHERE publisher_name LIKE \'%'.$_q.'%\'';
