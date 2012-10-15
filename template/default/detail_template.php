@@ -62,7 +62,7 @@ ob_start(); /* <- DONT REMOVE THIS COMMAND */
          </tr>
          <tr>
           <td class="key"><?php print __('Series Title').' ('. __('Volume').')'; ?></td>  
-          <td class="value">{series_title} ({volume})</td>
+          <td class="value"><a href="index.php?search=Search&keywords=%2B%22{series_title}%22">{series_title}</a> ({volume})</td>
          </tr>
          <tr>
           <td class="key"><?php print __('GMD'); ?></td>  

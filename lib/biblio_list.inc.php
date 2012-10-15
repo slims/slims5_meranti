@@ -30,7 +30,7 @@ if (!defined('INDEX_AUTH')) {
 
 class biblio_list extends biblio_list_model
 {
-    protected $searchable_fields = array('title', 'author', 'subject', 'isbn',
+    protected $searchable_fields = array('title', 'subtitle', 'series_title', 'author', 'subject', 'isbn',
 		'publisher', 'gmd', 'notes', 'colltype', 'publishyear',
 		'location', 'itemcode', 'callnumber', 'itemcallnumber', 'notes');
     protected $field_join_type = array('title' => 'OR', 'author' => 'OR', 'subject' => 'OR');
