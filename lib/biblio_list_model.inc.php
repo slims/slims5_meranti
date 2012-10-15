@@ -245,7 +245,7 @@ abstract class biblio_list_model
                             $_buffer .= '<div class="customField collationField"><b>'.$_field_opts[1].'</b> : '.$_biblio_d['collation'].'</div>';
                         } else if ($_field == 'series_title') {
                         		$volume = ($_biblio_d['volume']) ? ' ('.$_biblio_d['volume'].')' : '';
-                        		$series = '<a href="index.php?search=Search&keywords=%2B%22'.$_biblio_d['series_title'].'%22">'.$_biblio_d['series_title'].'</a>';
+                        		$series = '<a href="index.php?search=Search&keywords=%2B%22'.urlencode($_biblio_d['series_title']).'%22">'.$_biblio_d['series_title'].'</a>';
                             $_buffer .= '<div class="customField seriesTitleField"><b>'.$_field_opts[1].'</b> : '.$series.$volume.'</div>';
                         } else if ($_field == 'call_number') {
                             $_buffer .= '<div class="customField callNumberField"><b>'.$_field_opts[1].'</b> : '.$_biblio_d['call_number'].'</div>';
