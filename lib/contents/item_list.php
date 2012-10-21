@@ -60,24 +60,23 @@ if (($ajaxsec_user == $sysconf['ajaxsec_user']) AND ($ajaxsec_passwd == $sysconf
                     LEFT JOIN item AS i ON l.item_code=i.item_code
                     WHERE l.item_code=\''.$copy_d['item_code'].'\' AND is_lent=1 AND is_return=0');
                 echo '<tr>';
-                echo '<td width="10%"><strong>'.$copy_d['item_code'].'</strong></td>';
-                echo '<td width="20%">'.$copy_d['call_number'].'</td>';
+                echo '<td width="40%"><strong>'.$copy_d['call_number'].' ('.$copy_d['item_code'].')</strong></td>';
                 echo '<td width="40%">'.$copy_d['location_name'];
                 if (trim($copy_d['site']) != "") {
                     echo ' ('.$copy_d['site'].')';
                 }
                 echo '</td>';
-                echo '<td width="30%">';
+                echo '<td width="20%">';
                 /* DEPRECATED
                 $_rules = @unserialize($copy_d['rules']);
                 */
                 if ($loan_stat_q->num_rows > 0) {
                     $loan_stat_d = $loan_stat_q->fetch_row();
-                    echo '<strong width="50%" style="color: red;">'.__('Currently On Loan (Due on').date($sysconf['date_format'], strtotime($loan_stat_d[0])).')</strong>'; //mfc
+                    echo '<strong width="50%" class="copy_onloan">'.__('Currently On Loan (Due on').date($sysconf['date_format'], strtotime($loan_stat_d[0])).')</strong>'; //mfc
                 } else if ($copy_d['no_loan']) {
-                    echo '<strong width="50%" style="color: red;">'.__('Available but not for loan').' - '.$copy_d['item_status_name'].'</strong>';
+                    echo '<strong width="50%" class="copy_noncirculating">'.__('Available but not for loan').' - '.$copy_d['item_status_name'].'</strong>';
                 } else {
-                    echo '<strong width="50%" style="color: navy;">'.__('Available').(trim($copy_d['item_status_name'])?' - '.$copy_d['item_status_name']:'').'</strong>';
+                    echo '<strong width="50%" class="copy_available">'.__('Available').(trim($copy_d['item_status_name'])?' - '.$copy_d['item_status_name']:'').'</strong>';
                 }
                 $loan_stat_q->free_result();
                 echo '</td>';

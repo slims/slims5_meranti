@@ -203,6 +203,26 @@ class detail extends content_list
                 data: \'id='.$this->detail_id.'&ajaxsec_user='.$sysconf['ajaxsec_user'].'&ajaxsec_passwd='.$sysconf['ajaxsec_passwd'].'\',
                 success: function(ajaxRespond) { jQuery(\'#attachListLoad\').html(ajaxRespond); } }); });</script>';
 
+				// label
+        if (!empty($this->record_detail['labels'])) {
+					$arr_labels = @unserialize($this->record_detail['labels']);
+					$this->record_detail['labels'] = '';
+					if ($arr_labels !== false) {
+						foreach ($arr_labels as $label) {
+            	if (!isset($this->label_cache[$label[0]]['name'])) {
+              	$_label_q = $this->obj_db->query('SELECT label_name, label_desc, label_image FROM mst_label AS lb WHERE lb.label_name=\''.$label[0].'\'');
+								$_label_d = $_label_q->fetch_row();
+                $this->label_cache[$label[0]] = array('name' => $_label_d[0], 'desc' => $_label_d[1], 'image' => $_label_d[2]);
+							}
+							if (isset($label[1]) && $label[1]) {
+								$this->record_detail['labels'] .= ' <a href="'.$label[1].'" target="_blank"><img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" border="0" /></a>';
+							} else {
+								$this->record_detail['labels'] .= ' <img src="'.SENAYAN_WEB_ROOT_DIR.IMAGES_DIR.'/labels/'.$this->label_cache[$label[0]]['image'].'" title="'.$this->label_cache[$label[0]]['desc'].'" align="middle" class="labels" />';
+							}
+						}
+					}
+				}
+
         return $this->record_detail;
     }
 

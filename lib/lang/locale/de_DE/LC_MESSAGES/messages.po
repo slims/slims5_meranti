@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Senayan3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-07 17:19+0100\n"
-"PO-Revision-Date: 2012-10-07 18:10+0100\n"
+"POT-Creation-Date: 2012-10-21 16:57+0100\n"
+"PO-Revision-Date: 2012-10-21 16:59+0100\n"
 "Last-Translator: x <x>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -29,88 +29,88 @@ msgstr "Sie sind derzeit als Mitglied angemeldet"
 msgid "LOGOUT"
 msgstr "ABMELDEN"
 
-#: sysconfig.inc.php:503
+#: sysconfig.inc.php:551
 msgid "Personal Name"
 msgstr "Personenname"
 
-#: sysconfig.inc.php:504
+#: sysconfig.inc.php:552
 msgid "Organizational Body"
 msgstr "Körperschaft"
 
-#: sysconfig.inc.php:505
+#: sysconfig.inc.php:553
 msgid "Conference"
 msgstr "Konferenz"
 
-#: sysconfig.inc.php:508
+#: sysconfig.inc.php:556
 msgid "Topic"
 msgstr "Schlagwort"
 
 # Klingt etwas schräg für einen Schlagworttyp
-#: sysconfig.inc.php:509
+#: sysconfig.inc.php:557
 msgid "Geographic"
 msgstr "Geographisch"
 
-#: sysconfig.inc.php:510
+#: sysconfig.inc.php:558
 msgid "Name"
 msgstr "Name"
 
-#: sysconfig.inc.php:511
+#: sysconfig.inc.php:559
 msgid "Temporal"
 msgstr "Zeit"
 
-#: sysconfig.inc.php:512
+#: sysconfig.inc.php:560
 msgid "Genre"
 msgstr "Genre"
 
-#: sysconfig.inc.php:513
+#: sysconfig.inc.php:561
 msgid "Occupation"
 msgstr "Beruf"
 
-#: sysconfig.inc.php:516
+#: sysconfig.inc.php:564
 msgid "Primary Author"
 msgstr "Erster Verfasser"
 
-#: sysconfig.inc.php:517
+#: sysconfig.inc.php:565
 msgid "Additional Author"
 msgstr "Weiterer Autor"
 
-#: sysconfig.inc.php:518
+#: sysconfig.inc.php:566
 msgid "Editor"
 msgstr "Herausgeber"
 
-#: sysconfig.inc.php:519
+#: sysconfig.inc.php:567
 msgid "Translator"
 msgstr "Übersetzer"
 
-#: sysconfig.inc.php:520
+#: sysconfig.inc.php:568
 msgid "Director"
 msgstr "Regisseur"
 
-#: sysconfig.inc.php:521
+#: sysconfig.inc.php:569
 msgid "Producer"
 msgstr "Produzent"
 
-#: sysconfig.inc.php:522
+#: sysconfig.inc.php:570
 msgid "Composer"
 msgstr "Komponist"
 
-#: sysconfig.inc.php:523
+#: sysconfig.inc.php:571
 msgid "Illustrator"
 msgstr "Illustrator"
 
-#: sysconfig.inc.php:524
+#: sysconfig.inc.php:572
 msgid "Creator"
 msgstr "Urheber"
 
-#: sysconfig.inc.php:525
+#: sysconfig.inc.php:573
 msgid "Contributor"
 msgstr "Mitarbeiter"
 
-#: sysconfig.inc.php:527
+#: sysconfig.inc.php:575
 msgid "Primary"
 msgstr "Primär"
 
-#: sysconfig.inc.php:528
+#: sysconfig.inc.php:576
 msgid "Additional"
 msgstr "Zusätzlich"
 
@@ -152,6 +152,14 @@ msgstr "Die Pfadangabe für die <strong>mysqldump</strong>-Anwendung ist inkorre
 
 #: admin/default/session_check.inc.php:32
 #: admin/default/session_check.inc.php:45
+#: admin/modules/bibliography/checkout_item.php:44
+#: admin/modules/bibliography/dl_print.php:43
+#: admin/modules/bibliography/export.php:44
+#: admin/modules/bibliography/import.php:45
+#: admin/modules/bibliography/index.php:53
+#: admin/modules/bibliography/index.php:413
+#: admin/modules/bibliography/item.php:49
+#: admin/modules/bibliography/item.php:219
 msgid "You are not authorized to view this section"
 msgstr "Sie sind nicht authorisiert diesen Bereich einzusehen"
 
@@ -215,8 +223,6 @@ msgstr "Entliehene Exemplare"
 #: admin/modules/bibliography/index.php:394
 #: admin/modules/bibliography/item.php:205
 #: admin/modules/bibliography/item.php:208
-#: admin/modules/bibliography/item_barcode_generator.php:214
-#: admin/modules/bibliography/item_barcode_generator.php:216
 msgid "Search"
 msgstr "Suchen"
 
@@ -226,8 +232,6 @@ msgstr "Suchen"
 #: admin/modules/bibliography/item.php:399
 #: admin/modules/bibliography/item.php:430
 #: admin/modules/bibliography/item.php:442
-#: admin/modules/bibliography/item_barcode_generator.php:249
-#: admin/modules/bibliography/item_barcode_generator.php:256
 msgid "Item Code"
 msgstr "Barcode"
 
@@ -248,8 +252,6 @@ msgstr "Mitgliedsnummer"
 #: admin/modules/bibliography/item.php:400
 #: admin/modules/bibliography/item.php:431
 #: admin/modules/bibliography/item.php:443
-#: admin/modules/bibliography/item_barcode_generator.php:250
-#: admin/modules/bibliography/item_barcode_generator.php:257
 msgid "Title"
 msgstr "Titel"
 
@@ -265,28 +267,22 @@ msgstr "Rückgabetermin"
 #: admin/modules/bibliography/dl_print.php:303
 #: admin/modules/bibliography/index.php:775
 #: admin/modules/bibliography/item.php:487
-#: admin/modules/bibliography/item_barcode_generator.php:293
 msgid "Found <strong>{result->num_rows}</strong> from your keywords"
 msgstr "<strong>{result->num_rows}</strong> Ergebnisse gefunden für die Suchbegriffe"
 
 #: admin/modules/bibliography/dl_print.php:92
-#: admin/modules/bibliography/item_barcode_generator.php:97
 msgid "Selected items NOT ADDED to print queue. Only {max_print} can be printed at once"
 msgstr "Ausgewählte Einträge NICHT zur Druckerwarteschlange hinzugefügt. Es können höchstens {max_print} auf einmal gedruckt werden"
 
 #: admin/modules/bibliography/dl_print.php:96
-#: admin/modules/bibliography/item_barcode_generator.php:100
 msgid "Selected items added to print queue"
 msgstr "Ausgewählte Einträge zur Druckerwarteschlange hinzugefügt"
 
 #: admin/modules/bibliography/dl_print.php:103
-#: admin/modules/bibliography/item_barcode_generator.php:109
 msgid "Print queue cleared!"
 msgstr "Druckerwarteschlange gelöscht!"
 
 #: admin/modules/bibliography/dl_print.php:113
-#: admin/modules/bibliography/item_barcode_generator.php:118
-#: admin/modules/bibliography/item_barcode_generator.php:122
 msgid "There is no data to print!"
 msgstr "Es sind keine Daten zum Drucken vorhanden!"
 
@@ -296,7 +292,6 @@ msgid "Labels Printing"
 msgstr "Etikette drucken (Aufnahmen)"
 
 #: admin/modules/bibliography/dl_print.php:219
-#: admin/modules/bibliography/item_barcode_generator.php:211
 msgid "Clear Print Queue"
 msgstr "Druckerwarteschlange löschen"
 
@@ -305,17 +300,14 @@ msgid "Print Labels for Selected Data"
 msgstr "Etikettendruck starten"
 
 #: admin/modules/bibliography/dl_print.php:229
-#: admin/modules/bibliography/item_barcode_generator.php:221
 msgid "Maximum"
 msgstr "Höchstens"
 
 #: admin/modules/bibliography/dl_print.php:229
-#: admin/modules/bibliography/item_barcode_generator.php:221
 msgid "records can be printed at once. Currently there is"
 msgstr "Datensätze können auf einmal gedruckt werden. Derzeit sind"
 
 #: admin/modules/bibliography/dl_print.php:233
-#: admin/modules/bibliography/item_barcode_generator.php:225
 msgid "in queue waiting to be printed."
 msgstr "Einträge in der Druckerwarteschlange."
 
@@ -329,42 +321,35 @@ msgid "Call Number"
 msgstr "Standortnummer"
 
 #: admin/modules/bibliography/dl_print.php:294
-#: admin/modules/bibliography/item_barcode_generator.php:284
 msgid "Add"
 msgstr "Hinzufügen"
 
 #: admin/modules/bibliography/dl_print.php:295
-#: admin/modules/bibliography/item_barcode_generator.php:285
 msgid "Add To Print Queue"
 msgstr "Zur Druckerwarteschlange hinzufügen"
 
 #: admin/modules/bibliography/dl_print.php:296
-#: admin/modules/bibliography/item_barcode_generator.php:286
 msgid "Add to print queue?"
 msgstr "Zur Druckerwarteschlange hinzufügen?"
 
 #: admin/modules/bibliography/dl_print.php:304
 #: admin/modules/bibliography/index.php:776
 #: admin/modules/bibliography/item.php:488
-#: admin/modules/bibliography/item_barcode_generator.php:294
 msgid "Query took"
 msgstr "Abfrage in"
 
 #: admin/modules/bibliography/dl_print.php:304
 #: admin/modules/bibliography/index.php:776
 #: admin/modules/bibliography/item.php:488
-#: admin/modules/bibliography/item_barcode_generator.php:294
 msgid "second(s) to complete"
 msgstr "Sekunde(n) bearbeitet"
 
 #: admin/modules/bibliography/export.php:50
 #: admin/modules/bibliography/import.php:57
-#: admin/modules/bibliography/item_export.php:50
 msgid "Required fields (*)  must be filled correctly!"
 msgstr "Erforderliche Felder müssen korrekt angegeben sein!"
 
 #: admin/modules/bibliography/export.php:109
-#: admin/modules/bibliography/item_export.php:111
 msgid "Error on query to database, Export FAILED!"
 msgstr "Fehler bei der Datenbankabfrage, Export FEHLGESCHLAGEN!"
 
@@ -381,36 +366,30 @@ msgid "Export bibliographics data to CSV file"
 msgstr "Titelaufnahmen in Datei exportieren (CSV-Format)"
 
 #: admin/modules/bibliography/export.php:168
-#: admin/modules/bibliography/item_export.php:151
 msgid "Export Now"
 msgstr "Export starten"
 
 #: admin/modules/bibliography/export.php:177
 #: admin/modules/bibliography/import.php:250
-#: admin/modules/bibliography/item_export.php:160
 msgid "Field Separator"
 msgstr "Trennzeichen für Felder"
 
 #: admin/modules/bibliography/export.php:179
 #: admin/modules/bibliography/import.php:252
-#: admin/modules/bibliography/item_export.php:162
 msgid "Field Enclosed With"
 msgstr "Feldinhalte eingeschlossen zwischen"
 
 #: admin/modules/bibliography/export.php:183
-#: admin/modules/bibliography/item_export.php:166
 msgid "Record Separator"
 msgstr "Datensatztrennzeichen"
 
 #: admin/modules/bibliography/export.php:185
 #: admin/modules/bibliography/import.php:254
-#: admin/modules/bibliography/item_export.php:168
 msgid "Number of Records To Export (0 for all records)"
 msgstr "Zahl der zu exportierenden Datensätze (0 für alle Datensätze)"
 
 #: admin/modules/bibliography/export.php:187
 #: admin/modules/bibliography/import.php:256
-#: admin/modules/bibliography/item_export.php:170
 msgid "Start From Record"
 msgstr "Beginnend von Datensatz"
 
@@ -869,6 +848,7 @@ msgstr "Autor"
 
 #: admin/modules/bibliography/item_barcode_generator.php:198
 #: admin/modules/bibliography/item_barcode_generator.php:207
+#: admin/modules/bibliography/submenu.php:39
 msgid "Item Barcodes Printing"
 msgstr "Barcodes drucken (Exemplare)"
 
@@ -1261,6 +1241,7 @@ msgid "OVERDUED for {overdueDays} days(s) with fines value of"
 msgstr "ÜBERFÄLLIG seit {overdueDays} Tag(en) mit Mahngebühren von"
 
 #: admin/modules/circulation/circulation_action.php:280
+#: admin/modules/circulation/loan_list.php:171
 msgid "Item {itemCode} is being reserved by member {member}"
 msgstr "Exemplar {itemCode} ist durch Mitglied {member} vorgemerkt"
 
@@ -1318,6 +1299,9 @@ msgid "Member Email"
 msgstr "E-Mail des Mitglieds"
 
 #: admin/modules/circulation/circulation_action.php:477
+#: admin/modules/circulation/loan_rules.php:185
+#: admin/modules/circulation/loan_rules.php:232
+#: admin/modules/circulation/loan_rules.php:239
 msgid "Member Type"
 msgstr "Mitgliedstyp"
 
@@ -1354,6 +1338,7 @@ msgid "Fines"
 msgstr "Gebühren"
 
 #: admin/modules/circulation/circulation_action.php:509
+#: admin/modules/circulation/submenu.php:30
 msgid "Loan History"
 msgstr "Ausleihverlauf"
 
@@ -1422,8 +1407,6 @@ msgstr "Sie sind im Begriff die Angaben für folgenden Gebühreneintrag zu bearb
 #: admin/modules/circulation/loan_rules.php:51
 #: admin/modules/circulation/loan_rules.php:148
 #: admin/modules/circulation/quick_return.php:48
-#: admin/modules/master_file/coll_type.php:48
-#: admin/modules/master_file/coll_type.php:166
 msgid "You don't have enough privileges to view this section"
 msgstr "Sie verfügen nicht über ausreichende Rechte um diesen Bereich einzusehen"
 
@@ -1639,8 +1622,6 @@ msgstr "Vormerkungen"
 
 #: admin/modules/master_file/author.php:49
 #: admin/modules/master_file/author.php:151
-#: admin/modules/master_file/doc_language.php:47
-#: admin/modules/master_file/doc_language.php:149
 msgid "You don't have enough privileges to access this area!"
 msgstr "Sie verfügen nicht über ausreichende Rechte für den Zugriff auf diesen Bereich!"
 
@@ -1661,7 +1642,6 @@ msgid "New Author Data Successfully Saved"
 msgstr "Neuer Autor erfolgreich gespeichert"
 
 #: admin/modules/master_file/author.php:90
-#: admin/modules/master_file/coll_type.php:85
 msgid "Author Data FAILED to Save. Please Contact System Administrator"
 msgstr "Speicherung des Sammlungstyps FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator"
 
@@ -1715,6 +1695,7 @@ msgid "New Colllection Type Data Successfully Saved"
 msgstr "Neuer Sammlungstyp erfolgreich gespeichert"
 
 #: admin/modules/master_file/coll_type.php:115
+#: admin/modules/master_file/location.php:119
 msgid "Location ({item_name}) still used by {number_items} item(s)"
 msgstr "Der Standort ({item_name}) ist noch für {number_items} Exemplar(e) eingetragen"
 
@@ -1751,6 +1732,7 @@ msgid "Language Data FAILED to Save. Please Contact System Administrator"
 msgstr "Speicherung der Sprache FEHLGESCHLAGEN. Bitte kontaktieren Sie den Systemadministrator"
 
 #: admin/modules/master_file/doc_language.php:130
+#: admin/modules/master_file/submenu.php:37
 msgid "Doc. Language"
 msgstr "Sprache"
 
@@ -2366,8 +2348,6 @@ msgstr "Institution"
 #: admin/modules/membership/index.php:392
 #: admin/modules/membership/index.php:494
 #: admin/modules/membership/index.php:500
-#: admin/modules/membership/member_card_generator.php:176
-#: admin/modules/membership/member_card_generator.php:239
 msgid "Membership Type"
 msgstr "Mitgliedstyp"
 
@@ -2454,17 +2434,16 @@ msgid "members extended!"
 msgstr "Mitglieder verlängert!"
 
 #: admin/modules/membership/index.php:537
-#: admin/modules/membership/member_card_generator.php:272
 msgid "Found"
 msgstr "Es wurde"
 
 #: admin/modules/membership/index.php:537
-#: admin/modules/membership/member_card_generator.php:272
 msgid "from your search with keyword"
 msgstr "Mitglied(er) gefunden mit dem Suchbegriff"
 
 #: admin/modules/membership/member_card_generator.php:196
 #: admin/modules/membership/member_card_generator.php:205
+#: admin/modules/membership/submenu.php:31
 msgid "Member Card Printing"
 msgstr "Mitgliederkarten drucken"
 
@@ -2710,7 +2689,6 @@ msgstr "Datensätze pro Seite"
 
 #: admin/modules/reporting/report_dbgrid.inc.php:88
 #: admin/modules/reporting/customs/class_recap.php:287
-#: admin/modules/reporting/customs/fines_report.php:144
 msgid "Print Current Page"
 msgstr "Aktuelle Seite drucken"
 
@@ -2741,8 +2719,6 @@ msgstr "Zusammenfassungen"
 
 #: admin/modules/reporting/customs/class_recap.php:65
 #: admin/modules/reporting/customs/due_date_warning.php:65
-#: admin/modules/reporting/customs/fines_report.php:75
-#: admin/modules/reporting/customs/item_titles_list.php:65
 msgid "Report Filter"
 msgstr "Berichtsfilter"
 
@@ -2752,15 +2728,11 @@ msgstr "Zusammenfassen nach"
 
 #: admin/modules/reporting/customs/class_recap.php:84
 #: admin/modules/reporting/customs/due_date_warning.php:86
-#: admin/modules/reporting/customs/fines_report.php:109
-#: admin/modules/reporting/customs/item_titles_list.php:150
 msgid "Apply Filter"
 msgstr "Filter anwenden"
 
 #: admin/modules/reporting/customs/class_recap.php:86
 #: admin/modules/reporting/customs/due_date_warning.php:85
-#: admin/modules/reporting/customs/fines_report.php:108
-#: admin/modules/reporting/customs/item_titles_list.php:149
 msgid "Show More Filter Options"
 msgstr "Weitere Filteroptionen"
 
@@ -2790,7 +2762,6 @@ msgid "List of bibliographic titles"
 msgstr "Liste vorhandener Titelaufnahmen"
 
 #: admin/modules/reporting/customs/customs_report_list.inc.php:30
-#: admin/modules/reporting/customs/item_titles_list.php:62
 msgid "Items Title List"
 msgstr "Exemplarliste"
 
@@ -2856,7 +2827,6 @@ msgid "Visitor List"
 msgstr "Besucherliste"
 
 #: admin/modules/reporting/customs/customs_report_list.inc.php:42
-#: admin/modules/reporting/customs/fines_report.php:72
 msgid "Fines Report"
 msgstr "Gebührenbericht"
 
@@ -2865,68 +2835,142 @@ msgid "This report loan items which will due in 3 to 0 days"
 msgstr "Dieser Bericht zeigt entliehene Exemplare, die in 3 bis 0 Tagen fällig sind."
 
 #: admin/modules/reporting/customs/due_date_warning.php:80
-#: admin/modules/reporting/customs/item_titles_list.php:144
 msgid "Record each page"
 msgstr "Datensätze pro Seite"
 
 #: admin/modules/reporting/customs/due_date_warning.php:81
-#: admin/modules/reporting/customs/item_titles_list.php:145
 msgid "Set between 20 and 200"
 msgstr "Wählen Sie einen Wert zwischen 20 und 200"
 
 #: admin/modules/reporting/customs/fines_report.php:48
+#: admin/modules/reporting/customs/item_usage.php:117
+#: admin/modules/reporting/customs/item_usage.php:185
+#: admin/modules/reporting/customs/loan_by_class.php:130
+#: admin/modules/reporting/customs/loan_by_class.php:150
+#: admin/modules/reporting/customs/visitor_report.php:92
+#: admin/modules/reporting/customs/visitor_report_day.php:48
 msgid "Jan"
 msgstr "Jan"
 
 #: admin/modules/reporting/customs/fines_report.php:49
+#: admin/modules/reporting/customs/item_usage.php:118
+#: admin/modules/reporting/customs/item_usage.php:185
+#: admin/modules/reporting/customs/loan_by_class.php:131
+#: admin/modules/reporting/customs/loan_by_class.php:150
+#: admin/modules/reporting/customs/visitor_report.php:93
+#: admin/modules/reporting/customs/visitor_report_day.php:49
 msgid "Feb"
 msgstr "Feb"
 
 #: admin/modules/reporting/customs/fines_report.php:50
+#: admin/modules/reporting/customs/item_usage.php:119
+#: admin/modules/reporting/customs/item_usage.php:185
+#: admin/modules/reporting/customs/loan_by_class.php:132
+#: admin/modules/reporting/customs/loan_by_class.php:150
+#: admin/modules/reporting/customs/visitor_report.php:94
+#: admin/modules/reporting/customs/visitor_report_day.php:50
 msgid "Mar"
 msgstr "Mär"
 
 #: admin/modules/reporting/customs/fines_report.php:51
+#: admin/modules/reporting/customs/item_usage.php:120
+#: admin/modules/reporting/customs/item_usage.php:185
+#: admin/modules/reporting/customs/loan_by_class.php:133
+#: admin/modules/reporting/customs/loan_by_class.php:150
+#: admin/modules/reporting/customs/visitor_report.php:95
+#: admin/modules/reporting/customs/visitor_report_day.php:51
 msgid "Apr"
 msgstr "Apr"
 
 #: admin/modules/reporting/customs/fines_report.php:52
+#: admin/modules/reporting/customs/item_usage.php:121
+#: admin/modules/reporting/customs/item_usage.php:185
+#: admin/modules/reporting/customs/loan_by_class.php:134
+#: admin/modules/reporting/customs/loan_by_class.php:150
+#: admin/modules/reporting/customs/visitor_report.php:96
+#: admin/modules/reporting/customs/visitor_report_day.php:52
 msgid "May"
 msgstr "Mai"
 
 #: admin/modules/reporting/customs/fines_report.php:53
+#: admin/modules/reporting/customs/item_usage.php:122
+#: admin/modules/reporting/customs/item_usage.php:185
+#: admin/modules/reporting/customs/loan_by_class.php:135
+#: admin/modules/reporting/customs/loan_by_class.php:150
+#: admin/modules/reporting/customs/visitor_report.php:97
+#: admin/modules/reporting/customs/visitor_report_day.php:53
 msgid "Jun"
 msgstr "Jun"
 
 #: admin/modules/reporting/customs/fines_report.php:54
+#: admin/modules/reporting/customs/item_usage.php:123
+#: admin/modules/reporting/customs/item_usage.php:185
+#: admin/modules/reporting/customs/loan_by_class.php:136
+#: admin/modules/reporting/customs/loan_by_class.php:150
+#: admin/modules/reporting/customs/visitor_report.php:98
+#: admin/modules/reporting/customs/visitor_report_day.php:54
 msgid "Jul"
 msgstr "Jul"
 
 #: admin/modules/reporting/customs/fines_report.php:55
+#: admin/modules/reporting/customs/item_usage.php:124
+#: admin/modules/reporting/customs/item_usage.php:185
+#: admin/modules/reporting/customs/loan_by_class.php:137
+#: admin/modules/reporting/customs/loan_by_class.php:150
+#: admin/modules/reporting/customs/visitor_report.php:99
+#: admin/modules/reporting/customs/visitor_report_day.php:55
 msgid "Aug"
 msgstr "Aug"
 
 #: admin/modules/reporting/customs/fines_report.php:56
+#: admin/modules/reporting/customs/item_usage.php:125
+#: admin/modules/reporting/customs/item_usage.php:185
+#: admin/modules/reporting/customs/loan_by_class.php:138
+#: admin/modules/reporting/customs/loan_by_class.php:150
+#: admin/modules/reporting/customs/visitor_report.php:100
+#: admin/modules/reporting/customs/visitor_report_day.php:56
 msgid "Sep"
 msgstr "Sep"
 
 #: admin/modules/reporting/customs/fines_report.php:57
+#: admin/modules/reporting/customs/item_usage.php:126
+#: admin/modules/reporting/customs/item_usage.php:185
+#: admin/modules/reporting/customs/loan_by_class.php:139
+#: admin/modules/reporting/customs/loan_by_class.php:150
+#: admin/modules/reporting/customs/visitor_report.php:101
+#: admin/modules/reporting/customs/visitor_report_day.php:57
 msgid "Oct"
 msgstr "Okt"
 
 #: admin/modules/reporting/customs/fines_report.php:58
+#: admin/modules/reporting/customs/item_usage.php:127
+#: admin/modules/reporting/customs/item_usage.php:185
+#: admin/modules/reporting/customs/loan_by_class.php:140
+#: admin/modules/reporting/customs/loan_by_class.php:150
+#: admin/modules/reporting/customs/visitor_report.php:102
+#: admin/modules/reporting/customs/visitor_report_day.php:58
 msgid "Nov"
 msgstr "Nov"
 
 #: admin/modules/reporting/customs/fines_report.php:59
+#: admin/modules/reporting/customs/item_usage.php:128
+#: admin/modules/reporting/customs/item_usage.php:185
+#: admin/modules/reporting/customs/loan_by_class.php:141
+#: admin/modules/reporting/customs/loan_by_class.php:150
+#: admin/modules/reporting/customs/visitor_report.php:103
+#: admin/modules/reporting/customs/visitor_report_day.php:59
 msgid "Dec"
 msgstr "Dez"
 
 #: admin/modules/reporting/customs/item_titles_list.php:71
+#: admin/modules/reporting/customs/item_usage.php:70
+#: admin/modules/reporting/customs/reserve_list.php:76
+#: admin/modules/reporting/customs/titles_list.php:72
 msgid "Title/ISBN"
 msgstr "Titel/ISBN"
 
 #: admin/modules/reporting/customs/item_titles_list.php:98
+#: admin/modules/reporting/customs/titles_list.php:99
 msgid "Press Ctrl and click to select multiple entries"
 msgstr "Halten Sie Strg während des Klickens gedrückt um mehere Einträge zu wählen"
 
@@ -3106,7 +3150,6 @@ msgid "Visitor Report"
 msgstr "Besucherbericht"
 
 #: admin/modules/serial_control/index.php:60
-#: admin/modules/serial_control/submenu.php:27
 msgid "Serial Control"
 msgstr "Periodikaverwaltung"
 
@@ -3574,6 +3617,7 @@ msgstr "Neue Sicherung erstellen"
 
 #: admin/modules/system/barcode_generator.php:98
 #: admin/modules/system/barcode_generator.php:130
+#: admin/modules/system/submenu.php:40
 msgid "Barcode Generator"
 msgstr "Barcodegenerator"
 
@@ -4082,23 +4126,32 @@ msgstr "Sie sind im Begriff die Angaben für folgende Benutzergruppe zu bearbeit
 msgid "Record Detail"
 msgstr "Details zum Titel"
 
-#: lib/biblio_list_model.inc.php:261
+#: lib/biblio_list_model.inc.php:263
 msgid "none copy available"
 msgstr "Kein Exemplar verfügbar"
 
-#: lib/biblio_list_model.inc.php:273
+#: lib/biblio_list_model.inc.php:265
+msgid "copies available for loan"
+msgstr "Exemplar(e) ausleihbar"
+
+#: lib/biblio_list_model.inc.php:275
 msgid "mark this"
 msgstr "Markieren"
 
-#: lib/biblio_list_model.inc.php:295
+#: lib/biblio_list_model.inc.php:297
 msgid "Put marked selection into basket"
 msgstr "Markierte Auswahl auf den Merkzettel setzen"
 
-#: lib/detail.inc.php:173
+#: lib/detail.inc.php:166
+#: lib/detail.inc.php:167
+msgid "Unknown"
+msgstr ""
+
+#: lib/detail.inc.php:168
 msgid "Click to view others documents with this author"
 msgstr "Klicken um weitere Titel von diesem Autor anzuzeigen"
 
-#: lib/detail.inc.php:187
+#: lib/detail.inc.php:182
 msgid "Click to view others documents with this subject"
 msgstr "Klicken um weitere Titel mit diesem Schlagwort anzuzeigen"
 
@@ -4151,11 +4204,11 @@ msgstr "Ihr Ausleihverlauf"
 msgid "There is no item/copy for this title yet"
 msgstr "Für diesen Titel ist noch kein Exemplar eingetragen"
 
-#: lib/contents/item_list.php:76
+#: lib/contents/item_list.php:75
 msgid "Currently On Loan (Due on"
 msgstr "Derzeit ausgeliehen (bis zum"
 
-#: lib/contents/item_list.php:78
+#: lib/contents/item_list.php:77
 msgid "Available but not for loan"
 msgstr "Verfügbar, aber nicht entleihbar"
 
@@ -4176,6 +4229,7 @@ msgid "Your browser does not support Javascript or Javascript is disabled. Appli
 msgstr "Ihr Browser unterstützt keine JavaScript oder die Unterstützung wurde deaktiviert. JavaScript ist für diese Anwendung erforderlich!"
 
 #: lib/contents/login.inc.php:172
+#: lib/contents/member.inc.php:174
 msgid "Login"
 msgstr "Anmelden"
 
@@ -4385,10 +4439,12 @@ msgid "Date"
 msgstr "Datum"
 
 #: simbio2/simbio_GUI/form_maker/simbio_form_table.inc.php:105
+#: simbio2/simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php:98
 msgid "Delete Record"
 msgstr "Datensatz löschen"
 
 #: simbio2/simbio_GUI/form_maker/simbio_form_table.inc.php:106
+#: simbio2/simbio_GUI/form_maker/simbio_form_table_AJAX.inc.php:99
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -4412,55 +4468,10 @@ msgstr "Letzte Seite"
 msgid "No Data"
 msgstr "Keine Daten"
 
-#: template/blue/detail_template.php:12
-msgid "Subitle"
-msgstr "Untertitel"
-
-#: template/blue/detail_template.php:84
+#: template/default/custom_frontpage_record.inc.php:13
+#: template/default/detail_template.php:104
 msgid "Availability"
 msgstr "Verfügbarkeit"
-
-#: template/blue/index_template.inc.php:36
-msgid "Home"
-msgstr "Startseite"
-
-#: template/blue/index_template.inc.php:37
-msgid "Library Information"
-msgstr "Über die Bibliothek"
-
-#: template/blue/index_template.inc.php:38
-msgid "Help on Search"
-msgstr "Hilfe zur Suche"
-
-#: template/blue/index_template.inc.php:39
-msgid "Member Area"
-msgstr "Mein Benutzerkonto"
-
-#: template/blue/index_template.inc.php:40
-msgid "Librarian LOGIN"
-msgstr "Mitarbeiter-ANMELDUNG"
-
-#: template/blue/index_template.inc.php:52
-msgid "Select Language"
-msgstr "Sprache wählen"
-
-#: template/blue/index_template.inc.php:61
-msgid "Simple Search"
-msgstr "Einfache Suche"
-
-#: template/blue/index_template.inc.php:68
-msgid "Advanced Search"
-msgstr "Erweiterte Suche"
-
-#: template/classic/detail_template.php:89
-#: template/google/detail_template.php:89
-msgid "Custom Field 1"
-msgstr "Benutzerdefiniertes Feld 1"
-
-#: template/classic/detail_template.php:93
-#: template/google/detail_template.php:93
-msgid "Custom Field 2"
-msgstr "Benutzerdefiniertes Feld 2"
 
 #: template/default/detail_template.php:12
 #: template/default/index_template.inc.php:195
@@ -4468,6 +4479,38 @@ msgstr "Benutzerdefiniertes Feld 2"
 #: template/default/index_template.inc.php:315
 msgid "Back"
 msgstr "zurück"
+
+#: template/default/detail_template.php:20
+msgid "Book's Detail"
+msgstr "Details zum Titel"
+
+#: template/default/detail_template.php:100
+msgid "Labels"
+msgstr "Kennzeichnung/Links"
+
+#: template/default/index_template.inc.php:53
+msgid "Home"
+msgstr "Startseite"
+
+#: template/default/index_template.inc.php:56
+msgid "Library Information"
+msgstr "Über die Bibliothek"
+
+#: template/default/index_template.inc.php:59
+msgid "Help on Search"
+msgstr "Hilfe zur Suche"
+
+#: template/default/index_template.inc.php:62
+msgid "Member Area"
+msgstr "Mein Benutzerkonto"
+
+#: template/default/index_template.inc.php:65
+msgid "Librarian LOGIN"
+msgstr "Mitarbeiter-ANMELDUNG"
+
+#: template/default/index_template.inc.php:124
+msgid "Select Language"
+msgstr "Sprache wählen"
 
 #: template/default/index_template.inc.php:162
 #: template/default/index_template.inc.php:287
@@ -4486,22 +4529,31 @@ msgstr "Search Cluster wird erstellt..."
 msgid "Collections"
 msgstr "Sammlungen"
 
+#: template/default/index_template.inc.php:276
+#: template/default/index_template.inc.php:415
+msgid "Advanced Search"
+msgstr "Erweiterte Suche"
+
 #: template/default/index_template.inc.php:295
 msgid "User Login"
 msgstr "Benutzeranmeldung"
-
-#: template/google/login_template.inc.php:45
-msgid "Sign in to your account at"
-msgstr "Anmelden mit Konto in"
-
-#: template/google/login_template.inc.php:50
-msgid "Username"
-msgstr "Anmeldename"
 
 #: template/lightweight/index_template.inc.php:146
 msgid "Full Site"
 msgstr "Vollständige Seite"
 
+#~ msgid "Subitle"
+#~ msgstr "Untertitel"
+#~ msgid "Simple Search"
+#~ msgstr "Einfache Suche"
+#~ msgid "Custom Field 1"
+#~ msgstr "Benutzerdefiniertes Feld 1"
+#~ msgid "Custom Field 2"
+#~ msgstr "Benutzerdefiniertes Feld 2"
+#~ msgid "Sign in to your account at"
+#~ msgstr "Anmelden mit Konto in"
+#~ msgid "Username"
+#~ msgstr "Anmeldename"
 #~ msgid "EXPORT TOOL"
 #~ msgstr "EXPORT-WERKZEUG"
 #~ msgid "IMPORT TOOL"

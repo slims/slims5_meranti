@@ -17,7 +17,7 @@ ob_start(); /* <- DONT REMOVE THIS COMMAND */
 
      <div class="section">
       <div class="tagline">
-       Book's Detail
+       <?php print __('Book\'s Detail'); ?>
       </div>
       <div class="collections-list">
        <div class="collection-detail">
@@ -95,6 +95,10 @@ ob_start(); /* <- DONT REMOVE THIS COMMAND */
          <tr>
           <td class="key"><?php print __('File Attachment'); ?></td>  
           <td class="value">{file_att}</td>
+         </tr>
+         <tr>
+          <td class="key"><?php print __('Labels'); ?></td>  
+          <td class="value">{labels}</td>
          </tr>
          <tr>
           <td class="key"><?php print __('Availability'); ?></td>  
