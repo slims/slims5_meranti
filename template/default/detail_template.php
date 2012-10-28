@@ -17,14 +17,14 @@ ob_start(); /* <- DONT REMOVE THIS COMMAND */
 
      <div class="section">
       <div class="tagline">
-       Book's Detail
+       <?php print __('Book\'s Detail'); ?>
       </div>
       <div class="collections-list">
        <div class="collection-detail">
         <table id="review" width="100%">
          <tr>
           <th colspan="2">
-          {title}
+          {title}. {subtitle}
           </th>
          </tr>
          <tr>
@@ -61,8 +61,8 @@ ob_start(); /* <- DONT REMOVE THIS COMMAND */
           <td class="value">{classification}</td>
          </tr>
          <tr>
-          <td class="key"><?php print __('Series Title'); ?></td>  
-          <td class="value">{series_title}</td>
+          <td class="key"><?php print __('Series Title').' ('. __('Volume').')'; ?></td>  
+          <td class="value"><a href="index.php?search=Search&keywords=%2B%22{series_title}%22">{series_title}</a> ({volume})</td>
          </tr>
          <tr>
           <td class="key"><?php print __('GMD'); ?></td>  
@@ -95,6 +95,10 @@ ob_start(); /* <- DONT REMOVE THIS COMMAND */
          <tr>
           <td class="key"><?php print __('File Attachment'); ?></td>  
           <td class="value">{file_att}</td>
+         </tr>
+         <tr>
+          <td class="key"><?php print __('Labels'); ?></td>  
+          <td class="value">{labels}</td>
          </tr>
          <tr>
           <td class="key"><?php print __('Availability'); ?></td>  

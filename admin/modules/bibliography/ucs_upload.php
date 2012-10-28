@@ -59,9 +59,9 @@ if (isset($_POST['itemID']) AND !empty($_POST['itemID'])) {
 
     // fetch all data from biblio table
     $sql = "SELECT
-        b.biblio_id, b.title, b.spec_detail_info, gmd.gmd_code, gmd.gmd_name, b.edition,
+        b.biblio_id, b.title, b.subtitle, b.spec_detail_info, gmd.gmd_code, gmd.gmd_name, b.edition,
         b.isbn_issn, publ.publisher_name, b.publish_year,
-        b.collation, b.series_title, b.call_number, lang.language_id,
+        b.collation, b.series_title, b.volume, b.call_number, lang.language_id,
         lang.language_name, pl.place_name, b.classification, b.notes, fr.frequency
         FROM biblio AS b
         LEFT JOIN mst_gmd AS gmd ON b.gmd_id=gmd.gmd_id

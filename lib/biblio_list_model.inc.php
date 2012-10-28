@@ -107,9 +107,9 @@ abstract class biblio_list_model
         $_author_q = $obj_db->query($_sql_str);
         // concat author data
         while ($_author_d = $_author_q->fetch_row()) {
+            if ($_authors) $_authors .= ' - ';
             $counter = count ($_author_d);
-            $_authors .= $_author_d[0];
-            $_authors .= ' - ';
+            $_authors .= '<a href="index.php?search=Search&title=&author='.urlencode($_author_d[0]).'">'.$_author_d[0].'</a>';
         }
 	return $_authors;
     }
@@ -210,17 +210,18 @@ abstract class biblio_list_model
             }
 
             // cover images var
+            // covers usually have a ratio 1:1,4
             $_image_cover = '';
             if (!empty($_biblio_d['image']) && !defined('LIGHTWEIGHT_MODE')) {
                 $_biblio_d['image'] = urlencode($_biblio_d['image']);
                 $images_loc = 'images/docs/'.$_biblio_d['image'];
                 #$cache_images_loc = 'images/cache/'.$_biblio_d['image'];
                 if ($sysconf['tg']['type'] == 'phpthumb') {
-                    $_image_cover = '<img src="./lib/phpthumb/phpThumb.php?src='.$sysconf['tg']['relative_url'].''.$images_loc.'&w=90" width="90" height="115" />';
+                    $_image_cover = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" class="detailLink" title="'.__('Record Detail').'"><img src="./lib/phpthumb/phpThumb.php?src='.$sysconf['tg']['relative_url'].''.$images_loc.'&w=90" width="90" height="130" /></a>';
                 } elseif ($sysconf['tg']['type'] == 'minigalnano') {
-                    $_image_cover = '<img src="./lib/minigalnano/createthumb.php?filename='.$sysconf['tg']['relative_url'].''.$images_loc.'&width=90" width="90" height="115" />';
+                    $_image_cover = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" class="detailLink" title="'.__('Record Detail').'"><img src="./lib/minigalnano/createthumb.php?filename='.$sysconf['tg']['relative_url'].''.$images_loc.'&width=90" width="90" height="130" /></a>';
                 } else {
-                    $_image_cover = '<img src="./lib/phpthumb/phpThumb.php?src='.$sysconf['tg']['relative_url'].''.$images_loc.'&w=90" width="90" height="115" />';
+                    $_image_cover = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" class="detailLink" title="'.__('Record Detail').'"><img src="./lib/phpthumb/phpThumb.php?src='.$sysconf['tg']['relative_url'].''.$images_loc.'&w=90" width="90" height="130" /></a>';
                 }
             }
 
@@ -244,7 +245,9 @@ abstract class biblio_list_model
                         } else if ($_field == 'collation') {
                             $_buffer .= '<div class="customField collationField"><b>'.$_field_opts[1].'</b> : '.$_biblio_d['collation'].'</div>';
                         } else if ($_field == 'series_title') {
-                            $_buffer .= '<div class="customField seriesTitleField"><b>'.$_field_opts[1].'</b> : '.$_biblio_d['series_title'].'</div>';
+                        		$volume = ($_biblio_d['volume']) ? ' ('.$_biblio_d['volume'].')' : '';
+                        		$series = '<a href="index.php?search=Search&keywords=%2B'.urlencode('"'.$_biblio_d['series_title'].'"').'">'.$_biblio_d['series_title'].'</a>';
+                            $_buffer .= '<div class="customField seriesTitleField"><b>'.$_field_opts[1].'</b> : '.$series.$volume.'</div>';
                         } else if ($_field == 'call_number') {
                             $_buffer .= '<div class="customField callNumberField"><b>'.$_field_opts[1].'</b> : '.$_biblio_d['call_number'].'</div>';
                         } else if ($_field == 'availability' && !$this->disable_item_data) {
@@ -260,7 +263,7 @@ abstract class biblio_list_model
                             if ($_total_avail < 1) {
                                 $_buffer .= '<div class="customField availabilityField"><b>'.$_field_opts[1].'</b> : <strong style="color: #f00;">'.__('none copy available').'</strong></div>';
                             } else {
-                                $this->item_availability_message = $_total_avail.' copies available for loan';
+                                $this->item_availability_message = $_total_avail.' '.__('copies available for loan').'';
                                 $_buffer .= '<div class="customField availabilityField"><b>'.$_field_opts[1].'</b> : '.$this->item_availability_message.'</div>';
                             }
                         } else if ($_field == 'node_id' && $this->disable_item_data) {

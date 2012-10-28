@@ -96,6 +96,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         }
 
         $data['title'] = $dbs->escape_string($title);
+        $data['subtitle'] = $dbs->escape_string($title);
         /* modified by hendro */
         $data['sor'] = trim($dbs->escape_string(strip_tags($_POST['sor'])));
         /* end of modification */
@@ -127,6 +128,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
         $data['publish_year'] = trim($dbs->escape_string(strip_tags($_POST['year'])));
         $data['collation'] = trim($dbs->escape_string(strip_tags($_POST['collation'])));
         $data['series_title'] = trim($dbs->escape_string(strip_tags($_POST['seriesTitle'])));
+        $data['volume'] = trim($dbs->escape_string(strip_tags($_POST['volume'])));
         $data['call_number'] = trim($dbs->escape_string(strip_tags($_POST['callNumber'])));
         $data['language_id'] = trim($dbs->escape_string(strip_tags($_POST['languageID'])));
         // check place
@@ -463,6 +465,9 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     // biblio title
     $form->addTextField('textarea', 'title', __('Title').'*', $rec_d['title'], 'rows="1" style="width: 100%; overflow: auto;"');
 
+    // biblio subtitle
+    $form->addTextField('textarea', 'subtitle', __('Subtitle').'*', $rec_d['subtitle'], 'rows="1" style="width: 100%; overflow: auto;"');
+
     // modified by hendro wicaksono
     // biblio sor statement of responsibility
     $form->addTextField('text', 'sor', __('Statement of Responsibility'), $rec_d['sor'], 'style="width: 40%;"');
@@ -537,6 +542,8 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $form->addTextField('text', 'collation', __('Collation'), $rec_d['collation'], 'style="width: 40%;"');
     // biblio series title
     $form->addTextField('textarea', 'seriesTitle', __('Series Title'), $rec_d['series_title'], 'rows="1" style="width: 100%;"');
+    // biblio series volume
+    $form->addTextField('textarea', 'volume', __('Volume'), $rec_d['volume'], 'rows="1" style="width: 100%;"');
     // biblio call_number
     $form->addTextField('text', 'callNumber', __('Call Number'), $rec_d['call_number'], 'style="width: 40%;"');
     // biblio topics

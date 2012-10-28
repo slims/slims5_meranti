@@ -488,7 +488,7 @@ p.strip {
 	float: left;
 	background: transparent url(images/nobook.png) center top no-repeat;
 	width:90px;
-	height:115px;
+	height:130px;
 	margin:5px;
 	clear: both;
 }
@@ -525,6 +525,11 @@ p.strip {
 	color:#ffcc00;
 	text-decoration: underline;
 }
+
+.copy_onloan					{color: red;}
+.copy_noncirculating	{color: yellow;}
+.copy_available				{color: green;}
+.booktrailer					{float: right; margin-left: 10px; margin-bottom: 10px;}
 
 /*----------------------------------------------------------------*/
 /* Collection Detail */
@@ -565,6 +570,7 @@ p.strip {
 	padding:20px;
 	border-bottom:dotted 1px #222222;
 	background:rgba(224,77,64,0.9);
+	text-align: justify;
 }
 
 .tagline a

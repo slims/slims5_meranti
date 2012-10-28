@@ -36,9 +36,6 @@ require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/simbio_dbop.inc.php';
 
-$sysconf['subject_level'][1] = 'Primary';
-$sysconf['subject_level'][2] = 'Additional';
-
 // page title
 $page_title = 'Topic List';
 // get id from url
