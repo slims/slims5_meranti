@@ -217,11 +217,11 @@ abstract class biblio_list_model
                 $images_loc = 'images/docs/'.$_biblio_d['image'];
                 #$cache_images_loc = 'images/cache/'.$_biblio_d['image'];
                 if ($sysconf['tg']['type'] == 'phpthumb') {
-                    $_image_cover = '<img src="./lib/phpthumb/phpThumb.php?src='.$sysconf['tg']['relative_url'].''.$images_loc.'&w=90" width="90" height="130" />';
+                    $_image_cover = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" class="detailLink" title="'.__('Record Detail').'"><img src="./lib/phpthumb/phpThumb.php?src='.$sysconf['tg']['relative_url'].''.$images_loc.'&w=90" width="90" height="130" /></a>';
                 } elseif ($sysconf['tg']['type'] == 'minigalnano') {
-                    $_image_cover = '<img src="./lib/minigalnano/createthumb.php?filename='.$sysconf['tg']['relative_url'].''.$images_loc.'&width=90" width="90" height="130" />';
+                    $_image_cover = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" class="detailLink" title="'.__('Record Detail').'"><img src="./lib/minigalnano/createthumb.php?filename='.$sysconf['tg']['relative_url'].''.$images_loc.'&width=90" width="90" height="130" /></a>';
                 } else {
-                    $_image_cover = '<img src="./lib/phpthumb/phpThumb.php?src='.$sysconf['tg']['relative_url'].''.$images_loc.'&w=90" width="90" height="130" />';
+                    $_image_cover = '<a href="'.$sysconf['baseurl'].'index.php?p=show_detail&id='.$_biblio_d['biblio_id'].'" class="detailLink" title="'.__('Record Detail').'"><img src="./lib/phpthumb/phpThumb.php?src='.$sysconf['tg']['relative_url'].''.$images_loc.'&w=90" width="90" height="130" /></a>';
                 }
             }
 
