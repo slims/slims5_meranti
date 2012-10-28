@@ -210,17 +210,18 @@ abstract class biblio_list_model
             }
 
             // cover images var
+            // covers usually have a ratio 1:1,4
             $_image_cover = '';
             if (!empty($_biblio_d['image']) && !defined('LIGHTWEIGHT_MODE')) {
                 $_biblio_d['image'] = urlencode($_biblio_d['image']);
                 $images_loc = 'images/docs/'.$_biblio_d['image'];
                 #$cache_images_loc = 'images/cache/'.$_biblio_d['image'];
                 if ($sysconf['tg']['type'] == 'phpthumb') {
-                    $_image_cover = '<img src="./lib/phpthumb/phpThumb.php?src='.$sysconf['tg']['relative_url'].''.$images_loc.'&w=90" width="90" height="115" />';
+                    $_image_cover = '<img src="./lib/phpthumb/phpThumb.php?src='.$sysconf['tg']['relative_url'].''.$images_loc.'&w=90" width="90" height="130" />';
                 } elseif ($sysconf['tg']['type'] == 'minigalnano') {
-                    $_image_cover = '<img src="./lib/minigalnano/createthumb.php?filename='.$sysconf['tg']['relative_url'].''.$images_loc.'&width=90" width="90" height="115" />';
+                    $_image_cover = '<img src="./lib/minigalnano/createthumb.php?filename='.$sysconf['tg']['relative_url'].''.$images_loc.'&width=90" width="90" height="130" />';
                 } else {
-                    $_image_cover = '<img src="./lib/phpthumb/phpThumb.php?src='.$sysconf['tg']['relative_url'].''.$images_loc.'&w=90" width="90" height="115" />';
+                    $_image_cover = '<img src="./lib/phpthumb/phpThumb.php?src='.$sysconf['tg']['relative_url'].''.$images_loc.'&w=90" width="90" height="130" />';
                 }
             }
 
