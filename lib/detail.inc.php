@@ -433,7 +433,7 @@ class detail extends content_list
         $_biblio_authors_q = $this->obj_db->query('SELECT a.*,ba.level FROM mst_author AS a'
             .' LEFT JOIN biblio_author AS ba ON a.author_id=ba.author_id WHERE ba.biblio_id='.$this->detail_id);
         while ($_auth_d = $_biblio_authors_q->fetch_assoc()) {
-            $_xml_output .= '<dc:creator>'.$_auth_d['author_name'].'</dc:creator>'."\n";
+            $_xml_output .= '<dc:creator><![CDATA['.$_auth_d['author_name'].']]></dc:creator>'."\n";
         }
         $_biblio_authors_q->free_result();
 
@@ -476,6 +476,9 @@ class detail extends content_list
         // classification
         $_xml_output .= '<dc:subject>'.$this->record_detail['classification'].'</dc:subject>';
 
+        // Permalink
+        $_xml_output .= '<dc:identifier><![CDATA[http://'.$_SERVER['SERVER_NAME'].SENAYAN_WEB_ROOT_DIR.'index.php?p=show_detail&id='.$this->detail_id.']]></dc:identifier>';        
+
         // ISBN/ISSN
         $_xml_output .= '<dc:identifier>'.str_replace(array('-', ' '), '', $this->record_detail['isbn_issn']).'</dc:identifier>';
 
@@ -496,20 +499,20 @@ class detail extends content_list
         $attachment_q = $this->obj_db->query('SELECT att.*, f.* FROM biblio_attachment AS att
             LEFT JOIN files AS f ON att.file_id=f.file_id WHERE att.biblio_id='.$this->detail_id.' AND att.access_type=\'public\' LIMIT 20');
         if ($attachment_q->num_rows > 0) {
-          $_xml_output .= '<dc:relation>';
           while ($attachment_d = $attachment_q->fetch_assoc()) {
+              $_xml_output .= '<dc:relation><![CDATA[';
               // check member type privileges
               if ($attachment_d['access_limit']) { continue; }
               $_xml_output .= preg_replace_callback('/&([a-zA-Z][a-zA-Z0-9]+);/S',
                   'utility::convertXMLentities', htmlspecialchars(trim($attachment_d['file_title'])));
+              $_xml_output .= ']]></dc:relation>'."\n";
           }
-          $_xml_output .= '</dc:relation>'."\n";
         }
 
         // image
         if (!empty($this->record_detail['image'])) {
           $_image = urlencode($this->record_detail['image']);
-			    $_xml_output .= '<dc:relation>'.htmlentities($_image).'</dc:relation>'."\n";
+			    $_xml_output .= '<dc:relation><![CDATA['.htmlentities($_image).']]></dc:relation>'."\n";
         }
 
         return $_xml_output;
