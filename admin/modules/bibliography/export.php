@@ -88,7 +88,7 @@ if (isset($_POST['doExport'])) {
         b.isbn_issn, publ.publisher_name, b.publish_year,
         b.collation, b.series_title, b.call_number,
         lang.language_name, pl.place_name, b.classification,
-        b.notes, b.image, b.file_att
+        b.notes, b.image, b.sor
         FROM biblio AS b
         LEFT JOIN mst_gmd AS gmd ON b.gmd_id=gmd.gmd_id
         LEFT JOIN mst_publisher AS publ ON b.publisher_id=publ.publisher_id
