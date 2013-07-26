@@ -20,9 +20,9 @@
 
 // be sure that this file not accessed directly
 if (!defined('INDEX_AUTH')) {
-    die("can not access this file directly");
+  die("can not access this file directly");
 } elseif (INDEX_AUTH != 1) { 
-    die("can not access this file directly");
+  die("can not access this file directly");
 }
 
 /* File Viewer */
@@ -34,84 +34,86 @@ $biblioID = isset($_GET['bid'])?(integer)$_GET['bid']:0;
 
 // query file to database
 $sql_q = 'SELECT att.*, f.* FROM biblio_attachment AS att
-    LEFT JOIN files AS f ON att.file_id=f.file_id
-    WHERE att.file_id='.$fileID.' AND att.biblio_id='.$biblioID.' AND att.access_type=\'public\'';
+  LEFT JOIN files AS f ON att.file_id=f.file_id
+  WHERE att.file_id='.$fileID.' AND att.biblio_id='.$biblioID.' AND att.access_type=\'public\'';
 $file_q = $dbs->query($sql_q);
 $file_d = $file_q->fetch_assoc();
 
 if ($file_q->num_rows > 0) {
-    #$file_loc = REPO_BASE_DIR.str_ireplace('/', DIRECTORY_SEPARATOR, $file_d['file_dir']).$file_d['file_name'];
-    $file_loc = REPO_BASE_DIR.'/'.$file_d['file_dir'].'/'.$file_d['file_name'];
-    if (file_exists($file_loc)) {
-        // check access limit
-        if ($file_d['access_limit']) {
-            if (utility::isMemberLogin()) {
-                $allowed_mem_types = @unserialize($file_d['access_limit']);
-                if (!in_array($_SESSION['m_member_type_id'], $allowed_mem_types)) {
-                    # Access to file restricted
-                    # Member logged in but doesnt have privilege to download
-                    header("location:index.php");
-                    exit();
-                }
-            } else {
-                header("location:index.php");
-                exit();
-            }
+  #$file_loc = REPO_BASE_DIR.str_ireplace('/', DIRECTORY_SEPARATOR, $file_d['file_dir']).$file_d['file_name'];
+  $file_loc = REPO_BASE_DIR.'/'.$file_d['file_dir'].'/'.$file_d['file_name'];
+  if (file_exists($file_loc)) {
+    // check access limit
+    if ($file_d['access_limit']) {
+      if (utility::isMemberLogin()) {
+        $allowed_mem_types = @unserialize($file_d['access_limit']);
+        if (!in_array($_SESSION['m_member_type_id'], $allowed_mem_types)) {
+          # Access to file restricted
+          # Member logged in but doesnt have privilege to download
+          header("location:index.php");
+          exit();
         }
-
-        if ($file_d['mime_type'] == 'application/pdf') {
-            $swf = basename($file_loc);
-            $swf = sha1($swf);
-            $swf = $swf.'.swf';
-            if (!file_exists('files/swfs/'.$swf.'')) {
-                if (stripos(PHP_OS, 'Darwin') !== false) {
-                    exec('lib/swftools/bin/darwin/pdf2swf -o files/swfs/'.$swf.' "'.$file_loc.'"');
-                } else if (stripos(PHP_OS, 'Linux') !== false) {
-                    exec('lib/swftools/bin/linux/pdf2swf -o files/swfs/'.$swf.' "'.$file_loc.'"');
-                } else {
-                    exec('lib\swftools\bin\windows\pdf2swf.exe -o files/swfs/'.$swf.' "'.$file_loc.'"');
-                }
-            }
-            header('Location: js/zviewer/index.php?swf='.$swf.'&fid='.$fileID.'&bid='.$biblioID);
-            exit();
-
-        } else if (preg_match('@(image)/.+@i', $file_d['mime_type'])) {
-            if ($sysconf['watermark']['enable']) {
-                $imgurl = 'lib/watermark/phpThumb.php?src=../../repository/'.$file_d['file_dir'].'/'.basename($file_loc);
-                if ($sysconf['watermark']['type'] == 'text') {
-                    $imgurl .= '&fltr[]=wmt|';
-                    $imgurl .= $sysconf['watermark']['text'].'|';
-                    $imgurl .= $sysconf['watermark']['sizeoftext'].'|';
-                    $imgurl .= $sysconf['watermark']['alignment'].'|';
-                    $imgurl .= $sysconf['watermark']['color'].'||';
-                    $imgurl .= $sysconf['watermark']['opacity'];
-                } elseif ($sysconf['watermark']['type'] == 'image') {
-                    $imgurl .= '&fltr[]=wmi|';
-                    $imgurl .= $sysconf['watermark']['image'].'|';
-                    $imgurl .= $sysconf['watermark']['alignment'].'|';
-                    $imgurl .= $sysconf['watermark']['opacity'];
-                }
-                echo '<html><head><title>'.$file_d['file_title'].'</title></head><body>';
-                echo "<img src='".$imgurl."' />";
-                echo '</body></html>';
-                exit();
-            } else {
-                header('Content-Disposition: inline; filename="'.basename($file_loc).'"');
-                header('Content-Type: '.$file_d['mime_type']);
-                readfile($file_loc);
-                exit();
-            }
-
-        } else {
-            header('Content-Disposition: inline; filename="'.basename($file_loc).'"');
-            header('Content-Type: '.$file_d['mime_type']);
-            readfile($file_loc);
-            exit();
-        }
-    } else {
-        die('<div class="errorBox">File Not Found!</div>');
+      } else {
+        header("location:index.php");
+        exit();
+      }
     }
-} else {
+    if ($file_d['mime_type'] == 'application/pdf') {
+      if ($sysconf['pdf']['viewer'] == 'zviewer') {
+        $swf = basename($file_loc);
+        $swf = sha1($swf);
+        $swf = $swf.'.swf';
+       if (!file_exists('files/swfs/'.$swf.'')) {
+         if (stripos(PHP_OS, 'Darwin') !== false) {
+          exec('lib/swftools/bin/darwin/pdf2swf -o files/swfs/'.$swf.' "'.$file_loc.'"');
+        } else if (stripos(PHP_OS, 'Linux') !== false) {
+          exec('lib/swftools/bin/linux/pdf2swf -o files/swfs/'.$swf.' "'.$file_loc.'"');
+        } else {
+          exec('lib\swftools\bin\windows\pdf2swf.exe -o files/swfs/'.$swf.' "'.$file_loc.'"');
+        }
+      }
+      header('Location: js/zviewer/index.php?swf='.$swf.'&fid='.$fileID.'&bid='.$biblioID);
+    } elseif ($sysconf['pdf']['viewer'] == 'pdfjs') {
+      header('Location: js/pdfjs/web/viewer.html?file=../../../repository/'.$file_d['file_dir'].'/'.$file_d['file_name']);
+    }
+    exit();
+    } else if (preg_match('@(image)/.+@i', $file_d['mime_type'])) {
+      if ($sysconf['watermark']['enable']) {
+        $imgurl = 'lib/watermark/phpThumb.php?src=../../repository/'.$file_d['file_dir'].'/'.basename($file_loc);
+        if ($sysconf['watermark']['type'] == 'text') {
+          $imgurl .= '&fltr[]=wmt|';
+          $imgurl .= $sysconf['watermark']['text'].'|';
+          $imgurl .= $sysconf['watermark']['sizeoftext'].'|';
+          $imgurl .= $sysconf['watermark']['alignment'].'|';
+          $imgurl .= $sysconf['watermark']['color'].'||';
+          $imgurl .= $sysconf['watermark']['opacity'];
+        } elseif ($sysconf['watermark']['type'] == 'image') {
+          $imgurl .= '&fltr[]=wmi|';
+          $imgurl .= $sysconf['watermark']['image'].'|';
+          $imgurl .= $sysconf['watermark']['alignment'].'|';
+          $imgurl .= $sysconf['watermark']['opacity'];
+        }
+        echo '<html><head><title>'.$file_d['file_title'].'</title></head><body>';
+        echo "<img src='".$imgurl."' />";
+        echo '</body></html>';
+        exit();
+      } else {
+        header('Content-Disposition: inline; filename="'.basename($file_loc).'"');
+        header('Content-Type: '.$file_d['mime_type']);
+        readfile($file_loc);
+        exit();
+      }
+
+    } else {
+      header('Content-Disposition: inline; filename="'.basename($file_loc).'"');
+      header('Content-Type: '.$file_d['mime_type']);
+      readfile($file_loc);
+      exit();
+    }
+  } else {
     die('<div class="errorBox">File Not Found!</div>');
+  }
+} else {
+  die('<div class="errorBox">File Not Found!</div>');
 }
 ?>

@@ -321,7 +321,8 @@ if (!file_exists($sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'
     require $sysconf['template']['dir'].'/'.$sysconf['template']['theme'].'/tinfo.inc.php';
 }
 
-$sysconf['allow_pdf_download'] = true;
+$sysconf['pdf']['viewer'] = 'pdfjs'; # 'zviewer' or 'pdfjs'. Use psfjs for better support
+$sysconf['allow_pdf_download'] = true; # only work with 'zviewer'
 
 # Image watermarking
 $sysconf['watermark']['enable'] = false;
