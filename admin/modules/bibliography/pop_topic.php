@@ -31,9 +31,16 @@ do_checkIP('smc');
 do_checkIP('smc-bibliography');
 // start the session
 require SENAYAN_BASE_DIR.'admin/default/session.inc.php';
+require SENAYAN_BASE_DIR.'admin/default/session_check.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/table/simbio_table.inc.php';
 require SIMBIO_BASE_DIR.'simbio_GUI/form_maker/simbio_form_table.inc.php';
 require SIMBIO_BASE_DIR.'simbio_DB/simbio_dbop.inc.php';
+
+// privileges checking
+$can_write = utility::havePrivilege('bibliography', 'w');
+if (!$can_write) {
+  die('<div class="errorBox">'.__('You are not authorized to view this section').'</div>');
+}
 
 // page title
 $page_title = 'Subject List';
