@@ -55,6 +55,7 @@ Simbio Engine (Arie Nugraha)<br />
 PHP-based template system: Hendro Wicaksono<br />
 Blue Template: Eddie Subratha<br />
 Gettext Support: Tobias Zeumer<br />
+OAI Support for Indonesia One Search: Ismail Fahmi
 </p>
 
 </div>
