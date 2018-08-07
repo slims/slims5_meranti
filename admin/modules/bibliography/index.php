@@ -217,7 +217,7 @@ if (isset($_POST['saveData']) AND $can_read AND $can_write) {
                     echo '<script type="text/javascript">parent.ucsUpload(\''.MODULES_WEB_ROOT_DIR.'bibliography/ucs_upload.php\', \'itemID[]='.$updateRecordID.'\', false);</script>';
                 }
                 // write log
-                utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'bibliography', $_SESSION['realname'].' update bibliographic data ('.$data['title'].') with biblio_id ('.$updateRecordID'].')');
+                utility::writeLogs($dbs, 'staff', $_SESSION['uid'], 'bibliography', $_SESSION['realname'].' update bibliographic data ('.$data['title'].') with biblio_id ('.$updateRecordID.')');
                 // close window OR redirect main page
                 if ($in_pop_up) {
                     $itemCollID = (integer)$_POST['itemCollID'];
