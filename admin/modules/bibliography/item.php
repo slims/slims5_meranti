@@ -300,7 +300,7 @@ if (isset($_POST['detail']) OR (isset($_GET['action']) AND $_GET['action'] == 'd
     $form->addTextField('text', 'itemSite', __('Shelf Location'), $rec_d['site'], 'style="width: 40%;"');
     // collection type
         // get collection type data related to this record from database
-        $coll_type_q = $dbs->query("SELECT coll_type_id, coll_type_name FROM mst_coll_type");
+        $coll_type_q = $dbs->query("SELECT coll_type_id, coll_type_name FROM mst_coll_type ORDER BY coll_type_name");
         $coll_type_options = array();
         while ($coll_type_d = $coll_type_q->fetch_row()) {
             $coll_type_options[] = array($coll_type_d[0], $coll_type_d[1]);
